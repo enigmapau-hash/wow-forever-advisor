@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101715">
+    <meta name="description" content="WoW Forever Advisor. Tu compañero para elegir y optimizar tu personaje.">
+    <title>WoW Forever Advisor</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="intro">
+        <span class="brand-mark" aria-hidden="true">W<span>F</span></span>
+        <p class="eyebrow">Cada aventura empieza con una elección</p>
+        <h1>WoW Forever <span>Advisor</span></h1>
+        <p class="subtitle">Tu compañero para elegir y optimizar tu personaje.</p>
+      </header>
+
+      <section class="advisor-card" aria-labelledby="race-title">
+        <div class="advisor-content">
+          <p class="eyebrow">Tu personaje, desde el principio</p>
+          <h2 id="race-title">Race Advisor</h2>
+          <p class="description">Encuentra la raza más adecuada para tu clase y especialización.</p>
+          <button id="race-advisor" type="button" disabled aria-describedby="race-status">
+            Abrir Race Advisor
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </button>
+          <p class="availability" id="race-status"><span aria-hidden="true"></span>Próximamente · Todavía no disponible</p>
+        </div>
+        <div class="crest" aria-hidden="true">
+          <svg viewBox="0 0 240 240" fill="none">
+            <circle class="crest-ring" cx="120" cy="120" r="108"/>
+            <circle class="crest-ring" cx="120" cy="120" r="92" stroke-dasharray="2 10"/>
+            <path class="crest-rays" d="M120 1v26m0 186v26M1 120h26m186 0h26M36 36l18 18m132 132 18 18M36 204l18-18M186 54l18-18"/>
+            <path class="crest-shield" d="m120 48 56 24v55c0 33-31 57-56 69-25-12-56-36-56-69V72z"/>
+            <path class="crest-inner" d="m120 61 44 19v47c0 25-24 46-44 57-20-11-44-32-44-57V80z"/>
+            <path class="crest-star" d="m120 81 9 30 25 11-25 10-9 29-9-29-25-10 25-11z"/>
+            <path class="crest-rays" d="M120 98v47m-18-23h36"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="future" aria-labelledby="future-title">
+        <div class="section-heading">
+          <h2 id="future-title">Más caminos por explorar</h2>
+          <span class="heading-line" aria-hidden="true"></span>
+        </div>
+        <ul class="module-list">
+          <li class="module-card">
+            <span class="module-number" aria-hidden="true">01</span>
+            <h3>Profession Advisor</h3>
+            <p>Próximamente</p>
+          </li>
+          <li class="module-card">
+            <span class="module-number" aria-hidden="true">02</span>
+            <h3>Talent Advisor</h3>
+            <p>Próximamente</p>
+          </li>
+          <li class="module-card">
+            <span class="module-number" aria-hidden="true">03</span>
+            <h3>Build Advisor</h3>
+            <p>Próximamente</p>
+          </li>
+        </ul>
+      </section>
+
+      <footer><span aria-hidden="true">✧</span> WoW Forever Advisor</footer>
+    </main>
+  </body>
+</html>
