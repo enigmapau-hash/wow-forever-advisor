@@ -1,0 +1,182 @@
+:root {
+  color-scheme: dark;
+  --background: #101715;
+  --text: #ecece3;
+  --muted: #a9b3ac;
+  --gold: #d0b77d;
+  --border: #303c34;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6;
+  background: var(--background);
+  color: var(--text);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 0;
+  background:
+    radial-gradient(ellipse at 75% 15%, #26362a66, transparent 55%),
+    radial-gradient(ellipse at 0% 75%, #29312233, transparent 50%);
+}
+
+.page {
+  width: min(100% - 2.5rem, 68rem);
+  margin-inline: auto;
+  padding-block: 2.5rem 1.5rem;
+}
+
+h1, h2, h3, p { margin: 0; }
+
+.intro { margin-bottom: 2.5rem; }
+
+.brand-mark {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 2rem;
+  border: 1px solid #796b49;
+  border-radius: 0.75rem 0.25rem;
+  color: var(--gold);
+  font: 1.5rem/3rem Georgia, serif;
+}
+
+.brand-mark span { font-size: 1rem; }
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-block: 0.75rem;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+h1 span { color: var(--gold); }
+
+.subtitle { color: var(--muted); font-size: 1.05rem; }
+
+.advisor-card {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1.75rem;
+  padding: 1.5rem;
+  border: 1px solid #645b3e;
+  border-radius: 1.25rem;
+  background: linear-gradient(115deg, #222b22, #18241f);
+  box-shadow: 0 16px 48px #00000020;
+}
+
+.advisor-content { min-width: 0; }
+
+.advisor-card h2 {
+  margin-block: 0.5rem 0.75rem;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.description { max-width: 29rem; color: #c0c8bf; }
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  max-width: 100%;
+  min-height: 3rem;
+  margin-top: 1.75rem;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid #807453;
+  border-radius: 0.5rem;
+  background: #393d2d;
+  color: #d0c7ad;
+  font: 600 0.9rem/1.5 "Segoe UI", system-ui, sans-serif;
+}
+
+button:disabled { cursor: not-allowed; opacity: 1; }
+button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+button svg { width: 1.1rem; flex-shrink: 0; stroke: currentColor; stroke-width: 1.5; }
+
+.availability {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.availability span {
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--gold);
+  vertical-align: middle;
+}
+
+.crest { width: 5.5rem; flex-shrink: 0; }
+.crest svg { display: block; width: 100%; }
+.crest-ring { stroke: #b69c594d; }
+.crest-rays { stroke: #cfb577; stroke-width: 1.5; }
+.crest-shield { fill: #a58e4420; stroke: #b69e62; stroke-width: 1.5; }
+.crest-inner { stroke: #b69e6266; }
+.crest-star { fill: #bba36b; }
+
+.future { margin-top: 2.5rem; }
+.section-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.section-heading h2 { font-size: 0.95rem; font-weight: 500; color: #c2cbc3; }
+.heading-line { height: 1px; flex: 1; background: var(--border); }
+
+.module-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.module-card {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: #18211b88;
+}
+
+.module-number { display: block; margin-bottom: 1rem; color: #b5a47e; font-size: 0.75rem; }
+.module-card h3 { font-size: 1rem; font-weight: 500; }
+.module-card p { margin-top: 0.3rem; color: var(--muted); font-size: 0.8rem; }
+
+footer {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+footer span { color: var(--gold); font-size: 1.2rem; }
+
+@media (min-width: 48rem) {
+  .page { padding-block: 3.5rem 2rem; }
+  .intro { margin-bottom: 3rem; }
+  .advisor-card { flex-direction: row; align-items: center; justify-content: space-between; padding: 2.5rem 3rem; }
+  .crest { width: 13rem; margin-inline: 1rem; }
+  .module-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .module-card { padding: 1.5rem; }
+  .future { margin-top: 3rem; }
+}
