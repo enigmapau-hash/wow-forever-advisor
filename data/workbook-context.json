@@ -1,0 +1,1044 @@
+{
+  "schemaVersion": 1,
+  "fuente": {
+    "archivo": "Clases WoW Forever v5.xlsx",
+    "sha256": "ffb510a623c83fa440eb9612cc9b8ab7a02d67a036bbeab14c858e811ffab2ec",
+    "versionInterna": "Versión 4.0 RC1"
+  },
+  "columnasFichas": {
+    "Clase": "clase",
+    "Especialización": "especializacion",
+    "Raza recomendada": "razaRecomendada",
+    "Alternativa": "alternativa",
+    "Explicación": "explicacion",
+    "Prioridad": "prioridad",
+    "Motivo principal": "motivoPrincipal"
+  },
+  "columnasRaciales": {
+    "Raza": "raza",
+    "Fortaleza principal": "fortalezas",
+    "Debilidad": "debilidades",
+    "Escala de utilidad": "escalaUtilidad",
+    "Comentarios": "comentarios",
+    "Uso principal": "usoPrincipal"
+  },
+  "hojas": [
+    {
+      "nombre": "Inicio",
+      "celdas": {
+        "B2": {
+          "valor": "WoW Forever Race Advisor"
+        },
+        "B5": {
+          "valor": "Versión 4.0 RC1"
+        },
+        "B7": {
+          "valor": "Elige facción, clase y especialización para consultar una recomendación validada, su motivo principal y sus límites en el PvP masivo de WoW Forever."
+        },
+        "B12": {
+          "valor": "ABRIR SELECTOR  →"
+        },
+        "B16": {
+          "valor": "CONSULTA RÁPIDA · RECOMENDACIONES CONSERVADAS"
+        },
+        "B18": {
+          "valor": "ALIANZA"
+        },
+        "F18": {
+          "valor": "HORDA"
+        },
+        "J18": {
+          "valor": "RACIALES"
+        },
+        "B19": {
+          "valor": 27,
+          "formula": "=ROWS(tblAlianza[Clase])",
+          "atributosFormula": {}
+        },
+        "F19": {
+          "valor": 24,
+          "formula": "=ROWS(tblHorda[Clase])",
+          "atributosFormula": {}
+        },
+        "J19": {
+          "valor": 8,
+          "formula": "=ROWS(tblRaciales[Raza])",
+          "atributosFormula": {}
+        },
+        "B20": {
+          "valor": "combinaciones incluidas"
+        },
+        "F20": {
+          "valor": "combinaciones incluidas"
+        },
+        "J20": {
+          "valor": "fichas de consulta"
+        },
+        "B22": {
+          "valor": "VER ALIANZA →"
+        },
+        "F22": {
+          "valor": "VER HORDA →"
+        },
+        "J22": {
+          "valor": "RACIALES →"
+        },
+        "B25": {
+          "valor": "METODOLOGÍA Y FUENTES →"
+        },
+        "B28": {
+          "valor": "CRITERIOS DEL ANÁLISIS"
+        },
+        "H28": {
+          "valor": "NO INCLUIDOS"
+        },
+        "B29": {
+          "valor": "✔ PvP masivo"
+        },
+        "H29": {
+          "valor": "✘ PvE"
+        },
+        "B30": {
+          "valor": "✔ Mundo abierto"
+        },
+        "H30": {
+          "valor": "✘ Arenas"
+        },
+        "B31": {
+          "valor": "✔ Escalado hasta nivel 60"
+        },
+        "H31": {
+          "valor": "✘ Duelos"
+        },
+        "B32": {
+          "valor": "✔ Contenido futuro del servidor"
+        },
+        "H32": {
+          "valor": "✘ PvP pequeño"
+        },
+        "B33": {
+          "valor": "Horizonte táctico: no se predicen parches ni cambios de balance."
+        },
+        "H33": {
+          "valor": "✘ DPS puro y rankings de daño"
+        },
+        "B36": {
+          "valor": "Escala común de cinco estrellas: ★☆☆☆☆ limitada · ★★☆☆☆ situacional · ★★★☆☆ útil · ★★★★☆ destacada · ★★★★★ prioritaria. No mide DPS ni probabilidad de victoria."
+        },
+        "B39": {
+          "valor": "Razas y alternativas intactas. Las sugerencias se recogen únicamente en «Observaciones del editor», dentro de Metodología."
+        },
+        "B41": {
+          "valor": "WoW Forever Race Advisor v4.0 RC1  |  Revisión editorial: 21/10/2026  |  Excel 365 · Sin macros"
+        }
+      },
+      "tablas": [],
+      "comentarios": [],
+      "hipervinculos": [
+        {
+          "celda": "B12",
+          "ubicacion": "'Selector'!B1"
+        },
+        {
+          "celda": "B22",
+          "ubicacion": "'Alianza'!B1"
+        },
+        {
+          "celda": "F22",
+          "ubicacion": "'Horda'!B1"
+        },
+        {
+          "celda": "J22",
+          "ubicacion": "'Raciales'!B1"
+        },
+        {
+          "celda": "B25",
+          "ubicacion": "'Metodología'!B1"
+        }
+      ]
+    },
+    {
+      "nombre": "Selector",
+      "celdas": {
+        "B1": {
+          "valor": "SELECTOR | Tu ficha de raza"
+        },
+        "B2": {
+          "valor": "PvP masivo · Mundo abierto · Nivel 60 · Sin PvE, arenas ni duelos"
+        },
+        "J3": {
+          "valor": "Facciones"
+        },
+        "K3": {
+          "valor": "Clases disponibles"
+        },
+        "L3": {
+          "valor": "Especializaciones"
+        },
+        "M3": {
+          "valor": "Coincidencias"
+        },
+        "B4": {
+          "valor": "Facción"
+        },
+        "C4": {
+          "valor": "Alianza"
+        },
+        "E4": {
+          "valor": "01  Facción"
+        },
+        "J4": {
+          "valor": "Alianza"
+        },
+        "K4": {
+          "valor": "Brujo",
+          "formula": "=IF($C$4=\"Alianza\",_xlfn._xlws.SORT(_xlfn.UNIQUE(tblAlianza[Clase])),IF($C$4=\"Horda\",_xlfn._xlws.SORT(_xlfn.UNIQUE(tblHorda[Clase])),\"Selecciona facción\"))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "K4:K12"
+          }
+        },
+        "L4": {
+          "valor": "Disciplina",
+          "formula": "=IF($C$4=\"Alianza\",_xlfn._xlws.SORT(_xlfn.UNIQUE(_xlfn._xlws.FILTER(tblAlianza[Especialización],tblAlianza[Clase]=$C$5,\"Selecciona clase\"))),IF($C$4=\"Horda\",_xlfn._xlws.SORT(_xlfn.UNIQUE(_xlfn._xlws.FILTER(tblHorda[Especialización],tblHorda[Clase]=$C$5,\"Selecciona clase\"))),\"Selecciona facción\"))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "L4:L6"
+          }
+        },
+        "M4": {
+          "valor": 1,
+          "formula": "=IF($C$4=\"Alianza\",COUNTIFS(tblAlianza[Clase],$C$5,tblAlianza[Especialización],$C$6),IF($C$4=\"Horda\",COUNTIFS(tblHorda[Clase],$C$5,tblHorda[Especialización],$C$6),0))",
+          "atributosFormula": {}
+        },
+        "B5": {
+          "valor": "Clase"
+        },
+        "C5": {
+          "valor": "Sacerdote"
+        },
+        "E5": {
+          "valor": "02  Clase"
+        },
+        "J5": {
+          "valor": "Horda"
+        },
+        "K5": {
+          "valor": "Cazador"
+        },
+        "L5": {
+          "valor": "Sagrado"
+        },
+        "B6": {
+          "valor": "Especialización"
+        },
+        "C6": {
+          "valor": "Sombras"
+        },
+        "E6": {
+          "valor": "03  Especialización"
+        },
+        "K6": {
+          "valor": "Chamán"
+        },
+        "L6": {
+          "valor": "Sombras"
+        },
+        "K7": {
+          "valor": "Druida"
+        },
+        "B8": {
+          "valor": "Estado de selección"
+        },
+        "C8": {
+          "valor": "Selección válida · ficha actualizada",
+          "formula": "=IF($M$4=1,\"Selección válida · ficha actualizada\",IF($M$4>1,\"Revisar datos: combinación duplicada\",\"Vuelve a elegir clase y especialización\"))",
+          "atributosFormula": {}
+        },
+        "K8": {
+          "valor": "Guerrero"
+        },
+        "K9": {
+          "valor": "Mago"
+        },
+        "B10": {
+          "valor": "TU RECOMENDACIÓN"
+        },
+        "E10": {
+          "valor": "PRIORIDAD"
+        },
+        "K10": {
+          "valor": "Paladín"
+        },
+        "B11": {
+          "valor": "Raza recomendada"
+        },
+        "C11": {
+          "valor": "Gnomo",
+          "formula": "=IF($M$4<>1,\"Revisa selección\",IF($C$4=\"Alianza\",_xlfn.XLOOKUP(1,(tblAlianza[Clase]=$C$5)*(tblAlianza[Especialización]=$C$6),tblAlianza[Raza recomendada],\"Sin datos\"),_xlfn.XLOOKUP(1,(tblHorda[Clase]=$C$5)*(tblHorda[Especialización]=$C$6),tblHorda[Raza recomendada],\"Sin datos\")))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "C11"
+          }
+        },
+        "E11": {
+          "valor": "★★★★★",
+          "formula": "=IF($M$4<>1,\"No disponible\",IF($C$4=\"Alianza\",_xlfn.XLOOKUP(1,(tblAlianza[Clase]=$C$5)*(tblAlianza[Especialización]=$C$6),tblAlianza[Prioridad],\"Sin datos\"),_xlfn.XLOOKUP(1,(tblHorda[Clase]=$C$5)*(tblHorda[Especialización]=$C$6),tblHorda[Prioridad],\"Sin datos\")))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "E11"
+          }
+        },
+        "K11": {
+          "valor": "Pícaro"
+        },
+        "K12": {
+          "valor": "Sacerdote"
+        },
+        "B13": {
+          "valor": "Alternativa"
+        },
+        "C13": {
+          "valor": "Humano",
+          "formula": "=IF($M$4<>1,\"No disponible\",_xlfn.LET(_xlpm.alt,IF($C$4=\"Alianza\",_xlfn.XLOOKUP(1,(tblAlianza[Clase]=$C$5)*(tblAlianza[Especialización]=$C$6),tblAlianza[Alternativa],\"Sin datos\"),_xlfn.XLOOKUP(1,(tblHorda[Clase]=$C$5)*(tblHorda[Especialización]=$C$6),tblHorda[Alternativa],\"Sin datos\")),IF(_xlpm.alt=\"-\",\"Sin alternativa indicada\",_xlpm.alt)))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "C13"
+          }
+        },
+        "E13": {
+          "valor": "UTILIDAD RACIAL"
+        },
+        "B14": {
+          "valor": "Motivo principal"
+        },
+        "C14": {
+          "valor": "Reposicionarse sin abandonar la presión sostenida.",
+          "formula": "=IF($M$4<>1,\"Revisa la selección para ver el motivo.\",IF($C$4=\"Alianza\",_xlfn.XLOOKUP(1,(tblAlianza[Clase]=$C$5)*(tblAlianza[Especialización]=$C$6),tblAlianza[Motivo principal],\"Sin motivo\"),_xlfn.XLOOKUP(1,(tblHorda[Clase]=$C$5)*(tblHorda[Especialización]=$C$6),tblHorda[Motivo principal],\"Sin motivo\")))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "C14"
+          }
+        },
+        "E14": {
+          "valor": "★★★★★",
+          "formula": "=IF($M$4<>1,\"—\",_xlfn.XLOOKUP($C$11,tblRaciales[Raza],tblRaciales[Escala de utilidad],\"Sin nota\"))",
+          "atributosFormula": {}
+        },
+        "B15": {
+          "valor": "Explicación"
+        },
+        "C15": {
+          "valor": "Sombras mantiene presión mientras conserva distancia de quienes pueden cortarle los lanzamientos. Escape Artist libera de raíces y ralentizaciones para abandonar una posición bloqueada y recuperar espacio. Frente a Humano, importa más resolver ese desplazamiento que romper un aturdimiento; alejarse sin cuidar el alcance puede desconectarlo de sus aliados. Pierde ventaja cuando no existe una ruta de salida.",
+          "formula": "=IF($M$4<>1,\"Selecciona una combinación incluida en la base.\",_xlfn.LET(_xlpm.txt,IF($C$4=\"Alianza\",_xlfn.XLOOKUP(1,(tblAlianza[Clase]=$C$5)*(tblAlianza[Especialización]=$C$6),tblAlianza[Explicación],\"Sin datos\"),_xlfn.XLOOKUP(1,(tblHorda[Clase]=$C$5)*(tblHorda[Especialización]=$C$6),tblHorda[Explicación],\"Sin datos\")),IF(_xlpm.txt<>\"Igual\",_xlpm.txt,IF(AND($C$4=\"Alianza\",$C$5=\"Brujo\"),\"Romper stun es clave (mismo criterio que Aflicción)\",IF(AND($C$4=\"Horda\",$C$5=\"Guerrero\"),\"Hardiness domina (mismo criterio que Armas)\",IF(AND($C$4=\"Horda\",$C$5=\"Sacerdote\"),\"Hex of Weakness (mismo criterio que Disciplina)\",\"Mismo criterio que la fila anterior de la tabla\"))))))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "C15"
+          }
+        },
+        "E16": {
+          "valor": "NOTA DE LA FICHA"
+        },
+        "B17": {
+          "valor": "Fortalezas"
+        },
+        "C17": {
+          "valor": "• Recupera movimiento frente a raíces y ralentizaciones.\n• Ayuda a recuperar alcance sobre el objetivo.\n• Facilita regresar a la cobertura aliada.\n• Permite acompañar un frente en movimiento.",
+          "formula": "=IF($M$4<>1,\"No disponible\",_xlfn.XLOOKUP($C$11,tblRaciales[Raza],tblRaciales[Fortaleza principal],\"Raza sin ficha racial\"))",
+          "atributosFormula": {}
+        },
+        "E17": {
+          "valor": "Escape Artist permite recuperar movimiento frente a raíces y ralentizaciones. Cada especialización aprovecha ese desplazamiento para volver al contacto, ganar distancia o replegarse.",
+          "formula": "=IF($M$4<>1,\"No disponible\",_xlfn.XLOOKUP($C$11,tblRaciales[Raza],tblRaciales[Comentarios],\"Sin comentario\"))",
+          "atributosFormula": {}
+        },
+        "B19": {
+          "valor": "Debilidades"
+        },
+        "C19": {
+          "valor": "• No elimina aturdimientos, miedo ni silencios.\n• No mitiga el daño recibido.\n• Necesita una ruta de salida disponible.",
+          "formula": "=IF($M$4<>1,\"No disponible\",_xlfn.XLOOKUP($C$11,tblRaciales[Raza],tblRaciales[Debilidad],\"Raza sin ficha racial\"))",
+          "atributosFormula": {}
+        },
+        "E19": {
+          "valor": "★☆☆☆☆ → ★★★★★\nDe utilidad limitada a prioritaria.\nNo equivale a DPS ni a victorias."
+        },
+        "B21": {
+          "valor": "Alcance de la ficha"
+        },
+        "C21": {
+          "valor": "Base validada sin cambios de raza. La prioridad corresponde a la especialización; la utilidad racial resume su perfil general. Ambas usan cinco estrellas.",
+          "formula": "=IF($M$4=1,\"Base validada sin cambios de raza. La prioridad corresponde a la especialización; la utilidad racial resume su perfil general. Ambas usan cinco estrellas.\",\"Elige facción, clase y especialización en ese orden. La ficha solo se muestra para combinaciones incluidas en la base.\")",
+          "atributosFormula": {}
+        },
+        "B23": {
+          "valor": "Uso: cambia los tres campos en orden. Sin macros, las selecciones previas no se borran solas; si dejan de ser válidas, la ficha se bloquea hasta que vuelvas a elegir."
+        },
+        "B26": {
+          "valor": "← Inicio"
+        },
+        "C26": {
+          "valor": "Criterios y observaciones del editor →"
+        },
+        "E26": {
+          "valor": "Ver raciales →"
+        },
+        "B28": {
+          "valor": "WoW Forever Race Advisor v4.0 RC1  |  21/10/2026  |  Revisión editorial · Sin macros"
+        }
+      },
+      "tablas": [],
+      "comentarios": [],
+      "hipervinculos": [
+        {
+          "celda": "B26",
+          "ubicacion": "'Inicio'!B2"
+        },
+        {
+          "celda": "C26",
+          "ubicacion": "'Metodología'!B1"
+        },
+        {
+          "celda": "E26",
+          "ubicacion": "'Raciales'!B1"
+        }
+      ]
+    },
+    {
+      "nombre": "Alianza",
+      "celdas": {
+        "B1": {
+          "valor": "ALIANZA | Guía de razas"
+        },
+        "B3": {
+          "valor": "27 combinaciones · PvP masivo · Mundo abierto · Horizonte: nivel 60"
+        },
+        "B5": {
+          "valor": "Clase"
+        },
+        "C5": {
+          "valor": "Especialización"
+        },
+        "D5": {
+          "valor": "Raza recomendada"
+        },
+        "E5": {
+          "valor": "Alternativa"
+        },
+        "F5": {
+          "valor": "Explicación"
+        },
+        "G5": {
+          "valor": "Prioridad"
+        },
+        "H5": {
+          "valor": "Motivo principal"
+        },
+        "B35": {
+          "valor": "Razas, alternativas y prioridades conservadas. RC1: revisión individual de las 27 fichas, sin cambiar el análisis. Cada explicación cierra con una situación de menor ventaja. Cinco estrellas = nivel máximo; cuatro = nivel siguiente. «-» significa alternativa no facilitada."
+        },
+        "B38": {
+          "valor": "← Volver al Selector"
+        },
+        "B40": {
+          "valor": "WoW Forever Race Advisor v4.0 RC1  |  21/10/2026  |  Revisión editorial · Sin macros"
+        }
+      },
+      "tablas": [
+        {
+          "nombre": "tblAlianza",
+          "rango": "B5:H32",
+          "columnas": [
+            "Clase",
+            "Especialización",
+            "Raza recomendada",
+            "Alternativa",
+            "Explicación",
+            "Prioridad",
+            "Motivo principal"
+          ]
+        }
+      ],
+      "comentarios": [],
+      "hipervinculos": [
+        {
+          "celda": "B38",
+          "ubicacion": "'Selector'!B1"
+        }
+      ]
+    },
+    {
+      "nombre": "Horda",
+      "celdas": {
+        "B1": {
+          "valor": "HORDA | Guía de razas"
+        },
+        "B3": {
+          "valor": "24 combinaciones · PvP masivo · Mundo abierto · Horizonte: nivel 60"
+        },
+        "B5": {
+          "valor": "Clase"
+        },
+        "C5": {
+          "valor": "Especialización"
+        },
+        "D5": {
+          "valor": "Raza recomendada"
+        },
+        "E5": {
+          "valor": "Alternativa"
+        },
+        "F5": {
+          "valor": "Explicación"
+        },
+        "G5": {
+          "valor": "Prioridad"
+        },
+        "H5": {
+          "valor": "Motivo principal"
+        },
+        "B32": {
+          "valor": "Razas, alternativas y prioridades conservadas. RC1: revisión individual de las 24 fichas, sin cambiar el análisis. Cada explicación cierra con una situación de menor ventaja. Cinco estrellas = nivel máximo; cuatro = nivel siguiente. «-» significa alternativa no facilitada."
+        },
+        "B35": {
+          "valor": "← Volver al Selector"
+        },
+        "B37": {
+          "valor": "WoW Forever Race Advisor v4.0 RC1  |  21/10/2026  |  Revisión editorial · Sin macros"
+        }
+      },
+      "tablas": [
+        {
+          "nombre": "tblHorda",
+          "rango": "B5:H29",
+          "columnas": [
+            "Clase",
+            "Especialización",
+            "Raza recomendada",
+            "Alternativa",
+            "Explicación",
+            "Prioridad",
+            "Motivo principal"
+          ]
+        }
+      ],
+      "comentarios": [],
+      "hipervinculos": [
+        {
+          "celda": "B35",
+          "ubicacion": "'Selector'!B1"
+        }
+      ]
+    },
+    {
+      "nombre": "Raciales",
+      "celdas": {
+        "B1": {
+          "valor": "RACIALES | Fortalezas y límites"
+        },
+        "B3": {
+          "valor": "8 fichas de referencia · Escala única de cinco estrellas · Utilidad táctica, no ranking de daño"
+        },
+        "B5": {
+          "valor": "Raza"
+        },
+        "C5": {
+          "valor": "Fortaleza principal"
+        },
+        "D5": {
+          "valor": "Debilidad"
+        },
+        "E5": {
+          "valor": "Escala de utilidad"
+        },
+        "F5": {
+          "valor": "Comentarios"
+        },
+        "G5": {
+          "valor": "Uso principal"
+        },
+        "B16": {
+          "valor": "Escala común: ★☆☆☆☆ limitada · ★★☆☆☆ situacional · ★★★☆☆ útil · ★★★★☆ destacada · ★★★★★ prioritaria. Valoración editorial; no probabilidad de victoria ni cálculo automático de la raza."
+        },
+        "B19": {
+          "valor": "Fortalezas y usos: síntesis de los efectos raciales [S1, S2] y su aplicación táctica al escenario. Debilidades: límites de uso, no penalizaciones ocultas. La prioridad por especialización se consulta en Alianza o Horda."
+        },
+        "B23": {
+          "valor": "← Volver al Selector"
+        },
+        "B25": {
+          "valor": "WoW Forever Race Advisor v4.0 RC1  |  21/10/2026  |  Revisión editorial · Sin macros"
+        }
+      },
+      "tablas": [
+        {
+          "nombre": "tblRaciales",
+          "rango": "B5:G13",
+          "columnas": [
+            "Raza",
+            "Fortaleza principal",
+            "Debilidad",
+            "Escala de utilidad",
+            "Comentarios",
+            "Uso principal"
+          ]
+        }
+      ],
+      "comentarios": [
+        {
+          "celda": "E6",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E7",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E8",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E9",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E10",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E11",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E12",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E13",
+          "tipo": "comments",
+          "texto": "[Comentario encadenado]\n\nSu versión de Excel le permite leer este comentario encadenado; sin embargo, las ediciones que se apliquen se quitarán si el archivo se abre en una versión más reciente de Excel. Más información: https://go.microsoft.com/fwlink/?linkid=870924\n\nComentario:\n    Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E6",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E7",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E8",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E9",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E10",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E11",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E12",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        },
+        {
+          "celda": "E13",
+          "tipo": "threadedComment",
+          "texto": "Escala editorial de cinco niveles, no resultado estadístico. Conversión visual de la nota anterior: 1–2 → una estrella; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. No modifica recomendaciones."
+        }
+      ],
+      "hipervinculos": [
+        {
+          "celda": "B23",
+          "ubicacion": "'Selector'!B1"
+        }
+      ]
+    },
+    {
+      "nombre": "Metodología",
+      "celdas": {
+        "B1": {
+          "valor": "METODOLOGÍA | Criterios y alcance"
+        },
+        "B3": {
+          "valor": "Versión 4.0 RC1 · Revisión editorial: 21/10/2026 · Metodología, razas, alternativas y prioridades conservadas"
+        },
+        "B5": {
+          "valor": "Criterio"
+        },
+        "C5": {
+          "valor": "Aplicación y límites"
+        },
+        "B6": {
+          "valor": "PvP masivo · grandes enfrentamientos"
+        },
+        "C6": {
+          "valor": "Criterio exclusivo: batallas con muchos participantes, foco de varios enemigos y utilidad para el grupo. Se prioriza permanecer operativo, no ganar intercambios individuales."
+        },
+        "B7": {
+          "valor": "Mundo abierto"
+        },
+        "C7": {
+          "valor": "Se valora avanzar, combatir, retirarse y reincorporarse con aliados en un frente cambiante. No se extrapolan resultados de arenas, duelos ni pequeños enfrentamientos."
+        },
+        "B8": {
+          "valor": "Control de masas"
+        },
+        "C8": {
+          "valor": "Se distingue entre evitar, acortar y eliminar control. Recuperar decisiones y aportar control cercano al grupo pesa más que una ventaja aislada de daño."
+        },
+        "B9": {
+          "valor": "Movilidad"
+        },
+        "C9": {
+          "valor": "Se prioriza poder moverse hacia el objetivo, una ruta de salida o los aliados. Ninguna racial se describe como solución universal a todas las formas de control."
+        },
+        "B10": {
+          "valor": "Reposicionamiento"
+        },
+        "C10": {
+          "valor": "Se valora reconstruir distancia y cobertura cuando cambia el foco. Preparar una posición antes de entrar también aporta utilidad, pero no equivale a escapar durante el combate."
+        },
+        "B11": {
+          "valor": "Escalado hasta nivel 60"
+        },
+        "C11": {
+          "valor": "La raza se interpreta junto al kit completo de cada especialización. Es una lectura táctica a largo plazo, no una simulación numérica de todas las fases o niveles."
+        },
+        "B12": {
+          "valor": "Evolución futura del servidor"
+        },
+        "C12": {
+          "valor": "Se considera la permanencia potencial de la movilidad, la defensa y el control. No se predicen parches ni se garantiza que una ventaja sobreviva a cambios de balance."
+        },
+        "B13": {
+          "valor": "Sinergia con el kit completo"
+        },
+        "C13": {
+          "valor": "La recomendación pertenece a una combinación de facción, clase y especialización. La utilidad racial es una síntesis general y no sustituye el análisis específico."
+        },
+        "B14": {
+          "valor": "No priorizado · fuera de alcance"
+        },
+        "C14": {
+          "valor": "No se priorizan PvE, DPS puro, arenas, duelos ni rankings de daño. Se excluye el PvP pequeño. Las ventanas ofensivas se explican solo como utilidad coordinada dentro de una batalla masiva."
+        },
+        "B15": {
+          "valor": "Prioridad por especialización"
+        },
+        "C15": {
+          "valor": "Cinco posiciones fijas: ★☆☆☆☆ limitada · ★★☆☆☆ situacional · ★★★☆☆ útil · ★★★★☆ destacada · ★★★★★ prioritaria. La máxima categoría original pasa a cinco estrellas; la inmediatamente inferior, a cuatro. No se reevalúan razas."
+        },
+        "B16": {
+          "valor": "Utilidad racial · misma escala"
+        },
+        "C16": {
+          "valor": "Se usa la misma escala de cinco estrellas. Conversión visual de notas anteriores: 1–2 → una; 3–4 → dos; 5–6 → tres; 7–8 → cuatro; 9–10 → cinco. Es juicio editorial, no estadística ni probabilidad de victoria."
+        },
+        "B17": {
+          "valor": "Datos originales preservados"
+        },
+        "C17": {
+          "valor": "Se conservan exactamente las 27 combinaciones de Alianza y las 24 de Horda, con sus razas y alternativas. «-» significa alternativa no facilitada. Cada fila tiene ahora un motivo breve y una explicación autónoma, sin «Igual»."
+        },
+        "B18": {
+          "valor": "Cobertura de la base"
+        },
+        "C18": {
+          "valor": "Solo se incluyen las clases y especializaciones facilitadas. No se amplía la base en esta revisión; una combinación ausente no se declara inexistente. Las listas dependen de las tablas, no de una nueva automatización."
+        },
+        "B19": {
+          "valor": "Observaciones del editor"
+        },
+        "C19": {
+          "valor": "Las posibles discrepancias y sugerencias aparecen exclusivamente en la sección del mismo nombre al final de esta hoja. Cada registro separa clase, especialización, recomendación actual, posible alternativa y motivo. Ninguna observación altera la ficha."
+        },
+        "B20": {
+          "valor": "Fortalezas, debilidades y uso"
+        },
+        "C20": {
+          "valor": "Cada raza tiene cuatro fortalezas, tres límites tácticos y un uso principal. Se explican efectos de referencia [S1, S2] sin atribuir penalizaciones ocultas. La explicación por especialización aporta el contexto de aplicación."
+        },
+        "B21": {
+          "valor": "Mantenimiento"
+        },
+        "C21": {
+          "valor": "Para futuras revisiones, conserva claves de clase y especialización y completa motivos, explicaciones y perfiles. Cualquier cambio del análisis validado requiere revisión explícita; las estrellas no recalculan recomendaciones. No hay actualización web automática."
+        },
+        "B22": {
+          "valor": "Funcionamiento técnico"
+        },
+        "C22": {
+          "valor": "Se conservan las búsquedas, las listas dependientes, la navegación y los auxiliares de Selector!J:M. Sin macros. Tras cambiar facción o clase, revisa los campos siguientes: Excel no borra automáticamente una selección anterior."
+        },
+        "B25": {
+          "valor": "REFERENCIAS Y PROCEDENCIA · SIN CAMBIOS AUTOMÁTICOS"
+        },
+        "B26": {
+          "valor": "Fuente de recomendaciones"
+        },
+        "C26": {
+          "valor": "Recomendaciones: análisis original validado por la usuaria. Revisión 2.1: claridad, contexto táctico y escala visual; no se sustituyen preferencias por rankings externos."
+        },
+        "B28": {
+          "valor": "[S1] Blizzard · consultada 20/10/2026"
+        },
+        "C28": {
+          "valor": "Create the Hero You Want to Be in World of Warcraft: Forever"
+        },
+        "B29": {
+          "valor": "[S2] Referencia secundaria heredada"
+        },
+        "C29": {
+          "valor": "WoW Forever Racial Guide · referencia de mecánicas, no ranking PvP"
+        },
+        "B31": {
+          "valor": "La documentación de referencia puede cambiar. Esta revisión no modifica ninguna raza ni alternativa. Las observaciones editoriales se separan del análisis validado; su presencia no constituye una recomendación nueva."
+        },
+        "B35": {
+          "valor": "← Volver al Selector"
+        },
+        "B37": {
+          "valor": "CONTROL DE CALIDAD DE LA BASE"
+        },
+        "B38": {
+          "valor": "Combinaciones incluidas"
+        },
+        "C38": {
+          "valor": 51,
+          "formula": "=ROWS(tblAlianza[Clase])+ROWS(tblHorda[Clase])",
+          "atributosFormula": {}
+        },
+        "B39": {
+          "valor": "Claves duplicadas"
+        },
+        "C39": {
+          "valor": 0,
+          "formula": "=ROWS(tblAlianza[Clase])-ROWS(_xlfn.UNIQUE(tblAlianza[Clase]&\"|\"&tblAlianza[Especialización]))+ROWS(tblHorda[Clase])-ROWS(_xlfn.UNIQUE(tblHorda[Clase]&\"|\"&tblHorda[Especialización]))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "C39"
+          }
+        },
+        "B40": {
+          "valor": "Razas recomendadas sin ficha"
+        },
+        "C40": {
+          "valor": 0,
+          "formula": "=SUM(--ISNA(_xlfn.XMATCH(tblAlianza[Raza recomendada],tblRaciales[Raza])))+SUM(--ISNA(_xlfn.XMATCH(tblHorda[Raza recomendada],tblRaciales[Raza])))",
+          "atributosFormula": {
+            "t": "array",
+            "ref": "C40"
+          }
+        },
+        "B41": {
+          "valor": "Campos vacíos en tablas"
+        },
+        "C41": {
+          "valor": 0,
+          "formula": "=COUNTBLANK(tblAlianza[#Data])+COUNTBLANK(tblHorda[#Data])+COUNTBLANK(tblRaciales[#Data])",
+          "atributosFormula": {}
+        },
+        "B42": {
+          "valor": "Estado de integridad"
+        },
+        "C42": {
+          "valor": "OK · base completa",
+          "formula": "=IF(AND(C39=0,C40=0,C41=0),\"OK · base completa\",\"REVISAR BASE\")",
+          "atributosFormula": {}
+        },
+        "B44": {
+          "valor": "Validación editorial 4.0 RC1"
+        },
+        "C44": {
+          "valor": "Diez nombres erróneos eliminados. 22 fórmulas intactas; 51/51 fichas y 5/5 guardas correctas. Sin errores en celdas. Tauren Sacerdote y Hex of Weakness: no confirmados; se mantiene RC1."
+        },
+        "B45": {
+          "valor": "WoW Forever Race Advisor v4.0 RC1  |  21/10/2026  |  Revisión editorial · Sin macros"
+        },
+        "B47": {
+          "valor": "Observaciones del editor"
+        },
+        "B48": {
+          "valor": "Notas para revisión futura. No modifican la recomendación ni la alternativa que muestra el Selector."
+        },
+        "B50": {
+          "valor": "Clase"
+        },
+        "C50": {
+          "valor": "Sacerdote · Horda"
+        },
+        "B51": {
+          "valor": "Especialización"
+        },
+        "C51": {
+          "valor": "Sagrado"
+        },
+        "B52": {
+          "valor": "Recomendación actual"
+        },
+        "C52": {
+          "valor": "Troll · Alternativa existente: Tauren"
+        },
+        "B53": {
+          "valor": "Posible alternativa"
+        },
+        "C53": {
+          "valor": "No-muerto, únicamente como opción a estudiar en otra revisión."
+        },
+        "B54": {
+          "valor": "Justificación"
+        },
+        "C54": {
+          "valor": "Estado documental al 21/10/2026: no confirmado. Las consultas de esta revisión no han devuelto contenido verificable suficiente para establecer la disponibilidad de Tauren Sacerdote en Forever. Se mantienen Troll como recomendación y Tauren como alternativa de Sagrado, sin presentar esa alternativa como disponibilidad confirmada. Para cerrar el caso hace falta documentación oficial accesible o una comprobación en la versión concreta del servidor."
+        },
+        "B57": {
+          "valor": "Clase"
+        },
+        "C57": {
+          "valor": "Sacerdote · Horda"
+        },
+        "B58": {
+          "valor": "Especialización"
+        },
+        "C58": {
+          "valor": "Disciplina y Sagrado"
+        },
+        "B59": {
+          "valor": "Recomendación actual"
+        },
+        "C59": {
+          "valor": "Troll · Se mantiene el criterio de Hex of Weakness."
+        },
+        "B60": {
+          "valor": "Posible alternativa"
+        },
+        "C60": {
+          "valor": "No-muerto, solo si una revisión posterior valida un cambio."
+        },
+        "B61": {
+          "valor": "Justificación"
+        },
+        "C61": {
+          "valor": "Estado documental al 21/10/2026: no confirmado. Las consultas no han devuelto contenido verificable suficiente para confirmar la disponibilidad, atribución y efectos de Hex of Weakness en la versión concreta de Forever. Se mantiene Troll y el criterio original de Disciplina y Sagrado, sin convertirlo en un hecho comprobado externamente. El cierre requiere documentación oficial específica o una prueba reproducible en el cliente correspondiente."
+        },
+        "B63": {
+          "valor": "← Volver al Selector"
+        },
+        "B64": {
+          "valor": "Revisión 4.0 RC1 · Observaciones informativas, separadas del análisis validado."
+        },
+        "B67": {
+          "valor": "Seguimiento editorial"
+        },
+        "C67": {
+          "valor": "Pendientes de revisión · No aplicados al análisis"
+        },
+        "B68": {
+          "valor": "Posibles revisiones futuras"
+        },
+        "C68": {
+          "valor": "Sacerdote · Horda. Tauren Sacerdote y Hex of Weakness: documentación insuficiente para confirmarlos en la versión concreta de Forever. Se conservan Troll, las alternativas y el análisis original. Ambos casos quedan registrados como no confirmados, sin sustituciones ni nuevas conclusiones sobre disponibilidad. Los diez nombres erróneos de Excel ya están eliminados; las reservas de contenido impiden todavía declarar un cierre sin incidencias."
+        },
+        "B69": {
+          "valor": "Confirmación al nivel 60"
+        },
+        "C69": {
+          "valor": "Clase: Guerrero. Especialización: Protección. Actual: Enano en Alianza y Tauren en Horda. Posible alternativa: Humano y Orco, ya presentes. Justificación: al llegar al contenido de nivel 60, contrastar Stoneform y War Stomp con el kit completo, la presión y el control de grandes enfrentamientos. Registrar resultados antes de revisar el criterio; no extrapolar duelos ni daño PvE."
+        },
+        "B70": {
+          "valor": "Posibles cambios de parches"
+        },
+        "C70": {
+          "valor": "Clase: Mago. Especialización: Escarcha. Actual: Gnomo en Alianza y No-muerto en Horda. Posible alternativa: Humano y Troll, ya presentes. Justificación: revisar Escape Artist, WotF y su interacción con el control si las notas del servidor documentan cambios. Contrastar sus efectos en la versión correspondiente antes de reabrir la comparación; no presumir ajustes futuros."
+        },
+        "B72": {
+          "valor": "Alcance editorial acordado: se conservan todas las fórmulas. Fortalezas y debilidades siguen siendo perfiles raciales compartidos; la diferenciación por especialización está en el motivo y la explicación. Ningún pendiente de esta sección se aplica automáticamente."
+        }
+      },
+      "tablas": [
+        {
+          "nombre": "tblMetodologia",
+          "rango": "B5:C22",
+          "columnas": [
+            "Criterio",
+            "Aplicación y límites"
+          ]
+        }
+      ],
+      "comentarios": [
+        {
+          "celda": "C44",
+          "tipo": "comments",
+          "texto": "CORRECCIÓN LIMITADA DE AUDITORÍA · 21/10/2026\nResuelto: eliminados exclusivamente los diez nombres definidos con error, tras comprobar que no estaban referenciados por las fórmulas de celdas, los nombres válidos ni las tres validaciones del Selector. Nombres retirados: _xlfn._xlws.FILTER, _xlfn._xlws.SORT, _xlfn.ANCHORARRAY, _xlfn.COUNTIFS, _xlfn.LET, _xlfn.UNIQUE, _xlfn.XLOOKUP, _xlfn.XMATCH, _xlpm.alt y _xlpm.txt.\nConservados: ListaClases, ListaEspecializaciones y ListaFacciones, con sus referencias originales. Las 22 fórmulas coinciden exactamente con las existentes al inicio de esta corrección.\nPruebas posteriores: 51/51 combinaciones correctas; 5/5 selecciones inválidas bloqueadas correctamente; cero errores visibles de fórmula, cero duplicados y cero campos obligatorios vacíos. Restaurada la selección Alianza / Sacerdote / Sombras.\nAlcance: fuera de los diez nombres, solo se actualizan C44, C54, C61 y C68 y sus notas pertinentes en Metodología. Los contenidos de Inicio, Selector, Alianza, Horda y Raciales coinciden íntegramente con el estado inicial. El resto de Metodología coincide al excluir esas cuatro celdas. No se han ejecutado cambios de formato, estructura, navegación ni desplegables.\nContenido no confirmado: las consultas externas no devolvieron evidencia verificable utilizable sobre Tauren Sacerdote y Hex of Weakness. C54, C61 y C68 documentan explícitamente la insuficiencia. No se afirma disponibilidad ni exclusión y se conservan recomendaciones, alternativas y análisis.\nPublicación: no se actualiza la portada ni se sustituyen referencias a RC1, porque no se cumple la condición de cierre sin incidencias de contenido. La eliminación de los errores técnicos no equivale a validar las mecánicas pendientes."
+        },
+        {
+          "celda": "C54",
+          "tipo": "comments",
+          "texto": "Corrección exclusiva de la reserva de auditoría, 21/10/2026. Se intentó consultar la referencia Blizzard enlazada en C28 y buscar documentación específica. La herramienta no devolvió contenido verificable utilizable; no se concluye que Tauren Sacerdote esté disponible ni que esté excluido. No se extrapolan combinaciones de Classic, Retail u otras versiones. Horda!D16:E16 permanece intacto. Se deja constancia expresa de la falta de confirmación, conforme a la instrucción de mantener los datos actuales cuando la información sea insuficiente."
+        },
+        {
+          "celda": "C61",
+          "tipo": "comments",
+          "texto": "Corrección exclusiva de la reserva de auditoría, 21/10/2026. Las búsquedas y consultas externas no proporcionaron contenido verificable utilizable. No se dan por confirmados datos de beta, números de compilación, fechas de extracción, misiones de adquisición ni declaraciones de Blizzard. Se descartan las afirmaciones documentales no sustentadas formuladas durante esta revisión. No se traslada información de otras versiones de WoW a Forever. Horda!D15:H16 y el análisis racial permanecen intactos; la reserva queda explícitamente documentada, no resuelta por una confirmación inexistente."
+        },
+        {
+          "celda": "C70",
+          "tipo": "comments",
+          "texto": "RC1, 21/10/2026: seguimiento futuro, no cambio confirmado. Se conserva el análisis original y no se atribuyen a las fuentes conclusiones que no pudieron verificarse."
+        }
+      ],
+      "hipervinculos": [
+        {
+          "celda": "C28",
+          "destino": "https://news.blizzard.com/en-us/article/24304075/create-the-hero-you-want-to-be-in-world-of-warcraft-forever"
+        },
+        {
+          "celda": "C29",
+          "destino": "https://www.icy-veins.com/wow-forever/race-guide"
+        },
+        {
+          "celda": "B35",
+          "ubicacion": "'Selector'!B1"
+        },
+        {
+          "celda": "B63",
+          "ubicacion": "'Selector'!B1"
+        }
+      ]
+    }
+  ],
+  "nombresDefinidos": [
+    {
+      "nombre": "ListaClases",
+      "formula": "_xlfn.ANCHORARRAY(Selector!$K$4)"
+    },
+    {
+      "nombre": "ListaEspecializaciones",
+      "formula": "_xlfn.ANCHORARRAY(Selector!$L$4)"
+    },
+    {
+      "nombre": "ListaFacciones",
+      "formula": "Selector!$J$4:$J$5"
+    }
+  ]
+}

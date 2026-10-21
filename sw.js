@@ -2,7 +2,7 @@
 
 // Incrementar la versión al publicar cambios en los archivos de la aplicación.
 const CACHE_PREFIX = `wow-forever-advisor:${self.registration.scope}:`;
-const CACHE_NAME = `${CACHE_PREFIX}v1`;
+const CACHE_NAME = `${CACHE_PREFIX}v2`;
 const APP_FILES = [
   "./",
   "./index.html",
@@ -11,6 +11,10 @@ const APP_FILES = [
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
+  "./data/race-advisor.json",
+  "./data/racials.json",
+  "./data/workbook-context.json",
+  "./data/export-report.json",
 ].map((file) => new URL(file, self.registration.scope).href);
 
 self.addEventListener("install", (event) => {
