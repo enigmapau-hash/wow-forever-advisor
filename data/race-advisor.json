@@ -1,0 +1,724 @@
+{
+  "schemaVersion": 1,
+  "fuente": {
+    "archivo": "Clases WoW Forever v5.xlsx",
+    "sha256": "ffb510a623c83fa440eb9612cc9b8ab7a02d67a036bbeab14c858e811ffab2ec",
+    "versionInterna": "Versión 4.0 RC1"
+  },
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 6
+      },
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Armas necesita alcanzar al objetivo para sostener la presión del frente. Escape Artist libera de raíces y ralentizaciones, tanto para volver al contacto como para evitar quedar aislado. Frente a Humano, la elección prima esa continuidad sobre romper aturdimientos; no ofrece defensa cuando el foco ya ha llegado. Pierde ventaja si el enemigo detiene la entrada con aturdimientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Mantener contacto durante el avance aliado."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 7
+      },
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Furia pierde presencia cuando el objetivo se aleja y el frente continúa avanzando. Escape Artist recupera movimiento frente a raíces y ralentizaciones para seguir ese desplazamiento. Frente a Humano, pesa más mantener el contacto durante la pelea que salir de un aturdimiento; la racial no resuelve ese control durante una entrada. Su ventaja disminuye cuando predominan los aturdimientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Encadenar contacto sin quedar rezagado."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 8
+      },
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "explicacion": "Protección necesita permanecer delante de sus aliados cuando el enemigo concentra ataques sobre una posición. Stoneform añade defensa física y protección frente a efectos concretos para sostener el frente. Frente a Humano, prima resistir esa presión sobre romper un aturdimiento; siguen siendo necesarias las curaciones y una retirada posible. Pierde ventaja cuando la presión principal es mágica.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Sostener posiciones frente al foco físico."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 9
+      },
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "explicacion": "Sagrado debe responder al foco sobre un aliado, incluso si el sanador está controlado. Will to Survive elimina el aturdimiento y devuelve acceso a curaciones y apoyo defensivo. Frente a Enano, prima recuperar esa respuesta sobre mitigar daño propio; un silencio o una interrupción aún pueden cortar el siguiente lanzamiento. Su ventaja disminuye cuando predominan esos otros controles.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Recuperar la curación tras un aturdimiento."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 10
+      },
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "explicacion": "Protección combina presencia en primera línea con apoyo a quienes avanzan a su lado. Stoneform reserva una defensa física para el momento en que varios enemigos concentran el foco. Frente a Humano, pesa más sostener la posición que romper un aturdimiento; esa resistencia personal no protege automáticamente a todo el grupo. Pierde ventaja cuando el foco no es físico.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Resistir mientras se protege el avance."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 11
+      },
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "explicacion": "Reprensión alterna presión cercana y apoyo durante una entrada. Will to Survive elimina el aturdimiento para continuar sobre el objetivo o auxiliar a un compañero. Frente a Enano, prima recuperar esa decisión sobre reducir daño físico; volver a actuar no justifica perseguir fuera de la cobertura aliada. Su ventaja disminuye si la amenaza principal no son los aturdimientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Volver a presionar o auxiliar tras el control."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 12
+      },
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Enano",
+      "alternativa": "Elfo",
+      "explicacion": "Bestias reparte su atención entre la posición propia y la actividad de la mascota. Stoneform añade defensa frente al foco físico y deja margen para reorganizar ambos sin abandonar inmediatamente el combate. Frente a Elfo, pesa más responder al ataque ya iniciado que preparar una posición oculta; la racial no protege directamente a la mascota. Pierde ventaja si el foco recae en ella.",
+      "prioridad": "★★★★☆",
+      "motivoPrincipal": "Resistir el foco físico mientras se coordina la mascota."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 13
+      },
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "explicacion": "Puntería necesita conservar una línea de disparo desde la que contribuir al foco aliado. Stoneform añade resistencia física cuando el enemigo alcanza esa posición y obliga a disparar o replegarse. Frente a Humano, prima soportar la presión sobre romper un aturdimiento; la defensa no permite ignorar la distancia ni prolongar la exposición. Pierde ventaja cuando predominan los aturdimientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Sostener una línea de disparo bajo presión."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 14
+      },
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "explicacion": "Supervivencia disputa los accesos al grupo mediante trampas y juego cercano, además de sus opciones a distancia. Stoneform añade defensa física cuando esa proximidad atrae el foco enemigo. Frente a Humano, pesa más resistir durante la disputa del espacio que romper un aturdimiento; controlar el terreno sigue requiriendo una ruta de repliegue. Su ventaja disminuye sin presión física cercana.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Resistir el contacto al controlar los accesos."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 15
+      },
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Asesinato necesita volver al objetivo para mantener presión sin quedar atrapado en el frente enemigo. Escape Artist recupera el contacto cuando raíces o ralentizaciones interrumpen la entrada. Frente a Humano, importa más resolver esa separación que romper un aturdimiento; perseguir demasiado lejos puede dejar al pícaro sin apoyo. Pierde ventaja cuando el obstáculo principal son los aturdimientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Recuperar contacto para sostener presión sobre el objetivo."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 16
+      },
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Combate busca presencia cercana sostenida, acompañando el avance y los cambios de objetivo aliados. Escape Artist libera el desplazamiento bloqueado por raíces y ralentizaciones para continuar esa dinámica. Frente a Humano, prima moverse con la pelea sobre romper un aturdimiento; no mitiga el daño de una entrada que recibe demasiado foco. Su ventaja disminuye cuando domina la necesidad de resistir.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Seguir al frente sin quedar inmovilizado."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 17
+      },
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Gnomo",
+      "explicacion": "Sutileza elige cuándo y desde dónde iniciar su intervención. Shadowmeld ofrece una espera oculta e inmóvil que complementa esa preparación. Frente a Gnomo, prima organizar la entrada sobre liberarse después de controles de movimiento; no sustituye el sigilo móvil ni garantiza desaparecer bajo foco. Su ventaja disminuye cuando no hay tiempo para preparar la posición.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Preparar la entrada antes de revelar la posición."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 18
+      },
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Enano",
+      "alternativa": "Gnomo",
+      "explicacion": "Disciplina necesita margen para proteger a los aliados antes de que el foco los desborde. Stoneform reduce la presión física sobre el sacerdote mientras mantiene esa labor preventiva. Frente a Gnomo, pesa más resistir en la posición de apoyo que liberarse de controles de movimiento; no evita silencios ni reemplaza la cobertura aliada. Pierde ventaja si la prioridad es desplazarse.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Mantener la protección preventiva bajo foco físico."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 19
+      },
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "explicacion": "Sagrado debe recuperar la salud de los aliados mientras atiende los cambios de foco. Stoneform añade defensa física cuando los atacantes pasan a presionar al sanador. Frente a Humano, prima resistir ese daño sobre romper un aturdimiento; la protección no garantiza completar una curación si el enemigo puede interrumpirla. Su ventaja disminuye cuando el control impide seguir curando.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Seguir curando cuando el foco cambia al sanador."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 20
+      },
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Sombras mantiene presión mientras conserva distancia de quienes pueden cortarle los lanzamientos. Escape Artist libera de raíces y ralentizaciones para abandonar una posición bloqueada y recuperar espacio. Frente a Humano, importa más resolver ese desplazamiento que romper un aturdimiento; alejarse sin cuidar el alcance puede desconectarlo de sus aliados. Pierde ventaja cuando no existe una ruta de salida.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Reposicionarse sin abandonar la presión sostenida."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 21
+      },
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Arcano necesita elegir dónde detenerse a lanzar sin quedar encerrado por el avance enemigo. Escape Artist libera de controles de movimiento para preparar la siguiente secuencia desde otra posición. Frente a Humano, prima recuperar espacio sobre romper un aturdimiento; no protege de interrupciones ni sustituye la gestión de recursos. Su ventaja disminuye cuando falta espacio para recolocarse.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Recuperar espacio para preparar los lanzamientos."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 22
+      },
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Fuego necesita ángulos desde los que acompañar la presión aliada sin exponerse por permanecer quieto. Escape Artist permite cambiar de posición cuando raíces o ralentizaciones bloquean la salida. Frente a Humano, pesa más seguir al frente que romper un aturdimiento; la racial no convierte una zona descubierta en un lugar seguro. Pierde ventaja si no hay cobertura al alcance.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Recolocarse para sostener presión sobre el frente."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 23
+      },
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "explicacion": "Escarcha frena al perseguidor, pero pierde margen si también queda inmovilizado. Escape Artist recupera movimiento para convertir el control propio en distancia efectiva. Frente a Humano, refuerza ese juego de separación antes que la salida de aturdimientos; aún exige encadenar las herramientas de clase y reconocer rutas de escape. Su ventaja disminuye cuando no hay espacio para alejarse.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Recuperar distancia para aprovechar el control propio."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 24
+      },
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "explicacion": "Aflicción necesita seguir actuando mientras su presión persistente obliga al enemigo a responder. Will to Survive elimina el aturdimiento para renovar efectos, controlar o defenderse. Frente a Gnomo, prima recuperar esas acciones sobre resolver raíces; permanecer lejos del grupo sigue dejando al brujo expuesto al siguiente foco. Pierde ventaja cuando las raíces son el principal impedimento.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Retomar presión persistente después del aturdimiento."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 25
+      },
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "explicacion": "Demonología combina acciones propias y coordinación con su mascota. Will to Survive elimina el aturdimiento para retomar control, apoyo defensivo o reposicionamiento. Frente a Gnomo, pesa más recuperar esas decisiones que liberarse de raíces; la racial actúa sobre el brujo, no sobre el control ni la exposición de la mascota. Su ventaja disminuye si el problema recae en ella.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Retomar la coordinación con la mascota tras un aturdimiento."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 26
+      },
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "explicacion": "Destrucción convierte el control y la cobertura aliados en oportunidades de lanzamiento. Will to Survive elimina el aturdimiento para preparar la respuesta sin esperar a que termine. Frente a Gnomo, prima recuperar la acción sobre salir de raíces; completar el siguiente hechizo aún depende de la distancia y las interrupciones enemigas. Pierde ventaja cuando las interrupciones bloquean los lanzamientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Reabrir una oportunidad de lanzamiento tras el control."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 27
+      },
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Elfo",
+      "alternativa": "-",
+      "explicacion": "Equilibrio necesita una posición desde la que lanzar sin quedar expuesto al avance enemigo. Shadowmeld permite esperar oculto e inmóvil mientras se organiza la entrada del grupo. La racial ayuda a preparar ese ángulo, pero no protege los lanzamientos posteriores; una vez revelado, el druida depende de su movilidad y cobertura. Pierde ventaja cuando el frente obliga a moverse continuamente.",
+      "prioridad": "★★★★☆",
+      "motivoPrincipal": "Preparar el ángulo antes de empezar a lanzar."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 28
+      },
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "razaRecomendada": "Elfo",
+      "alternativa": "-",
+      "explicacion": "Feral adapta su entrada y presencia cercana a la posición del objetivo y de los aliados. Shadowmeld ofrece una espera oculta e inmóvil antes de comprometerse. Complementa la preparación del terreno, pero no sustituye el sigilo móvil de la forma felina; moverse, cambiar de función o retirarse depende de las herramientas de la especialización. Su ventaja disminuye sin preparación previa.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Elegir el momento de entrar desde ocultación."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 29
+      },
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Elfo",
+      "alternativa": "-",
+      "explicacion": "Restauración necesita preparar desde dónde acompañará al grupo sin revelar su posición antes de tiempo. Shadowmeld permite esperar oculto e inmóvil antes de comenzar a curar. La racial ayuda a organizar la intervención, no a sanar sin ser visto; después, conservar alcance y movilidad evita quedar separado del frente. Pierde ventaja cuando el grupo no puede detenerse.",
+      "prioridad": "★★★★☆",
+      "motivoPrincipal": "Preparar una posición de curación sin exponerse."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 30
+      },
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "explicacion": "Elemental combina lanzamientos y apoyo desde una posición que no ceda al primer avance enemigo. Stoneform añade defensa física cuando el frente alcanza al chamán, dando margen para mantenerse o replegarse. Ayuda a soportar el contacto, pero no asegura los hechizos: silencios, interrupciones y daño mágico requieren respuestas distintas. Su ventaja disminuye cuando predominan esas amenazas.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Resistir la presión física sobre la línea de lanzamiento."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 31
+      },
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "explicacion": "Mejora acompaña el contacto con presión cuerpo a cuerpo y apoyo de clase, compartiendo la exposición del frente. Stoneform reserva una defensa física para una entrada disputada y ayuda a mantener esa presencia sin retirarse de inmediato. No aumenta el alcance ni compensa perseguir fuera del apoyo aliado. Pierde ventaja cuando alcanzar al objetivo es el principal problema.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Sostener el apoyo cercano sin ceder al foco."
+    },
+    {
+      "faccion": "Alianza",
+      "origen": {
+        "hoja": "Alianza",
+        "fila": 32
+      },
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "explicacion": "Restauración sostiene curaciones y apoyo mediante tótems sin perder alcance sobre quienes reciben foco. Stoneform añade defensa física cuando los atacantes llegan a su posición y deja margen para reorganizarse. No protege directamente a los tótems ni evita silencios, interrupciones o una línea de visión bloqueada. Su ventaja disminuye cuando esas limitaciones impiden mantener el apoyo.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Preservar curaciones y apoyo cuando llega el contacto."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 6
+      },
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "explicacion": "Armas disputa el contacto cuando el enemigo intenta detener una entrada con aturdimientos. Hardiness acorta esas pausas para retomar antes la presión o el repliegue. Frente a Tauren, pesa más esa respuesta pasiva al control recibido que añadir control cercano; las raíces y la separación del objetivo aún requieren herramientas de clase. Pierde ventaja cuando predominan los controles de movimiento.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Acortar el control que interrumpe la presión cercana."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 7
+      },
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "explicacion": "Furia mantiene presencia cercana mientras los objetivos y el frente se desplazan. Hardiness reduce las pausas por aturdimientos sin exigir una activación manual. Frente a Tauren, prima esa continuidad sobre abrir una pausa de control propia; recuperarse antes no permite perseguir sin apoyo ni elimina las ralentizaciones. Su ventaja disminuye cuando estas impiden sostener el contacto.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Reducir las pausas durante el avance ofensivo."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 8
+      },
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "explicacion": "Protección necesita impedir que el contacto enemigo desorganice la posición aliada. War Stomp aturde a enemigos cercanos y abre una pausa para sostener el frente o cubrir la retirada. Frente a Orco, importa más actuar sobre el espacio compartido que acortar el control propio; los atacantes lejanos quedan fuera de alcance. Pierde ventaja cuando la amenaza permanece a distancia.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Crear espacio para sostener la primera línea."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 9
+      },
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Orco",
+      "alternativa": "Troll",
+      "explicacion": "Bestias gestiona la presión de su mascota sin descuidar el desplazamiento del cazador. Hardiness acorta los aturdimientos que interrumpen esas decisiones bajo foco enemigo. Frente a Troll, prima recuperar antes el control de la situación sobre acelerar ataques; la reducción afecta al personaje y no resuelve la exposición de la mascota. Su ventaja disminuye si el foco recae en ella.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Recuperar antes la coordinación con la mascota."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 10
+      },
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "explicacion": "Puntería aprovecha una línea de disparo estable para acompañar el foco aliado. Berserking acelera los ataques y concentra la intervención antes de que cambie la posición enemiga. Frente a Orco, pesa más aprovechar ese tiempo que acortar aturdimientos; la racial no proporciona distancia ni una salida defensiva. Pierde ventaja cuando falta cobertura para mantener los disparos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Concentrar disparos mientras existe cobertura aliada."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 11
+      },
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "explicacion": "Supervivencia responde cuando un enemigo atraviesa las trampas o alcanza la zona protegida. Hardiness acorta el aturdimiento para volver a controlar el contacto y decidir la retirada. Frente a Tauren, prima recuperar las herramientas propias sobre añadir control cercano; no elimina raíces ni reconstruye una posición perdida. Su ventaja disminuye cuando las raíces impiden reorganizar la defensa.",
+      "prioridad": "★★★★☆",
+      "motivoPrincipal": "Retomar el control de los accesos tras aturdimientos."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 12
+      },
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "explicacion": "Asesinato mantiene presión sobre un objetivo sin perder la posibilidad de retirarse con el grupo. Will of the Forsaken elimina miedo, sueño o encanto cuando interrumpen esa tarea. Frente a Orco, importa más responder activamente a esos controles que acortar aturdimientos; volver a perseguir no garantiza alcance ni cobertura aliada. Pierde ventaja cuando el enemigo recurre principalmente a aturdimientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Retomar la persecución tras miedo, sueño o encanto."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 13
+      },
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "explicacion": "Combate permanece cerca del objetivo durante intercambios donde los aturdimientos interrumpen las entradas. Hardiness reduce esa pausa de forma pasiva para retomar presión, defensa o retirada. Frente a No-muerto, prima acortar aturdimientos sobre eliminar miedo, sueño o encanto; quedar rodeado sigue siendo peligroso aunque el control dure menos. Su ventaja disminuye cuando predominan esos otros controles.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Acortar los aturdimientos durante el contacto sostenido."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 14
+      },
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "explicacion": "Sutileza necesita hacer coincidir su entrada con la oportunidad creada por los aliados. Will of the Forsaken elimina miedo, sueño o encanto para recuperar esa coordinación. Frente a Orco, prima retomar la iniciativa ante esos controles sobre acortar aturdimientos; la racial no mejora el sigilo ni evita que el objetivo se aleje. Pierde ventaja si predominan los aturdimientos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Recuperar la iniciativa cuando el control rompe la entrada."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 15
+      },
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "explicacion": "Disciplina combina protección preventiva y apoyo a la presión aliada. El criterio validado de Troll incorpora Hex of Weakness como contribución sobre el enemigo. Frente a No-muerto, pesa más ese apoyo que reservar la ventaja racial para eliminar miedo, sueño o encanto; no sustituye las tareas defensivas del sacerdote. Pierde ventaja cuando esos controles impiden mantener la protección.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Combinar protección preventiva y presión de apoyo."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 16
+      },
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Troll",
+      "alternativa": "Tauren",
+      "explicacion": "Sagrado recupera salud tras el foco sin perder de vista la siguiente oleada. El criterio de Troll combina el apoyo de Hex of Weakness con la aceleración de curaciones de Berserking. Frente a Tauren, prima intervenir desde la posición del sanador sobre buscar control cercano; esa aceleración no protege de interrupciones. Su ventaja disminuye cuando no puede completar curaciones.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Acelerar la recuperación del grupo y apoyar su presión."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 17
+      },
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "explicacion": "Sombras renueva su intervención desde una posición que permita presionar y apoyar. Berserking acelera lanzamientos para aprovechar la cobertura del grupo antes de que termine. Frente a No-muerto, pesa más actuar durante esa oportunidad que eliminar miedo, sueño o encanto; la aceleración no evita quedar controlado ni sustituye la distancia. Pierde ventaja cuando falta espacio para lanzar.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Aprovechar cobertura para renovar la presión sostenida."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 18
+      },
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "explicacion": "Arcano aprovecha el intervalo en que sus aliados permiten detenerse a lanzar sin presión inmediata. Berserking acelera la secuencia antes de que el enemigo recupere terreno. Frente a No-muerto, prima esa oportunidad ofensiva sobre eliminar miedo, sueño o encanto; no reduce el coste de recursos ni asegura completar hechizos. Su ventaja disminuye cuando las interrupciones impiden lanzar.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Concentrar lanzamientos durante una oportunidad protegida."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 19
+      },
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "explicacion": "Fuego acompaña los momentos en que el grupo obliga al enemigo a responder. Berserking acelera lanzamientos para aprovechar el tiempo de cobertura durante esa presión coordinada. Frente a Orco, importa más esa intervención activa que acortar aturdimientos; la racial no ofrece una salida si el frente gira hacia el mago. Pierde ventaja cuando la presión obliga a retirarse.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Coordinar la presión con el avance del grupo."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 20
+      },
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll",
+      "explicacion": "Escarcha necesita moverse y aplicar control cuando una persecución rompe la distancia inicial. Will of the Forsaken elimina miedo, sueño o encanto para recuperar esas herramientas. Frente a Troll, prima reconstruir la separación sobre acelerar lanzamientos; el alcance y las rutas de salida aún condicionan cómo frenar a los perseguidores. Su ventaja disminuye cuando no hay espacio para alejarse.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Reconstruir distancia después de perder el control propio."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 21
+      },
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "explicacion": "Aflicción renueva efectos y responde al foco mientras su presión persistente ocupa al enemigo. Will of the Forsaken elimina miedo, sueño o encanto para recuperar esas decisiones. Frente a Orco, pesa más responder activamente a esos controles que acortar aturdimientos; un cambio de posición aún puede dejar objetivos fuera de alcance. Pierde ventaja cuando predominan los aturdimientos.",
+      "prioridad": "★★★★☆",
+      "motivoPrincipal": "Recuperar decisiones mientras continúa la presión persistente."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 22
+      },
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "explicacion": "Demonología coordina sus decisiones con la intervención de la mascota cuando cambia el foco. Hardiness acorta los aturdimientos que dejan al brujo sin respuesta durante ese ajuste. Frente a No-muerto, prima reducir esas pausas sobre eliminar miedo, sueño o encanto; la racial no libera ni reposiciona a la mascota. Su ventaja disminuye si el control recae en ella.",
+      "prioridad": "★★★★☆",
+      "motivoPrincipal": "Reducir las pausas de coordinación durante el foco."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 23
+      },
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "explicacion": "Destrucción convierte el control aliado en una secuencia de lanzamientos sobre el foco elegido. Berserking acelera esa intervención mientras la posición sigue protegida. Frente a Orco, importa más aprovechar el intervalo ofensivo que acortar aturdimientos; acelerar no asegura completar el hechizo si el enemigo puede interrumpir o alcanzar al brujo. Pierde ventaja cuando se pierde la cobertura.",
+      "prioridad": "★★★★☆",
+      "motivoPrincipal": "Concentrar lanzamientos antes de perder la cobertura."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 24
+      },
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "explicacion": "Elemental alterna lanzamientos y apoyo durante la oportunidad que abre el grupo. Berserking acelera su intervención mientras el enemigo está ocupado o controlado. Frente a Orco, prima aprovechar ese momento sobre acortar aturdimientos propios; la racial no protege los tótems ni permite sostener una posición que ha perdido cobertura. Su ventaja disminuye cuando el frente obliga a replegarse.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Sincronizar lanzamientos con el control y apoyo aliados."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 25
+      },
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "explicacion": "Mejora mantiene contacto cuerpo a cuerpo sin abandonar el apoyo que necesita su grupo. Hardiness acorta los aturdimientos que interrumpen esa doble tarea en el frente. Frente a Tauren, pesa más recuperar las herramientas propias que añadir control cercano; las raíces aún pueden impedir alcanzar al objetivo o seguir la retirada. Pierde ventaja cuando predominan esos bloqueos de movimiento.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Retomar la presión cercana y el apoyo tras aturdimientos."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 26
+      },
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Troll",
+      "explicacion": "Restauración conserva alcance de curación mientras mantiene apoyo mediante tótems. War Stomp controla enemigos próximos cuando invaden esa posición y abre una pausa para reorganizarse. Frente a Troll, prima despejar el contacto sobre acelerar lanzamientos; acercarse para usar la racial puede empeorar una posición que ya era segura. Su ventaja disminuye si la amenaza permanece a distancia.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Despejar el contacto para retomar curaciones y tótems."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 27
+      },
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Tauren",
+      "alternativa": "-",
+      "explicacion": "Equilibrio necesita recuperar separación cuando la presión cercana impide elegir sus lanzamientos. War Stomp aturde a enemigos próximos y abre una pausa para desplazarse hacia una posición de apoyo. Resuelve ese contacto local, pero no controla todo el frente; los atacantes lejanos aún obligan a buscar cobertura y rutas seguras. Pierde ventaja cuando la presión llega desde lejos.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Frenar perseguidores antes de volver a lanzar."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 28
+      },
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "razaRecomendada": "Tauren",
+      "alternativa": "-",
+      "explicacion": "Feral alterna la persecución del objetivo con el apoyo al espacio que ocupan sus aliados. War Stomp añade control local para coordinar una entrada o cubrir un repliegue. No reemplaza las herramientas de la especialización: exige elegir el momento según la función que necesita el grupo. Su ventaja disminuye cuando el combate queda fuera de su alcance cercano.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Añadir una pausa táctica al contacto cercano."
+    },
+    {
+      "faccion": "Horda",
+      "origen": {
+        "hoja": "Horda",
+        "fila": 29
+      },
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "-",
+      "explicacion": "Restauración acompaña a los aliados sin quedar encerrado cuando cambia el frente. War Stomp frena enemigos cercanos y abre una pausa para desplazarse antes de retomar las curaciones. Refuerza esa salida local, no la curación en sí; detenerse a buscar control puede empeorar la posición si el grupo se aleja. Pierde ventaja cuando los aliados ya están fuera de alcance.",
+      "prioridad": "★★★★★",
+      "motivoPrincipal": "Separarse de perseguidores sin abandonar el apoyo."
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "fuente": {
+    "archivo": "Clases WoW Forever v5.xlsx",
+    "sha256": "ffb510a623c83fa440eb9612cc9b8ab7a02d67a036bbeab14c858e811ffab2ec",
+    "versionInterna": "Versión 4.0 RC1"
+  },
+  "raciales": [
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 6
+      },
+      "raza": "Gnomo",
+      "fortalezas": "• Recupera movimiento frente a raíces y ralentizaciones.\n• Ayuda a recuperar alcance sobre el objetivo.\n• Facilita regresar a la cobertura aliada.\n• Permite acompañar un frente en movimiento.",
+      "debilidades": "• No elimina aturdimientos, miedo ni silencios.\n• No mitiga el daño recibido.\n• Necesita una ruta de salida disponible.",
+      "escalaUtilidad": "★★★★★",
+      "comentarios": "Escape Artist permite recuperar movimiento frente a raíces y ralentizaciones. Cada especialización aprovecha ese desplazamiento para volver al contacto, ganar distancia o replegarse.",
+      "usoPrincipal": "Recuperar movimiento y elegir una nueva posición."
+    },
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 7
+      },
+      "raza": "Humano",
+      "fortalezas": "• Permite salir de un aturdimiento.\n• Devuelve acceso a las defensas de clase.\n• Permite retomar curaciones durante el foco.\n• Ayuda a recuperar la iniciativa tras el control.",
+      "debilidades": "• No elimina todas las formas de control.\n• Exige reservar la activación para el momento adecuado.\n• No impide recibir un nuevo foco.",
+      "escalaUtilidad": "★★★★★",
+      "comentarios": "Will to Survive elimina el aturdimiento y permite volver a actuar. Su utilidad depende de la respuesta de clase que se pueda ejecutar después.",
+      "usoPrincipal": "Salir de un aturdimiento y volver a actuar."
+    },
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 8
+      },
+      "raza": "Enano",
+      "fortalezas": "• Reduce el daño físico durante Stoneform.\n• Protege frente a sangrados, venenos y enfermedades.\n• Da margen cuando coinciden varios atacantes.\n• Ayuda a sostener posiciones con apoyo aliado.",
+      "debilidades": "• No añade movilidad ni alcance.\n• La protección tiene una duración limitada.\n• No cubre todo el daño mágico ni el control.",
+      "escalaUtilidad": "★★★★★",
+      "comentarios": "Stoneform añade defensa temporal frente a presión física y efectos concretos. Esa protección no equivale a inmunidad general al daño ni al control.",
+      "usoPrincipal": "Mitigar presión física durante una ventana defensiva."
+    },
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 9
+      },
+      "raza": "Elfo",
+      "fortalezas": "• Permite esperar oculto mientras se permanece inmóvil.\n• Facilita preparar un punto de entrada.\n• Ayuda a elegir cuándo incorporarse al combate.\n• Complementa el sigilo de clase sin reemplazarlo.",
+      "debilidades": "• Moverse cancela la ocultación de Shadowmeld.\n• No garantiza escapar de un foco activo.\n• Depende de preparar la posición con antelación.",
+      "escalaUtilidad": "★★★★☆",
+      "comentarios": "Shadowmeld permite esperar oculto e inmóvil al elfo de la noche, denominado Elfo en la base. No sustituye el sigilo móvil de Pícaro o Feral.",
+      "usoPrincipal": "Preparar una posición oculta antes de intervenir."
+    },
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 10
+      },
+      "raza": "Orco",
+      "fortalezas": "• Reduce la duración de los aturdimientos.\n• Actúa sin una activación manual.\n• No exige acercarse al adversario para aplicarse.\n• Mantiene su utilidad al cambiar de objetivo.",
+      "debilidades": "• No elimina por completo los aturdimientos.\n• No resuelve raíces, miedo ni silencios.\n• No sustituye la cobertura ni el reposicionamiento.",
+      "escalaUtilidad": "★★★★★",
+      "comentarios": "Hardiness acorta los aturdimientos de forma pasiva para recuperar antes la acción. No concede inmunidad al control ni se valora como una mejora de daño.",
+      "usoPrincipal": "Acortar aturdimientos para recuperar antes la acción."
+    },
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 11
+      },
+      "raza": "Tauren",
+      "fortalezas": "• Aturde a enemigos dentro de su alcance cercano.\n• Abre espacio junto a aliados presionados.\n• Facilita cubrir un repliegue próximo.\n• Permite coordinar una entrada con el grupo.",
+      "debilidades": "• Exige situarse en la zona de contacto.\n• No controla a los atacantes lejanos.\n• Necesita un momento de uso bien coordinado.",
+      "escalaUtilidad": "★★★★★",
+      "comentarios": "War Stomp aturde a enemigos cercanos dentro del combate masivo. Su utilidad depende de la proximidad real de las amenazas y de los aliados.",
+      "usoPrincipal": "Crear espacio mediante control sobre enemigos cercanos."
+    },
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 12
+      },
+      "raza": "Troll",
+      "fortalezas": "• Acelera ataques durante Berserking.\n• Acelera lanzamientos durante Berserking.\n• Ayuda a aprovechar intervalos breves de cobertura.\n• Permite sincronizar acciones con el foco aliado.",
+      "debilidades": "• No elimina el control recibido.\n• No impide silencios ni interrupciones.\n• Requiere una posición segura para aprovechar la aceleración.",
+      "escalaUtilidad": "★★★★☆",
+      "comentarios": "Berserking acelera ataques y lanzamientos durante una oportunidad de intervención. Hex of Weakness sigue siendo un criterio específico de Sacerdote, no de otras clases Troll.",
+      "usoPrincipal": "Acelerar acciones durante una oportunidad protegida."
+    },
+    {
+      "origen": {
+        "hoja": "Raciales",
+        "fila": 13
+      },
+      "raza": "No-muerto",
+      "fortalezas": "• Permite salir de miedo, sueño o encanto.\n• Devuelve la capacidad de actuar tras esos controles.\n• Facilita retomar la presión o el apoyo interrumpidos.\n• Permite iniciar el regreso a la cobertura aliada.",
+      "debilidades": "• No elimina aturdimientos ni raíces.\n• No garantiza inmunidad a controles posteriores.\n• Exige reservar la activación para una situación relevante.",
+      "escalaUtilidad": "★★★★★",
+      "comentarios": "Will of the Forsaken, abreviado WotF, elimina miedo, sueño o encanto. Responde a esos controles concretos, no a cualquier efecto que impida actuar.",
+      "usoPrincipal": "Romper miedo, sueño o encanto y retomar la intervención."
+    }
+  ]
+}

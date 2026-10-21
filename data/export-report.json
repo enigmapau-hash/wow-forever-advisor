@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "fuente": {
+    "archivo": "Clases WoW Forever v5.xlsx",
+    "sha256": "ffb510a623c83fa440eb9612cc9b8ab7a02d67a036bbeab14c858e811ffab2ec",
+    "versionInterna": "Versión 4.0 RC1"
+  },
+  "fichas": 51,
+  "porFaccion": {
+    "Alianza": 27,
+    "Horda": 24
+  },
+  "perfilesRaciales": 8,
+  "duplicados": 0,
+  "camposObligatoriosVacios": 0,
+  "recomendacionesSinPerfil": 0,
+  "alternativasSinPerfil": 0,
+  "alternativasNoFacilitadas": 9,
+  "celdasValidadas": 627,
+  "formulasConservadas": 22,
+  "comentariosConservados": 20,
+  "hipervinculosConservados": 15,
+  "fichasValidadasCeldaACelda": 51,
+  "perfilesValidadosCeldaACelda": 8,
+  "controlesExcelCoincidentes": {
+    "C38": 51,
+    "C39": 0,
+    "C40": 0,
+    "C41": 0
+  },
+  "incidenciasOrigen": [
+    {
+      "origen": "Inicio!B5",
+      "detalle": "Versión 4.0 RC1",
+      "nota": "Se conserva la versión interna del libro, aunque el archivo se denomine v5."
+    },
+    {
+      "origen": "Metodología!C54",
+      "detalle": "Estado documental al 21/10/2026: no confirmado. Las consultas de esta revisión no han devuelto contenido verificable suficiente para establecer la disponibilidad de Tauren Sacerdote en Forever. Se mantienen Troll como recomendación y Tauren como alternativa de Sagrado, sin presentar esa alternativa como disponibilidad confirmada. Para cerrar el caso hace falta documentación oficial accesible o una comprobación en la versión concreta del servidor.",
+      "nota": "Observación editorial conservada; no aplicada a las recomendaciones."
+    },
+    {
+      "origen": "Metodología!C61",
+      "detalle": "Estado documental al 21/10/2026: no confirmado. Las consultas no han devuelto contenido verificable suficiente para confirmar la disponibilidad, atribución y efectos de Hex of Weakness en la versión concreta de Forever. Se mantiene Troll y el criterio original de Disciplina y Sagrado, sin convertirlo en un hecho comprobado externamente. El cierre requiere documentación oficial específica o una prueba reproducible en el cliente correspondiente.",
+      "nota": "Observación editorial conservada; no aplicada a las recomendaciones."
+    }
+  ]
+}
