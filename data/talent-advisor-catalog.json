@@ -13,8 +13,12 @@
     {
       "nombre": "Paladín",
       "ruta": "./data/talent-advisor-paladin.json"
+    },
+    {
+      "nombre": "Chamán",
+      "ruta": "./data/talent-advisor-shaman.json"
     }
   ],
   "fuenteLegado": "Guerrero",
-  "nota": "El Legado se reutiliza entre clases; las vías para obtener puntos se personalizan por clase. Todas las fichas siguen marcadas como borradores de beta."
+  "nota": "El Legado se comparte entre las clases; las vías para obtener puntos se personalizan por clase. Las 27 fichas de Guerrero, Paladín y Chamán siguen marcadas como borradores de beta."
 }
