@@ -215,3 +215,10 @@ select:disabled { opacity: 0.65; }
   .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .selector-card, .result-card { padding: 2rem; }
 }
+
+#profession-title:focus { outline: none; }
+#profession-specializations { margin: 1.5rem 0 0; padding: 0; border: 0; min-width: 0; }
+#profession-specializations legend { margin-bottom: 0.5rem; font-weight: 600; }
+.specialization-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.specialization-buttons button { flex: 1 1 8rem; justify-content: center; margin-top: 0; }
+.specialization-buttons button[aria-pressed="true"] { background: var(--gold); color: var(--background); }

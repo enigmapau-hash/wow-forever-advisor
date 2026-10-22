@@ -54,7 +54,8 @@
           <li class="module-card">
             <span class="module-number" aria-hidden="true">01</span>
             <h3>Profession Advisor</h3>
-            <p>Próximamente</p>
+            <p>Elige profesiones para tu clase y especialización.</p>
+            <button id="profession-advisor" type="button">Abrir Profession Advisor</button>
           </li>
           <li class="module-card">
             <span class="module-number" aria-hidden="true">02</span>
@@ -180,6 +181,38 @@
             <p id="racial-no-alternative" class="field-note" hidden>No aparece como raza alternativa.</p>
           </section>
         </section>
+      </section>
+
+      <section id="profession-view" aria-labelledby="profession-title" hidden>
+        <a class="back-link" id="profession-back-home" href="#inicio">← Volver al inicio</a>
+        <header class="selector-intro">
+          <h1 id="profession-title" tabindex="-1">Profession Advisor</h1>
+          <p class="subtitle">Elige tu clase y especialización para consultar las profesiones.</p>
+        </header>
+        <div id="profession-selector" class="selector-card" aria-busy="true">
+          <label for="profession-class">Clase</label>
+          <select id="profession-class" disabled><option value="">Elige clase</option></select>
+          <fieldset id="profession-specializations" hidden>
+            <legend>Especialización</legend>
+            <div id="profession-buttons" class="specialization-buttons"></div>
+          </fieldset>
+          <p id="profession-status" class="selection-status" role="status">Cargando profesiones…</p>
+          <div id="profession-error" role="alert" hidden>
+            <p>No se han podido cargar las profesiones. Comprueba tu conexión e inténtalo de nuevo. Para consultarlas sin conexión, completa primero una visita con conexión.</p>
+            <button id="retry-professions" type="button">Reintentar</button>
+          </div>
+        </div>
+        <article id="profession-result" class="result-card recommendation" aria-labelledby="profession-combination" hidden>
+          <h2 id="profession-combination"></h2>
+          <h3>Pareja de profesiones principal</h3>
+          <p class="original-text" data-profession-field="principal"></p>
+          <h3>Pareja alternativa</h3>
+          <p class="original-text" data-profession-field="alternativa"></p>
+          <h3>Motivo principal</h3>
+          <p class="original-text" data-profession-field="motivoPrincipal"></p>
+          <h3>Limitación</h3>
+          <p class="original-text" data-profession-field="limitacion"></p>
+        </article>
       </section>
 
       <footer><span aria-hidden="true">✧</span> WoW Forever Advisor</footer>
