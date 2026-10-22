@@ -245,3 +245,87 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     runButton.disabled = false;
   }
 });
+
+document.getElementById("run-navigation").addEventListener("click", async () => {
+  const controls = [...document.querySelectorAll("body > button")];
+  controls.forEach((button) => { button.disabled = true; });
+  report.textContent = "Comprobando accesos…";
+  let assertions = 0;
+  const check = (condition, message) => {
+    assertions += 1;
+    if (!condition) throw new Error(message);
+  };
+  try {
+    const advisor = await fetch("../data/race-advisor.json").then((response) => response.json());
+    await new Promise((resolve) => {
+      frame.addEventListener("load", resolve, { once: true });
+      frame.src = `../index.html?navigation-test=${Date.now()}`;
+    });
+    const doc = frame.contentDocument;
+    const win = frame.contentWindow;
+    const visible = (id) => !doc.getElementById(id).hidden;
+    const open = async (id, view) => {
+      doc.getElementById(id).click();
+      await waitFor(() => visible(view));
+    };
+    const choose = (id, value) => {
+      const button = [...doc.querySelectorAll(`#${id} button`)].find((item) => item.dataset.value === value);
+      check(Boolean(button), `${id}: opción disponible`);
+      button.click();
+    };
+    check(doc.querySelectorAll(".available-modules > li").length === 2, "Dos tarjetas disponibles");
+    check(doc.querySelectorAll("#profession-advisor").length === 1, "Un único acceso a profesiones");
+    check(doc.querySelectorAll('[aria-labelledby="future-title"] .module-card').length === 2
+      && !doc.querySelector('[aria-labelledby="future-title"] button, [aria-labelledby="future-title"] a'), "Módulos futuros separados e inactivos");
+    check(doc.getElementById("home-explore-racials").getAttribute("href") === "#raciales", "Destino directo a raciales");
+    await open("home-explore-racials", "racial-view");
+    await waitFor(() => doc.querySelectorAll("#racial-race button").length === 8);
+    check(doc.activeElement === doc.getElementById("racial-title"), "Foco en el título de raciales");
+    const record = advisor.fichas[0];
+    choose("racial-race", record.razaRecomendada);
+    const racialText = doc.getElementById("racial-result").textContent;
+    check(visible("racial-result"), "Perfil desde inicio");
+    await open("back-selector", "advisor-view");
+    check(!visible("advisor-result"), "Regreso al selector sin una ficha inventada");
+    for (const [id, key] of [["faction", "faccion"], ["character-class", "clase"], ["specialization", "especializacion"]]) choose(id, record[key]);
+    const raceText = doc.getElementById("advisor-result").textContent;
+    check(doc.getElementById("explore-racials").textContent === "Explorar las 8 razas →"
+      && doc.getElementById("explore-racials").classList.contains("button-link"), "Acceso secundario visible");
+    await open("explore-racials", "racial-view");
+    check(doc.getElementById("racial-result").textContent === racialText, "Conservar perfil racial");
+    await open("back-selector", "advisor-view");
+    check(visible("advisor-result") && doc.getElementById("advisor-result").textContent === raceText, "Conservar ficha y selección de Race Advisor");
+    await open("explore-racials", "racial-view");
+    const label = [record.faccion, record.clase, record.especializacion].join(" · ");
+    const link = [...doc.querySelectorAll("#racial-recommended a")].find((item) => item.textContent === label);
+    check(Boolean(link), "Enlace a ficha concreta");
+    link.click();
+    await waitFor(() => visible("advisor-view"));
+    check(doc.getElementById("result-combination").textContent === label && visible("advisor-result"), "Ficha concreta desde el perfil");
+    await open("back-home", "home-view");
+    await open("profession-advisor", "profession-view");
+    await waitFor(() => doc.querySelectorAll("#profession-class button").length === 9);
+    doc.querySelector("#profession-class button").click();
+    doc.querySelector("#profession-buttons button").click();
+    const professionText = doc.getElementById("profession-result").textContent;
+    check(visible("profession-result"), "Profession Advisor operativo");
+    await open("profession-back-home", "home-view");
+    await open("home-explore-racials", "racial-view");
+    check(doc.getElementById("racial-result").textContent === racialText, "Conservar perfil al cambiar de módulo");
+    await open("back-selector", "advisor-view");
+    check(doc.getElementById("advisor-result").textContent === raceText, "Conservar ficha entre módulos");
+    await open("back-home", "home-view");
+    await open("profession-advisor", "profession-view");
+    check(visible("profession-result") && doc.getElementById("profession-result").textContent === professionText, "Conservar resultado de profesiones");
+    win.history.back();
+    await waitFor(() => visible("home-view"));
+    win.history.forward();
+    await waitFor(() => visible("profession-view"));
+    check(visible("profession-result") && doc.getElementById("profession-result").textContent === professionText, "Atrás y adelante conservan resultados");
+    report.textContent = `OK: accesos y navegación, ${assertions} comprobaciones. Raciales, fichas y profesiones conservan sus selecciones y resultados.`;
+  } catch (error) {
+    report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones)`;
+  } finally {
+    controls.forEach((button) => { button.disabled = false; });
+  }
+});
