@@ -64,6 +64,12 @@
             <p>Elige profesiones para tu clase y especialización.</p>
             <button id="profession-advisor" type="button">Abrir Profession Advisor</button>
           </li>
+          <li class="module-card">
+            <span class="module-number" aria-hidden="true">03</span>
+            <h3>Talent Advisor</h3>
+            <p>Piloto del Guerrero: talentos y Legado para subir al 60, PvP y mazmorras.</p>
+            <button id="talent-advisor" type="button">Abrir Talent Advisor</button>
+          </li>
         </ul>
       </section>
 
@@ -73,11 +79,6 @@
           <span class="heading-line" aria-hidden="true"></span>
         </div>
         <ul class="module-list">
-          <li class="module-card">
-            <span class="module-number" aria-hidden="true">03</span>
-            <h3>Talent Advisor</h3>
-            <p>Próximamente</p>
-          </li>
           <li class="module-card">
             <span class="module-number" aria-hidden="true">04</span>
             <h3>Build Advisor</h3>
@@ -251,6 +252,85 @@
           <h3>Limitación</h3>
           <p class="original-text" data-profession-field="limitacion"></p>
         </article>
+      </section>
+
+
+      <section id="talent-view" aria-labelledby="talent-title" hidden>
+        <a class="back-link" id="talent-back-home" href="#inicio">← Volver al inicio</a>
+        <header class="selector-intro">
+          <h1 id="talent-title" tabindex="-1">Talent Advisor</h1>
+          <p class="subtitle">Elige una especialización y tu objetivo para explorar los talentos de clase y Legado.</p>
+          <p class="field-note">Primera versión: solo Guerrero. Las demás clases se incorporarán cuando se validen sus fichas.</p>
+        </header>
+
+        <div id="talent-selector" class="selector-card" aria-busy="true">
+          <div class="selector-fields">
+            <fieldset id="talent-class" class="option-group" data-value="" data-icon-kind="clase" disabled>
+              <legend>Clase</legend>
+              <div class="option-buttons"></div>
+              <p class="option-prompt field-note">Cargando Guerrero…</p>
+            </fieldset>
+            <fieldset id="talent-spec" class="option-group" data-value="" data-icon-kind="especializacion" data-icon-class="Guerrero" disabled>
+              <legend>Especialización</legend>
+              <div class="option-buttons"></div>
+              <p class="option-prompt field-note">Elige primero la clase</p>
+            </fieldset>
+            <fieldset id="talent-goal" class="option-group talent-goals" data-value="" data-icon-kind="objetivo" disabled>
+              <legend>Objetivo</legend>
+              <div class="option-buttons"></div>
+              <p class="option-prompt field-note">Elige primero una especialización</p>
+            </fieldset>
+          </div>
+          <p id="talent-status" class="selection-status" role="status">Cargando piloto del Guerrero…</p>
+          <div id="talent-error" role="alert" hidden>
+            <p>No se ha podido cargar el piloto de talentos. Comprueba tu conexión y vuelve a intentarlo. El uso offline requiere una primera visita con conexión.</p>
+            <button id="retry-talents" type="button">Reintentar</button>
+          </div>
+        </div>
+
+        <section id="talent-result" aria-labelledby="talent-result-title" hidden>
+          <p id="talent-advice-warning" class="source-note"></p>
+          <article class="result-card recommendation">
+            <p class="eyebrow">Asesor de talentos · Piloto</p>
+            <div class="recommendation-heading">
+              <img id="talent-spec-icon" alt="" width="44" height="44" hidden>
+              <h2 id="talent-result-title"></h2>
+            </div>
+            <p id="talent-build-info" class="result-combination"></p>
+            <p id="talent-overview" class="talent-overview"></p>
+            <h3>Talentos de clase a estudiar</h3>
+            <p class="field-note">Selección orientativa, sin orden obligatorio de compra ni puntos asignados.</p>
+            <ul id="talent-priorities" class="talent-list"></ul>
+            <h3>Por qué considerar estos talentos</h3>
+            <p id="talent-reason" class="original-text"></p>
+            <h3>Limitaciones</h3>
+            <p id="talent-limitation" class="original-text"></p>
+          </article>
+
+          <article class="result-card">
+            <h3>Legado para este objetivo</h3>
+            <p id="talent-legacy-intro"></p>
+            <ul id="talent-legacy-perks" class="talent-list"></ul>
+            <h3>Requisitos y advertencias</h3>
+            <p id="talent-legacy-warning" class="original-text"></p>
+            <h3>Cómo empezar a conseguir puntos</h3>
+            <p id="talent-legacy-tip"></p>
+            <ul id="talent-legacy-points" class="talent-list"></ul>
+          </article>
+
+          <article class="result-card">
+            <h3>Otros progresos relevantes</h3>
+            <p id="talent-extra" class="original-text"></p>
+            <p class="field-note">El Honor, los puntos de rango PvP, las profesiones y el entrenamiento de mascotas no son puntos de talento de clase.</p>
+          </article>
+
+          <article class="result-card">
+            <h3>Versión y fuentes</h3>
+            <p id="talent-version" class="original-text"></p>
+            <p id="talent-source-note" class="field-note"></p>
+            <ul id="talent-sources" class="talent-sources"></ul>
+          </article>
+        </section>
       </section>
 
       <footer>
