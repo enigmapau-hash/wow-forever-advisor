@@ -40,3 +40,11 @@ Actualizado: 22 de octubre de 2026.
 
 - Se ha cambiado la instrucción inicial de Talent Advisor a «Elige tu clase, especialización y objetivo para explorar los talentos y ventajas de Legado», conforme a la anotación estética aprobada al revisar v14.
 - Se ha adaptado la fila de clases a tres botones, uno por clase disponible, pendiente de comprobación en Android.
+
+## Mantenimiento v17 — aprobado el 22/10/2026
+
+- Se retira la tarjeta «Build Advisor — Próximamente» de la portada, y también la sección «Más caminos por explorar», que quedaba vacía. **Build Advisor no se descarta definitivamente**: se conserva como idea, sin calculadora, para reevaluar solo si aporta una utilidad distinta de Talent Advisor.
+- Se conserva la distribución de las tres tarjetas disponibles en móvil y escritorio. Se elimina la única regla CSS específica de la sección desaparecida; no se retocan tamaños ni colores aprobados.
+- Se añade el punto final a la descripción de «Explorar raciales» para igualar el estilo de las demás tarjetas.
+- Caché v17 y comprobaciones explícitas de ausencia de Build Advisor, navegación, datos y modo sin conexión.
+- Las notas de v10/v11 de más arriba son **históricas**, no describen la portada actual.
