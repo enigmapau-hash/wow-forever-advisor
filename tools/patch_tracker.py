@@ -64,7 +64,8 @@ def snapshot(data):
     if not isinstance(data.get("classes"), list) or len(data["classes"]) < 9:
         raise ValueError("Faltan clases.")
     legacy = data.get("legacy")
-    if not isinstance(legacy, dict) or not isinstance(legacy.get("trees"), list):
+    if (not isinstance(legacy, dict) or not isinstance(legacy.get("trees"), list)
+            or len(legacy["trees"]) < 3):
         raise ValueError("Faltan árboles de Legado.")
     if not isinstance(legacy.get("earnedBy"), list):
         raise ValueError("Faltan desafíos de Legado.")
@@ -85,7 +86,8 @@ def snapshot(data):
         token = cls.get("token")
         if not isinstance(token, str) or not re.fullmatch(r"[a-z]+", token):
             raise ValueError("Clase sin identificador.")
-        if not isinstance(cls.get("talents"), list) or not isinstance(cls.get("arrows"), list):
+        if (not isinstance(cls.get("talents"), list) or not cls["talents"]
+                or not isinstance(cls.get("arrows"), list)):
             raise ValueError("Clase sin talentos o dependencias.")
         add("class/" + token, cls.get("name", token), "clases",
             {k: sorted_list(v) if k == "trees" else v
@@ -103,7 +105,8 @@ def snapshot(data):
         {k: v for k, v in legacy.items() if k not in ("trees", "earnedBy")})
     for tree in legacy["trees"]:
         tree_id = tree.get("id")
-        if not isinstance(tree_id, int) or not isinstance(tree.get("perks"), list):
+        if (not isinstance(tree_id, int) or not isinstance(tree.get("perks"), list)
+                or not tree["perks"]):
             raise ValueError("Árbol de Legado sin ID o ventajas.")
         name = tree.get("name", str(tree_id))
         add(f"legacy/tree/{tree_id}", "Legado · " + name, "legado",
