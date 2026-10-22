@@ -9,7 +9,7 @@ module.exports = async function checkAddons(page, context, base, browser) {
   assert.match(await page.title(), /^Addon Advisor/);
   assert.equal(await page.locator("#addon-title").evaluate((el) => el === document.activeElement), true);
   await page.getByRole("button", { name: "Todos", exact: true }).click();
-  assert.equal(await page.locator("#addon-results article").count(), 5);
+  assert.equal(await page.locator("#addon-results article").count(), 11);
   await page.getByRole("button", { name: "Exploración", exact: true }).click();
   assert.equal(await page.locator("#addon-results article").count(), 1);
   assert.match(await page.locator("#addon-results").textContent(), /OpenMap/);
