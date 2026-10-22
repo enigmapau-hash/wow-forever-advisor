@@ -28,9 +28,39 @@ Preparación de la fase visual (22 de octubre de 2026). **Solo inventario; no se
 5. Sin cambios en la exportación Excel, los JSON editoriales, los resultados o las recomendaciones.
 6. No inventar rutas basándose en FileDataID: resolver cada ID a un archivo real y comprobar el aspecto del icono antes de importarlo.
 
-## Pendiente
-- Aclarar qué distribución local de iconos originales es compatible con los términos aplicables a este proyecto público.
-- Verificar los emblemas concretos de facción y los ocho iconos de raza, especialmente la etiqueta editorial `Elfo`.
-- Reunir los archivos gráficos autorizados, registrar procedencia por archivo y comprobar su tamaño y visibilidad en Android.
+## Referencias visuales completadas para facción y raza
 
-**Estado de esta fase:** inventario técnico preparado; colección de archivos gráficos todavía pendiente.
+**Facciones:** [Crest of the Alliance](https://warcraft.wiki.gg/wiki/Crest_of_the_Alliance) y [Banner of the Horde](https://warcraft.wiki.gg/wiki/Banner_of_the_Horde). El [catálogo de iconos de facción](https://warcraft.wiki.gg/wiki/Category:Faction_icons) identifica las miniaturas de 64 × 64 como `Alliance 64.png` y `Horde 64.png`. Son referencias, **no** archivos locales ni licencias.
+
+**Razas (escudos heráldicos de Warcraft, sin género):**
+
+| Etiqueta del JSON | Identidad visual candidata | Fuente |
+| --- | --- | --- |
+| Gnomo | Icon of Technology | https://warcraft.wiki.gg/wiki/Icon_of_Technology |
+| Humano | Icon of Courage | https://warcraft.wiki.gg/wiki/Icon_of_Courage |
+| Enano | Icon of the Forge | https://warcraft.wiki.gg/wiki/Icon_of_the_Forge |
+| Elfo | Icon of Wisdom (elfo de la noche) | https://warcraft.wiki.gg/wiki/Icon_of_Wisdom |
+| Orco | Icon of Battle | https://warcraft.wiki.gg/wiki/Icon_of_Battle |
+| Tauren | Icon of the Earth Mother | https://warcraft.wiki.gg/wiki/Icon_of_the_Earth_Mother |
+| Troll | Icon of Shadows (Lanza Negra) | https://warcraft.wiki.gg/wiki/Icon_of_Shadows |
+| No-muerto | Icon of Torment (Renegado) | https://warcraft.wiki.gg/wiki/Icon_of_Torment |
+
+`Elfo` **significa elfo de la noche**, comprobado en el campo `comentarios` de `data/racials.json`, que menciona Shadowmeld. No cambiar el literal de la base editorial.
+
+**Criterio visual:** los escudos raciales son una candidatura fiel a Warcraft, no necesariamente la representación más legible a tamaño pequeño. Antes de implantarlos, contrastar a escala de botón móvil (48–64 px) frente a los retratos raciales clásicos, que suelen distinguir género; no asumir que las dos familias gráficas son intercambiables.
+
+## Verificación de derechos
+
+- [FAQ legal de Blizzard](https://www.blizzard.com/es-es/legal/c1ae32ac-7ff9-4ac3-a03b-fc04b8697010/blizzard-legal-faq): prevé un permiso limitado **personal, doméstico y no comercial** para contenido descargado de su sitio bajo ciertas condiciones, con avisos de copyright; no equivale a una licencia abierta para republicar cualquier icono en GitHub.
+- Blizzard distribuyó un [kit para fansites](https://www.moddb.com/games/world-of-warcraft/downloads/wow-fan-site-kit) con materiales para estas webs y un aviso obligatorio de no afiliación. **Su autorización específica se limita al contenido del kit**; no convierte automáticamente los iconos extraídos de clientes o recopilados por wikis en archivos redistribuibles.
+- El texto wiki puede estar bajo Creative Commons, pero las imágenes de Blizzard conservan sus derechos. El hecho de que otros sitios muestren los iconos tampoco concede una autorización transferible.
+- No se han descargado, modificado ni subido iconos al repositorio.
+
+**Decisión de integración:** sustituir selectores por botones con texto visible es independiente de los permisos gráficos. La incorporación de imágenes locales queda condicionada a confirmar una base de uso y atribución apropiada; nunca hacer que una llamada a una web de terceros sea necesaria para consultar recomendaciones offline.
+
+## Pendiente
+1. Elegir, a partir de fuentes que permitan el uso propuesto, los archivos reales que correspondan a las referencias registradas.
+2. Comprobar permisos y conservar una ficha de procedencia por recurso (URL, titular, condiciones, créditos).
+3. Probar legibilidad y tamaños reales en Android, especialmente escudos raciales detallados, antes de introducirlos en la aplicación.
+
+**Estado:** 46 usos de icono con referencia visual identificada (9 clases, 27 árboles, 2 facciones, 8 razas); **ningún archivo gráfico incorporado ni permiso general de redistribución confirmado**.
