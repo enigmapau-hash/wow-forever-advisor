@@ -84,7 +84,7 @@ jobs:
           set -euo pipefail
           TITLE="$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["title"])' "$RUNNER_TEMP/summary.json")"
           MARKER="$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["marker"])' "$RUNNER_TEMP/summary.json")"
-          if gh issue list --state all --limit 100 --json body --jq '.[].body' | grep -Fq -- "$MARKER"; then
+          if gh issue list --state all --limit 100 --json body --jq '.[].body' | grep -F -- "$MARKER" >/dev/null; then
             echo "Esta diferencia ya tiene una incidencia; no se crea un duplicado."
           else
             gh issue create --title "$TITLE" --body-file "$RUNNER_TEMP/report.md"
