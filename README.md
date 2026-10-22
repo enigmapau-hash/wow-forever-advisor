@@ -97,3 +97,37 @@ Las especializaciones añaden `data-icon-class` para distinguir nombres comparti
 El texto permanece en `.option-label`; esta estructura permite incorporar más
 adelante iconos locales autorizados sin cambiar el nombre accesible. No se generan
 rutas ni imágenes mientras no existan esos archivos y sus permisos.
+
+## Fase 7.2: iconos de WoW
+
+Los cinco grupos de botones (facción, clase, especialización y raza, repartidos
+entre Race Advisor y Profession Advisor) muestran imágenes originales del juego
+junto a sus nombres visibles. Los 46 usos están documentados en
+`docs/icon-inventory.json`: 2 facciones, 9 clases, 27 árboles y 8 razas.
+Algunos árboles comparten ilustración; hay 44 direcciones gráficas distintas.
+
+Para no redistribuir archivos propiedad de Blizzard en este repositorio, las
+imágenes se cargan desde la CDN de Wowhead, `wow.zamimg.com`. La lista exacta
+está en `icons/icon-map.js`; si falla una imagen, su botón conserva el nombre.
+No se incluye el script de Wowhead ni bibliotecas externas; las imágenes sí
+dependen de que su CDN responda en la primera visita con conexión.
+
+El service worker guarda las imágenes en la **caché privada del navegador**.
+Tras abrir la PWA con conexión, intenta descargar el conjunto en segundo plano
+sin bloquear las fichas; los iconos ya guardados funcionan sin conexión.
+**La primera visita requiere conexión para obtener las imágenes**. El navegador
+puede vaciar su caché por falta de espacio, y la CDN puede cambiar sus rutas o
+su disponibilidad. Nunca deben considerarse los archivos de la CDN parte de la
+licencia de código del proyecto. En modo avión, deben continuar funcionando los
+selectores y los resultados incluso si faltan imágenes.
+
+Los identificadores gráficos de los árboles proceden de datos de la beta
+organizados por [Zephras](https://zephras.com/data/) (selección de datos CC BY
+4.0); los nombres de imágenes usados son referencias visuales del juego, no
+prueba de que cada archivo sea la textura exacta del cliente beta.
+World of Warcraft® y sus materiales gráficos pertenecen a Blizzard
+Entertainment. Proyecto independiente, no afiliado ni respaldado por Blizzard.
+
+La cobertura del mapa se comprueba sin dependencias con `node tests/icon-map.test.js`.
+Tras publicar la actualización, hay que verificar en Android el aspecto de
+todos los iconos y su recuperación en modo avión.

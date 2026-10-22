@@ -83,3 +83,31 @@ Preparación de la fase visual (22 de octubre de 2026). **Solo inventario; no se
 
 **Resultado de esta comprobación:** 46 referencias de iconos identificadas; no se ha podido acreditar un paquete completo claramente reutilizable de imágenes de Blizzard para redistribuirlo en un repositorio GitHub público. La integración gráfica se mantiene pendiente; no se altera la PWA.
 
+
+## Implementación propuesta de la Fase 7.2 (rama `feat/wow-icons-cache`)
+
+En lugar de copiar imágenes al repositorio, se ha integrado un mapa de **enlaces
+directos a las imágenes originales de World of Warcraft en la CDN de Wowhead**,
+`https://wow.zamimg.com/images/wow/icons/large/`.
+Los nombres y asignaciones están registrados en `icons/icon-map.js`:
+46 usos (2 facciones, 9 clases, 27 especializaciones, 8 razas), 44 URL únicas.
+Se han contrastado varias rutas con la CDN; **esto no sustituye la verificación
+visual de cada imagen en Android**.
+
+Se usa un `Service Worker` para almacenar las respuestas en la caché privada
+del navegador, sin redistribuir archivos binarios en GitHub. Se precargan con
+conexión después de activar el worker; si el servidor remoto rechaza la
+petición, falla la red o el dispositivo purga su caché, el botón mantiene su
+texto y la aplicación continúa funcional. No hay dependencia de un API ni
+contraseñas.
+
+**Limitación:** los enlaces y la caché de un tercero no constituyen una
+autorización general para redistribuir imágenes ni aseguran la disponibilidad
+permanente. Si las condiciones de uso de la CDN cambian o restringen la
+integración, habrá que retirar esa fuente o solicitar autorización. La
+propiedad intelectual de los gráficos sigue siendo de Blizzard. El aviso de
+no afiliación aparece en el pie de la aplicación.
+
+*Pendiente de prueba en dispositivo tras la publicación*: comprobar cada botón
+e icono, la distribución en pantalla móvil y que las imágenes descargadas se
+muestran en modo avión. Si falla alguna ruta remota, corregir el mapa.
