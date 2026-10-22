@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "cliente": "WoW Forever 1.60 beta",
+  "fechaRevision": "2026-10-22",
+  "addons": [
+    {
+      "id": "questie", "nombre": "Questie", "autor": "TheCrux_BB y equipo Questie",
+      "categoria": "Misiones", "finalidad": "Localizar misiones y objetivos en el mapa durante la subida al 60.",
+      "imprescindible": true, "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever", "pruebaForever": null,
+      "version": "v12.1.0+v1.0.6", "fechaPublicacion": "2026-10-12", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "evidencia": "El archivo del autor enumera Forever y 1.60.1. El registro incorpora mazmorras de Forever, corrige tooltips en combate y actualiza la base de datos con la instantánea del 10 de octubre.",
+      "limite": "Los cambios acreditan mantenimiento para Forever, no cobertura completa de todas las misiones ni una prueba integral dentro del juego.",
+      "afinidad": {"clases": [], "razas": [], "profesiones": [], "actividades": ["Subir al 60"]},
+      "contextos": [{"modulo": "talent", "objetivo": "Subir al 60", "motivo": "Si necesitas localizar misiones y sus objetivos mientras subes al 60."}],
+      "fuentes": [{"nombre": "Archivo y cambios del autor · CurseForge", "url": "https://www.curseforge.com/wow/addons/questie/files/9150393"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/questie"}]
+    },
+    {
+      "id": "leatrix-plus", "nombre": "Leatrix Plus", "autor": "Leatrix",
+      "categoria": "Comodidad", "finalidad": "Elegir pequeños ajustes de interfaz y automatización sin sustituir toda la interfaz.",
+      "imprescindible": true, "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever", "pruebaForever": null,
+      "version": "1.60.25-forever", "fechaPublicacion": "2026-10-21", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "evidencia": "Archivo exclusivo de Forever publicado por Leatrix. Los cambios recientes corrigen un error Lua del coloreado por alcance y ajustan el listado de addons. El historial 1.60.15 añade una barra de recursos para Druida en forma de gato u oso.",
+      "limite": "Activa solo las opciones que necesites y evita duplicar automatizaciones. Las opciones disponibles pueden cambiar durante la beta. No se ha probado aquí dentro del juego.",
+      "afinidad": {"clases": ["Druida"], "razas": [], "profesiones": [], "actividades": ["Interfaz"]},
+      "contextos": [{"modulo": "race", "clase": "Druida", "motivo": "Para tu clase: barra de recursos en forma de gato u oso. Es una ayuda de interfaz, independiente de la raza."}, {"modulo": "talent", "clase": "Druida", "especializacion": "Feral", "motivo": "Si quieres ver una barra de recursos en forma de gato u oso; revisa esa opción en Leatrix Plus."}],
+      "fuentes": [{"nombre": "Archivo e historial de Forever · CurseForge", "url": "https://www.curseforge.com/wow/addons/leatrix-plus/files/9275554"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/leatrix-plus"}]
+    },
+    {
+      "id": "auctionator", "nombre": "Auctionator", "autor": "plusmouse y colaboradores",
+      "categoria": "Economía", "finalidad": "Facilitar compras, ventas y consulta del valor de materiales en la casa de subastas.",
+      "imprescindible": true, "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever", "pruebaForever": null,
+      "version": "341", "fechaPublicacion": "2026-10-13", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "evidencia": "El archivo publicado por plusmouse enumera Forever y 1.60.1. El cambio de esta versión actualiza el TOC de 12.1.5; no declara una nueva corrección específica de Forever.",
+      "limite": "Útil si compras o vendes materiales; no garantiza beneficios ni reemplaza la comparación de precios. No se ha probado aquí dentro del juego.",
+      "afinidad": {"clases": [], "razas": [], "profesiones": ["Minería", "Herboristería", "Desuello", "Herrería", "Alquimia", "Ingeniería", "Peletería", "Sastrería", "Encantamiento"], "actividades": ["Subastas"]},
+      "contextos": [{"modulo": "profession", "motivo": "Si compras o vendes materiales de estas profesiones, puede facilitar la consulta de precios en subastas."}],
+      "fuentes": [{"nombre": "Archivo y cambios del autor · CurseForge", "url": "https://www.curseforge.com/wow/addons/auctionator/files/9162359"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/auctionator"}]
+    },
+    {
+      "id": "dbm", "nombre": "Deadly Boss Mods (núcleo)", "autor": "MysticalOS y equipo DBM",
+      "categoria": "Grupos", "finalidad": "Núcleo de avisos de encuentros; necesita módulos adecuados para el contenido jugado.",
+      "imprescindible": false, "recomendacion": "en_observacion",
+      "estado": "publicado_forever", "pruebaForever": null,
+      "version": "12.1.17", "fechaPublicacion": "2026-10-22", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "evidencia": "El archivo del núcleo enumera Forever y 1.60.1. La documentación del autor separa los módulos de contenido en otros paquetes. Los cambios recientes del núcleo no demuestran cobertura de todos los encuentros de Forever.",
+      "limite": "En observación: confirmar módulos y encuentros concretos de Forever antes de recomendarlo en Mazmorras. Publicar el núcleo no acredita sus avisos en cada jefe. No se ha probado aquí dentro del juego.",
+      "afinidad": {"clases": [], "razas": [], "profesiones": [], "actividades": ["Mazmorras", "Bandas"]},
+      "contextos": [],
+      "fuentes": [{"nombre": "Archivo del núcleo · CurseForge", "url": "https://www.curseforge.com/wow/addons/deadly-boss-mods/files/9284229"}, {"nombre": "Documentación y módulos del autor", "url": "https://www.curseforge.com/wow/addons/deadly-boss-mods"}]
+    },
+    {
+      "id": "gathermate2", "nombre": "GatherMate2", "autor": "moonfann y colaboradores",
+      "categoria": "Recolección", "finalidad": "Registrar localizaciones de plantas, minerales y bancos de pesca en mapas.",
+      "imprescindible": false, "recomendacion": "en_observacion",
+      "estado": "pendiente_verificar", "pruebaForever": null,
+      "version": null, "fechaPublicacion": null, "versionCliente": null, "fechaRevision": "2026-10-22",
+      "evidencia": "La ficha muestra la categoría Forever, pero la lista de archivos consultada solo muestra publicaciones Retail recientes. No se ha identificado un archivo publicado para 1.60.1.",
+      "limite": "Pendiente de verificar; no se recomienda instalar la versión Retail o Classic suponiendo compatibilidad con Forever. Una categoría del proyecto y testimonios aislados no bastan.",
+      "afinidad": {"clases": [], "razas": [], "profesiones": ["Minería", "Herboristería", "Pesca"], "actividades": ["Recolección"]},
+      "contextos": [],
+      "fuentes": [{"nombre": "Archivos del proyecto · CurseForge", "url": "https://www.curseforge.com/wow/addons/gathermate2/files/all"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/gathermate2"}]
+    }
+  ]
+}

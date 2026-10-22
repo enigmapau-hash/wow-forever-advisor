@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" href="./icons/icon-192.png">
     <link rel="stylesheet" href="./styles.css">
     <script src="./icons/icon-map.js" defer></script>
+    <script src="./addon-advisor.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -69,6 +70,12 @@
             <h3>Talent Advisor</h3>
             <p>Nueve clases: talentos y Legado para subir al 60, PvP y mazmorras.</p>
             <button id="talent-advisor" type="button">Abrir Talent Advisor</button>
+          </li>
+          <li class="module-card">
+            <span class="module-number" aria-hidden="true">04</span>
+            <h3>Addon Advisor</h3>
+            <p>Pocos addons, con utilidad y fuentes claras para Forever.</p>
+            <a id="addon-advisor" class="button-link" href="#addon-advisor">Abrir Addon Advisor</a>
           </li>
         </ul>
       </section>
@@ -154,6 +161,7 @@
             <h3>Comentarios del perfil racial</h3>
             <p class="original-text" data-field="comentarios"></p>
           </article>
+          <aside id="race-addons" class="result-card addon-context" hidden></aside>
         </section>
       </section>
 
@@ -237,6 +245,7 @@
           <p class="original-text" data-profession-field="motivoPrincipal"></p>
           <h3>Limitación</h3>
           <p class="original-text" data-profession-field="limitacion"></p>
+          <aside id="profession-addons" class="addon-context" hidden></aside>
         </article>
       </section>
 
@@ -310,6 +319,8 @@
             <p class="field-note">El Honor, los puntos de rango PvP, las profesiones y el entrenamiento de mascotas no son puntos de talento de clase.</p>
           </article>
 
+          <aside id="talent-addons" class="result-card addon-context" hidden></aside>
+
           <article class="result-card">
             <h3>Versión y fuentes</h3>
             <p id="talent-version" class="original-text"></p>
@@ -317,6 +328,29 @@
             <ul id="talent-sources" class="talent-sources"></ul>
           </article>
         </section>
+      </section>
+
+      <section id="addon-view" aria-labelledby="addon-title" hidden>
+        <a class="back-link" href="#inicio">← Volver al inicio</a>
+        <header class="selector-intro">
+          <h1 id="addon-title" tabindex="-1">Addon Advisor</h1>
+          <p class="subtitle">Un pequeño grupo de imprescindibles, según lo que necesites.</p>
+          <p class="field-note">WoW Forever · 1.60 beta. Empieza por una necesidad y añade solo lo que te ayude.</p>
+        </header>
+        <div id="addon-controls" class="selector-card" aria-busy="false">
+          <p>«Publicado para Forever» acredita un archivo del desarrollador. «Probado en Forever» exige evidencia de una prueba con cliente y alcance concretos. «Pendiente de verificar» no es una recomendación de instalación.</p>
+          <p class="field-note">Antes de instalar, abre la fuente y elige el archivo para Forever 1.60.x. Una descarga para Retail o Classic no acredita compatibilidad. Las fuentes y descargas necesitan conexión; el catálogo queda disponible offline tras la primera visita online.</p>
+          <fieldset class="option-group">
+            <legend>Filtrar por utilidad</legend>
+            <div id="addon-filters" class="specialization-buttons"></div>
+          </fieldset>
+          <p id="addon-status" class="selection-status" role="status"></p>
+          <div id="addon-error" role="alert" hidden>
+            <p>No se ha podido cargar el catálogo. Comprueba tu conexión o vuelve a intentarlo.</p>
+            <button id="retry-addons" type="button">Reintentar</button>
+          </div>
+        </div>
+        <div id="addon-results"></div>
       </section>
 
       <footer>

@@ -205,3 +205,20 @@ Pruebas de navegador automatizadas (Node, Playwright 1.62.1 y Chromium):
 El runner inicia un servidor local, recorre 81 fichas, prueba las otras vistas,
 teclado, móvil, un fallo de datos con reintento y recarga offline.
 GitHub Actions ejecuta estas comprobaciones además de Python y sintaxis.
+
+## Addon Advisor — v18
+
+Módulo independiente con una selección inicial breve (Questie, Leatrix Plus y
+Auctionator según necesidad), filtros simples y fuentes originales. DBM y
+GatherMate2 figuran en observación. Publicación para Forever y prueba real dentro
+del juego son estados distintos; no se afirma probado ningún addon.
+
+Las fichas de Race, Profession y Talent Advisor reutilizan el catálogo solo donde
+hay una utilidad concreta. Todos los datos preexistentes y Patch Tracker se
+conservan. Caché actual **v18**, con catálogo y script para consulta offline;
+los enlaces externos necesitan conexión. Detalles de evidencia desplegables.
+
+Véase [investigación, criterios y pruebas](docs/addon-advisor.md). Añadidas pruebas
+editoriales con `node tests/addon-advisor.test.js`, conservación de v17 en Python
+y filtros, referencias, anchos móviles, reintento y offline en el runner de navegador.
+Las medidas móviles se verifican por emulación; no se ha probado en Android físico.

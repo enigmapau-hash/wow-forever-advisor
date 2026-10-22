@@ -95,6 +95,7 @@ function setOptions(group, values, placeholder) {
 }
 
 function clearResult() {
+  AddonAdvisor.clear("race-addons");
   result.hidden = true;
   recommendationRaceIcon.hidden = true;
   recommendationRaceIcon.removeAttribute("src");
@@ -217,6 +218,7 @@ specialization.addEventListener("change", () => {
     document.getElementById("alternative-profile").hidden = false;
   }
   result.hidden = false;
+  AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
 });
 
@@ -276,6 +278,7 @@ let professionsLoading = false;
 let professionsLoaded = false;
 
 function clearProfessionResult() {
+  AddonAdvisor.clear("profession-addons");
   professionResult.hidden = true;
   document.getElementById("profession-combination").textContent = "";
   for (const field of professionResult.querySelectorAll("[data-profession-field]")) field.textContent = "";
@@ -333,6 +336,7 @@ professionClass.addEventListener("change", () => {
       }
       document.getElementById("profession-combination").textContent = `${record.clase} · ${record.especializacion}`;
       professionResult.hidden = false;
+      AddonAdvisor.context("profession-addons", { modulo: "profession", profesiones: [...record.principal, ...record.alternativa] });
       professionStatus.textContent = `Ficha disponible: ${record.clase}, ${record.especializacion}.`;
     });
     return button;
@@ -442,6 +446,7 @@ function replaceTalentList(id, entries) {
 }
 
 function clearTalentResult() {
+  AddonAdvisor.clear("talent-addons");
   talentResult.hidden = true;
   talentSpecIcon.hidden = true;
   talentSpecIcon.removeAttribute("src");
@@ -496,6 +501,7 @@ function renderTalentResult() {
   const icon = self.WOW_ICON_MAP?.especializacion?.[talentData.clase]?.[spec];
   if (icon) talentSpecIcon.src = icon;
   talentResult.hidden = false;
+  AddonAdvisor.context("talent-addons", { modulo: "talent", clase: talentData.clase, especializacion: spec, objetivo: goal });
   talentStatus.textContent = `Ficha disponible: ${talentData.clase}, ${spec}, ${goal} (beta; pendiente de validar).`;
 }
 
@@ -572,16 +578,21 @@ function showRoute(event) {
   const isRacials = window.location.hash === "#raciales";
   const isProfession = window.location.hash === "#profession-advisor";
   const isTalent = window.location.hash === "#talent-advisor";
-  homeView.hidden = isAdvisor || isRacials || isProfession || isTalent;
+  const isAddon = window.location.hash === "#addon-advisor";
+  document.getElementById("addon-view").hidden = !isAddon;
+  homeView.hidden = isAdvisor || isRacials || isProfession || isTalent || isAddon;
   professionView.hidden = !isProfession;
   advisorView.hidden = !isAdvisor;
   racialView.hidden = !isRacials;
   talentView.hidden = !isTalent;
-  document.title = isTalent ? "Talent Advisor | WoW Forever Advisor"
+  document.title = isAddon ? "Addon Advisor | WoW Forever Advisor" : isTalent ? "Talent Advisor | WoW Forever Advisor"
     : isProfession ? "Profession Advisor | WoW Forever Advisor"
       : isRacials ? "Raciales | WoW Forever Advisor"
         : isAdvisor ? "Race Advisor | WoW Forever Advisor" : "WoW Forever Advisor";
-  if (isTalent) {
+  if (isAddon) {
+    document.getElementById("addon-title").focus();
+    AddonAdvisor.open();
+  } else if (isTalent) {
     document.getElementById("talent-title").focus();
     loadTalents();
   } else if (isProfession) {
@@ -605,5 +616,6 @@ document.getElementById("race-advisor").addEventListener("click", () => {
 form.addEventListener("submit", (event) => event.preventDefault());
 retryButton.addEventListener("click", loadData);
 document.getElementById("retry-racials").addEventListener("click", loadData);
+document.getElementById("retry-addons").addEventListener("click", AddonAdvisor.open);
 window.addEventListener("hashchange", showRoute);
 showRoute();
