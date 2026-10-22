@@ -1,0 +1,20 @@
+{
+  ".github/workflows/patch-tracker.yml": "d8ea2ffcf5e50a969d6662549723a2370458ffddb74678ef5bcbcf11f3807734",
+  "Clases WoW Forever v5.xlsx": "ffb510a623c83fa440eb9612cc9b8ab7a02d67a036bbeab14c858e811ffab2ec",
+  "data/export-report.json": "bd815d0c6f214e035146e574dc69d2bdbd4f621680440d65be55c0ffb106b75f",
+  "data/profession-advisor.json": "2c20a7939794e2ad0958c4f0de5603391b8adc5089baaa9b9e934747a9dd1600",
+  "data/race-advisor.json": "ef4c6fc0475e653a6ff6b7c789ed2ad684137278158b50385753fdc3c3c2ea91",
+  "data/racials.json": "b15c4d241d8a169e8e1a978ef7d85c7c302ed48bf1a793fc296cc5da8dc6f1e1",
+  "data/talent-advisor-catalog.json": "fc0f5b64ccb44176eb9b4810fd50f32da6b916ab1be1f380afe4211f389a80ed",
+  "data/talent-advisor-druid.json": "2b137e8176e0f80dcd5960e7e1c2cb1233ce1330b30b2c321d64b1ba90c6dbfd",
+  "data/talent-advisor-hunter.json": "a6989030f47b1d410cd6e5194afedb2b19046ce0302ed944bf5e4389cf400f2d",
+  "data/talent-advisor-mage.json": "cdaae8d8083d8a6eb669eabc212c170c68ea64183a6187c57fa9a48e7c14687c",
+  "data/talent-advisor-paladin.json": "083bf7faaadf330c0128e454cf0a9c1a05612da74872a58c375c40544f954432",
+  "data/talent-advisor-priest.json": "27221ad6cf8f21745116b3ad36a736d1fedd5b1709a70cc96a9151ff4c317d39",
+  "data/talent-advisor-rogue.json": "18fe2c9238f42e7e21948c9da119f90b092bdf78e6ad1f9652643f5bbcb1cedd",
+  "data/talent-advisor-shaman.json": "ab043ab1e8ea1ebc068295a849b6c7030df4fb7e185c5f1b5740d53455ee90ee",
+  "data/talent-advisor-warlock.json": "556bed4affe46ae0bdc92dee767bed121f50be5874596d6d81c2778f91aa2e62",
+  "data/talent-advisor-warrior.json": "2b8a805770a1d627eed0d9a07f86af2b664bbd5d429285b3f131c8b404172d37",
+  "data/workbook-context.json": "cbb532ad08dcbbe35def499d9eebbdd300516ad31cd77d05152a2d5f04f97c69",
+  "tools/patch_tracker.py": "b0df1f0458c5939a60d536ee00bed86bd972ae1793bdf0c697d819dcef9b75d1"
+}

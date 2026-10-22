@@ -5,6 +5,7 @@ on:
     paths:
       - "data/**"
       - "app.js"
+      - "addon-advisor.js"
       - "index.html"
       - "styles.css"
       - "sw.js"
@@ -16,6 +17,7 @@ on:
     paths:
       - "data/**"
       - "app.js"
+      - "addon-advisor.js"
       - "index.html"
       - "styles.css"
       - "sw.js"
@@ -38,6 +40,8 @@ jobs:
       - name: Comprobar sintaxis de JavaScript
         run: |
           node --check app.js
+          node --check addon-advisor.js
+          node tests/addon-advisor.test.js
           node --check icons/icon-map.js
           node --check sw.js
           node --check tests/talent-advisor.test.js

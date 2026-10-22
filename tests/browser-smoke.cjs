@@ -26,6 +26,12 @@ const server = http.createServer(async (req, res) => {
     // External artwork is irrelevant to content and offline correctness.
     await context.route("https://wow.zamimg.com/**", (route) => route.abort());
     const page = await context.newPage();
+    // Seed the previous app cache before any document registers the new worker.
+    await page.goto(base + "/manifest.webmanifest");
+    await page.evaluate(async () => {
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v17`);
+      await cache.put("./obsolete-v17", new Response("old"));
+    });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
     for (const [suite, button, report] of [
@@ -41,8 +47,8 @@ const server = http.createServer(async (req, res) => {
       console.log(suite + ": " + result);
     }
     await page.goto(base + "/");
-    assert.equal(await page.locator(".available-modules > li").count(), 3,
-      "Only the three approved modules appear on the home screen");
+    assert.equal(await page.locator(".available-modules > li").count(), 4,
+      "Only the four approved modules appear on the home screen");
     assert.equal(await page.locator("#future-title").count(), 0,
       "No future-module section on the home screen");
     assert.equal(await page.getByText("Build Advisor").count(), 0,
@@ -55,7 +61,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v17")), "Current version cache installed");
+    assert(cacheNames.some((name) => name.endsWith(":v18")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v17")), "Previous app cache removed after activation");
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();
@@ -76,6 +83,9 @@ const server = http.createServer(async (req, res) => {
     }
     assert.equal(offline, 81);
     console.log("Offline reload: 81/81 records; shared Legacy available");
+    await require("./addon-browser.cjs")(page, context, base, browser);
+    await page.goto(base + "/#talent-advisor");
+    await page.locator("#talent-class button").first().waitFor();
     await context.setOffline(false);
     await page.setViewportSize({ width: 390, height: 844 });
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "No horizontal overflow on mobile");

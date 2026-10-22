@@ -280,7 +280,7 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
       check(Boolean(button), `${id}: opción disponible`);
       button.click();
     };
-    check(doc.querySelectorAll(".available-modules > li").length === 3, "Tres tarjetas disponibles");
+    check(doc.querySelectorAll(".available-modules > li").length === 4, "Cuatro tarjetas disponibles");
     check(doc.querySelectorAll("#profession-advisor").length === 1, "Un único acceso a profesiones");
     check(!doc.getElementById("future-title")
       && !doc.querySelector('[aria-labelledby="future-title"]')

@@ -307,3 +307,15 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   .available-modules { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
+/* Addon Advisor: conserva las tarjetas y la paleta compartidas. */
+.addon-state { color: var(--gold); margin-top: 1rem; font-weight: 600; }
+.addon-context { border-top: 1px solid var(--gold); margin-top: 1.5rem; }
+.addon-context p { margin: 0.65rem 0; }
+.addon-context a { color: var(--gold); text-underline-offset: 0.2rem; }
+#addon-filters { margin-top: 0.5rem; }
+#addon-filters button { flex: 0 1 auto; min-height: 2.75rem; }
+#addon-title:focus { outline: none; }
+#addon-results a { color: var(--gold); overflow-wrap: anywhere; text-underline-offset: 0.2rem; }
+.addon-details { margin-top: 1rem; }
+.addon-details summary { cursor: pointer; min-height: 2.75rem; padding-block: 0.6rem; }
+.addon-details p { margin-top: 0.75rem; }
