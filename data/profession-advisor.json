@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "modulo": "Profession Advisor",
+  "criterio": "Equilibrio entre progresión y PvP; se prefieren parejas autosuficientes salvo ventaja concreta justificada.",
+  "alcance": "Recomendaciones editoriales por clase y especialización; sin distinción por raza ni facción.",
+  "fichas": [
+    {
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "principal": [
+        "Minería",
+        "Herrería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Herrería permite trabajar en armas y armaduras para progresar. Ingeniería ofrece herramientas tácticas para aproximarse, presionar o responder en PvP.",
+      "limitacion": "El equipo fabricado no será necesariamente mejor que el obtenido jugando.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "principal": [
+        "Minería",
+        "Herrería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "La fabricación de armas y armaduras acompaña una especialización centrada en el combate cuerpo a cuerpo sostenido.",
+      "limitacion": "Ingeniería podría ser más útil si se prioriza la versatilidad PvP sobre la fabricación de equipo.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "principal": [
+        "Minería",
+        "Herrería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Herrería tiene una relación directa con el equipamiento defensivo y el uso de materiales propios.",
+      "limitacion": "La calidad de los objetos fabricados determinará su utilidad real frente a otras fuentes de equipo.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "principal": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "alternativa": [
+        "Minería",
+        "Herrería"
+      ],
+      "motivoPrincipal": "Permite obtener materiales propios para consumibles y mantener autonomía en combates prolongados.",
+      "limitacion": "Renuncia a fabricar equipo de placa; Herrería puede ser interesante durante la progresión.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "principal": [
+        "Minería",
+        "Herrería"
+      ],
+      "alternativa": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "motivoPrincipal": "Facilita fabricar equipamiento metálico mientras se desarrolla el personaje.",
+      "limitacion": "La resistencia en PvP dependerá del equipo real y las mecánicas defensivas, no de tener Herrería aprendida.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "principal": [
+        "Minería",
+        "Herrería"
+      ],
+      "alternativa": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "motivoPrincipal": "Combina obtención de minerales con fabricación de armas y armaduras.",
+      "limitacion": "La pareja principal no fabrica consumibles; Herboristería + Alquimia ofrece una alternativa más autónoma para prepararlos.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Peletería permite fabricar equipamiento durante la progresión mientras se obtienen pieles de las criaturas derrotadas.",
+      "limitacion": "La pareja no proporciona por sí misma mejoras directas a la mascota.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "La fabricación de equipo ofrece una progresión autosuficiente; Ingeniería puede añadir herramientas para situaciones de presión en PvP.",
+      "limitacion": "La calidad de las piezas fabricadas condiciona su utilidad frente a otras fuentes de equipo.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Peletería cubre la fabricación básica de equipo, mientras que Ingeniería puede complementar un estilo de juego que disputa posiciones y controla accesos.",
+      "limitacion": "Los dispositivos de Ingeniería pueden resultar más relevantes que la fabricación si se prioriza el PvP.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Peletería facilita producir equipamiento con materiales propios. Ingeniería ofrece herramientas adicionales para situaciones de presión y retirada.",
+      "limitacion": "Fabricar equipo no garantiza una ventaja directa al mantener daño sobre el objetivo.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Una pareja autosuficiente permite progresar sin depender tanto de comprar materiales.",
+      "limitacion": "En un personaje dedicado al PvP, Ingeniería podría aportar más utilidad inmediata.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Peletería mantiene una progresión sencilla, pero Ingeniería merece atención por su potencial para complementar entradas, control y escapes.",
+      "limitacion": "Es la especialización donde más dudas genera mantener Peletería por delante de Ingeniería.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "motivoPrincipal": "Sastrería produce equipo de tela y Encantamiento permite aprovechar objetos mágicos y mejorar el equipamiento.",
+      "limitacion": "La pareja no genera consumibles propios y puede exigir materiales adicionales.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "motivoPrincipal": "La fabricación de equipo y los encantamientos apoyan la progresión. Alquimia ofrece una alternativa atractiva para mantener consumibles de maná.",
+      "limitacion": "El valor de la alternativa aumenta cuando se priorizan combates prolongados y autonomía.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "motivoPrincipal": "La combinación principal mantiene una fuente de equipo de tela y mejoras sin depender de una profesión de recolección.",
+      "limitacion": "No proporciona por sí misma una mejora exclusiva del daño; las recetas concretas determinarán su valor.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "La fabricación de equipo de tela y sus mejoras favorece la progresión. Ingeniería puede añadir opciones tácticas durante ventanas de lanzamiento.",
+      "limitacion": "Sastrería y Encantamiento no sustituyen la necesidad de gestionar el maná y la posición.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "La pareja principal permite desarrollar equipamiento. Ingeniería ofrece una alternativa para quien priorice herramientas adicionales durante las ofensivas PvP.",
+      "limitacion": "No está confirmado que esas herramientas compensen siempre el coste de cambiar de profesiones.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "La fabricación y mejora de equipo mantiene una progresión estable; Ingeniería puede complementar situaciones donde controlar el espacio es importante.",
+      "limitacion": "El valor de Ingeniería dependerá de qué dispositivos funcionen en las distintas modalidades PvP.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Sastrería y Encantamiento ayudan a desarrollar equipamiento mientras el personaje progresa. Ingeniería puede ofrecer recursos adicionales para situaciones de presión.",
+      "limitacion": "Las profesiones recomendadas no amplían directamente la duración ni la eficacia de los efectos de daño periódico.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "Fabricar y mejorar equipo resulta útil para el personaje, mientras Ingeniería puede complementar ciertas situaciones de supervivencia.",
+      "limitacion": "La combinación principal no aporta automáticamente beneficios específicos a los demonios invocados.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "principal": [
+        "Sastrería",
+        "Encantamiento"
+      ],
+      "alternativa": [
+        "Minería",
+        "Ingeniería"
+      ],
+      "motivoPrincipal": "La progresión con equipo de tela y encantamientos ofrece una base estable. Ingeniería puede aportar opciones durante situaciones de ataque y defensa.",
+      "limitacion": "Las ventajas reales dependerán de los objetos disponibles y su funcionamiento en PvP.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "principal": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "alternativa": [
+        "Desuello",
+        "Peletería"
+      ],
+      "motivoPrincipal": "Facilita obtener consumibles propios para una especialización dependiente del maná.",
+      "limitacion": "No proporciona directamente equipo fabricado para mejorar las estadísticas de lanzamiento.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "motivoPrincipal": "Permite aprovechar las pieles obtenidas durante la progresión para crear equipamiento.",
+      "limitacion": "Es necesario comprobar que las piezas fabricadas sean apropiadas para las necesidades de Feral en cada nivel.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "principal": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "alternativa": [
+        "Desuello",
+        "Peletería"
+      ],
+      "motivoPrincipal": "Favorece la autonomía en consumibles y la preparación para combates prolongados de apoyo.",
+      "limitacion": "Fabricar equipo puede ofrecer más comodidad durante ciertas etapas de progresión.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "principal": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "alternativa": [
+        "Desuello",
+        "Peletería"
+      ],
+      "motivoPrincipal": "Favorece disponer de consumibles propios para una especialización que utiliza maná y lanzamientos.",
+      "limitacion": "Renuncia a fabricar equipamiento de cuero y malla mediante Peletería.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "principal": [
+        "Desuello",
+        "Peletería"
+      ],
+      "alternativa": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "motivoPrincipal": "Permite trabajar en equipamiento para una especialización orientada al combate cercano.",
+      "limitacion": "Si se prioriza disponer de consumibles propios, Herboristería + Alquimia puede resultar más útil que fabricar equipo.",
+      "estado": "provisional"
+    },
+    {
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "principal": [
+        "Herboristería",
+        "Alquimia"
+      ],
+      "alternativa": [
+        "Desuello",
+        "Peletería"
+      ],
+      "motivoPrincipal": "Ayuda a sostener un suministro de consumibles para sesiones de curación y apoyo al grupo.",
+      "limitacion": "Los materiales y el tiempo necesarios para recolectarlos pueden reducir su comodidad.",
+      "estado": "provisional"
+    }
+  ]
+}
