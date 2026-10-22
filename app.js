@@ -39,6 +39,7 @@ const racialStatus = document.getElementById("racial-status");
 const racialError = document.getElementById("racial-error");
 let records = [];
 let racialProfiles = new Map();
+let racialBetaUpdates = new Map();
 let loading = false;
 let loaded = false;
 
@@ -104,6 +105,8 @@ function clearResult() {
   document.getElementById("no-alternative").hidden = true;
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
+  document.getElementById("race-beta-updates").hidden = true;
+  document.getElementById("race-beta-alternative").hidden = true;
 }
 
 function uniqueValues(rows, field) {
@@ -140,6 +143,48 @@ function validateData(advisor, profiles) {
   return races;
 }
 
+// La actualización oficial de beta es una capa opcional: no modifica el Excel original.
+function validateRacialBetaUpdates(data, profiles) {
+  if (!data || data.schemaVersion !== 1 || data.fechaRevision !== "2026-10-22"
+      || !data.fuente?.url?.startsWith("https://us.forums.blizzard.com/en/wow/")
+      || !Array.isArray(data.razas) || data.razas.length !== profiles.size
+      || !data.razas.every((row) => profiles.has(row.raza)
+        && Array.isArray(row.cambios) && row.cambios.length > 0
+        && row.cambios.every((text) => typeof text === "string" && text.trim()))) {
+    return new Map();
+  }
+  const updates = new Map(data.razas.map((row) => [row.raza, row.cambios]));
+  return updates.size === profiles.size ? updates : new Map();
+}
+
+function fillRacialBetaList(id, race) {
+  const list = document.getElementById(id);
+  const updates = racialBetaUpdates.get(race) || [];
+  list.replaceChildren(...updates.map((description) => {
+    const item = document.createElement("li");
+    item.textContent = description;
+    return item;
+  }));
+  return updates.length > 0;
+}
+
+function renderRaceBetaUpdates(record) {
+  const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
+  document.getElementById("race-beta-recommended-label").textContent =
+    "Raza recomendada · " + record.razaRecomendada;
+  const alternative = record.alternativa !== "-"
+    && fillRacialBetaList("race-beta-alternative-list", record.alternativa);
+  const alternativeView = document.getElementById("race-beta-alternative");
+  alternativeView.hidden = !alternative;
+  if (alternative) {
+    document.getElementById("race-beta-alternative-label").textContent =
+      "Alternativa · " + record.alternativa;
+  } else {
+    document.getElementById("race-beta-alternative-list").replaceChildren();
+  }
+  document.getElementById("race-beta-updates").hidden = !main && !alternative;
+}
+
 async function loadData() {
   if (loaded || loading) return;
   loading = true;
@@ -151,11 +196,13 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles] = await Promise.all([
+    const [advisor, profiles, updates] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
+      readJson("./data/racial-beta-updates.json").catch(() => null),
     ]);
     racialProfiles = validateData(advisor, profiles);
+    racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
     records = advisor.fichas;
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
     setOptions(racialSelect, [...racialProfiles.keys()], "Elige raza");
@@ -163,6 +210,7 @@ async function loadData() {
     loaded = true;
     status.textContent = "Elige una facción para comenzar.";
   } catch (error) {
+    racialBetaUpdates = new Map();
     setOptions(faction, [], "Datos no disponibles");
     setOptions(characterClass, [], "Elige primero una facción");
     setOptions(specialization, [], "Elige primero una clase");
@@ -217,6 +265,7 @@ specialization.addEventListener("change", () => {
     document.getElementById("alternative-use").textContent = alternative.usoPrincipal;
     document.getElementById("alternative-profile").hidden = false;
   }
+  renderRaceBetaUpdates(record);
   result.hidden = false;
   AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
@@ -251,6 +300,7 @@ function renderRacialMatches(listId, emptyId, field) {
 
 racialSelect.addEventListener("change", () => {
   racialResult.hidden = true;
+  document.getElementById("racial-beta-updates").hidden = true;
   document.getElementById("racial-name").textContent = "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
   renderRacialMatches("racial-recommended", "racial-no-recommended", "razaRecomendada");
@@ -264,6 +314,8 @@ racialSelect.addEventListener("change", () => {
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
     field.textContent = profile[field.dataset.racialField];
   }
+  document.getElementById("racial-beta-updates").hidden =
+    !fillRacialBetaList("racial-beta-list", profile.raza);
   racialResult.hidden = false;
   racialStatus.textContent = `Perfil disponible: ${profile.raza}.`;
 });
