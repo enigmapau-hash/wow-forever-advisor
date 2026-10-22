@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "titulo": "Inventario de iconos — WoW Forever Advisor",
+  "estado": "investigacion; no contiene ni autoriza redistribucion de imagenes",
+  "fuentes": {
+    "clientBuild": "1.60.1.70450",
+    "talentos": "https://zephras.com/data/forever/enUS/talents/1.60.1.70450.json",
+    "documentacion": "https://zephras.com/data/",
+    "copyright": "World of Warcraft y sus imagenes pertenecen a Blizzard Entertainment. Los FileDataID no constituyen una licencia de uso."
+  },
+  "facciones": [
+    {
+      "nombre": "Alianza",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "nombre": "Horda",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    }
+  ],
+  "clases": [
+    {
+      "clase": "Guerrero",
+      "token": "warrior",
+      "iconFileDataId": 626008,
+      "especializaciones": [
+        {
+          "nombre": "Armas",
+          "iconFileDataId": 132292
+        },
+        {
+          "nombre": "Furia",
+          "iconFileDataId": 132347
+        },
+        {
+          "nombre": "Protección",
+          "iconFileDataId": 132341
+        }
+      ]
+    },
+    {
+      "clase": "Paladín",
+      "token": "paladin",
+      "iconFileDataId": 626003,
+      "especializaciones": [
+        {
+          "nombre": "Sagrado",
+          "iconFileDataId": 135920
+        },
+        {
+          "nombre": "Protección",
+          "iconFileDataId": 135893
+        },
+        {
+          "nombre": "Reprensión",
+          "iconFileDataId": 135873
+        }
+      ]
+    },
+    {
+      "clase": "Cazador",
+      "token": "hunter",
+      "iconFileDataId": 626000,
+      "especializaciones": [
+        {
+          "nombre": "Bestias",
+          "iconFileDataId": 132164
+        },
+        {
+          "nombre": "Puntería",
+          "iconFileDataId": 132222
+        },
+        {
+          "nombre": "Supervivencia",
+          "iconFileDataId": 132215
+        }
+      ]
+    },
+    {
+      "clase": "Pícaro",
+      "token": "rogue",
+      "iconFileDataId": 626005,
+      "especializaciones": [
+        {
+          "nombre": "Asesinato",
+          "iconFileDataId": 132292
+        },
+        {
+          "nombre": "Combate",
+          "iconFileDataId": 132090
+        },
+        {
+          "nombre": "Sutileza",
+          "iconFileDataId": 132320
+        }
+      ]
+    },
+    {
+      "clase": "Sacerdote",
+      "token": "priest",
+      "iconFileDataId": 626004,
+      "especializaciones": [
+        {
+          "nombre": "Disciplina",
+          "iconFileDataId": 135987
+        },
+        {
+          "nombre": "Sagrado",
+          "iconFileDataId": 135920
+        },
+        {
+          "nombre": "Sombras",
+          "iconFileDataId": 136207
+        }
+      ]
+    },
+    {
+      "clase": "Chamán",
+      "token": "shaman",
+      "iconFileDataId": 626006,
+      "especializaciones": [
+        {
+          "nombre": "Elemental",
+          "iconFileDataId": 136048
+        },
+        {
+          "nombre": "Mejora",
+          "iconFileDataId": 136051
+        },
+        {
+          "nombre": "Restauración",
+          "iconFileDataId": 136052
+        }
+      ]
+    },
+    {
+      "clase": "Mago",
+      "token": "mage",
+      "iconFileDataId": 626001,
+      "especializaciones": [
+        {
+          "nombre": "Arcano",
+          "iconFileDataId": 135932
+        },
+        {
+          "nombre": "Fuego",
+          "iconFileDataId": 135810
+        },
+        {
+          "nombre": "Escarcha",
+          "iconFileDataId": 135846
+        }
+      ]
+    },
+    {
+      "clase": "Brujo",
+      "token": "warlock",
+      "iconFileDataId": 626007,
+      "especializaciones": [
+        {
+          "nombre": "Aflicción",
+          "iconFileDataId": 136145
+        },
+        {
+          "nombre": "Demonología",
+          "iconFileDataId": 136172
+        },
+        {
+          "nombre": "Destrucción",
+          "iconFileDataId": 136186
+        }
+      ]
+    },
+    {
+      "clase": "Druida",
+      "token": "druid",
+      "iconFileDataId": 625999,
+      "especializaciones": [
+        {
+          "nombre": "Equilibrio",
+          "iconFileDataId": 136096
+        },
+        {
+          "nombre": "Feral",
+          "iconFileDataId": 132276
+        },
+        {
+          "nombre": "Restauración",
+          "iconFileDataId": 136041
+        }
+      ]
+    }
+  ],
+  "razas": [
+    {
+      "raza": "Gnomo",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "raza": "Humano",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "raza": "Enano",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "raza": "Elfo",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "raza": "Orco",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "raza": "Tauren",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "raza": "Troll",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    },
+    {
+      "raza": "No-muerto",
+      "iconFileDataId": null,
+      "estado": "identificacion_pendiente"
+    }
+  ],
+  "notas": [
+    "Los iconFileDataId de clases y especializaciones provienen del campo icon del archivo beta de talentos.",
+    "Los iconFileDataId de clase/especializacion identifican texturas, no proporcionan URLs de imagen ni permisos de redistribucion.",
+    "El nombre 'Elfo' del JSON editorial no se cambia; identificar la representacion grafica apropiada antes de escoger archivo.",
+    "La interfaz debe utilizar textos accesibles incluso si un icono no se carga.",
+    "No descargar ni integrar binarios protegidos hasta confirmar la politica de uso aplicable al repositorio publico."
+  ]
+}
