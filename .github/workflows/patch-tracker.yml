@@ -5,6 +5,12 @@ on:
     # 07:23 UTC: mañana en España; GitHub puede retrasar la ejecución.
     - cron: "23 7 * * *"
   workflow_dispatch:
+  # Inicializa o comprueba el detector al fusionar cambios del propio tracker.
+  push:
+    branches: [main]
+    paths:
+      - "tools/patch_tracker.py"
+      - ".github/workflows/patch-tracker.yml"
   pull_request:
     paths:
       - "tools/patch_tracker.py"
