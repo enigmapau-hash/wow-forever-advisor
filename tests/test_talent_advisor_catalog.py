@@ -1,4 +1,4 @@
-"""Comprobación del catálogo y de las dos clases en Talent Advisor."""
+"""Comprobación del catálogo y de las tres clases en Talent Advisor."""
 import json
 from pathlib import Path
 import unittest
@@ -25,13 +25,13 @@ class TalentAdvisorCatalogTests(unittest.TestCase):
         self.assertEqual(catalog["schemaVersion"], 1)
         self.assertEqual(catalog["objetivos"], ["Subir al 60", "PvP", "Mazmorras"])
         self.assertEqual([e["nombre"] for e in catalog["clases"]],
-                         ["Guerrero", "Paladín"])
+                         ["Guerrero", "Paladín", "Chamán"])
         self.assertEqual(catalog["fuenteLegado"], "Guerrero")
         for entry in catalog["clases"]:
             self.assertTrue(entry["ruta"].startswith("./data/talent-advisor-"))
             self.assertEqual(self.classes[entry["nombre"]]["clase"], entry["nombre"])
 
-    def test_eighteen_unique_advisory_records(self):
+    def test_twentyseven_unique_advisory_records(self):
         seen = set()
         for name, data in self.classes.items():
             self.assertEqual(data["schemaVersion"], 1)
@@ -52,16 +52,21 @@ class TalentAdvisorCatalogTests(unittest.TestCase):
                 for field in ("resumen", "motivo", "limitacion", "progreso"):
                     self.assertTrue(record[field].strip())
                 self.assertNotIn("puntosAsignados", record)
-        self.assertEqual(len(seen), 18)
+        self.assertEqual(len(seen), 27)
 
     def test_legacy_is_reusable_and_points_are_class_specific(self):
         warrior = self.classes["Guerrero"]
         paladin = self.classes["Paladín"]
+        shaman = self.classes["Chamán"]
         self.assertEqual(set(warrior["legado"]), set(self.catalog["objetivos"]))
         self.assertNotIn("legado", paladin, "Paladín debe reutilizar Legado común")
+        self.assertNotIn("legado", shaman, "Chamán debe reutilizar Legado común")
         self.assertIn("Guerrero", warrior["obtenerPuntosLegado"][0])
         self.assertIn("Paladín", paladin["obtenerPuntosLegado"][0])
+        self.assertIn("Chamán", shaman["obtenerPuntosLegado"][0])
         self.assertNotIn("Guerrero", " ".join(paladin["obtenerPuntosLegado"]))
+        self.assertNotIn("Guerrero", " ".join(shaman["obtenerPuntosLegado"]))
+        self.assertNotIn("Paladín", " ".join(shaman["obtenerPuntosLegado"]))
         for data in self.classes.values():
             self.assertEqual(len(data["obtenerPuntosLegado"]), 3)
 
@@ -75,6 +80,19 @@ class TalentAdvisorCatalogTests(unittest.TestCase):
         urls = {entry["url"] for entry in self.classes["Paladín"]["fuentes"]}
         self.assertIn("https://news.blizzard.com/es-es/article/24302099/"
                       "world-of-warcraft-forever-repaso-a-fondo-de-la-clase-paladin", urls)
+
+    def test_shaman_uses_october_15_official_changes(self):
+        shaman = self.classes["Chamán"]
+        spells = {talent for row in shaman["fichas"] for talent in row["talentos"]}
+        required = {"Maestría elemental", "Ráfaga de lava", "Vinculado a la tierra",
+                    "Golpe de tormenta", "Maña mental", "Mareas vivas",
+                    "Escudo de agua", "Tótem marea de maná"}
+        self.assertTrue(required.issubset(spells))
+        self.assertNotIn("Llamada del trueno", spells,
+                         "El talento se eliminó en el parche oficial del 15/10")
+        self.assertIn("15 de octubre", shaman["notaFuentes"])
+        self.assertTrue(any("2360696/6" in source["url"]
+                            for source in shaman["fuentes"]))
 
     def test_no_recommendation_files_are_modified(self):
         self.assertTrue((DATA_DIR / "race-advisor.json").exists())
