@@ -1,0 +1,112 @@
+name: WoW Forever Patch Tracker
+
+on:
+  schedule:
+    # 07:23 UTC: mañana en España; GitHub puede retrasar la ejecución.
+    - cron: "23 7 * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "tools/patch_tracker.py"
+      - "tests/test_patch_tracker.py"
+      - ".github/workflows/patch-tracker.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wow-forever-patch-tracker
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probar detección sin llamadas de red
+        run: python -m unittest discover -s tests -p "test_patch_tracker.py" -v
+
+  monitor:
+    if: github.event_name != 'pull_request'
+    needs: tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Leer referencia persistente sin tocar main
+        id: baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --heads origin patch-tracker-state >/dev/null 2>&1; then
+            git fetch origin refs/heads/patch-tracker-state:refs/remotes/origin/patch-tracker-state
+            git show refs/remotes/origin/patch-tracker-state:state.json > "$RUNNER_TEMP/previous.json"
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Sin historial previo: se creará la primera referencia."
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Consultar Zephras y comparar talentos/Legado
+        id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/patch_tracker.py \
+            --previous "$RUNNER_TEMP/previous.json" \
+            --next "$RUNNER_TEMP/next.json" \
+            --report "$RUNNER_TEMP/report.md" \
+            --summary "$RUNNER_TEMP/summary.json"
+          python - "$RUNNER_TEMP/summary.json" "$GITHUB_OUTPUT" "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          data = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          with Path(sys.argv[2]).open("a", encoding="utf-8") as out:
+              out.write("status=" + data["status"] + "\n")
+          with Path(sys.argv[3]).open("a", encoding="utf-8") as out:
+              out.write("## Patch Tracker\n\n")
+              out.write("**Estado:** " + data["status"] + "\n\n")
+              out.write("**Versión nueva:** " + data["newBuild"] + "\n\n")
+              out.write("**Cambios:** " + str(data["changes"]) + "\n")
+          PY
+
+      - name: Abrir incidencia de revisión sin duplicarla
+        if: steps.detect.outputs.status == 'changed'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TITLE="$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["title"])' "$RUNNER_TEMP/summary.json")"
+          MARKER="$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["marker"])' "$RUNNER_TEMP/summary.json")"
+          if gh issue list --state all --limit 100 --json body --jq '.[].body' | grep -Fq -- "$MARKER"; then
+            echo "Esta diferencia ya tiene una incidencia; no se crea un duplicado."
+          else
+            gh issue create --title "$TITLE" --body-file "$RUNNER_TEMP/report.md"
+          fi
+
+      - name: Guardar solo el estado, en otra rama
+        if: steps.detect.outputs.status != 'unchanged'
+        shell: bash
+        run: |
+          set -euo pipefail
+          STATE_DIR="$RUNNER_TEMP/patch-state"
+          if [ "${{ steps.baseline.outputs.exists }}" = "true" ]; then
+            git worktree add --detach "$STATE_DIR" refs/remotes/origin/patch-tracker-state
+            git -C "$STATE_DIR" switch -c patch-tracker-state
+          else
+            git worktree add --detach "$STATE_DIR" HEAD
+            git -C "$STATE_DIR" switch --orphan patch-tracker-state
+            git -C "$STATE_DIR" rm -rf . || true
+          fi
+          cp "$RUNNER_TEMP/next.json" "$STATE_DIR/state.json"
+          git -C "$STATE_DIR" add state.json
+          git -C "$STATE_DIR" -c user.name="github-actions[bot]" \
+            -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Patch Tracker: actualizar referencia de datos"
+          git -C "$STATE_DIR" push origin HEAD:refs/heads/patch-tracker-state
