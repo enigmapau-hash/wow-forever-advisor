@@ -179,10 +179,11 @@ def make_report(old, new, status, changes, previous_version, url):
         lines += ["", "**Registros afectados:** " +
                   ", ".join(f"{key}: {value}" for key, value in sorted(totals.items())),
                   "", "## Revisión recomendada"]
-        if any(c["key"].startswith(("talent/warrior/", "class/warrior", "arrows/warrior"))
-               for c in changes):
-            lines.append("- Revisar las **nueve fichas piloto del Guerrero**: "
-                         "el efecto sobre cada objetivo aún debe valorarse.")
+        for token, nombre in (("warrior", "Guerrero"), ("paladin", "Paladín")):
+            if any(c["key"].startswith((f"talent/{token}/", f"class/{token}",
+                                         f"arrows/{token}")) for c in changes):
+                lines.append(f"- Revisar las **nueve fichas piloto del {nombre}**: "
+                             "el efecto sobre cada objetivo aún debe valorarse.")
         if any(c["area"] == "legado" for c in changes):
             lines.append("- Revisar los **tres perfiles de Legado** y sus requisitos.")
         if any(c["area"] == "progresión de puntos" for c in changes):

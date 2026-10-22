@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "clases": [
+    {
+      "nombre": "Guerrero",
+      "ruta": "./data/talent-advisor-warrior.json"
+    },
+    {
+      "nombre": "Paladín",
+      "ruta": "./data/talent-advisor-paladin.json"
+    }
+  ],
+  "fuenteLegado": "Guerrero",
+  "nota": "El Legado se reutiliza entre clases; las vías para obtener puntos se personalizan por clase. Todas las fichas siguen marcadas como borradores de beta."
+}

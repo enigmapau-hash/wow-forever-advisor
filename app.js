@@ -344,7 +344,7 @@ document.getElementById("profession-advisor").addEventListener("click", () => {
 });
 document.getElementById("retry-professions").addEventListener("click", loadProfessions);
 
-// Talent Advisor: piloto editorial del Guerrero. No asigna puntos automáticamente
+// Talent Advisor: asesor editorial por clases. No asigna puntos automáticamente
 // ni convierte notas provisionales de beta en builds completas.
 const talentView = document.getElementById("talent-view");
 const talentClass = document.getElementById("talent-class");
@@ -358,46 +358,76 @@ const talentSpecIcon = document.getElementById("talent-spec-icon");
 talentSpecIcon.addEventListener("load", () => { talentSpecIcon.hidden = false; });
 talentSpecIcon.addEventListener("error", () => { talentSpecIcon.hidden = true; });
 let talentData = null;
+let talentCatalog = new Map();
+let talentLegacy = null;
 let talentsLoading = false;
 let talentsLoaded = false;
 
+function validateTalentCatalog(catalog) {
+  const goals = ["Subir al 60", "PvP", "Mazmorras"];
+  const routeIsSafe = (route) => typeof route === "string"
+    && /^\.\/data\/talent-advisor-[a-z]+\.json$/.test(route);
+  if (!catalog || catalog.schemaVersion !== 1
+      || JSON.stringify(catalog.objetivos) !== JSON.stringify(goals)
+      || !Array.isArray(catalog.clases) || !catalog.clases.length
+      || typeof catalog.fuenteLegado !== "string"
+      || !catalog.clases.every((entry) => entry && typeof entry.nombre === "string"
+        && self.WOW_ICON_MAP?.clase?.[entry.nombre] && routeIsSafe(entry.ruta))
+      || new Set(catalog.clases.map((entry) => entry.nombre)).size !== catalog.clases.length
+      || !catalog.clases.some((entry) => entry.nombre === catalog.fuenteLegado)) {
+    throw new Error("Catálogo de clases de Talent Advisor no válido.");
+  }
+  return catalog;
+}
+
 function validateTalentData(data) {
   const goals = ["Subir al 60", "PvP", "Mazmorras"];
-  const specs = ["Armas", "Furia", "Protección"];
-  const required = (text) => typeof text === "string" && text.trim().length > 0;
+  const required = (value) => typeof value === "string" && value.trim().length > 0;
   const validList = (list) => Array.isArray(list) && list.length > 0 && list.every(required);
   if (!data || data.schemaVersion !== 1 || data.piloto !== true
-      || data.clase !== "Guerrero" || data.estado !== "borrador_beta"
+      || !required(data.clase) || !self.WOW_ICON_MAP?.clase?.[data.clase]
+      || data.estado !== "borrador_beta"
       || !required(data.versionCliente) || !required(data.fechaRevision)
       || !required(data.aviso)
       || !Array.isArray(data.objetivos) || JSON.stringify(data.objetivos) !== JSON.stringify(goals)
-      || !Array.isArray(data.especializaciones) || JSON.stringify(data.especializaciones) !== JSON.stringify(specs)
+      || !Array.isArray(data.especializaciones) || data.especializaciones.length !== 3
+      || new Set(data.especializaciones).size !== 3
+      || !data.especializaciones.every((spec) => required(spec)
+        && self.WOW_ICON_MAP?.especializacion?.[data.clase]?.[spec])
       || !Array.isArray(data.fichas) || data.fichas.length !== 9
-      || !data.legado || !validList(data.obtenerPuntosLegado)
+      || !validList(data.obtenerPuntosLegado)
       || !Array.isArray(data.fuentes) || data.fuentes.length < 2
-      || !data.fuentes.every((source) => required(source.nombre) && /^https:\/\//.test(source.url))
+      || !data.fuentes.every((source) => required(source.nombre)
+        && typeof source.url === "string" && /^https:\/\//.test(source.url))
       || !required(data.notaFuentes)) {
-    throw new Error("El piloto de talentos no tiene el esquema esperado.");
+    throw new Error("Las fichas de talentos están incompletas.");
   }
   const keys = new Set();
   for (const row of data.fichas) {
-    if (!row || !specs.includes(row.especializacion) || !goals.includes(row.objetivo)
+    if (!row || !data.especializaciones.includes(row.especializacion)
+        || !goals.includes(row.objetivo)
         || !["resumen", "motivo", "limitacion", "progreso"].every((field) => required(row[field]))
         || !validList(row.talentos)) {
-      throw new Error("Una ficha del Guerrero está incompleta.");
+      throw new Error("Una ficha de " + data.clase + " está incompleta.");
     }
     const key = JSON.stringify([row.especializacion, row.objetivo]);
-    if (keys.has(key)) throw new Error("Hay recomendaciones duplicadas.");
+    if (keys.has(key)) throw new Error("Existen recomendaciones duplicadas.");
     keys.add(key);
   }
-  for (const objetivo of goals) {
-    const legacy = data.legado[objetivo];
-    if (!legacy || !validList(legacy.ventajas)
-        || !["descripcion", "advertencia", "consejo"].every((field) => required(legacy[field]))) {
-      throw new Error("El asesor de Legado está incompleto.");
+  for (const spec of data.especializaciones) {
+    for (const goal of goals) {
+      if (!keys.has(JSON.stringify([spec, goal]))) {
+        throw new Error("Falta una combinación de " + data.clase + ".");
+      }
     }
-    for (const spec of specs) {
-      if (!keys.has(JSON.stringify([spec, objetivo]))) throw new Error("Falta una combinación del Guerrero.");
+  }
+  if (data.legado) {
+    for (const objetivo of goals) {
+      const legacy = data.legado[objetivo];
+      if (!legacy || !validList(legacy.ventajas)
+          || !["descripcion", "advertencia", "consejo"].every((field) => required(legacy[field]))) {
+        throw new Error("Los perfiles de Legado están incompletos.");
+      }
     }
   }
   return data;
@@ -431,13 +461,13 @@ function renderTalentResult() {
   const spec = talentSpec.dataset.value;
   const goal = talentGoal.dataset.value;
   const record = talentData.fichas.find((item) => item.especializacion === spec && item.objetivo === goal);
-  const legacy = talentData.legado[goal];
+  const legacy = talentLegacy?.legado?.[goal];
   if (!record || !legacy) {
     talentStatus.textContent = "Elige especialización y objetivo para consultar el piloto.";
     return;
   }
   document.getElementById("talent-result-title").textContent = spec;
-  document.getElementById("talent-build-info").textContent = `Guerrero · ${spec} · ${goal}`;
+  document.getElementById("talent-build-info").textContent = `${talentData.clase} · ${spec} · ${goal}`;
   document.getElementById("talent-overview").textContent = record.resumen;
   replaceTalentList("talent-priorities", record.talentos);
   document.getElementById("talent-reason").textContent = record.motivo;
@@ -463,10 +493,10 @@ function renderTalentResult() {
     return li;
   });
   document.getElementById("talent-sources").replaceChildren(...sources);
-  const icon = self.WOW_ICON_MAP?.especializacion?.["Guerrero"]?.[spec];
+  const icon = self.WOW_ICON_MAP?.especializacion?.[talentData.clase]?.[spec];
   if (icon) talentSpecIcon.src = icon;
   talentResult.hidden = false;
-  talentStatus.textContent = `Piloto disponible: Guerrero, ${spec}, ${goal} (beta; pendiente de validar).`;
+  talentStatus.textContent = `Ficha disponible: ${talentData.clase}, ${spec}, ${goal} (beta; pendiente de validar).`;
 }
 
 async function loadTalents() {
@@ -476,22 +506,37 @@ async function loadTalents() {
   selector.setAttribute("aria-busy", "true");
   talentError.hidden = true;
   talentRetry.disabled = true;
-  talentStatus.textContent = "Cargando piloto del Guerrero…";
+  talentStatus.textContent = "Cargando fichas de talentos…";
   clearTalentResult();
   try {
-    talentData = validateTalentData(await readJson("./data/talent-advisor-warrior.json"));
-    setOptions(talentClass, [talentData.clase], "Elige clase");
+    const catalog = validateTalentCatalog(await readJson("./data/talent-advisor-catalog.json"));
+    const classes = await Promise.all(catalog.clases.map((entry) => readJson(entry.ruta)));
+    const validated = classes.map((data, index) => {
+      const entry = catalog.clases[index];
+      const result = validateTalentData(data);
+      if (result.clase !== entry.nombre) throw new Error("Catálogo y fichero no coinciden.");
+      return result;
+    });
+    const nextMap = new Map(validated.map((data) => [data.clase, data]));
+    const nextLegacy = nextMap.get(catalog.fuenteLegado);
+    if (!nextLegacy?.legado) throw new Error("Falta la fuente común de Legado.");
+    talentCatalog = nextMap;
+    talentLegacy = nextLegacy;
+    talentData = null;
+    setOptions(talentClass, catalog.clases.map((entry) => entry.nombre), "Elige clase");
     setOptions(talentSpec, [], "Elige primero la clase");
     setOptions(talentGoal, [], "Elige primero una especialización");
     talentsLoaded = true;
-    talentStatus.textContent = "Elige Guerrero para empezar.";
+    talentStatus.textContent = "Elige una clase para empezar.";
   } catch (error) {
     talentData = null;
+    talentCatalog = new Map();
+    talentLegacy = null;
     setOptions(talentClass, [], "Datos no disponibles");
     setOptions(talentSpec, [], "Elige primero la clase");
     setOptions(talentGoal, [], "Elige primero una especialización");
     talentError.hidden = false;
-    talentStatus.textContent = "Piloto no disponible.";
+    talentStatus.textContent = "Fichas no disponibles.";
   } finally {
     talentsLoading = false;
     talentRetry.disabled = false;
@@ -501,10 +546,11 @@ async function loadTalents() {
 
 talentClass.addEventListener("change", () => {
   clearTalentResult();
-  const valid = talentData && talentClass.dataset.value === talentData.clase;
-  setOptions(talentSpec, valid ? talentData.especializaciones : [], "Elige primero la clase");
+  talentData = talentCatalog.get(talentClass.dataset.value) || null;
+  talentSpec.dataset.iconClass = talentData?.clase || "";
+  setOptions(talentSpec, talentData ? talentData.especializaciones : [], "Elige primero la clase");
   setOptions(talentGoal, [], "Elige primero una especialización");
-  talentStatus.textContent = valid ? "Elige especialización." : "Elige Guerrero para empezar.";
+  talentStatus.textContent = talentData ? "Elige especialización." : "Elige una clase para empezar.";
 });
 
 talentSpec.addEventListener("change", () => {

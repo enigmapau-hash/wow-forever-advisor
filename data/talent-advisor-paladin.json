@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Paladín",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones editoriales provisionales para el Paladín, basadas en anuncios oficiales y datos de beta. No son repartos exactos de 51 puntos ni recomendaciones de rendimiento demostradas a nivel 60. Los parches pueden modificar talentos, efectos y requisitos.",
+  "especializaciones": [
+    "Sagrado",
+    "Protección",
+    "Reprensión"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Sagrado",
+      "objetivo": "Subir al 60",
+      "resumen": "Subir de nivel con enfoque de sanación y apoyo, especialmente si juegas en grupo.",
+      "talentos": [
+        "Luz curativa",
+        "Reverencia",
+        "Favor divino",
+        "Choque Sagrado"
+      ],
+      "motivo": "Explorar la eficiencia del maná y la utilidad de sanaciones reforzadas; Choque Sagrado ofrece flexibilidad al progresar hacia talentos profundos.",
+      "limitacion": "Como sanador, matar enemigos solo puede resultar más lento que con Reprensión. No se ha validado una ruta de puntos por niveles.",
+      "progreso": "Aprender Golpe Sagrado desde el nivel 6; valorar la doble especialización a partir del 40 si alternas leveo en solitario y sanación en grupo."
+    },
+    {
+      "especializacion": "Sagrado",
+      "objetivo": "PvP",
+      "resumen": "Sanación puntual, resistencia a interrupciones y apoyo a aliados bajo presión.",
+      "talentos": [
+        "Enfoque espiritual",
+        "Fe implacable",
+        "Voz de la verdad",
+        "Favor divino",
+        "Choque Sagrado",
+        "Vigilia de la Luz"
+      ],
+      "motivo": "Priorizar el estudio de herramientas para mantener lanzamientos, responder a silencios y sanar objetivos bajo presión; Vigilia de la Luz amplía la utilidad al grupo.",
+      "limitacion": "Voz de la verdad tiene reutilización larga; Vigilia de la Luz necesita preparación. No se ha probado una distribución final para PvP al 60.",
+      "progreso": "Cuidar el posicionamiento, los tiempos defensivos y los efectos de control del rival; distinguir campos de batalla de PvP abierto."
+    },
+    {
+      "especializacion": "Sagrado",
+      "objetivo": "Mazmorras",
+      "resumen": "Sanador centrado en objetivos individuales, con nuevas herramientas para atender al grupo.",
+      "talentos": [
+        "Luz curativa",
+        "Reverencia",
+        "Infusión de Luz",
+        "Iluminación",
+        "Choque Sagrado",
+        "Vigilia de la Luz"
+      ],
+      "motivo": "Investigar la combinación de Destello de Luz, Luz Sagrada y Choque Sagrado, la regeneración de maná y la preparación de Vigilia de la Luz antes de daño de grupo.",
+      "limitacion": "Vigilia de la Luz exige anticipación; la sanación de varios aliados no es tan inmediata como la de un objetivo único.",
+      "progreso": "Coordinar con el tanque cuándo habrá daño fuerte o al grupo y utilizar facultades de apoyo y limpieza de efectos."
+    },
+    {
+      "especializacion": "Protección",
+      "objetivo": "Subir al 60",
+      "resumen": "Progresión con escudo y enfoque de tanque, especialmente si haces mazmorras durante el leveo.",
+      "talentos": [
+        "Sello de furia mejorado",
+        "Furia justa mejorada",
+        "Especialización en escudos",
+        "Juicio presto",
+        "Baluarte de templario"
+      ],
+      "motivo": "El Sello de furia y la gestión de maná permiten estudiar una ruta que sostenga amenaza y supervivencia en combates prolongados.",
+      "limitacion": "En solitario puede ser menos eficiente que Reprensión. Los talentos profundos tienen requisitos y no están disponibles desde el principio.",
+      "progreso": "A nivel 10 llega Sello de furia; Consagración se aprende a nivel 20 y su amenaza significativa se limita a cuatro enemigos a la vez."
+    },
+    {
+      "especializacion": "Protección",
+      "objetivo": "PvP",
+      "resumen": "Perfil especializado en supervivencia y protección de objetivos, no orientado al máximo daño.",
+      "talentos": [
+        "Furia justa mejorada",
+        "Deber sagrado",
+        "Juicio presto",
+        "Baluarte de templario"
+      ],
+      "motivo": "Evaluar mitigación y herramientas defensivas para sostener posiciones y proteger aliados; Juicio presto permite recuperar Sentencia cuando interesa.",
+      "limitacion": "Baluarte de templario comparte Abstinencia con otras defensas: no pueden encadenarse libremente. El paladín tiene limitaciones de interrupción y ralentización.",
+      "progreso": "Practicar el uso deliberado de bendiciones, escudos y control de objetivos en escenarios de grupo."
+    },
+    {
+      "especializacion": "Protección",
+      "objetivo": "Mazmorras",
+      "resumen": "Tanque de grupo: generación de amenaza, maná, bloqueo y defensas de emergencia.",
+      "talentos": [
+        "Sello de furia mejorado",
+        "Precisión",
+        "Furia justa mejorada",
+        "Especialización en escudos",
+        "Juicio presto",
+        "Baluarte de templario",
+        "Credo férreo",
+        "Escudo Sagrado"
+      ],
+      "motivo": "Estudiar el Sello de furia, la Sentencia como provocación, recuperación de maná al bloquear y defensas activas; Escudo Sagrado requiere Baluarte de templario.",
+      "limitacion": "Consagración tiene eficacia significativa limitada a los primeros cuatro enemigos. La protección de Baluarte de templario aplica Abstinencia; el árbol y las cifras siguen sujetos a ajustes.",
+      "progreso": "Mantener Furia recta al tanquear; considerar arma rápida de una mano y escudo para aprovechar Sello de furia, y coordinar objetivos con el grupo."
+    },
+    {
+      "especializacion": "Reprensión",
+      "objetivo": "Subir al 60",
+      "resumen": "Daño cuerpo a cuerpo y Sagrado, con gestión de maná y movilidad.",
+      "talentos": [
+        "Oración",
+        "Convicción",
+        "Sentencia santificada",
+        "Búsqueda de justicia",
+        "Reivindicación",
+        "Enjuiciador Sagrado"
+      ],
+      "motivo": "Valorar reducción del coste de facultades, golpes de arma y sentencias, velocidad de movimiento y continuidad de la presión ofensiva.",
+      "limitacion": "El rendimiento depende del arma, del maná y de los requisitos de cada talento. Los nombres y efectos pueden variar con los parches de beta.",
+      "progreso": "Entrenar Golpe Sagrado desde el 6 y practicar Sentencia: ya no consume el sello activo."
+    },
+    {
+      "especializacion": "Reprensión",
+      "objetivo": "PvP",
+      "resumen": "Presión de daño Sagrado, movilidad y control situacional.",
+      "talentos": [
+        "Búsqueda de justicia",
+        "Reivindicación",
+        "Arrepentimiento",
+        "Enjuiciador Sagrado",
+        "Giro de la Luz"
+      ],
+      "motivo": "Estudiar movilidad y control, mantener sentencias útiles y valorar Giro de la Luz si prefieres jugar combinando sellos.",
+      "limitacion": "El paladín no tiene una interrupción clásica ni una ralentización fiable. Giro de la Luz es un talento profundo; no se da por hecho que encaje con todas las configuraciones híbridas.",
+      "progreso": "Ajustar bendiciones y apoyo según el encuentro; diferenciar encuentros abiertos y objetivos de campos de batalla."
+    },
+    {
+      "especializacion": "Reprensión",
+      "objetivo": "Mazmorras",
+      "resumen": "DPS de apoyo con armas, daño Sagrado y utilidad de sentencias para el grupo.",
+      "talentos": [
+        "Enjuiciador Sagrado",
+        "Venganza",
+        "Campeón de la Luz",
+        "Instrumento de la ley",
+        "Giro de la Luz"
+      ],
+      "motivo": "Investigar cómo Enjuiciador Sagrado mantiene sentencias y cómo las opciones de daño y control de amenaza favorecen la cooperación con el tanque.",
+      "limitacion": "No afirmar una build óptima al 60: Giro de la Luz y una variante híbrida con Choque Sagrado pueden requerir decisiones incompatibles. La economía de maná también limita el daño sostenido.",
+      "progreso": "Mantener Furia recta desactivada al actuar como DPS y coordinar las sentencias con otros paladines del grupo."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Paladín: desafíos de clase anunciados a los niveles 25, 45 y 60, según las condiciones vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas ofrecen otras vías; comprobar requisitos antes de perseguirlos."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso a fondo del Paladín (15/10/2026)",
+      "url": "https://news.blizzard.com/es-es/article/24302099/world-of-warcraft-forever-repaso-a-fondo-de-la-clase-paladin"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    },
+    {
+      "nombre": "Zephras — Datos de talentos por compilación",
+      "url": "https://zephras.com/data/"
+    },
+    {
+      "nombre": "WoW Forever DB — Guía de talentos de Protección (referencia beta)",
+      "url": "https://wowfdb.com/classes/paladin/protection/talents/"
+    }
+  ],
+  "notaFuentes": "Los nombres de talentos siguen el artículo oficial español del 15/10/2026. Las prioridades son interpretación editorial, no builds de Blizzard. Algunas cifras y descripciones de fuentes de beta no coinciden entre sí; requieren cotejo con el cliente vigente. Legado reutiliza los perfiles comunes del asesor."
+}

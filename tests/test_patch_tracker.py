@@ -89,6 +89,18 @@ class PatchTrackerTests(unittest.TestCase):
         self.assertIn("tres perfiles de Legado", report["report"])
         self.assertIn("Subir al 60", report["report"])
 
+    def test_paladin_changes_are_reported_for_review(self):
+        before = fixture()
+        after = copy.deepcopy(before)
+        after["classes"][1]["talents"][0]["ranks"] = ["Updated paladin talent"]
+        state_a, state_b = tracker.snapshot(before), tracker.snapshot(after)
+        status, changes, previous = tracker.compare(state_a, state_b)
+        self.assertEqual(status, "changed")
+        report = tracker.make_report(state_a, state_b, status, changes, previous,
+                                     tracker.BASE_URL + before["build"] + ".json")
+        self.assertIn("nueve fichas piloto del Paladín", report["report"])
+        self.assertNotIn("nueve fichas piloto del Guerrero", report["report"])
+
     def test_added_and_removed_talents(self):
         old = fixture()
         old["classes"][0]["talents"].append({
