@@ -165,7 +165,6 @@ carpeta mediante HTTP local y abrir `tests/talent-advisor.html`; pulsar
 «Ejecutar pruebas». El test de navegación de Race Advisor verifica que
 la portada presenta solo los tres módulos disponibles, sin un módulo futuro.
 
-
 ## Mantenimiento v17 — portada simplificada
 
 Se retira de la pantalla principal la tarjeta **Build Advisor — Próximamente** porque duplicaría gran parte de Talent Advisor. **No se elimina ninguna funcionalidad existente**: Race Advisor, Profession Advisor, Talent Advisor (81 fichas) y los perfiles de Legado siguen disponibles.
@@ -190,8 +189,9 @@ Los nuevos cambios de datos y código también ejecutan el flujo de comprobacion
 
 ### Ampliación de las nueve clases — 22/10/2026
 
-El catálogo carga los nueve JSON `data/talent-advisor-*.json`. Caché v17 incluye
-los seis nuevos archivos para consulta offline tras una primera visita online.
+El catálogo carga los nueve JSON `data/talent-advisor-*.json`. La v16
+incorporó los seis nuevos archivos, que siguen disponibles offline en v17
+tras una primera visita online.
 Los nombres ingleses de nuevos talentos se identifican como tales para evitar
 inventar localizaciones. Las listas son prioridades de estudio, no builds exactas
 ni órdenes de gasto. Véase [contraste editorial](docs/talent-advisor-nine-classes.md).
