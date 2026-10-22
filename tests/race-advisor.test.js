@@ -45,6 +45,9 @@ runButton.addEventListener("click", async () => {
     const options = (select) => [...select.querySelectorAll("button")].map((option) => option.dataset.value).sort();
     const sameOptions = (select, values) => JSON.stringify(options(select)) === JSON.stringify([...new Set(values)].sort());
     check(doc.getElementById("advisor-view").hidden, "La aplicación debe abrir en inicio");
+    check(win.getComputedStyle(doc.getElementById("home-explore-racials")).backgroundColor
+      === win.getComputedStyle(doc.getElementById("profession-advisor")).backgroundColor,
+      "Explorar raciales y Profession Advisor comparten fondo de botón");
     doc.getElementById("race-advisor").click();
     await waitFor(() => !faction.disabled || !doc.getElementById("data-error").hidden);
     check(doc.getElementById("data-error").hidden, "Los datos deben cargarse");
@@ -64,6 +67,9 @@ runButton.addEventListener("click", async () => {
       check(sameOptions(spec, factionRows.filter((row) => row.clase === record.clase).map((row) => row.especializacion)), `${key}: especializaciones exactas`);
       choose(spec, record.especializacion);
       check(!result.hidden, `${key}: resultado visible`);
+      const raceIcon = doc.getElementById("result-race-icon");
+      check(raceIcon.getAttribute("src") === win.WOW_ICON_MAP.raza[record.razaRecomendada]
+        && raceIcon.alt === "", `${key}: icono racial correcto y decorativo`);
       const profile = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
       for (const field of result.querySelectorAll("[data-field]")) {
         const name = field.dataset.field;
@@ -74,6 +80,7 @@ runButton.addEventListener("click", async () => {
       if (record.alternativa === "-") missingAlternatives += 1;
       choose(spec, "");
       check(result.hidden, `${key}: selección incompleta sin resultado`);
+      check(raceIcon.hidden && !raceIcon.hasAttribute("src"), `${key}: sin icono antiguo al limpiar`);
     }
     check(missingAlternatives === 9, "Conservar las nueve alternativas no facilitadas");
 

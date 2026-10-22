@@ -190,6 +190,9 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .result-card { margin-top: 1rem; overflow-wrap: anywhere; }
 .recommendation { border-color: #645b3e; }
 .recommendation h2 { margin-block: 0.5rem; color: var(--gold); font-size: 2rem; line-height: 1.2; }
+.recommendation-heading { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+.recommendation-heading img { width: 2.75rem; height: 2.75rem; flex: none; object-fit: cover; border: 1px solid #a78e5c; border-radius: 0.35rem; }
+.recommendation-heading img[hidden] { display: none; }
 .result-combination { color: var(--muted); }
 .result-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-block: 1.5rem; }
 .result-summary dt { color: var(--muted); font-size: 0.85rem; }
@@ -234,7 +237,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .option-buttons button[aria-pressed="true"] { background: var(--gold); color: var(--background); }
 .option-prompt:empty { display: none; }
 
-.button-link { color: var(--gold); background: #18211b; text-decoration: none; justify-content: center; }
+.button-link { text-decoration: none; justify-content: center; cursor: pointer; border-color: var(--gold); }
 @media (min-width: 40rem) {
   .available-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

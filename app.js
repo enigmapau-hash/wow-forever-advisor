@@ -26,6 +26,9 @@ const faction = document.getElementById("faction");
 const characterClass = document.getElementById("character-class");
 const specialization = document.getElementById("specialization");
 const result = document.getElementById("advisor-result");
+const recommendationRaceIcon = document.getElementById("result-race-icon");
+recommendationRaceIcon.addEventListener("load", () => { recommendationRaceIcon.hidden = false; });
+recommendationRaceIcon.addEventListener("error", () => { recommendationRaceIcon.hidden = true; });
 const status = document.getElementById("selection-status");
 const dataError = document.getElementById("data-error");
 const retryButton = document.getElementById("retry-data");
@@ -93,6 +96,8 @@ function setOptions(group, values, placeholder) {
 
 function clearResult() {
   result.hidden = true;
+  recommendationRaceIcon.hidden = true;
+  recommendationRaceIcon.removeAttribute("src");
   for (const field of result.querySelectorAll("[data-field]")) field.textContent = "";
   document.getElementById("result-combination").textContent = "";
   document.getElementById("no-alternative").hidden = true;
@@ -198,6 +203,8 @@ specialization.addEventListener("change", () => {
   }
   const record = matches[0];
   const profile = racialProfiles.get(record.razaRecomendada);
+  const iconUrl = self.WOW_ICON_MAP?.raza?.[record.razaRecomendada];
+  if (iconUrl) recommendationRaceIcon.src = iconUrl;
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
     field.textContent = Object.hasOwn(record, key) ? record[key] : profile[key];
