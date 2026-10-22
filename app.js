@@ -1,14 +1,22 @@
 "use strict";
 
 if ("serviceWorker" in navigator && window.isSecureContext) {
+  const cacheIcons = () => {
+    if (!navigator.onLine) return;
+    navigator.serviceWorker.ready.then((registration) => {
+      registration.active?.postMessage({ type: "CACHE_WOW_ICONS" });
+    }).catch(() => {});
+  };
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js", {
       scope: "./",
       updateViaCache: "none",
-    }).catch((error) => {
+    }).then(cacheIcons).catch((error) => {
       console.warn("No se pudo activar el modo sin conexión.", error);
     });
   });
+  navigator.serviceWorker.addEventListener("controllerchange", cacheIcons);
+  window.addEventListener("online", cacheIcons);
 }
 
 const homeView = document.getElementById("home-view");
@@ -31,8 +39,8 @@ let racialProfiles = new Map();
 let loading = false;
 let loaded = false;
 
-// Names match docs/icon-inventory.json. Specializations also need their class
-// because names such as Sagrado and Protección are shared. No image paths yet.
+// Los nombres coinciden con los JSON y el inventario. En especializaciones
+// la clase distingue nombres compartidos (Sagrado, Protección, Restauración).
 function optionButton(value, kind, className = "") {
   const button = document.createElement("button");
   button.type = "button";
@@ -41,6 +49,21 @@ function optionButton(value, kind, className = "") {
   button.dataset.iconName = value;
   if (className) button.dataset.iconClass = className;
   button.setAttribute("aria-pressed", "false");
+  const icon = kind === "especializacion"
+    ? self.WOW_ICON_MAP?.especializacion?.[className]?.[value]
+    : self.WOW_ICON_MAP?.[kind]?.[value];
+  if (icon) {
+    const image = document.createElement("img");
+    image.className = "option-icon";
+    image.src = icon;
+    image.alt = ""; // Decorativo: el nombre de la opción sigue accesible.
+    image.width = 40;
+    image.height = 40;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", () => image.remove(), { once: true });
+    button.append(image);
+  }
   const label = document.createElement("span");
   label.className = "option-label";
   label.textContent = value;
