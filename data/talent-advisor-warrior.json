@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Guerrero",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones editoriales provisionales basadas en información de beta. No son repartos exactos de 51 puntos, ni una guía validada a nivel 60. Los parches pueden cambiar talentos, efectos y requisitos.",
+  "especializaciones": [
+    "Armas",
+    "Furia",
+    "Protección"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Armas",
+      "objetivo": "Subir al 60",
+      "resumen": "Daño con arma de dos manos y gestión de ira durante el leveo.",
+      "talentos": [
+        "Maestría táctica mejorada",
+        "Control de furia",
+        "Fragor de la sangre",
+        "Maestro de armas",
+        "Golpe mortal"
+      ],
+      "motivo": "Priorizar recursos y oportunidades de Abrumar al avanzar; la lista indica talentos a estudiar, no un orden obligatorio de compra.",
+      "limitacion": "La efectividad depende del arma y del ritmo de combate; los prerrequisitos concretos aún no están validados.",
+      "progreso": "Aprender nuevos rangos de facultades y adaptar el arma disponible."
+    },
+    {
+      "especializacion": "Armas",
+      "objetivo": "PvP",
+      "resumen": "Presión con Golpe mortal, control del oponente y cambios de actitud.",
+      "talentos": [
+        "Golpe mortal",
+        "Maestría táctica mejorada",
+        "Lanzazo",
+        "Maestro de armas",
+        "Fragor de la sangre"
+      ],
+      "motivo": "Valorar reducción de sanación, movilidad y respuesta frente a rivales montados; el efecto de Maestro de armas depende del tipo de arma.",
+      "limitacion": "Depende de la proximidad, del arma, de la ira y de la coordinación; no es una build PvP 60 probada.",
+      "progreso": "Distinguir JcJ abierto de campos de batalla; la progresión de Honor y rango es independiente de los talentos."
+    },
+    {
+      "especializacion": "Armas",
+      "objetivo": "Mazmorras",
+      "resumen": "Papel provisional de DPS de dos manos en mazmorras.",
+      "talentos": [
+        "Golpe mortal",
+        "Golpes de barrido",
+        "Maestro de armas"
+      ],
+      "motivo": "Explorar daño a uno o varios enemigos y gestión de recursos sin asumir que rinde mejor que Furia.",
+      "limitacion": "Pendientes pruebas de amenaza, rendimiento ante jefes y grupos de enemigos al nivel 60.",
+      "progreso": "Coordinar el daño con el tanque y revisar equipamiento de arma de dos manos."
+    },
+    {
+      "especializacion": "Furia",
+      "objetivo": "Subir al 60",
+      "resumen": "Ritmo de ataque, ira y continuidad entre combates.",
+      "talentos": [
+        "Crueldad",
+        "Cólera desbocada",
+        "Golpes enfurecidos",
+        "Sed de sangre"
+      ],
+      "motivo": "Investigar generación de ira, golpes críticos y la progresión hacia Sed de sangre.",
+      "limitacion": "Comprobar recuperación y supervivencia: una configuración de daño no garantiza leveo más rápido.",
+      "progreso": "Cambiar de arma y entrenar facultades según el equipo y los niveles disponibles."
+    },
+    {
+      "especializacion": "Furia",
+      "objetivo": "PvP",
+      "resumen": "Daño sostenido y movilidad como alternativa situacional a Armas.",
+      "talentos": [
+        "Sed de sangre",
+        "Aullido perforador",
+        "Golpes enfurecidos"
+      ],
+      "motivo": "Valorar movilidad, presión ofensiva y herramientas para perseguir o ralentizar objetivos.",
+      "limitacion": "No se ha contrastado su rendimiento competitivo frente a Armas al nivel 60.",
+      "progreso": "Considerar enfrentamientos y objetivos de campo de batalla, no solo daño."
+    },
+    {
+      "especializacion": "Furia",
+      "objetivo": "Mazmorras",
+      "resumen": "Papel provisional de DPS con doble empuñadura.",
+      "talentos": [
+        "Especialización en doble empuñadura",
+        "Aluvión",
+        "Sed de sangre"
+      ],
+      "motivo": "Priorizar el estudio de doble empuñadura, generación de ira y daño continuado.",
+      "limitacion": "Los cambios de Forever impiden trasladar sin revisar las guías clásicas de daño; equipo y precisión importan.",
+      "progreso": "Comprobar armas disponibles y gestión de amenaza en grupos."
+    },
+    {
+      "especializacion": "Protección",
+      "objetivo": "Subir al 60",
+      "resumen": "Opción de leveo orientada a jugar como tanque, sobre todo con grupo.",
+      "talentos": [
+        "Especialización en escudos",
+        "Revancha mejorada",
+        "Vanguardia"
+      ],
+      "motivo": "Estudiar defensa y herramientas de escudo para sesiones frecuentes de mazmorras.",
+      "limitacion": "No presentarla como la forma más rápida de subir en solitario.",
+      "progreso": "Si se sube mayoritariamente solo, comparar Armas y Furia antes de gastar puntos."
+    },
+    {
+      "especializacion": "Protección",
+      "objetivo": "PvP",
+      "resumen": "Supervivencia, escudo y control de objetivos; enfoque especializado.",
+      "talentos": [
+        "Vanguardia",
+        "Muro de escudo mejorado",
+        "Especialización en escudos"
+      ],
+      "motivo": "Estudiar herramientas de movilidad y protección para situaciones concretas.",
+      "limitacion": "No confundir resistencia con mayor daño o rendimiento universal en PvP.",
+      "progreso": "Definir si se trata de objetivos de campo de batalla o enfrentamientos abiertos."
+    },
+    {
+      "especializacion": "Protección",
+      "objetivo": "Mazmorras",
+      "resumen": "Papel principal de tanque, con énfasis en amenaza y mitigación.",
+      "talentos": [
+        "Especialización en escudos",
+        "Maestro de defensa",
+        "Desafío",
+        "Bastión",
+        "Vanguardia",
+        "Embate con escudo"
+      ],
+      "motivo": "Evaluar defensa, uso del escudo, control de amenazas y supervivencia del grupo.",
+      "limitacion": "El orden de talentos y sus prerrequisitos exactos debe contrastarse con el cliente vigente.",
+      "progreso": "Mantener equipamiento defensivo adecuado y coordinación con el sanador."
+    }
+  ],
+  "legado": {
+    "Subir al 60": {
+      "descripcion": "Legado para mejorar la progresión mientras subes de nivel.",
+      "ventajas": [
+        "Buen descanso",
+        "Emoción de la aventura",
+        "Con talento"
+      ],
+      "advertencia": "«Con talento» adelanta la obtención de puntos de clase; no aumenta el máximo al 60 y requiere inversión previa en Aventura. No presupongas ventajas desbloqueadas en un personaje nuevo.",
+      "consejo": "Empezar por los desafíos de clase y valorar los oficios no recolectores para ganar más puntos."
+    },
+    "PvP": {
+      "descripcion": "Legado orientado al progreso de Honor o al JcJ abierto.",
+      "ventajas": [
+        "Cuestión de honor",
+        "Alerta máxima"
+      ],
+      "advertencia": "«Cuestión de honor» requiere 5 puntos previos en Ingenio y no aumenta directamente el rango PvP. «Alerta máxima» requiere inversión en Aventura y no funciona en campos de batalla.",
+      "consejo": "Consultar los desafíos y la temporada PvP para conseguir puntos de Legado; no confundir Honor con puntos de rango."
+    },
+    "Mazmorras": {
+      "descripcion": "Legado para recuperación, durabilidad y utilidad en grupo.",
+      "ventajas": [
+        "Este muerto está muy vivo",
+        "Refuerzo",
+        "Permanencia"
+      ],
+      "advertencia": "«Permanencia» requiere inversión en Ingenio. Estas ventajas no sustituyen un equipo adecuado, control de amenaza ni coordinación.",
+      "consejo": "Combinar desafíos de clase, oficios y objetivos de mazmorra para desbloquear puntos adicionales."
+    }
+  },
+  "obtenerPuntosLegado": [
+    "Guerrero: desafíos de clase al alcanzar los niveles 25, 45 y 60, según las condiciones anunciadas.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos de PvP, mazmorras y bandas ofrecen otras vías; comprobar requisitos antes de perseguirlos."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso de Sacerdote y Guerrero",
+      "url": "https://news.blizzard.com/es-es/article/24301514/repaso-a-fondo-de-las-clases-sacerdote-y-guerrero-en-world-of-warcraft-forever"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    },
+    {
+      "nombre": "Inventario de datos por versión — Zephras",
+      "url": "https://zephras.com/data/"
+    }
+  ],
+  "notaFuentes": "Las prioridades de la ficha son interpretación editorial del piloto, no recomendaciones publicadas por Blizzard. Algunas traducciones y árboles siguen pendientes de validación con la versión de lanzamiento."
+}
