@@ -72,7 +72,7 @@ el borrado de selecciones, las nueve alternativas «-» y la navegación. Despu�
 de una ejecución online y la activación del service worker, se puede detener el
 servidor y repetirla desde la misma pestaña para verificar el modo offline.
 
-Dentro de Race Advisor, «Explorar raciales» permite consultar las ocho razas del
+Dentro de Race Advisor, «Race Explorer» permite consultar las ocho razas del
 JSON y volver al selector conservando su selección.
 Cada perfil muestra «Raza recomendada» y «Raza alternativa» con las combinaciones
 de facción, clase y especialización obtenidas exclusivamente de `race-advisor.json`.
@@ -249,3 +249,10 @@ Consulta los [criterios editoriales y la evidencia de cada addon](docs/addon-adv
 Las pruebas automatizadas comprueban filtros, contextos, fuentes, teclado,
 navegación, pantallas móviles de 320–412 px y las 81 fichas offline. La
 prueba en Android físico corresponde al usuario.
+
+## Race Explorer — v20 (nomenclatura)
+
+Se renombra «Explorar raciales» a **Race Explorer** en la portada y en su
+pantalla de consulta. La descripción explica que se exploran habilidades
+raciales. No cambian los datos, rutas, lógica ni diseño. Caché PWA **v20** para
+actualizar la interfaz en dispositivos ya instalados.
