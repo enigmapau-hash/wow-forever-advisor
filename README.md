@@ -109,7 +109,8 @@ Algunos árboles comparten ilustración; hay 44 direcciones gráficas distintas.
 Para no redistribuir archivos propiedad de Blizzard en este repositorio, las
 imágenes se cargan desde la CDN de Wowhead, `wow.zamimg.com`. La lista exacta
 está en `icons/icon-map.js`; si falla una imagen, su botón conserva el nombre.
-No se incluye el script de Wowhead ni ninguna dependencia de terceros.
+No se incluye el script de Wowhead ni bibliotecas externas; las imágenes sí
+dependen de que su CDN responda en la primera visita con conexión.
 
 El service worker guarda las imágenes en la **caché privada del navegador**.
 Tras abrir la PWA con conexión, intenta descargar el conjunto en segundo plano
