@@ -55,14 +55,14 @@ button.addEventListener("click", async () => {
     check(!spec.disabled && goal.disabled, "La clase habilita especializaciones");
     check([...spec.querySelectorAll("button")].length === 3, "Tres especializaciones");
     const formats = new Set();
-    for (const row of data.fichas) {
-      choose(spec, row.especializacion);
+    for (const name of data.especializaciones) {
+      choose(spec, name);
       check(goal.dataset.value === "" && result.hidden, "Cambiar especialización limpia resultado");
       for (const objective of data.objetivos) {
         choose(goal, objective);
         check(!result.hidden, "La recomendación se muestra");
         const record = data.fichas.find((ficha) =>
-          ficha.especializacion === row.especializacion && ficha.objetivo === objective);
+          ficha.especializacion === name && ficha.objetivo === objective);
         formats.add(record.especializacion + "|" + record.objetivo);
         check(doc.getElementById("talent-overview").textContent === record.resumen, "Resumen editorial exacto");
         check(doc.getElementById("talent-reason").textContent === record.motivo, "Razón exacta");
