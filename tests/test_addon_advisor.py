@@ -10,9 +10,20 @@ ROOT = Path(__file__).resolve().parents[1]
 class AddonAdvisorTests(unittest.TestCase):
     def test_v17_data_and_tracker_preserved(self):
         hashes = json.loads((ROOT / 'tests/v17-preserved-hashes.json').read_text())
+        notice = (' Los talentos destacados se repiten para los tres objetivos de cada '
+                  'especialización; no son builds diferenciadas ni probadas al nivel 60.').encode()
+        disclosed = {f'data/talent-advisor-{token}.json' for token in
+                     ('hunter', 'rogue', 'priest', 'mage', 'warlock', 'druid')}
         for path, expected in hashes.items():
             with self.subTest(path=path):
-                self.assertEqual(hashlib.sha256((ROOT / path).read_bytes() if path.endswith('.xlsx') else (ROOT / path).read_bytes().replace(b'\r\n', b'\n')).hexdigest(), expected)
+                content = (ROOT / path).read_bytes()
+                if path in disclosed:
+                    # En v21 sólo se permite cambiar el aviso editorial, no las recomendaciones.
+                    self.assertEqual(content.count(notice), 1)
+                    content = content.replace(notice, b'', 1)
+                if not path.endswith('.xlsx'):
+                    content = content.replace(b'\r\n', b'\n')
+                self.assertEqual(hashlib.sha256(content).hexdigest(), expected)
 
     def test_publication_not_confused_with_testing(self):
         catalog = json.loads((ROOT / 'data/addon-advisor.json').read_text(encoding='utf-8'))
