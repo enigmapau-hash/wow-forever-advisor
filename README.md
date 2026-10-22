@@ -84,3 +84,16 @@ con las 51 fichas, la separación de las 51 recomendaciones y 42 alternativas,
 los grupos vacíos y la navegación desde cada coincidencia. También comprueba el
 selector y la consulta racial; se puede repetir con el servidor detenido tras la
 visita online, sin ejecutar de nuevo la prueba exhaustiva del selector.
+
+## Selectores por botones
+
+Los selectores usan botones de texto con `aria-pressed`, agrupados mediante
+`fieldset` y `legend`. Tab permite recorrerlos y Enter o Espacio seleccionarlos.
+Cambiar facción o clase limpia las selecciones dependientes y la ficha anterior.
+
+Cada botón lleva `data-icon-kind` (`faccion`, `clase`, `especializacion` o `raza`)
+y `data-icon-name`, con el nombre literal de `docs/icon-inventory.json`.
+Las especializaciones añaden `data-icon-class` para distinguir nombres compartidos.
+El texto permanece en `.option-label`; esta estructura permite incorporar más
+adelante iconos locales autorizados sin cambiar el nombre accesible. No se generan
+rutas ni imágenes mientras no existan esos archivos y sus permisos.
