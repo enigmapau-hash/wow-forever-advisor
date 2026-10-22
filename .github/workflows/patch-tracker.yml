@@ -98,7 +98,7 @@ jobs:
           STATE_DIR="$RUNNER_TEMP/patch-state"
           if [ "${{ steps.baseline.outputs.exists }}" = "true" ]; then
             git worktree add --detach "$STATE_DIR" refs/remotes/origin/patch-tracker-state
-            git -C "$STATE_DIR" switch -c patch-tracker-state
+            git -C "$STATE_DIR" switch -C patch-tracker-state
           else
             git worktree add --detach "$STATE_DIR" HEAD
             git -C "$STATE_DIR" switch --orphan patch-tracker-state
