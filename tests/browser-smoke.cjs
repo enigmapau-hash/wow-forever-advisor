@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v19`);
-      await cache.put("./obsolete-v19", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v20`);
+      await cache.put("./obsolete-v20", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -63,12 +63,16 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v20")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v19")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v21")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v20")), "Previous app cache removed after activation");
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();
     await page.locator("#talent-class button").first().waitFor();
+    await page.locator('#talent-class button[data-value="Cazador"]').click();
+    await page.locator('#talent-spec button[data-value="Bestias"]').click();
+    await page.locator('#talent-goal button[data-value="Subir al 60"]').click();
+    assert.match(await page.locator("#talent-advice-warning").textContent(), /Los talentos destacados se repiten para los tres objetivos/, "Cazador shows evidence limit even offline");
     let offline = 0;
     for (const entry of catalog.clases) {
       await page.locator(`#talent-class button[data-value="${entry.nombre}"]`).click();
