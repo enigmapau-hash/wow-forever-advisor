@@ -90,7 +90,7 @@ class TalentAdvisorCatalogTests(unittest.TestCase):
         self.assertTrue(required.issubset(spells))
         self.assertNotIn("Llamada del trueno", spells,
                          "El talento se eliminó en el parche oficial del 15/10")
-        self.assertIn("15 de octubre", shaman["notaFuentes"])
+        self.assertIn("15/10", shaman["notaFuentes"])
         self.assertTrue(any("2360696/6" in source["url"]
                             for source in shaman["fuentes"]))
 
