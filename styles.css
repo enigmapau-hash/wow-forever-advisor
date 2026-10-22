@@ -286,12 +286,6 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   .option-buttons .option-label { font-size: 0.83rem; }
 }
 
-@media (min-width: 48rem) {
-  .future[aria-labelledby="future-title"] .module-list {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Talent Advisor: ficha de lectura, sin calculadora ni árbol interactivo. */
 .talent-overview { margin-top: 1rem; color: var(--text); font-size: 1rem; }
 .talent-list, .talent-sources { padding-left: 1.3rem; margin: 0.75rem 0 0; }
