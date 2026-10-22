@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-22",
+  "version": "Beta de Forever · cambios del 15/10/2026",
+  "fuente": {
+    "nombre": "Blizzard · WoW Forever Beta Development Notes — Updated October 15",
+    "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+  },
+  "alcance": "Las ocho razas del Excel v5. No incluye a los Cielonatos (Skyborne), raza jugable adicional. Los rankings y las explicaciones originales del Excel no se han recalculado.",
+  "razas": [
+    {
+      "raza": "Gnomo",
+      "cambios": [
+        "Eureka!: beneficio de 8 segundos sin cargas, conservando el efecto sobre daño y costes; ahora también afecta a Palabra de poder: escudo.",
+        "Blizzard señala una incidencia con el uso de Eureka! en sigilo o invisibilidad."
+      ]
+    },
+    {
+      "raza": "Humano",
+      "cambios": [
+        "Especialización en espadas sustituida por Ruthless: +2 % a la probabilidad de golpe crítico."
+      ]
+    },
+    {
+      "raza": "Enano",
+      "cambios": [
+        "Especialización en mazas sustituida por Earth Fury: +2 % al daño y a la sanación críticos.",
+        "Find Treasure también proporciona una posibilidad de hallar objetos adicionales en la mayoría de cofres."
+      ]
+    },
+    {
+      "raza": "Elfo",
+      "cambios": [
+        "Quickness: su bonificación de velocidad de movimiento ahora se acumula con otras bonificaciones de velocidad de movimiento.",
+        "Cambio visual: los escudos ya no se muestran durante la forma de espíritu (Wisp Form)."
+      ]
+    },
+    {
+      "raza": "Orco",
+      "cambios": [
+        "Especialización en hachas sustituida por Savage: +1 % a la probabilidad de golpe crítico.",
+        "Blood Fury: reutilización aumentada de 2 a 3 minutos.",
+        "Shatter Curse: disipa maldiciones y banes en vez de otorgar inmunidad; reducción del daño mágico recibido del 5 % (antes 15 %)."
+      ]
+    },
+    {
+      "raza": "Tauren",
+      "cambios": [
+        "Endurance: +2 % al daño y a la sanación críticos en vez de +1 % a la probabilidad de golpe.",
+        "Plainsrunning: +3 % a la velocidad montada, acumulable con otros aumentos; exige mantener un desplazamiento mínimo.",
+        "Cultivation: reutilización reducida de 60 a 15 minutos.",
+        "War Stomp: reutilización reducida de 2 minutos a 90 segundos."
+      ]
+    },
+    {
+      "raza": "Troll",
+      "cambios": [
+        "Regeneration: bonificaciones de regeneración de salud aumentadas del 10 % al 20 %."
+      ]
+    },
+    {
+      "raza": "No-muerto",
+      "cambios": [
+        "Touch of the Grave: probabilidad de activación y reutilización ajustadas para ofrecer un beneficio más constante.",
+        "Will of the Forsaken ya no está disponible bajo el efecto de Scatter Shot.",
+        "Touch of the Dead: 30 % de probabilidad de activación para lanzadores y 20 % para paladines, pícaros y guerreros; reutilización interna de 25 segundos. Deja de escalar con aumentos de daño de las Sombras."
+      ]
+    }
+  ]
+}

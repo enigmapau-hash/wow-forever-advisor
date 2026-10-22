@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v20`);
-      await cache.put("./obsolete-v20", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v21`);
+      await cache.put("./obsolete-v21", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -63,8 +63,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v21")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v20")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v22")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v21")), "Previous app cache removed after activation");
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();
@@ -89,6 +89,29 @@ const server = http.createServer(async (req, res) => {
     }
     assert.equal(offline, 81);
     console.log("Offline reload: 81/81 records; shared Legacy available");
+    await page.goto(base + "/#raciales");
+    await page.locator("#racial-race button").first().waitFor();
+    const racialUpdates = await page.evaluate(async () => (await fetch("./data/racial-beta-updates.json")).json());
+    for (const entry of racialUpdates.razas) {
+      await page.locator(`#racial-race button[data-value="${entry.raza}"]`).click();
+      assert.equal(await page.locator("#racial-beta-updates").isVisible(), true,
+        `Racial beta updates visible offline for ${entry.raza}`);
+      const text = await page.locator("#racial-beta-list").textContent();
+      for (const change of entry.cambios) {
+        assert(text.includes(change), `Official racial update matches source data for ${entry.raza}`);
+      }
+    }
+    const raceData = await page.evaluate(async () => (await fetch("./data/race-advisor.json")).json());
+    const orc = raceData.fichas.find((row) => row.razaRecomendada === "Orco");
+    assert(orc, "Orc remains present as a recommended race in the original Excel");
+    await page.goto(base + "/#race-advisor");
+    await page.locator(`#faction button[data-value="${orc.faccion}"]`).click();
+    await page.locator(`#character-class button[data-value="${orc.clase}"]`).click();
+    await page.locator(`#specialization button[data-value="${orc.especializacion}"]`).click();
+    assert.match(await page.locator("#race-beta-recommended-list").textContent(), /Savage/,
+      "Race Advisor shows official Orc change without recalculating original recommendation");
+    assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "Orco");
+    console.log("Racials: 8/8 official updates available offline; Race Advisor context preserved");
     await require("./addon-browser.cjs")(page, context, base, browser);
     await page.goto(base + "/#talent-advisor");
     await page.locator("#talent-class button").first().waitFor();

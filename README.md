@@ -271,3 +271,19 @@ El resto de los datos, las recomendaciones existentes y el diseño se
 conservan. Se amplían pruebas de integridad y de visualización offline,
 se añade la [auditoría editorial](docs/talent-advisor-v21-audit.md) y
 se renueva caché a **v21**.
+
+## Race Advisor y Race Explorer — v22 (raciales de la beta)
+
+Sin modificar el **Excel maestro**, sus 51 recomendaciones, las ocho
+fichas raciales originales ni las puntuaciones, se incorpora una capa
+editorial independiente de los cambios raciales oficiales publicados por
+Blizzard el 15/10/2026. Ambos módulos muestran las modificaciones
+correspondientes a la raza seleccionada. Race Advisor también muestra
+los cambios de la alternativa, cuando existe.
+
+Las notas cubren las ocho razas del Excel y no incluyen la nueva raza
+jugable **Cielonatos (Skyborne)**. No se actualizan los rankings sin
+contrastar su efecto en el meta y en la versión de lanzamiento. Los
+nuevos datos están disponibles offline tras actualizar la PWA: caché **v22**.
+
+Véase [revisión y fuentes de la v22](docs/racial-v22-review.md).
