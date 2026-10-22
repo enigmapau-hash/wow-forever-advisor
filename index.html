@@ -76,6 +76,7 @@
         <header class="selector-intro">
           <h1 id="advisor-title" tabindex="-1">Race Advisor</h1>
           <p class="subtitle">Elige facción, clase y especialización para consultar tu ficha.</p>
+          <a class="back-link" id="explore-racials" href="#raciales">Explorar raciales</a>
         </header>
 
         <form id="advisor-form" class="selector-card" aria-label="Selección de personaje" aria-busy="true">
@@ -127,6 +128,41 @@
             <p class="original-text" data-field="usoPrincipal"></p>
             <h3>Comentarios del perfil racial</h3>
             <p class="original-text" data-field="comentarios"></p>
+          </article>
+        </section>
+      </section>
+
+      <section id="racial-view" aria-labelledby="racial-title" hidden>
+        <a class="back-link" id="back-selector" href="#race-advisor">← Volver al selector principal</a>
+        <header class="selector-intro">
+          <h1 id="racial-title" tabindex="-1">Explorar raciales</h1>
+          <p class="subtitle">Consulta el perfil original de cada raza.</p>
+        </header>
+        <div class="selector-card">
+          <label for="racial-race">Raza</label>
+          <select id="racial-race" disabled><option value="">Elige raza</option></select>
+          <p class="selection-status" id="racial-status" role="status">Cargando perfiles raciales…</p>
+          <div id="racial-error" role="alert" hidden>
+            <p>No se han podido cargar los perfiles raciales. Comprueba tu conexión e inténtalo de nuevo.</p>
+            <button id="retry-racials" type="button">Reintentar</button>
+          </div>
+        </div>
+        <section id="racial-result" aria-labelledby="racial-name" hidden>
+          <p class="source-note">Análisis del Excel maestro. Las cuestiones pendientes de validación siguen sin confirmar; los perfiles se conservan sin cambios.</p>
+          <article class="result-card recommendation">
+            <h2 id="racial-name"></h2>
+            <h3>Escala de utilidad</h3>
+            <p class="rating" data-racial-field="escalaUtilidad"></p>
+            <h3>Uso principal</h3>
+            <p class="original-text" data-racial-field="usoPrincipal"></p>
+          </article>
+          <div class="profile-grid">
+            <article class="result-card"><h3>Fortalezas</h3><p class="original-text" data-racial-field="fortalezas"></p></article>
+            <article class="result-card"><h3>Debilidades</h3><p class="original-text" data-racial-field="debilidades"></p></article>
+          </div>
+          <article class="result-card">
+            <h3>Comentarios</h3>
+            <p class="original-text" data-racial-field="comentarios"></p>
           </article>
         </section>
       </section>

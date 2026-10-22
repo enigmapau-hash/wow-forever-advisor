@@ -178,7 +178,7 @@ footer span { color: var(--gold); font-size: 1.2rem; }
 .back-link:focus-visible, select:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
 .selector-intro { margin-block: 1rem 2rem; }
 .selector-intro h1 { font-size: clamp(2rem, 5vw, 3rem); }
-#advisor-title:focus { outline: none; }
+#advisor-title:focus, #racial-title:focus { outline: none; }
 .selector-card, .result-card { padding: 1.5rem; border: 1px solid var(--border); border-radius: 0.75rem; background: #18211b; }
 .selector-fields { display: grid; gap: 1.25rem; }
 .selector-fields > div { min-width: 0; }
