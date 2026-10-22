@@ -132,10 +132,10 @@ La cobertura del mapa se comprueba sin dependencias con `node tests/icon-map.tes
 Tras publicar la actualización, hay que verificar en Android el aspecto de
 todos los iconos y su recuperación en modo avión.
 
-## Talent Advisor — Guerrero y Paladín (beta)
+## Talent Advisor — Guerrero, Paladín y Chamán (beta)
 
 La pantalla de inicio da acceso a **Talent Advisor**, actualmente limitado a
-**Guerrero (Armas, Furia y Protección)** y **Paladín (Sagrado, Protección y Reprensión)**. Tras elegir clase, especialización y
+**Guerrero (Armas, Furia y Protección)**, **Paladín (Sagrado, Protección y Reprensión)** y **Chamán (Elemental, Mejora y Restauración)**. Tras elegir clase, especialización y
 objetivo (**Subir al 60, PvP o Mazmorras**), se muestra una tarjeta con:
 
 - Talentos de clase **para estudiar**, sin orden de compra ni supuesta build 51/51.
@@ -151,8 +151,8 @@ Profession Advisor. **No se infiere una distribución final de 51 puntos** a
 partir de las notas de Blizzard. Cambios de talentos o Legado en futuros parches
 exigirán revisar las recomendaciones antes de marcarlas como actuales.
 
-Datos: `data/talent-advisor-warrior.json` (9 fichas del Guerrero y 3 perfiles comunes de Legado), `data/talent-advisor-paladin.json` (9 del Paladín) y `data/talent-advisor-catalog.json` (catálogo de clases). Cada clase mantiene sus propios pasos para obtener puntos de Legado. Consultar `docs/talent-advisor-warrior-pilot.md`, `docs/talent-advisor-paladin-pilot.md` y `docs/progression-systems.md`.
-La PWA precarga todos estos JSON en caché **v14** para uso offline tras la primera visita online. Los iconos siguen las mismas limitaciones de la CDN ya indicadas.
+Datos: `data/talent-advisor-warrior.json` (9 fichas del Guerrero y 3 perfiles comunes de Legado), `data/talent-advisor-paladin.json` (9 del Paladín), `data/talent-advisor-shaman.json` (9 del Chamán) y `data/talent-advisor-catalog.json` (catálogo de clases). Cada clase mantiene sus propios pasos para obtener puntos de Legado. Consultar las fichas piloto en `docs/talent-advisor-*-pilot.md` y `docs/progression-systems.md`.
+La PWA precarga todos estos JSON en caché **v15** para uso offline tras la primera visita online. Los iconos siguen las mismas limitaciones de la CDN ya indicadas.
 
 Pruebas sin paquetes adicionales:
 
@@ -160,7 +160,7 @@ Pruebas sin paquetes adicionales:
 python -m unittest discover -s tests
 ```
 
-Para comprobar las dieciocho fichas y la navegación en el navegador, servir la
+Para comprobar las veintisiete fichas y la navegación en el navegador, servir la
 carpeta mediante HTTP local y abrir `tests/talent-advisor.html`; pulsar
 «Ejecutar pruebas». El antiguo test de navegación de Race Advisor ya contempla
 las tres tarjetas disponibles y el único módulo futuro (Build Advisor).

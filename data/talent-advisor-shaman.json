@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Chamán",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones editoriales provisionales del Chamán para la beta 1.60.1.70450. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. Incorporan las correcciones oficiales del 15 de octubre de 2026; nuevos parches pueden cambiar talentos, efectos y requisitos.",
+  "especializaciones": [
+    "Elemental",
+    "Mejora",
+    "Restauración"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Elemental",
+      "objetivo": "Subir al 60",
+      "resumen": "Daño a distancia con relámpagos y fuego, controlando el gasto de maná.",
+      "talentos": [
+        "Convección",
+        "Prontitud elemental",
+        "Llamada de la llama",
+        "Vinculado a la tierra",
+        "Ráfaga de lava"
+      ],
+      "motivo": "Estudiar los talentos que facilitan lanzar hechizos, alargan Choque de llamas y permiten mantener distancia con Vinculado a la tierra. Ráfaga de lava pasa a ser un hito de 21 puntos desde el ajuste de octubre.",
+      "limitacion": "Depende del maná, del espacio para lanzar hechizos y de tener acceso a talentos profundos; no es una secuencia de puntos comprobada del 10 al 60.",
+      "progreso": "Aprender a reposicionar tótems mediante Proyección totémica (nivel 22) y utilizar Regreso totémico (nivel 20) cuando corresponda."
+    },
+    {
+      "especializacion": "Elemental",
+      "objetivo": "PvP",
+      "resumen": "Presión con hechizos de Naturaleza y Fuego, posicionamiento y control de adversarios.",
+      "talentos": [
+        "Ojo de la tormenta",
+        "Vinculado a la tierra",
+        "Alcance elemental",
+        "Ráfaga de lava",
+        "Maestría elemental"
+      ],
+      "motivo": "Ojo de la tormenta ayuda a mantener lanzamientos bajo presión; Vinculado a la tierra permite retener rivales cerca del tótem. Maestría elemental regresó como talento final de 31 puntos tras las notas del 15 de octubre.",
+      "limitacion": "Maestría elemental ya no garantiza un golpe crítico como en Classic y requiere Ráfaga de lava. La movilidad, la línea de visión y las interrupciones enemigas condicionan mucho esta opción.",
+      "progreso": "Usar Proyección totémica para alterar el posicionamiento y coordinar los tótems defensivos con el grupo."
+    },
+    {
+      "especializacion": "Elemental",
+      "objetivo": "Mazmorras",
+      "resumen": "DPS de hechizos con utilidad de tótems y gestión de amenaza y maná.",
+      "talentos": [
+        "Convección",
+        "Prontitud elemental",
+        "Llamada de la llama",
+        "Sobrecarga de relámpagos",
+        "Ráfaga de lava",
+        "Maestría elemental"
+      ],
+      "motivo": "Combinar presión a objetivos con hechizos de Naturaleza y Fuego y aprovechar Sobrecarga de relámpagos, que no añade amenaza por el segundo lanzamiento. La nueva Maestría elemental ofrece una ventana ofensiva.",
+      "limitacion": "Los cambios de daño y costes de Cadena de relámpagos y Nova de Fuego en beta impiden asumir un reparto o una rotación óptimos al 60.",
+      "progreso": "Colocar tótems adecuados para tu grupo; evita elegir beneficios excluyentes sin coordinarlo con otros chamanes."
+    },
+    {
+      "especializacion": "Mejora",
+      "objetivo": "Subir al 60",
+      "resumen": "Combate cuerpo a cuerpo y hechizos de apoyo, con atención al maná y la movilidad.",
+      "talentos": [
+        "Golpes de trueno",
+        "Maña mental",
+        "Lobo fantasmal mejorado",
+        "Enfoque chamanístico",
+        "Golpe de tormenta"
+      ],
+      "motivo": "Explorar los golpes críticos, convertir intelecto en poder de ataque y reducir los costes de choques. Golpe de tormenta se desbloquea con 16 puntos en Mejora y ofrece interacción con hechizos de Naturaleza.",
+      "limitacion": "La progresión depende del arma, de los recursos y de los requisitos por fila; no se trata de una orden de compra ni de una build garantizada para jugar en solitario.",
+      "progreso": "Practicar Lobo fantasmal, imbuiciones de arma de mayor duración y la recuperación de tótems tras cada encuentro."
+    },
+    {
+      "especializacion": "Mejora",
+      "objetivo": "PvP",
+      "resumen": "Presión cuerpo a cuerpo con herramientas de persecución, supervivencia y choques.",
+      "talentos": [
+        "Garra de la Tierra",
+        "Lobo fantasmal mejorado",
+        "Dureza",
+        "Golpe de tormenta",
+        "Arma vorágine"
+      ],
+      "motivo": "Combinar movilidad, aguante y la posibilidad de convertir golpes de arma en lanzamientos más rápidos mediante Arma vorágine. Golpe de tormenta abre oportunidades para hechizos de Naturaleza.",
+      "limitacion": "El daño explosivo y la supervivencia dependen de acercarse al objetivo y disponer de maná; ninguna configuración está validada como mejor en PvP al nivel 60.",
+      "progreso": "Coordinar tótems de resistencia o utilidad y no dar por hecho que los beneficios de armas y tótems se acumulan siempre."
+    },
+    {
+      "especializacion": "Mejora",
+      "objetivo": "Mazmorras",
+      "resumen": "DPS cuerpo a cuerpo con daño híbrido y utilidad de tótems para el grupo.",
+      "talentos": [
+        "Maña mental",
+        "Aluvión",
+        "Armas elementales",
+        "Golpe de tormenta",
+        "Armas de espíritu",
+        "Arma vorágine"
+      ],
+      "motivo": "Estudiar la mejora del rendimiento con armas y hechizos y cómo Armas de espíritu permite gestionar la amenaza cuando no se usa Arma Muerdepiedras.",
+      "limitacion": "La función de tanque temporal mencionada por Blizzard no convierte Mejora en tanque principal validado para mazmorras al 60; armas y amenaza siguen siendo decisivas.",
+      "progreso": "Convenir con el grupo qué tótems y qué imbuición de arma usar; no asumir que Viento Furioso y Lengua de Fuego siempre se acumulan."
+    },
+    {
+      "especializacion": "Restauración",
+      "objetivo": "Subir al 60",
+      "resumen": "Opción de progresión para quienes suben sanando en grupos y mazmorras.",
+      "talentos": [
+        "Enfoque de las mareas",
+        "Conciencia",
+        "Escudo de agua",
+        "Enfoque curativo",
+        "Tótems restauradores"
+      ],
+      "motivo": "Valorar la eficiencia de curación, regeneración en lanzamiento y Escudo de agua, que ahora también puede activarse con críticos de hechizo según las notas del 15 de octubre.",
+      "limitacion": "Restauración puede ser más lenta en solitario que Mejora o Elemental; la guía describe prioridades de apoyo, no una ruta optimizada de leveo individual.",
+      "progreso": "Aprovechar la doble especialización al nivel 40 para combinar sanación de grupo con una opción de daño si resulta útil."
+    },
+    {
+      "especializacion": "Restauración",
+      "objetivo": "PvP",
+      "resumen": "Sanación y apoyo con resistencia a presión enemiga, recuperación de maná y respuesta rápida.",
+      "talentos": [
+        "Enfoque curativo",
+        "Conciencia",
+        "Escudo de agua",
+        "Tótem marea de maná",
+        "Mareas vivas"
+      ],
+      "motivo": "Enfoque curativo ayuda a sostener lanzamientos, y Mareas vivas ofrece respuesta inmediata y sinergia con Sanación en cadena en aliados afectados.",
+      "limitacion": "La eficacia depende del posicionamiento de los tótems, de las interrupciones del rival y de la gestión de maná; no existe una asignación de nivel 60 probada aquí.",
+      "progreso": "Coordinar sanaciones, disipaciones y reposicionamiento de tótems según el objetivo del campo de batalla."
+    },
+    {
+      "especializacion": "Restauración",
+      "objetivo": "Mazmorras",
+      "resumen": "Sanador de grupo que combina sanación directa y en cadena con apoyo totémico.",
+      "talentos": [
+        "Enfoque de las mareas",
+        "Conciencia",
+        "Enfoque curativo",
+        "Escudo de agua",
+        "Tótem marea de maná",
+        "Forma curativa",
+        "Mareas vivas"
+      ],
+      "motivo": "Priorizar la sostenibilidad del maná, la resistencia de las curas bajo daño y la interacción de Mareas vivas con Sanación en cadena. Tótem marea de maná es accesible antes que en Classic.",
+      "limitacion": "No puede garantizarse la configuración óptima al 60; la efectividad de los tótems exige una colocación correcta y coordinación.",
+      "progreso": "Practicar Llamada de los elementos, Regreso totémico y Proyección totémica para sostener beneficios y evitar pérdidas de maná o posicionamiento."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Chamán: desafíos de clase anunciados al alcanzar niveles 25, 45 y 60, sujetos a los requisitos vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas permiten obtener más puntos de Legado; consultar los requisitos antes de elegir ruta."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso a fondo de Mago y Chamán (7/10/2026)",
+      "url": "https://news.blizzard.com/es-es/article/24302097/world-of-warcraft-forever-repaso-a-fondo-de-las-clases-mago-y-chaman"
+    },
+    {
+      "nombre": "Blizzard — Notas de desarrollo Forever del 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    },
+    {
+      "nombre": "Zephras — Datos de talentos por compilación",
+      "url": "https://zephras.com/data/"
+    }
+  ],
+  "notaFuentes": "Los nombres españoles se basan en el artículo oficial del 7/10, corregido por las notas oficiales del 15/10 (Maestría elemental vuelve al hito de 31 puntos; Ráfaga de lava pasa al de 21; Vinculado a la tierra al de 16; Llamada del trueno se elimina). Las prioridades son editoriales y no se presentan como builds definitivas."
+}

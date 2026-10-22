@@ -35,3 +35,8 @@ Actualizado: 22 de octubre de 2026.
 
 - El usuario confirmó el **22/10/2026** que la pantalla de inicio y los iconos de la versión v11 se ven bien.
 - Pendiente de confirmar visualmente la igualdad de fondo del botón y el icono junto al nombre de raza recomendada en v12.
+
+## Ajustes realizados en v15
+
+- Se ha cambiado la instrucción inicial de Talent Advisor a «Elige tu clase, especialización y objetivo para explorar los talentos y ventajas de Legado», conforme a la anotación estética aprobada al revisar v14.
+- Se ha adaptado la fila de clases a tres botones, uno por clase disponible, pendiente de comprobación en Android.
