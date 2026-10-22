@@ -132,10 +132,10 @@ La cobertura del mapa se comprueba sin dependencias con `node tests/icon-map.tes
 Tras publicar la actualización, hay que verificar en Android el aspecto de
 todos los iconos y su recuperación en modo avión.
 
-## Talent Advisor — Guerrero, Paladín y Chamán (beta)
+## Talent Advisor — nueve clases (beta)
 
-La pantalla de inicio da acceso a **Talent Advisor**, actualmente limitado a
-**Guerrero (Armas, Furia y Protección)**, **Paladín (Sagrado, Protección y Reprensión)** y **Chamán (Elemental, Mejora y Restauración)**. Tras elegir clase, especialización y
+La pantalla de inicio da acceso a **Talent Advisor**, disponible para
+**las nueve clases**, con sus tres especializaciones y tres objetivos: **81 fichas**. Se conservan las 27 originales de Guerrero, Paladín y Chamán; se añaden 54 de Cazador, Pícaro, Sacerdote, Mago, Brujo y Druida. Tras elegir clase, especialización y
 objetivo (**Subir al 60, PvP o Mazmorras**), se muestra una tarjeta con:
 
 - Talentos de clase **para estudiar**, sin orden de compra ni supuesta build 51/51.
@@ -152,7 +152,7 @@ partir de las notas de Blizzard. Cambios de talentos o Legado en futuros parches
 exigirán revisar las recomendaciones antes de marcarlas como actuales.
 
 Datos: `data/talent-advisor-warrior.json` (9 fichas del Guerrero y 3 perfiles comunes de Legado), `data/talent-advisor-paladin.json` (9 del Paladín), `data/talent-advisor-shaman.json` (9 del Chamán) y `data/talent-advisor-catalog.json` (catálogo de clases). Cada clase mantiene sus propios pasos para obtener puntos de Legado. Consultar las fichas piloto en `docs/talent-advisor-*-pilot.md` y `docs/progression-systems.md`.
-La PWA precarga todos estos JSON en caché **v15** para uso offline tras la primera visita online. Los iconos siguen las mismas limitaciones de la CDN ya indicadas.
+La PWA precarga los nueve JSON de clase y el catálogo en caché **v16** para uso offline tras la primera visita online. Los iconos siguen las mismas limitaciones de la CDN ya indicadas.
 
 Pruebas sin paquetes adicionales:
 
@@ -160,7 +160,7 @@ Pruebas sin paquetes adicionales:
 python -m unittest discover -s tests
 ```
 
-Para comprobar las veintisiete fichas y la navegación en el navegador, servir la
+Para comprobar las 81 fichas y la navegación en el navegador, servir la
 carpeta mediante HTTP local y abrir `tests/talent-advisor.html`; pulsar
 «Ejecutar pruebas». El antiguo test de navegación de Race Advisor ya contempla
 las tres tarjetas disponibles y el único módulo futuro (Build Advisor).
@@ -178,3 +178,21 @@ el funcionamiento, las limitaciones de cobertura y la ejecución manual en
 [`docs/patch-tracker.md`](docs/patch-tracker.md).
 
 Los nuevos cambios de datos y código también ejecutan el flujo de comprobaciones `Advisor Data Checks` (pruebas de Python, JavaScript e iconos) en GitHub Actions.
+
+### Ampliación de las nueve clases — 22/10/2026
+
+El catálogo carga los nueve JSON `data/talent-advisor-*.json`. Caché v16 incluye
+los seis nuevos archivos para consulta offline tras una primera visita online.
+Los nombres ingleses de nuevos talentos se identifican como tales para evitar
+inventar localizaciones. Las listas son prioridades de estudio, no builds exactas
+ni órdenes de gasto. Véase [contraste editorial](docs/talent-advisor-nine-classes.md).
+
+Pruebas de navegador automatizadas (Node, Playwright 1.62.1 y Chromium):
+
+    npm install --no-save --package-lock=false playwright@1.62.1
+    npx playwright install chromium
+    node tests/browser-smoke.cjs
+
+El runner inicia un servidor local, recorre 81 fichas, prueba las otras vistas,
+teclado, móvil, un fallo de datos con reintento y recarga offline.
+GitHub Actions ejecuta estas comprobaciones además de Python y sintaxis.

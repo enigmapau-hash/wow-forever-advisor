@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Cazador",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones provisionales de Cazador, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar.",
+  "especializaciones": [
+    "Bestias",
+    "Puntería",
+    "Supervivencia"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Bestias",
+      "objetivo": "Subir al 60",
+      "resumen": "Progresar junto a una mascota, vigilando su salud y tus recursos.",
+      "talentos": [
+        "Endurance Training",
+        "Focused Fire",
+        "Summon Hawk",
+        "Improved Mend Pet"
+      ],
+      "motivo": "Valorar la resistencia de la mascota antes de buscar más daño.",
+      "limitacion": "La mascota puede perder amenaza; prepara una retirada. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: prueba jabalí para acercamiento o tortuga para defensa; compara familias y revisa felicidad, lealtad y rangos de entrenamiento. No hay una familia óptima verificada al 60."
+    },
+    {
+      "especializacion": "Bestias",
+      "objetivo": "PvP",
+      "resumen": "Presionar con la mascota sin perder el control de su posición.",
+      "talentos": [
+        "Endurance Training",
+        "Focused Fire",
+        "Summon Hawk",
+        "Improved Mend Pet"
+      ],
+      "motivo": "Reservar las órdenes de ataque para el objetivo acordado y retirar la mascota del control enemigo.",
+      "limitacion": "El rival puede controlar o eliminar a la mascota. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: valora araña para inmovilizar o murciélago frente a lanzadores. No confundas ralentizar lanzamientos con interrumpir; comprueba los ajustes recientes de cada habilidad."
+    },
+    {
+      "especializacion": "Bestias",
+      "objetivo": "Mazmorras",
+      "resumen": "Aportar daño con mascota manteniendo las rutas de los pulls seguras.",
+      "talentos": [
+        "Endurance Training",
+        "Focused Fire",
+        "Summon Hawk",
+        "Improved Mend Pet"
+      ],
+      "motivo": "Probar el rendimiento de la mascota en combates sostenidos y retirarla antes de un salto.",
+      "limitacion": "Una mascota mal situada puede atraer grupos adicionales. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: coordina utilidad y amenaza con el tanque; evita áreas cerca de enemigos controlados. Si estudias Lone Wolf, recuerda que requiere no tener mascota activa."
+    },
+    {
+      "especializacion": "Puntería",
+      "objetivo": "Subir al 60",
+      "resumen": "Priorizar disparos y pausas de recuperación entre enemigos.",
+      "talentos": [
+        "Efficiency",
+        "Careful Aim",
+        "Trueshot Aura",
+        "Sniper Shot"
+      ],
+      "motivo": "Comparar el coste de eliminar cada enemigo antes de encadenar otro.",
+      "limitacion": "Los disparos largos dificultan reaccionar a enemigos cercanos. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: prueba jabalí para acercamiento o tortuga para defensa; compara familias y revisa felicidad, lealtad y rangos de entrenamiento. No hay una familia óptima verificada al 60."
+    },
+    {
+      "especializacion": "Puntería",
+      "objetivo": "PvP",
+      "resumen": "Buscar líneas de tiro sin quedar expuesto durante un lanzamiento.",
+      "talentos": [
+        "Efficiency",
+        "Careful Aim",
+        "Trueshot Aura",
+        "Sniper Shot"
+      ],
+      "motivo": "Elegir posiciones desde las que puedas retroceder tras cada disparo.",
+      "limitacion": "La línea de visión y el acercamiento enemigo limitan los disparos. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: valora araña para inmovilizar o murciélago frente a lanzadores. No confundas ralentizar lanzamientos con interrumpir; comprueba los ajustes recientes de cada habilidad."
+    },
+    {
+      "especializacion": "Puntería",
+      "objetivo": "Mazmorras",
+      "resumen": "Mantener daño a distancia y coordinar objetivos con el tanque.",
+      "talentos": [
+        "Efficiency",
+        "Careful Aim",
+        "Trueshot Aura",
+        "Sniper Shot"
+      ],
+      "motivo": "Evitar comenzar con un lanzamiento largo antes de que el tanque establezca amenaza.",
+      "limitacion": "Los pulls cortos pueden terminar antes de completar un disparo largo. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: coordina utilidad y amenaza con el tanque; evita áreas cerca de enemigos controlados. Si estudias Lone Wolf, recuerda que requiere no tener mascota activa."
+    },
+    {
+      "especializacion": "Supervivencia",
+      "objetivo": "Subir al 60",
+      "resumen": "Alternar distancias con una ruta de retirada preparada.",
+      "talentos": [
+        "Surefooted",
+        "Resourcefulness",
+        "Strider Kick",
+        "Lacerating Strikes"
+      ],
+      "motivo": "Practicar la transición entre disparos y cuerpo a cuerpo con enemigos aislados.",
+      "limitacion": "Entrar en cuerpo a cuerpo aumenta la exposición al daño. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: prueba jabalí para acercamiento o tortuga para defensa; compara familias y revisa felicidad, lealtad y rangos de entrenamiento. No hay una familia óptima verificada al 60."
+    },
+    {
+      "especializacion": "Supervivencia",
+      "objetivo": "PvP",
+      "resumen": "Aprovechar terreno y trampas para disputar espacio.",
+      "talentos": [
+        "Surefooted",
+        "Resourcefulness",
+        "Strider Kick",
+        "Lacerating Strikes"
+      ],
+      "motivo": "Guardar movilidad para salir de una situación desfavorable.",
+      "limitacion": "Los rivales pueden evitar la posición de tus trampas. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: valora araña para inmovilizar o murciélago frente a lanzadores. No confundas ralentizar lanzamientos con interrumpir; comprueba los ajustes recientes de cada habilidad."
+    },
+    {
+      "especializacion": "Supervivencia",
+      "objetivo": "Mazmorras",
+      "resumen": "Aportar daño y control sin comprometer los enemigos apartados.",
+      "talentos": [
+        "Surefooted",
+        "Resourcefulness",
+        "Strider Kick",
+        "Lacerating Strikes"
+      ],
+      "motivo": "Acordar dónde colocar trampas y qué objetivo debe permanecer sin daño.",
+      "limitacion": "Los sangrados y el daño de área pueden romper el control. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Mascotas: coordina utilidad y amenaza con el tanque; evita áreas cerca de enemigos controlados. Si estudias Lone Wolf, recuerda que requiere no tener mascota activa."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Cazador: desafíos de clase anunciados en niveles 25, 45 y 60; comprobar requisitos vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas permiten obtener más puntos de Legado; consultar los requisitos antes de elegir ruta."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso oficial de clases (EN)",
+      "url": "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid"
+    },
+    {
+      "nombre": "Blizzard — Correcciones del 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "nombre": "Blizzard — Calendario actualizado de beta",
+      "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    }
+  ],
+  "notaFuentes": "Talentos con nombres oficiales ingleses para evitar traducciones no contrastadas. Las listas son candidatos a estudiar, no orden de compra ni selección simultánea garantizada; hay que comprobar rangos y prerrequisitos. Las notas del 15/10 prevalecen sobre los repasos iniciales. Consejos por objetivo: criterio editorial provisional. Mascotas: Dismember del crocolisco reduce curación un 25% durante 6 s, con 15 s de reutilización; Sonic Blast del murciélago ralentiza lanzamientos un 30% durante 20 s, con 60 s de reutilización. Entrenamiento: verificar puntos y rangos disponibles, sin reparto inventado."
+}

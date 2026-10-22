@@ -11,7 +11,7 @@
 - Verifica el formato, la versión y la cobertura de clases y Legado. **Si falla la consulta o el esquema es desconocido, termina con error y no avanza el estado.**
 - Obtiene una huella SHA-256 **por campo y por ID estable** de los talentos, árboles, dependencias, ventajas de Legado, desafíos para ganar puntos y puntos de clase por nivel.
 - Compara con el estado anterior y clasifica los cambios como añadidos, eliminados o modificados. Detecta modificaciones en la misma compilación, incluso si Zephras cambia el contenido sin cambiar la etiqueta de versión.
-- Abre una incidencia (*issue*) en GitHub **solo si hay cambios en los datos vigilados**, con un resumen de áreas y registros afectados. El informe marca como candidatas a revisión las nueve fichas de **Guerrero, Paladín o Chamán**, según la clase afectada, y los tres perfiles si cambia Legado.
+- Abre una incidencia (*issue*) en GitHub **solo si hay cambios en los datos vigilados**, con un resumen de áreas y registros afectados. El informe marca como candidatas a revisión las nueve fichas de **cualquiera de las nueve clases**, según la clase afectada, y los tres perfiles si cambia Legado.
 - Guarda el historial en la rama **patch-tracker-state**, no en main: así comprobar parches a diario no modifica los archivos de la aplicación ni dispara despliegues de GitHub Pages.
 
 ## Primera ejecución y estados

@@ -17,8 +17,32 @@
     {
       "nombre": "Chamán",
       "ruta": "./data/talent-advisor-shaman.json"
+    },
+    {
+      "nombre": "Cazador",
+      "ruta": "./data/talent-advisor-hunter.json"
+    },
+    {
+      "nombre": "Pícaro",
+      "ruta": "./data/talent-advisor-rogue.json"
+    },
+    {
+      "nombre": "Sacerdote",
+      "ruta": "./data/talent-advisor-priest.json"
+    },
+    {
+      "nombre": "Mago",
+      "ruta": "./data/talent-advisor-mage.json"
+    },
+    {
+      "nombre": "Brujo",
+      "ruta": "./data/talent-advisor-warlock.json"
+    },
+    {
+      "nombre": "Druida",
+      "ruta": "./data/talent-advisor-druid.json"
     }
   ],
   "fuenteLegado": "Guerrero",
-  "nota": "El Legado se comparte entre las clases; las vías para obtener puntos se personalizan por clase. Las 27 fichas de Guerrero, Paladín y Chamán siguen marcadas como borradores de beta."
+  "nota": "81 fichas de beta en nueve clases. Legado común por objetivo; desafíos para obtener puntos específicos de cada clase. Prioridades editoriales pendientes de validar al 60."
 }

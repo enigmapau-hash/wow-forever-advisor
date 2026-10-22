@@ -1,4 +1,4 @@
-"""Comprobación del catálogo y de las tres clases en Talent Advisor."""
+"""Cobertura de las nueve clases y de las 81 fichas provisionales."""
 import json
 from pathlib import Path
 import unittest
@@ -25,13 +25,14 @@ class TalentAdvisorCatalogTests(unittest.TestCase):
         self.assertEqual(catalog["schemaVersion"], 1)
         self.assertEqual(catalog["objetivos"], ["Subir al 60", "PvP", "Mazmorras"])
         self.assertEqual([e["nombre"] for e in catalog["clases"]],
-                         ["Guerrero", "Paladín", "Chamán"])
+                         ["Guerrero", "Paladín", "Chamán", "Cazador", "Pícaro",
+                          "Sacerdote", "Mago", "Brujo", "Druida"])
         self.assertEqual(catalog["fuenteLegado"], "Guerrero")
         for entry in catalog["clases"]:
             self.assertTrue(entry["ruta"].startswith("./data/talent-advisor-"))
             self.assertEqual(self.classes[entry["nombre"]]["clase"], entry["nombre"])
 
-    def test_twentyseven_unique_advisory_records(self):
+    def test_eightyone_unique_advisory_records(self):
         seen = set()
         for name, data in self.classes.items():
             self.assertEqual(data["schemaVersion"], 1)
@@ -52,7 +53,7 @@ class TalentAdvisorCatalogTests(unittest.TestCase):
                 for field in ("resumen", "motivo", "limitacion", "progreso"):
                     self.assertTrue(record[field].strip())
                 self.assertNotIn("puntosAsignados", record)
-        self.assertEqual(len(seen), 27)
+        self.assertEqual(len(seen), 81)
 
     def test_legacy_is_reusable_and_points_are_class_specific(self):
         warrior = self.classes["Guerrero"]

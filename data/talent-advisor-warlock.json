@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Brujo",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones provisionales de Brujo, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar.",
+  "especializaciones": [
+    "Aflicción",
+    "Demonología",
+    "Destrucción"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Aflicción",
+      "objetivo": "Subir al 60",
+      "resumen": "Sostener daño periódico sin atraer más enemigos de los previstos.",
+      "talentos": [
+        "Improved Corruption",
+        "Improved Drains",
+        "Nightfall",
+        "Wrack"
+      ],
+      "motivo": "Probar un enemigo cada vez y evaluar salud, maná y recuperación.",
+      "limitacion": "El rendimiento depende del tiempo que el enemigo siga vivo. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar fragmentos y revisar órdenes del demonio; no convertir salud en maná sin una reserva segura."
+    },
+    {
+      "especializacion": "Aflicción",
+      "objetivo": "PvP",
+      "resumen": "Presionar varios frentes sin romper el control aliado.",
+      "talentos": [
+        "Improved Corruption",
+        "Improved Drains",
+        "Nightfall",
+        "Wrack"
+      ],
+      "motivo": "Coordinar el objetivo de presión y mantener una vía de retirada.",
+      "limitacion": "Disipaciones y línea de visión pueden interrumpir la presión. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Elegir demonio según utilidad y coordinar Fear para no atraer enemigos."
+    },
+    {
+      "especializacion": "Aflicción",
+      "objetivo": "Mazmorras",
+      "resumen": "Elegir efectos periódicos según la duración de cada objetivo.",
+      "talentos": [
+        "Improved Corruption",
+        "Improved Drains",
+        "Nightfall",
+        "Wrack"
+      ],
+      "motivo": "Evitar una preparación larga sobre enemigos que están a punto de morir.",
+      "limitacion": "El daño periódico no se detiene inmediatamente al cambiar de objetivo. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Acordar maldición de utilidad y Bane de daño; preparar fragmentos y piedras antes de avanzar."
+    },
+    {
+      "especializacion": "Demonología",
+      "objetivo": "Subir al 60",
+      "resumen": "Progresar con un demonio y vigilar sus recursos.",
+      "talentos": [
+        "Demonic Energies",
+        "Demonic Brand",
+        "Soul Link",
+        "Demonic Pact"
+      ],
+      "motivo": "Comprobar la amenaza de la mascota antes de aumentar tu daño.",
+      "limitacion": "Perder al demonio puede alterar considerablemente el plan. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar fragmentos y revisar órdenes del demonio; no convertir salud en maná sin una reserva segura."
+    },
+    {
+      "especializacion": "Demonología",
+      "objetivo": "PvP",
+      "resumen": "Mantener la mascota útil y fuera de control innecesario.",
+      "talentos": [
+        "Demonic Energies",
+        "Demonic Brand",
+        "Soul Link",
+        "Demonic Pact"
+      ],
+      "motivo": "Retirar al demonio de áreas peligrosas y prever qué hacer si cae.",
+      "limitacion": "El enemigo puede impedir que tu demonio cumpla su función. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Elegir demonio según utilidad y coordinar Fear para no atraer enemigos."
+    },
+    {
+      "especializacion": "Demonología",
+      "objetivo": "Mazmorras",
+      "resumen": "Elegir demonio y posición según las necesidades del grupo.",
+      "talentos": [
+        "Demonic Energies",
+        "Demonic Brand",
+        "Soul Link",
+        "Demonic Pact"
+      ],
+      "motivo": "Acordar la utilidad requerida antes de cambiar o sacrificar al demonio.",
+      "limitacion": "No se presenta esta orientación como tanque validado de mazmorras. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Acordar maldición de utilidad y Bane de daño; preparar fragmentos y piedras antes de avanzar."
+    },
+    {
+      "especializacion": "Destrucción",
+      "objetivo": "Subir al 60",
+      "resumen": "Buscar daño directo con un demonio que facilite los combates.",
+      "talentos": [
+        "Bane",
+        "Molten Skin",
+        "Conflagrate",
+        "Destructive Reach"
+      ],
+      "motivo": "Comparar el coste de cada enemigo y recuperar antes de un pull difícil.",
+      "limitacion": "Los lanzamientos bajo daño pueden alargar el combate. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar fragmentos y revisar órdenes del demonio; no convertir salud en maná sin una reserva segura."
+    },
+    {
+      "especializacion": "Destrucción",
+      "objetivo": "PvP",
+      "resumen": "Crear ventanas para lanzar sin recibir presión constante.",
+      "talentos": [
+        "Bane",
+        "Molten Skin",
+        "Conflagrate",
+        "Destructive Reach"
+      ],
+      "motivo": "Preparar un lanzamiento detrás del control aliado.",
+      "limitacion": "El rival puede cortar la ventana ofensiva. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Elegir demonio según utilidad y coordinar Fear para no atraer enemigos."
+    },
+    {
+      "especializacion": "Destrucción",
+      "objetivo": "Mazmorras",
+      "resumen": "Aportar daño directo vigilando amenaza y recursos.",
+      "talentos": [
+        "Bane",
+        "Molten Skin",
+        "Conflagrate",
+        "Destructive Reach"
+      ],
+      "motivo": "Retrasar el daño intenso hasta que el tanque controle al objetivo.",
+      "limitacion": "Las resistencias y los cambios de objetivo afectan al resultado. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Acordar maldición de utilidad y Bane de daño; preparar fragmentos y piedras antes de avanzar."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Brujo: desafíos de clase anunciados en niveles 25, 45 y 60; comprobar requisitos vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas permiten obtener más puntos de Legado; consultar los requisitos antes de elegir ruta."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso oficial de clases (EN)",
+      "url": "https://news.blizzard.com/en-gb/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock"
+    },
+    {
+      "nombre": "Blizzard — Correcciones del 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "nombre": "Blizzard — Calendario actualizado de beta",
+      "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    }
+  ],
+  "notaFuentes": "Talentos con nombres oficiales ingleses para evitar traducciones no contrastadas. Las listas son candidatos a estudiar, no orden de compra ni selección simultánea garantizada; hay que comprobar rangos y prerrequisitos. Las notas del 15/10 prevalecen sobre los repasos iniciales. Consejos por objetivo: criterio editorial provisional. Grim Reach sustituye Malediction. Destructive Reach vuelve a limitarse a Destrucción. Banes y maldiciones de utilidad se distinguen; no asumir una única categoría compartida."
+}

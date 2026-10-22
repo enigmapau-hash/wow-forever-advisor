@@ -463,7 +463,7 @@ function renderTalentResult() {
   const record = talentData.fichas.find((item) => item.especializacion === spec && item.objetivo === goal);
   const legacy = talentLegacy?.legado?.[goal];
   if (!record || !legacy) {
-    talentStatus.textContent = "Elige especialización y objetivo para consultar el piloto.";
+    talentStatus.textContent = "Elige especialización y objetivo para consultar las fichas.";
     return;
   }
   document.getElementById("talent-result-title").textContent = spec;

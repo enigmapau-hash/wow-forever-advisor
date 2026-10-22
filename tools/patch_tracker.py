@@ -179,7 +179,10 @@ def make_report(old, new, status, changes, previous_version, url):
         lines += ["", "**Registros afectados:** " +
                   ", ".join(f"{key}: {value}" for key, value in sorted(totals.items())),
                   "", "## Revisión recomendada"]
-        for token, nombre in (("warrior", "Guerrero"), ("paladin", "Paladín"), ("shaman", "Chamán")):
+        for token, nombre in (
+                ("warrior", "Guerrero"), ("paladin", "Paladín"), ("shaman", "Chamán"),
+                ("hunter", "Cazador"), ("rogue", "Pícaro"), ("priest", "Sacerdote"),
+                ("mage", "Mago"), ("warlock", "Brujo"), ("druid", "Druida")):
             if any(c["key"].startswith((f"talent/{token}/", f"class/{token}",
                                          f"arrows/{token}")) for c in changes):
                 lines.append(f"- Revisar las **nueve fichas piloto del {nombre}**: "

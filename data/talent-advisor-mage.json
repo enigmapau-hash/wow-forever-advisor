@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Mago",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones provisionales de Mago, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar.",
+  "especializaciones": [
+    "Arcano",
+    "Fuego",
+    "Escarcha"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Arcano",
+      "objetivo": "Subir al 60",
+      "resumen": "Controlar el gasto de maná al combinar hechizos arcanos.",
+      "talentos": [
+        "Arcane Concentration",
+        "Missile Barrage",
+        "Arcane Blast",
+        "Arcane Wrath"
+      ],
+      "motivo": "Comparar encuentros completos, incluyendo el tiempo para beber.",
+      "limitacion": "Acumular lanzamientos puede aumentar demasiado el gasto. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Explorar Comprensión y pergaminos como progreso adicional; no son puntos de talento."
+    },
+    {
+      "especializacion": "Arcano",
+      "objetivo": "PvP",
+      "resumen": "Buscar oportunidades de lanzamiento sin quedar a merced del rival.",
+      "talentos": [
+        "Arcane Concentration",
+        "Missile Barrage",
+        "Arcane Blast",
+        "Arcane Wrath"
+      ],
+      "motivo": "Usar la cobertura para preparar el ataque y conservar una salida.",
+      "limitacion": "Las interrupciones castigan los lanzamientos largos. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Coordinar Polimorfia y reservar una salida antes de perseguir."
+    },
+    {
+      "especializacion": "Arcano",
+      "objetivo": "Mazmorras",
+      "resumen": "Sostener daño sin consumir todas las reservas al inicio.",
+      "talentos": [
+        "Arcane Concentration",
+        "Missile Barrage",
+        "Arcane Blast",
+        "Arcane Wrath"
+      ],
+      "motivo": "Acordar pausas de maná y moderar la apertura contra enemigos breves.",
+      "limitacion": "El daño teórico pierde valor si obliga al grupo a parar constantemente. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar agua y controlar enemigos apartados; Comprensión es un sistema adicional, no un árbol de talentos."
+    },
+    {
+      "especializacion": "Fuego",
+      "objetivo": "Subir al 60",
+      "resumen": "Eliminar enemigos a distancia con espacio para reaccionar.",
+      "talentos": [
+        "Improved Fire Blast",
+        "Improved Fireball",
+        "Heating Up",
+        "Fire Power"
+      ],
+      "motivo": "Elegir una zona abierta antes de comenzar a lanzar.",
+      "limitacion": "La presión recibida puede obligarte a cancelar lanzamientos. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Explorar Comprensión y pergaminos como progreso adicional; no son puntos de talento."
+    },
+    {
+      "especializacion": "Fuego",
+      "objetivo": "PvP",
+      "resumen": "Aprovechar ventanas ofensivas sin descuidar la defensa.",
+      "talentos": [
+        "Improved Fire Blast",
+        "Improved Fireball",
+        "Heating Up",
+        "Fire Power"
+      ],
+      "motivo": "Preparar el ataque tras el control aliado y no perseguir sin apoyo.",
+      "limitacion": "No toda oportunidad de daño justifica perder una posición segura. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Coordinar Polimorfia y reservar una salida antes de perseguir."
+    },
+    {
+      "especializacion": "Fuego",
+      "objetivo": "Mazmorras",
+      "resumen": "Mantener presión de Fuego sobre objetivos seguros.",
+      "talentos": [
+        "Improved Fire Blast",
+        "Improved Fireball",
+        "Heating Up",
+        "Fire Power"
+      ],
+      "motivo": "Vigilar la amenaza antes de encadenar daño a varios enemigos.",
+      "limitacion": "Las resistencias o inmunidades del encuentro pueden exigir otra escuela. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar agua y controlar enemigos apartados; Comprensión es un sistema adicional, no un árbol de talentos."
+    },
+    {
+      "especializacion": "Escarcha",
+      "objetivo": "Subir al 60",
+      "resumen": "Progresar usando distancia y control para reducir daño recibido.",
+      "talentos": [
+        "Frost Channeling",
+        "Ice Lance",
+        "Ice Block",
+        "Fingers of Frost"
+      ],
+      "motivo": "Empezar con enemigos aislados antes de intentar varios a la vez.",
+      "limitacion": "No se garantiza una ruta segura de farmeo masivo. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Explorar Comprensión y pergaminos como progreso adicional; no son puntos de talento."
+    },
+    {
+      "especializacion": "Escarcha",
+      "objetivo": "PvP",
+      "resumen": "Mantener espacio para controlar y retirarte.",
+      "talentos": [
+        "Frost Channeling",
+        "Ice Lance",
+        "Ice Block",
+        "Fingers of Frost"
+      ],
+      "motivo": "Reservar herramientas defensivas para la respuesta enemiga.",
+      "limitacion": "Algunos rivales pueden neutralizar tu control. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Coordinar Polimorfia y reservar una salida antes de perseguir."
+    },
+    {
+      "especializacion": "Escarcha",
+      "objetivo": "Mazmorras",
+      "resumen": "Apoyar al tanque con control y daño sobre objetivos acordados.",
+      "talentos": [
+        "Frost Channeling",
+        "Ice Lance",
+        "Ice Block",
+        "Fingers of Frost"
+      ],
+      "motivo": "Separar el objetivo de control del que recibe daño de área.",
+      "limitacion": "No todos los enemigos pueden congelarse o ralentizarse. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar agua y controlar enemigos apartados; Comprensión es un sistema adicional, no un árbol de talentos."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Mago: desafíos de clase anunciados en niveles 25, 45 y 60; comprobar requisitos vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas permiten obtener más puntos de Legado; consultar los requisitos antes de elegir ruta."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso oficial de clases (EN)",
+      "url": "https://news.blizzard.com/en-gb/article/24302097/world-of-warcraft-forever-class-deep-dives-mage-and-shaman"
+    },
+    {
+      "nombre": "Blizzard — Correcciones del 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "nombre": "Blizzard — Calendario actualizado de beta",
+      "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    }
+  ],
+  "notaFuentes": "Talentos con nombres oficiales ingleses para evitar traducciones no contrastadas. Las listas son candidatos a estudiar, no orden de compra ni selección simultánea garantizada; hay que comprobar rangos y prerrequisitos. Las notas del 15/10 prevalecen sobre los repasos iniciales. Consejos por objetivo: criterio editorial provisional. Missile Barrage pasa a la primera fila; Arcane Wrath ocupa el hito de 16 puntos. Improved Fire Blast sustituye Wake of Fire. No usar las descripciones antiguas de Arcane Blast o Winter’s Chill."
+}
