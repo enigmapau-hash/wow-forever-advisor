@@ -91,8 +91,12 @@ class PatchTrackerTests(unittest.TestCase):
 
     def test_added_and_removed_talents(self):
         old = fixture()
+        old["classes"][0]["talents"].append({
+            "id": 200, "name": "Another warrior talent",
+            "tree": 0, "row": 2, "ranks": ["Text C"], "maxRank": 1,
+        })
         new = copy.deepcopy(old)
-        new["classes"][0]["talents"].pop()
+        new["classes"][0]["talents"].pop(0)
         new["classes"][1]["talents"].append({"id": 999, "name": "New",
                                                "tree": 0, "row": 3, "ranks": ["x"]})
         _, changes, _ = tracker.compare(tracker.snapshot(old), tracker.snapshot(new))
