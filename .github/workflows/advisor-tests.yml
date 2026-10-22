@@ -1,0 +1,41 @@
+name: Advisor Data Checks
+
+on:
+  pull_request:
+    paths:
+      - "data/**"
+      - "app.js"
+      - "index.html"
+      - "styles.css"
+      - "sw.js"
+      - "tests/**"
+      - ".github/workflows/advisor-tests.yml"
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "app.js"
+      - "index.html"
+      - "styles.css"
+      - "sw.js"
+      - "tests/**"
+      - ".github/workflows/advisor-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probar datos y Patch Tracker con Python
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Validar asignaciones de iconos de WoW
+        run: node tests/icon-map.test.js
+      - name: Comprobar sintaxis de JavaScript
+        run: |
+          node --check app.js
+          node --check icons/icon-map.js
+          node --check sw.js
+          node --check tests/talent-advisor.test.js
