@@ -101,6 +101,19 @@ class PatchTrackerTests(unittest.TestCase):
         self.assertIn("nueve fichas piloto del Paladín", report["report"])
         self.assertNotIn("nueve fichas piloto del Guerrero", report["report"])
 
+    def test_shaman_changes_are_reported_for_review(self):
+        before = fixture()
+        after = copy.deepcopy(before)
+        after["classes"][5]["talents"][0]["ranks"] = ["Changed shaman talent"]
+        left, right = tracker.snapshot(before), tracker.snapshot(after)
+        status, changes, previous = tracker.compare(left, right)
+        self.assertEqual(status, "changed")
+        report = tracker.make_report(left, right, status, changes, previous,
+                                     tracker.BASE_URL + before["build"] + ".json")
+        self.assertIn("nueve fichas piloto del Chamán", report["report"])
+        self.assertNotIn("nueve fichas piloto del Guerrero", report["report"])
+        self.assertNotIn("nueve fichas piloto del Paladín", report["report"])
+
     def test_added_and_removed_talents(self):
         old = fixture()
         old["classes"][0]["talents"].append({
