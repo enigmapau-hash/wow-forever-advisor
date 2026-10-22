@@ -108,6 +108,6 @@ integración, habrá que retirar esa fuente o solicitar autorización. La
 propiedad intelectual de los gráficos sigue siendo de Blizzard. El aviso de
 no afiliación aparece en el pie de la aplicación.
 
-*Pendiente de prueba en dispositivo*: comprobar cada botón e icono, la
-distribución en pantalla móvil y que las imágenes ya descargadas se muestran
-en modo avión. La PR no debe fusionarse hasta validar este paso.
+*Pendiente de prueba en dispositivo tras la publicación*: comprobar cada botón
+e icono, la distribución en pantalla móvil y que las imágenes descargadas se
+muestran en modo avión. Si falla alguna ruta remota, corregir el mapa.
