@@ -16,17 +16,21 @@ button.addEventListener("click", async () => {
   button.disabled = true;
   report.textContent = "Ejecutando…";
   let assertions = 0;
-  const check = (test, detail) => {
+  const check = (condition, message) => {
     assertions += 1;
-    if (!test) throw new Error(detail);
+    if (!condition) throw new Error(message);
   };
   try {
-    const response = await fetch("../data/talent-advisor-warrior.json");
-    if (!response.ok) throw new Error("JSON del piloto no disponible");
-    const data = await response.json();
+    const [catalog, warrior, paladin] = await Promise.all([
+      fetch("../data/talent-advisor-catalog.json").then((r) => r.json()),
+      fetch("../data/talent-advisor-warrior.json").then((r) => r.json()),
+      fetch("../data/talent-advisor-paladin.json").then((r) => r.json()),
+    ]);
+    const sources = [warrior, paladin];
+    check(catalog.clases.length === 2, "El catálogo incluye dos clases");
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
-      frame.src = `../index.html?talent-test=${Date.now()}`;
+      frame.src = "../index.html?talent-test=" + Date.now();
     });
     const doc = frame.contentDocument;
     const win = frame.contentWindow;
@@ -37,65 +41,79 @@ button.addEventListener("click", async () => {
     const result = doc.getElementById("talent-result");
     const choose = (group, value) => {
       const item = [...group.querySelectorAll("button")].find((candidate) => candidate.dataset.value === value);
-      check(Boolean(item), `Opción disponible: ${value}`);
+      check(Boolean(item), "Opción disponible: " + value);
       item.click();
       check(item.getAttribute("aria-pressed") === "true" && group.dataset.value === value,
-        `Opción seleccionada: ${value}`);
+        "Opción seleccionada: " + value);
     };
     check(view.hidden, "Talent Advisor debe comenzar oculto");
     check(doc.getElementById("profession-view").hidden && doc.getElementById("advisor-view").hidden,
-      "Otras vistas ocultas en inicio");
+      "Otras vistas ocultas al inicio");
     doc.getElementById("talent-advisor").click();
     await waitFor(() => !klass.disabled || !doc.getElementById("talent-error").hidden);
-    check(!doc.getElementById("talent-error").hidden, "Carga el piloto sin errores");
-    check(!view.hidden && doc.getElementById("home-view").hidden,
-      "Abre Talent Advisor de forma exclusiva");
-    check(result.hidden && spec.disabled && goal.disabled, "Sin resultado antes de elegir");
-    choose(klass, "Guerrero");
-    check(!spec.disabled && goal.disabled, "La clase habilita especializaciones");
-    check([...spec.querySelectorAll("button")].length === 3, "Tres especializaciones");
+    check(doc.getElementById("talent-error").hidden, "Carga el catálogo y las fichas sin errores");
+    check(!view.hidden && doc.getElementById("home-view").hidden, "Abre Talent Advisor de forma exclusiva");
+    check(result.hidden && spec.disabled && goal.disabled, "Sin resultado antes de elegir clase");
+    check(JSON.stringify([...klass.querySelectorAll("button")].map((el) => el.dataset.value))
+      === JSON.stringify(catalog.clases.map((el) => el.nombre)), "Clases del catálogo exactas");
+
     const formats = new Set();
-    for (const name of data.especializaciones) {
-      choose(spec, name);
-      check(goal.dataset.value === "" && result.hidden, "Cambiar especialización limpia resultado");
-      for (const objective of data.objetivos) {
-        choose(goal, objective);
-        check(!result.hidden, "La recomendación se muestra");
-        const record = data.fichas.find((ficha) =>
-          ficha.especializacion === name && ficha.objetivo === objective);
-        formats.add(record.especializacion + "|" + record.objetivo);
-        check(doc.getElementById("talent-overview").textContent === record.resumen, "Resumen editorial exacto");
-        check(doc.getElementById("talent-reason").textContent === record.motivo, "Razón exacta");
-        check(doc.getElementById("talent-limitation").textContent === record.limitacion, "Limitación exacta");
-        check(doc.getElementById("talent-extra").textContent === record.progreso, "Consejo adicional exacto");
-        check(JSON.stringify([...doc.querySelectorAll("#talent-priorities li")].map(li => li.textContent))
-          === JSON.stringify(record.talentos), "Talentos exactos");
-        check(JSON.stringify([...doc.querySelectorAll("#talent-legacy-perks li")].map(li => li.textContent))
-          === JSON.stringify(data.legado[objective].ventajas), "Legado por objetivo exacto");
-        check(doc.getElementById("talent-legacy-warning").textContent
-          === data.legado[objective].advertencia, "Advertencia de Legado exacta");
-        check(doc.getElementById("talent-advice-warning").textContent === data.aviso,
-          "Siempre se avisa de que es beta");
-        check(doc.getElementById("talent-version").textContent.includes(data.versionCliente),
-          "Versión visible");
-        check(doc.getElementById("talent-spec-icon").getAttribute("src")
-          === win.WOW_ICON_MAP.especializacion.Guerrero[record.especializacion],
-          "Icono de la especialización correcta");
-        check(!doc.getElementById("talent-result").textContent.includes("51/51"),
-          "No simula repartos validados");
+    for (const data of sources) {
+      choose(klass, data.clase);
+      check(!spec.disabled && goal.disabled, "La clase habilita especializaciones");
+      check(spec.dataset.iconClass === data.clase, "Iconos de especialización ligados a clase");
+      check([...spec.querySelectorAll("button")].length === 3, "Tres especializaciones");
+      for (const name of data.especializaciones) {
+        choose(spec, name);
+        check(goal.dataset.value === "" && result.hidden,
+          "Cambiar especialización limpia resultado");
+        for (const objective of data.objetivos) {
+          choose(goal, objective);
+          check(!result.hidden, "La recomendación se muestra");
+          const record = data.fichas.find((ficha) =>
+            ficha.especializacion === name && ficha.objetivo === objective);
+          formats.add(data.clase + "|" + record.especializacion + "|" + record.objetivo);
+          check(doc.getElementById("talent-overview").textContent === record.resumen, "Resumen editorial exacto");
+          check(doc.getElementById("talent-reason").textContent === record.motivo, "Razón exacta");
+          check(doc.getElementById("talent-limitation").textContent === record.limitacion, "Limitación exacta");
+          check(doc.getElementById("talent-extra").textContent === record.progreso, "Progreso adicional exacto");
+          check(doc.getElementById("talent-build-info").textContent.includes(data.clase),
+            "Clase correcta en ficha");
+          check(JSON.stringify([...doc.querySelectorAll("#talent-priorities li")].map((li) => li.textContent))
+            === JSON.stringify(record.talentos), "Lista de talentos exacta");
+          check(JSON.stringify([...doc.querySelectorAll("#talent-legacy-perks li")].map((li) => li.textContent))
+            === JSON.stringify(warrior.legado[objective].ventajas), "Legado común por objetivo");
+          check(doc.getElementById("talent-legacy-warning").textContent
+            === warrior.legado[objective].advertencia, "Advertencia de Legado exacta");
+          check(JSON.stringify([...doc.querySelectorAll("#talent-legacy-points li")].map((li) => li.textContent))
+            === JSON.stringify(data.obtenerPuntosLegado), "Obtención de Legado específica de clase");
+          check(doc.getElementById("talent-advice-warning").textContent === data.aviso,
+            "Advertencia beta de la clase");
+          check(doc.getElementById("talent-version").textContent.includes(data.versionCliente),
+            "Versión de beta visible");
+          check(doc.getElementById("talent-spec-icon").getAttribute("src")
+            === win.WOW_ICON_MAP.especializacion[data.clase][record.especializacion],
+            "Icono exacto de la clase y especialización");
+          check(!doc.getElementById("talent-result").textContent.includes("51/51"),
+            "No simula repartos definitivos");
+        }
       }
     }
-    check(formats.size === 9, "Nueve configuraciones independientes");
+    check(formats.size === 18, "Dieciocho fichas independientes");
+    choose(klass, "Guerrero");
+    check(result.hidden && spec.dataset.value === "" && goal.dataset.value === "",
+      "Cambiar clase limpia la selección previa");
     choose(spec, "Armas");
-    check(result.hidden && goal.dataset.value === "", "Sin mezcla de objetivos antiguos");
     choose(goal, "PvP");
-    check(!result.hidden, "Se recupera ficha tras elegir objetivo");
+    check(!result.hidden && doc.getElementById("talent-build-info").textContent.includes("Guerrero"),
+      "El Guerrero sigue funcionando después de consultar Paladín");
     doc.getElementById("talent-back-home").click();
     await waitFor(() => view.hidden && !doc.getElementById("home-view").hidden);
     check(true, "Vuelve al inicio");
-    report.textContent = `OK: ${assertions} comprobaciones, 9 combinaciones, 3 objetivos y Legado.`;
+    report.textContent = "OK: " + assertions +
+      " comprobaciones, 18 fichas, 2 clases, 3 objetivos y Legado común.";
   } catch (error) {
-    report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones)`;
+    report.textContent = "ERROR: " + error.message + " (" + assertions + " comprobaciones)";
   } finally {
     button.disabled = false;
   }
