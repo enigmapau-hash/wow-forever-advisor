@@ -167,3 +167,15 @@ Para comprobar las nueve fichas y la navegación en el navegador, servir la
 carpeta mediante HTTP local y abrir `tests/talent-advisor.html`; pulsar
 «Ejecutar pruebas». El antiguo test de navegación de Race Advisor ya contempla
 las tres tarjetas disponibles y el único módulo futuro (Build Advisor).
+
+## Patch Tracker (mantenimiento semiautomático)
+
+La tarea de GitHub Actions `WoW Forever Patch Tracker` revisa a diario las
+versiones y los datos de talentos y Legado de Zephras. Compara huellas por campo
+con el estado de la rama independiente `patch-tracker-state` y, si encuentra
+cambios relevantes, abre una incidencia de GitHub para revisión humana.
+
+**No modifica automáticamente las fichas, los JSON publicados ni la PWA.** La
+primera ejecución establece una referencia sin alertas retrospectivas. Consulta
+el funcionamiento, las limitaciones de cobertura y la ejecución manual en
+[`docs/patch-tracker.md`](docs/patch-tracker.md).
