@@ -41,6 +41,9 @@ function clearResult() {
   for (const field of result.querySelectorAll("[data-field]")) field.textContent = "";
   document.getElementById("result-combination").textContent = "";
   document.getElementById("no-alternative").hidden = true;
+  document.getElementById("alternative-profile").hidden = true;
+  document.getElementById("alternative-name").textContent = "";
+  document.getElementById("alternative-use").textContent = "";
 }
 
 function uniqueValues(rows, field) {
@@ -146,6 +149,12 @@ specialization.addEventListener("change", () => {
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
   document.getElementById("no-alternative").hidden = record.alternativa !== "-";
+  if (record.alternativa !== "-") {
+    const alternative = racialProfiles.get(record.alternativa);
+    document.getElementById("alternative-name").textContent = alternative.raza;
+    document.getElementById("alternative-use").textContent = alternative.usoPrincipal;
+    document.getElementById("alternative-profile").hidden = false;
+  }
   result.hidden = false;
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
 });
