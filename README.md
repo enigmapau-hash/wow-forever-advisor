@@ -55,3 +55,19 @@ editoriales sobre Tauren Sacerdote y Hex of Weakness, sin cambiar las fichas.
 La exportación rechaza columnas inesperadas, duplicados, campos obligatorios
 vacíos, referencias raciales ausentes o un número distinto de 27 + 24 fichas y
 8 perfiles. Ante cambios del esquema o la cobertura hay que revisar el exportador.
+
+## Race Advisor
+
+«Abrir Race Advisor» muestra tres campos encadenados. Al cambiar facción o clase
+se vacían las selecciones dependientes y se retira el resultado anterior. La ficha
+une los datos originales de `race-advisor.json` con el perfil de `racials.json`.
+«Volver al inicio» y el botón Atrás del navegador permiten navegar entre vistas.
+Si la carga falla, se muestra un aviso con la opción «Reintentar».
+
+Para comprobar las 51 combinaciones en la interfaz, servir el repositorio por HTTP
+local (por ejemplo, `python -m http.server 8000 --bind 127.0.0.1`), abrir
+`http://127.0.0.1:8000/tests/race-advisor.html` y pulsar «Ejecutar pruebas».
+La prueba contrasta todos los campos con los JSON, las opciones disponibles,
+el borrado de selecciones, las nueve alternativas «-» y la navegación. Después
+de una ejecución online y la activación del service worker, se puede detener el
+servidor y repetirla desde la misma pestaña para verificar el modo offline.

@@ -14,6 +14,7 @@
   </head>
   <body>
     <main class="page">
+      <div id="home-view">
       <header class="intro">
         <span class="brand-mark" aria-hidden="true">W<span>F</span></span>
         <p class="eyebrow">Cada aventura empieza con una elección</p>
@@ -26,11 +27,10 @@
           <p class="eyebrow">Tu personaje, desde el principio</p>
           <h2 id="race-title">Race Advisor</h2>
           <p class="description">Encuentra la raza más adecuada para tu clase y especialización.</p>
-          <button id="race-advisor" type="button" disabled aria-describedby="race-status">
+          <button id="race-advisor" type="button">
             Abrir Race Advisor
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
           </button>
-          <p class="availability" id="race-status"><span aria-hidden="true"></span>Próximamente · Todavía no disponible</p>
         </div>
         <div class="crest" aria-hidden="true">
           <svg viewBox="0 0 240 240" fill="none">
@@ -67,6 +67,68 @@
             <p>Próximamente</p>
           </li>
         </ul>
+      </section>
+
+      </div>
+
+      <section id="advisor-view" aria-labelledby="advisor-title" hidden>
+        <a class="back-link" id="back-home" href="#inicio">← Volver al inicio</a>
+        <header class="selector-intro">
+          <h1 id="advisor-title" tabindex="-1">Race Advisor</h1>
+          <p class="subtitle">Elige facción, clase y especialización para consultar tu ficha.</p>
+        </header>
+
+        <form id="advisor-form" class="selector-card" aria-label="Selección de personaje" aria-busy="true">
+          <div class="selector-fields">
+            <div>
+              <label for="faction">Facción</label>
+              <select id="faction" name="faccion" disabled><option value="">Elige facción</option></select>
+            </div>
+            <div>
+              <label for="character-class">Clase</label>
+              <select id="character-class" name="clase" disabled><option value="">Elige primero una facción</option></select>
+            </div>
+            <div>
+              <label for="specialization">Especialización</label>
+              <select id="specialization" name="especializacion" disabled><option value="">Elige primero una clase</option></select>
+            </div>
+          </div>
+          <p class="selection-status" id="selection-status" role="status">Cargando las fichas del Excel…</p>
+          <div id="data-error" role="alert" hidden>
+            <p>No se han podido cargar las fichas. Comprueba tu conexión e inténtalo de nuevo. Para consultarlas sin conexión, completa primero una visita con conexión.</p>
+            <button id="retry-data" type="button">Reintentar</button>
+          </div>
+        </form>
+
+        <section id="advisor-result" aria-labelledby="result-race" hidden>
+          <p class="source-note">Análisis del Excel maestro. Las cuestiones pendientes de validación siguen sin confirmar; las recomendaciones se conservan sin cambios.</p>
+          <article class="result-card recommendation">
+            <p class="eyebrow">Raza recomendada</p>
+            <h2 id="result-race" data-field="razaRecomendada"></h2>
+            <p class="result-combination" id="result-combination"></p>
+            <dl class="result-summary">
+              <div><dt>Alternativa</dt><dd data-field="alternativa"></dd></div>
+              <div><dt>Prioridad original</dt><dd class="rating" data-field="prioridad"></dd></div>
+            </dl>
+            <p class="field-note" id="no-alternative" hidden>«-» significa alternativa no facilitada en el Excel.</p>
+            <h3>Motivo principal</h3>
+            <p class="original-text" data-field="motivoPrincipal"></p>
+            <h3>Explicación</h3>
+            <p class="original-text" data-field="explicacion"></p>
+          </article>
+          <div class="profile-grid">
+            <article class="result-card"><h3>Fortalezas</h3><p class="original-text" data-field="fortalezas"></p></article>
+            <article class="result-card"><h3>Debilidades</h3><p class="original-text" data-field="debilidades"></p></article>
+          </div>
+          <article class="result-card">
+            <h3>Utilidad racial</h3>
+            <p class="rating" data-field="escalaUtilidad"></p>
+            <h3>Uso principal</h3>
+            <p class="original-text" data-field="usoPrincipal"></p>
+            <h3>Comentarios del perfil racial</h3>
+            <p class="original-text" data-field="comentarios"></p>
+          </article>
+        </section>
       </section>
 
       <footer><span aria-hidden="true">✧</span> WoW Forever Advisor</footer>

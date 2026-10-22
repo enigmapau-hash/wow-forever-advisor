@@ -2,7 +2,7 @@
 
 // Incrementar la versión al publicar cambios en los archivos de la aplicación.
 const CACHE_PREFIX = `wow-forever-advisor:${self.registration.scope}:`;
-const CACHE_NAME = `${CACHE_PREFIX}v2`;
+const CACHE_NAME = `${CACHE_PREFIX}v3`;
 const APP_FILES = [
   "./",
   "./index.html",
@@ -40,6 +40,7 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(event.request.url);
   url.search = "";
+  url.hash = "";
   if (!APP_FILES.includes(url.href)) return;
 
   event.respondWith((async () => {
