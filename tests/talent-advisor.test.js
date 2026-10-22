@@ -21,14 +21,11 @@ button.addEventListener("click", async () => {
     if (!condition) throw new Error(message);
   };
   try {
-    const [catalog, warrior, paladin, shaman] = await Promise.all([
-      fetch("../data/talent-advisor-catalog.json").then((r) => r.json()),
-      fetch("../data/talent-advisor-warrior.json").then((r) => r.json()),
-      fetch("../data/talent-advisor-paladin.json").then((r) => r.json()),
-      fetch("../data/talent-advisor-shaman.json").then((r) => r.json()),
-    ]);
-    const sources = [warrior, paladin, shaman];
-    check(catalog.clases.length === 3, "El catálogo incluye tres clases");
+    const catalog = await fetch("../data/talent-advisor-catalog.json").then((r) => r.json());
+    const sources = await Promise.all(catalog.clases.map((entry) =>
+      fetch("../" + entry.ruta).then((r) => r.json())));
+    const warrior = sources.find((data) => data.clase === catalog.fuenteLegado);
+    check(catalog.clases.length === 9, "El catálogo incluye nueve clases");
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       frame.src = "../index.html?talent-test=" + Date.now();
@@ -100,7 +97,7 @@ button.addEventListener("click", async () => {
         }
       }
     }
-    check(formats.size === 27, "Veintisiete fichas independientes");
+    check(formats.size === 81, "Ochenta y una fichas independientes");
     choose(klass, "Guerrero");
     check(result.hidden && spec.dataset.value === "" && goal.dataset.value === "",
       "Cambiar clase limpia la selección previa");
@@ -112,7 +109,7 @@ button.addEventListener("click", async () => {
     await waitFor(() => view.hidden && !doc.getElementById("home-view").hidden);
     check(true, "Vuelve al inicio");
     report.textContent = "OK: " + assertions +
-      " comprobaciones, 27 fichas, 3 clases, 3 objetivos y Legado común.";
+      " comprobaciones, 81 fichas, 9 clases, 3 objetivos y Legado común.";
   } catch (error) {
     report.textContent = "ERROR: " + error.message + " (" + assertions + " comprobaciones)";
   } finally {

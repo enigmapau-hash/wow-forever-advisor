@@ -9,6 +9,7 @@ on:
       - "styles.css"
       - "sw.js"
       - "tests/**"
+      - "tools/patch_tracker.py"
       - ".github/workflows/advisor-tests.yml"
   push:
     branches: [main]
@@ -19,6 +20,7 @@ on:
       - "styles.css"
       - "sw.js"
       - "tests/**"
+      - "tools/patch_tracker.py"
       - ".github/workflows/advisor-tests.yml"
 
 permissions:
@@ -39,3 +41,12 @@ jobs:
           node --check icons/icon-map.js
           node --check sw.js
           node --check tests/talent-advisor.test.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Instalar navegador de pruebas
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Probar 81 fichas, navegación y modo offline
+        run: node tests/browser-smoke.cjs

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Druida",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones provisionales de Druida, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar.",
+  "especializaciones": [
+    "Equilibrio",
+    "Feral",
+    "Restauración"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Equilibrio",
+      "objetivo": "Subir al 60",
+      "resumen": "Progresar con hechizos de Naturaleza y Arcano cuidando el maná.",
+      "talentos": [
+        "Moonglow",
+        "Nature’s Reach",
+        "Insect Swarm",
+        "Eclipse"
+      ],
+      "motivo": "Evaluar cuánto tardas en recuperar recursos entre enemigos.",
+      "limitacion": "El equipo disponible condiciona la continuidad del daño. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Revisar el arma equipada y las facultades disponibles en forma; no asumir que todos los consumibles se comportan igual."
+    },
+    {
+      "especializacion": "Equilibrio",
+      "objetivo": "PvP",
+      "resumen": "Combinar presión a distancia con cambios de posición.",
+      "talentos": [
+        "Moonglow",
+        "Nature’s Reach",
+        "Insect Swarm",
+        "Eclipse"
+      ],
+      "motivo": "Evitar permanecer quieto cuando el rival prepara su ataque.",
+      "limitacion": "El control enemigo puede impedir completar lanzamientos. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Practicar cambios de forma y reservar maná para apoyar; comprobar las reglas del cliente vigente."
+    },
+    {
+      "especializacion": "Equilibrio",
+      "objetivo": "Mazmorras",
+      "resumen": "Aportar daño mágico sin perder de vista la utilidad del grupo.",
+      "talentos": [
+        "Moonglow",
+        "Nature’s Reach",
+        "Insect Swarm",
+        "Eclipse"
+      ],
+      "motivo": "Coordinar el objetivo de daño y reservar recursos para emergencias.",
+      "limitacion": "La versatilidad exige decidir cuándo interrumpir el daño para ayudar. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Convenir rol y equipo con el grupo; Revive permite resucitar fuera de combate."
+    },
+    {
+      "especializacion": "Feral",
+      "objetivo": "Subir al 60",
+      "resumen": "Combinar desplazamiento y combate en forma adecuada.",
+      "talentos": [
+        "Heart of the Wild",
+        "Feral Swiftness",
+        "Shifting Power",
+        "Primal Bite",
+        "Natural Reaction"
+      ],
+      "motivo": "Practicar con enemigos aislados antes de encadenar combates.",
+      "limitacion": "Gastar maná para ganar energía puede dejarte sin capacidad de apoyo. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Revisar el arma equipada y las facultades disponibles en forma; no asumir que todos los consumibles se comportan igual."
+    },
+    {
+      "especializacion": "Feral",
+      "objetivo": "PvP",
+      "resumen": "Alternar formas según presión y objetivo.",
+      "talentos": [
+        "Heart of the Wild",
+        "Feral Swiftness",
+        "Shifting Power",
+        "Primal Bite",
+        "Natural Reaction"
+      ],
+      "motivo": "Conservar recursos para cambiar de función al recibir presión.",
+      "limitacion": "Cambiar de forma no resuelve por sí solo toda situación de control. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Practicar cambios de forma y reservar maná para apoyar; comprobar las reglas del cliente vigente."
+    },
+    {
+      "especializacion": "Feral",
+      "objetivo": "Mazmorras",
+      "resumen": "Distinguir el equipo y las prioridades de oso tanque y gato DPS.",
+      "talentos": [
+        "Heart of the Wild",
+        "Feral Swiftness",
+        "Shifting Power",
+        "Primal Bite",
+        "Natural Reaction"
+      ],
+      "motivo": "Elegir rol antes de entrar: para oso estudiar mitigación y amenaza; para gato, energía y posición.",
+      "limitacion": "Una sola selección de prioridades no valida ambos roles al nivel 60. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Convenir rol y equipo con el grupo; Revive permite resucitar fuera de combate."
+    },
+    {
+      "especializacion": "Restauración",
+      "objetivo": "Subir al 60",
+      "resumen": "Progresar sanando en grupo y preparando los encuentros.",
+      "talentos": [
+        "Nature’s Focus",
+        "Reflection",
+        "Swiftmend",
+        "Wild Growth"
+      ],
+      "motivo": "Buscar compañeros con un ritmo que permita recuperar maná.",
+      "limitacion": "La especialización de apoyo puede resultar lenta en solitario. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Revisar el arma equipada y las facultades disponibles en forma; no asumir que todos los consumibles se comportan igual."
+    },
+    {
+      "especializacion": "Restauración",
+      "objetivo": "PvP",
+      "resumen": "Anticipar daño y sostener aliados mientras te reposicionas.",
+      "talentos": [
+        "Nature’s Focus",
+        "Reflection",
+        "Swiftmend",
+        "Wild Growth"
+      ],
+      "motivo": "Repartir atención sin alejarte de la protección del grupo.",
+      "limitacion": "La presión concentrada puede superar una preparación insuficiente. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Practicar cambios de forma y reservar maná para apoyar; comprobar las reglas del cliente vigente."
+    },
+    {
+      "especializacion": "Restauración",
+      "objetivo": "Mazmorras",
+      "resumen": "Planificar curas periódicas y respuestas al daño repentino.",
+      "talentos": [
+        "Nature’s Focus",
+        "Reflection",
+        "Swiftmend",
+        "Wild Growth"
+      ],
+      "motivo": "Observar quién recibirá daño antes de renovar efectos que aún duran.",
+      "limitacion": "La sobrecuración y los efectos caros pueden agotar el maná. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Convenir rol y equipo con el grupo; Revive permite resucitar fuera de combate."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Druida: desafíos de clase anunciados en niveles 25, 45 y 60; comprobar requisitos vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas permiten obtener más puntos de Legado; consultar los requisitos antes de elegir ruta."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso oficial de clases (EN)",
+      "url": "https://news.blizzard.com/en-us/article/24301515/world-of-warcraft-forever-class-deep-dives-hunter-and-druid"
+    },
+    {
+      "nombre": "Blizzard — Correcciones del 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "nombre": "Blizzard — Calendario actualizado de beta",
+      "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    }
+  ],
+  "notaFuentes": "Talentos con nombres oficiales ingleses para evitar traducciones no contrastadas. Las listas son candidatos a estudiar, no orden de compra ni selección simultánea garantizada; hay que comprobar rangos y prerrequisitos. Las notas del 15/10 prevalecen sobre los repasos iniciales. Consejos por objetivo: criterio editorial provisional. Moonkin Aura beneficia críticos de hechizos; Leader of the Pack beneficia críticos cuerpo a cuerpo y a distancia. Furor conserva energía al pasar por oso, sin regenerarla en esa forma. Tiger’s Fury se eliminó."
+}

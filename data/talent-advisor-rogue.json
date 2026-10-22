@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Pícaro",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones provisionales de Pícaro, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar.",
+  "especializaciones": [
+    "Asesinato",
+    "Combate",
+    "Sutileza"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Asesinato",
+      "objetivo": "Subir al 60",
+      "resumen": "Preparar armas y venenos antes de cada recorrido.",
+      "talentos": [
+        "Malice",
+        "Improved Poisons",
+        "Mutilate",
+        "Venom"
+      ],
+      "motivo": "Revisar tus armas antes de orientar la progresión a dagas.",
+      "limitacion": "El acceso a dagas adecuadas condiciona esta orientación. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar venenos y revisar habilidad de armas antes de cambiar de equipo."
+    },
+    {
+      "especializacion": "Asesinato",
+      "objetivo": "PvP",
+      "resumen": "Crear una ventana de presión sobre un objetivo elegido.",
+      "talentos": [
+        "Malice",
+        "Improved Poisons",
+        "Mutilate",
+        "Venom"
+      ],
+      "motivo": "No gastar toda la energía antes de poder responder al rival.",
+      "limitacion": "La presión depende de mantener contacto con el objetivo. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Acordar el objetivo de Sap y evitar aplicar daño que rompa el control."
+    },
+    {
+      "especializacion": "Asesinato",
+      "objetivo": "Mazmorras",
+      "resumen": "Sostener daño a un objetivo gestionando energía y remates.",
+      "talentos": [
+        "Malice",
+        "Improved Poisons",
+        "Mutilate",
+        "Venom"
+      ],
+      "motivo": "Comparar el mantenimiento de beneficios con un remate de daño al final del combate.",
+      "limitacion": "Los enemigos de corta vida reducen el valor de preparaciones largas. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Usar sigilo para preparar Sap y coordinar venenos y reducción de armadura con el grupo."
+    },
+    {
+      "especializacion": "Combate",
+      "objetivo": "Subir al 60",
+      "resumen": "Buscar regularidad con las armas que tengas disponibles.",
+      "talentos": [
+        "Precision",
+        "Endurance",
+        "Flawless Execution",
+        "Hack and Slash"
+      ],
+      "motivo": "Dar prioridad a una buena arma y a practicar el gasto de energía.",
+      "limitacion": "Una mejora de arma puede pesar más que una prioridad teórica. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar venenos y revisar habilidad de armas antes de cambiar de equipo."
+    },
+    {
+      "especializacion": "Combate",
+      "objetivo": "PvP",
+      "resumen": "Combinar presión directa con recursos para escapar.",
+      "talentos": [
+        "Precision",
+        "Endurance",
+        "Flawless Execution",
+        "Hack and Slash"
+      ],
+      "motivo": "Conservar una respuesta defensiva al entrar en combate.",
+      "limitacion": "El rival puede impedir el contacto sostenido. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Acordar el objetivo de Sap y evitar aplicar daño que rompa el control."
+    },
+    {
+      "especializacion": "Combate",
+      "objetivo": "Mazmorras",
+      "resumen": "Aportar daño directo y controlar ataques que alcancen otros objetivos.",
+      "talentos": [
+        "Precision",
+        "Endurance",
+        "Flawless Execution",
+        "Hack and Slash"
+      ],
+      "motivo": "Colocarte junto al objetivo principal y evitar golpear enemigos controlados.",
+      "limitacion": "El daño a objetivos cercanos exige cuidado con el control de masas. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Usar sigilo para preparar Sap y coordinar venenos y reducción de armadura con el grupo."
+    },
+    {
+      "especializacion": "Sutileza",
+      "objetivo": "Subir al 60",
+      "resumen": "Elegir enfrentamientos desde sigilo y evitar grupos innecesarios.",
+      "talentos": [
+        "Camouflage",
+        "Dirty Tricks",
+        "Premeditation",
+        "Hemorrhage",
+        "Thousand Cuts"
+      ],
+      "motivo": "Usar el terreno para separar un enemigo antes de iniciar el combate.",
+      "limitacion": "Los sangrados necesitan tiempo para aportar valor. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar venenos y revisar habilidad de armas antes de cambiar de equipo."
+    },
+    {
+      "especializacion": "Sutileza",
+      "objetivo": "PvP",
+      "resumen": "Planear aperturas, control y retirada.",
+      "talentos": [
+        "Camouflage",
+        "Dirty Tricks",
+        "Premeditation",
+        "Hemorrhage",
+        "Thousand Cuts"
+      ],
+      "motivo": "Coordinar la apertura con aliados y reservar energía para el siguiente control.",
+      "limitacion": "El daño aliado puede romper tu control. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Acordar el objetivo de Sap y evitar aplicar daño que rompa el control."
+    },
+    {
+      "especializacion": "Sutileza",
+      "objetivo": "Mazmorras",
+      "resumen": "Preparar control desde sigilo y daño con sangrados.",
+      "talentos": [
+        "Camouflage",
+        "Dirty Tricks",
+        "Premeditation",
+        "Hemorrhage",
+        "Thousand Cuts"
+      ],
+      "motivo": "Marcar el objetivo de control antes de entrar y cambiar a daño cuando el grupo esté listo.",
+      "limitacion": "No todos los enemigos admiten control ni sangrados. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Usar sigilo para preparar Sap y coordinar venenos y reducción de armadura con el grupo."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Pícaro: desafíos de clase anunciados en niveles 25, 45 y 60; comprobar requisitos vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas permiten obtener más puntos de Legado; consultar los requisitos antes de elegir ruta."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso oficial de clases (EN)",
+      "url": "https://news.blizzard.com/en-gb/article/24310968/world-of-warcraft-forever-class-deep-dives-rogue-and-warlock"
+    },
+    {
+      "nombre": "Blizzard — Correcciones del 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "nombre": "Blizzard — Calendario actualizado de beta",
+      "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    }
+  ],
+  "notaFuentes": "Talentos con nombres oficiales ingleses para evitar traducciones no contrastadas. Las listas son candidatos a estudiar, no orden de compra ni selección simultánea garantizada; hay que comprobar rangos y prerrequisitos. Las notas del 15/10 prevalecen sobre los repasos iniciales. Consejos por objetivo: criterio editorial provisional. Mutilate requiere dos dagas. Los venenos pueden coexistir con encantamientos temporales; no se presupone compatibilidad con cualquier efecto futuro."
+}

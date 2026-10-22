@@ -5,7 +5,7 @@ const ICON_URLS = new Set(self.WOW_ICON_URLS);
 
 // Incrementar la versión al publicar cambios en los archivos de la aplicación.
 const CACHE_PREFIX = `wow-forever-advisor:${self.registration.scope}:`;
-const CACHE_NAME = `${CACHE_PREFIX}v15`;
+const CACHE_NAME = `${CACHE_PREFIX}v16`;
 const APP_FILES = [
   "./",
   "./index.html",
@@ -20,6 +20,12 @@ const APP_FILES = [
   "./data/talent-advisor-warrior.json",
   "./data/talent-advisor-paladin.json",
   "./data/talent-advisor-shaman.json",
+  "./data/talent-advisor-hunter.json",
+  "./data/talent-advisor-rogue.json",
+  "./data/talent-advisor-priest.json",
+  "./data/talent-advisor-mage.json",
+  "./data/talent-advisor-warlock.json",
+  "./data/talent-advisor-druid.json",
   "./data/talent-advisor-catalog.json",
   "./data/racials.json",
   "./data/workbook-context.json",

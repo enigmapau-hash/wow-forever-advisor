@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "piloto": true,
+  "clase": "Sacerdote",
+  "versionCliente": "1.60.1.70450",
+  "fechaRevision": "2026-10-22",
+  "estado": "borrador_beta",
+  "aviso": "Orientaciones provisionales de Sacerdote, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar.",
+  "especializaciones": [
+    "Disciplina",
+    "Sagrado",
+    "Sombras"
+  ],
+  "objetivos": [
+    "Subir al 60",
+    "PvP",
+    "Mazmorras"
+  ],
+  "fichas": [
+    {
+      "especializacion": "Disciplina",
+      "objetivo": "Subir al 60",
+      "resumen": "Alternar daño y apoyo sin agotar el maná entre enemigos.",
+      "talentos": [
+        "Twin Disciplines",
+        "Meditation",
+        "Soul Warding",
+        "Penance"
+      ],
+      "motivo": "Medir el tiempo de recuperación antes de añadir daño al siguiente enemigo.",
+      "limitacion": "Combinar daño y curación exige equipo y recursos adecuados. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Revisar facultades de clase y raciales por separado: Fear Ward y Devouring Plague ya no son exclusivas de una raza."
+    },
+    {
+      "especializacion": "Disciplina",
+      "objetivo": "PvP",
+      "resumen": "Proteger aliados mientras mantienes una posición segura.",
+      "talentos": [
+        "Twin Disciplines",
+        "Meditation",
+        "Soul Warding",
+        "Penance"
+      ],
+      "motivo": "Evitar quedar aislado al seguir a un aliado que se aleja.",
+      "limitacion": "Las interrupciones y el control dificultan sostener al grupo. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Consultar las dos facultades propias de tu raza y coordinar defensivos con tus aliados."
+    },
+    {
+      "especializacion": "Disciplina",
+      "objetivo": "Mazmorras",
+      "resumen": "Sanar y absorber daño con reservas para la siguiente emergencia.",
+      "talentos": [
+        "Twin Disciplines",
+        "Meditation",
+        "Soul Warding",
+        "Penance"
+      ],
+      "motivo": "Observar el daño entrante y evitar gastar recursos en absorciones innecesarias.",
+      "limitacion": "Absorber no sustituye responder al daño que ya ha entrado. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar agua, equipo de tu rol y pausas de recuperación; la raza no sustituye la coordinación."
+    },
+    {
+      "especializacion": "Sagrado",
+      "objetivo": "Subir al 60",
+      "resumen": "Progresar como sanador de grupo con equipo de apoyo.",
+      "talentos": [
+        "Twilight Focus",
+        "Improved Healing",
+        "Binding Heal",
+        "Litany of Light"
+      ],
+      "motivo": "Buscar grupos estables y prever una alternativa de daño para misiones en solitario.",
+      "limitacion": "La ruta de sanación no garantiza un leveo individual rápido. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Revisar facultades de clase y raciales por separado: Fear Ward y Devouring Plague ya no son exclusivas de una raza."
+    },
+    {
+      "especializacion": "Sagrado",
+      "objetivo": "PvP",
+      "resumen": "Anticipar presión sobre varios aliados.",
+      "talentos": [
+        "Twilight Focus",
+        "Improved Healing",
+        "Binding Heal",
+        "Litany of Light"
+      ],
+      "motivo": "Situarte donde puedas asistir sin exponerte a todos los adversarios.",
+      "limitacion": "El posicionamiento y las interrupciones condicionan las curas. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Consultar las dos facultades propias de tu raza y coordinar defensivos con tus aliados."
+    },
+    {
+      "especializacion": "Sagrado",
+      "objetivo": "Mazmorras",
+      "resumen": "Elegir curas según el daño real del grupo.",
+      "talentos": [
+        "Twilight Focus",
+        "Improved Healing",
+        "Binding Heal",
+        "Litany of Light"
+      ],
+      "motivo": "Variar la respuesta según quién necesite curación y evitar sobrecurar por mantener un patrón.",
+      "limitacion": "La eficiencia depende de la duración y del ritmo de cada pull. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar agua, equipo de tu rol y pausas de recuperación; la raza no sustituye la coordinación."
+    },
+    {
+      "especializacion": "Sombras",
+      "objetivo": "Subir al 60",
+      "resumen": "Mantener presión de Sombras con pausas de recuperación.",
+      "talentos": [
+        "Shadow Focus",
+        "Vampiric Embrace",
+        "Devouring Contagion",
+        "Dark Inspiration"
+      ],
+      "motivo": "Escoger enemigos aislados y comprobar dónde puede propagarse una aflicción.",
+      "limitacion": "No se ha validado una secuencia de talentos hasta el nivel 60. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Revisar facultades de clase y raciales por separado: Fear Ward y Devouring Plague ya no son exclusivas de una raza."
+    },
+    {
+      "especializacion": "Sombras",
+      "objetivo": "PvP",
+      "resumen": "Presionar sin comprometer los objetivos controlados.",
+      "talentos": [
+        "Shadow Focus",
+        "Vampiric Embrace",
+        "Devouring Contagion",
+        "Dark Inspiration"
+      ],
+      "motivo": "Evitar daño periódico sobre el objetivo reservado para control.",
+      "limitacion": "La movilidad enemiga puede cortar las canalizaciones. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Consultar las dos facultades propias de tu raza y coordinar defensivos con tus aliados."
+    },
+    {
+      "especializacion": "Sombras",
+      "objetivo": "Mazmorras",
+      "resumen": "Aportar daño de Sombras con atención a enemigos cercanos.",
+      "talentos": [
+        "Shadow Focus",
+        "Vampiric Embrace",
+        "Devouring Contagion",
+        "Dark Inspiration"
+      ],
+      "motivo": "Coordinar el cambio de objetivo antes de que un enemigo afectado muera.",
+      "limitacion": "La propagación de efectos puede implicar enemigos no deseados. Prioridades editoriales de beta, pendientes de validar al 60.",
+      "progreso": "Preparar agua, equipo de tu rol y pausas de recuperación; la raza no sustituye la coordinación."
+    }
+  ],
+  "obtenerPuntosLegado": [
+    "Sacerdote: desafíos de clase anunciados en niveles 25, 45 y 60; comprobar requisitos vigentes.",
+    "Oficios no recolectores: hitos de habilidad 150, 225 y 300. Minería y Herboristería no cuentan para esos desafíos.",
+    "Exploración, objetivos PvP, mazmorras y bandas permiten obtener más puntos de Legado; consultar los requisitos antes de elegir ruta."
+  ],
+  "fuentes": [
+    {
+      "nombre": "Blizzard — Repaso oficial de clases (EN)",
+      "url": "https://news.blizzard.com/en-gb/article/24301514/world-of-warcraft-forever-class-deep-dives-priest-and-warrior"
+    },
+    {
+      "nombre": "Blizzard — Correcciones del 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "nombre": "Blizzard — Calendario actualizado de beta",
+      "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920"
+    },
+    {
+      "nombre": "Blizzard — Sistema de Legado",
+      "url": "https://news.blizzard.com/es-es/article/24307383/familiarizate-con-el-sistema-de-legado-de-world-of-warcraft-forever"
+    }
+  ],
+  "notaFuentes": "Talentos con nombres oficiales ingleses para evitar traducciones no contrastadas. Las listas son candidatos a estudiar, no orden de compra ni selección simultánea garantizada; hay que comprobar rangos y prerrequisitos. Las notas del 15/10 prevalecen sobre los repasos iniciales. Consejos por objetivo: criterio editorial provisional. Power in Light admite Holy Fire o Shadow Word: Pain; Divine Aegis requiere críticos de curación no periódica. Dark Inspiration es nuevo en las notas del 15/10."
+}
