@@ -42,7 +42,6 @@ function clearResult() {
   document.getElementById("result-combination").textContent = "";
   document.getElementById("no-alternative").hidden = true;
   document.getElementById("alternative-profile").hidden = true;
-  document.getElementById("alternative-name").textContent = "";
   document.getElementById("alternative-use").textContent = "";
 }
 
@@ -151,7 +150,6 @@ specialization.addEventListener("change", () => {
   document.getElementById("no-alternative").hidden = record.alternativa !== "-";
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
-    document.getElementById("alternative-name").textContent = alternative.raza;
     document.getElementById("alternative-use").textContent = alternative.usoPrincipal;
     document.getElementById("alternative-profile").hidden = false;
   }

@@ -109,14 +109,18 @@
             <h2 id="result-race" data-field="razaRecomendada"></h2>
             <p class="result-combination" id="result-combination"></p>
             <dl class="result-summary">
-              <div><dt>Alternativa</dt><dd data-field="alternativa"></dd></div>
+              <div>
+                <dt>Alternativa</dt>
+                <dd>
+                  <span data-field="alternativa"></span>
+                  <div id="alternative-profile" hidden>
+                    <p class="field-note">Uso principal de la alternativa</p>
+                    <p id="alternative-use" class="original-text"></p>
+                  </div>
+                </dd>
+              </div>
               <div><dt>Prioridad original</dt><dd class="rating" data-field="prioridad"></dd></div>
             </dl>
-            <section id="alternative-profile" class="result-card" aria-labelledby="alternative-name" hidden>
-              <h3 id="alternative-name"></h3>
-              <p class="field-note">Uso principal</p>
-              <p id="alternative-use" class="original-text"></p>
-            </section>
             <p class="field-note" id="no-alternative" hidden>«-» significa alternativa no facilitada en el Excel.</p>
             <h3>Motivo principal</h3>
             <p class="original-text" data-field="motivoPrincipal"></p>
