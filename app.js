@@ -21,6 +21,11 @@ const result = document.getElementById("advisor-result");
 const status = document.getElementById("selection-status");
 const dataError = document.getElementById("data-error");
 const retryButton = document.getElementById("retry-data");
+const racialView = document.getElementById("racial-view");
+const racialSelect = document.getElementById("racial-race");
+const racialResult = document.getElementById("racial-result");
+const racialStatus = document.getElementById("racial-status");
+const racialError = document.getElementById("racial-error");
 let records = [];
 let racialProfiles = new Map();
 let loading = false;
@@ -79,6 +84,8 @@ async function loadData() {
   dataError.hidden = true;
   retryButton.disabled = true;
   status.textContent = "Cargando las fichas del Excel…";
+  racialError.hidden = true;
+  racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
     const [advisor, profiles] = await Promise.all([
@@ -88,6 +95,8 @@ async function loadData() {
     racialProfiles = validateData(advisor, profiles);
     records = advisor.fichas;
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
+    setOptions(racialSelect, [...racialProfiles.keys()], "Elige raza");
+    racialStatus.textContent = "Elige una raza para consultar su perfil.";
     loaded = true;
     status.textContent = "Elige una facción para comenzar.";
   } catch (error) {
@@ -96,6 +105,9 @@ async function loadData() {
     setOptions(specialization, [], "Elige primero una clase");
     status.textContent = "Fichas no disponibles.";
     dataError.hidden = false;
+    setOptions(racialSelect, [], "Datos no disponibles");
+    racialError.hidden = false;
+    racialStatus.textContent = "Perfiles no disponibles.";
   } finally {
     loading = false;
     retryButton.disabled = false;
@@ -138,13 +150,36 @@ specialization.addEventListener("change", () => {
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
 });
 
+racialSelect.addEventListener("change", () => {
+  racialResult.hidden = true;
+  document.getElementById("racial-name").textContent = "";
+  for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
+  const profile = racialProfiles.get(racialSelect.value);
+  if (!profile) {
+    racialStatus.textContent = "Elige una raza para consultar su perfil.";
+    return;
+  }
+  document.getElementById("racial-name").textContent = profile.raza;
+  for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
+    field.textContent = profile[field.dataset.racialField];
+  }
+  racialResult.hidden = false;
+  racialStatus.textContent = `Perfil disponible: ${profile.raza}.`;
+});
+
 function showRoute(event) {
   const isAdvisor = window.location.hash === "#race-advisor";
-  homeView.hidden = isAdvisor;
+  const isRacials = window.location.hash === "#raciales";
+  homeView.hidden = isAdvisor || isRacials;
   advisorView.hidden = !isAdvisor;
-  document.title = isAdvisor ? "Race Advisor | WoW Forever Advisor" : "WoW Forever Advisor";
+  racialView.hidden = !isRacials;
+  document.title = isRacials ? "Raciales | WoW Forever Advisor"
+    : isAdvisor ? "Race Advisor | WoW Forever Advisor" : "WoW Forever Advisor";
   if (isAdvisor) {
     document.getElementById("advisor-title").focus();
+    loadData();
+  } else if (isRacials) {
+    document.getElementById("racial-title").focus();
     loadData();
   } else if (event) {
     document.getElementById("race-advisor").focus({ preventScroll: true });
@@ -157,5 +192,6 @@ document.getElementById("race-advisor").addEventListener("click", () => {
 });
 form.addEventListener("submit", (event) => event.preventDefault());
 retryButton.addEventListener("click", loadData);
+document.getElementById("retry-racials").addEventListener("click", loadData);
 window.addEventListener("hashchange", showRoute);
 showRoute();

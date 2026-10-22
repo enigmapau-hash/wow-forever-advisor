@@ -123,3 +123,76 @@ runButton.addEventListener("click", async () => {
     runButton.disabled = false;
   }
 });
+
+document.getElementById("run-racials").addEventListener("click", async (event) => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  runButton.disabled = true;
+  report.textContent = "Comprobando raciales…";
+  let assertions = 0;
+  const check = (condition, message) => {
+    assertions += 1;
+    if (!condition) throw new Error(message);
+  };
+  try {
+    const [profiles, advisor] = await Promise.all([
+      fetch("../data/racials.json").then((response) => response.json()),
+      fetch("../data/race-advisor.json").then((response) => response.json()),
+    ]);
+    await new Promise((resolve) => {
+      frame.addEventListener("load", resolve, { once: true });
+      frame.src = `../index.html?racials-test=${Date.now()}#race-advisor`;
+    });
+    const doc = frame.contentDocument;
+    const win = frame.contentWindow;
+    const choose = (id, value) => {
+      const select = doc.getElementById(id);
+      select.value = value;
+      select.dispatchEvent(new win.Event("change", { bubbles: true }));
+    };
+    await waitFor(() => !doc.getElementById("faction").disabled);
+    const original = advisor.fichas[0];
+    choose("faction", original.faccion);
+    choose("character-class", original.clase);
+    choose("specialization", original.especializacion);
+    check(doc.querySelector('[data-field="razaRecomendada"]').textContent === original.razaRecomendada,
+      "El Race Advisor original sigue operativo");
+    doc.getElementById("explore-racials").click();
+    await waitFor(() => !doc.getElementById("racial-view").hidden);
+    const select = doc.getElementById("racial-race");
+    const result = doc.getElementById("racial-result");
+    check(JSON.stringify([...select.options].map((option) => option.value).filter(Boolean))
+      === JSON.stringify(profiles.raciales.map((profile) => profile.raza)), "Las ocho razas exactas del JSON");
+    check(profiles.raciales.length === 8 && result.hidden, "Ocho perfiles, sin resultado inicial");
+    for (const profile of profiles.raciales) {
+      choose("racial-race", profile.raza);
+      check(!result.hidden && doc.getElementById("racial-name").textContent === profile.raza, `Raza: ${profile.raza}`);
+      for (const field of result.querySelectorAll("[data-racial-field]")) {
+        check(field.textContent === profile[field.dataset.racialField], `${profile.raza}: ${field.dataset.racialField} literal`);
+      }
+    }
+    choose("racial-race", "");
+    check(result.hidden && [...result.querySelectorAll("[data-racial-field]")].every((field) => field.textContent === ""),
+      "Vaciar raza elimina el perfil anterior");
+    doc.getElementById("back-selector").click();
+    await waitFor(() => !doc.getElementById("advisor-view").hidden);
+    check(doc.getElementById("specialization").value === original.especializacion
+      && doc.querySelector('[data-field="razaRecomendada"]').textContent === original.razaRecomendada,
+      "Volver al selector conserva la selección original");
+    win.history.back();
+    await waitFor(() => !doc.getElementById("racial-view").hidden);
+    check(doc.getElementById("advisor-view").hidden, "Atrás vuelve a la consulta racial");
+    await new Promise((resolve) => {
+      frame.addEventListener("load", resolve, { once: true });
+      win.location.reload();
+    });
+    await waitFor(() => !frame.contentDocument.getElementById("racial-race").disabled);
+    check(!frame.contentDocument.getElementById("racial-view").hidden, "Recarga directa de #raciales");
+    report.textContent = `OK: 8/8 razas, ${assertions} comprobaciones. Textos literales, navegación y una selección del Race Advisor correctos.`;
+  } catch (error) {
+    report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones completadas)`;
+  } finally {
+    button.disabled = false;
+    runButton.disabled = false;
+  }
+});
