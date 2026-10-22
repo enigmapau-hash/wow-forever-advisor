@@ -36,10 +36,13 @@ runButton.addEventListener("click", async () => {
     const spec = doc.getElementById("specialization");
     const result = doc.getElementById("advisor-result");
     const choose = (select, value) => {
-      select.value = value;
-      select.dispatchEvent(new win.Event("change", { bubbles: true }));
+      const option = [...select.querySelectorAll("button")].find((item) => item.dataset.value === value);
+      if (option) option.click();
+      else win.selectOption(select, value);
+      check([...select.querySelectorAll("button")].every((item) => item.getAttribute("aria-pressed")
+        === String(item.dataset.value === select.dataset.value)), "Selección accesible exclusiva");
     };
-    const options = (select) => [...select.options].map((option) => option.value).filter(Boolean).sort();
+    const options = (select) => [...select.querySelectorAll("button")].map((option) => option.dataset.value).sort();
     const sameOptions = (select, values) => JSON.stringify(options(select)) === JSON.stringify([...new Set(values)].sort());
     check(doc.getElementById("advisor-view").hidden, "La aplicación debe abrir en inicio");
     doc.getElementById("race-advisor").click();
@@ -52,12 +55,12 @@ runButton.addEventListener("click", async () => {
     for (const record of advisor.fichas) {
       const key = [record.faccion, record.clase, record.especializacion].join(" / ");
       choose(faction, record.faccion);
-      check(characterClass.value === "" && spec.value === "" && spec.disabled && result.hidden, `${key}: limpiar al cambiar facción`);
+      check(characterClass.dataset.value === "" && spec.dataset.value === "" && spec.disabled && result.hidden, `${key}: limpiar al cambiar facción`);
       check([...result.querySelectorAll("[data-field]")].every((field) => field.textContent === ""), `${key}: sin texto residual`);
       const factionRows = advisor.fichas.filter((row) => row.faccion === record.faccion);
       check(sameOptions(characterClass, factionRows.map((row) => row.clase)), `${key}: clases exactas`);
       choose(characterClass, record.clase);
-      check(spec.value === "" && !spec.disabled && result.hidden, `${key}: limpiar al cambiar clase`);
+      check(spec.dataset.value === "" && !spec.disabled && result.hidden, `${key}: limpiar al cambiar clase`);
       check(sameOptions(spec, factionRows.filter((row) => row.clase === record.clase).map((row) => row.especializacion)), `${key}: especializaciones exactas`);
       choose(spec, record.especializacion);
       check(!result.hidden, `${key}: resultado visible`);
@@ -78,12 +81,12 @@ runButton.addEventListener("click", async () => {
     choose(characterClass, "Paladín");
     choose(spec, "Sagrado");
     choose(faction, "Horda");
-    check(!options(characterClass).includes("Paladín") && characterClass.value === "" && spec.disabled && result.hidden,
+    check(!options(characterClass).includes("Paladín") && characterClass.dataset.value === "" && spec.disabled && result.hidden,
       "Alianza / Paladín no debe persistir en Horda");
     choose(characterClass, "Guerrero");
     choose(spec, "Armas");
     choose(characterClass, "Mago");
-    check(!options(spec).includes("Armas") && spec.value === "" && result.hidden, "Armas no debe persistir al cambiar a Mago");
+    check(!options(spec).includes("Armas") && spec.dataset.value === "" && result.hidden, "Armas no debe persistir al cambiar a Mago");
     choose(spec, "Especialización inexistente");
     check(result.hidden, "Una selección inválida no debe mostrar otra ficha");
     choose(faction, "");
@@ -107,7 +110,7 @@ runButton.addEventListener("click", async () => {
     check(doc.getElementById("advisor-view").hidden, "Volver al inicio");
     win.history.back();
     await waitFor(() => !doc.getElementById("advisor-view").hidden);
-    check(!result.hidden && faction.value === "Alianza" && spec.value === "Armas", "Navegación atrás conserva una selección coherente");
+    check(!result.hidden && faction.dataset.value === "Alianza" && spec.dataset.value === "Armas", "Navegación atrás conserva una selección coherente");
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       win.location.reload();
@@ -147,8 +150,11 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     const win = frame.contentWindow;
     const choose = (id, value) => {
       const select = doc.getElementById(id);
-      select.value = value;
-      select.dispatchEvent(new win.Event("change", { bubbles: true }));
+      const option = [...select.querySelectorAll("button")].find((item) => item.dataset.value === value);
+      if (option) option.click();
+      else win.selectOption(select, value);
+      check([...select.querySelectorAll("button")].every((item) => item.getAttribute("aria-pressed")
+        === String(item.dataset.value === select.dataset.value)), "Selección accesible exclusiva");
     };
     await waitFor(() => !doc.getElementById("faction").disabled);
     const original = advisor.fichas[0];
@@ -161,7 +167,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     await waitFor(() => !doc.getElementById("racial-view").hidden);
     const select = doc.getElementById("racial-race");
     const result = doc.getElementById("racial-result");
-    check(JSON.stringify([...select.options].map((option) => option.value).filter(Boolean))
+    check(JSON.stringify([...select.querySelectorAll("button")].map((option) => option.dataset.value))
       === JSON.stringify(profiles.raciales.map((profile) => profile.raza)), "Las ocho razas exactas del JSON");
     check(profiles.raciales.length === 8 && result.hidden, "Ocho perfiles, sin resultado inicial");
     check(advisor.fichas.length === 51, "Cruzar las ocho razas con las 51 fichas");
@@ -191,9 +197,9 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
           link.click();
           await waitFor(() => !doc.getElementById("advisor-view").hidden);
           check(doc.getElementById("racial-view").hidden
-            && doc.getElementById("faction").value === record.faccion
-            && doc.getElementById("character-class").value === record.clase
-            && doc.getElementById("specialization").value === record.especializacion
+            && doc.getElementById("faction").dataset.value === record.faccion
+            && doc.getElementById("character-class").dataset.value === record.clase
+            && doc.getElementById("specialization").dataset.value === record.especializacion
             && !doc.getElementById("advisor-result").hidden
             && doc.getElementById("result-combination").textContent === label(record), `${label(record)}: abrir ficha desde ${field}`);
           check([...doc.querySelectorAll("#advisor-result [data-field]")].every((element) => {
@@ -203,7 +209,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
           }), `${label(record)}: ficha completa correspondiente`);
           doc.getElementById("explore-racials").click();
           await waitFor(() => !doc.getElementById("racial-view").hidden);
-          check(select.value === profile.raza && !result.hidden, "Volver conserva la consulta racial");
+          check(select.dataset.value === profile.raza && !result.hidden, "Volver conserva la consulta racial");
         }
         if (field === "razaRecomendada") recommended += links.length;
         else alternatives += links.length;
@@ -219,7 +225,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     check(!result.querySelector("li"), "Vaciar raza elimina las coincidencias anteriores");
     doc.getElementById("back-selector").click();
     await waitFor(() => !doc.getElementById("advisor-view").hidden);
-    check(doc.getElementById("specialization").value === original.especializacion
+    check(doc.getElementById("specialization").dataset.value === original.especializacion
       && doc.querySelector('[data-field="razaRecomendada"]').textContent === original.razaRecomendada,
       "Volver al selector conserva la selección original");
     win.history.back();

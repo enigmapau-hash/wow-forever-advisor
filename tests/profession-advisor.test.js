@@ -29,16 +29,19 @@ document.getElementById("run-tests").addEventListener("click", async (event) => 
     const select = doc.getElementById("profession-class");
     const result = doc.getElementById("profession-result");
     const choose = (element, value) => {
-      element.value = value;
-      element.dispatchEvent(new win.Event("change", { bubbles: true }));
+      const option = [...element.querySelectorAll("button")].find((item) => item.dataset.value === value);
+      if (option) option.click();
+      else win.selectOption(element, value);
+      check([...element.querySelectorAll("button")].every((item) => item.getAttribute("aria-pressed")
+        === String(item.dataset.value === element.dataset.value)), "Selección accesible exclusiva");
     };
     doc.getElementById("profession-advisor").click();
     await waitFor(() => !select.disabled);
     check(!doc.getElementById("profession-view").hidden && doc.getElementById("home-view").hidden, "Abrir desde inicio");
     const classes = [...new Set(data.fichas.map((row) => row.clase))];
     check(classes.length === 9 && data.fichas.length === 27, "Nueve clases y 27 fichas");
-    check(JSON.stringify([...select.options].map((option) => option.value).filter(Boolean)) === JSON.stringify(classes), "Clases exactas");
-    check(doc.querySelectorAll("#profession-view select").length === 1, "Solo selección de clase");
+    check(JSON.stringify([...select.querySelectorAll("button")].map((option) => option.dataset.value)) === JSON.stringify(classes), "Clases exactas");
+    check(doc.querySelectorAll("select").length === 0 && select.querySelectorAll("button").length === 9, "Nueve botones de clase y ningún desplegable");
     for (const name of classes) {
       choose(select, name);
       check(result.hidden && [...result.querySelectorAll("[data-profession-field]")].every((field) => field.textContent === ""), "Cambiar clase limpia la ficha");
@@ -65,7 +68,7 @@ document.getElementById("run-tests").addEventListener("click", async (event) => 
     check(doc.getElementById("profession-view").hidden, "Volver al inicio");
     win.history.back();
     await waitFor(() => !doc.getElementById("profession-view").hidden);
-    check(!result.hidden && select.value === classes[0], "Atrás conserva selección");
+    check(!result.hidden && select.dataset.value === classes[0], "Atrás conserva selección");
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       win.location.reload();

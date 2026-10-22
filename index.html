@@ -83,16 +83,25 @@
         <form id="advisor-form" class="selector-card" aria-label="Selección de personaje" aria-busy="true">
           <div class="selector-fields">
             <div>
-              <label for="faction">Facción</label>
-              <select id="faction" name="faccion" disabled><option value="">Elige facción</option></select>
+              <fieldset id="faction" class="option-group" data-value="" data-icon-kind="faccion" disabled>
+                <legend>Facción</legend>
+                <div class="option-buttons"></div>
+                <p class="option-prompt field-note">Elige facción</p>
+              </fieldset>
             </div>
             <div>
-              <label for="character-class">Clase</label>
-              <select id="character-class" name="clase" disabled><option value="">Elige primero una facción</option></select>
+              <fieldset id="character-class" class="option-group" data-value="" data-icon-kind="clase" disabled>
+                <legend>Clase</legend>
+                <div class="option-buttons"></div>
+                <p class="option-prompt field-note">Elige primero una facción</p>
+              </fieldset>
             </div>
             <div>
-              <label for="specialization">Especialización</label>
-              <select id="specialization" name="especializacion" disabled><option value="">Elige primero una clase</option></select>
+              <fieldset id="specialization" class="option-group" data-value="" data-icon-kind="especializacion" disabled>
+                <legend>Especialización</legend>
+                <div class="option-buttons"></div>
+                <p class="option-prompt field-note">Elige primero una clase</p>
+              </fieldset>
             </div>
           </div>
           <p class="selection-status" id="selection-status" role="status">Cargando las fichas del Excel…</p>
@@ -149,8 +158,11 @@
           <p class="subtitle">Consulta el perfil original de cada raza.</p>
         </header>
         <div class="selector-card">
-          <label for="racial-race">Raza</label>
-          <select id="racial-race" disabled><option value="">Elige raza</option></select>
+          <fieldset id="racial-race" class="option-group" data-value="" data-icon-kind="raza" disabled>
+                <legend>Raza</legend>
+                <div class="option-buttons"></div>
+                <p class="option-prompt field-note">Elige raza</p>
+              </fieldset>
           <p class="selection-status" id="racial-status" role="status">Cargando perfiles raciales…</p>
           <div id="racial-error" role="alert" hidden>
             <p>No se han podido cargar los perfiles raciales. Comprueba tu conexión e inténtalo de nuevo.</p>
@@ -194,8 +206,11 @@
           <p class="subtitle">Elige tu clase y especialización para consultar las profesiones.</p>
         </header>
         <div id="profession-selector" class="selector-card" aria-busy="true">
-          <label for="profession-class">Clase</label>
-          <select id="profession-class" disabled><option value="">Elige clase</option></select>
+          <fieldset id="profession-class" class="option-group" data-value="" data-icon-kind="clase" disabled>
+                <legend>Clase</legend>
+                <div class="option-buttons"></div>
+                <p class="option-prompt field-note">Elige clase</p>
+              </fieldset>
           <fieldset id="profession-specializations" hidden>
             <legend>Especialización</legend>
             <div id="profession-buttons" class="specialization-buttons"></div>

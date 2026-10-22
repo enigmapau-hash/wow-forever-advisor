@@ -31,9 +31,41 @@ let racialProfiles = new Map();
 let loading = false;
 let loaded = false;
 
-function setOptions(select, values, placeholder) {
-  select.replaceChildren(new Option(placeholder, ""), ...values.map((value) => new Option(value, value)));
-  select.disabled = values.length === 0;
+// Names match docs/icon-inventory.json. Specializations also need their class
+// because names such as Sagrado and Protección are shared. No image paths yet.
+function optionButton(value, kind, className = "") {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.dataset.value = value;
+  button.dataset.iconKind = kind;
+  button.dataset.iconName = value;
+  if (className) button.dataset.iconClass = className;
+  button.setAttribute("aria-pressed", "false");
+  const label = document.createElement("span");
+  label.className = "option-label";
+  label.textContent = value;
+  button.append(label);
+  return button;
+}
+
+function selectOption(group, value) {
+  const buttons = [...group.querySelectorAll("button")];
+  group.dataset.value = buttons.some((button) => button.dataset.value === value) ? value : "";
+  for (const button of buttons) {
+    button.setAttribute("aria-pressed", String(button.dataset.value === group.dataset.value));
+  }
+  group.dispatchEvent(new Event("change", { bubbles: true }));
+}
+
+function setOptions(group, values, placeholder) {
+  group.dataset.value = "";
+  group.querySelector(".option-buttons").replaceChildren(...values.map((value) => {
+    const button = optionButton(value, group.dataset.iconKind, group.dataset.iconClass);
+    button.addEventListener("click", () => selectOption(group, value));
+    return button;
+  }));
+  group.disabled = values.length === 0;
+  group.querySelector(".option-prompt").textContent = values.length ? "" : placeholder;
 }
 
 function clearResult() {
@@ -119,23 +151,24 @@ async function loadData() {
 
 faction.addEventListener("change", () => {
   clearResult();
-  const rows = records.filter((row) => row.faccion === faction.value);
-  setOptions(characterClass, uniqueValues(rows, "clase"), faction.value ? "Elige clase" : "Elige primero una facción");
+  const rows = records.filter((row) => row.faccion === faction.dataset.value);
+  setOptions(characterClass, uniqueValues(rows, "clase"), faction.dataset.value ? "Elige clase" : "Elige primero una facción");
   setOptions(specialization, [], "Elige primero una clase");
-  status.textContent = faction.value ? "Elige una clase." : "Elige una facción para comenzar.";
+  status.textContent = faction.dataset.value ? "Elige una clase." : "Elige una facción para comenzar.";
 });
 
 characterClass.addEventListener("change", () => {
   clearResult();
-  const rows = records.filter((row) => row.faccion === faction.value && row.clase === characterClass.value);
-  setOptions(specialization, uniqueValues(rows, "especializacion"), characterClass.value ? "Elige especialización" : "Elige primero una clase");
-  status.textContent = characterClass.value ? "Elige una especialización." : "Elige una clase.";
+  const rows = records.filter((row) => row.faccion === faction.dataset.value && row.clase === characterClass.dataset.value);
+  specialization.dataset.iconClass = characterClass.dataset.value;
+  setOptions(specialization, uniqueValues(rows, "especializacion"), characterClass.dataset.value ? "Elige especialización" : "Elige primero una clase");
+  status.textContent = characterClass.dataset.value ? "Elige una especialización." : "Elige una clase.";
 });
 
 specialization.addEventListener("change", () => {
   clearResult();
-  const matches = records.filter((row) => row.faccion === faction.value
-    && row.clase === characterClass.value && row.especializacion === specialization.value);
+  const matches = records.filter((row) => row.faccion === faction.dataset.value
+    && row.clase === characterClass.dataset.value && row.especializacion === specialization.dataset.value);
   if (matches.length !== 1) {
     status.textContent = "Elige una especialización válida para consultar la ficha.";
     return;
@@ -159,7 +192,7 @@ specialization.addEventListener("change", () => {
 
 function renderRacialMatches(listId, emptyId, field) {
   const list = document.getElementById(listId);
-  const matches = records.filter((row) => row[field] === racialSelect.value);
+  const matches = records.filter((row) => row[field] === racialSelect.dataset.value);
   list.replaceChildren(...matches.map((record) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
@@ -173,8 +206,7 @@ function renderRacialMatches(listId, emptyId, field) {
         [characterClass, record.clase],
         [specialization, record.especializacion],
       ]) {
-        select.value = value;
-        select.dispatchEvent(new Event("change", { bubbles: true }));
+        selectOption(select, value);
       }
       window.location.hash = "race-advisor";
     });
@@ -191,7 +223,7 @@ racialSelect.addEventListener("change", () => {
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
   renderRacialMatches("racial-recommended", "racial-no-recommended", "razaRecomendada");
   renderRacialMatches("racial-alternative", "racial-no-alternative", "alternativa");
-  const profile = racialProfiles.get(racialSelect.value);
+  const profile = racialProfiles.get(racialSelect.dataset.value);
   if (!profile) {
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
     return;
@@ -259,13 +291,10 @@ async function loadProfessions() {
 
 professionClass.addEventListener("change", () => {
   clearProfessionResult();
-  const rows = professionRecords.filter((row) => row.clase === professionClass.value);
+  const rows = professionRecords.filter((row) => row.clase === professionClass.dataset.value);
   document.getElementById("profession-specializations").hidden = rows.length === 0;
   professionButtons.replaceChildren(...rows.map((record) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = record.especializacion;
-    button.setAttribute("aria-pressed", "false");
+    const button = optionButton(record.especializacion, "especializacion", record.clase);
     button.addEventListener("click", () => {
       for (const sibling of professionButtons.children) sibling.setAttribute("aria-pressed", String(sibling === button));
       for (const field of professionResult.querySelectorAll("[data-profession-field]")) {
