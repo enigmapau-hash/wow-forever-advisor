@@ -40,7 +40,7 @@ self.addEventListener("activate", (event) => {
   })());
 });
 
-// Guardar en la caché privada del dispositivo los iconos servidos por Blizzard,
+// Guardar en la caché privada del dispositivo los iconos propiedad de Blizzard servidos por Wowhead,
 // sin copiar sus archivos al repositorio. Se toleran respuestas opacas no-CORS.
 async function cacheIcon(request) {
   const cache = await caches.open(CACHE_NAME);
