@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v18`);
-      await cache.put("./obsolete-v18", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v19`);
+      await cache.put("./obsolete-v19", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -53,6 +53,8 @@ const server = http.createServer(async (req, res) => {
       "No future-module section on the home screen");
     assert.equal(await page.getByText("Build Advisor").count(), 0,
       "Build Advisor is not displayed on the home screen");
+    assert.equal(await page.locator(".available-modules h3").first().textContent(), "Race Explorer", "Home module uses approved name");
+    assert.equal(await page.locator("#racial-title").textContent(), "Race Explorer", "Explorer view uses approved name");
     await page.evaluate(async () => {
       await navigator.serviceWorker.ready;
       if (!navigator.serviceWorker.controller) {
@@ -61,8 +63,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v19")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v18")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v20")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v19")), "Previous app cache removed after activation");
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();
