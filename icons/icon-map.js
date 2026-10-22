@@ -1,11 +1,11 @@
 "use strict";
 
-// Imágenes del juego servidas desde la CDN de Blizzard. No se alojan ni
+// Imágenes originales del juego servidas desde la CDN de Wowhead. No se alojan ni
 // redistribuyen binarios de Blizzard en este repositorio. Se almacenan en la
 // caché privada del navegador tras la primera visita con conexión.
 // Slugs gráficos representativos de WoW; conservar los textos accesibles.
 (() => {
-  const base = "https://render.worldofwarcraft.com/us/icons/56/";
+  const base = "https://wow.zamimg.com/images/wow/icons/large/";
   const file = (slug) => `${base}${slug}.jpg`;
   const entries = (values) => Object.fromEntries(
     Object.entries(values).map(([name, slug]) => [name, file(slug)])
