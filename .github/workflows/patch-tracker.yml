@@ -15,8 +15,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: wow-forever-patch-tracker
-  cancel-in-progress: false
+  group: wow-forever-patch-tracker-${{ github.event_name == 'pull_request' && 'pr' || 'monitor' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   tests:
