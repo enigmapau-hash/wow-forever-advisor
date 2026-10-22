@@ -17,7 +17,7 @@ class TalentExpansionTests(unittest.TestCase):
     def test_every_catalog_file_is_precached(self):
         catalog = json.loads((ROOT/'data/talent-advisor-catalog.json').read_text(encoding='utf-8'))
         sw = (ROOT/'sw.js').read_text(encoding='utf-8')
-        self.assertIn('${CACHE_PREFIX}v20', sw)
+        self.assertIn('${CACHE_PREFIX}v21', sw)
         for entry in catalog['clases']:
             self.assertIn('"'+entry['ruta']+'"', sw)
             data=json.loads((ROOT/entry['ruta']).read_text(encoding='utf-8'))
@@ -46,3 +46,25 @@ class TalentExpansionTests(unittest.TestCase):
             self.assertIn('15/10',data['notaFuentes'])
             self.assertTrue(any('2360696/6' in s['url'] for s in data['fuentes']))
             self.assertEqual(len({row['resumen'] for row in data['fichas']}),9)
+
+    def test_repeated_talent_lists_are_disclosed_and_retired_names_excluded(self):
+        catalog = json.loads((ROOT/'data/talent-advisor-catalog.json').read_text(encoding='utf-8'))
+        total = 0
+        repeated = 0
+        discontinued = {'Call of Thunder', 'Llamada del trueno', 'Malediction', 'Mangle'}
+        for cls in catalog['clases']:
+            data = json.loads((ROOT/cls['ruta']).read_text(encoding='utf-8'))
+            self.assertEqual(len(data['fichas']), 9)
+            self.assertEqual(data['estado'], 'borrador_beta')
+            self.assertEqual(data['versionCliente'], '1.60.1.70450')
+            for spec in data['especializaciones']:
+                rows = [f for f in data['fichas'] if f['especializacion'] == spec]
+                self.assertEqual({row['objetivo'] for row in rows}, set(catalog['objetivos']))
+                all_talents = {talent for row in rows for talent in row['talentos']}
+                self.assertFalse(all_talents & discontinued, (data['clase'], spec))
+                if all(row['talentos'] == rows[0]['talentos'] for row in rows):
+                    repeated += 1
+                    self.assertIn('Los talentos destacados se repiten para los tres objetivos', data['aviso'])
+                total += len(rows)
+        self.assertEqual(total, 81)
+        self.assertEqual(repeated, 18)
