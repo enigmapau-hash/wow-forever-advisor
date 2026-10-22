@@ -90,7 +90,7 @@ h1 span { color: var(--gold); }
 
 .description { max-width: 29rem; color: #c0c8bf; }
 
-button {
+button, .button-link {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -108,8 +108,8 @@ button {
 
 button:disabled { cursor: not-allowed; opacity: 1; }
 button:not(:disabled) { cursor: pointer; border-color: var(--gold); }
-button:not(:disabled):hover { background: #484b35; }
-button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+button:not(:disabled):hover, .button-link:hover { background: #484b35; }
+button:focus-visible, .button-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
 button svg { width: 1.1rem; flex-shrink: 0; stroke: currentColor; stroke-width: 1.5; }
 
 .availability {
@@ -233,3 +233,8 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .option-label { overflow-wrap: anywhere; }
 .option-buttons button[aria-pressed="true"] { background: var(--gold); color: var(--background); }
 .option-prompt:empty { display: none; }
+
+.button-link { color: var(--gold); background: #18211b; text-decoration: none; justify-content: center; }
+@media (min-width: 40rem) {
+  .available-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
