@@ -2,7 +2,7 @@
 
 **Fecha de revisión:** 22 de octubre de 2026  
 **Datos de talentos disponibles:** cliente beta `1.60.1.70450` (16/10/2026).  
-**Estado:** **Borrador editorial para discusión — NO aprobado como recomendación final, NO implementado en la PWA.**
+**Estado:** **Ficha piloto aprobada para integrarse en Talent Advisor v13; orientaciones de beta, NO validadas como recomendaciones definitivas.**
 
 > **Principio editorial:** un asesor sencillo, no una calculadora ni un árbol interactivo. Tres objetivos separados: **Subir al 60**, **PvP al 60** y **Mazmorras al 60**. Cada ficha diferencia talentos de clase, Legado, requisitos, ventajas, limitaciones y fuentes. Todas las distribuciones numéricas de nivel 60 y las prioridades exactas por nivel requerirán confirmación tras la beta. No se rellenan puntos arbitrarios para que parezca una build terminada.
 
@@ -97,15 +97,15 @@ La progresión de Legado se comparte por cuenta, pero **cada personaje invierte 
 7. **No modificar Race Advisor ni Profession Advisor** al preparar el piloto. Si más adelante se incorporan nuevos árboles, datos o sistemas, mostrar estado de revisión por parche.
 8. **No incluir una calculadora ni árbol interactivo:** se han descartado expresamente.
 
-## 6. Propuesta editorial a validar por el usuario
+## 6. Interfaz aprobada del piloto
 
-**Propuesta de UX (no implementada):**
+**Interfaz preparada en la rama de integración (sujeta a verificación en Android):**
 - Selección de **Guerrero** → especialización con botón e icono → tres opciones separadas (**Subir al 60**, **PvP**, **Mazmorras**).
 - Mostrar una tarjeta de resultado con: (1) Talentos de clase, (2) Legado y cómo obtener puntos, (3) Otros progresos importantes.
 - Mostrar siempre **versión, estado y fecha de revisión**. «Recomendación de beta — por validar» hasta que pueda acreditarse su distribución.
 - Dejar que se visualicen **prioridades y razonamientos** sin simular repartos completos hasta la validación de nivel 60.
 
-**Aprobación pendiente:** contenido de la primera ficha y nivel de detalle deseado antes de crear JSON del módulo o PR de integración.
+**Aprobado por el usuario:** alcance y nivel de detalle del piloto; se crean 9 fichas en `data/talent-advisor-warrior.json` junto a 3 perfiles de Legado y la vista Talent Advisor. Siguen pendientes los repartos de puntos y su verificación con el cliente definitivo.
 
 ## Referencia transversal
 

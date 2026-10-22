@@ -344,17 +344,201 @@ document.getElementById("profession-advisor").addEventListener("click", () => {
 });
 document.getElementById("retry-professions").addEventListener("click", loadProfessions);
 
+// Talent Advisor: piloto editorial del Guerrero. No asigna puntos automáticamente
+// ni convierte notas provisionales de beta en builds completas.
+const talentView = document.getElementById("talent-view");
+const talentClass = document.getElementById("talent-class");
+const talentSpec = document.getElementById("talent-spec");
+const talentGoal = document.getElementById("talent-goal");
+const talentResult = document.getElementById("talent-result");
+const talentStatus = document.getElementById("talent-status");
+const talentError = document.getElementById("talent-error");
+const talentRetry = document.getElementById("retry-talents");
+const talentSpecIcon = document.getElementById("talent-spec-icon");
+talentSpecIcon.addEventListener("load", () => { talentSpecIcon.hidden = false; });
+talentSpecIcon.addEventListener("error", () => { talentSpecIcon.hidden = true; });
+let talentData = null;
+let talentsLoading = false;
+let talentsLoaded = false;
+
+function validateTalentData(data) {
+  const goals = ["Subir al 60", "PvP", "Mazmorras"];
+  const specs = ["Armas", "Furia", "Protección"];
+  const required = (text) => typeof text === "string" && text.trim().length > 0;
+  const validList = (list) => Array.isArray(list) && list.length > 0 && list.every(required);
+  if (!data || data.schemaVersion !== 1 || data.piloto !== true
+      || data.clase !== "Guerrero" || data.estado !== "borrador_beta"
+      || !required(data.versionCliente) || !required(data.fechaRevision)
+      || !required(data.aviso)
+      || !Array.isArray(data.objetivos) || JSON.stringify(data.objetivos) !== JSON.stringify(goals)
+      || !Array.isArray(data.especializaciones) || JSON.stringify(data.especializaciones) !== JSON.stringify(specs)
+      || !Array.isArray(data.fichas) || data.fichas.length !== 9
+      || !data.legado || !validList(data.obtenerPuntosLegado)
+      || !Array.isArray(data.fuentes) || data.fuentes.length < 2
+      || !data.fuentes.every((source) => required(source.nombre) && /^https:\/\//.test(source.url))
+      || !required(data.notaFuentes)) {
+    throw new Error("El piloto de talentos no tiene el esquema esperado.");
+  }
+  const keys = new Set();
+  for (const row of data.fichas) {
+    if (!row || !specs.includes(row.especializacion) || !goals.includes(row.objetivo)
+        || !["resumen", "motivo", "limitacion", "progreso"].every((field) => required(row[field]))
+        || !validList(row.talentos)) {
+      throw new Error("Una ficha del Guerrero está incompleta.");
+    }
+    const key = JSON.stringify([row.especializacion, row.objetivo]);
+    if (keys.has(key)) throw new Error("Hay recomendaciones duplicadas.");
+    keys.add(key);
+  }
+  for (const objetivo of goals) {
+    const legacy = data.legado[objetivo];
+    if (!legacy || !validList(legacy.ventajas)
+        || !["descripcion", "advertencia", "consejo"].every((field) => required(legacy[field]))) {
+      throw new Error("El asesor de Legado está incompleto.");
+    }
+    for (const spec of specs) {
+      if (!keys.has(JSON.stringify([spec, objetivo]))) throw new Error("Falta una combinación del Guerrero.");
+    }
+  }
+  return data;
+}
+
+function replaceTalentList(id, entries) {
+  document.getElementById(id).replaceChildren(...entries.map((entry) => {
+    const li = document.createElement("li");
+    li.textContent = entry;
+    return li;
+  }));
+}
+
+function clearTalentResult() {
+  talentResult.hidden = true;
+  talentSpecIcon.hidden = true;
+  talentSpecIcon.removeAttribute("src");
+  for (const id of ["talent-result-title", "talent-build-info", "talent-overview",
+    "talent-reason", "talent-limitation", "talent-legacy-intro",
+    "talent-legacy-warning", "talent-legacy-tip", "talent-extra",
+    "talent-version", "talent-source-note", "talent-advice-warning"]) {
+    document.getElementById(id).textContent = "";
+  }
+  for (const id of ["talent-priorities", "talent-legacy-perks",
+    "talent-legacy-points", "talent-sources"]) document.getElementById(id).replaceChildren();
+}
+
+function renderTalentResult() {
+  clearTalentResult();
+  if (!talentData || talentClass.dataset.value !== talentData.clase) return;
+  const spec = talentSpec.dataset.value;
+  const goal = talentGoal.dataset.value;
+  const record = talentData.fichas.find((item) => item.especializacion === spec && item.objetivo === goal);
+  const legacy = talentData.legado[goal];
+  if (!record || !legacy) {
+    talentStatus.textContent = "Elige especialización y objetivo para consultar el piloto.";
+    return;
+  }
+  document.getElementById("talent-result-title").textContent = spec;
+  document.getElementById("talent-build-info").textContent = `Guerrero · ${spec} · ${goal}`;
+  document.getElementById("talent-overview").textContent = record.resumen;
+  replaceTalentList("talent-priorities", record.talentos);
+  document.getElementById("talent-reason").textContent = record.motivo;
+  document.getElementById("talent-limitation").textContent = record.limitacion;
+  document.getElementById("talent-legacy-intro").textContent = legacy.descripcion;
+  replaceTalentList("talent-legacy-perks", legacy.ventajas);
+  document.getElementById("talent-legacy-warning").textContent = legacy.advertencia;
+  document.getElementById("talent-legacy-tip").textContent = legacy.consejo;
+  replaceTalentList("talent-legacy-points", talentData.obtenerPuntosLegado);
+  document.getElementById("talent-extra").textContent = record.progreso;
+  document.getElementById("talent-advice-warning").textContent = talentData.aviso;
+  document.getElementById("talent-version").textContent =
+    `Compilación beta ${talentData.versionCliente} · Revisión ${talentData.fechaRevision} · Pendiente de validar al nivel 60.`;
+  document.getElementById("talent-source-note").textContent = talentData.notaFuentes;
+  const sources = talentData.fuentes.map((source) => {
+    const li = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.textContent = source.nombre;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    li.append(link);
+    return li;
+  });
+  document.getElementById("talent-sources").replaceChildren(...sources);
+  const icon = self.WOW_ICON_MAP?.especializacion?.["Guerrero"]?.[spec];
+  if (icon) talentSpecIcon.src = icon;
+  talentResult.hidden = false;
+  talentStatus.textContent = `Piloto disponible: Guerrero, ${spec}, ${goal} (beta; pendiente de validar).`;
+}
+
+async function loadTalents() {
+  if (talentsLoaded || talentsLoading) return;
+  talentsLoading = true;
+  const selector = document.getElementById("talent-selector");
+  selector.setAttribute("aria-busy", "true");
+  talentError.hidden = true;
+  talentRetry.disabled = true;
+  talentStatus.textContent = "Cargando piloto del Guerrero…";
+  clearTalentResult();
+  try {
+    talentData = validateTalentData(await readJson("./data/talent-advisor-warrior.json"));
+    setOptions(talentClass, [talentData.clase], "Elige clase");
+    setOptions(talentSpec, [], "Elige primero la clase");
+    setOptions(talentGoal, [], "Elige primero una especialización");
+    talentsLoaded = true;
+    talentStatus.textContent = "Elige Guerrero para empezar.";
+  } catch (error) {
+    talentData = null;
+    setOptions(talentClass, [], "Datos no disponibles");
+    setOptions(talentSpec, [], "Elige primero la clase");
+    setOptions(talentGoal, [], "Elige primero una especialización");
+    talentError.hidden = false;
+    talentStatus.textContent = "Piloto no disponible.";
+  } finally {
+    talentsLoading = false;
+    talentRetry.disabled = false;
+    selector.setAttribute("aria-busy", "false");
+  }
+}
+
+talentClass.addEventListener("change", () => {
+  clearTalentResult();
+  const valid = talentData && talentClass.dataset.value === talentData.clase;
+  setOptions(talentSpec, valid ? talentData.especializaciones : [], "Elige primero la clase");
+  setOptions(talentGoal, [], "Elige primero una especialización");
+  talentStatus.textContent = valid ? "Elige especialización." : "Elige Guerrero para empezar.";
+});
+
+talentSpec.addEventListener("change", () => {
+  clearTalentResult();
+  const valid = talentData && talentData.especializaciones.includes(talentSpec.dataset.value)
+    && talentClass.dataset.value === talentData.clase;
+  setOptions(talentGoal, valid ? talentData.objetivos : [], "Elige primero una especialización");
+  talentStatus.textContent = valid ? "Elige objetivo: subir al 60, PvP o mazmorras." : "Elige especialización.";
+});
+
+talentGoal.addEventListener("change", renderTalentResult);
+document.getElementById("talent-advisor").addEventListener("click", () => {
+  window.location.hash = "talent-advisor";
+});
+talentRetry.addEventListener("click", loadTalents);
+
 function showRoute(event) {
   const isAdvisor = window.location.hash === "#race-advisor";
   const isRacials = window.location.hash === "#raciales";
   const isProfession = window.location.hash === "#profession-advisor";
-  homeView.hidden = isAdvisor || isRacials || isProfession;
+  const isTalent = window.location.hash === "#talent-advisor";
+  homeView.hidden = isAdvisor || isRacials || isProfession || isTalent;
   professionView.hidden = !isProfession;
   advisorView.hidden = !isAdvisor;
   racialView.hidden = !isRacials;
-  document.title = isProfession ? "Profession Advisor | WoW Forever Advisor" : isRacials ? "Raciales | WoW Forever Advisor"
-    : isAdvisor ? "Race Advisor | WoW Forever Advisor" : "WoW Forever Advisor";
-  if (isProfession) {
+  talentView.hidden = !isTalent;
+  document.title = isTalent ? "Talent Advisor | WoW Forever Advisor"
+    : isProfession ? "Profession Advisor | WoW Forever Advisor"
+      : isRacials ? "Raciales | WoW Forever Advisor"
+        : isAdvisor ? "Race Advisor | WoW Forever Advisor" : "WoW Forever Advisor";
+  if (isTalent) {
+    document.getElementById("talent-title").focus();
+    loadTalents();
+  } else if (isProfession) {
     document.getElementById("profession-title").focus();
     loadProfessions();
   } else if (isAdvisor) {

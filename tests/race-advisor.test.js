@@ -280,10 +280,10 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
       check(Boolean(button), `${id}: opción disponible`);
       button.click();
     };
-    check(doc.querySelectorAll(".available-modules > li").length === 2, "Dos tarjetas disponibles");
+    check(doc.querySelectorAll(".available-modules > li").length === 3, "Tres tarjetas disponibles");
     check(doc.querySelectorAll("#profession-advisor").length === 1, "Un único acceso a profesiones");
-    check(doc.querySelectorAll('[aria-labelledby="future-title"] .module-card').length === 2
-      && !doc.querySelector('[aria-labelledby="future-title"] button, [aria-labelledby="future-title"] a'), "Módulos futuros separados e inactivos");
+    check(doc.querySelectorAll('[aria-labelledby="future-title"] .module-card').length === 1
+      && !doc.querySelector('[aria-labelledby="future-title"] button, [aria-labelledby="future-title"] a'), "Build Advisor futuro separado e inactivo");
     check(doc.getElementById("home-explore-racials").getAttribute("href") === "#raciales", "Destino directo a raciales");
     await open("home-explore-racials", "racial-view");
     await waitFor(() => doc.querySelectorAll("#racial-race button").length === 8);
