@@ -10,7 +10,13 @@ Actualizado: 22 de octubre de 2026.
 - Los botones de selección y los textos de Race Advisor y Profession Advisor **se leen bien en Android**. No aumentar las letras ni rehacer las fichas sin motivo.
 - Tema oscuro y dorado, jerarquía de tarjetas y resultados conservados.
 
-## Pendientes para abordar juntos
+## Ajustes completados
+
+- **v11:** se incorporaron iconos de WoW a botones de facción, clase, especialización y raza, se ajustó la distribución móvil y las dos tarjetas «Próximamente» pasaron a ocupar el ancho disponible en escritorio.
+- **v12:** unificado el fondo del acceso «Explorar las 8 razas» con los demás botones; añadido el icono de la raza recomendada al lado del nombre en Race Advisor, con alternativa de texto si no carga la imagen.
+
+## Notas históricas de mejoras (ya implementadas o pendientes de validación)
+
 
 | Prioridad | Zona | Nota | Criterio |
 | --- | --- | --- | --- |
@@ -24,3 +30,8 @@ Actualizado: 22 de octubre de 2026.
 1. Priorizar la funcionalidad y los datos originales.
 2. Acumular detalles puramente cosméticos y corregirlos juntos cuando haya una fase relacionada; no gastar cuota de Codex en retoques aislados.
 3. Antes de fusionar cambios visuales, revisar PR y probar en Android.
+
+## Validaciones en dispositivo
+
+- El usuario confirmó el **22/10/2026** que la pantalla de inicio y los iconos de la versión v11 se ven bien.
+- Pendiente de confirmar visualmente la igualdad de fondo del botón y el icono junto al nombre de raza recomendada en v12.
