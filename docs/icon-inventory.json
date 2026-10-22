@@ -1,23 +1,39 @@
 {
   "schemaVersion": 1,
   "titulo": "Inventario de iconos — WoW Forever Advisor",
-  "estado": "investigacion; no contiene ni autoriza redistribucion de imagenes",
+  "estado": "46 usos con referencias visuales documentadas; 0 archivos graficos descargados; permisos de republicacion pendientes",
   "fuentes": {
     "clientBuild": "1.60.1.70450",
     "talentos": "https://zephras.com/data/forever/enUS/talents/1.60.1.70450.json",
     "documentacion": "https://zephras.com/data/",
-    "copyright": "World of Warcraft y sus imagenes pertenecen a Blizzard Entertainment. Los FileDataID no constituyen una licencia de uso."
+    "copyright": "World of Warcraft y sus imagenes pertenecen a Blizzard Entertainment. Los FileDataID no constituyen una licencia de uso.",
+    "catalogoFacciones": "https://warcraft.wiki.gg/wiki/Category:Faction_icons",
+    "catalogoEscudosRaciales": "https://warcraft.wiki.gg/wiki/Icon",
+    "faqFansitesBlizzard": "https://www.blizzard.com/es-es/legal/c1ae32ac-7ff9-4ac3-a03b-fc04b8697010/blizzard-legal-faq",
+    "kitFansitesOriginal": "https://www.moddb.com/games/world-of-warcraft/downloads/wow-fan-site-kit"
   },
   "facciones": [
     {
       "nombre": "Alianza",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "titulo": "Crest of the Alliance",
+        "url": "https://warcraft.wiki.gg/wiki/Crest_of_the_Alliance",
+        "archivoReferencia": "Alliance 64.png",
+        "catalogo": "https://warcraft.wiki.gg/wiki/Category:Faction_icons"
+      }
     },
     {
       "nombre": "Horda",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "titulo": "Banner of the Horde",
+        "url": "https://warcraft.wiki.gg/wiki/Banner_of_the_Horde",
+        "archivoReferencia": "Horde 64.png",
+        "catalogo": "https://warcraft.wiki.gg/wiki/Category:Faction_icons"
+      }
     }
   ],
   "clases": [
@@ -197,49 +213,93 @@
     {
       "raza": "Gnomo",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Gnome",
+        "titulo": "Icon of Technology",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_Technology"
+      }
     },
     {
       "raza": "Humano",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Human",
+        "titulo": "Icon of Courage",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_Courage"
+      }
     },
     {
       "raza": "Enano",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Dwarf",
+        "titulo": "Icon of the Forge",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_the_Forge"
+      }
     },
     {
       "raza": "Elfo",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Night elf",
+        "titulo": "Icon of Wisdom",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_Wisdom",
+        "nota": "El JSON usa «Elfo» para el elfo de la noche; comprobado en comentarios y Shadowmeld de data/racials.json."
+      }
     },
     {
       "raza": "Orco",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Orc",
+        "titulo": "Icon of Battle",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_Battle"
+      }
     },
     {
       "raza": "Tauren",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Tauren",
+        "titulo": "Icon of the Earth Mother",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_the_Earth_Mother"
+      }
     },
     {
       "raza": "Troll",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Darkspear troll",
+        "titulo": "Icon of Shadows",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_Shadows"
+      }
     },
     {
       "raza": "No-muerto",
       "iconFileDataId": null,
-      "estado": "identificacion_pendiente"
+      "estado": "referencia_visual_identificada_archivo_y_permisos_pendientes",
+      "referenciaVisual": {
+        "razaOriginal": "Forsaken undead",
+        "titulo": "Icon of Torment",
+        "url": "https://warcraft.wiki.gg/wiki/Icon_of_Torment"
+      }
     }
   ],
   "notas": [
     "Los iconFileDataId de clases y especializaciones provienen del campo icon del archivo beta de talentos.",
     "Los iconFileDataId de clase/especializacion identifican texturas, no proporcionan URLs de imagen ni permisos de redistribucion.",
-    "El nombre 'Elfo' del JSON editorial no se cambia; identificar la representacion grafica apropiada antes de escoger archivo.",
     "La interfaz debe utilizar textos accesibles incluso si un icono no se carga.",
-    "No descargar ni integrar binarios protegidos hasta confirmar la politica de uso aplicable al repositorio publico."
+    "No descargar ni integrar binarios protegidos hasta confirmar la politica de uso aplicable al repositorio publico.",
+    "«Elfo» corresponde a Night elf, confirmado por comentarios y la racial Shadowmeld del perfil del Excel.",
+    "Las referencias de faccion (Alliance 64.png, Horde 64.png) son nombres en el catalogo wiki, NO archivos incorporados.",
+    "Para las razas se proponen escudos heráldicos sin distincion de genero; pueden resultar demasiado detallados en 48px, pendiente de verificacion visual en Android.",
+    "El antiguo fan site kit de Blizzard fue concebido para fansites pero solo alcanza los materiales del propio kit; no autoriza automaticamente cualquier otro icono de juego."
   ]
 }
