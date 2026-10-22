@@ -164,16 +164,59 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     check(JSON.stringify([...select.options].map((option) => option.value).filter(Boolean))
       === JSON.stringify(profiles.raciales.map((profile) => profile.raza)), "Las ocho razas exactas del JSON");
     check(profiles.raciales.length === 8 && result.hidden, "Ocho perfiles, sin resultado inicial");
+    check(advisor.fichas.length === 51, "Cruzar las ocho razas con las 51 fichas");
+    let recommended = 0;
+    let alternatives = 0;
     for (const profile of profiles.raciales) {
       choose("racial-race", profile.raza);
       check(!result.hidden && doc.getElementById("racial-name").textContent === profile.raza, `Raza: ${profile.raza}`);
       for (const field of result.querySelectorAll("[data-racial-field]")) {
         check(field.textContent === profile[field.dataset.racialField], `${profile.raza}: ${field.dataset.racialField} literal`);
       }
+      for (const [listId, emptyId, field] of [
+        ["racial-recommended", "racial-no-recommended", "razaRecomendada"],
+        ["racial-alternative", "racial-no-alternative", "alternativa"],
+      ]) {
+        const expected = advisor.fichas.filter((row) => row[field] === profile.raza);
+        const list = doc.getElementById(listId);
+        const links = [...list.querySelectorAll("a")];
+        const label = (row) => [row.faccion, row.clase, row.especializacion].join(" · ");
+        check(JSON.stringify(links.map((link) => link.textContent)) === JSON.stringify(expected.map(label)),
+          `${profile.raza}: coincidencias exactas en ${field}`);
+        check(list.hidden === (expected.length === 0)
+          && doc.getElementById(emptyId).hidden === (expected.length > 0)
+          && doc.getElementById(emptyId).textContent.trim().length > 0, `${profile.raza}: estado vacío de ${field}`);
+        for (const [index, link] of links.entries()) {
+          const record = expected[index];
+          link.click();
+          await waitFor(() => !doc.getElementById("advisor-view").hidden);
+          check(doc.getElementById("racial-view").hidden
+            && doc.getElementById("faction").value === record.faccion
+            && doc.getElementById("character-class").value === record.clase
+            && doc.getElementById("specialization").value === record.especializacion
+            && !doc.getElementById("advisor-result").hidden
+            && doc.getElementById("result-combination").textContent === label(record), `${label(record)}: abrir ficha desde ${field}`);
+          check([...doc.querySelectorAll("#advisor-result [data-field]")].every((element) => {
+            const key = element.dataset.field;
+            const racial = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
+            return element.textContent === (Object.hasOwn(record, key) ? record[key] : racial[key]);
+          }), `${label(record)}: ficha completa correspondiente`);
+          doc.getElementById("explore-racials").click();
+          await waitFor(() => !doc.getElementById("racial-view").hidden);
+          check(select.value === profile.raza && !result.hidden, "Volver conserva la consulta racial");
+        }
+        if (field === "razaRecomendada") recommended += links.length;
+        else alternatives += links.length;
+      }
     }
+    check(recommended === 51 && alternatives === 42, "51 recomendaciones y 42 alternativas, sin incluir «-»");
+    choose("faction", original.faccion);
+    choose("character-class", original.clase);
+    choose("specialization", original.especializacion);
     choose("racial-race", "");
     check(result.hidden && [...result.querySelectorAll("[data-racial-field]")].every((field) => field.textContent === ""),
       "Vaciar raza elimina el perfil anterior");
+    check(!result.querySelector("li"), "Vaciar raza elimina las coincidencias anteriores");
     doc.getElementById("back-selector").click();
     await waitFor(() => !doc.getElementById("advisor-view").hidden);
     check(doc.getElementById("specialization").value === original.especializacion
@@ -188,7 +231,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     });
     await waitFor(() => !frame.contentDocument.getElementById("racial-race").disabled);
     check(!frame.contentDocument.getElementById("racial-view").hidden, "Recarga directa de #raciales");
-    report.textContent = `OK: 8/8 razas, ${assertions} comprobaciones. Textos literales, navegación y una selección del Race Advisor correctos.`;
+    report.textContent = `OK: 8/8 razas × 51 fichas, ${recommended} recomendaciones y ${alternatives} alternativas, ${assertions} comprobaciones. Perfiles, navegación a cada coincidencia y selector correctos.`;
   } catch (error) {
     report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones completadas)`;
   } finally {

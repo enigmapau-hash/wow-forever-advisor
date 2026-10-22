@@ -73,6 +73,14 @@ de una ejecución online y la activación del service worker, se puede detener e
 servidor y repetirla desde la misma pestaña para verificar el modo offline.
 
 Dentro de Race Advisor, «Explorar raciales» permite consultar las ocho razas del
-JSON y volver al selector conservando su selección. En la misma página de pruebas,
-«Comprobar raciales» verifica solo esos ocho perfiles, la navegación y una ficha
-del selector; se puede repetir con el servidor detenido tras la visita online.
+JSON y volver al selector conservando su selección.
+Cada perfil muestra «Raza recomendada» y «Raza alternativa» con las combinaciones
+de facción, clase y especialización obtenidas exclusivamente de `race-advisor.json`.
+Cada combinación abre su ficha completa con los tres campos seleccionados; los
+grupos sin coincidencias muestran un aviso breve.
+
+En la página de pruebas, «Comprobar raciales» verifica los ocho perfiles cruzados
+con las 51 fichas, la separación de las 51 recomendaciones y 42 alternativas,
+los grupos vacíos y la navegación desde cada coincidencia. También comprueba el
+selector y la consulta racial; se puede repetir con el servidor detenido tras la
+visita online, sin ejecutar de nuevo la prueba exhaustiva del selector.

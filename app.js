@@ -150,10 +150,40 @@ specialization.addEventListener("change", () => {
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
 });
 
+function renderRacialMatches(listId, emptyId, field) {
+  const list = document.getElementById(listId);
+  const matches = records.filter((row) => row[field] === racialSelect.value);
+  list.replaceChildren(...matches.map((record) => {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.className = "back-link";
+    link.href = "#race-advisor";
+    link.textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      for (const [select, value] of [
+        [faction, record.faccion],
+        [characterClass, record.clase],
+        [specialization, record.especializacion],
+      ]) {
+        select.value = value;
+        select.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      window.location.hash = "race-advisor";
+    });
+    item.append(link);
+    return item;
+  }));
+  list.hidden = matches.length === 0;
+  document.getElementById(emptyId).hidden = matches.length > 0;
+}
+
 racialSelect.addEventListener("change", () => {
   racialResult.hidden = true;
   document.getElementById("racial-name").textContent = "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
+  renderRacialMatches("racial-recommended", "racial-no-recommended", "razaRecomendada");
+  renderRacialMatches("racial-alternative", "racial-no-alternative", "alternativa");
   const profile = racialProfiles.get(racialSelect.value);
   if (!profile) {
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
