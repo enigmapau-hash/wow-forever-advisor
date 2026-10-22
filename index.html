@@ -87,6 +87,7 @@
         <header class="selector-intro">
           <h1 id="advisor-title" tabindex="-1">Race Advisor</h1>
           <p class="subtitle">Elige facción, clase y especialización para consultar tu ficha.</p>
+          <p class="field-note">Cobertura del Excel: ocho razas originales. Cielonatos no incluidos.</p>
           <a class="button-link" id="explore-racials" href="#raciales">Explorar las 8 razas →</a>
         </header>
 
@@ -122,7 +123,7 @@
         </form>
 
         <section id="advisor-result" aria-labelledby="result-race" hidden>
-          <p class="source-note">Análisis del Excel maestro. Las cuestiones pendientes de validación siguen sin confirmar; las recomendaciones se conservan sin cambios.</p>
+          <p class="source-note">Recomendaciones del Excel original: no se han recalculado tras los cambios raciales de beta del 15/10/2026.</p>
           <article class="result-card recommendation">
             <p class="eyebrow">Raza recomendada</p>
             <div class="recommendation-heading">
@@ -161,6 +162,17 @@
             <h3>Comentarios del perfil racial</h3>
             <p class="original-text" data-field="comentarios"></p>
           </article>
+          <article id="race-beta-updates" class="result-card" hidden>
+            <h3>Cambios oficiales de la beta · 15/10/2026</h3>
+            <p class="field-note">Información adicional, no incluida en el ranking original del Excel.</p>
+            <h3 id="race-beta-recommended-label">Raza recomendada</h3>
+            <ul id="race-beta-recommended-list"></ul>
+            <div id="race-beta-alternative" hidden>
+              <h3 id="race-beta-alternative-label">Alternativa</h3>
+              <ul id="race-beta-alternative-list"></ul>
+            </div>
+            <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente oficial: Blizzard</a>. Cambios de beta, pendientes de contrastar con la versión de lanzamiento.</p>
+          </article>
           <aside id="race-addons" class="result-card addon-context" hidden></aside>
         </section>
       </section>
@@ -170,6 +182,7 @@
         <header class="selector-intro">
           <h1 id="racial-title" tabindex="-1">Race Explorer</h1>
           <p class="subtitle">Consulta el perfil original de cada raza.</p>
+          <p class="field-note">Cobertura del Excel: ocho razas originales. Cielonatos no incluidos.</p>
         </header>
         <div class="selector-card">
           <fieldset id="racial-race" class="option-group" data-value="" data-icon-kind="raza" disabled>
@@ -184,7 +197,7 @@
           </div>
         </div>
         <section id="racial-result" aria-labelledby="racial-name" hidden>
-          <p class="source-note">Análisis del Excel maestro. Las cuestiones pendientes de validación siguen sin confirmar; los perfiles se conservan sin cambios.</p>
+          <p class="source-note">Perfil original del Excel, complementado con los cambios oficiales de beta del 15/10/2026. Los rangos de utilidad aún no se han recalculado.</p>
           <article class="result-card recommendation">
             <h2 id="racial-name"></h2>
             <h3>Escala de utilidad</h3>
@@ -199,6 +212,11 @@
           <article class="result-card">
             <h3>Comentarios</h3>
             <p class="original-text" data-racial-field="comentarios"></p>
+          </article>
+          <article id="racial-beta-updates" class="result-card" hidden>
+            <h3>Cambios oficiales de la beta · 15/10/2026</h3>
+            <ul id="racial-beta-list"></ul>
+            <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente oficial: Blizzard</a>. Estos cambios no alteran automáticamente las valoraciones originales.</p>
           </article>
           <section class="result-card" aria-labelledby="racial-recommended-title">
             <h3 id="racial-recommended-title">Raza recomendada</h3>
