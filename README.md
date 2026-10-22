@@ -256,3 +256,18 @@ Se renombra «Explorar raciales» a **Race Explorer** en la portada y en su
 pantalla de consulta. La descripción explica que se exploran habilidades
 raciales. No cambian los datos, rutas, lógica ni diseño. Caché PWA **v20** para
 actualizar la interfaz en dispositivos ya instalados.
+
+## Talent Advisor — v21 (auditoría de evidencias)
+
+Revisión editorial de las 81 fichas frente a la compilación documentada
+`1.60.1.70450`, las notas oficiales de clases del 15/10/2026 y la fecha
+de cierre de beta anunciada por Blizzard. Se detectan **18 especializaciones
+de seis clases** que reutilizan exactamente los mismos talentos destacados
+para los tres objetivos (54 fichas), sin diferenciación verificada por
+objetivo. Se explicita esta limitación en esas seis clases, sin inventar
+nuevos talentos, repartos o supuestas pruebas de nivel 60.
+
+El resto de los datos, las recomendaciones existentes y el diseño se
+conservan. Se amplían pruebas de integridad y de visualización offline,
+se añade la [auditoría editorial](docs/talent-advisor-v21-audit.md) y
+se renueva caché a **v21**.
