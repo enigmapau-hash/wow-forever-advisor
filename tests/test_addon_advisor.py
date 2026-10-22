@@ -50,4 +50,4 @@ class AddonAdvisorTests(unittest.TestCase):
             self.assertIn('"./' + path + '"', worker)
         self.assertLess(sum((ROOT / p).stat().st_size for p in
                             ['addon-advisor.js', 'data/addon-advisor.json']), 35_000)
-        self.assertIn('${CACHE_PREFIX}v21', worker)
+        self.assertIn('${CACHE_PREFIX}v22', worker)
