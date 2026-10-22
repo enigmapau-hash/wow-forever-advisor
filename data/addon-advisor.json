@@ -4,64 +4,502 @@
   "fechaRevision": "2026-10-22",
   "addons": [
     {
-      "id": "questie", "nombre": "Questie", "autor": "TheCrux_BB y equipo Questie",
-      "categoria": "Misiones", "finalidad": "Localizar misiones y objetivos en el mapa durante la subida al 60.",
-      "imprescindible": true, "recomendacion": "segun_necesidad",
-      "estado": "publicado_forever", "pruebaForever": null,
-      "version": "v12.1.0+v1.0.6", "fechaPublicacion": "2026-10-12", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "id": "questie",
+      "nombre": "Questie",
+      "autor": "TheCrux_BB y equipo Questie",
+      "categoria": "Misiones",
+      "finalidad": "Localizar misiones y objetivos en el mapa durante la subida al 60.",
+      "imprescindible": true,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "version": "v12.1.0+v1.0.6",
+      "fechaPublicacion": "2026-10-12",
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
       "evidencia": "El archivo del autor enumera Forever y 1.60.1. El registro incorpora mazmorras de Forever, corrige tooltips en combate y actualiza la base de datos con la instantánea del 10 de octubre.",
       "limite": "Los cambios acreditan mantenimiento para Forever, no cobertura completa de todas las misiones ni una prueba integral dentro del juego.",
-      "afinidad": {"clases": [], "razas": [], "profesiones": [], "actividades": ["Subir al 60"]},
-      "contextos": [{"modulo": "talent", "objetivo": "Subir al 60", "motivo": "Si necesitas localizar misiones y sus objetivos mientras subes al 60."}],
-      "fuentes": [{"nombre": "Archivo y cambios del autor · CurseForge", "url": "https://www.curseforge.com/wow/addons/questie/files/9150393"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/questie"}]
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "Subir al 60"
+        ]
+      },
+      "contextos": [
+        {
+          "modulo": "talent",
+          "objetivo": "Subir al 60",
+          "motivo": "Si necesitas localizar misiones y sus objetivos mientras subes al 60."
+        }
+      ],
+      "fuentes": [
+        {
+          "nombre": "Archivo y cambios del autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/questie/files/9150393"
+        },
+        {
+          "nombre": "Proyecto original",
+          "url": "https://www.curseforge.com/wow/addons/questie"
+        }
+      ]
     },
     {
-      "id": "leatrix-plus", "nombre": "Leatrix Plus", "autor": "Leatrix",
-      "categoria": "Comodidad", "finalidad": "Elegir pequeños ajustes de interfaz y automatización sin sustituir toda la interfaz.",
-      "imprescindible": true, "recomendacion": "segun_necesidad",
-      "estado": "publicado_forever", "pruebaForever": null,
-      "version": "1.60.25-forever", "fechaPublicacion": "2026-10-21", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "id": "leatrix-plus",
+      "nombre": "Leatrix Plus",
+      "autor": "Leatrix",
+      "categoria": "Comodidad",
+      "finalidad": "Elegir pequeños ajustes de interfaz y automatización sin sustituir toda la interfaz.",
+      "imprescindible": true,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "version": "1.60.25-forever",
+      "fechaPublicacion": "2026-10-21",
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
       "evidencia": "Archivo exclusivo de Forever publicado por Leatrix. Los cambios recientes corrigen un error Lua del coloreado por alcance y ajustan el listado de addons. El historial 1.60.15 añade una barra de recursos para Druida en forma de gato u oso.",
       "limite": "Activa solo las opciones que necesites y evita duplicar automatizaciones. Las opciones disponibles pueden cambiar durante la beta. No se ha probado aquí dentro del juego.",
-      "afinidad": {"clases": ["Druida"], "razas": [], "profesiones": [], "actividades": ["Interfaz"]},
-      "contextos": [{"modulo": "race", "clase": "Druida", "motivo": "Para tu clase: barra de recursos en forma de gato u oso. Es una ayuda de interfaz, independiente de la raza."}, {"modulo": "talent", "clase": "Druida", "especializacion": "Feral", "motivo": "Si quieres ver una barra de recursos en forma de gato u oso; revisa esa opción en Leatrix Plus."}],
-      "fuentes": [{"nombre": "Archivo e historial de Forever · CurseForge", "url": "https://www.curseforge.com/wow/addons/leatrix-plus/files/9275554"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/leatrix-plus"}]
+      "afinidad": {
+        "clases": [
+          "Druida"
+        ],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "Interfaz"
+        ]
+      },
+      "contextos": [
+        {
+          "modulo": "race",
+          "clase": "Druida",
+          "motivo": "Para tu clase: barra de recursos en forma de gato u oso. Es una ayuda de interfaz, independiente de la raza."
+        },
+        {
+          "modulo": "talent",
+          "clase": "Druida",
+          "especializacion": "Feral",
+          "motivo": "Si quieres ver una barra de recursos en forma de gato u oso; revisa esa opción en Leatrix Plus."
+        }
+      ],
+      "fuentes": [
+        {
+          "nombre": "Archivo e historial de Forever · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/leatrix-plus/files/9275554"
+        },
+        {
+          "nombre": "Proyecto original",
+          "url": "https://www.curseforge.com/wow/addons/leatrix-plus"
+        }
+      ]
     },
     {
-      "id": "auctionator", "nombre": "Auctionator", "autor": "plusmouse y colaboradores",
-      "categoria": "Economía", "finalidad": "Facilitar compras, ventas y consulta del valor de materiales en la casa de subastas.",
-      "imprescindible": true, "recomendacion": "segun_necesidad",
-      "estado": "publicado_forever", "pruebaForever": null,
-      "version": "341", "fechaPublicacion": "2026-10-13", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "id": "auctionator",
+      "nombre": "Auctionator",
+      "autor": "plusmouse y colaboradores",
+      "categoria": "Economía",
+      "finalidad": "Facilitar compras, ventas y consulta del valor de materiales en la casa de subastas.",
+      "imprescindible": true,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "version": "341",
+      "fechaPublicacion": "2026-10-13",
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
       "evidencia": "El archivo publicado por plusmouse enumera Forever y 1.60.1. El cambio de esta versión actualiza el TOC de 12.1.5; no declara una nueva corrección específica de Forever.",
       "limite": "Útil si compras o vendes materiales; no garantiza beneficios ni reemplaza la comparación de precios. No se ha probado aquí dentro del juego.",
-      "afinidad": {"clases": [], "razas": [], "profesiones": ["Minería", "Herboristería", "Desuello", "Herrería", "Alquimia", "Ingeniería", "Peletería", "Sastrería", "Encantamiento"], "actividades": ["Subastas"]},
-      "contextos": [{"modulo": "profession", "motivo": "Si compras o vendes materiales de estas profesiones, puede facilitar la consulta de precios en subastas."}],
-      "fuentes": [{"nombre": "Archivo y cambios del autor · CurseForge", "url": "https://www.curseforge.com/wow/addons/auctionator/files/9162359"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/auctionator"}]
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [
+          "Minería",
+          "Herboristería",
+          "Desuello",
+          "Herrería",
+          "Alquimia",
+          "Ingeniería",
+          "Peletería",
+          "Sastrería",
+          "Encantamiento"
+        ],
+        "actividades": [
+          "Subastas"
+        ]
+      },
+      "contextos": [
+        {
+          "modulo": "profession",
+          "motivo": "Si compras o vendes materiales de estas profesiones, puede facilitar la consulta de precios en subastas."
+        }
+      ],
+      "fuentes": [
+        {
+          "nombre": "Archivo y cambios del autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/auctionator/files/9162359"
+        },
+        {
+          "nombre": "Proyecto original",
+          "url": "https://www.curseforge.com/wow/addons/auctionator"
+        }
+      ]
     },
     {
-      "id": "dbm", "nombre": "Deadly Boss Mods (núcleo)", "autor": "MysticalOS y equipo DBM",
-      "categoria": "Grupos", "finalidad": "Núcleo de avisos de encuentros; necesita módulos adecuados para el contenido jugado.",
-      "imprescindible": false, "recomendacion": "en_observacion",
-      "estado": "publicado_forever", "pruebaForever": null,
-      "version": "12.1.17", "fechaPublicacion": "2026-10-22", "versionCliente": "1.60.1", "fechaRevision": "2026-10-22",
+      "id": "dbm",
+      "nombre": "Deadly Boss Mods (núcleo)",
+      "autor": "MysticalOS y equipo DBM",
+      "categoria": "Grupos",
+      "finalidad": "Núcleo de avisos de encuentros; necesita módulos adecuados para el contenido jugado.",
+      "imprescindible": false,
+      "recomendacion": "en_observacion",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "version": "12.1.17",
+      "fechaPublicacion": "2026-10-22",
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
       "evidencia": "El archivo del núcleo enumera Forever y 1.60.1. La documentación del autor separa los módulos de contenido en otros paquetes. Los cambios recientes del núcleo no demuestran cobertura de todos los encuentros de Forever.",
       "limite": "En observación: confirmar módulos y encuentros concretos de Forever antes de recomendarlo en Mazmorras. Publicar el núcleo no acredita sus avisos en cada jefe. No se ha probado aquí dentro del juego.",
-      "afinidad": {"clases": [], "razas": [], "profesiones": [], "actividades": ["Mazmorras", "Bandas"]},
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "Mazmorras",
+          "Bandas"
+        ]
+      },
       "contextos": [],
-      "fuentes": [{"nombre": "Archivo del núcleo · CurseForge", "url": "https://www.curseforge.com/wow/addons/deadly-boss-mods/files/9284229"}, {"nombre": "Documentación y módulos del autor", "url": "https://www.curseforge.com/wow/addons/deadly-boss-mods"}]
+      "fuentes": [
+        {
+          "nombre": "Archivo del núcleo · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/deadly-boss-mods/files/9284229"
+        },
+        {
+          "nombre": "Documentación y módulos del autor",
+          "url": "https://www.curseforge.com/wow/addons/deadly-boss-mods"
+        }
+      ]
     },
     {
-      "id": "gathermate2", "nombre": "GatherMate2", "autor": "moonfann y colaboradores",
-      "categoria": "Recolección", "finalidad": "Registrar localizaciones de plantas, minerales y bancos de pesca en mapas.",
-      "imprescindible": false, "recomendacion": "en_observacion",
-      "estado": "pendiente_verificar", "pruebaForever": null,
-      "version": null, "fechaPublicacion": null, "versionCliente": null, "fechaRevision": "2026-10-22",
+      "id": "gathermate2",
+      "nombre": "GatherMate2",
+      "autor": "moonfann y colaboradores",
+      "categoria": "Recolección",
+      "finalidad": "Registrar localizaciones de plantas, minerales y bancos de pesca en mapas.",
+      "imprescindible": false,
+      "recomendacion": "en_observacion",
+      "estado": "pendiente_verificar",
+      "pruebaForever": null,
+      "version": null,
+      "fechaPublicacion": null,
+      "versionCliente": null,
+      "fechaRevision": "2026-10-22",
       "evidencia": "La ficha muestra la categoría Forever, pero la lista de archivos consultada solo muestra publicaciones Retail recientes. No se ha identificado un archivo publicado para 1.60.1.",
       "limite": "Pendiente de verificar; no se recomienda instalar la versión Retail o Classic suponiendo compatibilidad con Forever. Una categoría del proyecto y testimonios aislados no bastan.",
-      "afinidad": {"clases": [], "razas": [], "profesiones": ["Minería", "Herboristería", "Pesca"], "actividades": ["Recolección"]},
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [
+          "Minería",
+          "Herboristería",
+          "Pesca"
+        ],
+        "actividades": [
+          "Recolección"
+        ]
+      },
       "contextos": [],
-      "fuentes": [{"nombre": "Archivos del proyecto · CurseForge", "url": "https://www.curseforge.com/wow/addons/gathermate2/files/all"}, {"nombre": "Proyecto original", "url": "https://www.curseforge.com/wow/addons/gathermate2"}]
+      "fuentes": [
+        {
+          "nombre": "Archivos del proyecto · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/gathermate2/files/all"
+        },
+        {
+          "nombre": "Proyecto original",
+          "url": "https://www.curseforge.com/wow/addons/gathermate2"
+        }
+      ]
+    },
+    {
+      "imprescindible": false,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
+      "id": "ellesmereui",
+      "nombre": "EllesmereUI",
+      "autor": "Ellesmere",
+      "categoria": "Comodidad",
+      "finalidad": "Personalizar barras, marcos, chat y otras partes de la interfaz mediante un editor visual.",
+      "version": "v9.6.1",
+      "fechaPublicacion": "2026-10-19",
+      "evidencia": "El archivo v9.6.1 del autor incluye Forever y cliente 1.60.1; el registro menciona ajustes propios de Forever para recordatorios de auras. Es una suite amplia, no un requisito para jugar.",
+      "limite": "Alternativa más completa a Leatrix Plus: ambas pueden solapar opciones de interfaz y automatización. Elegir según gustos; no hace falta instalar ambas. La compatibilidad publicada no equivale a una prueba nuestra en el juego.",
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "Interfaz"
+        ]
+      },
+      "contextos": [],
+      "fuentes": [
+        {
+          "nombre": "Archivo publicado por el autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/ellesmereui/files/9252453"
+        },
+        {
+          "nombre": "Proyecto original · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/ellesmereui"
+        }
+      ]
+    },
+    {
+      "imprescindible": true,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
+      "id": "procdoc",
+      "nombre": "ProcDoc",
+      "autor": "wsmaxcy",
+      "categoria": "Combate",
+      "finalidad": "Mostrar alertas visuales de activaciones de habilidades (procs), con temporizadores y posición ajustable.",
+      "version": "v4.10.1",
+      "fechaPublicacion": "2026-10-17",
+      "evidencia": "El proyecto está dedicado a Forever 1.60.1 y su autor enumera alertas incorporadas para las nueve clases. Para Cazador incluye Quick Shots, Rapid Killing, Counterattack y Mongoose Bite; para Guerrero, Overpower y Revenge; para Mago, Fingers of Frost.",
+      "limite": "Cada alerta depende de la habilidad, talentos elegidos y visibilidad que permita el Cooldown Manager de Blizzard. No garantiza detectar cualquier efecto en combate; ciertas activaciones requieren configuración. No probado por esta PWA dentro del juego.",
+      "afinidad": {
+        "clases": [
+          "Cazador",
+          "Guerrero",
+          "Mago",
+          "Brujo",
+          "Druida",
+          "Chamán",
+          "Pícaro",
+          "Sacerdote",
+          "Paladín"
+        ],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "Combate",
+          "PvP",
+          "Mazmorras"
+        ]
+      },
+      "contextos": [
+        {
+          "modulo": "race",
+          "clase": "Cazador",
+          "motivo": "Para tu clase, no para tu raza: muestra alertas de Counterattack o Mongoose Bite si usas esas habilidades."
+        },
+        {
+          "modulo": "talent",
+          "clase": "Cazador",
+          "motivo": "Si utilizas Counterattack, Mongoose Bite o sus otros efectos compatibles, puedes destacar sus avisos visuales."
+        },
+        {
+          "modulo": "talent",
+          "clase": "Guerrero",
+          "motivo": "Si usas Overpower o Revenge, puedes hacer sus activaciones más visibles."
+        },
+        {
+          "modulo": "talent",
+          "clase": "Mago",
+          "especializacion": "Escarcha",
+          "motivo": "Si llevas Fingers of Frost, puedes destacar la activación; revisa los avisos de ProcDoc."
+        }
+      ],
+      "fuentes": [
+        {
+          "nombre": "Archivo publicado por el autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/procdoc/files/9220318"
+        },
+        {
+          "nombre": "Proyecto original · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/procdoc"
+        }
+      ]
+    },
+    {
+      "imprescindible": false,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
+      "id": "craftprofit-forever",
+      "nombre": "CraftProfit Forever",
+      "autor": "vystery",
+      "categoria": "Economía",
+      "finalidad": "Estimar costes y beneficios de recetas directamente desde la ventana de profesiones.",
+      "version": "0.5.0",
+      "fechaPublicacion": "2026-10-20",
+      "evidencia": "El archivo 0.5.0 es exclusivo para Forever 1.60.1. El autor documenta escaneo de subasta propio, costes de materiales y beneficio estimado por receta. En las notas de beta considera comprobado su escaneo propio.",
+      "limite": "Las estimaciones dependen de los precios y escaneos disponibles; no garantizan ventas ni ganancias. El autor indica que la integración con Auctionator o TSM y ciertas etiquetas de instructores aún no se han probado en el juego: usar el escaneo propio si falla la integración. Sin prueba independiente aquí.",
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [
+          "Herrería",
+          "Alquimia",
+          "Ingeniería",
+          "Peletería",
+          "Sastrería",
+          "Encantamiento"
+        ],
+        "actividades": [
+          "Fabricación",
+          "Subastas"
+        ]
+      },
+      "contextos": [
+        {
+          "modulo": "profession",
+          "motivo": "Si fabricas objetos para vender, compara el coste de materiales y el beneficio estimado de cada receta; usa su escaneo propio si falla la integración con subastas."
+        }
+      ],
+      "fuentes": [
+        {
+          "nombre": "Archivo publicado por el autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/craftprofit-forever/files/9270115"
+        },
+        {
+          "nombre": "Proyecto original · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/craftprofit-forever"
+        }
+      ]
+    },
+    {
+      "imprescindible": false,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
+      "id": "itemrack-universal",
+      "nombre": "ItemRack Universal",
+      "autor": "Bl4ut0",
+      "categoria": "Equipamiento",
+      "finalidad": "Guardar conjuntos de equipo y facilitar cambios de armas, piezas o abalorios mediante menús y accesos rápidos.",
+      "version": "4.56.1",
+      "fechaPublicacion": "2026-10-16",
+      "evidencia": "El autor publica el paquete universal 4.56.1 para Forever 1.60.1, Classic y TBC. La documentación describe sets completos o parciales, atajos y colas, con adaptación a las API disponibles.",
+      "limite": "No todos los cambios son posibles durante el combate: dependen de las restricciones del cliente y de cada ranura. El paquete instala ItemRack e ItemRackOptions; conservar ambas carpetas. La publicación no supone prueba independiente de todas las situaciones PvP.",
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "PvP",
+          "Equipamiento"
+        ]
+      },
+      "contextos": [
+        {
+          "modulo": "talent",
+          "objetivo": "PvP",
+          "motivo": "Si alternas conjuntos de equipo o abalorios para PvP, puedes organizarlos; respeta las restricciones de cambio en combate."
+        }
+      ],
+      "fuentes": [
+        {
+          "nombre": "Archivo publicado por el autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/itemrack-universal/files/9205989"
+        },
+        {
+          "nombre": "Proyecto original · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/itemrack-universal"
+        }
+      ]
+    },
+    {
+      "imprescindible": false,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
+      "id": "dialogue-ui",
+      "nombre": "Dialogue UI",
+      "autor": "Peterodox",
+      "categoria": "Misiones",
+      "finalidad": "Mejorar visualmente los diálogos de misiones, con cámara y opciones de lectura más inmersivas.",
+      "version": "1.0.6",
+      "fechaPublicacion": "2026-10-04",
+      "evidencia": "El archivo 1.0.6 del autor incluye Forever 1.60.1 y las notas mencionan compatibilidad con la beta, texto de misiones y recompensas específicas para Forever.",
+      "limite": "Es una mejora visual opcional, no una guía de misiones ni una herramienta necesaria para subir de nivel. Las funciones pueden variar durante la beta; sin prueba independiente de nuestra PWA.",
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "Misiones",
+          "Inmersión"
+        ]
+      },
+      "contextos": [],
+      "fuentes": [
+        {
+          "nombre": "Archivo publicado por el autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/dialogueui/files/9058348"
+        },
+        {
+          "nombre": "Proyecto original · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/dialogueui"
+        }
+      ]
+    },
+    {
+      "imprescindible": true,
+      "recomendacion": "segun_necesidad",
+      "estado": "publicado_forever",
+      "pruebaForever": null,
+      "versionCliente": "1.60.1",
+      "fechaRevision": "2026-10-22",
+      "id": "openmap",
+      "nombre": "OpenMap",
+      "autor": "jigrobbulus",
+      "categoria": "Exploración",
+      "finalidad": "Explorar un mapa continuo con zoom y desplazamiento sin saltar manualmente entre mapas de zona.",
+      "version": "v0.7.2-beta-forever",
+      "fechaPublicacion": "2026-10-21",
+      "evidencia": "El archivo v0.7.2-beta-forever está publicado exclusivamente para Forever 1.60.1. Su autor describe mejoras al hacer zoom y una corrección para cargar iconos de Questie al desplazarse entre zonas.",
+      "limite": "Es una versión beta; puede afectar al rendimiento en ciertos equipos y sus iconos de misiones dependen de otros addons como Questie. El archivo pesa alrededor de 86 MB. No probado independientemente en este proyecto.",
+      "afinidad": {
+        "clases": [],
+        "razas": [],
+        "profesiones": [],
+        "actividades": [
+          "Exploración",
+          "Subir al 60"
+        ]
+      },
+      "contextos": [
+        {
+          "modulo": "talent",
+          "objetivo": "Subir al 60",
+          "motivo": "Si exploras muchas zonas mientras subes, te permite desplazar y ampliar el mapa sin cambiar de zona manualmente."
+        }
+      ],
+      "fuentes": [
+        {
+          "nombre": "Archivo publicado por el autor · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/openmap/files/9278370"
+        },
+        {
+          "nombre": "Proyecto original · CurseForge",
+          "url": "https://www.curseforge.com/wow/addons/openmap"
+        }
+      ]
     }
   ]
 }

@@ -206,7 +206,7 @@ El runner inicia un servidor local, recorre 81 fichas, prueba las otras vistas,
 teclado, móvil, un fallo de datos con reintento y recarga offline.
 GitHub Actions ejecuta estas comprobaciones además de Python y sintaxis.
 
-## Addon Advisor — v18
+## Addon Advisor — v18 (catálogo inicial)
 
 Módulo independiente con una selección inicial breve (Questie, Leatrix Plus y
 Auctionator según necesidad), filtros simples y fuentes originales. DBM y
@@ -215,10 +215,37 @@ del juego son estados distintos; no se afirma probado ningún addon.
 
 Las fichas de Race, Profession y Talent Advisor reutilizan el catálogo solo donde
 hay una utilidad concreta. Todos los datos preexistentes y Patch Tracker se
-conservan. Caché actual **v18**, con catálogo y script para consulta offline;
+conservan. La v18 introdujo la caché del catálogo y script para consulta offline;
 los enlaces externos necesitan conexión. Detalles de evidencia desplegables.
 
 Véase [investigación, criterios y pruebas](docs/addon-advisor.md). Añadidas pruebas
 editoriales con `node tests/addon-advisor.test.js`, conservación de v17 en Python
 y filtros, referencias, anchos móviles, reintento y offline en el runner de navegador.
 Las medidas móviles se verifican por emulación; no se ha probado en Android físico.
+
+## Addon Advisor — v19 (ampliación contrastada)
+
+Se amplía el catálogo de **5 a 11 addons** con EllesmereUI, ProcDoc,
+CraftProfit Forever, ItemRack Universal, Dialogue UI y OpenMap. Cada uno tiene
+archivo del autor identificado para **Forever 1.60.1**, con fecha, versión,
+limitaciones y enlace verificable. Se conservan Questie, Leatrix Plus,
+Auctionator, DBM (núcleo en observación) y GatherMate2 (pendiente de verificar).
+**No se etiqueta ningún addon como probado dentro del juego por nuestra PWA.**
+El vídeo compartido por el usuario aporta experiencia de su creador, pero sin
+URL ni un registro verificable de pruebas individuales no justifica elevar ese
+estado. GuildMap queda como candidato opcional para hermandades; no se añade
+por defecto. Otros nombres ambiguos del vídeo tampoco se publican como fichas.
+
+**Para empezar** muestra cinco alternativas según necesidad (Questie,
+Leatrix Plus, Auctionator, ProcDoc y OpenMap), no una lista obligatoria de
+instalación. Hay filtros por utilidad y detalles opcionales. Se conservan dos
+referencias contextuales como máximo: ProcDoc para Cazador y ciertas otras
+clases, CraftProfit para profesiones de fabricación, ItemRack para PvP y
+OpenMap para explorar al subir al 60. Las fichas originales y Patch Tracker no
+se modifican. Caché **v19**, con todos los JSON disponibles offline tras la
+primera visita online. Las fuentes externas siguen necesitando conexión.
+
+Consulta los [criterios editoriales y la evidencia de cada addon](docs/addon-advisor.md).
+Las pruebas automatizadas comprueban filtros, contextos, fuentes, teclado,
+navegación, pantallas móviles de 320–412 px y las 81 fichas offline. La
+prueba en Android físico corresponde al usuario.

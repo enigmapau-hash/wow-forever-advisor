@@ -7,7 +7,7 @@ const AddonAdvisor = (() => {
     probado_forever: "Probado en Forever con evidencia",
     pendiente_verificar: "Pendiente de verificar",
   };
-  const categories = ["Misiones", "Comodidad", "Economía", "Grupos", "Recolección"];
+  const categories = ["Misiones", "Comodidad", "Combate", "Economía", "Equipamiento", "Exploración", "Grupos", "Recolección"];
   const text = (value) => typeof value === "string" && value.trim().length > 0;
   const date = (value) => text(value) && /^\d{4}-\d{2}-\d{2}$/.test(value)
     && !Number.isNaN(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;

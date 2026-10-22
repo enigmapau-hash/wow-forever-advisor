@@ -5,11 +5,14 @@ const assert = require("node:assert/strict");
 module.exports = async function checkAddons(page, context, base, browser) {
   await page.goto(base + "/#addon-advisor");
   await page.locator("#addon-results article").first().waitFor();
-  assert.equal(await page.locator("#addon-results article").count(), 3);
+  assert.equal(await page.locator("#addon-results article").count(), 5);
   assert.match(await page.title(), /^Addon Advisor/);
   assert.equal(await page.locator("#addon-title").evaluate((el) => el === document.activeElement), true);
   await page.getByRole("button", { name: "Todos", exact: true }).click();
-  assert.equal(await page.locator("#addon-results article").count(), 5);
+  assert.equal(await page.locator("#addon-results article").count(), 11);
+  await page.getByRole("button", { name: "Exploración", exact: true }).click();
+  assert.equal(await page.locator("#addon-results article").count(), 1);
+  assert.match(await page.locator("#addon-results").textContent(), /OpenMap/);
   await page.getByRole("button", { name: "Recolección", exact: true }).click();
   assert.equal(await page.locator("#addon-results article").count(), 1);
   assert.match(await page.locator("#addon-results").textContent(), /Pendiente de verificar/);
@@ -44,12 +47,19 @@ module.exports = async function checkAddons(page, context, base, browser) {
   await page.locator("#specialization button").first().click();
   assert.equal(await page.locator("#race-addons").isVisible(), false);
 
+  await page.goto(base + "/#race-advisor");
+  await page.locator('#faction button[data-value="Alianza"]').click();
+  await page.locator('#character-class button[data-value="Cazador"]').click();
+  await page.locator("#specialization button").first().click();
+  await page.locator("#race-addons strong").first().waitFor();
+  assert.match(await page.locator("#race-addons").textContent(), /ProcDoc/);
   await page.goto(base + "/#profession-advisor");
   await page.locator("#profession-class button").first().click();
   await page.locator("#profession-buttons button").first().click();
   await page.locator("#profession-addons").waitFor();
-  assert.equal(await page.locator("#profession-addons strong").count(), 1);
+  assert.equal(await page.locator("#profession-addons strong").count(), 2);
   assert.match(await page.locator("#profession-addons").textContent(), /Auctionator/);
+  assert.match(await page.locator("#profession-addons").textContent(), /CraftProfit Forever/);
   await page.locator("#profession-class button").last().click();
   assert.equal(await page.locator("#profession-addons").isVisible(), false);
 
@@ -60,6 +70,11 @@ module.exports = async function checkAddons(page, context, base, browser) {
   await page.locator("#talent-addons").waitFor();
   assert.equal(await page.locator("#talent-addons strong").count(), 2);
   await page.locator('#talent-class button[data-value="Guerrero"]').click();
+  await page.locator("#talent-spec button").first().click();
+  await page.locator('#talent-goal button[data-value="Mazmorras"]').click();
+  await page.locator("#talent-addons strong").first().waitFor();
+  assert.match(await page.locator("#talent-addons").textContent(), /ProcDoc/);
+  await page.locator('#talent-class button[data-value="Sacerdote"]').click();
   await page.locator("#talent-spec button").first().click();
   await page.locator('#talent-goal button[data-value="Mazmorras"]').click();
   assert.equal(await page.locator("#talent-addons").isVisible(), false);
@@ -87,7 +102,7 @@ module.exports = async function checkAddons(page, context, base, browser) {
   fail = false;
   await p.locator("#retry-addons").click();
   await p.locator("#addon-results article").first().waitFor();
-  assert.equal(await p.locator("#addon-results article").count(), 3);
+  assert.equal(await p.locator("#addon-results article").count(), 5);
   assert.equal(await p.locator("#addon-error").isVisible(), false);
   // Defer the catalog response; changing class invalidates the in-flight context.
   await p.goto(base + "/#race-advisor");
