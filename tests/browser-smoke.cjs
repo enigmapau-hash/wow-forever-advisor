@@ -41,6 +41,12 @@ const server = http.createServer(async (req, res) => {
       console.log(suite + ": " + result);
     }
     await page.goto(base + "/");
+    assert.equal(await page.locator(".available-modules > li").count(), 3,
+      "Only the three approved modules appear on the home screen");
+    assert.equal(await page.locator("#future-title").count(), 0,
+      "No future-module section on the home screen");
+    assert.equal(await page.getByText("Build Advisor").count(), 0,
+      "Build Advisor is not displayed on the home screen");
     await page.evaluate(async () => {
       await navigator.serviceWorker.ready;
       if (!navigator.serviceWorker.controller) {
@@ -49,7 +55,7 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v16")), "Current version cache installed");
+    assert(cacheNames.some((name) => name.endsWith(":v17")), "Current version cache installed");
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();
