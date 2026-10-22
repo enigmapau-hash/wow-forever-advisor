@@ -129,5 +129,5 @@ World of Warcraft® y sus materiales gráficos pertenecen a Blizzard
 Entertainment. Proyecto independiente, no afiliado ni respaldado por Blizzard.
 
 La cobertura del mapa se comprueba sin dependencias con `node tests/icon-map.test.js`.
-Las comprobaciones visuales y offline reales en Android son necesarias antes
-de fusionar la PR.
+Tras publicar la actualización, hay que verificar en Android el aspecto de
+todos los iconos y su recuperación en modo avión.
