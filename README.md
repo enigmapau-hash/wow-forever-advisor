@@ -152,7 +152,7 @@ partir de las notas de Blizzard. Cambios de talentos o Legado en futuros parches
 exigirán revisar las recomendaciones antes de marcarlas como actuales.
 
 Datos: `data/talent-advisor-warrior.json` (9 fichas del Guerrero y 3 perfiles comunes de Legado), `data/talent-advisor-paladin.json` (9 del Paladín), `data/talent-advisor-shaman.json` (9 del Chamán) y `data/talent-advisor-catalog.json` (catálogo de clases). Cada clase mantiene sus propios pasos para obtener puntos de Legado. Consultar las fichas piloto en `docs/talent-advisor-*-pilot.md` y `docs/progression-systems.md`.
-La PWA precarga los nueve JSON de clase y el catálogo en caché **v16** para uso offline tras la primera visita online. Los iconos siguen las mismas limitaciones de la CDN ya indicadas.
+La PWA precarga los nueve JSON de clase y el catálogo en caché **v17** para uso offline tras la primera visita online. Los iconos siguen las mismas limitaciones de la CDN ya indicadas.
 
 Pruebas sin paquetes adicionales:
 
@@ -162,8 +162,17 @@ python -m unittest discover -s tests
 
 Para comprobar las 81 fichas y la navegación en el navegador, servir la
 carpeta mediante HTTP local y abrir `tests/talent-advisor.html`; pulsar
-«Ejecutar pruebas». El antiguo test de navegación de Race Advisor ya contempla
-las tres tarjetas disponibles y el único módulo futuro (Build Advisor).
+«Ejecutar pruebas». El test de navegación de Race Advisor verifica que
+la portada presenta solo los tres módulos disponibles, sin un módulo futuro.
+
+
+## Mantenimiento v17 — portada simplificada
+
+Se retira de la pantalla principal la tarjeta **Build Advisor — Próximamente** porque duplicaría gran parte de Talent Advisor. **No se elimina ninguna funcionalidad existente**: Race Advisor, Profession Advisor, Talent Advisor (81 fichas) y los perfiles de Legado siguen disponibles.
+
+La idea de Build Advisor queda archivada como posibilidad futura, **solo si aporta una función claramente distinta** y el usuario la aprueba. No hay calculadora de puntos ni se planea introducirla en esta fase.
+
+También se pule la puntuación de la descripción de raciales y se elimina una regla CSS específica de la antigua sección futura. La portada conserva sus tres tarjetas y el diseño Android aprobado. El service worker pasa a caché **v17** para actualizar el HTML y CSS sin afectar a los JSON editoriales.
 
 ## Patch Tracker (mantenimiento semiautomático)
 
@@ -181,7 +190,7 @@ Los nuevos cambios de datos y código también ejecutan el flujo de comprobacion
 
 ### Ampliación de las nueve clases — 22/10/2026
 
-El catálogo carga los nueve JSON `data/talent-advisor-*.json`. Caché v16 incluye
+El catálogo carga los nueve JSON `data/talent-advisor-*.json`. Caché v17 incluye
 los seis nuevos archivos para consulta offline tras una primera visita online.
 Los nombres ingleses de nuevos talentos se identifican como tales para evitar
 inventar localizaciones. Las listas son prioridades de estudio, no builds exactas
