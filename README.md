@@ -131,3 +131,39 @@ Entertainment. Proyecto independiente, no afiliado ni respaldado por Blizzard.
 La cobertura del mapa se comprueba sin dependencias con `node tests/icon-map.test.js`.
 Tras publicar la actualización, hay que verificar en Android el aspecto de
 todos los iconos y su recuperación en modo avión.
+
+## Talent Advisor — piloto Guerrero (beta)
+
+La pantalla de inicio da acceso a **Talent Advisor**, actualmente limitado a
+**Guerrero (Armas, Furia y Protección)**. Tras elegir clase, especialización y
+objetivo (**Subir al 60, PvP o Mazmorras**), se muestra una tarjeta con:
+
+- Talentos de clase **para estudiar**, sin orden de compra ni supuesta build 51/51.
+- Ventajas de **Legado** acordes al objetivo, sus requisitos/advertencias y cómo
+  empezar a conseguir puntos mediante desafíos.
+- Otros progresos relevantes y limitaciones de la propuesta.
+- Número de compilación beta, fecha de revisión, fuentes y advertencia expresa
+  de que la orientación editorial **todavía no está validada a nivel 60**.
+
+**No hay calculadora ni árbol interactivo.** Los consejos editoriales son
+provisionales y están separados de las fichas originales de Race Advisor y
+Profession Advisor. **No se infiere una distribución final de 51 puntos** a
+partir de las notas de Blizzard. Cambios de talentos o Legado en futuros parches
+exigirán revisar las recomendaciones antes de marcarlas como actuales.
+
+Datos: `data/talent-advisor-warrior.json`, que incluye nueve combinaciones,
+tres perfiles de Legado y metadatos de versiones/fuentes. Contexto y alcance:
+`docs/talent-advisor-warrior-pilot.md` y `docs/progression-systems.md`.
+La PWA precarga este JSON en caché **v13** para uso offline tras la primera
+visita online. Los iconos siguen las mismas limitaciones de la CDN ya indicadas.
+
+Pruebas sin paquetes adicionales:
+
+```sh
+python -m unittest discover -s tests
+```
+
+Para comprobar las nueve fichas y la navegación en el navegador, servir la
+carpeta mediante HTTP local y abrir `tests/talent-advisor.html`; pulsar
+«Ejecutar pruebas». El antiguo test de navegación de Race Advisor ya contempla
+las tres tarjetas disponibles y el único módulo futuro (Build Advisor).
