@@ -16,10 +16,19 @@ class AddonAdvisorTests(unittest.TestCase):
 
     def test_publication_not_confused_with_testing(self):
         catalog = json.loads((ROOT / 'data/addon-advisor.json').read_text(encoding='utf-8'))
-        self.assertEqual(len(catalog['addons']), 5)
+        self.assertEqual(len(catalog['addons']), 11)
         for addon in catalog['addons']:
             self.assertIsNone(addon['pruebaForever'])
             self.assertNotEqual(addon['estado'], 'probado_forever')
+        expected = {'ellesmereui', 'procdoc', 'craftprofit-forever', 'itemrack-universal', 'dialogue-ui', 'openmap'}
+        self.assertTrue(expected.issubset({a['id'] for a in catalog['addons']}))
+        for addon in catalog['addons']:
+            if addon['id'] in expected:
+                self.assertEqual(addon['estado'], 'publicado_forever')
+                self.assertEqual(addon['versionCliente'], '1.60.1')
+                self.assertTrue(addon['fuentes'][0]['url'].startswith('https://www.curseforge.com/wow/addons/'))
+        openmap = next(a for a in catalog['addons'] if a['id'] == 'openmap')
+        self.assertEqual(openmap['version'], 'v0.7.2-beta-forever')
         pending = next(a for a in catalog['addons'] if a['id'] == 'gathermate2')
         self.assertEqual(pending['estado'], 'pendiente_verificar')
         self.assertIsNone(pending['version'])
@@ -30,4 +39,4 @@ class AddonAdvisorTests(unittest.TestCase):
             self.assertIn('"./' + path + '"', worker)
         self.assertLess(sum((ROOT / p).stat().st_size for p in
                             ['addon-advisor.js', 'data/addon-advisor.json']), 35_000)
-        self.assertIn('${CACHE_PREFIX}v18', worker)
+        self.assertIn('${CACHE_PREFIX}v19', worker)
