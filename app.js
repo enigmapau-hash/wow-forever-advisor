@@ -206,15 +206,101 @@ racialSelect.addEventListener("change", () => {
   racialStatus.textContent = `Perfil disponible: ${profile.raza}.`;
 });
 
+const professionView = document.getElementById("profession-view");
+const professionClass = document.getElementById("profession-class");
+const professionButtons = document.getElementById("profession-buttons");
+const professionResult = document.getElementById("profession-result");
+const professionStatus = document.getElementById("profession-status");
+let professionRecords = [];
+let professionsLoading = false;
+let professionsLoaded = false;
+
+function clearProfessionResult() {
+  professionResult.hidden = true;
+  document.getElementById("profession-combination").textContent = "";
+  for (const field of professionResult.querySelectorAll("[data-profession-field]")) field.textContent = "";
+}
+
+async function loadProfessions() {
+  if (professionsLoaded || professionsLoading) return;
+  professionsLoading = true;
+  const selector = document.getElementById("profession-selector");
+  const error = document.getElementById("profession-error");
+  const retry = document.getElementById("retry-professions");
+  selector.setAttribute("aria-busy", "true");
+  error.hidden = true;
+  retry.disabled = true;
+  professionStatus.textContent = "Cargando profesiones…";
+  try {
+    const data = await readJson("./data/profession-advisor.json");
+    const rows = data.fichas;
+    const textFields = ["clase", "especializacion", "motivoPrincipal", "limitacion"];
+    if (data.schemaVersion !== 1 || !Array.isArray(rows) || rows.length !== 27
+        || !rows.every((row) => row && textFields.every((key) => typeof row[key] === "string" && row[key].trim())
+          && ["principal", "alternativa"].every((key) => Array.isArray(row[key]) && row[key].length === 2
+            && row[key].every((value) => typeof value === "string" && value.trim())))
+        || uniqueValues(rows, "clase").length !== 9
+        || new Set(rows.map((row) => JSON.stringify([row.clase, row.especializacion]))).size !== 27
+        || !uniqueValues(rows, "clase").every((name) => rows.filter((row) => row.clase === name).length === 3)) {
+      throw new Error("Fichas de profesiones incompletas o duplicadas.");
+    }
+    professionRecords = rows;
+    setOptions(professionClass, uniqueValues(rows, "clase"), "Elige clase");
+    professionsLoaded = true;
+    professionStatus.textContent = "Elige una clase para comenzar.";
+  } catch (error) {
+    setOptions(professionClass, [], "Datos no disponibles");
+    professionStatus.textContent = "Profesiones no disponibles.";
+    document.getElementById("profession-error").hidden = false;
+  } finally {
+    professionsLoading = false;
+    retry.disabled = false;
+    selector.setAttribute("aria-busy", "false");
+  }
+}
+
+professionClass.addEventListener("change", () => {
+  clearProfessionResult();
+  const rows = professionRecords.filter((row) => row.clase === professionClass.value);
+  document.getElementById("profession-specializations").hidden = rows.length === 0;
+  professionButtons.replaceChildren(...rows.map((record) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = record.especializacion;
+    button.setAttribute("aria-pressed", "false");
+    button.addEventListener("click", () => {
+      for (const sibling of professionButtons.children) sibling.setAttribute("aria-pressed", String(sibling === button));
+      for (const field of professionResult.querySelectorAll("[data-profession-field]")) {
+        const value = record[field.dataset.professionField];
+        field.textContent = Array.isArray(value) ? value.join(" + ") : value;
+      }
+      document.getElementById("profession-combination").textContent = `${record.clase} · ${record.especializacion}`;
+      professionResult.hidden = false;
+      professionStatus.textContent = `Ficha disponible: ${record.clase}, ${record.especializacion}.`;
+    });
+    return button;
+  }));
+  professionStatus.textContent = rows.length ? "Elige una especialización." : "Elige una clase para comenzar.";
+});
+document.getElementById("profession-advisor").addEventListener("click", () => {
+  window.location.hash = "profession-advisor";
+});
+document.getElementById("retry-professions").addEventListener("click", loadProfessions);
+
 function showRoute(event) {
   const isAdvisor = window.location.hash === "#race-advisor";
   const isRacials = window.location.hash === "#raciales";
-  homeView.hidden = isAdvisor || isRacials;
+  const isProfession = window.location.hash === "#profession-advisor";
+  homeView.hidden = isAdvisor || isRacials || isProfession;
+  professionView.hidden = !isProfession;
   advisorView.hidden = !isAdvisor;
   racialView.hidden = !isRacials;
-  document.title = isRacials ? "Raciales | WoW Forever Advisor"
+  document.title = isProfession ? "Profession Advisor | WoW Forever Advisor" : isRacials ? "Raciales | WoW Forever Advisor"
     : isAdvisor ? "Race Advisor | WoW Forever Advisor" : "WoW Forever Advisor";
-  if (isAdvisor) {
+  if (isProfession) {
+    document.getElementById("profession-title").focus();
+    loadProfessions();
+  } else if (isAdvisor) {
     document.getElementById("advisor-title").focus();
     loadData();
   } else if (isRacials) {
