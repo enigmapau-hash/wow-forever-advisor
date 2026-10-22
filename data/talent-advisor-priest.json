@@ -5,7 +5,7 @@
   "versionCliente": "1.60.1.70450",
   "fechaRevision": "2026-10-22",
   "estado": "borrador_beta",
-  "aviso": "Orientaciones provisionales de Sacerdote, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar.",
+  "aviso": "Orientaciones provisionales de Sacerdote, contrastadas con las notas de beta del 15/10/2026. No son repartos exactos de 51 puntos ni builds probadas al nivel 60. La compilación indicada es la referencia editorial, no una confirmación de la última versión del servidor. Blizzard prevé cerrar la beta el 23/10; el balance puede cambiar. Los talentos destacados se repiten para los tres objetivos de cada especialización; no son builds diferenciadas ni probadas al nivel 60.",
   "especializaciones": [
     "Disciplina",
     "Sagrado",
