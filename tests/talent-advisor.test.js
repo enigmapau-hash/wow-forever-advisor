@@ -21,13 +21,14 @@ button.addEventListener("click", async () => {
     if (!condition) throw new Error(message);
   };
   try {
-    const [catalog, warrior, paladin] = await Promise.all([
+    const [catalog, warrior, paladin, shaman] = await Promise.all([
       fetch("../data/talent-advisor-catalog.json").then((r) => r.json()),
       fetch("../data/talent-advisor-warrior.json").then((r) => r.json()),
       fetch("../data/talent-advisor-paladin.json").then((r) => r.json()),
+      fetch("../data/talent-advisor-shaman.json").then((r) => r.json()),
     ]);
-    const sources = [warrior, paladin];
-    check(catalog.clases.length === 2, "El catálogo incluye dos clases");
+    const sources = [warrior, paladin, shaman];
+    check(catalog.clases.length === 3, "El catálogo incluye tres clases");
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       frame.src = "../index.html?talent-test=" + Date.now();
@@ -99,19 +100,19 @@ button.addEventListener("click", async () => {
         }
       }
     }
-    check(formats.size === 18, "Dieciocho fichas independientes");
+    check(formats.size === 27, "Veintisiete fichas independientes");
     choose(klass, "Guerrero");
     check(result.hidden && spec.dataset.value === "" && goal.dataset.value === "",
       "Cambiar clase limpia la selección previa");
     choose(spec, "Armas");
     choose(goal, "PvP");
     check(!result.hidden && doc.getElementById("talent-build-info").textContent.includes("Guerrero"),
-      "El Guerrero sigue funcionando después de consultar Paladín");
+      "El Guerrero sigue funcionando después de consultar las otras clases");
     doc.getElementById("talent-back-home").click();
     await waitFor(() => view.hidden && !doc.getElementById("home-view").hidden);
     check(true, "Vuelve al inicio");
     report.textContent = "OK: " + assertions +
-      " comprobaciones, 18 fichas, 2 clases, 3 objetivos y Legado común.";
+      " comprobaciones, 27 fichas, 3 clases, 3 objetivos y Legado común.";
   } catch (error) {
     report.textContent = "ERROR: " + error.message + " (" + assertions + " comprobaciones)";
   } finally {
