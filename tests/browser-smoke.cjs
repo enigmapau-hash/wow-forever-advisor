@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v21`);
-      await cache.put("./obsolete-v21", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v22`);
+      await cache.put("./obsolete-v22", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -55,6 +55,33 @@ const server = http.createServer(async (req, res) => {
       "Build Advisor is not displayed on the home screen");
     assert.equal(await page.locator(".available-modules h3").first().textContent(), "Race Explorer", "Home module uses approved name");
     assert.equal(await page.locator("#racial-title").textContent(), "Race Explorer", "Explorer view uses approved name");
+    assert.equal(await page.locator("#race-advisor").getAttribute("href"), "#race-advisor",
+      "Hero card opens Race Advisor through a native link");
+    assert.equal(await page.locator(".available-modules .module-link").count(), 4,
+      "Each home module uses one full-card link");
+    assert.equal(await page.locator("#home-view button").count(), 0,
+      "The home page has no redundant Open buttons");
+    for (const [id, destination] of [
+      ["home-explore-racials", "#raciales"], ["profession-advisor", "#profession-advisor"],
+      ["talent-advisor", "#talent-advisor"], ["addon-advisor", "#addon-advisor"],
+    ]) {
+      assert.equal(await page.locator("#" + id).getAttribute("href"), destination,
+        id + " has a native link to its module");
+    }
+    for (const [width, expected] of [[360, 1], [820, 2], [1280, 2]]) {
+      await page.setViewportSize({ width, height: 844 });
+      const columns = await page.locator(".available-modules").evaluate((el) =>
+        getComputedStyle(el).gridTemplateColumns.split(" ").length);
+      assert.equal(columns, expected, "Responsive cards columns at " + width);
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        "No horizontal overflow at " + width);
+    }
+    await page.locator("#profession-advisor").focus();
+    await page.keyboard.press("Enter");
+    assert.equal(await page.locator("#profession-view").isVisible(), true,
+      "Whole module card opens using keyboard Enter");
+    await page.goto(base + "/");
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.evaluate(async () => {
       await navigator.serviceWorker.ready;
       if (!navigator.serviceWorker.controller) {
@@ -63,8 +90,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v22")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v21")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v23")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v22")), "Previous app cache removed after activation");
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();
