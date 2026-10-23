@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v33`);
-      await cache.put("./obsolete-v33", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v34`);
+      await cache.put("./obsolete-v34", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -118,9 +118,12 @@ const server = http.createServer(async (req, res) => {
       "La explicación de la raza principal es visible sin desplegar");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
-    await page.locator("#primary-profile > summary").click();
-    assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), false,
-      "La utilidad general permanece en los datos, pero no se muestra como estrellas");
+    assert.equal(await page.locator("#primary-profile").count(), 0,
+      "Race Advisor no duplica el perfil general");
+    assert.equal(await page.locator("#primary-profile-link").getAttribute("href"), "#raciales",
+      "El perfil completo tiene un enlace sencillo a Race Explorer");
+    assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
+      "No aparece la escala original de estrellas");
     assert.equal(await page.locator("#selection-status").getAttribute("role"), "status",
       "El estado de selección sigue anunciándose mediante ARIA");
     assert.equal(await page.locator("#selection-status").evaluate((el) =>
@@ -129,22 +132,20 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#character-class button[data-value="Druida"]').click();
     await page.locator('#specialization button[data-value="Equilibrio"]').click();
     assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "Cielonato");
-    assert.equal(await page.locator("#alternative-details").isVisible(), true);
-    assert.equal(await page.locator("#alternative-details").getAttribute("open"), null,
-      "La comparación extensa se consulta solo si el usuario quiere");
+    assert.equal(await page.locator("#alternative-details").count(), 0,
+      "No hay desplegable de comparación redundante");
     assert.equal(await page.locator("#alternative-use").isVisible(), true,
-      "La utilidad breve de Cielonato aparece inmediatamente");
-    await page.locator("#alternative-details summary").click();
-    assert.equal(await page.locator("#alternative-detail-text").isVisible(), true,
-      "La justificación completa sigue disponible");
+      "La alternativa tiene una explicación única y legible");
+    assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
+      "La alternativa enlaza con su perfil completo");
     for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       const columns = await page.locator(".race-choices").evaluate((el) =>
         getComputedStyle(el).gridTemplateColumns.split(" ").length);
       assert.equal(columns, width < 960 ? 1 : 2,
         "F02: comparación apilada hasta 960px y de dos columnas en escritorio a " + width);
-      assert.equal(await page.locator("#alternative-detail-text").isVisible(), true,
-        "F02: detalle expandido legible después de cambiar anchura");
+      assert.equal(await page.locator("#alternative-use").isVisible(), true,
+        "Explicación de alternativa visible después de cambiar anchura");
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         "F02: sin desbordamiento horizontal a " + width);
     }
@@ -230,8 +231,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v34")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v33")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v35")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v34")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

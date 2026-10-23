@@ -406,20 +406,31 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 #primary-choice .recommendation-heading img { width: 4rem; height: 4rem; }
 #primary-choice h2 { font-size: clamp(1.75rem, 3.5vw, 2.3rem); margin: 0; }
 #primary-choice h3 { color: #cbd5cb; font-size: 0.95rem; margin: 0 0 0.5rem; }
-.race-explanation { margin-top: 0.5rem; color: #d1d9d1; line-height: 1.7; }
-.race-explanation { max-width: 72ch; }
+.race-explanation { margin-top: 1rem; max-width: 66ch; color: #d1d9d1; line-height: 1.85; }
+#primary-choice #primary-reason-label { margin-top: 1.35rem; }
 .alternative-choice { background: #17231e; border-color: #526255; }
 .alternative-choice .eyebrow { color: #b9c7bc; }
 .alternative-choice .recommendation-heading { margin-block: 0.85rem; }
 .alternative-choice .recommendation-heading img { width: 2.5rem; height: 2.5rem; }
 .alternative-choice h3 { margin: 0; font-size: 1.3rem; line-height: 1.3; }
-.alternative-choice .detail-disclosure { margin-top: 0.85rem; border-top: 1px solid #405446; }
 .alternative-scope { color: #bdcdbf; font-size: 0.83rem; font-weight: 600; line-height: 1.45; margin-bottom: 0.4rem; }
 .alternative-choice #alternative-use { line-height: 1.65; }
-.race-support { padding-block: 0.6rem; margin-top: 0.9rem; border-bottom: 1px solid #526255; }
-.race-support h3 { font-size: 1rem; margin-block: 1.25rem 0.5rem; }
-.race-support .profile-grid { gap: 1rem 2rem; }
-.race-support .field-note { margin-block: 0.5rem 1rem; }
+/* Ficha enfocada: los perfiles completos se consultan sin duplicarlos en Explorer. */
+.race-profile-navigation { margin-top: 1.1rem; }
+.race-profile-link { display: inline-block; color: var(--gold); line-height: 1.6; text-underline-offset: 0.22rem; }
+.race-profile-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 0.25rem; }
+#alternative-race-link { margin-top: 1rem; font-size: 0.9rem; }
+.race-sources { margin-top: 1.65rem; padding: 0.25rem 0; color: var(--muted); }
+.race-sources > h3 { margin-bottom: 0.6rem; color: var(--text); font-size: 1.05rem; }
+.race-sources h4 { margin: 1rem 0 0.35rem; color: var(--text); font-size: 0.95rem; }
+.race-sources > .field-note { margin-top: 0.5rem; }
+.race-sources a { color: var(--gold); text-underline-offset: 0.2rem; }
+#skyborne-variant { margin-top: 1.3rem; }
+#skyborne-variant h4 { margin: 0.75rem 0 0.25rem; font-size: 0.95rem; color: var(--text); }
+#skyborne-variant p { line-height: 1.7; }
+#skyborne-result .profile-grid > .result-card { min-width: 0; }
+#skyborne-result #skyborne-faction { margin-top: 1.4rem; }
+#skyborne-comments .field-note { margin-top: 0.6rem; }
 #advisor-result .detail-disclosure > summary { color: #c6d1c7; }
 .race-no-alternative { display: inline-block; padding: 0.45rem 0.7rem; margin: -0.55rem 0 1.1rem; background: #1e2d23; border: 1px solid #4c6250; border-radius: 0.45rem; color: #d1d9d1; font-size: 0.87rem; line-height: 1.5; }
 .racial-matches { display: grid; gap: 1rem; padding: 0; margin: 0.9rem 0 0; list-style: none; }
@@ -447,7 +458,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .eyebrow { font-size: 0.78rem; }
 .attribution { font-size: 0.8rem; }
 #pwa-version { margin-top: 0.45rem; }
-#race-addons { background: none; border: 0; border-top: 1px solid #526255; border-radius: 0; padding: 1.25rem 0 0; }
+#race-addons { background: none; border: 0; border-radius: 0; padding: 1.25rem 0 0; }
 #race-addons h3 { font-size: 0.95rem; color: #c6d1c7; }
 #advisor-result { scroll-margin-top: 1.25rem; }
 /* F02: evitar una columna de comparación demasiado estrecha en tablet. */

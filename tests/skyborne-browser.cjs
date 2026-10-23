@@ -44,9 +44,16 @@ module.exports = async function testSkyborne(page, context, base) {
   assert.equal(await page.locator("#skyborne-result .rating").count(), 0, "No invented stars");
   assert.equal(await page.locator("#skyborne-icon-note").count(), 0,
     "Información técnica de CDN fuera de la interfaz");
-  assert.match(await page.locator("#skyborne-result").textContent(), /Fuentes y notas de beta/);
-  assert.equal(await page.locator("#skyborne-result details").getAttribute("open"), null,
-    "Fuentes y advertencias empiezan plegadas");
+  assert.match(await page.locator("#skyborne-result").textContent(), /Fuentes y cambios de beta/);
+  assert.equal(await page.locator("#skyborne-sources-panel").getAttribute("open"), null,
+    "Fuentes consultables y plegadas");
+  for (const heading of ["Uso principal", "Fortalezas", "Debilidades",
+    "Dónde se recomienda esta raza", "Dónde aparece como alternativa"]) {
+    assert(await page.locator("#skyborne-result").getByRole("heading", { name: heading }).count() === 1,
+      "Cielonato comparte las secciones del resto de perfiles: " + heading);
+  }
+  assert.equal(await page.locator("#skyborne-no-recommended").isVisible(), true,
+    "No se inventan recomendaciones principales para Cielonato");
   assert.match(await page.locator("#skyborne-criterion").textContent(), /alternativa de Druida/);
   assert.equal(await page.locator("#skyborne-alternatives a").count(), 6,
     "Race Explorer enlaza las seis alternativas de Druida");
@@ -144,9 +151,8 @@ module.exports = async function testSkyborne(page, context, base) {
       }
       if (druid) {
         if (document.getElementById("alternative-use").textContent !== display(druid.usoAlternativa)
-            || !document.getElementById("alternative-detail-text").textContent.includes(display(druid.motivoComparacion))
-            || document.getElementById("alternative-details").hidden
-            || document.getElementById("alternative-details").open) {
+            || document.getElementById("alternative-details") !== null
+            || document.getElementById("alternative-race-link").dataset.race !== "Cielonato") {
           throw new Error(`Missing comparative reason for ${row.faccion}/${row.especializacion}`);
         }
       }
@@ -195,7 +201,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v34")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v35")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();

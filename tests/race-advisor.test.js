@@ -124,14 +124,15 @@ runButton.addEventListener("click", async () => {
         `${key}: el motivo original se conserva sin duplicar la explicación visible`);
       check(doc.getElementById("alternative-empty").hidden === (record.alternativa !== "-"),
         `${key}: la ausencia de alternativa aparece junto a la cabecera`);
+      check(doc.getElementById("primary-profile-link").dataset.race === record.razaRecomendada,
+        `${key}: el perfil general se consulta en Race Explorer`);
       if (record.alternativa !== "-") {
         const contextual = record.alternativa === "Cielonato";
         check(doc.getElementById("alternative-scope").textContent ===
           (contextual ? "En esta especialización" : "Ventaja racial general"),
           `${key}: alcance de alternativa identificado`);
-        check(doc.getElementById("alternative-detail-label").textContent ===
-          (contextual ? "Comparación con la principal" : "Ver limitaciones raciales"),
-          `${key}: comparación y limitaciones sin confundir categorías`);
+        check(doc.getElementById("alternative-race-link").dataset.race === record.alternativa,
+          `${key}: alternativa enlazada a su perfil completo`);
       }
       check(doc.getElementById("no-alternative") === null
         && doc.getElementById("race-addition-note") === null,
@@ -139,12 +140,10 @@ runButton.addEventListener("click", async () => {
       if (record.clase === "Druida") {
         check(doc.getElementById("alternative-use").textContent === display(record.usoAlternativa),
           `${key}: justificar Cielonato como alternativa`);
-        check(!doc.getElementById("alternative-details").hidden
-          && !doc.getElementById("alternative-details").open
-          && doc.getElementById("alternative-detail-text").textContent === display(record.motivoComparacion),
-          `${key}: comparativa completa opcional, sin repetición visible`);
+        check(doc.getElementById("alternative-details") === null,
+          `${key}: sin segundo párrafo repetido ni comparativa desplegable`);
       } else {
-        check(!doc.getElementById("alternative-detail-text").textContent.includes("Wind Blessed"), `${key}: sin comparación de Druida ajena`);
+        check(!doc.getElementById("alternative-use").textContent.includes("Wind Blessed"), `${key}: sin comparación de Druida ajena`);
       }
       if (record.alternativa === "-") missingAlternatives += 1;
       choose(spec, "");
