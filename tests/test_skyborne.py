@@ -73,4 +73,4 @@ class SkyborneTests(unittest.TestCase):
         for field in ("prioridad", "escalaUtilidad", "puntuacion", "razaRecomendada"):
             self.assertNotIn('"' + field + '"', text)
         self.assertIn('"./data/skyborne.json"', (ROOT / "sw.js").read_text())
-        self.assertIn("${CACHE_PREFIX}v30", (ROOT / "sw.js").read_text())
+        self.assertIn("${CACHE_PREFIX}v31", (ROOT / "sw.js").read_text())
