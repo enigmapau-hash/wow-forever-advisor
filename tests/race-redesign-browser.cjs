@@ -123,5 +123,5 @@ module.exports = async function testRedesign(page, base, offline = false) {
     return data.fichas.length;
   });
   assert.equal(professions, 27);
-  console.log(`v34 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
+  console.log(`v35 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
 };
