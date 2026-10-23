@@ -6,25 +6,41 @@
   "estado": "beta",
   "revision": {
     "fecha": "2026-10-23",
-    "estado": "pendiente",
+    "estado": "verificado",
     "base": "https://github.com/enigmapau-hash/wow-forever-advisor/issues/29",
-    "nota": "Datos documentados en la tarea #29; contraste independiente con las fuentes oficiales pendiente. No equivalen a confirmación de lanzamiento."
+    "nota": "Consulta directa de las tres fuentes oficiales el 23/10/2026, contrastada con la revisión externa de la PR #30. Datos de beta; no equivalen a confirmación de lanzamiento.",
+    "revisionExterna": "https://github.com/enigmapau-hash/wow-forever-advisor/pull/30#issuecomment-6363136999"
   },
   "fuentes": [
     {
       "id": "presentacion",
       "nombre": "Blizzard · Meet the New Skyborne",
-      "url": "https://news.blizzard.com/en-us/article/24302071/wow-forever-meet-the-new-skyborne"
+      "url": "https://news.blizzard.com/en-us/article/24302071/wow-forever-meet-the-new-skyborne",
+      "consulta": {
+        "fecha": "2026-10-23",
+        "http": 200,
+        "sha256": "00185ce19ceb5f93742f268a598815e0b2b0afbf7ec1da5636a190563b13a306"
+      }
     },
     {
       "id": "beta-15-oct",
       "nombre": "Blizzard · Beta Development Notes · 15/10/2026",
-      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6",
+      "consulta": {
+        "fecha": "2026-10-23",
+        "http": 200,
+        "sha256": "51cce62dcb725e13ef38b550528e091ac2b8d7e169853de1695e0923214b5010"
+      }
     },
     {
       "id": "clases",
       "nombre": "Blizzard · Clases por raza y facción",
-      "url": "https://news.blizzard.com/en-us/article/24304075/create-the-hero-you-want-to-be-in-world-of-warcraft-forever"
+      "url": "https://news.blizzard.com/en-us/article/24304075/create-the-hero-you-want-to-be-in-world-of-warcraft-forever",
+      "consulta": {
+        "fecha": "2026-10-23",
+        "http": 200,
+        "sha256": "3678c56e653478b82166fc04052a3e9f91b705aabf1bdf23fcc0096516f96417"
+      }
     }
   ],
   "comunes": [
@@ -79,7 +95,7 @@
       ],
       "habilidad": {
         "id": "read-leyline",
-        "nombre": "Read Leyline",
+        "nombre": "Read Ley Line",
         "tipo": "activa",
         "descripcion": "+100 % de regeneración de salud y maná. Se puede lanzar en movimiento. Duración mínima de 30 s en la beta del 15/10/2026.",
         "regeneracionPorcentaje": 100,
@@ -109,9 +125,8 @@
         "id": "skysight",
         "nombre": "Skysight",
         "tipo": "activa",
-        "descripcion": "+10 % de velocidad de movimiento y de montura. Se puede lanzar en movimiento según la beta del 15/10/2026.",
+        "descripcion": "+10 % de velocidad de carrera según la presentación de Blizzard. Se puede lanzar en movimiento según las notas de beta del 15/10/2026.",
         "movimientoPorcentaje": 10,
-        "monturaPorcentaje": 10,
         "lanzableEnMovimiento": true,
         "fuentes": [
           "presentacion",
@@ -126,8 +141,43 @@
     "limitacion": "Valoración comparativa pendiente de pruebas y del balance definitivo. No se asignan estrellas ni se sustituye la recomendación principal existente."
   },
   "icono": {
-    "estado": "pendiente_verificacion",
+    "estado": "pendiente_autorizacion",
     "url": null,
-    "nota": "Icono de Cielonato pendiente de verificación. Se conserva su nombre sin imagen."
+    "nota": "Icono pendiente de autorización de uso. Se conserva el nombre de Cielonato sin imagen.",
+    "identidad": "Retratos específicos de Skyborne identificados en las fichas de ambas variantes de Wowhead e inspeccionados visualmente.",
+    "candidatos": [
+      {
+        "url": "https://wow.zamimg.com/images/wow/icons/large/race_skyborne_male.jpg",
+        "fuente": "https://www.wowhead.com/forever/race=95/high-order-skyborne",
+        "contraste": "https://www.wowhead.com/forever/race=96/windshaper-skyborne",
+        "fechaConsulta": "2026-10-23",
+        "http": 200,
+        "sha256": "ce3a217557f83576d8d900bd5a2670b1eb4d50604666025f93b70c350f047656",
+        "estadoUso": "pendiente_autorizacion"
+      },
+      {
+        "url": "https://wow.zamimg.com/images/wow/icons/large/race_skyborne_female.jpg",
+        "fuente": "https://www.wowhead.com/forever/race=95/high-order-skyborne",
+        "contraste": "https://www.wowhead.com/forever/race=96/windshaper-skyborne",
+        "fechaConsulta": "2026-10-23",
+        "http": 200,
+        "sha256": "ace69bc3ca34c045057906d9c356813c28c4425c02cdceb69a94d67f91a14883",
+        "estadoUso": "pendiente_autorizacion"
+      }
+    ]
+  },
+  "contrasteSecundario": {
+    "nombre": "Wowhead · Skyborne Race Overview",
+    "url": "https://www.wowhead.com/forever/guide/skyborne-race-overview",
+    "fechaConsulta": "2026-10-23",
+    "fechaGuia": "2026-10-22",
+    "http": 200,
+    "sha256": "895338bc5d37f5a8fd08488954b4bfb14f2fc17fbfa6d6c9014bab687262e7e7",
+    "skysight": {
+      "estado": "pendiente_contraste_cliente",
+      "monturaPorcentaje": 10,
+      "nota": "La guía también describe mounted movement speed +10 %. La presentación de Blizzard solo confirma run speed; no se aplica este detalle secundario a la ficha ni al análisis."
+    },
+    "readLeyLine": "La guía usa Read Leyline y aún indica 15 s sin línea ley; prevalecen el nombre Read Ley Line de la presentación oficial y el mínimo de 30 s de las notas oficiales de beta."
   }
 }

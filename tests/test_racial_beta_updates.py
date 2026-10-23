@@ -56,4 +56,4 @@ class RacialBetaUpdatesTests(unittest.TestCase):
         self.assertIn('readJson("./data/racials.json")', script)
         self.assertIn('id="race-beta-updates"', html)
         self.assertIn('id="racial-beta-updates"', html)
-        self.assertIn("Nueve razas: ocho perfiles originales y Cielonato", html)
+        self.assertIn("Nueve razas: ocho perfiles originales y Cielonato", script)

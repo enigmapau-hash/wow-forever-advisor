@@ -197,7 +197,7 @@ function validateSkyborneData(data) {
     if (!data || data.schemaVersion !== 1 || data.raza !== "Cielonato" || data.estado !== "beta"
         || !["pendiente", "verificado"].includes(data.revision?.estado)
         || !/^\d{4}-\d{2}-\d{2}$/.test(data.revision.fecha)
-        || !text(data.icono?.nota) || data.icono.estado !== "pendiente_verificacion" || data.icono.url !== null
+        || !text(data.icono?.nota) || data.icono.estado !== "pendiente_autorizacion" || data.icono.url !== null
         || data.evaluacion?.estado !== "pendiente"
         || !text(data.evaluacion.criterio) || !text(data.evaluacion.limitacion)
         || !Array.isArray(data.fuentes) || data.fuentes.length !== 3) return null;
@@ -229,11 +229,28 @@ function validateSkyborneData(data) {
           && row.habilidad.lanzableEnMovimiento === true)) return null;
     const alliance = data.variantes.find((row) => row.faccion === "Alianza");
     const horde = data.variantes.find((row) => row.faccion === "Horda");
-    if (alliance.habilidad.id !== "read-leyline" || alliance.habilidad.regeneracionPorcentaje !== 100
+    if (alliance.habilidad.id !== "read-leyline" || alliance.habilidad.nombre !== "Read Ley Line"
+        || alliance.habilidad.regeneracionPorcentaje !== 100
         || alliance.habilidad.duracionMinimaSegundos !== 30 || horde.habilidad.id !== "skysight"
-        || horde.habilidad.movimientoPorcentaje !== 10 || horde.habilidad.monturaPorcentaje !== 10) return null;
+        || horde.habilidad.movimientoPorcentaje !== 10 || Object.hasOwn(horde.habilidad, "monturaPorcentaje")) return null;
     return data;
   } catch { return null; }
+}
+
+function updateRacialCoverage(available = true) {
+  const count = racialProfiles.size + (skyborneData ? 1 : 0);
+  document.getElementById("explore-racials").textContent = available
+    ? `Explorar las ${count} razas →` : "Abrir Race Explorer →";
+  document.getElementById("race-coverage-note").textContent = available
+    ? (skyborneData
+      ? "Se conservan las recomendaciones originales de ocho razas y se contempla Cielonato por separado para las combinaciones compatibles."
+      : "Se conservan las recomendaciones originales de ocho razas. La consideración adicional de Cielonato no está disponible.")
+    : "Las recomendaciones y la consideración adicional de Cielonato no están disponibles.";
+  document.getElementById("racial-coverage-note").textContent = available
+    ? (skyborneData
+      ? "Nueve razas: ocho perfiles originales y Cielonato, con variantes de Alianza y Horda. «Elfo» corresponde al elfo de la noche."
+      : "Ocho razas: perfiles originales disponibles. Cielonato no está disponible. «Elfo» corresponde al elfo de la noche.")
+    : "Perfiles raciales no disponibles.";
 }
 
 function skyborneVerification() {
@@ -327,6 +344,7 @@ async function loadData() {
     skyborneData = validateSkyborneData(skyborne);
     document.getElementById("skyborne-data-error").hidden = Boolean(skyborneData);
     if (skyborneData) prepareSkyborneExplorer();
+    updateRacialCoverage();
     records = advisor.fichas;
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
     setOptions(racialSelect, [...racialProfiles.keys(), ...(skyborneData ? [skyborneData.raza] : [])], "Elige raza");
@@ -334,6 +352,7 @@ async function loadData() {
     loaded = true;
     status.textContent = "Elige una facción para comenzar.";
   } catch (error) {
+    updateRacialCoverage(false);
     racialBetaUpdates = new Map();
     setOptions(faction, [], "Datos no disponibles");
     setOptions(characterClass, [], "Elige primero una facción");

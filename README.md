@@ -360,8 +360,11 @@ clases compatibles de cada facción, sin cambiar ninguna de las 51 recomendacion
 originales ni asignar estrellas nuevas. Los datos viven en `data/skyborne.json` y
 se incluyen en la caché v26; los ocho perfiles originales conservan su exportación.
 
-El contraste independiente con Blizzard y el icono específico están **pendientes**
-del acceso a las fuentes; la interfaz lo indica y no usa imágenes de otra raza.
+Las facultades y clases se han contrastado directamente con Blizzard. La valoración
+competitiva sigue pendiente; el detalle de monturas de Wowhead queda separado de
+los datos oficiales. Se han identificado retratos de Cielonato, pero su autorización
+de uso está pendiente y el botón conserva solo texto. Si falla el JSON adicional,
+la cabecera y el CTA muestran las ocho opciones disponibles.
 Esquema, fuentes, incertidumbres y pruebas: [revisión v26](docs/skyborne-v26.md).
 
 Para ejecutar el recorrido de regresión completo: `node tests/browser-smoke.cjs`.

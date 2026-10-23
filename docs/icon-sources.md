@@ -113,10 +113,26 @@ e icono, la distribución en pantalla móvil y que las imágenes descargadas se
 muestran en modo avión. Si falla alguna ruta remota, corregir el mapa.
 
 
-## v26 · Cielonato
+## v26 · Cielonato · revisión del 23/10/2026
 
-No se añade un icono sin identificación verificable. La consulta de las fuentes y
-la búsqueda en Wowhead/CDN están pendientes del acceso de red; no se ha inventado
-un slug ni reutilizado la imagen de otra raza. La novena opción funciona con
-texto y no se presenta como portadora de un icono oficial. Véase la
-[revisión de fuentes y limitaciones de v26](skyborne-v26.md).
+Identidad contrastada, **autorización pendiente**. Las fichas de Wowhead de
+[High Order (95)](https://www.wowhead.com/forever/race=95/high-order-skyborne) y
+[Windshaper (96)](https://www.wowhead.com/forever/race=96/windshaper-skyborne)
+referencian expresamente los dos retratos junto al nombre de la raza. Se llegó a
+ellas desde la búsqueda de Skyborne, sin inventar slugs.
+
+- Masculino: https://wow.zamimg.com/images/wow/icons/large/race_skyborne_male.jpg
+- Femenino: https://wow.zamimg.com/images/wow/icons/large/race_skyborne_female.jpg
+
+Ambos respondieron HTTP 200 y se inspeccionaron visualmente. Las huellas SHA-256,
+fecha y procedencia están en `data/skyborne.json`, dentro de `icono.candidatos`.
+Se descargaron exclusivamente a `/tmp`; no se añaden a `icons/icon-map.js` ni al
+repositorio. Se distinguen de los iconos de facultad de la guía, que tampoco se
+usan como retrato racial. El arte de Warcraft sigue sujeto a los derechos de
+Blizzard; su presencia en la CDN no constituye una licencia transferible.
+
+La consulta de `https://www.wowhead.com/terms-of-service` devolvió 404. No se
+ha acreditado en los materiales consultados una autorización aplicable a estos
+retratos. Queda a decisión del usuario mantener texto o aportar una base de uso
+válida antes de elegir e incorporar una variante. Véase el
+[registro de comprobaciones y limitaciones](skyborne-v26.md).

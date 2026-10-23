@@ -38,21 +38,34 @@ class SkyborneTests(unittest.TestCase):
         self.assertEqual(variants["Alianza"]["habilidad"]["duracionMinimaSegundos"], 30)
         self.assertEqual(variants["Alianza"]["habilidad"]["regeneracionPorcentaje"], 100)
         self.assertEqual(variants["Horda"]["habilidad"]["movimientoPorcentaje"], 10)
-        self.assertEqual(variants["Horda"]["habilidad"]["monturaPorcentaje"], 10)
+        self.assertNotIn("monturaPorcentaje", variants["Horda"]["habilidad"])
+        self.assertNotIn("montura", variants["Horda"]["habilidad"]["descripcion"])
+        self.assertEqual(variants["Alianza"]["habilidad"]["nombre"], "Read Ley Line")
+        secondary = self.data["contrasteSecundario"]
+        self.assertEqual(secondary["skysight"]["monturaPorcentaje"], 10)
+        self.assertEqual(secondary["skysight"]["estado"], "pendiente_contraste_cliente")
+        self.assertEqual(secondary["url"], "https://www.wowhead.com/forever/guide/skyborne-race-overview")
         self.assertTrue(all(v["habilidad"]["lanzableEnMovimiento"] for v in variants.values()))
 
     def test_traceability_and_no_fabricated_ranking_or_icon(self):
         from urllib.parse import urlparse
-        self.assertIn(self.data["revision"]["estado"], ("pendiente", "verificado"))
+        self.assertEqual(self.data["revision"]["estado"], "verificado")
         self.assertEqual(self.data["estado"], "beta")
         self.assertEqual(self.data["evaluacion"]["estado"], "pendiente")
         ids = {s["id"] for s in self.data["fuentes"]}
         for source in self.data["fuentes"]:
+            self.assertEqual(source["consulta"]["http"], 200)
+            self.assertRegex(source["consulta"]["sha256"], r"^[0-9a-f]{64}$")
             self.assertIn(urlparse(source["url"]).hostname, ("news.blizzard.com", "us.forums.blizzard.com"))
         for ability in self.data["comunes"] + [v["habilidad"] for v in self.data["variantes"]]:
             self.assertTrue(set(ability["fuentes"]) <= ids)
         self.assertIsNone(self.data["icono"]["url"])
-        self.assertEqual(self.data["icono"]["estado"], "pendiente_verificacion")
+        self.assertEqual(self.data["icono"]["estado"], "pendiente_autorizacion")
+        self.assertEqual(len(self.data["icono"]["candidatos"]), 2)
+        for candidate in self.data["icono"]["candidatos"]:
+            self.assertEqual(candidate["http"], 200)
+            self.assertEqual(candidate["estadoUso"], "pendiente_autorizacion")
+            self.assertRegex(candidate["sha256"], r"^[0-9a-f]{64}$")
         text = json.dumps(self.data, ensure_ascii=False)
         self.assertNotIn("★", text)
         for field in ("prioridad", "escalaUtilidad", "puntuacion", "razaRecomendada"):

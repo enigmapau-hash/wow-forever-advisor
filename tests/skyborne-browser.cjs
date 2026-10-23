@@ -9,6 +9,9 @@ module.exports = async function testSkyborne(page, context, base) {
   const data = await page.evaluate(async () => (await fetch("./data/skyborne.json")).json());
   const advisor = await page.evaluate(async () => (await fetch("./data/race-advisor.json")).json());
   assert.equal(await page.locator("#racial-race button").count(), 9);
+  assert.match(await page.locator("#racial-coverage-note").textContent(), /^Nueve razas/);
+  assert.equal(await page.locator("#explore-racials").textContent(), "Explorar las 9 razas →");
+  assert.match(await page.locator("#race-coverage-note").textContent(), /Cielonato por separado/);
   assert(await page.evaluate((data) => {
     if (!validateSkyborneData(data)) return false;
     const mutations = [
@@ -19,6 +22,8 @@ module.exports = async function testSkyborne(page, context, base) {
       (d) => { d.comunes[0].fuentes = ["missing"]; },
       (d) => { d.fuentes[0].url = "https://example.com"; },
       (d) => { delete d.icono; },
+      (d) => { d.variantes[0].habilidad.nombre = "Read Leyline"; },
+      (d) => { d.variantes[1].habilidad.monturaPorcentaje = 10; },
     ];
     return mutations.every((mutate) => { const d = structuredClone(data); mutate(d); return validateSkyborneData(d) === null; });
   }, data), "Reject stale beta, invalid classes, references and malformed metadata");
@@ -47,6 +52,8 @@ module.exports = async function testSkyborne(page, context, base) {
     assert.equal(await page.locator("#skyborne-classes").textContent(), variant.clases.join(" · "));
     assert.equal(await page.locator("#skyborne-ability").textContent(), variant.habilidad.descripcion);
     assert.equal(await page.locator("#skyborne-ability-title").textContent(), variant.habilidad.nombre);
+    if (variant.faccion === "Alianza") assert.equal(await page.locator("#skyborne-ability-title").textContent(), "Read Ley Line");
+    else assert(!/montura/.test(await page.locator("#skyborne-ability").textContent()));
   }
   for (const width of [320, 390, 820, 1280]) {
     await page.setViewportSize({ width, height: 844 });
@@ -140,17 +147,29 @@ module.exports = async function testSkyborne(page, context, base) {
   const fallback = await context.browser().newContext({ serviceWorkers: "block" });
   try {
     await fallback.route("https://wow.zamimg.com/**", (route) => route.abort());
-    await fallback.route("**/data/skyborne.json", (route) => route.fulfill({ contentType: "application/json", body: "{}" }));
+    let failSkyborne = true;
+    await fallback.route("**/data/skyborne.json", (route) => failSkyborne
+      ? route.fulfill({ contentType: "application/json", body: "{}" }) : route.continue());
     const fallbackPage = await fallback.newPage();
     await fallbackPage.goto(base + "/#raciales");
     await fallbackPage.locator("#skyborne-data-error").waitFor();
     assert.equal(await fallbackPage.locator("#racial-race button").count(), 8);
+    assert.equal(await fallbackPage.locator("#explore-racials").textContent(), "Explorar las 8 razas →");
+    assert.match(await fallbackPage.locator("#racial-coverage-note").textContent(), /^Ocho razas/);
+    assert.match(await fallbackPage.locator("#race-coverage-note").textContent(), /Cielonato no está disponible/);
     await fallbackPage.locator("#back-selector").click();
     await fallbackPage.locator('#faction button[data-value="Alianza"]').click();
     await fallbackPage.locator('#character-class button[data-value="Guerrero"]').click();
     await fallbackPage.locator('#specialization button[data-value="Armas"]').click();
     assert.equal(await fallbackPage.locator("#advisor-result").isVisible(), true);
     assert.equal(await fallbackPage.locator("#skyborne-consideration").isVisible(), false);
+    failSkyborne = false;
+    await fallbackPage.goto(base + "/?skyborne-recovery=1#raciales");
+    await fallbackPage.locator('#racial-race button[data-value="Cielonato"]').waitFor();
+    assert.equal(await fallbackPage.locator("#racial-race button").count(), 9);
+    assert.equal(await fallbackPage.locator("#explore-racials").textContent(), "Explorar las 9 razas →");
+    assert.match(await fallbackPage.locator("#racial-coverage-note").textContent(), /^Nueve razas/);
+    assert.equal(await fallbackPage.locator("#skyborne-data-error").isVisible(), false);
   } finally { await fallback.close(); }
   console.log("Cielonato: 9 races, 2 variants, 30 eligible / 21 excluded combinations; original recommendations, keyboard, 4 viewport sizes, navigation and offline: OK");
 };
