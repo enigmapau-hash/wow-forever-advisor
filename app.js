@@ -108,6 +108,7 @@ function clearResult() {
   document.getElementById("no-alternative").hidden = true;
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
+  document.getElementById("race-addition-note").hidden = true;
   document.getElementById("race-beta-updates").hidden = true;
   document.getElementById("race-beta-alternative").hidden = true;
 }
@@ -144,6 +145,39 @@ function validateData(advisor, profiles) {
     throw new Error("La exportación contiene duplicados o referencias incompletas.");
   }
   return races;
+}
+
+// Capa complementaria independiente: el Excel maestro y sus 51 fichas siguen inmutables.
+function validateRaceAdditions(data, advisor, profiles) {
+  const expectedSpecs = ["Sagrado", "Protección", "Reprensión"];
+  const required = ["faccion", "clase", "especializacion", "razaRecomendada",
+    "alternativa", "prioridad", "motivoPrincipal", "explicacion"];
+  if (!data || data.schemaVersion !== 1 || data.tipo !== "extension_editorial_no_modifica_excel"
+      || data.base?.sha256 !== advisor.fuente?.sha256 || data.base?.fichas !== 51
+      || advisor.fichas.length !== 51 || !Array.isArray(data.fuentes) || data.fuentes.length !== 2
+      || !data.fuentes.every((source) => typeof source.nombre === "string"
+        && /^https:\/\/(news\.blizzard\.com|us\.forums\.blizzard\.com)\//.test(source.url))
+      || !Array.isArray(data.fichas) || data.fichas.length !== 3
+      || !profiles.has("No-muerto")) {
+    throw new Error("Falta una ampliación válida de Paladín de Horda.");
+  }
+  const seen = new Set(advisor.fichas.map((row) =>
+    JSON.stringify([row.faccion, row.clase, row.especializacion])));
+  const expanded = [];
+  for (const spec of expectedSpecs) {
+    const row = data.fichas.find((entry) => entry.especializacion === spec);
+    if (!row || !required.every((key) => typeof row[key] === "string" && row[key].trim())
+        || row.faccion !== "Horda" || row.clase !== "Paladín"
+        || row.razaRecomendada !== "No-muerto" || row.alternativa !== "-"
+        || /★/.test(row.prioridad)) {
+      throw new Error("Ficha Paladín Horda incompleta o con valoración inventada.");
+    }
+    const key = JSON.stringify([row.faccion, row.clase, row.especializacion]);
+    if (seen.has(key)) throw new Error("Ficha duplicada de Paladín Horda.");
+    seen.add(key);
+    expanded.push(row);
+  }
+  return expanded;
 }
 
 // La actualización oficial de beta es una capa opcional: no modifica el Excel original.
@@ -313,11 +347,12 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates, skyborne] = await Promise.all([
+    const [advisor, profiles, updates, skyborne, additions] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
       readJson("./data/skyborne.json").catch(() => null),
+      readJson("./data/race-advisor-additions.json"),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
@@ -325,7 +360,7 @@ async function loadData() {
     document.getElementById("skyborne-data-error").hidden = Boolean(skyborneData);
     if (skyborneData) prepareSkyborneExplorer();
     updateRacialCoverage();
-    records = advisor.fichas;
+    records = [...advisor.fichas, ...validateRaceAdditions(additions, advisor, racialProfiles)];
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
     setOptions(racialSelect, [...racialProfiles.keys(), ...(skyborneData ? [skyborneData.raza] : [])], "Elige raza");
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
@@ -380,18 +415,22 @@ specialization.addEventListener("change", () => {
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
     field.textContent = key === "alternativa" && record.alternativa === "-"
-      ? (record.faccion === "Alianza" && record.clase === "Chamán"
+      ? ((record.faccion === "Alianza" && record.clase === "Chamán")
+          || (record.faccion === "Horda" && record.clase === "Paladín")
         ? "Sin alternativa: única raza disponible"
         : "Alternativa pendiente de evaluación")
       : (Object.hasOwn(record, key) ? record[key] : profile[key]);
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
+  document.getElementById("race-addition-note").hidden = !(record.faccion === "Horda" && record.clase === "Paladín");
   const noAlternative = document.getElementById("no-alternative");
   noAlternative.hidden = record.alternativa !== "-";
   if (record.alternativa === "-") {
     noAlternative.textContent = record.faccion === "Alianza" && record.clase === "Chamán"
       ? "Enano es la única raza de Alianza que puede ser Chamán. No existe una segunda opción jugable."
-      : "La segunda mejor raza de esta especialización está pendiente de evaluación; no se presenta ninguna alternativa sin justificarla.";
+      : record.faccion === "Horda" && record.clase === "Paladín"
+        ? "No-muerto es la única raza de Horda que puede ser Paladín. No existe una segunda opción jugable."
+        : "La segunda mejor raza de esta especialización está pendiente de evaluación; no se presenta ninguna alternativa sin justificarla.";
   }
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
