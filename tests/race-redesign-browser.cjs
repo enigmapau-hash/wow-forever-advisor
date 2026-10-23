@@ -20,6 +20,11 @@ module.exports = async function testRedesign(page, base, offline = false) {
         .replace(/\bElfo conserva\b/g, "El elfo de la noche conserva");
       const choose = (id, value) => document.querySelector(`#${id} button[data-value="${value}"]`).click();
       const ensure = (ok, message) => { if (!ok) throw new Error(message); };
+      const abilities = {
+        Gnomo: "Escape Artist", Humano: "Will to Survive", Enano: "Stoneform",
+        Elfo: "Shadowmeld", Orco: "Hardiness", Tauren: "War Stomp",
+        Troll: "Berserking", "No-muerto": "Will of the Forsaken",
+      };
       let count = 0;
       for (const row of [...source.fichas, ...additions.fichas]) {
         const extra = druid.fichas.find((r) => r.faccion === row.faccion && r.clase === row.clase
@@ -58,7 +63,15 @@ module.exports = async function testRedesign(page, base, offline = false) {
         if (alt !== "-") {
           ensure(alternative.querySelector('[data-field="alternativa"]').textContent === display(alt), "Alternativa intacta");
           ensure(document.getElementById("alternative-race-icon").getAttribute("src") === self.WOW_ICON_MAP.raza[alt], "Icono de alternativa correcto");
-          ensure(document.getElementById("alternative-use").textContent.trim().length > 0, "Alternativa explicada");
+          ensure(alternative.querySelector(".eyebrow").textContent.trim() === "Raza alternativa",
+            "La cabecera identifica la raza alternativa");
+          const abilityName = alt === "Cielonato"
+            ? (row.faccion === "Alianza" ? "Read Ley Line" : "Skysight")
+            : abilities[alt];
+          ensure(document.getElementById("alternative-ability-name").textContent === abilityName,
+            "Habilidad racial de la alternativa coherente con su facción: " + alt);
+          ensure(document.getElementById("alternative-use").textContent.trim().length > 0,
+            "Alternativa explicada");
           ensure(document.getElementById("alternative-scope").textContent ===
             (extra ? "En esta especialización" : "Ventaja racial general"), "Alcance de la alternativa honesto");
           ensure(document.getElementById("alternative-race-link").dataset.race === alt
@@ -68,10 +81,11 @@ module.exports = async function testRedesign(page, base, offline = false) {
             "compare-alternative-pro", "compare-alternative-con"]) {
             ensure(document.getElementById(id).textContent.length > 0, "Argumento comparativo: " + id);
           }
-          const summary = document.getElementById("race-comparison-conclusion-text").textContent;
-          ensure(summary.length > 70 && summary.includes(display(row.razaRecomendada))
-            && summary.includes(display(alt)),
-            "Una conclusión con ambas razas para " + row.especializacion);
+          const paragraphs = [...document.querySelectorAll("#race-comparison-conclusion-text > p")];
+          ensure(paragraphs.length === 2
+            && paragraphs[0].textContent.includes(display(row.razaRecomendada))
+            && paragraphs[1].textContent.includes(display(alt)),
+            "Conclusión en dos párrafos distintos, uno por raza");
           ensure(document.getElementById("race-comparison-conclusion-title").textContent
             === "Conclusión para " + row.especializacion,
             "Título ajustado a la especialización");
@@ -81,11 +95,14 @@ module.exports = async function testRedesign(page, base, offline = false) {
           ensure(width < 960 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
           ensure(width < 960 || (a.width >= b.width * 1.8 && a.right <= b.left + 1),
             "Principal ocupa aproximadamente dos tercios y alternativa queda a la derecha");
+          ensure(width < 960 || Math.abs(a.height - b.height) <= 1,
+            "Ambas tarjetas tienen la misma altura en escritorio a " + width);
         } else {
           ensure(!document.getElementById("alternative-race-icon").hasAttribute("src"), "Sin icono ficticio o residual");
           ensure(document.getElementById("race-comparison").hidden
-            && document.getElementById("race-comparison-conclusion-text").textContent === "",
-            "Sin comparativa ni conclusión cuando no existe una alternativa");
+            && document.querySelectorAll("#race-comparison-conclusion-text > p").length === 0
+            && document.getElementById("alternative-ability-name").textContent === "",
+            "Sin comparativa ni habilidad residual cuando no existe una alternativa");
         }
         ensure(document.documentElement.scrollWidth <= innerWidth, `Sin desbordamiento ${width}`);
         for (const label of document.querySelectorAll('#character-class .option-label, #specialization .option-label')) {
