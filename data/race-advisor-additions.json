@@ -30,7 +30,7 @@
       "prioridad": "Sin valoración comparativa: única raza disponible",
       "especializacion": "Sagrado",
       "motivoPrincipal": "Mantener las curaciones y el apoyo del grupo frente al miedo y otros controles.",
-      "explicacion": "En WoW Forever, No-muerto es la única raza de la Horda disponible para Paladín. En PvP masivo, Voluntad de los Renegados permite eliminar miedo, sueño o embelesamiento y recuperar el acceso a las curaciones y defensas de Sagrado. Canibalizar puede ayudar a recuperar salud y maná entre enfrentamientos cuando hay un cadáver válido, pero no es una curación utilizable libremente bajo foco. La racial no elimina aturdimientos ni silencios y no garantiza poder completar un lanzamiento. No existe segunda raza jugable que pueda compararse dentro de Horda."
+      "explicacion": "En PvP masivo, Voluntad de los Renegados permite eliminar miedo, sueño o embelesamiento y recuperar el acceso a las curaciones y defensas de Sagrado. Canibalizar puede ayudar a recuperar salud y maná entre enfrentamientos cuando hay un cadáver válido, pero no es una curación utilizable libremente bajo foco. La racial no elimina aturdimientos ni silencios y no garantiza poder completar un lanzamiento."
     },
     {
       "faccion": "Horda",
@@ -40,7 +40,7 @@
       "prioridad": "Sin valoración comparativa: única raza disponible",
       "especializacion": "Protección",
       "motivoPrincipal": "Recuperar el control del personaje para sostener la primera línea y proteger aliados.",
-      "explicacion": "No-muerto es la única raza de Paladín que puede seleccionarse en Horda. En Protección, Voluntad de los Renegados permite salir de miedo, sueño o embelesamiento y volver a intervenir cuando el frente está bajo presión. Esa respuesta puede ayudar a recuperar posición o reactivar herramientas de apoyo al grupo, pero no elimina aturdimientos ni sustituye defensas de clase. Canibalizar favorece la recuperación entre encuentros, no la resistencia inmediata frente al foco enemigo. Al no existir otra raza elegible de Horda, no se atribuye una segunda mejor alternativa."
+      "explicacion": "En Protección, Voluntad de los Renegados permite salir de miedo, sueño o embelesamiento y volver a intervenir cuando el frente está bajo presión. Esa respuesta puede ayudar a recuperar posición o reactivar herramientas de apoyo al grupo, pero no elimina aturdimientos ni sustituye defensas de clase. Canibalizar favorece la recuperación entre encuentros, no la resistencia inmediata frente al foco enemigo."
     },
     {
       "faccion": "Horda",
@@ -50,7 +50,7 @@
       "prioridad": "Sin valoración comparativa: única raza disponible",
       "especializacion": "Reprensión",
       "motivoPrincipal": "Recuperar la capacidad de presionar o auxiliar al grupo después de un control.",
-      "explicacion": "No-muerto es la única raza de Horda que puede ser Paladín según la matriz de Blizzard para Forever. En Reprensión, Voluntad de los Renegados sirve para eliminar miedo, sueño o embelesamiento que interrumpen una entrada coordinada o una retirada; no permite romper aturdimientos, silencios ni todos los controles. El efecto pasivo ofensivo de Toque de la tumba es un complemento sujeto a los ajustes de beta y no justifica una comparación inexistente con otras razas. Canibalizar requiere un cadáver y una pausa entre acciones. No hay segunda opción racial de Paladín en Horda."
+      "explicacion": "En Reprensión, Voluntad de los Renegados sirve para eliminar miedo, sueño o embelesamiento que interrumpen una entrada coordinada o una retirada; no permite romper aturdimientos, silencios ni todos los controles. El efecto pasivo ofensivo de Toque de la tumba es un complemento sujeto a los ajustes de beta. Canibalizar requiere un cadáver y una pausa entre acciones."
     }
   ]
 }
