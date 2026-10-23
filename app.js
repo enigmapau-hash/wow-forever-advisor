@@ -361,12 +361,28 @@ function skyborneVerification() {
     : "Datos de beta pendientes de contraste independiente con las fuentes oficiales. Facultades y compatibilidad por confirmar; valoración comparativa pendiente.";
 }
 
+// F05: mostrar el efecto vigente en la ficha; las notas históricas permanecen en Fuentes.
+function skyborneAbilitySummary(ability) {
+  switch (ability.id) {
+    case "walk-on-air":
+      return `Planeo controlado durante ${ability.duracionSegundos} s. Reutilización: ${ability.reutilizacionSegundos} s.`;
+    case "wind-blessed":
+      return `+${ability.celeridadPorcentaje} % de celeridad.`;
+    case "read-leyline":
+      return `+${ability.regeneracionPorcentaje} % de regeneración de salud y maná. Se puede lanzar en movimiento. Duración mínima: ${ability.duracionMinimaSegundos} s.`;
+    case "skysight":
+      return `+${ability.movimientoPorcentaje} % de velocidad de carrera. Se puede lanzar en movimiento.`;
+    default:
+      return ability.descripcion;
+  }
+}
+
 function fillSkyborneAbilities(id, abilities) {
   document.getElementById(id).replaceChildren(...abilities.map((ability) => {
     const item = document.createElement("li");
     const name = document.createElement("strong");
     name.textContent = ability.nombre;
-    item.append(name, ` · ${ability.tipo}: ${ability.descripcion}`);
+    item.append(name, ` · ${ability.tipo}: ${skyborneAbilitySummary(ability)}`);
     return item;
   }));
 }
@@ -374,7 +390,13 @@ function fillSkyborneAbilities(id, abilities) {
 function prepareSkyborneExplorer() {
   setOptions(skyborneFaction, skyborneData.variantes.map((row) => row.faccion), "Elige una variante");
   document.getElementById("skyborne-verification").textContent = skyborneVerification();
+  document.getElementById("skyborne-beta-note").textContent =
+    "Facultades según notas de beta del 15/10/2026; sujetas a cambios.";
   fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
+  document.getElementById("skyborne-wind-history").textContent =
+    `Historial de Wind Blessed: ${skyborneData.comunes.find((ability) => ability.id === "wind-blessed").descripcion}`;
+  document.getElementById("skyborne-skysight-source").textContent =
+    `Procedencia de Skysight: ${skyborneData.variantes.find((variant) => variant.faccion === "Horda").habilidad.descripcion}`;
   document.getElementById("skyborne-criterion").textContent = "Cielonato se ha evaluado como alternativa de Druida; no hay clasificación aprobada para otras clases.";
   document.getElementById("skyborne-limitation").textContent = "Pendiente de comprobar su rendimiento al nivel 60, la regeneración durante lanzamientos y la velocidad en formas druídicas.";
   document.getElementById("skyborne-sources").replaceChildren(...skyborneData.fuentes.map((source) => {
@@ -404,7 +426,7 @@ skyborneFaction.addEventListener("change", () => {
   document.getElementById("skyborne-variant-title").textContent = `${variant.faccion} · ${variant.nombre}`;
   document.getElementById("skyborne-classes").textContent = variant.clases.join(" · ");
   document.getElementById("skyborne-ability-title").textContent = variant.habilidad.nombre;
-  document.getElementById("skyborne-ability").textContent = variant.habilidad.descripcion;
+  document.getElementById("skyborne-ability").textContent = skyborneAbilitySummary(variant.habilidad);
 });
 
 async function loadData() {
@@ -645,9 +667,27 @@ const professionStatus = document.getElementById("profession-status");
 let professionRecords = [];
 let professionsLoading = false;
 let professionsLoaded = false;
+const professionReasonBlock = document.getElementById("profession-reason-block");
+const professionMainChoice = document.getElementById("profession-choice-main");
+const professionSharedReason = document.getElementById("profession-shared-reason");
+
+// F03: si el texto explica también una profesión exclusiva de la alternativa,
+// mostrarlo como argumento compartido, sin reescribir el dato original.
+function positionProfessionReason(record) {
+  const alternativeOnly = record.alternativa.filter((name) => !record.principal.includes(name));
+  const comparesBoth = alternativeOnly.some((name) => record.motivoPrincipal.includes(name));
+  const target = comparesBoth ? professionSharedReason : professionMainChoice;
+  target.append(professionReasonBlock);
+  document.getElementById("profession-reason-title").textContent = comparesBoth
+    ? "Cómo se comparan estas opciones" : "Por qué se recomienda";
+  professionSharedReason.hidden = !comparesBoth;
+}
 
 function clearProfessionResult() {
   AddonAdvisor.clear("profession-addons");
+  professionMainChoice.append(professionReasonBlock);
+  professionSharedReason.hidden = true;
+  document.getElementById("profession-reason-title").textContent = "Por qué se recomienda";
   professionResult.hidden = true;
   document.getElementById("profession-combination").textContent = "";
   for (const field of professionResult.querySelectorAll("[data-profession-field]")) field.textContent = "";
@@ -704,6 +744,7 @@ professionClass.addEventListener("change", () => {
         field.textContent = Array.isArray(value) ? value.join(" + ") : value;
       }
       document.getElementById("profession-combination").textContent = `${record.clase} · ${record.especializacion}`;
+      positionProfessionReason(record);
       professionResult.hidden = false;
       AddonAdvisor.context("profession-addons", { modulo: "profession", profesiones: [...record.principal, ...record.alternativa] });
       professionStatus.textContent = `Ficha disponible: ${record.clase}, ${record.especializacion}.`;
@@ -813,6 +854,7 @@ function replaceTalentList(id, entries) {
 
 function clearTalentResult() {
   AddonAdvisor.clear("talent-addons");
+  document.getElementById("talent-original-detail").open = false;
   talentResult.hidden = true;
   talentSpecIcon.hidden = true;
   talentSpecIcon.removeAttribute("src");
