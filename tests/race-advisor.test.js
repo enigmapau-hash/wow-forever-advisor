@@ -21,12 +21,19 @@ runButton.addEventListener("click", async () => {
     if (!condition) throw new Error(message);
   };
   try {
-    const [advisor, profiles, additions] = await Promise.all([
+    const [advisor, profiles, additions, druidAlt] = await Promise.all([
       fetch("../data/race-advisor.json").then((response) => response.json()),
       fetch("../data/racials.json").then((response) => response.json()),
       fetch("../data/race-advisor-additions.json").then((response) => response.json()),
+      fetch("../data/race-advisor-druid-alternatives.json").then((response) => response.json()),
     ]);
-    const allRows = [...advisor.fichas, ...additions.fichas];
+    const updatedRows = advisor.fichas.map((row) => {
+      const alt = druidAlt.fichas.find((x) => x.faccion === row.faccion
+        && x.clase === row.clase && x.especializacion === row.especializacion);
+      return alt ? { ...row, alternativa: "Cielonato",
+        usoAlternativa: alt.usoAlternativa, motivoComparacion: alt.motivoComparacion } : row;
+    });
+    const allRows = [...updatedRows, ...additions.fichas];
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       frame.src = `../index.html?test=${Date.now()}`;
@@ -58,6 +65,11 @@ runButton.addEventListener("click", async () => {
       "Las tres especializaciones de Paladín Horda se añaden sin alterar las 51 originales");
     check(win.validateRaceAdditions(additions, advisor, new Map(profiles.raciales.map(r => [r.raza, r]))).length === 3,
       "La capa adicional se valida y tiene procedencia original trazada");
+    const sky = await fetch("../data/skyborne.json").then((response) => response.json());
+    check(win.validateDruidAlternatives(druidAlt, advisor, sky).length === 6,
+      "Las seis alternativas de Druida cumplen los criterios editoriales aprobados");
+    check(advisor.fichas.filter((row) => row.clase === "Druida").every((row) => row.alternativa === "-"),
+      "El Excel conserva las seis alternativas originales sin modificar");
     check(sameOptions(faction, allRows.map((row) => row.faccion)), "Facciones exactas");
     check(characterClass.disabled && spec.disabled && result.hidden, "Estado inicial encadenado");
     let missingAlternatives = 0;
@@ -88,12 +100,21 @@ runButton.addEventListener("click", async () => {
         check(field.textContent === expected, `${key}: texto literal de ${name}`);
       }
       check(doc.getElementById("no-alternative").hidden === (record.alternativa !== "-"), `${key}: alternativa no facilitada`);
+      if (record.clase === "Druida") {
+        check(doc.getElementById("alternative-use").textContent === record.usoAlternativa,
+          `${key}: justificar Cielonato como alternativa`);
+        check(!doc.getElementById("race-druid-note").hidden
+          && doc.getElementById("race-druid-note").textContent.includes(record.motivoComparacion),
+          `${key}: conservar comparativa de Druida`);
+      } else {
+        check(doc.getElementById("race-druid-note").hidden, `${key}: limpiar comparativa de Druida`);
+      }
       if (record.alternativa === "-") missingAlternatives += 1;
       choose(spec, "");
       check(result.hidden, `${key}: selección incompleta sin resultado`);
       check(raceIcon.hidden && !raceIcon.hasAttribute("src"), `${key}: sin icono antiguo al limpiar`);
     }
-    check(missingAlternatives === 12, "9 alternativas sin evaluar del Excel + 3 Paladín con raza única");
+    check(missingAlternatives === 6, "3 Chamán Alianza + 3 Paladín Horda sin segunda raza jugable");
 
     choose(faction, "Alianza");
     choose(characterClass, "Paladín");
@@ -146,7 +167,7 @@ runButton.addEventListener("click", async () => {
     await waitFor(() => !reloaded.getElementById("faction").disabled);
     check(!reloaded.getElementById("advisor-view").hidden, "Recarga directa de #race-advisor");
     check(reloaded.getElementById("advisor-result").hidden, "Una recarga no recupera un resultado sin selección");
-    report.textContent = `OK: 51 fichas originales intactas + 3 Paladín Horda (54/54), ${assertions} comprobaciones, 12 sin segunda raza. Perfiles, cambios de selección y navegación correctos.`;
+    report.textContent = `OK: 51 fichas originales intactas + 3 Paladín Horda (54/54), 6 alternativas Druida con Cielonato, ${assertions} comprobaciones, 6 sin segunda raza. Perfiles y navegación correctos.`;
   } catch (error) {
     report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones completadas)`;
   } finally {
@@ -165,12 +186,19 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     if (!condition) throw new Error(message);
   };
   try {
-    const [profiles, advisor, additions] = await Promise.all([
+    const [profiles, advisor, additions, druidAlt] = await Promise.all([
       fetch("../data/racials.json").then((response) => response.json()),
       fetch("../data/race-advisor.json").then((response) => response.json()),
       fetch("../data/race-advisor-additions.json").then((response) => response.json()),
+      fetch("../data/race-advisor-druid-alternatives.json").then((response) => response.json()),
     ]);
-    const allRows = [...advisor.fichas, ...additions.fichas];
+    const updatedRows = advisor.fichas.map((row) => {
+      const alt = druidAlt.fichas.find((x) => x.faccion === row.faccion
+        && x.clase === row.clase && x.especializacion === row.especializacion);
+      return alt ? { ...row, alternativa: "Cielonato",
+        usoAlternativa: alt.usoAlternativa, motivoComparacion: alt.motivoComparacion } : row;
+    });
+    const allRows = [...updatedRows, ...additions.fichas];
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       frame.src = `../index.html?racials-test=${Date.now()}#race-advisor`;
@@ -252,7 +280,20 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
       }
     }
     check(recommended === 54 && alternatives === 42,
-      "54 recomendaciones (51 originales + 3 Paladín Horda) y 42 alternativas originales");
+      "54 recomendaciones (51 originales + 3 Paladín Horda) y 42 alternativas de las ocho razas originales");
+    choose("racial-race", "Cielonato");
+    const cieloAlternatives = [...doc.querySelectorAll("#skyborne-alternatives a")];
+    check(cieloAlternatives.length === 6, "Seis alternativas Cielonato en Race Explorer");
+    check(JSON.stringify(cieloAlternatives.map(link => link.textContent)) ===
+      JSON.stringify(druidAlt.fichas.map(x => [x.faccion, x.clase, x.especializacion].join(" · "))),
+      "Cielonato enlaza exactamente las seis combinaciones Druida");
+    const skyLink = cieloAlternatives[0];
+    skyLink.click();
+    await waitFor(() => !doc.getElementById("advisor-view").hidden);
+    check(doc.querySelector('[data-field="alternativa"]').textContent === "Cielonato",
+      "Race Explorer enlaza con la alternativa de Druida");
+    doc.getElementById("explore-racials").click();
+    await waitFor(() => !doc.getElementById("racial-view").hidden);
     choose("faction", original.faccion);
     choose("character-class", original.clase);
     choose("specialization", original.especializacion);
@@ -274,7 +315,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     });
     await waitFor(() => !frame.contentDocument.getElementById("racial-race").disabled);
     check(!frame.contentDocument.getElementById("racial-view").hidden, "Recarga directa de #raciales");
-    report.textContent = `OK: ocho perfiles × 54 fichas (51 originales), ${recommended} recomendaciones y ${alternatives} alternativas, ${assertions} comprobaciones. Navegación y perfiles correctos.`;
+    report.textContent = `OK: ocho perfiles × 54 fichas (51 originales), ${recommended} recomendaciones principales, ${alternatives} alternativas clásicas y 6 Cielonato, ${assertions} comprobaciones.`;
   } catch (error) {
     report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones completadas)`;
   } finally {
