@@ -348,3 +348,32 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .addon-details { margin-top: 1rem; }
 .addon-details summary { cursor: pointer; min-height: 2.75rem; padding-block: 0.6rem; }
 .addon-details p { margin-top: 0.75rem; }
+
+
+/* v25: rejillas compactas y simétricas para selectores con iconos.
+   No afecta a facciones, especializaciones ni filtros de addons. */
+#character-class .option-buttons,
+#profession-class .option-buttons,
+#talent-class .option-buttons {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 38rem;
+  margin-inline: auto;
+}
+#racial-race .option-buttons {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 44rem;
+  margin-inline: auto;
+}
+/* Preparada para nueve razas: 3 × 3 cuando se añada Cielonato. */
+#racial-race .option-buttons:has(> button:nth-child(9)) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 38rem;
+}
+@media (max-width: 40rem) {
+  #racial-race .option-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #racial-race .option-buttons:has(> button:nth-child(9)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
