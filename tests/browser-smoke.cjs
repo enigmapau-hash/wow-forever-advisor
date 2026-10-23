@@ -114,7 +114,7 @@ const server = http.createServer(async (req, res) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#character-class button[data-value="Guerrero"]').click();
     await page.locator('#specialization button[data-value="Armas"]').click();
-    assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
+    assert.equal(await page.locator("#primary-analysis").isVisible(), true,
       "La explicación de la raza principal es visible sin desplegar");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
@@ -138,6 +138,8 @@ const server = http.createServer(async (req, res) => {
       "La alternativa tiene una explicación única y legible");
     assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
       "La alternativa enlaza con su perfil completo");
+    assert.equal(await page.locator("#race-comparison").isVisible(), true,
+      "Comparativa pros/contras independiente");
     for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       const columns = await page.locator(".race-choices").evaluate((el) =>
@@ -172,7 +174,6 @@ const server = http.createServer(async (req, res) => {
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#racial-race button[data-value="Gnomo"]').click();
-    await page.locator("#racial-result > details.detail-disclosure:not(#racial-beta-updates) > summary").click();
     assert.equal(await page.locator('[data-racial-field="comentarios"]').isVisible(), true,
       "The original racial comments remain accessible");
     await page.goto(base + "/#profession-advisor");
