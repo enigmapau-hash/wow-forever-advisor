@@ -191,7 +191,7 @@ async function loadData() {
   form.setAttribute("aria-busy", "true");
   dataError.hidden = true;
   retryButton.disabled = true;
-  status.textContent = "Cargando las fichas del Excel…";
+  status.textContent = "Cargando recomendaciones…";
   racialError.hidden = true;
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
