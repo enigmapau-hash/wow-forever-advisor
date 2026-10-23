@@ -79,6 +79,14 @@ runButton.addEventListener("click", async () => {
       "El Excel conserva las seis alternativas originales sin modificar");
     check(sameOptions(faction, allRows.map((row) => row.faccion)), "Facciones exactas");
     check(characterClass.disabled && spec.disabled && result.hidden, "Estado inicial encadenado");
+    const expectedClasses = ["Brujo", "Cazador", "Chamán", "Druida", "Guerrero",
+      "Mago", "Paladín", "Pícaro", "Sacerdote"];
+    for (const side of ["Alianza", "Horda"]) {
+      choose(faction, side);
+      check(JSON.stringify([...characterClass.querySelectorAll("button")].map((item) => item.dataset.value))
+        === JSON.stringify(expectedClasses),
+        `Orden alfabético idéntico en Race Advisor para ${side}, incluido Paladín Horda`);
+    }
     let missingAlternatives = 0;
     for (const record of allRows) {
       const key = [record.faccion, record.clase, record.especializacion].join(" / ");
