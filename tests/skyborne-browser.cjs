@@ -91,6 +91,12 @@ module.exports = async function testSkyborne(page, context, base) {
   // Race Advisor solo recomienda en función de las fichas valoradas, no por
   // compatibilidad de clase o facción. Cielonato permanece en Race Explorer.
   const coverage = await page.evaluate(({ advisor, druidAlt }) => {
+    const display = (text) => text === "Elfo" ? "Elfo de la noche" : text
+      .replace(/, denominado Elfo en la base/g, "")
+      .replace(/\bFrente a Elfo\b/g, "Frente al elfo de la noche")
+      .replace(/\bde Elfo\b/g, "del elfo de la noche")
+      .replace(/\bElfo ofrece\b/g, "El elfo de la noche ofrece")
+      .replace(/\bElfo conserva\b/g, "El elfo de la noche conserva");
     const choose = (id, value) => {
       const button = [...document.querySelectorAll(`#${id} button`)].find((b) => b.dataset.value === value);
       if (!button) throw new Error(`Missing ${id}: ${value}`);
@@ -116,13 +122,13 @@ module.exports = async function testSkyborne(page, context, base) {
           : key === "alternativa" && row.alternativa === "-" && row.faccion === "Alianza" && row.clase === "Chamán"
             ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
             : row[key];
-        if (rendered !== expected.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche")) {
+        if (rendered !== display(expected)) {
           throw new Error(`Changed original or incorrect Druid alternative: ${key}`);
         }
       }
       if (druid) {
-        if (document.getElementById("alternative-use").textContent !== druid.usoAlternativa.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche")
-            || !document.getElementById("alternative-detail-text").textContent.includes(druid.motivoComparacion.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche"))
+        if (document.getElementById("alternative-use").textContent !== display(druid.usoAlternativa)
+            || !document.getElementById("alternative-detail-text").textContent.includes(display(druid.motivoComparacion))
             || document.getElementById("alternative-details").hidden
             || document.getElementById("alternative-details").open) {
           throw new Error(`Missing comparative reason for ${row.faccion}/${row.especializacion}`);
