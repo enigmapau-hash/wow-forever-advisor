@@ -82,6 +82,26 @@ const server = http.createServer(async (req, res) => {
       "Whole module card opens using keyboard Enter");
     await page.goto(base + "/");
     await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(base + "/#race-advisor");
+    await page.locator('#faction button[data-value="Alianza"]').click();
+    await page.locator('#character-class button[data-value="Guerrero"]').click();
+    await page.locator('#specialization button[data-value="Armas"]').click();
+    assert.equal(await page.locator(".recommendation .detail-disclosure").getAttribute("open"), null,
+      "The long explanation starts collapsed");
+    await page.locator(".recommendation .detail-disclosure summary").click();
+    assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
+      "The original explanation is available after expanding");
+    assert.match(await page.locator("#advisor-result").textContent(), /Prioridad de esta combinación \(Excel\)/,
+      "The recommendation rating is distinguished from general racial utility");
+    await page.locator("#advisor-result > .detail-disclosure summary").click();
+    assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), true,
+      "The general racial rating remains available");
+    await page.goto(base + "/#raciales");
+    await page.locator('#racial-race button[data-value="Gnomo"]').click();
+    await page.locator("#racial-result .detail-disclosure summary").click();
+    assert.equal(await page.locator('[data-racial-field="comentarios"]').isVisible(), true,
+      "The original racial comments remain accessible");
+    await page.goto(base + "/");
     await page.evaluate(async () => {
       await navigator.serviceWorker.ready;
       if (!navigator.serviceWorker.controller) {
