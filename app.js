@@ -109,6 +109,8 @@ function clearResult() {
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
   document.getElementById("race-addition-note").hidden = true;
+  document.getElementById("race-druid-note").hidden = true;
+  document.getElementById("race-druid-note").textContent = "";
   document.getElementById("race-beta-updates").hidden = true;
   document.getElementById("race-beta-alternative").hidden = true;
 }
@@ -178,6 +180,38 @@ function validateRaceAdditions(data, advisor, profiles) {
     expanded.push(row);
   }
   return expanded;
+}
+
+// Aprobación editorial limitada a Druida: sustituye SOLO la alternativa no evaluada.
+// Todas las razas principales y los campos originales del Excel permanecen intactos.
+function validateDruidAlternatives(data, advisor, skyborne) {
+  if (!skyborne) return []; // Si falla Cielonato, conservar las 51 fichas originales.
+  const specs = ["Equilibrio", "Feral", "Restauración"];
+  const original = advisor.fichas.filter((row) => row.clase === "Druida");
+  if (!data || data.schemaVersion !== 1 || data.tipo !== "evaluacion_editorial_druida"
+      || data.estado !== "aprobado_usuario" || data.base?.sha256 !== advisor.fuente?.sha256
+      || data.base?.fichas !== 51 || advisor.fichas.length !== 51
+      || !Array.isArray(data.fichas) || data.fichas.length !== 6
+      || original.length !== 6) throw new Error("Evaluación Druida incompleta.");
+  const seen = new Set();
+  for (const row of data.fichas) {
+    const expected = original.find((r) => r.faccion === row.faccion
+      && r.especializacion === row.especializacion);
+    const variant = skyborne.variantes.find((v) => v.faccion === row.faccion);
+    const key = JSON.stringify([row.faccion, row.especializacion]);
+    if (!expected || !variant?.clases.includes("Druida") || seen.has(key)
+        || !specs.includes(row.especializacion) || row.clase !== "Druida"
+        || row.razaRecomendada !== expected.razaRecomendada || expected.alternativa !== "-"
+        || (row.faccion === "Alianza" && row.razaRecomendada !== "Elfo")
+        || (row.faccion === "Horda" && row.razaRecomendada !== "Tauren")
+        || row.alternativa !== skyborne.raza
+        || typeof row.usoAlternativa !== "string" || row.usoAlternativa.trim().length < 45
+        || typeof row.motivoComparacion !== "string" || row.motivoComparacion.trim().length < 80) {
+      throw new Error("Alternativa Druida incompatible o no justificada.");
+    }
+    seen.add(key);
+  }
+  return data.fichas;
 }
 
 // La actualización oficial de beta es una capa opcional: no modifica el Excel original.
@@ -347,12 +381,13 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates, skyborne, additions] = await Promise.all([
+    const [advisor, profiles, updates, skyborne, additions, druidEvaluation] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
       readJson("./data/skyborne.json").catch(() => null),
       readJson("./data/race-advisor-additions.json"),
+      readJson("./data/race-advisor-druid-alternatives.json").catch(() => null),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
@@ -360,7 +395,14 @@ async function loadData() {
     document.getElementById("skyborne-data-error").hidden = Boolean(skyborneData);
     if (skyborneData) prepareSkyborneExplorer();
     updateRacialCoverage();
-    records = [...advisor.fichas, ...validateRaceAdditions(additions, advisor, racialProfiles)];
+    const druidAlternatives = validateDruidAlternatives(druidEvaluation, advisor, skyborneData);
+    const overlay = new Map(druidAlternatives.map((entry) =>
+      [JSON.stringify([entry.faccion, entry.clase, entry.especializacion]), entry]));
+    records = [...advisor.fichas.map((row) => {
+      const extra = overlay.get(JSON.stringify([row.faccion, row.clase, row.especializacion]));
+      return extra ? { ...row, alternativa: extra.alternativa,
+        usoAlternativa: extra.usoAlternativa, motivoComparacion: extra.motivoComparacion } : row;
+    }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
     setOptions(racialSelect, [...racialProfiles.keys(), ...(skyborneData ? [skyborneData.raza] : [])], "Elige raza");
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
@@ -423,6 +465,11 @@ specialization.addEventListener("change", () => {
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
   document.getElementById("race-addition-note").hidden = !(record.faccion === "Horda" && record.clase === "Paladín");
+  const druidNote = document.getElementById("race-druid-note");
+  druidNote.hidden = !record.motivoComparacion;
+  druidNote.textContent = record.motivoComparacion
+    ? `Criterio para esta alternativa: ${record.motivoComparacion} Evaluación editorial de beta; sin estrellas nuevas.`
+    : "";
   const noAlternative = document.getElementById("no-alternative");
   noAlternative.hidden = record.alternativa !== "-";
   if (record.alternativa === "-") {
@@ -434,7 +481,8 @@ specialization.addEventListener("change", () => {
   }
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
-    document.getElementById("alternative-use").textContent = alternative.usoPrincipal;
+    document.getElementById("alternative-use").textContent =
+      record.alternativa === "Cielonato" ? record.usoAlternativa : alternative?.usoPrincipal || "";
     document.getElementById("alternative-profile").hidden = false;
   }
   renderRaceBetaUpdates(record);
@@ -478,6 +526,7 @@ racialSelect.addEventListener("change", () => {
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
   renderRacialMatches("racial-recommended", "racial-no-recommended", "razaRecomendada");
   renderRacialMatches("racial-alternative", "racial-no-alternative", "alternativa");
+  renderRacialMatches("skyborne-alternatives", "skyborne-no-alternatives", "alternativa");
   if (skyborneData && racialSelect.dataset.value === skyborneData.raza) {
     skyborneResult.hidden = false;
     racialStatus.textContent = "Cielonato: consulta las facultades compartidas y elige una variante de facción.";
