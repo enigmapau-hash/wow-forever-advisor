@@ -19,6 +19,7 @@ const APP_FILES = [
   "./icons/icon-512.png",
   "./data/race-advisor.json",
   "./data/race-advisor-additions.json",
+  "./data/race-advisor-druid-alternatives.json",
   "./data/profession-advisor.json",
   "./data/talent-advisor-warrior.json",
   "./data/talent-advisor-paladin.json",
