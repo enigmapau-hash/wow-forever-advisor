@@ -81,6 +81,8 @@ const server = http.createServer(async (req, res) => {
     }
     await page.locator("#profession-advisor").focus();
     await page.keyboard.press("Enter");
+    await page.waitForFunction(() => location.hash === "#profession-advisor"
+      && !document.getElementById("profession-view").hidden);
     assert.equal(await page.locator("#profession-view").isVisible(), true,
       "Whole module card opens using keyboard Enter");
     await page.goto(base + "/");
