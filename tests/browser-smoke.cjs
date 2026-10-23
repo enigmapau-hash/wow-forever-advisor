@@ -112,7 +112,7 @@ const server = http.createServer(async (req, res) => {
       "The original explanation is available after expanding");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
-    await page.locator("#advisor-result > .detail-disclosure > summary").click();
+    await page.locator("#advisor-result > details.detail-disclosure:not(#race-beta-updates) > summary").click();
     assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), false,
       "La utilidad general permanece en los datos, pero no se muestra como estrellas");
     assert.equal(await page.locator("#selection-status").getAttribute("role"), "status",
@@ -154,7 +154,7 @@ const server = http.createServer(async (req, res) => {
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#racial-race button[data-value="Gnomo"]').click();
-    await page.locator("#racial-result .detail-disclosure summary").click();
+    await page.locator("#racial-result > details.detail-disclosure:not(#racial-beta-updates) > summary").click();
     assert.equal(await page.locator('[data-racial-field="comentarios"]').isVisible(), true,
       "The original racial comments remain accessible");
     await page.goto(base + "/#profession-advisor");
