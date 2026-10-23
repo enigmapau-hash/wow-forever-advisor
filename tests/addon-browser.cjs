@@ -6,6 +6,7 @@ module.exports = async function checkAddons(page, context, base, browser) {
   await page.goto(base + "/#addon-advisor");
   await page.locator("#addon-results article").first().waitFor();
   assert.equal(await page.locator("#addon-results article").count(), 5);
+  assert.equal(await page.locator("#addon-status").textContent(), "5 addons · Selección inicial.");
   assert.equal(await page.locator("#addon-title").evaluate((el) => el === document.activeElement), true,
     "Opening Addon Advisor initially focuses the view title");
   assert.match(await page.getByRole("button", { name: "Selección inicial" }).getAttribute("aria-pressed"), /true/,
@@ -23,8 +24,10 @@ module.exports = async function checkAddons(page, context, base, browser) {
     "The opened details can be closed again");
   await page.getByRole("button", { name: "Todos", exact: true }).click();
   assert.equal(await page.locator("#addon-results article").count(), 11);
+  assert.equal(await page.locator("#addon-status").textContent(), "11 addons · Todos.");
   await page.getByRole("button", { name: "Exploración", exact: true }).click();
   assert.equal(await page.locator("#addon-results article").count(), 1);
+  assert.equal(await page.locator("#addon-status").textContent(), "1 addon · Exploración.");
   assert.match(await page.locator("#addon-results").textContent(), /OpenMap/);
   await page.getByRole("button", { name: "Recolección", exact: true }).click();
   assert.equal(await page.locator("#addon-results article").count(), 1);
