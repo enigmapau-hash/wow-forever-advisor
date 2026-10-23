@@ -73,7 +73,9 @@ button.addEventListener("click", async () => {
           formats.add(data.clase + "|" + record.especializacion + "|" + record.objetivo);
           check(doc.getElementById("talent-overview").textContent === record.resumen, "Resumen editorial exacto");
           check(doc.getElementById("talent-reason").textContent === record.motivo, "Razón exacta");
-          check(doc.getElementById("talent-limitation").textContent === record.limitacion, "Limitación exacta");
+          check(doc.getElementById("talent-limitation").textContent ===
+            record.limitacion.replace(/\s*Prioridades editoriales de beta, pendientes de validar al 60\.$/, ""),
+            "Límite táctico visible sin duplicar aviso de beta");
           check(doc.getElementById("talent-extra").textContent === record.progreso, "Progreso adicional exacto");
           check(doc.getElementById("talent-build-info").textContent.includes(data.clase),
             "Clase correcta en ficha");
@@ -85,8 +87,17 @@ button.addEventListener("click", async () => {
             === warrior.legado[objective].advertencia, "Advertencia de Legado exacta");
           check(JSON.stringify([...doc.querySelectorAll("#talent-legacy-points li")].map((li) => li.textContent))
             === JSON.stringify(data.obtenerPuntosLegado), "Obtención de Legado específica de clase");
-          check(doc.getElementById("talent-advice-warning").textContent === data.aviso,
-            "Advertencia beta de la clase");
+          const visibleWarning = doc.getElementById("talent-advice-warning").textContent;
+          const specRows = data.fichas.filter((ficha) => ficha.especializacion === name);
+          const repeated = specRows.every((ficha) =>
+            JSON.stringify(ficha.talentos) === JSON.stringify(record.talentos));
+          check(visibleWarning.includes("Orientación de beta") && visibleWarning.includes("no es una build probada")
+            && (visibleWarning.includes("Los talentos destacados se repiten") === repeated),
+            "Aviso breve y exacto por especialización");
+          check(doc.getElementById("talent-original-notice").textContent === data.aviso,
+            "Advertencia editorial original conservada");
+          check(doc.getElementById("talent-original-limitation").textContent === record.limitacion,
+            "Limitación original completa conservada");
           check(doc.getElementById("talent-version").textContent.includes(data.versionCliente),
             "Versión de beta visible");
           check(doc.getElementById("talent-spec-icon").getAttribute("src")
