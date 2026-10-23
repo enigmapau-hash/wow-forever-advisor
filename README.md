@@ -469,3 +469,23 @@ raciales. Los datos de las tres fichas Paladín Horda solo reciben una edición
 de redacción en la explicación extensa. Talent Advisor, Profession Advisor y
 Addon Advisor conservan advertencias importantes; su auditoría secundaria no
 se ejecuta en este alcance. La caché offline pasa a **v30**.
+
+
+## v31 · Orden común de clases
+
+Los selectores de **Race Advisor (Alianza y Horda), Profession Advisor y
+Talent Advisor** muestran siempre las nueve clases en el mismo orden
+alfabético español: **Brujo, Cazador, Chamán, Druida, Guerrero, Mago,
+Paladín, Pícaro, Sacerdote**. Así cada clase conserva la misma casilla
+en la cuadrícula 3 × 3 cuando se cambia de facción o módulo.
+
+La ordenación se aplica **solo al construir los botones** desde los JSON
+validados mediante `alphabeticalClassNames`; no reordena ni modifica
+`data/race-advisor.json`, el Excel histórico, el catálogo de talentos ni
+las fichas de profesiones. El orden de las especializaciones tampoco cambia.
+Las pruebas de interfaz y modo offline comprueban el nuevo orden,
+las 54 recomendaciones y la navegación. Caché PWA **v31**.
+
+La auditoría visual y editorial más amplia continúa separada: ningún ajuste
+de fuentes, colores, jerarquía o redacción se considera aprobado por
+validar el funcionamiento de estos botones.
