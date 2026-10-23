@@ -647,7 +647,7 @@ specialization.addEventListener("change", () => {
     const alternative = racialProfiles.get(record.alternativa);
     const isSpecialized = Boolean(record.motivoComparacion);
     // Cielonato cuenta con una evaluación específica para Druida.
-    // Las otras alternativas no necesitan repetir «Ventaja racial general».
+    // Las otras alternativas no necesitan un rótulo de alcance general.
     const scope = document.getElementById("alternative-scope");
     scope.textContent = isSpecialized ? "En esta especialización" : "";
     scope.hidden = !isSpecialized;
