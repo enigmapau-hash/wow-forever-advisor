@@ -42,7 +42,11 @@ module.exports = async function testSkyborne(page, context, base) {
   assert.equal(await sky.getByText("Cielonato", { exact: true }).isVisible(), true,
     "El nombre permanece accesible si la red bloquea el icono");
   assert.equal(await page.locator("#skyborne-result .rating").count(), 0, "No invented stars");
-  assert.match(await page.locator("#skyborne-result").textContent(), /Alcance de la evaluación/);
+  assert.equal(await page.locator("#skyborne-icon-note").count(), 0,
+    "Información técnica de CDN fuera de la interfaz");
+  assert.match(await page.locator("#skyborne-result").textContent(), /Fuentes y notas de beta/);
+  assert.equal(await page.locator("#skyborne-result details").getAttribute("open"), null,
+    "Fuentes y advertencias empiezan plegadas");
   assert.match(await page.locator("#skyborne-criterion").textContent(), /alternativa de Druida/);
   assert.equal(await page.locator("#skyborne-alternatives a").count(), 6,
     "Race Explorer enlaza las seis alternativas de Druida");
@@ -110,7 +114,7 @@ module.exports = async function testSkyborne(page, context, base) {
         const rendered = document.querySelector(`[data-field="${key}"]`).textContent;
         const expected = key === "alternativa" && druid ? "Cielonato"
           : key === "alternativa" && row.alternativa === "-" && row.faccion === "Alianza" && row.clase === "Chamán"
-            ? "Sin alternativa: única raza disponible"
+            ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
             : row[key];
         if (rendered !== expected) {
           throw new Error(`Changed original or incorrect Druid alternative: ${key}`);
@@ -119,7 +123,8 @@ module.exports = async function testSkyborne(page, context, base) {
       if (druid) {
         if (document.getElementById("alternative-use").textContent !== druid.usoAlternativa
             || !document.getElementById("race-druid-note").textContent.includes(druid.motivoComparacion)
-            || document.getElementById("race-druid-note").hidden) {
+            || document.getElementById("race-druid-details").hidden
+            || document.getElementById("race-druid-details").open) {
           throw new Error(`Missing comparative reason for ${row.faccion}/${row.especializacion}`);
         }
       }
@@ -137,9 +142,10 @@ module.exports = async function testSkyborne(page, context, base) {
   for (const entry of additions.fichas) {
     await page.locator(`#specialization button[data-value="${entry.especializacion}"]`).click();
     assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "No-muerto");
-    assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "Sin alternativa: única raza disponible");
-    assert.equal(await page.locator("#race-addition-note").isVisible(), true);
-    assert.match(await page.locator("#no-alternative").textContent(), /No-muerto es la única raza/);
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(),
+      "Sin alternativa: No-muerto es la única raza de Paladín de Horda.");
+    assert.equal(await page.locator("#race-addition-note").count(), 0);
+    assert.equal(await page.locator("#no-alternative").count(), 0);
     assert.equal(await page.locator('[data-field="motivoPrincipal"]').textContent(), entry.motivoPrincipal);
     assert.equal(await page.locator('[data-field="explicacion"]').textContent(), entry.explicacion);
   }
@@ -167,7 +173,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v29")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v30")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();
@@ -191,7 +197,8 @@ module.exports = async function testSkyborne(page, context, base) {
   await page.locator('#specialization button[data-value="Protección"]').click();
   assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "No-muerto",
     "Paladín Horda disponible offline con caché nueva");
-  assert.equal(await page.locator("#race-addition-note").isVisible(), true);
+  assert.equal(await page.locator('[data-field="alternativa"]').textContent(),
+    "Sin alternativa: No-muerto es la única raza de Paladín de Horda.");
   await context.setOffline(false);
   await page.goto(base + "/");
   const fallback = await context.browser().newContext({ serviceWorkers: "block" });
