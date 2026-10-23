@@ -144,38 +144,25 @@
             </div>
             <p id="alternative-scope" class="alternative-scope"></p>
             <p id="alternative-use" class="original-text"></p>
-            <details id="alternative-details" class="detail-disclosure">
-              <summary id="alternative-detail-label">Más información</summary>
-              <p id="alternative-detail-text" class="original-text"></p>
-            </details>
+            <a id="alternative-race-link" class="race-profile-link" href="#raciales">Consultar perfil racial de la alternativa →</a>
           </aside>
           </div>
-          <details id="primary-profile" class="race-support detail-disclosure">
-            <summary id="primary-profile-label">Perfil de la raza principal</summary>
-            <p class="field-note">Habilidades de la raza en general, separadas de la valoración anterior.</p>
-            <div class="profile-grid">
-              <section><h3>Fortalezas</h3><p class="original-text" data-field="fortalezas"></p></section>
-              <section><h3>Limitaciones</h3><p class="original-text" data-field="debilidades"></p></section>
-            </div>
-            <p class="rating" data-field="escalaUtilidad" hidden></p>
-            <h3>Uso principal</h3>
-            <p class="original-text" data-field="usoPrincipal"></p>
-            <h3>Comentarios sobre esta raza</h3>
-            <p class="original-text" data-field="comentarios"></p>
-          </details>
-          <details id="race-beta-updates" class="race-support detail-disclosure" hidden>
-            <summary>Fuentes y cambios de beta</summary>
+          <p class="race-profile-navigation">
+            <a id="primary-profile-link" class="race-profile-link" href="#raciales">Consultar perfil racial completo de <span id="primary-profile-race"></span> en Race Explorer →</a>
+          </p>
+          <aside id="race-addons" class="result-card addon-context" hidden></aside>
+          <section id="race-beta-updates" class="race-sources" aria-labelledby="race-sources-title" hidden>
+            <h3 id="race-sources-title">Fuentes y cambios de beta</h3>
             <p class="field-note">Notas oficiales del 15/10/2026. No sustituyen una comparación de razas al nivel 60.</p>
-            <h3 id="race-beta-recommended-label">Raza recomendada</h3>
+            <h4 id="race-beta-recommended-label">Raza recomendada</h4>
             <ul id="race-beta-recommended-list"></ul>
             <div id="race-beta-alternative" hidden>
-              <h3 id="race-beta-alternative-label">Alternativa</h3>
+              <h4 id="race-beta-alternative-label">Alternativa</h4>
               <ul id="race-beta-alternative-list"></ul>
             </div>
             <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente: notas de Blizzard</a></p>
             <ul id="race-extra-sources" class="talent-sources"></ul>
-          </details>
-          <aside id="race-addons" class="result-card addon-context" hidden></aside>
+          </section>
         </section>
       </section>
 
@@ -216,11 +203,6 @@
             <summary>Ver comentarios del perfil original</summary>
             <p class="original-text" data-racial-field="comentarios"></p>
           </details>
-          <details id="racial-beta-updates" class="result-card detail-disclosure" hidden>
-            <summary>Fuentes y cambios de beta</summary>
-            <ul id="racial-beta-list"></ul>
-            <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente: notas de Blizzard</a></p>
-          </details>
           <section class="result-card" aria-labelledby="racial-recommended-title">
             <h3 id="racial-recommended-title">Dónde se recomienda esta raza</h3>
             <ul id="racial-recommended" class="racial-matches"></ul>
@@ -231,42 +213,63 @@
             <ul id="racial-alternative" class="racial-matches"></ul>
             <p id="racial-no-alternative" class="field-note" hidden>Esta raza no figura como alternativa en las combinaciones actuales.</p>
           </section>
+          <details id="racial-beta-updates" class="result-card detail-disclosure" hidden>
+            <summary>Fuentes y cambios de beta</summary>
+            <ul id="racial-beta-list"></ul>
+            <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente: notas de Blizzard</a></p>
+          </details>
         </section>
         <section id="skyborne-result" aria-labelledby="skyborne-title" hidden>
+          <p class="source-note">Perfil racial de beta, sujeto a cambios.</p>
           <article class="result-card recommendation">
-            <p class="eyebrow">Raza en beta · Skyborne</p>
             <h2 id="skyborne-title">Cielonato</h2>
+            <h3>Uso principal</h3>
+            <p id="skyborne-use" class="original-text">Movilidad situacional, celeridad y apoyo contra elementales.</p>
             <p id="skyborne-beta-note" class="field-note"></p>
-            <h3>Facultades compartidas</h3>
-            <ul id="skyborne-common" class="talent-list"></ul>
             <fieldset id="skyborne-faction" class="option-group" data-value="" data-icon-kind="faccion" disabled>
               <legend>Variante de facción</legend>
               <div class="option-buttons"></div>
               <p class="option-prompt field-note">Elige una variante</p>
             </fieldset>
             <p id="skyborne-status" class="selection-status" role="status">Elige Alianza o Horda para consultar sus diferencias.</p>
-            <section id="skyborne-variant" aria-labelledby="skyborne-variant-title" hidden>
-              <h3 id="skyborne-variant-title"></h3>
-              <p class="field-note">Clases permitidas</p>
-              <p id="skyborne-classes"></p>
-              <h3 id="skyborne-ability-title"></h3>
-              <p id="skyborne-ability"></p>
-            </section>
-            <section aria-labelledby="skyborne-alternatives-title">
-              <h3 id="skyborne-alternatives-title">Dónde se recomienda como alternativa</h3>
-              <ul id="skyborne-alternatives" class="racial-matches"></ul>
-              <p id="skyborne-no-alternatives" class="field-note" hidden>Las alternativas de Druida están pendientes de cargarse.</p>
-            </section>
-            <details class="detail-disclosure">
-              <summary>Fuentes y notas de beta</summary>
-              <p id="skyborne-verification" class="field-note"></p>
-              <p id="skyborne-criterion" class="field-note"></p>
-              <p id="skyborne-limitation" class="field-note"></p>
-              <p id="skyborne-wind-history" class="field-note"></p>
-              <p id="skyborne-skysight-source" class="field-note"></p>
-              <ul id="skyborne-sources" class="talent-sources"></ul>
-            </details>
           </article>
+          <div class="profile-grid">
+            <article class="result-card">
+              <h3>Fortalezas</h3>
+              <ul id="skyborne-common" class="talent-list"></ul>
+              <section id="skyborne-variant" aria-labelledby="skyborne-variant-title" hidden>
+                <h4 id="skyborne-variant-title"></h4>
+                <h4 id="skyborne-ability-title"></h4>
+                <p id="skyborne-ability"></p>
+              </section>
+            </article>
+            <article class="result-card">
+              <h3>Debilidades</h3>
+              <p id="skyborne-limitation" class="original-text"></p>
+            </article>
+          </div>
+          <details id="skyborne-comments" class="result-card detail-disclosure">
+            <summary>Ver comentarios del perfil</summary>
+            <p id="skyborne-criterion" class="original-text"></p>
+            <p class="field-note">Clases permitidas en la variante seleccionada</p>
+            <p id="skyborne-classes" class="original-text"></p>
+          </details>
+          <section class="result-card" aria-labelledby="skyborne-recommended-title">
+            <h3 id="skyborne-recommended-title">Dónde se recomienda esta raza</h3>
+            <p id="skyborne-no-recommended" class="field-note">Cielonato no figura como recomendación principal en las combinaciones aprobadas.</p>
+          </section>
+          <section class="result-card" aria-labelledby="skyborne-alternatives-title">
+            <h3 id="skyborne-alternatives-title">Dónde aparece como alternativa</h3>
+            <ul id="skyborne-alternatives" class="racial-matches"></ul>
+            <p id="skyborne-no-alternatives" class="field-note" hidden>Las alternativas de Druida están pendientes de cargarse.</p>
+          </section>
+          <details id="skyborne-sources-panel" class="result-card detail-disclosure">
+            <summary>Fuentes y cambios de beta</summary>
+            <p id="skyborne-verification" class="field-note"></p>
+            <p id="skyborne-wind-history" class="field-note"></p>
+            <p id="skyborne-skysight-source" class="field-note"></p>
+            <ul id="skyborne-sources" class="talent-sources"></ul>
+          </details>
         </section>
       </section>
 
