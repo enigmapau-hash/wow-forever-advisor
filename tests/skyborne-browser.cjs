@@ -100,11 +100,12 @@ module.exports = async function testSkyborne(page, context, base) {
       choose("character-class", row.clase);
       choose("specialization", row.especializacion);
       const result = document.getElementById("advisor-result");
-      if (result.hidden || /Cielonato/.test(result.textContent)) {
-        throw new Error(`Recomendación no evaluada visible: ${row.faccion}/${row.clase}/${row.especializacion}`);
-      }
       const druid = druidAlt.fichas.find((x) => x.faccion === row.faccion
         && x.clase === row.clase && x.especializacion === row.especializacion);
+      const cielonatoTextVisible = /Cielonato/.test(result.textContent);
+      if (result.hidden || cielonatoTextVisible !== Boolean(druid)) {
+        throw new Error(`Cielonato solo debe aparecer como alternativa de Druida: ${row.faccion}/${row.clase}/${row.especializacion}`);
+      }
       for (const key of ["razaRecomendada", "alternativa", "prioridad", "motivoPrincipal", "explicacion"]) {
         const rendered = document.querySelector(`[data-field="${key}"]`).textContent;
         const expected = key === "alternativa" && druid ? "Cielonato"
