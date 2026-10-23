@@ -2,9 +2,20 @@
 
 document.getElementById("pwa-version").textContent = `PWA ${self.WOW_PWA_VERSION}`;
 
-// Etiquetas de presentación: las claves, los enlaces y los JSON siguen intactos.
-function raceLabel(text) {
-  return text.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche");
+// Claves internas y texto editorial del Excel nunca se modifican.
+function raceDisplayName(name) {
+  return name === "Elfo" ? "Elfo de la noche" : name;
+}
+
+// Solo ajustes gramaticales muy concretos en textos visibles históricos.
+// No sustituyas "Elfo" sin contexto: produciría expresiones incorrectas.
+function raceProse(text) {
+  return text
+    .replace(/, denominado Elfo en la base/g, "")
+    .replace(/\bFrente a Elfo\b/g, "Frente al elfo de la noche")
+    .replace(/\bde Elfo\b/g, "del elfo de la noche")
+    .replace(/\bElfo ofrece\b/g, "El elfo de la noche ofrece")
+    .replace(/\bElfo conserva\b/g, "El elfo de la noche conserva");
 }
 
 if ("serviceWorker" in navigator && window.isSecureContext) {
@@ -84,7 +95,7 @@ function optionButton(value, kind, className = "") {
   }
   const label = document.createElement("span");
   label.className = "option-label";
-  label.textContent = kind === "raza" ? raceLabel(value) : value;
+  label.textContent = kind === "raza" ? raceDisplayName(value) : value;
   button.append(label);
   return button;
 }
@@ -120,6 +131,8 @@ function clearResult() {
   document.getElementById("result-combination").textContent = "";
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
+  document.getElementById("alternative-scope").textContent = "";
+  document.getElementById("alternative-detail-label").textContent = "Más información";
   document.getElementById("alternative-details").open = false;
   document.getElementById("alternative-detail-text").textContent = "";
   document.getElementById("alternative-empty").hidden = true;
@@ -265,14 +278,14 @@ function fillRacialBetaList(id, race) {
 function renderRaceBetaUpdates(record) {
   const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
   document.getElementById("race-beta-recommended-label").textContent =
-    "Raza principal · " + raceLabel(record.razaRecomendada);
+    "Raza principal · " + raceDisplayName(record.razaRecomendada);
   const alternative = record.alternativa !== "-"
     && fillRacialBetaList("race-beta-alternative-list", record.alternativa);
   const alternativeView = document.getElementById("race-beta-alternative");
   alternativeView.hidden = !alternative;
   if (alternative) {
     document.getElementById("race-beta-alternative-label").textContent =
-      "Alternativa · " + raceLabel(record.alternativa);
+      "Alternativa · " + raceDisplayName(record.alternativa);
   } else {
     document.getElementById("race-beta-alternative-list").replaceChildren();
   }
@@ -487,23 +500,30 @@ specialization.addEventListener("change", () => {
   if (iconUrl) recommendationRaceIcon.src = iconUrl;
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
-    field.textContent = raceLabel(key === "alternativa" && record.alternativa === "-"
+    const value = key === "alternativa" && record.alternativa === "-"
       ? record.faccion === "Alianza" && record.clase === "Chamán"
         ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
         : record.faccion === "Horda" && record.clase === "Paladín"
           ? "Sin alternativa: No-muerto es la única raza de Paladín de Horda."
           : "Alternativa pendiente de evaluación."
-      : (Object.hasOwn(record, key) ? record[key] : profile[key]));
+      : (Object.hasOwn(record, key) ? record[key] : profile[key]);
+    field.textContent = (key === "razaRecomendada" || (key === "alternativa" && record.alternativa !== "-"))
+      ? raceDisplayName(value) : raceProse(value);
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
-  document.getElementById("primary-reason-label").textContent = `Por qué elegir ${raceLabel(record.razaRecomendada)}`;
-  document.getElementById("primary-profile-label").textContent = `Perfil de ${raceLabel(record.razaRecomendada)}`;
+  document.getElementById("primary-reason-label").textContent = `Por qué elegir ${raceDisplayName(record.razaRecomendada)}`;
+  document.getElementById("primary-profile-label").textContent = `Perfil de ${raceDisplayName(record.razaRecomendada)}`;
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
-    document.getElementById("alternative-use").textContent =
-      raceLabel(record.alternativa === "Cielonato" ? record.usoAlternativa : alternative?.usoPrincipal || "");
-    document.getElementById("alternative-detail-text").textContent = raceLabel(record.motivoComparacion
-      || `${alternative?.comentarios || ""}\n\nLimitaciones: ${alternative?.debilidades || ""}`);
+    const isSpecialized = Boolean(record.motivoComparacion);
+    document.getElementById("alternative-scope").textContent = isSpecialized
+      ? "En esta especialización" : "Ventaja racial general";
+    document.getElementById("alternative-use").textContent = raceProse(isSpecialized
+      ? record.usoAlternativa : alternative?.usoPrincipal || "");
+    document.getElementById("alternative-detail-label").textContent = isSpecialized
+      ? "Comparación con la principal" : "Ver limitaciones raciales";
+    document.getElementById("alternative-detail-text").textContent = raceProse(isSpecialized
+      ? record.motivoComparacion : alternative?.debilidades || "");
     const alternativeIconUrl = self.WOW_ICON_MAP?.raza?.[record.alternativa];
     if (alternativeIconUrl) alternativeRaceIcon.src = alternativeIconUrl;
     document.getElementById("alternative-profile").hidden = false;
@@ -531,6 +551,14 @@ specialization.addEventListener("change", () => {
   AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
   status.classList.add("visually-hidden");
+  // Tras completar la selección, el resultado no debe quedar fuera de la vista móvil.
+  if (window.matchMedia("(max-width: 40rem)").matches) {
+    window.requestAnimationFrame(() => {
+      if (result.hidden || advisorView.hidden) return;
+      document.getElementById("result-race").focus({ preventScroll: true });
+      result.scrollIntoView({ block: "start", behavior: "auto" });
+    });
+  }
 });
 
 function renderRacialMatches(listId, emptyId, field) {
@@ -582,14 +610,14 @@ racialSelect.addEventListener("change", () => {
     racialStatus.classList.remove("visually-hidden");
     return;
   }
-  document.getElementById("racial-name").textContent = raceLabel(profile.raza);
+  document.getElementById("racial-name").textContent = raceDisplayName(profile.raza);
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
-    field.textContent = raceLabel(profile[field.dataset.racialField]);
+    field.textContent = raceProse(profile[field.dataset.racialField]);
   }
   document.getElementById("racial-beta-updates").hidden =
     !fillRacialBetaList("racial-beta-list", profile.raza);
   racialResult.hidden = false;
-  racialStatus.textContent = `Perfil disponible: ${raceLabel(profile.raza)}.`;
+  racialStatus.textContent = `Perfil disponible: ${raceDisplayName(profile.raza)}.`;
   racialStatus.classList.add("visually-hidden");
 });
 
@@ -814,7 +842,7 @@ function renderTalentResult() {
     .filter((item) => item.especializacion === spec)
     .every((item) => JSON.stringify(item.talentos) === JSON.stringify(record.talentos));
   document.getElementById("talent-advice-warning").textContent =
-    "Orientación de beta: no es una build probada al nivel 60 ni un reparto de 51 puntos."
+    "Guía de beta: no es una build probada al nivel 60 ni reparte 51 puntos."
     + (sameTalentsForAllGoals
       ? " Los talentos destacados se repiten para los tres objetivos; no son listas diferenciadas."
       : "");
