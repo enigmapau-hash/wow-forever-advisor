@@ -24,15 +24,11 @@
         <p class="subtitle">Tu compañero para elegir y optimizar tu personaje.</p>
       </header>
 
-      <section class="advisor-card" aria-labelledby="race-title">
+      <a id="race-advisor" class="advisor-card" href="#race-advisor" aria-labelledby="race-title">
         <div class="advisor-content">
           <p class="eyebrow">Tu personaje, desde el principio</p>
-          <h2 id="race-title">Race Advisor</h2>
+          <h2 id="race-title">Race Advisor <span class="card-arrow" aria-hidden="true">↗</span></h2>
           <p class="description">Encuentra la raza más adecuada para tu clase y especialización.</p>
-          <button id="race-advisor" type="button">
-            Abrir Race Advisor
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
-          </button>
         </div>
         <div class="crest" aria-hidden="true">
           <svg viewBox="0 0 240 240" fill="none">
@@ -45,7 +41,7 @@
             <path class="crest-rays" d="M120 98v47m-18-23h36"/>
           </svg>
         </div>
-      </section>
+      </a>
 
       <section class="future" aria-labelledby="available-title">
         <div class="section-heading">
@@ -54,28 +50,32 @@
         </div>
         <ul class="module-list available-modules">
           <li class="module-card">
-            <span class="module-number" aria-hidden="true">01</span>
-            <h3>Race Explorer</h3>
-            <p>Explora las habilidades raciales de cada raza.</p>
-            <a id="home-explore-racials" class="button-link" href="#raciales">Explorar las 8 razas</a>
+            <a id="home-explore-racials" class="module-link" href="#raciales" aria-labelledby="home-module-01">
+              <span class="module-number" aria-hidden="true">01</span>
+              <h3 id="home-module-01">Race Explorer <span class="card-arrow" aria-hidden="true">↗</span></h3>
+              <p>Explora las habilidades raciales de cada raza.</p>
+            </a>
           </li>
           <li class="module-card">
-            <span class="module-number" aria-hidden="true">02</span>
-            <h3>Profession Advisor</h3>
-            <p>Elige profesiones para tu clase y especialización.</p>
-            <button id="profession-advisor" type="button">Abrir Profession Advisor</button>
+            <a id="profession-advisor" class="module-link" href="#profession-advisor" aria-labelledby="home-module-02">
+              <span class="module-number" aria-hidden="true">02</span>
+              <h3 id="home-module-02">Profession Advisor <span class="card-arrow" aria-hidden="true">↗</span></h3>
+              <p>Elige profesiones para tu clase y especialización.</p>
+            </a>
           </li>
           <li class="module-card">
-            <span class="module-number" aria-hidden="true">03</span>
-            <h3>Talent Advisor</h3>
-            <p>Nueve clases: talentos y Legado para subir al 60, PvP y mazmorras.</p>
-            <button id="talent-advisor" type="button">Abrir Talent Advisor</button>
+            <a id="talent-advisor" class="module-link" href="#talent-advisor" aria-labelledby="home-module-03">
+              <span class="module-number" aria-hidden="true">03</span>
+              <h3 id="home-module-03">Talent Advisor <span class="card-arrow" aria-hidden="true">↗</span></h3>
+              <p>Nueve clases: talentos y Legado para subir al 60, PvP y mazmorras.</p>
+            </a>
           </li>
           <li class="module-card">
-            <span class="module-number" aria-hidden="true">04</span>
-            <h3>Addon Advisor</h3>
-            <p>Pocos addons, con utilidad y fuentes claras para Forever.</p>
-            <a id="addon-advisor" class="button-link" href="#addon-advisor">Abrir Addon Advisor</a>
+            <a id="addon-advisor" class="module-link" href="#addon-advisor" aria-labelledby="home-module-04">
+              <span class="module-number" aria-hidden="true">04</span>
+              <h3 id="home-module-04">Addon Advisor <span class="card-arrow" aria-hidden="true">↗</span></h3>
+              <p>Pocos addons, con utilidad y fuentes claras para Forever.</p>
+            </a>
           </li>
         </ul>
       </section>
@@ -123,7 +123,7 @@
         </form>
 
         <section id="advisor-result" aria-labelledby="result-race" hidden>
-          <p class="source-note">Recomendaciones del Excel original: no se han recalculado tras los cambios raciales de beta del 15/10/2026.</p>
+          <p class="source-note">Recomendación y estrellas del Excel original, aún sin recalcular tras la beta.</p>
           <article class="result-card recommendation">
             <p class="eyebrow">Raza recomendada</p>
             <div class="recommendation-heading">
@@ -142,29 +142,32 @@
                   </div>
                 </dd>
               </div>
-              <div><dt>Prioridad original</dt><dd class="rating" data-field="prioridad"></dd></div>
+              <div><dt>Prioridad de esta combinación (Excel)</dt><dd class="rating" data-field="prioridad"></dd></div>
             </dl>
             <p class="field-note" id="no-alternative" hidden>«-» significa alternativa no facilitada en el Excel.</p>
             <h3>Motivo principal</h3>
             <p class="original-text" data-field="motivoPrincipal"></p>
-            <h3>Explicación</h3>
-            <p class="original-text" data-field="explicacion"></p>
+            <details class="detail-disclosure">
+              <summary>Ver explicación completa</summary>
+              <h3>Explicación del Excel</h3>
+              <p class="original-text" data-field="explicacion"></p>
+            </details>
           </article>
           <div class="profile-grid">
             <article class="result-card"><h3>Fortalezas</h3><p class="original-text" data-field="fortalezas"></p></article>
             <article class="result-card"><h3>Debilidades</h3><p class="original-text" data-field="debilidades"></p></article>
           </div>
-          <article class="result-card">
-            <h3>Utilidad racial</h3>
+          <details class="result-card detail-disclosure">
+            <summary>Ver perfil racial completo</summary>
+            <h3>Utilidad general de la racial (Excel)</h3>
             <p class="rating" data-field="escalaUtilidad"></p>
             <h3>Uso principal</h3>
             <p class="original-text" data-field="usoPrincipal"></p>
             <h3>Comentarios del perfil racial</h3>
             <p class="original-text" data-field="comentarios"></p>
-          </article>
+          </details>
           <article id="race-beta-updates" class="result-card" hidden>
             <h3>Cambios oficiales de la beta · 15/10/2026</h3>
-            <p class="field-note">Información adicional, no incluida en el ranking original del Excel.</p>
             <h3 id="race-beta-recommended-label">Raza recomendada</h3>
             <ul id="race-beta-recommended-list"></ul>
             <div id="race-beta-alternative" hidden>
@@ -197,10 +200,10 @@
           </div>
         </div>
         <section id="racial-result" aria-labelledby="racial-name" hidden>
-          <p class="source-note">Perfil original del Excel, complementado con los cambios oficiales de beta del 15/10/2026. Los rangos de utilidad aún no se han recalculado.</p>
+          <p class="source-note">Perfil y estrellas del Excel original; los cambios oficiales de beta aparecen aparte.</p>
           <article class="result-card recommendation">
             <h2 id="racial-name"></h2>
-            <h3>Escala de utilidad</h3>
+            <h3>Utilidad general de la racial (Excel)</h3>
             <p class="rating" data-racial-field="escalaUtilidad"></p>
             <h3>Uso principal</h3>
             <p class="original-text" data-racial-field="usoPrincipal"></p>
@@ -209,10 +212,10 @@
             <article class="result-card"><h3>Fortalezas</h3><p class="original-text" data-racial-field="fortalezas"></p></article>
             <article class="result-card"><h3>Debilidades</h3><p class="original-text" data-racial-field="debilidades"></p></article>
           </div>
-          <article class="result-card">
-            <h3>Comentarios</h3>
+          <details class="result-card detail-disclosure">
+            <summary>Ver comentarios del perfil original</summary>
             <p class="original-text" data-racial-field="comentarios"></p>
-          </article>
+          </details>
           <article id="racial-beta-updates" class="result-card" hidden>
             <h3>Cambios oficiales de la beta · 15/10/2026</h3>
             <ul id="racial-beta-list"></ul>
@@ -273,7 +276,7 @@
         <header class="selector-intro">
           <h1 id="talent-title" tabindex="-1">Talent Advisor</h1>
           <p class="subtitle">Elige tu clase, especialización y objetivo para explorar los talentos y ventajas de Legado.</p>
-          <p class="field-note">81 fichas en las nueve clases. Orientaciones de beta pendientes de validar al nivel 60.</p>
+          <p class="field-note">81 fichas de orientación para nueve clases y tres objetivos.</p>
         </header>
 
         <div id="talent-selector" class="selector-card" aria-busy="true">
@@ -312,7 +315,7 @@
             <p id="talent-build-info" class="result-combination"></p>
             <p id="talent-overview" class="talent-overview"></p>
             <h3>Talentos de clase a estudiar</h3>
-            <p class="field-note">Selección orientativa, sin orden obligatorio de compra ni puntos asignados.</p>
+            <p class="field-note">Sin orden de compra ni puntos asignados.</p>
             <ul id="talent-priorities" class="talent-list"></ul>
             <h3>Por qué considerar estos talentos</h3>
             <p id="talent-reason" class="original-text"></p>
@@ -331,20 +334,20 @@
             <ul id="talent-legacy-points" class="talent-list"></ul>
           </article>
 
-          <article class="result-card">
-            <h3>Otros progresos relevantes</h3>
+          <details class="result-card detail-disclosure">
+            <summary>Otros progresos y aclaraciones</summary>
             <p id="talent-extra" class="original-text"></p>
             <p class="field-note">El Honor, los puntos de rango PvP, las profesiones y el entrenamiento de mascotas no son puntos de talento de clase.</p>
-          </article>
+          </details>
 
           <aside id="talent-addons" class="result-card addon-context" hidden></aside>
 
-          <article class="result-card">
-            <h3>Versión y fuentes</h3>
+          <details class="result-card detail-disclosure">
+            <summary>Versión, documentación y fuentes</summary>
             <p id="talent-version" class="original-text"></p>
             <p id="talent-source-note" class="field-note"></p>
             <ul id="talent-sources" class="talent-sources"></ul>
-          </article>
+          </details>
         </section>
       </section>
 
