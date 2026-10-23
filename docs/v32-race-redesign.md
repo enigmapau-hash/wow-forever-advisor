@@ -21,6 +21,7 @@ Hallazgos corregidos durante la inspección:
 - A 320 px, los nombres largos del selector se partían a mitad de palabra; a 390 px también ocurría con «Supervivencia». Se redujo el margen interior de la selección y se ajustaron las etiquetas de clase; las especializaciones se presentan en filas completas a 480 px o menos. Las nueve clases conservan su cuadrícula 3 × 3.
 - La tarjeta dorada de addons competía con la principal. El contexto opcional conserva contenido y enlaces con una separación discreta, sin tarjeta dorada adicional.
 - Las líneas de explicación demasiado largas en fichas sin alternativa se limitan a 72 caracteres tipográficos aproximadamente.
+- CI en Linux detectó además un salto de línea causado por su fuente de sistema a 320 px. Se amplió el espacio útil del selector en ese ancho y se verifican tanto la altura como el ancho de cada etiqueta, sin reducir las nueve clases a menos columnas.
 
 No se observaron solapamientos ni desbordamiento horizontal en los casos revisados. Los textos de especialización y clase se miden además en las 54 fichas a los cuatro anchos. Las capturas de trabajo están en `.local-v32/` (excluidas de Git).
 

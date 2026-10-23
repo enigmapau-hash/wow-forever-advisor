@@ -51,6 +51,8 @@ module.exports = async function testRedesign(page, base, offline = false) {
         for (const label of document.querySelectorAll('#character-class .option-label, #specialization .option-label')) {
           ensure(label.getBoundingClientRect().height <= parseFloat(getComputedStyle(label).lineHeight) + 1,
             `Nombre sin cortar a ${width}px: ${label.textContent}`);
+          ensure(label.getBoundingClientRect().width <= label.closest('button').clientWidth,
+            `Nombre dentro del botón a ${width}px: ${label.textContent}`);
         }
         count++;
       }
