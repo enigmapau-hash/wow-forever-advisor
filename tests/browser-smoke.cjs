@@ -51,6 +51,8 @@ const server = http.createServer(async (req, res) => {
     await page.goto(base + "/");
     assert.equal(await page.locator(".available-modules > li").count(), 4,
       "Only the four approved modules appear on the home screen");
+    assert.equal(await page.locator(".available-modules .module-number").count(), 0,
+      "Las tarjetas de portada no deben tener números decorativos");
     assert.equal(await page.locator("#future-title").count(), 0,
       "No future-module section on the home screen");
     assert.equal(await page.getByText("Build Advisor").count(), 0,
@@ -117,6 +119,9 @@ const server = http.createServer(async (req, res) => {
     assert(!/Excel/i.test(await page.locator("#racial-view").innerText()),
       "No internal spreadsheet references in Race Explorer");
     assert.equal(await page.locator("#racial-race button").count(), 9);
+    await page.locator('#racial-race button[data-value="Gnomo"]').click();
+    assert.equal(await page.locator('[data-racial-field="escalaUtilidad"]').isVisible(), false,
+      "La puntuación general se oculta también en Race Explorer");
     for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.locator("#racial-race .option-buttons").evaluate((el) =>
