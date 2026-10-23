@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v29`);
-      await cache.put("./obsolete-v29", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v30`);
+      await cache.put("./obsolete-v30", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -94,6 +94,14 @@ const server = http.createServer(async (req, res) => {
     await page.goto(base + "/#race-advisor");
     assert(!/Excel/i.test(await page.locator("#advisor-view").innerText()),
       "No internal spreadsheet references in Race Advisor");
+    const classOrder = ["Brujo", "Cazador", "Chamán", "Druida", "Guerrero",
+      "Mago", "Paladín", "Pícaro", "Sacerdote"];
+    for (const side of ["Alianza", "Horda"]) {
+      await page.locator(`#faction button[data-value="${side}"]`).click();
+      assert.deepEqual(await page.locator("#character-class button").evaluateAll(
+        (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+      `Mismas nueve posiciones alfabéticas en ${side}`);
+    }
     await page.locator('#faction button[data-value="Alianza"]').click();
     assert.equal(await page.locator("#character-class button").count(), 9);
     for (const width of [390, 1280]) {
@@ -162,6 +170,9 @@ const server = http.createServer(async (req, res) => {
       "No internal spreadsheet references in Profession Advisor");
     await page.locator("#profession-class button").first().waitFor();
     assert.equal(await page.locator("#profession-class button").count(), 9);
+    assert.deepEqual(await page.locator("#profession-class button").evaluateAll(
+      (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+    "Profession Advisor comparte las nueve posiciones alfabéticas");
     for (const width of [390, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.locator("#profession-class .option-buttons").evaluate((el) =>
@@ -177,13 +188,16 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v30")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v29")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v31")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v30")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();
     await page.locator("#talent-class button").first().waitFor();
+    assert.deepEqual(await page.locator("#talent-class button").evaluateAll(
+      (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+    "Talent Advisor comparte el orden incluso sin conexión");
     await page.locator('#talent-class button[data-value="Cazador"]').click();
     await page.locator('#talent-spec button[data-value="Bestias"]').click();
     await page.locator('#talent-goal button[data-value="Subir al 60"]').click();

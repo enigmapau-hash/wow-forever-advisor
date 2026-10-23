@@ -61,7 +61,7 @@ class EditorialCleanupTests(unittest.TestCase):
         self.assertIn('classList.add("visually-hidden")', self.app)
         self.assertIn('classList.remove("visually-hidden")', self.app)
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
-        self.assertIn("${CACHE_PREFIX}v30", sw)
+        self.assertIn("${CACHE_PREFIX}v31", sw)
         self.assertIn('"./data/race-advisor-druid-alternatives.json"', sw)
         self.assertIn('"./data/race-advisor-additions.json"', sw)
 
