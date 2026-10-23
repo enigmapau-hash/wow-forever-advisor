@@ -362,8 +362,11 @@ se incluyen en la caché v26; los ocho perfiles originales conservan su exportac
 
 Las facultades y clases se han contrastado directamente con Blizzard. La valoración
 competitiva sigue pendiente; el detalle de monturas de Wowhead queda separado de
-los datos oficiales. Se han identificado retratos de Cielonato, pero su autorización
-de uso está pendiente y el botón conserva solo texto. Si falla el JSON adicional,
+los datos oficiales. Se ha integrado el retrato masculino de Cielonato enlazándolo a la misma CDN
+de Wowhead utilizada por las ocho razas anteriores (sin copiar binarios al
+repositorio). Si la imagen no carga, el botón conserva su texto. La autorización
+jurídica para reproducir materiales de terceros no se presume, igual que con los
+demás iconos. Si falla el JSON adicional,
 la cabecera y el CTA muestran las ocho opciones disponibles.
 Esquema, fuentes, incertidumbres y pruebas: [revisión v26](docs/skyborne-v26.md).
 
