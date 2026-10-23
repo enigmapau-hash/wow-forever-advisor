@@ -6,6 +6,8 @@ module.exports = async function checkAddons(page, context, base, browser) {
   await page.goto(base + "/#addon-advisor");
   await page.locator("#addon-results article").first().waitFor();
   assert.equal(await page.locator("#addon-results article").count(), 5);
+  assert.equal(await page.locator("#addon-title").evaluate((el) => el === document.activeElement), true,
+    "Opening Addon Advisor initially focuses the view title");
   assert.match(await page.getByRole("button", { name: "Selección inicial" }).getAttribute("aria-pressed"), /true/,
     "Editorially named initial selection is the default filter");
   assert.equal(await page.locator("#addon-results article").first().locator(".addon-state").count(), 1,
@@ -17,7 +19,8 @@ module.exports = async function checkAddons(page, context, base, browser) {
     "Independent test status remains available in detail");
   await page.locator("#addon-results article").first().locator("details summary").click();
   assert.match(await page.title(), /^Addon Advisor/);
-  assert.equal(await page.locator("#addon-title").evaluate((el) => el === document.activeElement), true);
+  assert.equal(await page.locator("#addon-results article").first().locator("details").getAttribute("open"), null,
+    "The opened details can be closed again");
   await page.getByRole("button", { name: "Todos", exact: true }).click();
   assert.equal(await page.locator("#addon-results article").count(), 11);
   await page.getByRole("button", { name: "Exploración", exact: true }).click();
