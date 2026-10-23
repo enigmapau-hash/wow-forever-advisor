@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v36`);
-      await cache.put("./obsolete-v36", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v37`);
+      await cache.put("./obsolete-v37", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -255,8 +255,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v37")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v36")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v38")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v37")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
