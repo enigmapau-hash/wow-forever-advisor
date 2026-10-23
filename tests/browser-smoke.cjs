@@ -136,6 +136,12 @@ const server = http.createServer(async (req, res) => {
       "No hay desplegable de comparación redundante");
     assert.equal(await page.locator("#alternative-use").isVisible(), true,
       "La alternativa tiene una explicación única y legible");
+    assert.equal(await page.locator("#alternative-profile > .eyebrow").textContent(), "Raza alternativa",
+      "Nombre completo de la tarjeta secundaria");
+    assert.equal(await page.locator("#alternative-ability-name").textContent(), "Read Ley Line",
+      "La variante de Alianza identifica su habilidad específica");
+    assert.equal(await page.locator("#race-comparison-conclusion-text > p").count(), 2,
+      "La conclusión queda dividida en dos párrafos");
     assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
       "La alternativa enlaza con su perfil completo");
     assert.equal(await page.locator("#race-comparison").isVisible(), true,
@@ -151,6 +157,14 @@ const server = http.createServer(async (req, res) => {
         "F02: comparación apilada hasta 960px y de dos columnas en escritorio a " + width);
       assert.equal(await page.locator("#alternative-use").isVisible(), true,
         "Explicación de alternativa visible después de cambiar anchura");
+      if (width >= 960) {
+        const [mainHeight, alternateHeight] = await Promise.all([
+          page.locator("#primary-choice").evaluate((el) => el.getBoundingClientRect().height),
+          page.locator("#alternative-profile").evaluate((el) => el.getBoundingClientRect().height),
+        ]);
+        assert(Math.abs(mainHeight - alternateHeight) < 1,
+          "Tarjetas de igual altura al mostrarse lado a lado");
+      }
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         "F02: sin desbordamiento horizontal a " + width);
     }
