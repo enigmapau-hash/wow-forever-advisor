@@ -52,8 +52,13 @@ button.addEventListener("click", async () => {
     check(doc.getElementById("talent-error").hidden, "Carga el catálogo y las fichas sin errores");
     check(!view.hidden && doc.getElementById("home-view").hidden, "Abre Talent Advisor de forma exclusiva");
     check(result.hidden && spec.disabled && goal.disabled, "Sin resultado antes de elegir clase");
+    const expectedClasses = ["Brujo", "Cazador", "Chamán", "Druida", "Guerrero",
+      "Mago", "Paladín", "Pícaro", "Sacerdote"];
     check(JSON.stringify([...klass.querySelectorAll("button")].map((el) => el.dataset.value))
-      === JSON.stringify(catalog.clases.map((el) => el.nombre)), "Clases del catálogo exactas");
+      === JSON.stringify(expectedClasses), "Talent Advisor: orden alfabético común de nueve clases");
+    check(JSON.stringify([...new Set(catalog.clases.map((el) => el.nombre))].sort((a, b) =>
+      a.localeCompare(b, "es", { sensitivity: "base" }))) === JSON.stringify(expectedClasses),
+      "Orden consistente con el catálogo, sin alterar sus fichas");
 
     const formats = new Set();
     for (const data of sources) {
