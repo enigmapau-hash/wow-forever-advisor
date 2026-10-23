@@ -137,6 +137,9 @@ function clearResult() {
   document.getElementById("primary-key-reason").textContent = "";
   document.getElementById("primary-analysis").textContent = "";
   document.getElementById("race-comparison").hidden = true;
+  document.getElementById("race-comparison-conclusion-text").textContent = "";
+  document.getElementById("race-comparison-conclusion-title").textContent =
+    "Conclusión para esta especialización";
   for (const id of ["compare-primary-name", "compare-alternative-name", "compare-primary-pro",
     "compare-primary-con", "compare-alternative-pro", "compare-alternative-con"]) {
     document.getElementById(id).textContent = "";
@@ -288,6 +291,35 @@ function focusedRaceExplanation(explanation) {
   // La primera reitera el objetivo ya resumido en motivoPrincipal.
   return sentences[1] || sentences[0] || "";
 }
+
+/* v36 · La conclusión interpreta el contraste, sin crear un cuarto recuadro
+   ni atribuir la misma ventaja racial a dos razas distintas. */
+const racePairConclusions = new Map([
+  ["Gnomo|Humano", "Gnomo conserva prioridad cuando el movimiento decide la posición. Humano gana interés si los aturdimientos impiden responder."],
+  ["Enano|Humano", "Enano ofrece más margen defensivo frente a presión física. Humano resulta interesante cuando salir de un aturdimiento es la necesidad dominante."],
+  ["Humano|Enano", "Humano recupera la capacidad de actuar tras un aturdimiento. Enano interesa si sostener el daño físico pesa más que esa reacción."],
+  ["Enano|Elfo", "Enano prioriza la protección frente al daño físico. Elfo de la noche destaca cuando la preparación posicional y la ocultación son más importantes."],
+  ["Elfo|Gnomo", "Elfo de la noche conserva ventaja por su preparación y ocultación. Gnomo interesa cuando las raíces y ralentizaciones bloquean la retirada o la entrada."],
+  ["Enano|Gnomo", "Enano mantiene la prioridad por su resistencia frente a la presión física. Gnomo puede convenir si escapar de raíces y ralentizaciones importa más que mitigar ese daño."],
+  ["Humano|Gnomo", "Humano prioriza la respuesta tras un aturdimiento. Gnomo resulta útil cuando el principal obstáculo es recuperar movimiento."],
+  ["Elfo|Cielonato", "Elfo de la noche mantiene la prioridad por ocultación y preparación defensiva. Cielonato puede interesar por la celeridad, el planeo o la regeneración situacional según el papel del druida."],
+  ["Orco|Tauren", "Orco protege mejor la continuidad de acción frente a aturdimientos. Tauren interesa si hace falta el control cercano inmediato de War Stomp."],
+  ["Tauren|Orco", "Tauren aporta una pausa de control cercano para defender la posición. Orco interesa si los aturdimientos son la amenaza más frecuente."],
+  ["Orco|Troll", "Orco reduce las interrupciones provocadas por aturdimientos. Troll gana interés cuando la celeridad de Berserking permite aprovechar mejor una ventana ofensiva."],
+  ["Troll|Orco", "Troll prioriza la rapidez durante las ventanas de presión. Orco puede ser preferible si los aturdimientos impiden mantener la actividad."],
+  ["No-muerto|Orco", "No-muerto destaca al responder ante miedo, sueño y encanto. Orco interesa más si el control predominante son los aturdimientos."],
+  ["Orco|No-muerto", "Orco reduce la interrupción causada por aturdimientos. No-muerto resulta útil cuando miedo, sueño o encanto determinan el combate."],
+  ["Troll|No-muerto", "Troll aprovecha ventanas de lanzamiento con Berserking. No-muerto interesa más si miedo, sueño o encanto están cortando la respuesta."],
+  ["Troll|Tauren", "Troll da prioridad a la rapidez de intervención. Tauren ofrece una pausa defensiva con War Stomp cuando hay enemigos demasiado cerca."],
+  ["No-muerto|Troll", "No-muerto ayuda a mantener capacidad de respuesta frente a miedo, sueño y encanto. Troll es interesante si la rapidez de lanzamiento es más determinante."],
+  ["Tauren|Troll", "Tauren ofrece control defensivo inmediato con War Stomp. Troll interesa si las ventanas de lanzamiento rápido pesan más que ese control."],
+  ["Tauren|Cielonato", "Tauren conserva la prioridad por el control cercano de War Stomp. Cielonato aporta celeridad y desplazamiento activable, pero no sustituye esa pausa defensiva."]
+]);
+function raceComparisonConclusion(record) {
+  const key = record.razaRecomendada + "|" + record.alternativa;
+  return racePairConclusions.get(key) || "";
+}
+
 function renderRaceComparison(record, mainProfile, alternativeProfile) {
   const comparison = document.getElementById("race-comparison");
   comparison.hidden = record.alternativa === "-";
@@ -304,6 +336,10 @@ function renderRaceComparison(record, mainProfile, alternativeProfile) {
       ? "No sustituye la ocultación y preparación posicional del elfo de la noche."
       : "No aporta el control inmediato de War Stomp del tauren."
     : firstRacialPoint(alternativeProfile?.debilidades));
+  document.getElementById("race-comparison-conclusion-title").textContent =
+    "Conclusión para " + record.especializacion;
+  document.getElementById("race-comparison-conclusion-text").textContent =
+    raceComparisonConclusion(record);
 }
 function renderRaceBetaUpdates(record) {
   const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
