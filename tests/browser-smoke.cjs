@@ -20,7 +20,7 @@ const server = http.createServer(async (req, res) => {
 (async () => {
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
   const base = process.env.TEST_BASE_URL || `http://127.0.0.1:${server.address().port}`;
-  const browser = await chromium.launch({ headless: true, channel: process.env.BROWSER_CHANNEL || undefined });
+  const browser = await chromium.launch({ headless: true, channel: process.env.BROWSER_CHANNEL || undefined, executablePath: process.env.BROWSER_EXECUTABLE || undefined });
   try {
     const context = await browser.newContext();
     // External artwork is irrelevant to content and offline correctness.
@@ -29,14 +29,16 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v24`);
-      await cache.put("./obsolete-v24", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v25`);
+      await cache.put("./obsolete-v25", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
     for (const [suite, button, report] of [
       ["talent-advisor", "run-talent-tests", "talent-test-report"],
       ["race-advisor", "run-tests", "test-report"],
+      ["race-advisor", "run-racials", "test-report"],
+      ["race-advisor", "run-navigation", "test-report"],
       ["profession-advisor", "run-tests", "test-report"],
     ]) {
       await page.goto(`${base}/tests/${suite}.html`);
@@ -114,21 +116,14 @@ const server = http.createServer(async (req, res) => {
     await page.goto(base + "/#raciales");
     assert(!/Excel/i.test(await page.locator("#racial-view").innerText()),
       "No internal spreadsheet references in Race Explorer");
-    for (const [width, expected] of [[390, 2], [1280, 4]]) {
+    assert.equal(await page.locator("#racial-race button").count(), 9);
+    for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.locator("#racial-race .option-buttons").evaluate((el) =>
-        getComputedStyle(el).gridTemplateColumns.split(" ").length), expected,
-        "Eight races align evenly at " + width);
+        getComputedStyle(el).gridTemplateColumns.split(" ").length), 3,
+        "Nine races align in three columns at " + width);
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
-    const nineRaceCols = await page.locator("#racial-race .option-buttons").evaluate((grid) => {
-      const clone = grid.lastElementChild.cloneNode(true);
-      clone.dataset.value = "Cielonato";
-      grid.append(clone);
-      const count = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
-      clone.remove();
-      return count;
-    });
-    assert.equal(nineRaceCols, 3, "Future nine-race layout is three columns");
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#racial-race button[data-value="Gnomo"]').click();
     await page.locator("#racial-result .detail-disclosure summary").click();
@@ -154,8 +149,9 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v25")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v24")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v26")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v25")), "Previous app cache removed after activation");
+    await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();

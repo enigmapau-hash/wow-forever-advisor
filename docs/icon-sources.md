@@ -111,3 +111,32 @@ no afiliación aparece en el pie de la aplicación.
 *Pendiente de prueba en dispositivo tras la publicación*: comprobar cada botón
 e icono, la distribución en pantalla móvil y que las imágenes descargadas se
 muestran en modo avión. Si falla alguna ruta remota, corregir el mapa.
+
+
+## v26 · Cielonato · revisión del 23/10/2026
+
+Identidad contrastada, **autorización pendiente**. Las fichas de Wowhead de
+[High Order (95)](https://www.wowhead.com/forever/race=95/high-order-skyborne) y
+[Windshaper (96)](https://www.wowhead.com/forever/race=96/windshaper-skyborne)
+referencian expresamente los dos retratos junto al nombre de la raza. Se llegó a
+ellas desde la búsqueda de Skyborne, sin inventar slugs.
+
+- Masculino: https://wow.zamimg.com/images/wow/icons/large/race_skyborne_male.jpg
+- Femenino: https://wow.zamimg.com/images/wow/icons/large/race_skyborne_female.jpg
+
+Ambos respondieron HTTP 200 y se inspeccionaron visualmente. Las huellas SHA-256,
+fecha y procedencia están en `data/skyborne.json`, dentro de `icono.candidatos`.
+Se añade **solo el enlace remoto** al retrato masculino `race_skyborne_male` en
+`icons/icon-map.js`, con el mismo procedimiento utilizado por las ocho razas
+anteriores. No se incorpora ninguna imagen binaria al repositorio. Los iconos
+de facultad no se utilizan como retratos raciales. El arte de Warcraft sigue
+sujeto a los derechos de Blizzard; su presencia en la CDN no constituye una
+licencia transferible.
+
+La consulta de `https://www.wowhead.com/terms-of-service` devolvió 404. No se
+se ha acreditado una autorización individual para estos retratos, como
+tampoco para los ocho retratos raciales previamente enlazados. A petición del
+usuario se aplica un criterio homogéneo de enlace remoto, con alternativa de
+texto si no carga. Esto no debe presentarse como una licencia concedida:
+consultar y respetar las condiciones del titular y del proveedor de CDN.
+Véase el [registro de comprobaciones y limitaciones](skyborne-v26.md).

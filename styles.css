@@ -364,7 +364,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   max-width: 44rem;
   margin-inline: auto;
 }
-/* Preparada para nueve razas: 3 × 3 cuando se añada Cielonato. */
+/* v26: nueve razas en 3 × 3, conservando la rejilla de ocho si falla la capa adicional. */
 #racial-race .option-buttons:has(> button:nth-child(9)) {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   max-width: 38rem;
@@ -377,3 +377,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+/* Mantiene los nombres alineados aunque Cielonato aún no tenga icono verificado. */
+#racial-race .option-label { margin-top: auto; }
+#skyborne-faction { margin-top: 1.5rem; }

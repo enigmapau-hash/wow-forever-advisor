@@ -47,6 +47,7 @@
       "Tauren": "race_tauren_male",
       "Troll": "race_troll_male",
       "No-muerto": "achievement_character_undead_male",
+      "Cielonato": "race_skyborne_male",
     }),
   };
   self.WOW_ICON_MAP = icons;

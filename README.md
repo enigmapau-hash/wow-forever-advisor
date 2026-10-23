@@ -72,8 +72,9 @@ el borrado de selecciones, las nueve alternativas «-» y la navegación. Despu�
 de una ejecución online y la activación del service worker, se puede detener el
 servidor y repetirla desde la misma pestaña para verificar el modo offline.
 
-Dentro de Race Advisor, «Race Explorer» permite consultar las ocho razas del
-JSON y volver al selector conservando su selección.
+Dentro de Race Advisor, «Race Explorer» permite consultar los ocho perfiles del
+JSON original y Cielonato, cuya capa independiente se describe en la revisión v26,
+y volver al selector conservando su selección.
 Cada perfil muestra «Raza recomendada» y «Raza alternativa» con las combinaciones
 de facción, clase y especialización obtenidas exclusivamente de `race-advisor.json`.
 Cada combinación abre su ficha completa con los tres campos seleccionados; los
@@ -350,3 +351,25 @@ Advisor, Profession Advisor y Talent Advisor. Race Explorer muestra sus ocho
 razas en **4×2 en PC** y **2×4 en pantallas estrechas**; la hoja de estilos
 ya admite una novena raza con **3×3** sin dejar una tarjeta huérfana.
 Esto no cambia iconos, navegación ni datos. Caché PWA **v25**.
+
+## v26 · Cielonato (Skyborne)
+
+Race Explorer añade Cielonato como novena raza con variantes Alianza / High Order
+y Horda / Windshaper. Race Advisor añade una consideración de beta para las cinco
+clases compatibles de cada facción, sin cambiar ninguna de las 51 recomendaciones
+originales ni asignar estrellas nuevas. Los datos viven en `data/skyborne.json` y
+se incluyen en la caché v26; los ocho perfiles originales conservan su exportación.
+
+Las facultades y clases se han contrastado directamente con Blizzard. La valoración
+competitiva sigue pendiente; el detalle de monturas de Wowhead queda separado de
+los datos oficiales. Se ha integrado el retrato masculino de Cielonato enlazándolo a la misma CDN
+de Wowhead utilizada por las ocho razas anteriores (sin copiar binarios al
+repositorio). Si la imagen no carga, el botón conserva su texto. La autorización
+jurídica para reproducir materiales de terceros no se presume, igual que con los
+demás iconos. Si falla el JSON adicional,
+la cabecera y el CTA muestran las ocho opciones disponibles.
+Esquema, fuentes, incertidumbres y pruebas: [revisión v26](docs/skyborne-v26.md).
+
+Para ejecutar el recorrido de regresión completo: `node tests/browser-smoke.cjs`.
+Puede usarse `BROWSER_EXECUTABLE=/usr/bin/chromium` si Chromium ya está instalado;
+en CI se mantiene el navegador preparado por el workflow Advisor Data Checks.

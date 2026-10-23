@@ -25,8 +25,11 @@ const expected = source.facciones.length + source.clases.length
   + source.clases.reduce((n, cls) => n + cls.especializaciones.length, 0)
   + source.razas.length;
 assert.equal(expected, 46);
-assert.equal(context.self.WOW_ICON_URLS.length, 44, "Hay 44 imágenes distintas");
+assert.equal(map.raza.Cielonato, "https://wow.zamimg.com/images/wow/icons/large/race_skyborne_male.jpg",
+  "Cielonato usa el mismo origen de imágenes que las otras razas");
+assert.equal(Object.keys(map.raza).length, source.razas.length + 1, "Ocho razas originales y Cielonato");
+assert.equal(context.self.WOW_ICON_URLS.length, 45, "45 imágenes distintas, incluyendo Cielonato");
 for (const url of context.self.WOW_ICON_URLS) {
   assert.match(url, /^https:\/\/wow\.zamimg\.com\/images\/wow\/icons\/large\/[a-z0-9_]+\.jpg$/);
 }
-console.log("OK: 46 usos cubiertos por 44 iconos; URLs y claves validadas.");
+console.log("OK: 47 usos cubiertos por 45 iconos; URLs y claves validadas.");

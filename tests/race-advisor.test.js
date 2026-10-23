@@ -175,7 +175,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     const select = doc.getElementById("racial-race");
     const result = doc.getElementById("racial-result");
     check(JSON.stringify([...select.querySelectorAll("button")].map((option) => option.dataset.value))
-      === JSON.stringify(profiles.raciales.map((profile) => profile.raza)), "Las ocho razas exactas del JSON");
+      === JSON.stringify([...profiles.raciales.map((profile) => profile.raza), "Cielonato"]), "Ocho perfiles originales más Cielonato");
     check(profiles.raciales.length === 8 && result.hidden, "Ocho perfiles, sin resultado inicial");
     check(advisor.fichas.length === 51, "Cruzar las ocho razas con las 51 fichas");
     let recommended = 0;
@@ -229,7 +229,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     choose("racial-race", "");
     check(result.hidden && [...result.querySelectorAll("[data-racial-field]")].every((field) => field.textContent === ""),
       "Vaciar raza elimina el perfil anterior");
-    check(!result.querySelector("li"), "Vaciar raza elimina las coincidencias anteriores");
+    check(!doc.querySelector("#racial-recommended li, #racial-alternative li"), "Vaciar raza elimina las coincidencias anteriores");
     doc.getElementById("back-selector").click();
     await waitFor(() => !doc.getElementById("advisor-view").hidden);
     check(doc.getElementById("specialization").dataset.value === original.especializacion
@@ -271,6 +271,13 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
     const doc = frame.contentDocument;
     const win = frame.contentWindow;
     const visible = (id) => !doc.getElementById(id).hidden;
+    // Optional addon hints load asynchronously and have their own regression suite.
+    // Compare the full advisor content without those independently changing hints.
+    const snapshot = (id) => {
+      const copy = doc.getElementById(id).cloneNode(true);
+      copy.querySelectorAll(".addon-context").forEach((node) => node.remove());
+      return copy.textContent;
+    };
     const open = async (id, view) => {
       doc.getElementById(id).click();
       await waitFor(() => visible(view));
@@ -294,7 +301,7 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
       && doc.getElementById("racial-alternative-title").textContent === "Dónde aparece como alternativa",
       "Race Explorer deja claro que las listas son combinaciones y no nuevas recomendaciones");
     await open("home-explore-racials", "racial-view");
-    await waitFor(() => doc.querySelectorAll("#racial-race button").length === 8);
+    await waitFor(() => doc.querySelectorAll("#racial-race button").length === 9);
     check(doc.activeElement === doc.getElementById("racial-title"), "Foco en el título de raciales");
     const record = advisor.fichas[0];
     choose("racial-race", record.razaRecomendada);
@@ -303,13 +310,13 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
     await open("back-selector", "advisor-view");
     check(!visible("advisor-result"), "Regreso al selector sin una ficha inventada");
     for (const [id, key] of [["faction", "faccion"], ["character-class", "clase"], ["specialization", "especializacion"]]) choose(id, record[key]);
-    const raceText = doc.getElementById("advisor-result").textContent;
-    check(doc.getElementById("explore-racials").textContent === "Explorar las 8 razas →"
+    const raceText = snapshot("advisor-result");
+    check(doc.getElementById("explore-racials").textContent === "Explorar las 9 razas →"
       && doc.getElementById("explore-racials").classList.contains("button-link"), "Acceso secundario visible");
     await open("explore-racials", "racial-view");
     check(doc.getElementById("racial-result").textContent === racialText, "Conservar perfil racial");
     await open("back-selector", "advisor-view");
-    check(visible("advisor-result") && doc.getElementById("advisor-result").textContent === raceText, "Conservar ficha y selección de Race Advisor");
+    check(visible("advisor-result") && snapshot("advisor-result") === raceText, "Conservar ficha y selección de Race Advisor");
     await open("explore-racials", "racial-view");
     const label = [record.faccion, record.clase, record.especializacion].join(" · ");
     const link = [...doc.querySelectorAll("#racial-recommended a")].find((item) => item.textContent === label);
@@ -322,21 +329,21 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
     await waitFor(() => doc.querySelectorAll("#profession-class button").length === 9);
     doc.querySelector("#profession-class button").click();
     doc.querySelector("#profession-buttons button").click();
-    const professionText = doc.getElementById("profession-result").textContent;
+    const professionText = snapshot("profession-result");
     check(visible("profession-result"), "Profession Advisor operativo");
     await open("profession-back-home", "home-view");
     await open("home-explore-racials", "racial-view");
     check(doc.getElementById("racial-result").textContent === racialText, "Conservar perfil al cambiar de módulo");
     await open("back-selector", "advisor-view");
-    check(doc.getElementById("advisor-result").textContent === raceText, "Conservar ficha entre módulos");
+    check(snapshot("advisor-result") === raceText, "Conservar ficha entre módulos");
     await open("back-home", "home-view");
     await open("profession-advisor", "profession-view");
-    check(visible("profession-result") && doc.getElementById("profession-result").textContent === professionText, "Conservar resultado de profesiones");
+    check(visible("profession-result") && snapshot("profession-result") === professionText, "Conservar resultado de profesiones");
     win.history.back();
     await waitFor(() => visible("home-view"));
     win.history.forward();
     await waitFor(() => visible("profession-view"));
-    check(visible("profession-result") && doc.getElementById("profession-result").textContent === professionText, "Atrás y adelante conservan resultados");
+    check(visible("profession-result") && snapshot("profession-result") === professionText, "Atrás y adelante conservan resultados");
     report.textContent = `OK: accesos y navegación, ${assertions} comprobaciones. Raciales, fichas y profesiones conservan sus selecciones y resultados.`;
   } catch (error) {
     report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones)`;
