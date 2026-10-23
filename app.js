@@ -133,7 +133,9 @@ function clearResult() {
   document.getElementById("alternative-use").textContent = "";
   document.getElementById("alternative-scope").textContent = "";
   document.getElementById("alternative-race-link").dataset.race = "";
+  document.getElementById("alternative-race-link").textContent = "";
   document.getElementById("primary-profile-link").dataset.race = "";
+  document.getElementById("primary-profile-race").textContent = "";
   document.getElementById("alternative-empty").hidden = true;
   document.getElementById("alternative-empty").textContent = "";
   document.getElementById("race-extra-sources").replaceChildren();
