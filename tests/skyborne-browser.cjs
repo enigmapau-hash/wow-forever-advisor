@@ -100,7 +100,9 @@ module.exports = async function testSkyborne(page, context, base) {
       }
       for (const key of ["razaRecomendada", "alternativa", "prioridad", "motivoPrincipal", "explicacion"]) {
         const rendered = document.querySelector(`[data-field="${key}"]`).textContent;
-        const expected = key === "alternativa" && row.alternativa === "-" ? "Sin segunda raza evaluada" : row[key];
+        const expected = key === "alternativa" && row.alternativa === "-" ? (row.faccion === "Alianza" && row.clase === "Chamán"
+          ? "Sin alternativa: única raza disponible"
+          : "Alternativa pendiente de evaluación") : row[key];
         if (rendered !== expected) {
           throw new Error(`Changed original: ${key}`);
         }
