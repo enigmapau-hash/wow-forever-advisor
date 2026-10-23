@@ -140,6 +140,9 @@ const server = http.createServer(async (req, res) => {
       "La alternativa enlaza con su perfil completo");
     assert.equal(await page.locator("#race-comparison").isVisible(), true,
       "Comparativa pros/contras independiente");
+    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
+      /Elfo de la noche.*Cielonato/,
+      "Druida muestra una conclusión que distingue las dos razas");
     for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       const columns = await page.locator(".race-choices").evaluate((el) =>
