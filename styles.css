@@ -426,13 +426,13 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 }
 @media (max-width: 40rem) {
   .option-buttons .option-label { font-size: 0.9rem; }
+  #character-class button { padding-inline: 0.2rem; }
+  #character-class .option-label { font-size: 0.875rem; white-space: nowrap; }
   #advisor-result .recommendation-heading { flex-wrap: wrap; }
 }
 @media (max-width: 22.5rem) {
   .page { width: calc(100% - 1.5rem); }
   #advisor-form { padding: 0.75rem; }
-  #character-class button { padding-inline: 0.2rem; }
-  #character-class .option-label { font-size: 0.875rem; white-space: nowrap; }
 }
 @media (max-width: 30rem) {
   #specialization .option-buttons { grid-template-columns: 1fr; }
