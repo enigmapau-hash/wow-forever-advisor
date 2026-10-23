@@ -94,6 +94,14 @@ const server = http.createServer(async (req, res) => {
     await page.goto(base + "/#race-advisor");
     assert(!/Excel/i.test(await page.locator("#advisor-view").innerText()),
       "No internal spreadsheet references in Race Advisor");
+    const classOrder = ["Brujo", "Cazador", "Chamán", "Druida", "Guerrero",
+      "Mago", "Paladín", "Pícaro", "Sacerdote"];
+    for (const side of ["Alianza", "Horda"]) {
+      await page.locator(`#faction button[data-value="${side}"]`).click();
+      assert.deepEqual(await page.locator("#character-class button").evaluateAll(
+        (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+      `Mismas nueve posiciones alfabéticas en ${side}`);
+    }
     await page.locator('#faction button[data-value="Alianza"]').click();
     assert.equal(await page.locator("#character-class button").count(), 9);
     for (const width of [390, 1280]) {
@@ -162,6 +170,9 @@ const server = http.createServer(async (req, res) => {
       "No internal spreadsheet references in Profession Advisor");
     await page.locator("#profession-class button").first().waitFor();
     assert.equal(await page.locator("#profession-class button").count(), 9);
+    assert.deepEqual(await page.locator("#profession-class button").evaluateAll(
+      (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+    "Profession Advisor comparte las nueve posiciones alfabéticas");
     for (const width of [390, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.locator("#profession-class .option-buttons").evaluate((el) =>
@@ -184,6 +195,9 @@ const server = http.createServer(async (req, res) => {
     await page.reload();
     await page.locator("#talent-advisor").click();
     await page.locator("#talent-class button").first().waitFor();
+    assert.deepEqual(await page.locator("#talent-class button").evaluateAll(
+      (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+    "Talent Advisor comparte el orden incluso sin conexión");
     await page.locator('#talent-class button[data-value="Cazador"]').click();
     await page.locator('#talent-spec button[data-value="Bestias"]').click();
     await page.locator('#talent-goal button[data-value="Subir al 60"]').click();
