@@ -133,9 +133,14 @@ function clearResult() {
   document.getElementById("alternative-use").textContent = "";
   document.getElementById("alternative-scope").textContent = "";
   document.getElementById("alternative-race-link").dataset.race = "";
-  document.getElementById("alternative-race-link").textContent = "";
   document.getElementById("primary-profile-link").dataset.race = "";
-  document.getElementById("primary-profile-race").textContent = "";
+  document.getElementById("primary-key-reason").textContent = "";
+  document.getElementById("primary-analysis").textContent = "";
+  document.getElementById("race-comparison").hidden = true;
+  for (const id of ["compare-primary-name", "compare-alternative-name", "compare-primary-pro",
+    "compare-primary-con", "compare-alternative-pro", "compare-alternative-con"]) {
+    document.getElementById(id).textContent = "";
+  }
   document.getElementById("alternative-empty").hidden = true;
   document.getElementById("alternative-empty").textContent = "";
   document.getElementById("race-extra-sources").replaceChildren();
@@ -274,6 +279,30 @@ function fillRacialBetaList(id, race) {
   return updates.length > 0;
 }
 
+function firstRacialPoint(value) {
+  return String(value || "").split("\n").map((point) => point.replace(/^\s*•\s*/, "").trim()).find(Boolean) || "";
+}
+function focusedRaceExplanation(explanation) {
+  const sentences = String(explanation).split(/(?<=\.)\s+(?=[A-ZÁÉÍÓÚÑ])/u);
+  return sentences.filter((sentence) => !/^Frente a\b/.test(sentence)).slice(0, 2).join(" ");
+}
+function renderRaceComparison(record, mainProfile, alternativeProfile) {
+  const comparison = document.getElementById("race-comparison");
+  comparison.hidden = record.alternativa === "-";
+  if (comparison.hidden) return;
+  const skyborne = record.alternativa === "Cielonato";
+  document.getElementById("compare-primary-name").textContent = raceDisplayName(record.razaRecomendada);
+  document.getElementById("compare-alternative-name").textContent = raceDisplayName(record.alternativa);
+  document.getElementById("compare-primary-pro").textContent = raceProse(firstRacialPoint(mainProfile?.fortalezas));
+  document.getElementById("compare-primary-con").textContent = raceProse(firstRacialPoint(mainProfile?.debilidades));
+  document.getElementById("compare-alternative-pro").textContent = raceProse(skyborne
+    ? record.usoAlternativa : firstRacialPoint(alternativeProfile?.fortalezas));
+  document.getElementById("compare-alternative-con").textContent = raceProse(skyborne
+    ? record.faccion === "Alianza"
+      ? "No sustituye la ocultación y preparación posicional del elfo de la noche."
+      : "No aporta el control inmediato de War Stomp del tauren."
+    : firstRacialPoint(alternativeProfile?.debilidades));
+}
 function renderRaceBetaUpdates(record) {
   const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
   document.getElementById("race-beta-recommended-label").textContent =
@@ -537,7 +566,10 @@ specialization.addEventListener("change", () => {
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
   document.getElementById("primary-reason-label").textContent = `Por qué elegir ${raceDisplayName(record.razaRecomendada)}`;
   document.getElementById("primary-profile-link").dataset.race = record.razaRecomendada;
-  document.getElementById("primary-profile-race").textContent = raceDisplayName(record.razaRecomendada);
+  document.getElementById("primary-profile-link").setAttribute("aria-label",
+    "Ver perfil de " + raceDisplayName(record.razaRecomendada) + " en Race Explorer");
+  document.getElementById("primary-key-reason").textContent = raceProse(record.motivoPrincipal);
+  document.getElementById("primary-analysis").textContent = raceProse(focusedRaceExplanation(record.explicacion));
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     const isSpecialized = Boolean(record.motivoComparacion);
@@ -549,7 +581,8 @@ specialization.addEventListener("change", () => {
       ? record.usoAlternativa : alternative?.usoPrincipal || "");
     const alternativeLink = document.getElementById("alternative-race-link");
     alternativeLink.dataset.race = record.alternativa;
-    alternativeLink.textContent = `Ver perfil completo de ${raceDisplayName(record.alternativa)} →`;
+    alternativeLink.setAttribute("aria-label",
+      "Ver perfil de " + raceDisplayName(record.alternativa) + " en Race Explorer");
     const alternativeIconUrl = self.WOW_ICON_MAP?.raza?.[record.alternativa];
     if (alternativeIconUrl) alternativeRaceIcon.src = alternativeIconUrl;
     document.getElementById("alternative-profile").hidden = false;
@@ -558,6 +591,7 @@ specialization.addEventListener("change", () => {
     document.getElementById("alternative-empty").textContent = message;
     document.getElementById("alternative-empty").hidden = false;
   }
+  renderRaceComparison(record, profile, racialProfiles.get(record.alternativa));
   renderRaceBetaUpdates(record);
   // Las adiciones editoriales conservan sus fuentes oficiales junto a las notas comunes.
   const sources = record.alternativa === "Cielonato" ? skyborneData?.fuentes
@@ -661,6 +695,12 @@ racialSelect.addEventListener("change", () => {
     return;
   }
   document.getElementById("racial-name").textContent = raceDisplayName(profile.raza);
+  const racialAbilities = {
+    Gnomo: "Escape Artist", Humano: "Will to Survive", Enano: "Stoneform",
+    Elfo: "Shadowmeld", Orco: "Hardiness", Tauren: "War Stomp",
+    Troll: "Berserking", "No-muerto": "Will of the Forsaken",
+  };
+  document.getElementById("racial-ability-name").textContent = racialAbilities[profile.raza] || "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
     field.textContent = raceProse(profile[field.dataset.racialField]);
   }
