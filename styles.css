@@ -467,7 +467,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 }
 @media (min-width: 60rem) {
   .race-choices:has(> .alternative-choice:not([hidden])) {
-    grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   }
 }
 @media (max-width: 40rem) {
@@ -581,4 +581,23 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .profession-rationale p { margin-top: 0.45rem; font-size: 0.95rem; line-height: 1.75; }
 @media (min-width: 48rem) {
   .race-comparison-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* La conclusión forma parte de la comparativa, no es una tarjeta adicional. */
+.race-comparison-conclusion {
+  margin-top: 1.65rem;
+  padding: 0.2rem 0.1rem 0;
+}
+.race-comparison-conclusion h4 {
+  color: var(--gold);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.race-comparison-conclusion p {
+  max-width: 75ch;
+  margin-top: 0.65rem;
+  color: #e5e5da;
+  font-size: 0.98rem;
+  line-height: 1.75;
 }
