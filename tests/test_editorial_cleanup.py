@@ -47,8 +47,9 @@ class EditorialCleanupTests(unittest.TestCase):
     def test_technical_notices_outside_initial_explorer(self):
         self.assertNotIn('id="skyborne-icon-note"', self.html)
         self.assertNotIn('getElementById("skyborne-icon-note")', self.app)
-        self.assertIn('<summary>Fuentes y cambios de beta</summary>', self.html)
+        self.assertIn('<summary>Fuentes y revisiones</summary>', self.html)
         self.assertIn('id="skyborne-verification"', self.html)
+        self.assertNotIn('id="skyborne-beta-note"', self.html)
         self.assertIn('id="skyborne-sources"', self.html)
         self.assertIn('id="skyborne-alternatives"', self.html)
         self.assertIn('<summary>Fuentes y cambios de beta</summary>', self.html)

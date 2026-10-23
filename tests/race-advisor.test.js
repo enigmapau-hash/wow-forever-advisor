@@ -120,10 +120,13 @@ runButton.addEventListener("click", async () => {
       check(doc.getElementById("alternative-profile").hidden === (record.alternativa === "-"),
         `${key}: la ficha de alternativa solo se muestra cuando existe`);
       check(doc.querySelector('[data-field="motivoPrincipal"]').hidden
-        && doc.querySelector('[data-field="explicacion"]').getClientRects().length > 0,
+        && doc.getElementById("primary-analysis").getClientRects().length > 0
+        && !doc.getElementById("primary-key-reason").hidden,
         `${key}: el motivo original se conserva sin duplicar la explicación visible`);
       check(doc.getElementById("alternative-empty").hidden === (record.alternativa !== "-"),
         `${key}: la ausencia de alternativa aparece junto a la cabecera`);
+      check(doc.getElementById("race-comparison").hidden === (record.alternativa === "-"),
+        `${key}: comparar solo cuando hay dos razas`);
       check(doc.getElementById("primary-profile-link").dataset.race === record.razaRecomendada,
         `${key}: el perfil general se consulta en Race Explorer`);
       if (record.alternativa !== "-") {

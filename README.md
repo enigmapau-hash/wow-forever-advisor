@@ -1,20 +1,25 @@
 # wow-forever-advisor
 
-## Versión actual · v35
+## Versión actual · v36
 
 Race Advisor conserva **54 fichas**: 51 recomendaciones originales y tres
 adiciones de Paladín Horda; las seis alternativas de Druida siguen siendo
 Cielonato. Se mantienen intactos el Excel maestro, sus identificadores y todos
 los JSON de clasificación.
 
-En v35, Race Advisor muestra la explicación específica de cada especialización
-y una alternativa resumida, sin desplegables que repitan los perfiles raciales.
-Ambas tarjetas enlazan directamente con el perfil completo en Race Explorer.
-Las fuentes y cambios de beta quedan al final, después de los addons opcionales.
-Race Explorer presenta Cielonato con las mismas secciones que las otras razas,
-conservando sus diferencias de Alianza y Horda y sin atribuirle recomendaciones
-principales no aprobadas. En móvil, completar el selector lleva a la ficha y
-le asigna foco accesible.
+En v36, Race Advisor mantiene la principal de mayor tamaño a la izquierda
+y la alternativa más pequeña a la derecha en escritorio; ambas se apilan en
+móvil. Sus iconos y nombres enlazan con el perfil racial de Race Explorer.
+Debajo aparece un tercer cuadro independiente de ventajas, límites y
+conclusión por pareja racial. Los 54 casos conservan su clasificación
+original y las seis alternativas de Druida siguen siendo Cielonato.
+Los addons y las fuentes quedan después de las recomendaciones.
+
+Race Explorer presenta el uso principal y una facultad destacada con mayor
+jerarquía; los comentarios son visibles, y Cielonato mantiene las variantes
+Alianza/Horda sin repetir los avisos editoriales. Profession Advisor expone
+una explicación distinta para cada pareja. En móvil, completar los
+selectores sigue llevando a la ficha y al foco accesible.
 
 «Elfo de la noche» se usa como etiqueta de interfaz; las adaptaciones
 gramaticales del texto son puntuales y no alteran el valor interno `Elfo`.
@@ -41,7 +46,7 @@ El runner requiere Playwright y Chromium (instalación descrita más abajo).
 Recorre las 54 fichas raciales, 81 de talentos y 27 de profesiones, también
 offline. Comprueba la jerarquía en 320, 390, 820 y 1280 px. Las decisiones y la
 inspección visual de v32 se documentan en [la revisión](docs/v32-race-redesign.md).
-La v35 reorganiza las fichas de Race Advisor y Race Explorer y ha sido aprobada para publicación.
+La v36 mejora la comparativa y jerarquía de Race Advisor, los perfiles raciales y las explicaciones de profesiones; publicación autorizada por el usuario.
 Los ajustes editoriales v33 y sus criterios se documentan en
 [la revisión independiente](docs/v33-editorial-review.md); la auditoría
 [#37](https://github.com/enigmapau-hash/wow-forever-advisor/issues/37)

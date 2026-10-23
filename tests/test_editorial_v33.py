@@ -34,7 +34,9 @@ class EditorialV33Tests(unittest.TestCase):
     def test_primary_visible_once_and_absence_near_header(self):
         html = self.html
         self.assertIn('id="primary-reason-label"', html)
-        self.assertIn('class="original-text race-explanation" data-field="explicacion"', html)
+        self.assertIn('<span data-field="explicacion" hidden></span>', html)
+        self.assertIn('id="primary-analysis"', html)
+        self.assertIn('id="race-comparison"', html)
         self.assertNotIn('class="race-reason" data-field="motivoPrincipal"', html)
         self.assertIn('<span data-field="motivoPrincipal" hidden></span>', html)
         before = html.index('id="result-race"')
@@ -76,7 +78,7 @@ class EditorialV33Tests(unittest.TestCase):
         addons = (ROOT / "addon-advisor.js").read_text(encoding="utf-8")
         self.assertIn('element("p", "Revisado: " + a.fechaRevision, "field-note")', addons)
         version = (ROOT / "version.js").read_text(encoding="utf-8")
-        self.assertIn('self.WOW_PWA_VERSION = "v35"', version)
+        self.assertIn('self.WOW_PWA_VERSION = "v36"', version)
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
         self.assertIn('importScripts("./version.js")', sw)
         self.assertIn('${CACHE_PREFIX}${self.WOW_PWA_VERSION}', sw)

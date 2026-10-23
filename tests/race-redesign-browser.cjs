@@ -33,18 +33,21 @@ module.exports = async function testRedesign(page, base, offline = false) {
         ensure(main.querySelector('[data-field="razaRecomendada"]').textContent === display(row.razaRecomendada), "Raza principal intacta");
         ensure(main.querySelector('[data-field="motivoPrincipal"]').textContent === display(row.motivoPrincipal), "Motivo asociado a principal");
         const explanation = main.querySelector('[data-field="explicacion"]');
-        ensure(explanation.textContent === display(row.explicacion) && explanation.getClientRects().length > 0, "Explicación original visible");
+        ensure(explanation.textContent === display(row.explicacion) && explanation.hidden, "Explicación original conservada");
+        ensure(document.getElementById("primary-analysis").getClientRects().length > 0
+          && document.getElementById("primary-key-reason").textContent === display(row.motivoPrincipal),
+          "Análisis y decisión visibles en secciones distintas");
         ensure(alternative.hidden === (alt === "-"), "Sin tarjeta vacía");
         const noAlternative = document.getElementById("alternative-empty");
         ensure(noAlternative.hidden === (alt !== "-"), "Motivo de alternativa ausente");
         ensure(Boolean(main.querySelector('[data-field="motivoPrincipal"]').hidden), "Motivo fuente conservado sin duplicarse visualmente");
-        ensure(Boolean(main.querySelector('[data-field="explicacion"]').getClientRects().length), "Justificación visible");
+        ensure(Boolean(document.getElementById("primary-analysis").getClientRects().length), "Justificación visible");
         ensure(noAlternative.compareDocumentPosition(main.querySelector("#primary-reason-label")) & Node.DOCUMENT_POSITION_FOLLOWING,
           "Aviso de alternativa ausente cerca de cabecera");
         ensure(document.getElementById("primary-profile-link").dataset.race === row.razaRecomendada,
           "Perfil principal enlazado a Race Explorer");
-        ensure(document.getElementById("primary-profile-race").textContent === display(row.razaRecomendada),
-          "Nombre de perfil principal claro");
+        ensure(main.querySelector("#result-race").closest("a")?.id === "primary-profile-link",
+          "La imagen y el nombre comparten el enlace racial");
         ensure(document.getElementById("primary-profile") === null
           && document.getElementById("alternative-details") === null,
           "No hay desplegables con textos raciales repetidos");
@@ -58,13 +61,31 @@ module.exports = async function testRedesign(page, base, offline = false) {
           ensure(document.getElementById("alternative-use").textContent.trim().length > 0, "Alternativa explicada");
           ensure(document.getElementById("alternative-scope").textContent ===
             (extra ? "En esta especialización" : "Ventaja racial general"), "Alcance de la alternativa honesto");
-          ensure(document.getElementById("alternative-race-link").dataset.race === alt,
-            "Perfil alternativo enlazado a Race Explorer");
+          ensure(document.getElementById("alternative-race-link").dataset.race === alt
+            && alternative.querySelector("#alternative-name").closest("a")?.id === "alternative-race-link",
+            "Imagen y nombre de alternativa enlazados");
+          for (const id of ["compare-primary-pro", "compare-primary-con",
+            "compare-alternative-pro", "compare-alternative-con"]) {
+            ensure(document.getElementById(id).textContent.length > 0, "Argumento comparativo: " + id);
+          }
+          const summary = document.getElementById("race-comparison-conclusion-text").textContent;
+          ensure(summary.length > 70 && summary.includes(display(row.razaRecomendada))
+            && summary.includes(display(alt)),
+            "Una conclusión con ambas razas para " + row.especializacion);
+          ensure(document.getElementById("race-comparison-conclusion-title").textContent
+            === "Conclusión para " + row.especializacion,
+            "Título ajustado a la especialización");
+          ensure(Boolean(document.getElementById("race-comparison").compareDocumentPosition(addons)
+            & Node.DOCUMENT_POSITION_FOLLOWING), "Comparativa antes de addons");
           const a = main.getBoundingClientRect(), b = alternative.getBoundingClientRect();
           ensure(width < 960 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
-          ensure(width < 960 || a.width > b.width, "Principal más grande en escritorio");
+          ensure(width < 960 || (a.width >= b.width * 1.8 && a.right <= b.left + 1),
+            "Principal ocupa aproximadamente dos tercios y alternativa queda a la derecha");
         } else {
           ensure(!document.getElementById("alternative-race-icon").hasAttribute("src"), "Sin icono ficticio o residual");
+          ensure(document.getElementById("race-comparison").hidden
+            && document.getElementById("race-comparison-conclusion-text").textContent === "",
+            "Sin comparativa ni conclusión cuando no existe una alternativa");
         }
         ensure(document.documentElement.scrollWidth <= innerWidth, `Sin desbordamiento ${width}`);
         for (const label of document.querySelectorAll('#character-class .option-label, #specialization .option-label')) {
@@ -123,5 +144,5 @@ module.exports = async function testRedesign(page, base, offline = false) {
     return data.fichas.length;
   });
   assert.equal(professions, 27);
-  console.log(`v35 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
+  console.log(`v36 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
 };

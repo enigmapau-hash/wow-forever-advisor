@@ -65,16 +65,17 @@ document.getElementById("run-tests").addEventListener("click", async (event) => 
           const value = row[field.dataset.professionField];
           check(field.textContent === (Array.isArray(value) ? value.join(" + ") : value), "Texto original: " + field.dataset.professionField);
         }
-        const compares = row.alternativa.some((item) =>
-          !row.principal.includes(item) && row.motivoPrincipal.includes(item));
-        check(doc.getElementById("profession-shared-reason").hidden === !compares,
-          "F03: la explicación compartida solo aparece cuando se menciona la alternativa");
-        check(doc.getElementById("profession-reason-block").parentElement.id ===
-          (compares ? "profession-shared-reason" : "profession-choice-main"),
-          "F03: se muestra una sola explicación en su contexto correcto");
-        check(doc.getElementById("profession-reason-title").textContent ===
-          (compares ? "Cómo se comparan estas opciones" : "Por qué se recomienda"),
-          "F03: título honesto para ambas parejas o la principal");
+        const mainReason = doc.getElementById("profession-main-reason");
+        const altReason = doc.getElementById("profession-alt-reason");
+        check(mainReason.textContent.trim().length > 25 && altReason.textContent.trim().length > 25,
+          "Cada pareja tiene una explicación con contenido");
+        check(mainReason.textContent !== altReason.textContent,
+          "Las razones distinguen las dos parejas");
+        check(doc.getElementById("profession-shared-reason") === null,
+          "No se acumulan dos opciones en un único párrafo");
+        check(mainReason.closest(".profession-choice-main") !== null
+          && altReason.closest(".profession-choice-alternative") !== null,
+          "Cada motivo aparece debajo de su pareja");
       }
     }
     choose(select, "");

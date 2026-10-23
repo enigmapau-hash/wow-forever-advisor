@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v34`);
-      await cache.put("./obsolete-v34", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v35`);
+      await cache.put("./obsolete-v35", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -114,7 +114,7 @@ const server = http.createServer(async (req, res) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#character-class button[data-value="Guerrero"]').click();
     await page.locator('#specialization button[data-value="Armas"]').click();
-    assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
+    assert.equal(await page.locator("#primary-analysis").isVisible(), true,
       "La explicación de la raza principal es visible sin desplegar");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
@@ -138,6 +138,11 @@ const server = http.createServer(async (req, res) => {
       "La alternativa tiene una explicación única y legible");
     assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
       "La alternativa enlaza con su perfil completo");
+    assert.equal(await page.locator("#race-comparison").isVisible(), true,
+      "Comparativa pros/contras independiente");
+    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
+      /Elfo de la noche.*Cielonato/,
+      "Druida muestra una conclusión que distingue las dos razas");
     for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 900 });
       const columns = await page.locator(".race-choices").evaluate((el) =>
@@ -172,7 +177,6 @@ const server = http.createServer(async (req, res) => {
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#racial-race button[data-value="Gnomo"]').click();
-    await page.locator("#racial-result > details.detail-disclosure:not(#racial-beta-updates) > summary").click();
     assert.equal(await page.locator('[data-racial-field="comentarios"]').isVisible(), true,
       "The original racial comments remain accessible");
     await page.goto(base + "/#profession-advisor");
@@ -231,8 +235,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v35")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v34")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v36")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v35")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

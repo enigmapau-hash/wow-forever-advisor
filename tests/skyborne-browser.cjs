@@ -44,21 +44,23 @@ module.exports = async function testSkyborne(page, context, base) {
   assert.equal(await page.locator("#skyborne-result .rating").count(), 0, "No invented stars");
   assert.equal(await page.locator("#skyborne-icon-note").count(), 0,
     "Información técnica de CDN fuera de la interfaz");
-  assert.match(await page.locator("#skyborne-result").textContent(), /Fuentes y cambios de beta/);
+  assert.match(await page.locator("#skyborne-result").textContent(), /Fuentes y revisiones/);
   assert.equal(await page.locator("#skyborne-sources-panel").getAttribute("open"), null,
     "Fuentes consultables y plegadas");
   for (const heading of ["Uso principal", "Fortalezas", "Debilidades",
-    "Dónde se recomienda esta raza", "Dónde aparece como alternativa"]) {
+    "Cómo aprovechar esta raza", "Dónde aparece como alternativa"]) {
     assert(await page.locator("#skyborne-result").getByRole("heading", { name: heading }).count() === 1,
       "Cielonato comparte las secciones del resto de perfiles: " + heading);
   }
-  assert.equal(await page.locator("#skyborne-no-recommended").isVisible(), true,
-    "No se inventan recomendaciones principales para Cielonato");
-  assert.match(await page.locator("#skyborne-criterion").textContent(), /alternativa de Druida/);
+  assert.equal(await page.locator("#skyborne-recommended-title").count(), 0,
+    "Cielonato no presenta una sección sin recomendaciones principales");
+  assert.equal(await page.locator("#skyborne-comments").isVisible(), true,
+    "Comentarios visibles sin desplegable");
+  assert.match(await page.locator("#skyborne-criterion").textContent(), /facultades de Alianza y Horda/);
   assert.equal(await page.locator("#skyborne-alternatives a").count(), 6,
     "Race Explorer enlaza las seis alternativas de Druida");
   assert.match(await page.locator("#skyborne-verification").textContent(),
-    data.revision.estado === "verificado" ? /Datos oficiales de beta/ : /pendientes de contraste independiente/);
+    data.revision.estado === "verificado" ? /Fuentes oficiales consultadas/ : /Consulta las fuentes oficiales/);
   const expectedCommon = {
     "walk-on-air": "Planeo controlado durante 10 s. Reutilización: 90 s.",
     "wind-blessed": "+3 % de celeridad.",
@@ -70,8 +72,8 @@ module.exports = async function testSkyborne(page, context, base) {
   }
   assert(!/15\/10\/2026/.test(await page.locator("#skyborne-common").textContent()),
     "F05: la fecha no se repite por facultad");
-  assert.match(await page.locator("#skyborne-beta-note").textContent(), /15\/10\/2026/,
-    "F05: la fecha de la beta es común");
+  assert.equal(await page.locator("#skyborne-beta-note").count(), 0,
+    "Sin fecha ni etiqueta de estado redundante");
   assert.match(await page.locator("#skyborne-wind-history").textContent(), /\+1 %/,
     "F05: la versión anterior continúa consultable en fuentes");
   assert.deepEqual(await page.locator("#skyborne-sources a").evaluateAll((links) => links.map((link) => link.href)),
@@ -201,7 +203,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v35")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v36")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();

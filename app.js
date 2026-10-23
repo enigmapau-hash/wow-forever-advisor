@@ -133,9 +133,17 @@ function clearResult() {
   document.getElementById("alternative-use").textContent = "";
   document.getElementById("alternative-scope").textContent = "";
   document.getElementById("alternative-race-link").dataset.race = "";
-  document.getElementById("alternative-race-link").textContent = "";
   document.getElementById("primary-profile-link").dataset.race = "";
-  document.getElementById("primary-profile-race").textContent = "";
+  document.getElementById("primary-key-reason").textContent = "";
+  document.getElementById("primary-analysis").textContent = "";
+  document.getElementById("race-comparison").hidden = true;
+  document.getElementById("race-comparison-conclusion-text").textContent = "";
+  document.getElementById("race-comparison-conclusion-title").textContent =
+    "Conclusión para esta especialización";
+  for (const id of ["compare-primary-name", "compare-alternative-name", "compare-primary-pro",
+    "compare-primary-con", "compare-alternative-pro", "compare-alternative-con"]) {
+    document.getElementById(id).textContent = "";
+  }
   document.getElementById("alternative-empty").hidden = true;
   document.getElementById("alternative-empty").textContent = "";
   document.getElementById("race-extra-sources").replaceChildren();
@@ -274,6 +282,65 @@ function fillRacialBetaList(id, race) {
   return updates.length > 0;
 }
 
+function firstRacialPoint(value) {
+  return String(value || "").split("\n").map((point) => point.replace(/^\s*•\s*/, "").trim()).find(Boolean) || "";
+}
+function focusedRaceExplanation(explanation) {
+  const sentences = String(explanation).split(/(?<=\.)\s+(?=[A-ZÁÉÍÓÚÑ])/u);
+  // En las 54 fichas, la segunda oración expone la facultad concreta.
+  // La primera reitera el objetivo ya resumido en motivoPrincipal.
+  return sentences[1] || sentences[0] || "";
+}
+
+/* v36 · La conclusión interpreta el contraste, sin crear un cuarto recuadro
+   ni atribuir la misma ventaja racial a dos razas distintas. */
+const racePairConclusions = new Map([
+  ["Gnomo|Humano", "Gnomo conserva prioridad cuando el movimiento decide la posición. Humano gana interés si los aturdimientos impiden responder."],
+  ["Enano|Humano", "Enano ofrece más margen defensivo frente a presión física. Humano resulta interesante cuando salir de un aturdimiento es la necesidad dominante."],
+  ["Humano|Enano", "Humano recupera la capacidad de actuar tras un aturdimiento. Enano interesa si sostener el daño físico pesa más que esa reacción."],
+  ["Enano|Elfo", "Enano prioriza la protección frente al daño físico. Elfo de la noche destaca cuando la preparación posicional y la ocultación son más importantes."],
+  ["Elfo|Gnomo", "Elfo de la noche conserva ventaja por su preparación y ocultación. Gnomo interesa cuando las raíces y ralentizaciones bloquean la retirada o la entrada."],
+  ["Enano|Gnomo", "Enano mantiene la prioridad por su resistencia frente a la presión física. Gnomo puede convenir si escapar de raíces y ralentizaciones importa más que mitigar ese daño."],
+  ["Humano|Gnomo", "Humano prioriza la respuesta tras un aturdimiento. Gnomo resulta útil cuando el principal obstáculo es recuperar movimiento."],
+  ["Elfo|Cielonato", "Elfo de la noche mantiene la prioridad por ocultación y preparación defensiva. Cielonato puede interesar por la celeridad, el planeo o la regeneración situacional según el papel del druida."],
+  ["Orco|Tauren", "Orco protege mejor la continuidad de acción frente a aturdimientos. Tauren interesa si hace falta el control cercano inmediato de War Stomp."],
+  ["Tauren|Orco", "Tauren aporta una pausa de control cercano para defender la posición. Orco interesa si los aturdimientos son la amenaza más frecuente."],
+  ["Orco|Troll", "Orco reduce las interrupciones provocadas por aturdimientos. Troll gana interés cuando la celeridad de Berserking permite aprovechar mejor una ventana ofensiva."],
+  ["Troll|Orco", "Troll prioriza la rapidez durante las ventanas de presión. Orco puede ser preferible si los aturdimientos impiden mantener la actividad."],
+  ["No-muerto|Orco", "No-muerto destaca al responder ante miedo, sueño y encanto. Orco interesa más si el control predominante son los aturdimientos."],
+  ["Orco|No-muerto", "Orco reduce la interrupción causada por aturdimientos. No-muerto resulta útil cuando miedo, sueño o encanto determinan el combate."],
+  ["Troll|No-muerto", "Troll aprovecha ventanas de lanzamiento con Berserking. No-muerto interesa más si miedo, sueño o encanto están cortando la respuesta."],
+  ["Troll|Tauren", "Troll da prioridad a la rapidez de intervención. Tauren ofrece una pausa defensiva con War Stomp cuando hay enemigos demasiado cerca."],
+  ["No-muerto|Troll", "No-muerto ayuda a mantener capacidad de respuesta frente a miedo, sueño y encanto. Troll es interesante si la rapidez de lanzamiento es más determinante."],
+  ["Tauren|Troll", "Tauren ofrece control defensivo inmediato con War Stomp. Troll interesa si las ventanas de lanzamiento rápido pesan más que ese control."],
+  ["Tauren|Cielonato", "Tauren conserva la prioridad por el control cercano de War Stomp. Cielonato aporta celeridad y desplazamiento activable, pero no sustituye esa pausa defensiva."]
+]);
+function raceComparisonConclusion(record) {
+  const key = record.razaRecomendada + "|" + record.alternativa;
+  return racePairConclusions.get(key) || "";
+}
+
+function renderRaceComparison(record, mainProfile, alternativeProfile) {
+  const comparison = document.getElementById("race-comparison");
+  comparison.hidden = record.alternativa === "-";
+  if (comparison.hidden) return;
+  const skyborne = record.alternativa === "Cielonato";
+  document.getElementById("compare-primary-name").textContent = raceDisplayName(record.razaRecomendada);
+  document.getElementById("compare-alternative-name").textContent = raceDisplayName(record.alternativa);
+  document.getElementById("compare-primary-pro").textContent = raceProse(firstRacialPoint(mainProfile?.fortalezas));
+  document.getElementById("compare-primary-con").textContent = raceProse(firstRacialPoint(mainProfile?.debilidades));
+  document.getElementById("compare-alternative-pro").textContent = raceProse(skyborne
+    ? record.usoAlternativa : firstRacialPoint(alternativeProfile?.fortalezas));
+  document.getElementById("compare-alternative-con").textContent = raceProse(skyborne
+    ? record.faccion === "Alianza"
+      ? "No sustituye la ocultación y preparación posicional del elfo de la noche."
+      : "No aporta el control inmediato de War Stomp del tauren."
+    : firstRacialPoint(alternativeProfile?.debilidades));
+  document.getElementById("race-comparison-conclusion-title").textContent =
+    "Conclusión para " + record.especializacion;
+  document.getElementById("race-comparison-conclusion-text").textContent =
+    raceComparisonConclusion(record);
+}
 function renderRaceBetaUpdates(record) {
   const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
   document.getElementById("race-beta-recommended-label").textContent =
@@ -356,8 +423,8 @@ function updateRacialCoverage(available = true) {
 
 function skyborneVerification() {
   return skyborneData.revision.estado === "verificado"
-    ? `Datos oficiales de beta · revisión ${skyborneData.revision.fecha}. No equivalen a confirmación de lanzamiento.`
-    : "Datos de beta pendientes de contraste independiente con las fuentes oficiales. Facultades y compatibilidad por confirmar; valoración comparativa pendiente.";
+    ? `Fuentes oficiales consultadas el ${skyborneData.revision.fecha}; los datos pueden cambiar.`
+    : "Consulta las fuentes oficiales antes de considerar definitivas las facultades.";
 }
 
 // F05: mostrar el efecto vigente en la ficha; las notas históricas permanecen en Fuentes.
@@ -389,20 +456,21 @@ function fillSkyborneAbilities(id, abilities) {
 function prepareSkyborneExplorer() {
   setOptions(skyborneFaction, skyborneData.variantes.map((row) => row.faccion), "Elige una variante");
   document.getElementById("skyborne-verification").textContent = skyborneVerification();
-  document.getElementById("skyborne-beta-note").textContent =
-    "Datos de presentación y notas de beta hasta el 15/10/2026; sujetos a cambios.";
   fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
   document.getElementById("skyborne-wind-history").textContent =
-    `Historial de Wind Blessed: ${skyborneData.comunes.find((ability) => ability.id === "wind-blessed").descripcion}`;
+    "Wind Blessed: +3 % de celeridad; la presentación inicial indicaba +1 %.";
   document.getElementById("skyborne-skysight-source").textContent =
-    `Procedencia de Skysight: ${skyborneData.variantes.find((variant) => variant.faccion === "Horda").habilidad.descripcion}`;
-  document.getElementById("skyborne-criterion").textContent = "Cielonato se ha evaluado como alternativa de Druida; no hay clasificación aprobada para otras clases.";
-  document.getElementById("skyborne-limitation").textContent = "Pendiente de comprobar su rendimiento al nivel 60, la regeneración durante lanzamientos y la velocidad en formas druídicas.";
+    "Skysight: +10 % de velocidad de carrera, activable en movimiento.";
+  document.getElementById("skyborne-criterion").textContent =
+    "Planeo y celeridad ayudan a variar la posición; las facultades de Alianza y Horda responden a necesidades distintas. Para Druida también importa el papel que desempeña cada forma.";
+  document.getElementById("skyborne-limitation").textContent =
+    "El planeo es temporal. La celeridad y la movilidad no sustituyen el control defensivo; conviene contrastar su interacción con las formas druídicas.";
   document.getElementById("skyborne-sources").replaceChildren(...skyborneData.fuentes.map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
     link.href = source.url;
-    link.textContent = source.nombre;
+    link.textContent = source.id === "beta-15-oct"
+      ? "Blizzard · Cambios de facultades (octubre de 2026)" : source.nombre;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     item.append(link);
@@ -537,7 +605,10 @@ specialization.addEventListener("change", () => {
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
   document.getElementById("primary-reason-label").textContent = `Por qué elegir ${raceDisplayName(record.razaRecomendada)}`;
   document.getElementById("primary-profile-link").dataset.race = record.razaRecomendada;
-  document.getElementById("primary-profile-race").textContent = raceDisplayName(record.razaRecomendada);
+  document.getElementById("primary-profile-link").setAttribute("aria-label",
+    "Ver perfil de " + raceDisplayName(record.razaRecomendada) + " en Race Explorer");
+  document.getElementById("primary-key-reason").textContent = raceProse(record.motivoPrincipal);
+  document.getElementById("primary-analysis").textContent = raceProse(focusedRaceExplanation(record.explicacion));
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     const isSpecialized = Boolean(record.motivoComparacion);
@@ -549,7 +620,8 @@ specialization.addEventListener("change", () => {
       ? record.usoAlternativa : alternative?.usoPrincipal || "");
     const alternativeLink = document.getElementById("alternative-race-link");
     alternativeLink.dataset.race = record.alternativa;
-    alternativeLink.textContent = `Ver perfil completo de ${raceDisplayName(record.alternativa)} →`;
+    alternativeLink.setAttribute("aria-label",
+      "Ver perfil de " + raceDisplayName(record.alternativa) + " en Race Explorer");
     const alternativeIconUrl = self.WOW_ICON_MAP?.raza?.[record.alternativa];
     if (alternativeIconUrl) alternativeRaceIcon.src = alternativeIconUrl;
     document.getElementById("alternative-profile").hidden = false;
@@ -558,6 +630,7 @@ specialization.addEventListener("change", () => {
     document.getElementById("alternative-empty").textContent = message;
     document.getElementById("alternative-empty").hidden = false;
   }
+  renderRaceComparison(record, profile, racialProfiles.get(record.alternativa));
   renderRaceBetaUpdates(record);
   // Las adiciones editoriales conservan sus fuentes oficiales junto a las notas comunes.
   const sources = record.alternativa === "Cielonato" ? skyborneData?.fuentes
@@ -661,6 +734,12 @@ racialSelect.addEventListener("change", () => {
     return;
   }
   document.getElementById("racial-name").textContent = raceDisplayName(profile.raza);
+  const racialAbilities = {
+    Gnomo: "Escape Artist", Humano: "Will to Survive", Enano: "Stoneform",
+    Elfo: "Shadowmeld", Orco: "Hardiness", Tauren: "War Stomp",
+    Troll: "Berserking", "No-muerto": "Will of the Forsaken",
+  };
+  document.getElementById("racial-ability-name").textContent = racialAbilities[profile.raza] || "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
     field.textContent = raceProse(profile[field.dataset.racialField]);
   }
@@ -679,27 +758,41 @@ const professionStatus = document.getElementById("profession-status");
 let professionRecords = [];
 let professionsLoading = false;
 let professionsLoaded = false;
-const professionReasonBlock = document.getElementById("profession-reason-block");
-const professionMainChoice = document.getElementById("profession-choice-main");
-const professionSharedReason = document.getElementById("profession-shared-reason");
 
-// F03: si el texto explica también una profesión exclusiva de la alternativa,
-// mostrarlo como argumento compartido, sin reescribir el dato original.
+// Argumentos por opción: se conservan los motivos originales íntegros en el catálogo.
+const professionPairedReasons = new Map([
+  ["Guerrero|Armas", ["Herrería permite fabricar armas y armaduras al progresar.", "Ingeniería aporta herramientas para entrar, presionar o responder en PvP."]],
+  ["Cazador|Puntería", ["Fabricar equipo con materiales propios da continuidad a la progresión.", "Ingeniería puede ayudar en situaciones de presión en PvP."]],
+  ["Cazador|Supervivencia", ["Peletería permite elaborar piezas durante la progresión.", "Ingeniería puede ayudar a disputar posiciones y controlar accesos."]],
+  ["Pícaro|Asesinato", ["Peletería permite fabricar equipo con materiales propios.", "Ingeniería suma opciones para afrontar la presión y retirarse."]],
+  ["Pícaro|Sutileza", ["Peletería ofrece una progresión sencilla y autosuficiente.", "Ingeniería puede complementar entradas, control y escapadas."]],
+  ["Sacerdote|Sagrado", ["Sastrería y Encantamiento acompañan la progresión del equipo.", "Alquimia permite preparar consumibles de maná para sesiones largas."]],
+  ["Mago|Arcano", ["Sastrería y Encantamiento permiten elaborar y mejorar equipo de tela.", "Ingeniería puede aportar recursos para las ventanas de lanzamiento."]],
+  ["Mago|Fuego", ["La pareja principal permite elaborar y mejorar equipamiento.", "Ingeniería aporta herramientas durante ofensivas PvP."]],
+  ["Mago|Escarcha", ["La fabricación y los encantamientos sostienen una progresión estable.", "Ingeniería puede complementar el control del espacio."]],
+  ["Brujo|Aflicción", ["Sastrería y Encantamiento ayudan a mejorar equipo al progresar.", "Ingeniería puede aportar recursos en situaciones de presión."]],
+  ["Brujo|Demonología", ["Fabricar y mejorar equipo acompaña el desarrollo del personaje.", "Ingeniería puede añadir herramientas situacionales de supervivencia."]],
+  ["Brujo|Destrucción", ["Sastrería y Encantamiento ofrecen una base estable de equipo.", "Ingeniería puede aportar recursos de ataque y defensa en PvP."]],
+]);
+const professionAlternativeReasons = {
+  "Minería + Ingeniería": "Prioriza herramientas y dispositivos tácticos para PvP frente a fabricar equipo.",
+  "Herboristería + Alquimia": "Prioriza obtener materiales y preparar consumibles propios.",
+  "Minería + Herrería": "Prioriza obtener minerales y fabricar armas o armaduras.",
+  "Desuello + Peletería": "Prioriza aprovechar pieles y elaborar piezas de equipamiento.",
+  "Sastrería + Encantamiento": "Prioriza fabricar equipo de tela y mejorarlo con encantamientos.",
+};
 function positionProfessionReason(record) {
-  const alternativeOnly = record.alternativa.filter((name) => !record.principal.includes(name));
-  const comparesBoth = alternativeOnly.some((name) => record.motivoPrincipal.includes(name));
-  const target = comparesBoth ? professionSharedReason : professionMainChoice;
-  target.append(professionReasonBlock);
-  document.getElementById("profession-reason-title").textContent = comparesBoth
-    ? "Cómo se comparan estas opciones" : "Por qué se recomienda";
-  professionSharedReason.hidden = !comparesBoth;
+  const pair = professionPairedReasons.get(record.clase + "|" + record.especializacion);
+  document.getElementById("profession-main-reason").textContent = pair?.[0] || record.motivoPrincipal;
+  document.getElementById("profession-alt-reason").textContent =
+    pair?.[1] || professionAlternativeReasons[record.alternativa.join(" + ")] ||
+    "Ofrece una orientación distinta a la pareja principal.";
 }
 
 function clearProfessionResult() {
   AddonAdvisor.clear("profession-addons");
-  professionMainChoice.append(professionReasonBlock);
-  professionSharedReason.hidden = true;
-  document.getElementById("profession-reason-title").textContent = "Por qué se recomienda";
+  document.getElementById("profession-main-reason").textContent = "";
+  document.getElementById("profession-alt-reason").textContent = "";
   professionResult.hidden = true;
   document.getElementById("profession-combination").textContent = "";
   for (const field of professionResult.querySelectorAll("[data-profession-field]")) field.textContent = "";

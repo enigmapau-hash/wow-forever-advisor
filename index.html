@@ -126,30 +126,58 @@
           <div class="race-choices">
           <article id="primary-choice" class="result-card recommendation">
             <p class="eyebrow">Raza principal</p>
-            <div class="recommendation-heading">
-              <img id="result-race-icon" alt="" width="64" height="64" hidden>
-              <h2 id="result-race" data-field="razaRecomendada" tabindex="-1"></h2>
-            </div>
+            <a id="primary-profile-link" href="#raciales" class="race-heading-link" aria-label="Consultar perfil racial principal">
+              <div class="recommendation-heading">
+                <img id="result-race-icon" alt="" width="64" height="64" hidden>
+                <h2 id="result-race" data-field="razaRecomendada" tabindex="-1"></h2>
+                <span class="race-heading-arrow" aria-hidden="true">↗</span>
+              </div>
+            </a>
             <p id="alternative-empty" class="race-no-alternative" hidden></p>
-            <h3 id="primary-reason-label">Por qué elegir esta raza</h3>
-            <p class="original-text race-explanation" data-field="explicacion"></p>
+            <div class="race-reason-block">
+              <h3 id="primary-reason-label">Por qué se recomienda</h3>
+              <p id="primary-key-reason" class="race-key-message"></p>
+              <p id="primary-analysis" class="race-analysis"></p>
+            </div>
+            <span data-field="explicacion" hidden></span>
             <span data-field="motivoPrincipal" hidden></span>
             <span data-field="prioridad" hidden></span>
           </article>
           <aside id="alternative-profile" class="result-card alternative-choice" aria-labelledby="alternative-name" hidden>
             <p class="eyebrow">Alternativa</p>
-            <div class="recommendation-heading">
-              <img id="alternative-race-icon" alt="" width="40" height="40" hidden>
-              <h3 id="alternative-name" data-field="alternativa"></h3>
-            </div>
+            <a id="alternative-race-link" href="#raciales" class="race-heading-link" aria-label="Consultar perfil racial alternativo">
+              <div class="recommendation-heading">
+                <img id="alternative-race-icon" alt="" width="40" height="40" hidden>
+                <h3 id="alternative-name" data-field="alternativa"></h3>
+                <span class="race-heading-arrow" aria-hidden="true">↗</span>
+              </div>
+            </a>
             <p id="alternative-scope" class="alternative-scope"></p>
             <p id="alternative-use" class="original-text"></p>
-            <a id="alternative-race-link" class="race-profile-link" href="#raciales">Consultar perfil racial de la alternativa →</a>
           </aside>
           </div>
-          <p class="race-profile-navigation">
-            <a id="primary-profile-link" class="race-profile-link" href="#raciales">Consultar perfil racial completo de <span id="primary-profile-race"></span> en Race Explorer →</a>
-          </p>
+          <section id="race-comparison" class="race-comparison" aria-labelledby="race-comparison-title" hidden>
+            <header class="race-comparison-header">
+              <h3 id="race-comparison-title">Principal frente a alternativa</h3>
+              <p>Ventajas y límites raciales. La elección prioritaria considera tu especialización.</p>
+            </header>
+            <div class="race-comparison-grid">
+              <article class="race-comparison-item">
+                <h4 id="compare-primary-name"></h4>
+                <p class="race-compare-label">A favor</p><p id="compare-primary-pro"></p>
+                <p class="race-compare-label">A tener en cuenta</p><p id="compare-primary-con"></p>
+              </article>
+              <article class="race-comparison-item">
+                <h4 id="compare-alternative-name"></h4>
+                <p class="race-compare-label">A favor</p><p id="compare-alternative-pro"></p>
+                <p class="race-compare-label">A tener en cuenta</p><p id="compare-alternative-con"></p>
+              </article>
+            </div>
+            <div class="race-comparison-conclusion">
+              <h4 id="race-comparison-conclusion-title">Conclusión para esta especialización</h4>
+              <p id="race-comparison-conclusion-text"></p>
+            </div>
+          </section>
           <aside id="race-addons" class="result-card addon-context" hidden></aside>
           <section id="race-beta-updates" class="race-sources" aria-labelledby="race-sources-title" hidden>
             <h3 id="race-sources-title">Fuentes y cambios de beta</h3>
@@ -192,17 +220,19 @@
             <h2 id="racial-name"></h2>
             <h3 hidden>Utilidad racial general</h3>
             <p class="rating" data-racial-field="escalaUtilidad" hidden></p>
+            <p class="eyebrow">Papel en combate masivo</p>
             <h3>Uso principal</h3>
-            <p class="original-text" data-racial-field="usoPrincipal"></p>
+            <p class="racial-usage-lead" data-racial-field="usoPrincipal"></p>
+            <p class="racial-ability"><span>Facultad destacada</span><strong id="racial-ability-name"></strong></p>
           </article>
           <div class="profile-grid">
             <article class="result-card"><h3>Fortalezas</h3><p class="original-text" data-racial-field="fortalezas"></p></article>
             <article class="result-card"><h3>Debilidades</h3><p class="original-text" data-racial-field="debilidades"></p></article>
           </div>
-          <details class="result-card detail-disclosure">
-            <summary>Ver comentarios del perfil original</summary>
+          <section id="racial-comments" class="result-card racial-comments">
+            <h3>Cómo aprovechar esta raza</h3>
             <p class="original-text" data-racial-field="comentarios"></p>
-          </details>
+          </section>
           <section class="result-card" aria-labelledby="racial-recommended-title">
             <h3 id="racial-recommended-title">Dónde se recomienda esta raza</h3>
             <ul id="racial-recommended" class="racial-matches"></ul>
@@ -220,12 +250,12 @@
           </details>
         </section>
         <section id="skyborne-result" aria-labelledby="skyborne-title" hidden>
-          <p class="source-note">Perfil racial de beta, sujeto a cambios.</p>
           <article class="result-card recommendation">
             <h2 id="skyborne-title">Cielonato</h2>
+            <p class="eyebrow">Papel en combate masivo</p>
             <h3>Uso principal</h3>
-            <p id="skyborne-use" class="original-text">Movilidad situacional, celeridad y apoyo contra elementales.</p>
-            <p id="skyborne-beta-note" class="field-note"></p>
+            <p id="skyborne-use" class="racial-usage-lead">Movilidad situacional, celeridad y apoyo contra elementales.</p>
+            <p class="racial-ability"><span>Facultades destacadas</span><strong>Wind Blessed · Walk on Air</strong></p>
             <fieldset id="skyborne-faction" class="option-group" data-value="" data-icon-kind="faccion" disabled>
               <legend>Variante de facción</legend>
               <div class="option-buttons"></div>
@@ -248,15 +278,11 @@
               <p id="skyborne-limitation" class="original-text"></p>
             </article>
           </div>
-          <details id="skyborne-comments" class="result-card detail-disclosure">
-            <summary>Ver comentarios del perfil</summary>
+          <section id="skyborne-comments" class="result-card racial-comments">
+            <h3>Cómo aprovechar esta raza</h3>
             <p id="skyborne-criterion" class="original-text"></p>
-            <p class="field-note">Clases permitidas en la variante seleccionada</p>
+            <h4>Clases</h4>
             <p id="skyborne-classes" class="original-text"></p>
-          </details>
-          <section class="result-card" aria-labelledby="skyborne-recommended-title">
-            <h3 id="skyborne-recommended-title">Dónde se recomienda esta raza</h3>
-            <p id="skyborne-no-recommended" class="field-note">Cielonato no figura como recomendación principal en las combinaciones aprobadas.</p>
           </section>
           <section class="result-card" aria-labelledby="skyborne-alternatives-title">
             <h3 id="skyborne-alternatives-title">Dónde aparece como alternativa</h3>
@@ -264,7 +290,7 @@
             <p id="skyborne-no-alternatives" class="field-note" hidden>Las alternativas de Druida están pendientes de cargarse.</p>
           </section>
           <details id="skyborne-sources-panel" class="result-card detail-disclosure">
-            <summary>Fuentes y cambios de beta</summary>
+            <summary>Fuentes y revisiones</summary>
             <p id="skyborne-verification" class="field-note"></p>
             <p id="skyborne-wind-history" class="field-note"></p>
             <p id="skyborne-skysight-source" class="field-note"></p>
@@ -302,17 +328,21 @@
             <section class="profession-choice-main" id="profession-choice-main" aria-label="Profesiones recomendadas">
               <h3>Primera opción</h3>
               <p class="original-text" data-profession-field="principal"></p>
-              <div id="profession-reason-block">
-                <h3 id="profession-reason-title">Por qué se recomienda</h3>
-                <p class="original-text" data-profession-field="motivoPrincipal"></p>
+              <div class="profession-rationale">
+                <h3>Por qué elegir esta opción</h3>
+                <p id="profession-main-reason"></p>
               </div>
             </section>
             <section class="profession-choice-alternative" aria-label="Otras profesiones">
               <h3>Alternativa</h3>
               <p class="original-text" data-profession-field="alternativa"></p>
+              <div class="profession-rationale">
+                <h3>Cuándo elegir esta alternativa</h3>
+                <p id="profession-alt-reason"></p>
+              </div>
             </section>
           </div>
-          <section id="profession-shared-reason" class="profession-limitation" aria-label="Comparación de profesiones" hidden></section>
+          <span data-profession-field="motivoPrincipal" hidden></span>
           <div class="profession-limitation">
             <h3>Qué debes tener en cuenta</h3>
             <p class="original-text" data-profession-field="limitacion"></p>
