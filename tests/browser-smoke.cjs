@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v23`);
-      await cache.put("./obsolete-v23", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v24`);
+      await cache.put("./obsolete-v24", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -88,7 +88,17 @@ const server = http.createServer(async (req, res) => {
     await page.goto(base + "/");
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(base + "/#race-advisor");
+    assert(!/Excel/i.test(await page.locator("#advisor-view").innerText()),
+      "No internal spreadsheet references in Race Advisor");
     await page.locator('#faction button[data-value="Alianza"]').click();
+    assert.equal(await page.locator("#character-class button").count(), 9);
+    for (const width of [390, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      assert.equal(await page.locator("#character-class .option-buttons").evaluate((el) =>
+        getComputedStyle(el).gridTemplateColumns.split(" ").length), 3,
+        "Race Advisor nine classes align in 3 columns at " + width);
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#character-class button[data-value="Guerrero"]').click();
     await page.locator('#specialization button[data-value="Armas"]').click();
     assert.equal(await page.locator(".recommendation .detail-disclosure").getAttribute("open"), null,
@@ -96,16 +106,45 @@ const server = http.createServer(async (req, res) => {
     await page.locator(".recommendation .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
       "The original explanation is available after expanding");
-    assert.match(await page.locator("#advisor-result").textContent(), /Prioridad de esta combinación \(Excel\)/,
+    assert.match(await page.locator("#advisor-result").textContent(), /Prioridad para esta combinación/,
       "The recommendation rating is distinguished from general racial utility");
     await page.locator("#advisor-result > .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), true,
       "The general racial rating remains available");
     await page.goto(base + "/#raciales");
+    assert(!/Excel/i.test(await page.locator("#racial-view").innerText()),
+      "No internal spreadsheet references in Race Explorer");
+    for (const [width, expected] of [[390, 2], [1280, 4]]) {
+      await page.setViewportSize({ width, height: 844 });
+      assert.equal(await page.locator("#racial-race .option-buttons").evaluate((el) =>
+        getComputedStyle(el).gridTemplateColumns.split(" ").length), expected,
+        "Eight races align evenly at " + width);
+    }
+    const nineRaceCols = await page.locator("#racial-race .option-buttons").evaluate((grid) => {
+      const clone = grid.lastElementChild.cloneNode(true);
+      clone.dataset.value = "Cielonato";
+      grid.append(clone);
+      const count = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+      clone.remove();
+      return count;
+    });
+    assert.equal(nineRaceCols, 3, "Future nine-race layout is three columns");
+    await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#racial-race button[data-value="Gnomo"]').click();
     await page.locator("#racial-result .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-racial-field="comentarios"]').isVisible(), true,
       "The original racial comments remain accessible");
+    await page.goto(base + "/#profession-advisor");
+    assert(!/Excel/i.test(await page.locator("#profession-view").innerText()),
+      "No internal spreadsheet references in Profession Advisor");
+    await page.locator("#profession-class button").first().waitFor();
+    assert.equal(await page.locator("#profession-class button").count(), 9);
+    for (const width of [390, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      assert.equal(await page.locator("#profession-class .option-buttons").evaluate((el) =>
+        getComputedStyle(el).gridTemplateColumns.split(" ").length), 3,
+        "Profession Advisor nine classes align in 3 columns at " + width);
+    }
     await page.goto(base + "/");
     await page.evaluate(async () => {
       await navigator.serviceWorker.ready;
@@ -115,8 +154,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v24")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v23")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v25")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v24")), "Previous app cache removed after activation");
     await context.setOffline(true);
     await page.reload();
     await page.locator("#talent-advisor").click();

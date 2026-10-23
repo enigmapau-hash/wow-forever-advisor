@@ -336,3 +336,17 @@ cuando procede.
 Se mantiene el aspecto de v23, enlaces a módulos, navegación, comprobaciones
 offline y datos originales. Caché de PWA actualizada a **v24**; pendiente
 comprobación visual del usuario en PC y, por separado, en Android real.
+
+## Limpieza de interfaz y alineación de selectores — v25
+
+Los mensajes dirigidos al usuario en Race Advisor y Race Explorer dejan de
+referirse al **Excel** como material de trabajo. Se conserva internamente toda
+la trazabilidad, la exportación y sus pruebas. Las limitaciones de beta, la
+diferencia entre escalas de estrellas y la cobertura de ocho razas
+permanecen visibles.
+
+Las nueve clases se organizan en una cuadrícula centrada **3×3** en Race
+Advisor, Profession Advisor y Talent Advisor. Race Explorer muestra sus ocho
+razas en **4×2 en PC** y **2×4 en pantallas estrechas**; la hoja de estilos
+ya admite una novena raza con **3×3** sin dejar una tarjeta huérfana.
+Esto no cambia iconos, navegación ni datos. Caché PWA **v25**.

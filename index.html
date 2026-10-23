@@ -87,7 +87,7 @@
         <header class="selector-intro">
           <h1 id="advisor-title" tabindex="-1">Race Advisor</h1>
           <p class="subtitle">Elige facción, clase y especialización para consultar tu ficha.</p>
-          <p class="field-note">Cobertura del Excel: ocho razas originales. Cielonatos no incluidos.</p>
+          <p class="field-note">Se muestran las ocho razas clásicas; Cielonatos aún no incluidos.</p>
           <a class="button-link" id="explore-racials" href="#raciales">Explorar las 8 razas →</a>
         </header>
 
@@ -115,7 +115,7 @@
               </fieldset>
             </div>
           </div>
-          <p class="selection-status" id="selection-status" role="status">Cargando las fichas del Excel…</p>
+          <p class="selection-status" id="selection-status" role="status">Cargando recomendaciones…</p>
           <div id="data-error" role="alert" hidden>
             <p>No se han podido cargar las fichas. Comprueba tu conexión e inténtalo de nuevo. Para consultarlas sin conexión, completa primero una visita con conexión.</p>
             <button id="retry-data" type="button">Reintentar</button>
@@ -123,7 +123,7 @@
         </form>
 
         <section id="advisor-result" aria-labelledby="result-race" hidden>
-          <p class="source-note">Recomendación del Excel original, aún sin recalcular tras la beta. Las estrellas de prioridad de combinación y utilidad racial general representan criterios distintos y no son comparables.</p>
+          <p class="source-note">Recomendación orientativa pendiente de actualizar con el balance definitivo. La prioridad de combinación y la utilidad racial general son criterios distintos, no comparables.</p>
           <article class="result-card recommendation">
             <p class="eyebrow">Raza recomendada</p>
             <div class="recommendation-heading">
@@ -142,14 +142,14 @@
                   </div>
                 </dd>
               </div>
-              <div><dt>Prioridad de esta combinación (Excel)</dt><dd class="rating" data-field="prioridad"></dd></div>
+              <div><dt>Prioridad para esta combinación</dt><dd class="rating" data-field="prioridad"></dd></div>
             </dl>
-            <p class="field-note" id="no-alternative" hidden>«-» significa alternativa no facilitada en el Excel.</p>
+            <p class="field-note" id="no-alternative" hidden>No se dispone de una alternativa recomendada para esta combinación.</p>
             <h3>Motivo principal</h3>
             <p class="original-text" data-field="motivoPrincipal"></p>
             <details class="detail-disclosure">
               <summary>Ver explicación completa</summary>
-              <h3>Explicación del Excel</h3>
+              <h3>Explicación detallada</h3>
               <p class="original-text" data-field="explicacion"></p>
             </details>
           </article>
@@ -159,7 +159,7 @@
           </div>
           <details class="result-card detail-disclosure">
             <summary>Ver perfil racial completo</summary>
-            <h3>Utilidad general de la racial (Excel)</h3>
+            <h3>Utilidad racial general</h3>
             <p class="rating" data-field="escalaUtilidad"></p>
             <h3>Uso principal</h3>
             <p class="original-text" data-field="usoPrincipal"></p>
@@ -185,7 +185,7 @@
         <header class="selector-intro">
           <h1 id="racial-title" tabindex="-1">Race Explorer</h1>
           <p class="subtitle">Consulta el perfil original de cada raza.</p>
-          <p class="field-note">Ocho razas del Excel; «Elfo» corresponde al elfo de la noche. Cielonatos no incluidos.</p>
+          <p class="field-note">Ocho razas clásicas; «Elfo» corresponde al elfo de la noche. Cielonatos aún no incluidos.</p>
         </header>
         <div class="selector-card">
           <fieldset id="racial-race" class="option-group" data-value="" data-icon-kind="raza" disabled>
@@ -200,10 +200,10 @@
           </div>
         </div>
         <section id="racial-result" aria-labelledby="racial-name" hidden>
-          <p class="source-note">Perfil y estrellas del Excel original, sin recalcular. Los cambios oficiales de beta aparecen por separado.</p>
+          <p class="source-note">Valoración orientativa pendiente del balance definitivo. Los cambios oficiales de beta aparecen por separado.</p>
           <article class="result-card recommendation">
             <h2 id="racial-name"></h2>
-            <h3>Utilidad general de la racial (Excel)</h3>
+            <h3>Utilidad racial general</h3>
             <p class="rating" data-racial-field="escalaUtilidad"></p>
             <h3>Uso principal</h3>
             <p class="original-text" data-racial-field="usoPrincipal"></p>
@@ -224,12 +224,12 @@
           <section class="result-card" aria-labelledby="racial-recommended-title">
             <h3 id="racial-recommended-title">Dónde se recomienda esta raza</h3>
             <ul id="racial-recommended"></ul>
-            <p id="racial-no-recommended" class="field-note" hidden>No se recomienda esta raza en las combinaciones actuales del Excel.</p>
+            <p id="racial-no-recommended" class="field-note" hidden>Esta raza no figura como recomendación principal en las combinaciones actuales.</p>
           </section>
           <section class="result-card" aria-labelledby="racial-alternative-title">
             <h3 id="racial-alternative-title">Dónde aparece como alternativa</h3>
             <ul id="racial-alternative"></ul>
-            <p id="racial-no-alternative" class="field-note" hidden>No aparece como alternativa en las combinaciones actuales del Excel.</p>
+            <p id="racial-no-alternative" class="field-note" hidden>Esta raza no figura como alternativa en las combinaciones actuales.</p>
           </section>
         </section>
       </section>
