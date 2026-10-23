@@ -53,6 +53,10 @@ module.exports = async function testRedesign(page, base, offline = false) {
           "Perfil principal enlazado a Race Explorer");
         ensure(main.querySelector("#result-race").closest("a")?.id === "primary-profile-link",
           "La imagen y el nombre comparten el enlace racial");
+        ensure(document.getElementById("primary-ability-name").textContent ===
+          abilities[row.razaRecomendada], "Habilidad racial visible de principal: " + row.razaRecomendada);
+        ensure(!document.querySelector(".race-result-intro").textContent.includes("Orientación de beta"),
+          "El encabezado no incluye aviso repetitivo");
         ensure(document.getElementById("primary-profile") === null
           && document.getElementById("alternative-details") === null,
           "No hay desplegables con textos raciales repetidos");
@@ -72,8 +76,10 @@ module.exports = async function testRedesign(page, base, offline = false) {
             "Habilidad racial de la alternativa coherente con su facción: " + alt);
           ensure(document.getElementById("alternative-use").textContent.trim().length > 0,
             "Alternativa explicada");
-          ensure(document.getElementById("alternative-scope").textContent ===
-            (extra ? "En esta especialización" : "Ventaja racial general"), "Alcance de la alternativa honesto");
+          const scope = document.getElementById("alternative-scope");
+          ensure(scope.hidden === !extra && scope.textContent ===
+            (extra ? "En esta especialización" : ""),
+            "Solo se identifica el alcance especializado de Cielonato");
           ensure(document.getElementById("alternative-race-link").dataset.race === alt
             && alternative.querySelector("#alternative-name").closest("a")?.id === "alternative-race-link",
             "Imagen y nombre de alternativa enlazados");
@@ -93,16 +99,18 @@ module.exports = async function testRedesign(page, base, offline = false) {
             & Node.DOCUMENT_POSITION_FOLLOWING), "Comparativa antes de addons");
           const a = main.getBoundingClientRect(), b = alternative.getBoundingClientRect();
           ensure(width < 960 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
-          ensure(width < 960 || (a.width >= b.width * 1.8 && a.right <= b.left + 1),
-            "Principal ocupa aproximadamente dos tercios y alternativa queda a la derecha");
+          ensure(width < 960 || (a.width / b.width >= 1.55 && a.width / b.width <= 1.75
+            && a.right <= b.left + 1),
+            "Principal ligeramente más ancha, con proporción equilibrada");
           ensure(width < 960 || Math.abs(a.height - b.height) <= 1,
             "Ambas tarjetas tienen la misma altura en escritorio a " + width);
         } else {
           ensure(!document.getElementById("alternative-race-icon").hasAttribute("src"), "Sin icono ficticio o residual");
           ensure(document.getElementById("race-comparison").hidden
             && document.querySelectorAll("#race-comparison-conclusion-text > p").length === 0
-            && document.getElementById("alternative-ability-name").textContent === "",
-            "Sin comparativa ni habilidad residual cuando no existe una alternativa");
+            && document.getElementById("alternative-ability-name").textContent === ""
+            && document.getElementById("alternative-scope").hidden,
+            "Sin comparativa ni contenido residual cuando no existe alternativa");
         }
         ensure(document.documentElement.scrollWidth <= innerWidth, `Sin desbordamiento ${width}`);
         for (const label of document.querySelectorAll('#character-class .option-label, #specialization .option-label')) {
