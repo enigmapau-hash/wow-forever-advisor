@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "tipo": "evaluacion_editorial_druida",
+  "estado": "aprobado_usuario",
+  "base": {
+    "archivo": "Clases WoW Forever v5.xlsx",
+    "sha256": "ffb510a623c83fa440eb9612cc9b8ab7a02d67a036bbeab14c858e811ffab2ec",
+    "fichas": 51
+  },
+  "revision": {
+    "fecha": "2026-10-23",
+    "criterios": "PvP masivo, mundo abierto, control de masas, supervivencia, movilidad, reposicionamiento, sinergia de especialización y nivel 60; no DPS puro ni arenas",
+    "limites": "Conclusiones editoriales de beta. Sin pruebas comparativas concluyentes al nivel 60. No se crean puntuaciones nuevas."
+  },
+  "documentacion": "docs/druid-race-assessment-v29.md",
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "usoAlternativa": "Aporta celeridad y regeneración situacional, sin reemplazar la preparación posicional y movilidad de Elfo.",
+      "motivoComparacion": "+3 % de celeridad y Read Ley Line pueden ayudar a sostener lanzamientos y regeneración entre ventanas. No se ha verificado una superioridad defensiva frente a la movilidad y ocultación de Elfo."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "usoAlternativa": "Celeridad continua y planeo situacional como complemento a Feral; Elfo ofrece mejor sinergia táctica.",
+      "motivoComparacion": "La celeridad de Wind Blessed y Walk on Air aportan opciones puntuales, pero no sustituyen la preparación con Shadowmeld, la esquiva ni la movilidad de Elfo en la entrada y retirada."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "usoAlternativa": "Regeneración de salud y maná y celeridad potencialmente útiles en pausas de curación; condiciones en combate pendientes de verificar.",
+      "motivoComparacion": "Read Ley Line y la celeridad pueden sostener la asistencia, pero su efecto efectivo al lanzar hechizos bajo presión está pendiente de comprobarse. Elfo conserva la prioridad por movilidad y preparación defensiva."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "usoAlternativa": "Movilidad activable y celeridad para reposicionamiento y continuidad de lanzamientos; War Stomp aporta control defensivo más directo.",
+      "motivoComparacion": "Skysight favorece la movilidad y Wind Blessed los lanzamientos, pero War Stomp de Tauren permite frenar perseguidores cercanos para reconstruir distancia en PvP masivo."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "usoAlternativa": "Celeridad y velocidad temporal para entradas o persecución; acumulación con formas de druida pendiente de probar.",
+      "motivoComparacion": "Skysight puede ayudar a perseguir o retirarse, pero su acumulación con las formas felina y de viaje requiere contraste. Tauren conserva la prioridad por War Stomp y supervivencia de primera línea."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "usoAlternativa": "Celeridad y desplazamiento temporal al buscar cobertura y aliados; War Stomp de Tauren mantiene ventaja defensiva inmediata.",
+      "motivoComparacion": "Wind Blessed y Skysight pueden favorecer curación y retirada, pero su combinación con formas druídicas sigue sin confirmar. War Stomp ofrece una ventana de control inmediata al sanador bajo presión."
+    }
+  ]
+}
