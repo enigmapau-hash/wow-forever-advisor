@@ -12,7 +12,12 @@ module.exports = async function testRedesign(page, base, offline = false) {
         read("race-advisor"), read("race-advisor-additions"),
         read("race-advisor-druid-alternatives"), read("racials"),
       ]);
-      const display = (text) => text.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche");
+      const display = (text) => text === "Elfo" ? "Elfo de la noche" : text
+        .replace(/, denominado Elfo en la base/g, "")
+        .replace(/\bFrente a Elfo\b/g, "Frente al elfo de la noche")
+        .replace(/\bde Elfo\b/g, "del elfo de la noche")
+        .replace(/\bElfo ofrece\b/g, "El elfo de la noche ofrece")
+        .replace(/\bElfo conserva\b/g, "El elfo de la noche conserva");
       const choose = (id, value) => document.querySelector(`#${id} button[data-value="${value}"]`).click();
       const ensure = (ok, message) => { if (!ok) throw new Error(message); };
       let count = 0;
@@ -30,7 +35,12 @@ module.exports = async function testRedesign(page, base, offline = false) {
         const explanation = main.querySelector('[data-field="explicacion"]');
         ensure(explanation.textContent === display(row.explicacion) && explanation.getClientRects().length > 0, "Explicación original visible");
         ensure(alternative.hidden === (alt === "-"), "Sin tarjeta vacía");
-        ensure(document.getElementById("alternative-empty").hidden === (alt !== "-"), "Motivo de alternativa ausente");
+        const noAlternative = document.getElementById("alternative-empty");
+        ensure(noAlternative.hidden === (alt !== "-"), "Motivo de alternativa ausente");
+        ensure(Boolean(main.querySelector('[data-field="motivoPrincipal"]').hidden), "Motivo fuente conservado sin duplicarse visualmente");
+        ensure(Boolean(main.querySelector('[data-field="explicacion"]').getClientRects().length), "Justificación visible");
+        ensure(noAlternative.compareDocumentPosition(main.querySelector("#primary-reason-label")) & Node.DOCUMENT_POSITION_FOLLOWING,
+          "Aviso de alternativa ausente cerca de cabecera");
         ensure(document.getElementById("primary-profile-label").textContent === `Perfil de ${display(row.razaRecomendada)}`, "Perfil identificado por raza");
         const profile = profiles.raciales.find((p) => p.raza === row.razaRecomendada);
         for (const key of ["fortalezas", "debilidades", "comentarios"]) {
@@ -41,6 +51,11 @@ module.exports = async function testRedesign(page, base, offline = false) {
           ensure(alternative.querySelector('[data-field="alternativa"]').textContent === display(alt), "Alternativa intacta");
           ensure(document.getElementById("alternative-race-icon").getAttribute("src") === self.WOW_ICON_MAP.raza[alt], "Icono de alternativa correcto");
           ensure(document.getElementById("alternative-use").textContent.trim().length > 0, "Alternativa explicada");
+          ensure(document.getElementById("alternative-scope").textContent ===
+            (extra ? "En esta especialización" : "Ventaja racial general"), "Alcance de la alternativa honesto");
+          ensure(document.getElementById("alternative-detail-text").textContent === display(extra
+            ? extra.motivoComparacion : profiles.raciales.find((p) => p.raza === alt).debilidades),
+            "El detalle evita repetición o comparaciones inexistentes");
           const a = main.getBoundingClientRect(), b = alternative.getBoundingClientRect();
           ensure(width < 768 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
           ensure(width < 768 || a.width > b.width, "Principal más grande en escritorio");
@@ -87,6 +102,10 @@ module.exports = async function testRedesign(page, base, offline = false) {
       document.querySelector(`#profession-class button[data-value="${row.clase}"]`).click();
       document.querySelector(`#profession-buttons button[data-value="${row.especializacion}"]`).click();
       if (document.getElementById("profession-result").hidden) throw new Error("Ficha de profesiones ausente");
+      if (!document.querySelector(".profession-choice-main [data-profession-field='principal']")
+          || !document.querySelector(".profession-choice-alternative [data-profession-field='alternativa']")) {
+        throw new Error("Profesiones sin jerarquía principal/alternativa");
+      }
       for (const field of document.querySelectorAll("[data-profession-field]")) {
         const value = row[field.dataset.professionField];
         if (field.textContent !== (Array.isArray(value) ? value.join(" + ") : value)) throw new Error("Profesiones alteradas");
@@ -95,5 +114,5 @@ module.exports = async function testRedesign(page, base, offline = false) {
     return data.fichas.length;
   });
   assert.equal(professions, 27);
-  console.log(`v32 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, iconos, Elfo, versión y 27 profesiones: OK`);
+  console.log(`v33 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
 };
