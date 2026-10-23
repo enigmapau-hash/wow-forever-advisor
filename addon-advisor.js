@@ -100,8 +100,13 @@ const AddonAdvisor = (() => {
       for (const { addon, motivo } of matches) {
         const p = element("p");
         p.append(element("strong", addon.nombre), document.createTextNode(" · " + motivo));
-        host.append(p, element("p", states[addon.estado] + (addon.pruebaForever
-          ? ". Consulta el alcance de la prueba en el catálogo." : ". Sin prueba en el juego registrada."), "field-note"));
+        host.append(p);
+      }
+      const untested = matches.filter(({ addon }) => !addon.pruebaForever).length;
+      if (untested) {
+        host.append(element("p", untested === matches.length
+          ? "Ninguno de estos addons tiene prueba independiente registrada aquí."
+          : "Algunos de estos addons no tienen prueba independiente registrada aquí.", "field-note"));
       }
       const a = element("a", "Ver fuentes y limitaciones en Addon Advisor →");
       a.href = "#addon-advisor";
@@ -113,27 +118,27 @@ const AddonAdvisor = (() => {
   }
 
   let catalog = null;
-  let filter = "Para empezar";
+  let filter = "Selección inicial";
   let busy = false;
   function render() {
     const matches = catalog.addons.filter((a) => filter === "Todos"
-      || (filter === "Para empezar" ? a.imprescindible : a.categoria === filter));
+      || (filter === "Selección inicial" ? a.imprescindible : a.categoria === filter));
     const host = document.getElementById("addon-results");
     host.replaceChildren(...matches.map((a) => {
       const card = element("article", "", "result-card");
       card.dataset.addonId = a.id;
       card.append(element("p", a.categoria + (a.recomendacion === "en_observacion" ? " · En observación" : " · Según tu necesidad"), "eyebrow"),
         element("h2", a.nombre), element("p", "Autor: " + a.autor, "field-note"),
-        element("p", a.finalidad), element("p", states[a.estado], "addon-state"),
-        element("p", "Prueba real en Forever: " + (a.pruebaForever
-          ? a.pruebaForever.alcance : "sin evidencia registrada; no se afirma probado."), "field-note"));
+        element("p", a.finalidad), element("p", states[a.estado], "addon-state"));
       if (a.recomendacion === "en_observacion") card.append(element("p", a.limite, "source-note"));
       card.append(element("p", "Revisado: " + a.fechaRevision, "field-note"), link(a.fuentes[0]));
       const details = element("details", "", "addon-details");
       details.append(element("summary", "Versión, evidencia y limitaciones"),
         element("p", a.version ? `Archivo revisado: ${a.version} · ${a.fechaPublicacion} · Cliente ${a.versionCliente}`
           : "Archivo específico de Forever: pendiente de verificar.", "field-note"),
-        element("p", a.evidencia));
+        element("p", a.evidencia),
+        element("p", "Prueba independiente: " + (a.pruebaForever
+          ? a.pruebaForever.alcance : "no registrada"), "field-note"));
       if (a.recomendacion !== "en_observacion") details.append(element("p", a.limite, "source-note"));
       const affinities = [...a.afinidad.clases, ...a.afinidad.razas, ...a.afinidad.profesiones, ...a.afinidad.actividades];
       details.append(element("p", "Útil para: " + affinities.join(" · "), "field-note"));
@@ -160,7 +165,7 @@ const AddonAdvisor = (() => {
     try {
       catalog = await load();
       const filters = document.getElementById("addon-filters");
-      filters.replaceChildren(...["Para empezar", "Todos", ...categories].map((name) => {
+      filters.replaceChildren(...["Selección inicial", "Todos", ...categories].map((name) => {
         const button = element("button", name);
         button.type = "button";
         button.setAttribute("aria-pressed", String(filter === name));
