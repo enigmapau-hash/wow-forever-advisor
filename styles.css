@@ -341,6 +341,10 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 #talent-title:focus { outline: none; }
 
 
+/* F01: conservar palabras completas en los selectores de Talent y Profession. */
+#talent-view .option-label,
+#profession-view .option-label { overflow-wrap: normal; word-break: normal; hyphens: none; }
+
 /* Addon Advisor: conserva las tarjetas y la paleta compartidas. */
 .addon-state { color: var(--gold); margin-top: 1rem; font-weight: 600; }
 .addon-context { border-top: 1px solid var(--gold); margin-top: 1.5rem; }
@@ -373,6 +377,10 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 #racial-race .option-buttons:has(> button:nth-child(9)) {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   max-width: 38rem;
+}
+@media (max-width: 25rem) {
+  #talent-view .option-buttons,
+  #profession-view .option-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 40rem) {
   #racial-race .option-buttons {
@@ -442,11 +450,14 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 #race-addons { background: none; border: 0; border-top: 1px solid #526255; border-radius: 0; padding: 1.25rem 0 0; }
 #race-addons h3 { font-size: 0.95rem; color: #c6d1c7; }
 #advisor-result { scroll-margin-top: 1.25rem; }
+/* F02: evitar una columna de comparación demasiado estrecha en tablet. */
 @media (min-width: 48rem) {
+  .race-choices > .result-card { padding: 1.75rem; }
+}
+@media (min-width: 60rem) {
   .race-choices:has(> .alternative-choice:not([hidden])) {
     grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
   }
-  .race-choices > .result-card { padding: 1.75rem; }
 }
 @media (max-width: 40rem) {
   .option-buttons .option-label { font-size: 0.9rem; }
@@ -462,4 +473,30 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   #specialization .option-buttons { grid-template-columns: 1fr; }
   #specialization button { flex-direction: row; justify-content: flex-start; gap: 0.75rem; min-height: 3.5rem; padding: 0.5rem 0.75rem; }
   #specialization .option-icon { width: 2rem; height: 2rem; }
+}
+
+/* F06–F07: mejor aprovechamiento del ancho móvil sin cambiar la paleta. */
+@media (max-width: 40rem) {
+  #profession-result { padding: 1rem; }
+  #profession-result .profession-choice-main,
+  #profession-result .profession-choice-alternative { padding: 0.875rem; }
+  #profession-addons .addon-details { margin-top: 0.5rem; }
+  #profession-addons .addon-details summary { color: var(--gold); font-weight: 600; }
+  #addon-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  #addon-filters button {
+    width: 100%;
+    min-width: 0;
+    min-height: 2.75rem;
+    margin: 0;
+    padding: 0.5rem 0.4rem;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.875rem;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
 }

@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v32`);
-      await cache.put("./obsolete-v32", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v33`);
+      await cache.put("./obsolete-v33", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -137,6 +137,17 @@ const server = http.createServer(async (req, res) => {
     await page.locator("#alternative-details summary").click();
     assert.equal(await page.locator("#alternative-detail-text").isVisible(), true,
       "La justificación completa sigue disponible");
+    for (const width of [320, 390, 820, 1280]) {
+      await page.setViewportSize({ width, height: 900 });
+      const columns = await page.locator(".race-choices").evaluate((el) =>
+        getComputedStyle(el).gridTemplateColumns.split(" ").length);
+      assert.equal(columns, width < 960 ? 1 : 2,
+        "F02: comparación apilada hasta 960px y de dos columnas en escritorio a " + width);
+      assert.equal(await page.locator("#alternative-detail-text").isVisible(), true,
+        "F02: detalle expandido legible después de cambiar anchura");
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        "F02: sin desbordamiento horizontal a " + width);
+    }
     await page.locator('#faction button[data-value="Horda"]').click();
     await page.locator('#character-class button[data-value="Paladín"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
@@ -171,11 +182,44 @@ const server = http.createServer(async (req, res) => {
     assert.deepEqual(await page.locator("#profession-class button").evaluateAll(
       (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
     "Profession Advisor comparte las nueve posiciones alfabéticas");
-    for (const width of [390, 1280]) {
+    for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.locator("#profession-class .option-buttons").evaluate((el) =>
-        getComputedStyle(el).gridTemplateColumns.split(" ").length), 3,
-        "Profession Advisor nine classes align in 3 columns at " + width);
+        getComputedStyle(el).gridTemplateColumns.split(" ").length), width <= 400 ? 2 : 3,
+        "Profession Advisor keeps readable columns at " + width);
+    }
+    for (const module of ["talent", "profession"]) {
+      await page.goto(`${base}/#${module}-advisor`);
+      await page.locator(`#${module}-class button[data-value="Brujo"]`).click();
+      for (const width of [320, 390, 820, 1280]) {
+        await page.setViewportSize({ width, height: 844 });
+        const splitWords = await page.locator(`#${module}-view .option-label`).evaluateAll((labels) =>
+          labels.flatMap((label) => [...label.textContent.matchAll(/\S+/gu)].filter((match) => {
+            const range = document.createRange();
+            range.setStart(label.firstChild, match.index);
+            range.setEnd(label.firstChild, match.index + match[0].length);
+            return new Set([...range.getClientRects()].map((rect) => Math.round(rect.top))).size > 1;
+          }).map((match) => match[0])));
+        assert.deepEqual(splitWords, [], `F01: no split words in ${module} at ${width}`);
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+          `F01: no horizontal overflow in ${module} at ${width}`);
+        assert.equal(await page.locator(`#${module}-class button[data-value="Brujo"]`).getAttribute("aria-pressed"), "true",
+          "F01: resizing preserves selection");
+        assert.deepEqual(await page.locator(`#${module}-class button`).evaluateAll(
+          (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+        "F01: resizing preserves class order");
+      }
+    }
+    await page.locator('#profession-class button[data-value="Cazador"]').click();
+    await page.locator('#profession-buttons button[data-value="Supervivencia"]').click();
+    for (const width of [320, 390, 820, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      const padding = await page.locator("#profession-result").evaluate((el) =>
+        parseFloat(getComputedStyle(el).paddingLeft));
+      assert(width > 640 || padding <= 16,
+        "F06: margen interior del resultado reducido en móvil a " + width);
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        "F06: sin desbordamiento de profesión a " + width);
     }
     await page.goto(base + "/");
     await page.evaluate(async () => {
@@ -186,8 +230,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v33")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v32")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v34")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v33")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

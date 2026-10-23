@@ -76,7 +76,7 @@ class EditorialV33Tests(unittest.TestCase):
         addons = (ROOT / "addon-advisor.js").read_text(encoding="utf-8")
         self.assertIn('element("p", "Revisado: " + a.fechaRevision, "field-note")', addons)
         version = (ROOT / "version.js").read_text(encoding="utf-8")
-        self.assertIn('self.WOW_PWA_VERSION = "v33"', version)
+        self.assertIn('self.WOW_PWA_VERSION = "v34"', version)
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
         self.assertIn('importScripts("./version.js")', sw)
         self.assertIn('${CACHE_PREFIX}${self.WOW_PWA_VERSION}', sw)

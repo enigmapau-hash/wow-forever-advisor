@@ -96,21 +96,32 @@ const AddonAdvisor = (() => {
       const matches = related(data, selection);
       if (!matches.length) return;
       const host = document.getElementById(id);
-      host.append(element("h3", "Addons relacionados · opcional"));
+      const untested = matches.filter(({ addon }) => !addon.pruebaForever).length;
+      // F06: en Profession la información opcional se consulta sin alargar la ficha.
+      // Mostrar la ausencia de pruebas incluso cuando el bloque está cerrado.
+      const professionDetails = id === "profession-addons"
+        ? element("details", "", "addon-details") : null;
+      const content = professionDetails || host;
+      if (professionDetails) {
+        const warning = untested ? " · sin prueba independiente" : "";
+        professionDetails.append(element("summary", `Addons relacionados · opcional${warning}`));
+        host.append(professionDetails);
+      } else {
+        host.append(element("h3", "Addons relacionados · opcional"));
+      }
       for (const { addon, motivo } of matches) {
         const p = element("p");
         p.append(element("strong", addon.nombre), document.createTextNode(" · " + motivo));
-        host.append(p);
+        content.append(p);
       }
-      const untested = matches.filter(({ addon }) => !addon.pruebaForever).length;
       if (untested) {
-        host.append(element("p", untested === matches.length
+        content.append(element("p", untested === matches.length
           ? "Ninguno de estos addons tiene prueba independiente registrada aquí."
           : "Algunos de estos addons no tienen prueba independiente registrada aquí.", "field-note"));
       }
       const a = element("a", "Ver fuentes y limitaciones en Addon Advisor →");
       a.href = "#addon-advisor";
-      host.append(a);
+      content.append(a);
       host.hidden = false;
     } catch {
       // El catálogo opcional nunca impide consultar las fichas originales.
@@ -150,7 +161,7 @@ const AddonAdvisor = (() => {
       card.append(details);
       return card;
     }));
-    document.getElementById("addon-status").textContent = `${matches.length} addons · ${filter}.`;
+    document.getElementById("addon-status").textContent = `${matches.length} ${matches.length === 1 ? "addon" : "addons"} · ${filter}.`;
   }
 
   async function open() {

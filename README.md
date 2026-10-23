@@ -1,6 +1,6 @@
 # wow-forever-advisor
 
-## Versión actual · v33
+## Versión actual · v34
 
 Race Advisor conserva **54 fichas**: 51 recomendaciones originales y tres
 adiciones de Paladín Horda; las seis alternativas de Druida siguen siendo
@@ -20,7 +20,8 @@ le asigna foco accesible.
 gramaticales del texto son puntuales y no alteran el valor interno `Elfo`.
 Profession Advisor diferencia visualmente la primera pareja de la alternativa;
 Talent y Addon Advisor reducen avisos repetidos, conservando limitaciones y
-fuentes importantes. La revisión visual del usuario sigue pendiente.
+fuentes importantes. En v34 se mejoran los selectores de 320 px, la comparación
+racial a 820 px, los motivos de profesiones y los filtros de addons.
 
 `version.js` es la fuente única de versión para el pie y la caché del service
 worker. Al preparar una actualización, modificar ese archivo y comprobar la
@@ -40,7 +41,7 @@ El runner requiere Playwright y Chromium (instalación descrita más abajo).
 Recorre las 54 fichas raciales, 81 de talentos y 27 de profesiones, también
 offline. Comprueba la jerarquía en 320, 390, 820 y 1280 px. Las decisiones y la
 inspección visual de v32 se documentan en [la revisión](docs/v32-race-redesign.md).
-La validación técnica no implica aprobación visual del usuario.
+La v34 ha sido autorizada para publicación tras validar la integración de los tres bloques.
 Los ajustes editoriales v33 y sus criterios se documentan en
 [la revisión independiente](docs/v33-editorial-review.md); la auditoría
 [#37](https://github.com/enigmapau-hash/wow-forever-advisor/issues/37)

@@ -57,8 +57,8 @@ module.exports = async function testRedesign(page, base, offline = false) {
             ? extra.motivoComparacion : profiles.raciales.find((p) => p.raza === alt).debilidades),
             "El detalle evita repetición o comparaciones inexistentes");
           const a = main.getBoundingClientRect(), b = alternative.getBoundingClientRect();
-          ensure(width < 768 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
-          ensure(width < 768 || a.width > b.width, "Principal más grande en escritorio");
+          ensure(width < 960 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
+          ensure(width < 960 || a.width > b.width, "Principal más grande en escritorio");
         } else {
           ensure(!document.getElementById("alternative-race-icon").hasAttribute("src"), "Sin icono ficticio o residual");
         }
@@ -120,5 +120,5 @@ module.exports = async function testRedesign(page, base, offline = false) {
     return data.fichas.length;
   });
   assert.equal(professions, 27);
-  console.log(`v33 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
+  console.log(`v34 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
 };
