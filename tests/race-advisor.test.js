@@ -4,6 +4,12 @@ const runButton = document.getElementById("run-tests");
 const report = document.getElementById("test-report");
 const frame = document.getElementById("app-under-test");
 
+const expectedClassOrder = [
+  "Brujo", "Cazador", "Chamán", "Druida", "Guerrero",
+  "Mago", "Paladín", "Pícaro", "Sacerdote",
+];
+const buttonOrder = (group) => [...group.querySelectorAll("button")].map((button) => button.dataset.value);
+
 const shownAlternative = (row) => row.alternativa !== "-" ? row.alternativa
   : row.faccion === "Alianza" && row.clase === "Chamán"
     ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
@@ -87,6 +93,8 @@ runButton.addEventListener("click", async () => {
       check([...result.querySelectorAll("[data-field]")].every((field) => field.textContent === ""), `${key}: sin texto residual`);
       const factionRows = allRows.filter((row) => row.faccion === record.faccion);
       check(sameOptions(characterClass, factionRows.map((row) => row.clase)), `${key}: clases exactas`);
+      check(JSON.stringify(buttonOrder(characterClass)) === JSON.stringify(expectedClassOrder),
+        `${key}: la cuadrícula de clases conserva el mismo orden alfabético en las dos facciones`);
       choose(characterClass, record.clase);
       check(spec.dataset.value === "" && !spec.disabled && result.hidden, `${key}: limpiar al cambiar clase`);
       check(sameOptions(spec, factionRows.filter((row) => row.clase === record.clase).map((row) => row.especializacion)), `${key}: especializaciones exactas`);
@@ -402,6 +410,8 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
     await open("back-home", "home-view");
     await open("profession-advisor", "profession-view");
     await waitFor(() => doc.querySelectorAll("#profession-class button").length === 9);
+    check(JSON.stringify(buttonOrder(doc.getElementById("profession-class"))) ===
+      JSON.stringify(expectedClassOrder), "Profession Advisor comparte el orden alfabético de las clases");
     doc.querySelector("#profession-class button").click();
     doc.querySelector("#profession-buttons button").click();
     const professionText = snapshot("profession-result");
