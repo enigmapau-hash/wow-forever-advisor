@@ -133,6 +133,7 @@
             <p id="alternative-empty" class="race-no-alternative" hidden></p>
             <h3 id="primary-reason-label">Por qué elegir esta raza</h3>
             <p class="original-text race-explanation" data-field="explicacion"></p>
+            <span data-field="motivoPrincipal" hidden></span>
             <span data-field="prioridad" hidden></span>
           </article>
           <aside id="alternative-profile" class="result-card alternative-choice" aria-labelledby="alternative-name" hidden>
@@ -222,12 +223,12 @@
           </details>
           <section class="result-card" aria-labelledby="racial-recommended-title">
             <h3 id="racial-recommended-title">Dónde se recomienda esta raza</h3>
-            <ul id="racial-recommended"></ul>
+            <ul id="racial-recommended" class="racial-matches"></ul>
             <p id="racial-no-recommended" class="field-note" hidden>Esta raza no figura como recomendación principal en las combinaciones actuales.</p>
           </section>
           <section class="result-card" aria-labelledby="racial-alternative-title">
             <h3 id="racial-alternative-title">Dónde aparece como alternativa</h3>
-            <ul id="racial-alternative"></ul>
+            <ul id="racial-alternative" class="racial-matches"></ul>
             <p id="racial-no-alternative" class="field-note" hidden>Esta raza no figura como alternativa en las combinaciones actuales.</p>
           </section>
         </section>
@@ -252,7 +253,7 @@
             </section>
             <section aria-labelledby="skyborne-alternatives-title">
               <h3 id="skyborne-alternatives-title">Dónde se recomienda como alternativa</h3>
-              <ul id="skyborne-alternatives"></ul>
+              <ul id="skyborne-alternatives" class="racial-matches"></ul>
               <p id="skyborne-no-alternatives" class="field-note" hidden>Las alternativas de Druida están pendientes de cargarse.</p>
             </section>
             <details class="detail-disclosure">
