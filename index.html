@@ -144,7 +144,7 @@
             <span data-field="prioridad" hidden></span>
           </article>
           <aside id="alternative-profile" class="result-card alternative-choice" aria-labelledby="alternative-name" hidden>
-            <p class="eyebrow">Alternativa</p>
+            <p class="eyebrow">Raza alternativa</p>
             <a id="alternative-race-link" href="#raciales" class="race-heading-link" aria-label="Consultar perfil racial alternativo">
               <div class="recommendation-heading">
                 <img id="alternative-race-icon" alt="" width="40" height="40" hidden>
@@ -152,8 +152,11 @@
                 <span class="race-heading-arrow" aria-hidden="true">↗</span>
               </div>
             </a>
-            <p id="alternative-scope" class="alternative-scope"></p>
-            <p id="alternative-use" class="original-text"></p>
+            <div class="alternative-racial-summary">
+              <p id="alternative-scope" class="alternative-scope"></p>
+              <p class="alternative-ability"><span>Habilidad racial</span><strong id="alternative-ability-name"></strong></p>
+              <p id="alternative-use" class="original-text"></p>
+            </div>
           </aside>
           </div>
           <section id="race-comparison" class="race-comparison" aria-labelledby="race-comparison-title" hidden>
@@ -175,7 +178,7 @@
             </div>
             <div class="race-comparison-conclusion">
               <h4 id="race-comparison-conclusion-title">Conclusión para esta especialización</h4>
-              <p id="race-comparison-conclusion-text"></p>
+              <div id="race-comparison-conclusion-text" class="race-conclusion-paragraphs"></div>
             </div>
           </section>
           <aside id="race-addons" class="result-card addon-context" hidden></aside>

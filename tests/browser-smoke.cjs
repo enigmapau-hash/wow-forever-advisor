@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v35`);
-      await cache.put("./obsolete-v35", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v36`);
+      await cache.put("./obsolete-v36", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -136,6 +136,12 @@ const server = http.createServer(async (req, res) => {
       "No hay desplegable de comparación redundante");
     assert.equal(await page.locator("#alternative-use").isVisible(), true,
       "La alternativa tiene una explicación única y legible");
+    assert.equal(await page.locator("#alternative-profile > .eyebrow").textContent(), "Raza alternativa",
+      "Nombre completo de la tarjeta secundaria");
+    assert.equal(await page.locator("#alternative-ability-name").textContent(), "Read Ley Line",
+      "La variante de Alianza identifica su habilidad específica");
+    assert.equal(await page.locator("#race-comparison-conclusion-text > p").count(), 2,
+      "La conclusión queda dividida en dos párrafos");
     assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
       "La alternativa enlaza con su perfil completo");
     assert.equal(await page.locator("#race-comparison").isVisible(), true,
@@ -151,6 +157,14 @@ const server = http.createServer(async (req, res) => {
         "F02: comparación apilada hasta 960px y de dos columnas en escritorio a " + width);
       assert.equal(await page.locator("#alternative-use").isVisible(), true,
         "Explicación de alternativa visible después de cambiar anchura");
+      if (width >= 960) {
+        const [mainHeight, alternateHeight] = await Promise.all([
+          page.locator("#primary-choice").evaluate((el) => el.getBoundingClientRect().height),
+          page.locator("#alternative-profile").evaluate((el) => el.getBoundingClientRect().height),
+        ]);
+        assert(Math.abs(mainHeight - alternateHeight) < 1,
+          "Tarjetas de igual altura al mostrarse lado a lado");
+      }
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         "F02: sin desbordamiento horizontal a " + width);
     }
@@ -235,8 +249,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v36")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v35")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v37")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v36")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

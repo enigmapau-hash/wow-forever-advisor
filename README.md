@@ -1,17 +1,18 @@
 # wow-forever-advisor
 
-## Versión actual · v36
+## Versión actual · v37
 
 Race Advisor conserva **54 fichas**: 51 recomendaciones originales y tres
 adiciones de Paladín Horda; las seis alternativas de Druida siguen siendo
 Cielonato. Se mantienen intactos el Excel maestro, sus identificadores y todos
 los JSON de clasificación.
 
-En v36, Race Advisor mantiene la principal de mayor tamaño a la izquierda
+En v37, Race Advisor mantiene la principal de mayor tamaño a la izquierda
 y la alternativa más pequeña a la derecha en escritorio; ambas se apilan en
 móvil. Sus iconos y nombres enlazan con el perfil racial de Race Explorer.
 Debajo aparece un tercer cuadro independiente de ventajas, límites y
-conclusión por pareja racial. Los 54 casos conservan su clasificación
+conclusión separada en dos párrafos, uno por raza. Ambas tarjetas tienen la
+misma altura en escritorio; la alternativa identifica su facultad racial. Los 54 casos conservan su clasificación
 original y las seis alternativas de Druida siguen siendo Cielonato.
 Los addons y las fuentes quedan después de las recomendaciones.
 
@@ -46,7 +47,7 @@ El runner requiere Playwright y Chromium (instalación descrita más abajo).
 Recorre las 54 fichas raciales, 81 de talentos y 27 de profesiones, también
 offline. Comprueba la jerarquía en 320, 390, 820 y 1280 px. Las decisiones y la
 inspección visual de v32 se documentan en [la revisión](docs/v32-race-redesign.md).
-La v36 mejora la comparativa y jerarquía de Race Advisor, los perfiles raciales y las explicaciones de profesiones; publicación autorizada por el usuario.
+La v37 perfecciona las tarjetas de Race Advisor, su tipografía, contraste y conclusiones; se conservan las mejoras previas de Race Explorer y Profession Advisor.
 Los ajustes editoriales v33 y sus criterios se documentan en
 [la revisión independiente](docs/v33-editorial-review.md); la auditoría
 [#37](https://github.com/enigmapau-hash/wow-forever-advisor/issues/37)

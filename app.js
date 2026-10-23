@@ -132,6 +132,7 @@ function clearResult() {
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
   document.getElementById("alternative-scope").textContent = "";
+  document.getElementById("alternative-ability-name").textContent = "";
   document.getElementById("alternative-race-link").dataset.race = "";
   document.getElementById("primary-profile-link").dataset.race = "";
   document.getElementById("primary-key-reason").textContent = "";
@@ -285,6 +286,25 @@ function fillRacialBetaList(id, race) {
 function firstRacialPoint(value) {
   return String(value || "").split("\n").map((point) => point.replace(/^\s*•\s*/, "").trim()).find(Boolean) || "";
 }
+// Nombres coherentes con las facultades descritas en las ocho fichas originales.
+const raceAbilityNames = Object.freeze({
+  Gnomo: "Escape Artist",
+  Humano: "Will to Survive",
+  Enano: "Stoneform",
+  Elfo: "Shadowmeld",
+  Orco: "Hardiness",
+  Tauren: "War Stomp",
+  Troll: "Berserking",
+  "No-muerto": "Will of the Forsaken",
+});
+
+function alternativeRacialAbility(record) {
+  if (record.alternativa === "Cielonato") {
+    return record.faccion === "Alianza" ? "Read Ley Line" : "Skysight";
+  }
+  return raceAbilityNames[record.alternativa] || "";
+}
+
 function focusedRaceExplanation(explanation) {
   const sentences = String(explanation).split(/(?<=\.)\s+(?=[A-ZÁÉÍÓÚÑ])/u);
   // En las 54 fichas, la segunda oración expone la facultad concreta.
@@ -317,7 +337,12 @@ const racePairConclusions = new Map([
 ]);
 function raceComparisonConclusion(record) {
   const key = record.razaRecomendada + "|" + record.alternativa;
-  return racePairConclusions.get(key) || "";
+  const text = racePairConclusions.get(key) || "";
+  if (!text) return [];
+  // Los 19 pares aprobados tienen dos afirmaciones: principal y alternativa.
+  // Mantenerlas como párrafos independientes en vez de otro bloque de texto corrido.
+  const split = text.indexOf(". ");
+  return split < 0 ? [text] : [text.slice(0, split + 1), text.slice(split + 2)];
 }
 
 function renderRaceComparison(record, mainProfile, alternativeProfile) {
@@ -338,8 +363,13 @@ function renderRaceComparison(record, mainProfile, alternativeProfile) {
     : firstRacialPoint(alternativeProfile?.debilidades));
   document.getElementById("race-comparison-conclusion-title").textContent =
     "Conclusión para " + record.especializacion;
-  document.getElementById("race-comparison-conclusion-text").textContent =
-    raceComparisonConclusion(record);
+  document.getElementById("race-comparison-conclusion-text").replaceChildren(
+    ...raceComparisonConclusion(record).map((sentence) => {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = sentence;
+      return paragraph;
+    })
+  );
 }
 function renderRaceBetaUpdates(record) {
   const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
@@ -618,6 +648,8 @@ specialization.addEventListener("change", () => {
     // de cada raza se consultan en Race Explorer, sin repetirse aquí.
     document.getElementById("alternative-use").textContent = raceProse(isSpecialized
       ? record.usoAlternativa : alternative?.usoPrincipal || "");
+    document.getElementById("alternative-ability-name").textContent =
+      alternativeRacialAbility(record);
     const alternativeLink = document.getElementById("alternative-race-link");
     alternativeLink.dataset.race = record.alternativa;
     alternativeLink.setAttribute("aria-label",
@@ -734,12 +766,7 @@ racialSelect.addEventListener("change", () => {
     return;
   }
   document.getElementById("racial-name").textContent = raceDisplayName(profile.raza);
-  const racialAbilities = {
-    Gnomo: "Escape Artist", Humano: "Will to Survive", Enano: "Stoneform",
-    Elfo: "Shadowmeld", Orco: "Hardiness", Tauren: "War Stomp",
-    Troll: "Berserking", "No-muerto": "Will of the Forsaken",
-  };
-  document.getElementById("racial-ability-name").textContent = racialAbilities[profile.raza] || "";
+  document.getElementById("racial-ability-name").textContent = raceAbilityNames[profile.raza] || "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
     field.textContent = raceProse(profile[field.dataset.racialField]);
   }
