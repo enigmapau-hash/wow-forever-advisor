@@ -284,7 +284,9 @@ function firstRacialPoint(value) {
 }
 function focusedRaceExplanation(explanation) {
   const sentences = String(explanation).split(/(?<=\.)\s+(?=[A-ZÁÉÍÓÚÑ])/u);
-  return sentences.filter((sentence) => !/^Frente a\b/.test(sentence)).slice(0, 2).join(" ");
+  // En las 54 fichas, la segunda oración expone la facultad concreta.
+  // La primera reitera el objetivo ya resumido en motivoPrincipal.
+  return sentences[1] || sentences[0] || "";
 }
 function renderRaceComparison(record, mainProfile, alternativeProfile) {
   const comparison = document.getElementById("race-comparison");
