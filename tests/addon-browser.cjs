@@ -37,6 +37,11 @@ module.exports = async function checkAddons(page, context, base, browser) {
   assert.match(await page.locator("#addon-results").textContent(), /En observación/);
   for (const width of [320, 360, 390, 412]) {
     await page.setViewportSize({ width, height: 844 });
+    const filterRows = await page.locator("#addon-filters button").evaluateAll((buttons) =>
+      new Set(buttons.map((button) => Math.round(button.getBoundingClientRect().top))).size);
+    assert.equal(filterRows, 5, "F07: diez filtros visibles en cinco filas de dos columnas a " + width);
+    assert.equal(await page.locator("#addon-filters button").count(), 10,
+      "F07: todas las categorías permanecen disponibles");
     await page.getByRole("button", { name: "Todos", exact: true }).click();
     await page.locator("#addon-results details").evaluateAll((items) => items.forEach((d) => { d.open = true; }));
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `No addon overflow at ${width}`);
@@ -71,8 +76,17 @@ module.exports = async function checkAddons(page, context, base, browser) {
   await page.locator("#profession-buttons button").first().click();
   await page.locator("#profession-addons").waitFor();
   assert.equal(await page.locator("#profession-addons strong").count(), 2);
+  assert.equal(await page.locator("#profession-addons details").count(), 1,
+    "F06: addons secundarios de profesiones en desplegable");
+  assert.equal(await page.locator("#profession-addons details").getAttribute("open"), null,
+    "F06: addons secundarios cerrados inicialmente");
+  assert.match(await page.locator("#profession-addons summary").textContent(), /sin prueba independiente/,
+    "F06: advertencia material visible sin abrir");
+  await page.locator("#profession-addons summary").click();
   assert.match(await page.locator("#profession-addons").textContent(), /Auctionator/);
   assert.match(await page.locator("#profession-addons").textContent(), /CraftProfit Forever/);
+  assert.equal(await page.locator("#profession-addons strong").first().isVisible(), true,
+    "F06: detalle expandible y accesible");
   await page.locator("#profession-class button").last().click();
   assert.equal(await page.locator("#profession-addons").isVisible(), false);
 
