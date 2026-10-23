@@ -379,7 +379,9 @@ specialization.addEventListener("change", () => {
   if (iconUrl) recommendationRaceIcon.src = iconUrl;
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
-    field.textContent = Object.hasOwn(record, key) ? record[key] : profile[key];
+    field.textContent = key === "alternativa" && record.alternativa === "-"
+      ? "Sin segunda raza evaluada"
+      : (Object.hasOwn(record, key) ? record[key] : profile[key]);
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
   document.getElementById("no-alternative").hidden = record.alternativa !== "-";
