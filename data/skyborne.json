@@ -141,10 +141,11 @@
     "limitacion": "Valoración comparativa pendiente de pruebas y del balance definitivo. No se asignan estrellas ni se sustituye la recomendación principal existente."
   },
   "icono": {
-    "estado": "pendiente_autorizacion",
-    "url": null,
-    "nota": "Icono pendiente de autorización de uso. Se conserva el nombre de Cielonato sin imagen.",
+    "estado": "enlace_cdn",
+    "url": "https://wow.zamimg.com/images/wow/icons/large/race_skyborne_male.jpg",
+    "nota": "Retrato racial enlazado desde la misma CDN utilizada por las demás razas; si no carga se mantiene el nombre. Propiedad intelectual de Blizzard.",
     "identidad": "Retratos específicos de Skyborne identificados en las fichas de ambas variantes de Wowhead e inspeccionados visualmente.",
+    "criterioUso": "Enlace remoto y caché privada del navegador, igual que para las otras ocho razas; esto no supone licencia de redistribución.",
     "candidatos": [
       {
         "url": "https://wow.zamimg.com/images/wow/icons/large/race_skyborne_male.jpg",
