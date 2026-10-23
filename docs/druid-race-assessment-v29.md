@@ -1,8 +1,8 @@
-# Propuesta de revisión de Druida · WoW Forever · 23/10/2026
+# Evaluación editorial aprobada de Druida · WoW Forever · 23/10/2026
 
 ## Finalidad y límites
 
-Esta es una **propuesta comparativa nueva pendiente de aprobación**, no una modificación del Excel. El usuario acordó valorar **Elfo de la noche frente a Cielonato (Alianza)** y **Tauren frente a Cielonato (Horda)** para las tres especializaciones de Druida. Se preservan las **51 recomendaciones** del Excel `Clases WoW Forever v5.xlsx`, las escalas originales y la elección principal hasta una decisión explícita.
+Esta evaluación comenzó como propuesta y fue **aprobada por el usuario posteriormente**, sin modificación del Excel maestro. Se acordó valorar **Elfo de la noche frente a Cielonato (Alianza)** y **Tauren frente a Cielonato (Horda)** para las tres especializaciones de Druida. Se preservan las **51 recomendaciones** del Excel `Clases WoW Forever v5.xlsx`, las escalas originales y la elección principal hasta una decisión explícita.
 
 Metodología del libro, hoja `Metodología`, celdas B6:C16: **PvP masivo, presión de múltiples enemigos y apoyo al grupo; mundo abierto; recuperación frente a control de masas; movilidad hacia objetivos, salida y aliados; reposicionamiento/cobertura; sinergia con kit de especialización; nivel 60 y evolución futura sin predecir parches.** No se priorizan PvE, duelos, arenas, combate PvP pequeño, DPS puro ni rankings numéricos. **No existe una fórmula numérica original** que permita asignar estrellas nuevas automáticamente. Las conclusiones son juicio táctico revisable, no prueba de superioridad estadística.
 
@@ -16,9 +16,9 @@ Metodología del libro, hoja `Metodología`, celdas B6:C16: **PvP masivo, presi�
 
 Importante: la **regeneración del 100 % de Read Ley Line** no prueba que sea una habilidad de curación de emergencia o que ignore restricciones de regeneración durante lanzamientos. La **celeridad** es relevante para la actividad del druida, pero su conversión en supervivencia bajo foco varía con talentos, equipo, forma y posición. Skysight no está demostrado aquí como velocidad acumulativa en todas las formas druídicas. **Walk on Air** es situacional por terreno y no se equipara a una evasión universal. No se dispone aún de combates comparativos controlados al nivel 60.
 
-## Las seis comparaciones (propuesta, no resultado incorporado)
+## Las seis comparaciones (decisión editorial aprobada en la PWA)
 
-| Facción | Especialización | Principal actual | Candidato de segunda opción | Motivo para mantener provisionalmente la primera |
+| Facción | Especialización | Principal aprobado | Alternativa aprobada | Motivo para mantener provisionalmente la primera |
 | --- | --- | --- | --- | --- |
 | Alianza | Equilibrio | **Elfo de la noche** | Cielonato High Order | Shadowmeld permite preparar líneas de lanzamiento y esconder la posición antes del avance; Quickness aporta movilidad permanente. Cielonato añade celeridad y regeneración, útiles para mantener presión y maná, pero no demuestra resolver mejor el foco inmediato ni el reposicionamiento. |
 | Alianza | Feral | **Elfo de la noche** | Cielonato High Order | Shadowmeld favorece preparar una entrada y Quickness acompaña la movilidad; ambos complementan el papel de iniciador y el sigilo del druida. Cielonato aporta celeridad y movilidad vertical muy condicionada por terreno; Read Ley Line tiene valor secundario para un Feral bajo presión. |
@@ -34,11 +34,13 @@ Importante: la **regeneración del 100 % de Read Ley Line** no prueba que sea un
 - **Sinergia:** Feral tiende a valorar preparación y control cercano; Equilibrio, distancia y continuidad de lanzamientos; Restauración, supervivencia y acceso a aliados. El valor de celeridad y regeneración puede variar sin cambiar los criterios.
 - **Nivel 60:** no se ha probado una comparativa reproducible a nivel 60. Ninguna conclusión tiene valor de certeza estadística ni debe recibir una puntuación nueva.
 
-## Recomendación editorial para la siguiente revisión
+## Decisión editorial y aplicación
 
-**Propuesta conservadora:** mantener las **seis principales originales** y proponer Cielonato como segunda raza en las seis fichas de Druida, porque ahora es la única otra raza elegible de cada facción, **siempre que su utilidad se considere suficientemente defendible como alternativa**, sin asegurar que su rendimiento está validado en el cliente final. La admisibilidad por facción/clase se comprueba independientemente del valor competitivo. En especial **Restauración Alianza y Horda** requieren mayor contraste y admiten discusión.
+**Decisión aprobada:** mantener las **seis principales originales** —Elfo de la noche en Alianza y Tauren en Horda— y asignar **Cielonato como segunda raza** en las tres especializaciones de cada facción. La evaluación se basa en utilidad táctica para PvP masivo, no en afirmar que Cielonato sea una alternativa numéricamente medida ni superior en daño.
 
-**No se ha aplicado esa propuesta a `data/race-advisor.json` ni a la interfaz.** El campo `-` de las seis fichas permanece intacto hasta la aceptación del análisis. No se añaden estrellas. Queda abierto a que el usuario confirme o matice cada orden antes de un parche de datos separado.
+**Aplicación técnica:** las seis alternativas aprobadas residen en `data/race-advisor-druid-alternatives.json` y se combinan en memoria con las fichas originales en Race Advisor. **No se modifica `data/race-advisor.json`: las seis fichas originales conservan su `-` histórico**. No se crean estrellas nuevas. Race Explorer enlaza las seis alternativas de Cielonato.
+
+Continúan pendientes de contraste empírico el beneficio efectivo de Read Ley Line durante lanzamientos de Equilibrio/Restauración y la acumulación de Skysight con las formas druídicas. La incertidumbre de beta se muestra en la comparación, pero **no impide presentar la clasificación editorial aprobada**; cualquier cambio de ranking posterior requerirá nueva evidencia y aprobación.
 
 ## Otros casos cerrados
 
