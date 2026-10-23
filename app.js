@@ -185,7 +185,7 @@ function validateRaceAdditions(data, advisor, profiles) {
 // Aprobación editorial limitada a Druida: sustituye SOLO la alternativa no evaluada.
 // Todas las razas principales y los campos originales del Excel permanecen intactos.
 function validateDruidAlternatives(data, advisor, skyborne) {
-  if (!skyborne) return []; // Si falla Cielonato, conservar las 51 fichas originales.
+  if (!skyborne || !data) return []; // Si falla una capa adicional, conservar las 51 fichas originales.
   const specs = ["Equilibrio", "Feral", "Restauración"];
   const original = advisor.fichas.filter((row) => row.clase === "Druida");
   if (!data || data.schemaVersion !== 1 || data.tipo !== "evaluacion_editorial_druida"
@@ -340,8 +340,8 @@ function prepareSkyborneExplorer() {
   document.getElementById("skyborne-verification").textContent = skyborneVerification();
   document.getElementById("skyborne-icon-note").textContent = skyborneData.icono.nota;
   fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
-  document.getElementById("skyborne-criterion").textContent = skyborneData.evaluacion.criterio;
-  document.getElementById("skyborne-limitation").textContent = skyborneData.evaluacion.limitacion;
+  document.getElementById("skyborne-criterion").textContent = "La raza se evalúa por combinación: Cielonato es alternativa de Druida en ambas facciones, no recomendación general de todas las clases.";
+  document.getElementById("skyborne-limitation").textContent = "Clasificación editorial provisional basada en PvP masivo; faltan pruebas comparativas al nivel 60 y verificaciones específicas de regeneración y velocidad en formas druídicas.";
   document.getElementById("skyborne-sources").replaceChildren(...skyborneData.fuentes.map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
@@ -403,6 +403,12 @@ async function loadData() {
       return extra ? { ...row, alternativa: extra.alternativa,
         usoAlternativa: extra.usoAlternativa, motivoComparacion: extra.motivoComparacion } : row;
     }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
+    if (skyborneData && druidAlternatives.length !== 6) {
+      document.getElementById("skyborne-criterion").textContent =
+        "Las alternativas de Druida aún no están disponibles. Se conservan las recomendaciones aprobadas del asesor.";
+      document.getElementById("skyborne-limitation").textContent =
+        "No se ha cargado o validado la ampliación editorial. Cielonato sigue siendo consultable como raza en beta.";
+    }
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
     setOptions(racialSelect, [...racialProfiles.keys(), ...(skyborneData ? [skyborneData.raza] : [])], "Elige raza");
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
