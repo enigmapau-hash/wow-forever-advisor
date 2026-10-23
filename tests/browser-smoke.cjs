@@ -116,6 +116,10 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#specialization button[data-value="Armas"]').click();
     assert.equal(await page.locator("#primary-analysis").isVisible(), true,
       "La explicación de la raza principal es visible sin desplegar");
+    assert.equal(await page.locator("#primary-ability-name").textContent(), "Hardiness",
+      "La principal identifica su habilidad racial");
+    assert.equal(await page.locator(".race-result-intro .field-note").count(), 0,
+      "No hay orientación de beta redundante en la ficha");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
     assert.equal(await page.locator("#primary-profile").count(), 0,
@@ -140,6 +144,8 @@ const server = http.createServer(async (req, res) => {
       "Nombre completo de la tarjeta secundaria");
     assert.equal(await page.locator("#alternative-ability-name").textContent(), "Read Ley Line",
       "La variante de Alianza identifica su habilidad específica");
+    assert.equal(await page.locator("#alternative-scope").textContent(), "En esta especialización",
+      "Druida conserva su distinción de análisis específico");
     assert.equal(await page.locator("#race-comparison-conclusion-text > p").count(), 2,
       "La conclusión queda dividida en dos párrafos");
     assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
