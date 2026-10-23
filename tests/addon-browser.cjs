@@ -6,6 +6,16 @@ module.exports = async function checkAddons(page, context, base, browser) {
   await page.goto(base + "/#addon-advisor");
   await page.locator("#addon-results article").first().waitFor();
   assert.equal(await page.locator("#addon-results article").count(), 5);
+  assert.match(await page.getByRole("button", { name: "Selección inicial" }).getAttribute("aria-pressed"), /true/,
+    "Editorially named initial selection is the default filter");
+  assert.equal(await page.locator("#addon-results article").first().locator(".addon-state").count(), 1,
+    "Publication status remains visible");
+  assert.equal(await page.locator("#addon-results article").first().getByText("Prueba independiente").count(), 0,
+    "No repetitive testing disclaimer in each collapsed addon card");
+  await page.locator("#addon-results article").first().locator("details summary").click();
+  assert.match(await page.locator("#addon-results article").first().locator("details").textContent(), /Prueba independiente: no registrada/,
+    "Independent test status remains available in detail");
+  await page.locator("#addon-results article").first().locator("details summary").click();
   assert.match(await page.title(), /^Addon Advisor/);
   assert.equal(await page.locator("#addon-title").evaluate((el) => el === document.activeElement), true);
   await page.getByRole("button", { name: "Todos", exact: true }).click();
