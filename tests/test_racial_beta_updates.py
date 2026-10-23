@@ -50,7 +50,7 @@ class RacialBetaUpdatesTests(unittest.TestCase):
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
         html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('"./data/racial-beta-updates.json"', sw)
-        self.assertIn("${CACHE_PREFIX}v28", sw)
+        self.assertIn("${CACHE_PREFIX}v29", sw)
         self.assertIn('readJson("./data/racial-beta-updates.json").catch(() => null)', script)
         self.assertIn('readJson("./data/race-advisor.json")', script)
         self.assertIn('readJson("./data/racials.json")', script)
