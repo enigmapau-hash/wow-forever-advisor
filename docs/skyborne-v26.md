@@ -54,3 +54,13 @@ La consulta directa de `https://www.wowhead.com/terms-of-service` devolvió 404,
 Se mantienen las pruebas de huellas, mecánicas, clases y fuentes. Se añaden aserciones sobre **Read Ley Line**, ausencia de monturas en los datos oficiales y separación del dato secundario. La prueba de navegador comprueba nueve botones, ambas variantes, 51 combinaciones, teclado, navegación, tamaños 320/390/820/1280 px y recarga offline. El fallback de JSON inválido ahora exige **8 botones, CTA de 8, cabecera de ocho y aviso de indisponibilidad**.
 
 La suite completa de Advisor Data Checks cubre también talentos, profesiones y addons, y verifica el mapa de 45 URL gráficas (47 usos) con Cielonato. Pasar las pruebas valida el software, no demuestra balance competitivo ni autorización gráfica. No se afirma prueba en Android físico. La PR permanece sin fusionar hasta comprobar el resultado y los tests.
+
+## Rectificación editorial posterior · v27
+
+La «consideración» automática que v26 mostraba en 30 combinaciones de
+Race Advisor se ha retirado: esas 30 combinaciones describían **compatibilidad
+legal de clase/facción**, no una valoración que justificase recomendar la raza.
+Race Advisor vuelve a mostrar únicamente las recomendaciones y alternativas de
+las 51 fichas originales. Cielonato se mantiene por completo en Race Explorer.
+La documentación anterior recoge el estado histórico de v26, no el
+comportamiento vigente tras v27. No se ha reevaluado ninguna clasificación.
