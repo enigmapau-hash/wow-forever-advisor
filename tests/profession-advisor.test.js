@@ -52,6 +52,8 @@ document.getElementById("run-tests").addEventListener("click", async (event) => 
       for (const [index, row] of rows.entries()) {
         buttons[index].click();
         check(!result.hidden && doc.getElementById("profession-combination").textContent === `${name} · ${row.especializacion}`, "Ficha seleccionada visible");
+        check(row.estado === "provisional" && doc.getElementById("profession-editorial-note").textContent.includes("Orientación provisional"),
+          "Estado y alcance editorial de profesión visibles");
         check(buttons.every((item, i) => item.getAttribute("aria-pressed") === String(i === index)), "Botón activo exclusivo");
         for (const field of result.querySelectorAll("[data-profession-field]")) {
           const value = row[field.dataset.professionField];

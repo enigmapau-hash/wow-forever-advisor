@@ -308,3 +308,31 @@ raciales, profesiones, addons ni datos del Excel**.
 
 Se conserva la navegación existente y se actualizan las pruebas automáticas
 de enlaces, teclado, tamaños de pantalla, contenidos y caché **v23**.
+
+## Claridad editorial — v24
+
+Se aplica la auditoría [#26](https://github.com/enigmapau-hash/wow-forever-advisor/issues/26) sin editar
+las fuentes del Excel ni los catálogos originales. Race Explorer diferencia
+«Dónde se recomienda esta raza» de «Dónde aparece como alternativa»;
+«Elfo» significa elfo de la noche. Race Advisor diferencia las dos
+escalas de estrellas sin prometer comparabilidad.
+
+Profession Advisor muestra de forma visible su carácter **provisional** y su
+alcance (progresión y PvP; no distingue raza ni facción).
+Talent Advisor ofrece una advertencia de beta compacta por ficha y avisa
+expresamente si los talentos se repiten entre objetivos; la advertencia
+editorial y las limitaciones originales íntegramente conservadas pueden
+consultarse en «Versión, documentación y fuentes». Los datos no se
+modifican.
+
+Addon Advisor evita repetir el mismo «sin prueba registrada» en el estado
+visible de cada tarjeta. **El estado de publicación y los avisos críticos
+siguen visibles**, y la evidencia, la prueba independiente y las limitaciones
+quedan disponibles en el desplegable. «Selección inicial» sustituye el
+nombre editorial «Para empezar»; las cinco entradas y sus criterios son
+idénticos. Las referencias contextuales agrupan la cautela una sola vez
+cuando procede.
+
+Se mantiene el aspecto de v23, enlaces a módulos, navegación, comprobaciones
+offline y datos originales. Caché de PWA actualizada a **v24**; pendiente
+comprobación visual del usuario en PC y, por separado, en Android real.

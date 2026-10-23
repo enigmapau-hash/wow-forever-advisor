@@ -502,7 +502,8 @@ function clearTalentResult() {
   for (const id of ["talent-result-title", "talent-build-info", "talent-overview",
     "talent-reason", "talent-limitation", "talent-legacy-intro",
     "talent-legacy-warning", "talent-legacy-tip", "talent-extra",
-    "talent-version", "talent-source-note", "talent-advice-warning"]) {
+    "talent-version", "talent-source-note", "talent-advice-warning",
+    "talent-original-notice", "talent-original-limitation"]) {
     document.getElementById(id).textContent = "";
   }
   for (const id of ["talent-priorities", "talent-legacy-perks",
@@ -525,16 +526,28 @@ function renderTalentResult() {
   document.getElementById("talent-overview").textContent = record.resumen;
   replaceTalentList("talent-priorities", record.talentos);
   document.getElementById("talent-reason").textContent = record.motivo;
-  document.getElementById("talent-limitation").textContent = record.limitacion;
+  // En seis clases la misma cautela sobre la beta se repite en las nueve fichas.
+  // Se conserva el texto original completo, pero la vista principal destaca el límite táctico.
+  document.getElementById("talent-limitation").textContent =
+    record.limitacion.replace(/\s*Prioridades editoriales de beta, pendientes de validar al 60\.$/, "");
+  document.getElementById("talent-original-limitation").textContent = record.limitacion;
   document.getElementById("talent-legacy-intro").textContent = legacy.descripcion;
   replaceTalentList("talent-legacy-perks", legacy.ventajas);
   document.getElementById("talent-legacy-warning").textContent = legacy.advertencia;
   document.getElementById("talent-legacy-tip").textContent = legacy.consejo;
   replaceTalentList("talent-legacy-points", talentData.obtenerPuntosLegado);
   document.getElementById("talent-extra").textContent = record.progreso;
-  document.getElementById("talent-advice-warning").textContent = talentData.aviso;
+  const sameTalentsForAllGoals = talentData.fichas
+    .filter((item) => item.especializacion === spec)
+    .every((item) => JSON.stringify(item.talentos) === JSON.stringify(record.talentos));
+  document.getElementById("talent-advice-warning").textContent =
+    "Orientación de beta: no es una build probada al nivel 60 ni un reparto de 51 puntos."
+    + (sameTalentsForAllGoals
+      ? " Los talentos destacados se repiten para los tres objetivos; no son listas diferenciadas."
+      : "");
+  document.getElementById("talent-original-notice").textContent = talentData.aviso;
   document.getElementById("talent-version").textContent =
-    `Compilación beta ${talentData.versionCliente} · Revisión ${talentData.fechaRevision} · Pendiente de validar al nivel 60.`;
+    `Compilación beta ${talentData.versionCliente} · Revisión ${talentData.fechaRevision}.`;
   document.getElementById("talent-source-note").textContent = talentData.notaFuentes;
   const sources = talentData.fuentes.map((source) => {
     const li = document.createElement("li");
