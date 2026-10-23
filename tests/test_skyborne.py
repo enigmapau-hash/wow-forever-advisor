@@ -59,8 +59,10 @@ class SkyborneTests(unittest.TestCase):
             self.assertIn(urlparse(source["url"]).hostname, ("news.blizzard.com", "us.forums.blizzard.com"))
         for ability in self.data["comunes"] + [v["habilidad"] for v in self.data["variantes"]]:
             self.assertTrue(set(ability["fuentes"]) <= ids)
-        self.assertIsNone(self.data["icono"]["url"])
-        self.assertEqual(self.data["icono"]["estado"], "pendiente_autorizacion")
+        self.assertEqual(self.data["icono"]["url"],
+                         "https://wow.zamimg.com/images/wow/icons/large/race_skyborne_male.jpg")
+        self.assertEqual(self.data["icono"]["estado"], "enlace_cdn")
+        self.assertIn("Enlace remoto", self.data["icono"]["criterioUso"])
         self.assertEqual(len(self.data["icono"]["candidatos"]), 2)
         for candidate in self.data["icono"]["candidatos"]:
             self.assertEqual(candidate["http"], 200)
