@@ -10,8 +10,8 @@ module.exports = async function checkAddons(page, context, base, browser) {
     "Editorially named initial selection is the default filter");
   assert.equal(await page.locator("#addon-results article").first().locator(".addon-state").count(), 1,
     "Publication status remains visible");
-  assert.equal(await page.locator("#addon-results article").first().getByText("Prueba independiente").count(), 0,
-    "No repetitive testing disclaimer in each collapsed addon card");
+  assert.equal(await page.locator("#addon-results article").first().getByText("Prueba independiente: no registrada").isVisible(), false,
+    "Testing detail is collapsed instead of repeated on every card");
   await page.locator("#addon-results article").first().locator("details summary").click();
   assert.match(await page.locator("#addon-results article").first().locator("details").textContent(), /Prueba independiente: no registrada/,
     "Independent test status remains available in detail");
