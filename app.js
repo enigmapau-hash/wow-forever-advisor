@@ -720,27 +720,41 @@ const professionStatus = document.getElementById("profession-status");
 let professionRecords = [];
 let professionsLoading = false;
 let professionsLoaded = false;
-const professionReasonBlock = document.getElementById("profession-reason-block");
-const professionMainChoice = document.getElementById("profession-choice-main");
-const professionSharedReason = document.getElementById("profession-shared-reason");
 
-// F03: si el texto explica también una profesión exclusiva de la alternativa,
-// mostrarlo como argumento compartido, sin reescribir el dato original.
+// Argumentos por opción: se conservan los motivos originales íntegros en el catálogo.
+const professionPairedReasons = new Map([
+  ["Guerrero|Armas", ["Herrería permite fabricar armas y armaduras al progresar.", "Ingeniería aporta herramientas para entrar, presionar o responder en PvP."]],
+  ["Cazador|Puntería", ["Fabricar equipo con materiales propios da continuidad a la progresión.", "Ingeniería puede ayudar en situaciones de presión en PvP."]],
+  ["Cazador|Supervivencia", ["Peletería permite elaborar piezas durante la progresión.", "Ingeniería puede ayudar a disputar posiciones y controlar accesos."]],
+  ["Pícaro|Asesinato", ["Peletería permite fabricar equipo con materiales propios.", "Ingeniería suma opciones para afrontar la presión y retirarse."]],
+  ["Pícaro|Sutileza", ["Peletería ofrece una progresión sencilla y autosuficiente.", "Ingeniería puede complementar entradas, control y escapadas."]],
+  ["Sacerdote|Sagrado", ["Sastrería y Encantamiento acompañan la progresión del equipo.", "Alquimia permite preparar consumibles de maná para sesiones largas."]],
+  ["Mago|Arcano", ["Sastrería y Encantamiento permiten elaborar y mejorar equipo de tela.", "Ingeniería puede aportar recursos para las ventanas de lanzamiento."]],
+  ["Mago|Fuego", ["La pareja principal permite elaborar y mejorar equipamiento.", "Ingeniería aporta herramientas durante ofensivas PvP."]],
+  ["Mago|Escarcha", ["La fabricación y los encantamientos sostienen una progresión estable.", "Ingeniería puede complementar el control del espacio."]],
+  ["Brujo|Aflicción", ["Sastrería y Encantamiento ayudan a mejorar equipo al progresar.", "Ingeniería puede aportar recursos en situaciones de presión."]],
+  ["Brujo|Demonología", ["Fabricar y mejorar equipo acompaña el desarrollo del personaje.", "Ingeniería puede añadir herramientas situacionales de supervivencia."]],
+  ["Brujo|Destrucción", ["Sastrería y Encantamiento ofrecen una base estable de equipo.", "Ingeniería puede aportar recursos de ataque y defensa en PvP."]],
+]);
+const professionAlternativeReasons = {
+  "Minería + Ingeniería": "Prioriza herramientas y dispositivos tácticos para PvP frente a fabricar equipo.",
+  "Herboristería + Alquimia": "Prioriza obtener materiales y preparar consumibles propios.",
+  "Minería + Herrería": "Prioriza obtener minerales y fabricar armas o armaduras.",
+  "Desuello + Peletería": "Prioriza aprovechar pieles y elaborar piezas de equipamiento.",
+  "Sastrería + Encantamiento": "Prioriza fabricar equipo de tela y mejorarlo con encantamientos.",
+};
 function positionProfessionReason(record) {
-  const alternativeOnly = record.alternativa.filter((name) => !record.principal.includes(name));
-  const comparesBoth = alternativeOnly.some((name) => record.motivoPrincipal.includes(name));
-  const target = comparesBoth ? professionSharedReason : professionMainChoice;
-  target.append(professionReasonBlock);
-  document.getElementById("profession-reason-title").textContent = comparesBoth
-    ? "Cómo se comparan estas opciones" : "Por qué se recomienda";
-  professionSharedReason.hidden = !comparesBoth;
+  const pair = professionPairedReasons.get(record.clase + "|" + record.especializacion);
+  document.getElementById("profession-main-reason").textContent = pair?.[0] || record.motivoPrincipal;
+  document.getElementById("profession-alt-reason").textContent =
+    pair?.[1] || professionAlternativeReasons[record.alternativa.join(" + ")] ||
+    "Ofrece una orientación distinta a la pareja principal.";
 }
 
 function clearProfessionResult() {
   AddonAdvisor.clear("profession-addons");
-  professionMainChoice.append(professionReasonBlock);
-  professionSharedReason.hidden = true;
-  document.getElementById("profession-reason-title").textContent = "Por qué se recomienda";
+  document.getElementById("profession-main-reason").textContent = "";
+  document.getElementById("profession-alt-reason").textContent = "";
   professionResult.hidden = true;
   document.getElementById("profession-combination").textContent = "";
   for (const field of professionResult.querySelectorAll("[data-profession-field]")) field.textContent = "";
