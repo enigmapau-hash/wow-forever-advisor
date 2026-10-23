@@ -858,7 +858,7 @@ function renderTalentResult() {
     .filter((item) => item.especializacion === spec)
     .every((item) => JSON.stringify(item.talentos) === JSON.stringify(record.talentos));
   document.getElementById("talent-advice-warning").textContent =
-    "Guía de beta: no es una build probada al nivel 60 ni reparte 51 puntos."
+    "Orientación de beta: no es una build probada al nivel 60 ni reparte 51 puntos."
     + (sameTalentsForAllGoals
       ? " Los talentos destacados se repiten para los tres objetivos; no son listas diferenciadas."
       : "");
