@@ -9,6 +9,7 @@ on:
       - "index.html"
       - "styles.css"
       - "sw.js"
+      - "version.js"
       - "tests/**"
       - "tools/patch_tracker.py"
       - ".github/workflows/advisor-tests.yml"
@@ -21,6 +22,7 @@ on:
       - "index.html"
       - "styles.css"
       - "sw.js"
+      - "version.js"
       - "tests/**"
       - "tools/patch_tracker.py"
       - ".github/workflows/advisor-tests.yml"
@@ -44,6 +46,7 @@ jobs:
           node tests/addon-advisor.test.js
           node --check icons/icon-map.js
           node --check sw.js
+          node --check version.js
           node --check tests/talent-advisor.test.js
       - uses: actions/setup-node@v4
         with:

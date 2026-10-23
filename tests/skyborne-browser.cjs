@@ -116,15 +116,15 @@ module.exports = async function testSkyborne(page, context, base) {
           : key === "alternativa" && row.alternativa === "-" && row.faccion === "Alianza" && row.clase === "Chamán"
             ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
             : row[key];
-        if (rendered !== expected) {
+        if (rendered !== expected.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche")) {
           throw new Error(`Changed original or incorrect Druid alternative: ${key}`);
         }
       }
       if (druid) {
-        if (document.getElementById("alternative-use").textContent !== druid.usoAlternativa
-            || !document.getElementById("race-druid-note").textContent.includes(druid.motivoComparacion)
-            || document.getElementById("race-druid-details").hidden
-            || document.getElementById("race-druid-details").open) {
+        if (document.getElementById("alternative-use").textContent !== druid.usoAlternativa.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche")
+            || !document.getElementById("alternative-detail-text").textContent.includes(druid.motivoComparacion.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche"))
+            || document.getElementById("alternative-details").hidden
+            || document.getElementById("alternative-details").open) {
           throw new Error(`Missing comparative reason for ${row.faccion}/${row.especializacion}`);
         }
       }
@@ -173,7 +173,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v31")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v32")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();

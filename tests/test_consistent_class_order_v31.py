@@ -81,7 +81,7 @@ class ConsistentClassOrderTests(unittest.TestCase):
         self.assertIn("Brujo, Cazador, Chamán, Druida, Guerrero, Mago,", docs)
         self.assertIn("Paladín, Pícaro, Sacerdote", docs)
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
-        self.assertIn("${CACHE_PREFIX}v31", sw)
+        self.assertIn("${CACHE_PREFIX}${self.WOW_PWA_VERSION}", sw)
 
 
 if __name__ == "__main__":

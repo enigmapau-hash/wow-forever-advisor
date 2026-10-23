@@ -148,3 +148,6 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Capturas, temporales y utilidades locales de revisión visual.
+/.local-v32/
