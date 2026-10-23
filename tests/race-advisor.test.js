@@ -129,11 +129,14 @@ runButton.addEventListener("click", async () => {
         `${key}: comparar solo cuando hay dos razas`);
       check(doc.getElementById("primary-profile-link").dataset.race === record.razaRecomendada,
         `${key}: el perfil general se consulta en Race Explorer`);
+      check(doc.getElementById("primary-ability-name").textContent.trim().length > 4,
+        `${key}: se identifica la facultad racial principal`);
       if (record.alternativa !== "-") {
         const contextual = record.alternativa === "Cielonato";
         check(doc.getElementById("alternative-scope").textContent ===
-          (contextual ? "En esta especialización" : "Ventaja racial general"),
-          `${key}: alcance de alternativa identificado`);
+          (contextual ? "En esta especialización" : "")
+          && doc.getElementById("alternative-scope").hidden === !contextual,
+          `${key}: solo se muestra alcance cuando la evaluación es especializada`);
         check(doc.getElementById("alternative-race-link").dataset.race === record.alternativa,
           `${key}: alternativa enlazada a su perfil completo`);
         check(doc.getElementById("alternative-ability-name").textContent.trim().length > 4,

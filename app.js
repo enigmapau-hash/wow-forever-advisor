@@ -135,6 +135,8 @@ function clearResult() {
   document.getElementById("alternative-ability-name").textContent = "";
   document.getElementById("alternative-race-link").dataset.race = "";
   document.getElementById("primary-profile-link").dataset.race = "";
+  document.getElementById("primary-ability-name").textContent = "";
+  document.getElementById("alternative-scope").hidden = true;
   document.getElementById("primary-key-reason").textContent = "";
   document.getElementById("primary-analysis").textContent = "";
   document.getElementById("race-comparison").hidden = true;
@@ -637,13 +639,18 @@ specialization.addEventListener("change", () => {
   document.getElementById("primary-profile-link").dataset.race = record.razaRecomendada;
   document.getElementById("primary-profile-link").setAttribute("aria-label",
     "Ver perfil de " + raceDisplayName(record.razaRecomendada) + " en Race Explorer");
+  document.getElementById("primary-ability-name").textContent =
+    raceAbilityNames[record.razaRecomendada] || "";
   document.getElementById("primary-key-reason").textContent = raceProse(record.motivoPrincipal);
   document.getElementById("primary-analysis").textContent = raceProse(focusedRaceExplanation(record.explicacion));
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     const isSpecialized = Boolean(record.motivoComparacion);
-    document.getElementById("alternative-scope").textContent = isSpecialized
-      ? "En esta especialización" : "Ventaja racial general";
+    // Cielonato cuenta con una evaluación específica para Druida.
+    // Las otras alternativas no necesitan un rótulo de alcance general.
+    const scope = document.getElementById("alternative-scope");
+    scope.textContent = isSpecialized ? "En esta especialización" : "";
+    scope.hidden = !isSpecialized;
     // Una sola idea por tarjeta: el análisis y las limitaciones completas
     // de cada raza se consultan en Race Explorer, sin repetirse aquí.
     document.getElementById("alternative-use").textContent = raceProse(isSpecialized

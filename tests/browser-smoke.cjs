@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v36`);
-      await cache.put("./obsolete-v36", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v37`);
+      await cache.put("./obsolete-v37", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -116,6 +116,10 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#specialization button[data-value="Armas"]').click();
     assert.equal(await page.locator("#primary-analysis").isVisible(), true,
       "La explicación de la raza principal es visible sin desplegar");
+    assert.equal(await page.locator("#primary-ability-name").textContent(), "Escape Artist",
+      "La principal identifica su habilidad racial");
+    assert.equal(await page.locator(".race-result-intro .field-note").count(), 0,
+      "No hay orientación de beta redundante en la ficha");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
     assert.equal(await page.locator("#primary-profile").count(), 0,
@@ -140,6 +144,8 @@ const server = http.createServer(async (req, res) => {
       "Nombre completo de la tarjeta secundaria");
     assert.equal(await page.locator("#alternative-ability-name").textContent(), "Read Ley Line",
       "La variante de Alianza identifica su habilidad específica");
+    assert.equal(await page.locator("#alternative-scope").textContent(), "En esta especialización",
+      "Druida conserva su distinción de análisis específico");
     assert.equal(await page.locator("#race-comparison-conclusion-text > p").count(), 2,
       "La conclusión queda dividida en dos párrafos");
     assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
@@ -249,8 +255,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v37")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v36")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v38")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v37")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

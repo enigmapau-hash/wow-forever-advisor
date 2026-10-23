@@ -51,7 +51,7 @@ class EditorialV33Tests(unittest.TestCase):
     def test_alternatives_identify_scope_and_source(self):
         self.assertIn('id="alternative-scope"', self.html)
         self.assertIn('id="alternative-race-link"', self.html)
-        self.assertIn('"Ventaja racial general"', self.app)
+        self.assertNotIn('"Ventaja racial general"', self.app)
         self.assertIn('"En esta especialización"', self.app)
         self.assertNotIn('id="alternative-details"', self.html)
         self.assertIn('id="primary-profile-link"', self.html)
@@ -78,7 +78,7 @@ class EditorialV33Tests(unittest.TestCase):
         addons = (ROOT / "addon-advisor.js").read_text(encoding="utf-8")
         self.assertIn('element("p", "Revisado: " + a.fechaRevision, "field-note")', addons)
         version = (ROOT / "version.js").read_text(encoding="utf-8")
-        self.assertIn('self.WOW_PWA_VERSION = "v37"', version)
+        self.assertIn('self.WOW_PWA_VERSION = "v38"', version)
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
         self.assertIn('importScripts("./version.js")', sw)
         self.assertIn('${CACHE_PREFIX}${self.WOW_PWA_VERSION}', sw)

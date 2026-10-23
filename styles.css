@@ -467,7 +467,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 }
 @media (min-width: 60rem) {
   .race-choices:has(> .alternative-choice:not([hidden])) {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
   }
 }
 @media (max-width: 40rem) {
@@ -613,17 +613,19 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   gap: 0.55rem;
   margin-top: clamp(1.35rem, 2.5vw, 1.8rem);
 }
-.alternative-ability {
+.race-card-ability {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.25rem 0.65rem;
   margin-top: 0.15rem;
-  font-size: 0.91rem;
-  line-height: 1.5;
+  font-size: 0.94rem;
+  line-height: 1.6;
 }
-.alternative-ability span { color: #b8c8bb; }
-.alternative-ability strong { color: #e5c88c; font-weight: 650; }
+.race-card-ability span { color: #b8c8bb; }
+.race-card-ability strong { color: #e5c88c; font-weight: 650; }
+#primary-choice .primary-race-ability { margin-top: 0.8rem; }
+#primary-choice .race-reason-block { margin-top: clamp(1.2rem, 2vw, 1.55rem); }
 .race-conclusion-paragraphs { display: grid; gap: 0.9rem; }
 .race-comparison-conclusion .race-conclusion-paragraphs p { margin: 0; }
 @media (max-width: 59.999rem) {
