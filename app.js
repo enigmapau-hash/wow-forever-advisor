@@ -564,25 +564,41 @@ specialization.addEventListener("change", () => {
 function renderRacialMatches(listId, emptyId, field) {
   const list = document.getElementById(listId);
   const matches = records.filter((row) => row[field] === racialSelect.dataset.value);
-  list.replaceChildren(...matches.map((record) => {
-    const item = document.createElement("li");
-    const link = document.createElement("a");
-    link.className = "back-link";
-    link.href = "#race-advisor";
-    link.textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      for (const [select, value] of [
-        [faction, record.faccion],
-        [characterClass, record.clase],
-        [specialization, record.especializacion],
-      ]) {
-        selectOption(select, value);
-      }
-      window.location.hash = "race-advisor";
-    });
-    item.append(link);
-    return item;
+  const groups = new Map();
+  for (const record of matches) {
+    if (!groups.has(record.faccion)) groups.set(record.faccion, []);
+    groups.get(record.faccion).push(record);
+  }
+  list.replaceChildren(...[...groups].map(([factionName, entries]) => {
+    const groupItem = document.createElement("li");
+    groupItem.className = "racial-match-group";
+    const heading = document.createElement("h4");
+    heading.textContent = factionName;
+    const choices = document.createElement("ul");
+    choices.className = "racial-match-links";
+    for (const record of entries) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.className = "back-link";
+      link.href = "#race-advisor";
+      link.textContent = [record.clase, record.especializacion].join(" · ");
+      link.setAttribute("aria-label", [record.faccion, record.clase, record.especializacion].join(" · "));
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        for (const [select, value] of [
+          [faction, record.faccion],
+          [characterClass, record.clase],
+          [specialization, record.especializacion],
+        ]) {
+          selectOption(select, value);
+        }
+        window.location.hash = "race-advisor";
+      });
+      item.append(link);
+      choices.append(item);
+    }
+    groupItem.append(heading, choices);
+    return groupItem;
   }));
   list.hidden = matches.length === 0;
   document.getElementById(emptyId).hidden = matches.length > 0;
