@@ -116,7 +116,7 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#specialization button[data-value="Armas"]').click();
     assert.equal(await page.locator("#primary-analysis").isVisible(), true,
       "La explicación de la raza principal es visible sin desplegar");
-    assert.equal(await page.locator("#primary-ability-name").textContent(), "Hardiness",
+    assert.equal(await page.locator("#primary-ability-name").textContent(), "Escape Artist",
       "La principal identifica su habilidad racial");
     assert.equal(await page.locator(".race-result-intro .field-note").count(), 0,
       "No hay orientación de beta redundante en la ficha");
