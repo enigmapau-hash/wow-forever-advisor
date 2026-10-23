@@ -88,7 +88,7 @@ const server = http.createServer(async (req, res) => {
     await page.goto(base + "/");
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(base + "/#race-advisor");
-    assert(!/\\bExcel\\b/i.test(await page.locator("#advisor-view").innerText()),
+    assert(!/Excel/i.test(await page.locator("#advisor-view").innerText()),
       "No internal spreadsheet references in Race Advisor");
     await page.locator('#faction button[data-value="Alianza"]').click();
     assert.equal(await page.locator("#character-class button").count(), 9);
@@ -112,7 +112,7 @@ const server = http.createServer(async (req, res) => {
     assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), true,
       "The general racial rating remains available");
     await page.goto(base + "/#raciales");
-    assert(!/\\bExcel\\b/i.test(await page.locator("#racial-view").innerText()),
+    assert(!/Excel/i.test(await page.locator("#racial-view").innerText()),
       "No internal spreadsheet references in Race Explorer");
     for (const [width, expected] of [[390, 2], [1280, 4]]) {
       await page.setViewportSize({ width, height: 844 });
@@ -135,7 +135,7 @@ const server = http.createServer(async (req, res) => {
     assert.equal(await page.locator('[data-racial-field="comentarios"]').isVisible(), true,
       "The original racial comments remain accessible");
     await page.goto(base + "/#profession-advisor");
-    assert(!/\\bExcel\\b/i.test(await page.locator("#profession-view").innerText()),
+    assert(!/Excel/i.test(await page.locator("#profession-view").innerText()),
       "No internal spreadsheet references in Profession Advisor");
     await page.locator("#profession-class button").first().waitFor();
     assert.equal(await page.locator("#profession-class button").count(), 9);
