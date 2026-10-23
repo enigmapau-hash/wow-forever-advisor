@@ -373,3 +373,20 @@ Esquema, fuentes, incertidumbres y pruebas: [revisión v26](docs/skyborne-v26.md
 Para ejecutar el recorrido de regresión completo: `node tests/browser-smoke.cjs`.
 Puede usarse `BROWSER_EXECUTABLE=/usr/bin/chromium` si Chromium ya está instalado;
 en CI se mantiene el navegador preparado por el workflow Advisor Data Checks.
+
+## v27 · Recomendaciones basadas en criterios, no en compatibilidad
+
+Race Advisor conserva exactamente las 51 fichas valoradas de partida: **una raza
+recomendada y una alternativa si existe**. La inclusión de Cielonato en las 30
+combinaciones de facción/clase compatibles en v26 fue una consideración de
+compatibilidad, **no una evaluación comparativa con los criterios originales**.
+Por coherencia con el propósito del asesor se retira por completo del resultado
+de Race Advisor, sin reemplazar sus recomendaciones ni introducir avisos de
+compatibilidad. Race Explorer mantiene la novena raza, sus dos variantes,
+facultades, fuentes y retrato. Si en el futuro se evalúa Cielonato con los
+mismos criterios y evidencia suficiente, podrá entrar en un ranking mediante
+una actualización explícita y justificada.
+
+La navegación entre los módulos sigue disponible. Se añade regresión de navegador
+sobre las **51 recomendaciones exactas** para impedir que una raza se sugiera
+únicamente por ser compatible. Caché actualizada a **v27**.
