@@ -49,7 +49,7 @@ class EditorialCleanupTests(unittest.TestCase):
         self.assertIn('id="skyborne-verification"', self.html)
         self.assertIn('id="skyborne-sources"', self.html)
         self.assertIn('id="skyborne-alternatives"', self.html)
-        self.assertIn('<summary>Cambios oficiales de la beta', self.html)
+        self.assertIn('<summary>Fuentes y cambios de beta</summary>', self.html)
         self.assertIn('id="race-beta-updates"', self.html)
         self.assertIn('id="racial-beta-updates"', self.html)
 
