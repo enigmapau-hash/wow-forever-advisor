@@ -182,11 +182,33 @@ const server = http.createServer(async (req, res) => {
     assert.deepEqual(await page.locator("#profession-class button").evaluateAll(
       (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
     "Profession Advisor comparte las nueve posiciones alfabéticas");
-    for (const width of [390, 1280]) {
+    for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.locator("#profession-class .option-buttons").evaluate((el) =>
-        getComputedStyle(el).gridTemplateColumns.split(" ").length), 3,
-        "Profession Advisor nine classes align in 3 columns at " + width);
+        getComputedStyle(el).gridTemplateColumns.split(" ").length), width <= 400 ? 2 : 3,
+        "Profession Advisor keeps readable columns at " + width);
+    }
+    for (const module of ["talent", "profession"]) {
+      await page.goto(`${base}/#${module}-advisor`);
+      await page.locator(`#${module}-class button[data-value="Brujo"]`).click();
+      for (const width of [320, 390, 820, 1280]) {
+        await page.setViewportSize({ width, height: 844 });
+        const splitWords = await page.locator(`#${module}-view .option-label`).evaluateAll((labels) =>
+          labels.flatMap((label) => [...label.textContent.matchAll(/\S+/gu)].filter((match) => {
+            const range = document.createRange();
+            range.setStart(label.firstChild, match.index);
+            range.setEnd(label.firstChild, match.index + match[0].length);
+            return new Set([...range.getClientRects()].map((rect) => Math.round(rect.top))).size > 1;
+          }).map((match) => match[0])));
+        assert.deepEqual(splitWords, [], `F01: no split words in ${module} at ${width}`);
+        assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+          `F01: no horizontal overflow in ${module} at ${width}`);
+        assert.equal(await page.locator(`#${module}-class button[data-value="Brujo"]`).getAttribute("aria-pressed"), "true",
+          "F01: resizing preserves selection");
+        assert.deepEqual(await page.locator(`#${module}-class button`).evaluateAll(
+          (buttons) => buttons.map((button) => button.dataset.value)), classOrder,
+        "F01: resizing preserves class order");
+      }
     }
     await page.locator('#profession-class button[data-value="Cazador"]').click();
     await page.locator('#profession-buttons button[data-value="Supervivencia"]').click();

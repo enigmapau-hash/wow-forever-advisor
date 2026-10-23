@@ -161,7 +161,7 @@ const AddonAdvisor = (() => {
       card.append(details);
       return card;
     }));
-    document.getElementById("addon-status").textContent = `${matches.length} addons · ${filter}.`;
+    document.getElementById("addon-status").textContent = `${matches.length} ${matches.length === 1 ? "addon" : "addons"} · ${filter}.`;
   }
 
   async function open() {

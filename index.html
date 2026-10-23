@@ -183,7 +183,7 @@
         <a class="back-link" id="back-selector" href="#race-advisor">← Volver al selector principal</a>
         <header class="selector-intro">
           <h1 id="racial-title" tabindex="-1">Race Explorer</h1>
-          <p class="subtitle">Consulta los perfiles raciales y las variantes de Cielonato.</p>
+          <p class="subtitle">Selecciona una raza para consultar sus facultades.</p>
           <p id="racial-coverage-note" class="field-note">Cargando perfiles raciales…</p>
         </header>
         <div class="selector-card">
@@ -236,6 +236,7 @@
           <article class="result-card recommendation">
             <p class="eyebrow">Raza en beta · Skyborne</p>
             <h2 id="skyborne-title">Cielonato</h2>
+            <p id="skyborne-beta-note" class="field-note"></p>
             <h3>Facultades compartidas</h3>
             <ul id="skyborne-common" class="talent-list"></ul>
             <fieldset id="skyborne-faction" class="option-group" data-value="" data-icon-kind="faccion" disabled>
@@ -261,6 +262,8 @@
               <p id="skyborne-verification" class="field-note"></p>
               <p id="skyborne-criterion" class="field-note"></p>
               <p id="skyborne-limitation" class="field-note"></p>
+              <p id="skyborne-wind-history" class="field-note"></p>
+              <p id="skyborne-skysight-source" class="field-note"></p>
               <ul id="skyborne-sources" class="talent-sources"></ul>
             </details>
           </article>
@@ -293,17 +296,20 @@
           <p id="profession-editorial-note" class="source-note">Orientación provisional para progresión y PvP. No distingue raza ni facción.</p>
           <h2 id="profession-combination"></h2>
           <div class="profession-choices">
-            <section class="profession-choice-main" aria-label="Profesiones recomendadas">
+            <section class="profession-choice-main" id="profession-choice-main" aria-label="Profesiones recomendadas">
               <h3>Primera opción</h3>
               <p class="original-text" data-profession-field="principal"></p>
-              <h3>Por qué se recomienda</h3>
-              <p class="original-text" data-profession-field="motivoPrincipal"></p>
+              <div id="profession-reason-block">
+                <h3 id="profession-reason-title">Por qué se recomienda</h3>
+                <p class="original-text" data-profession-field="motivoPrincipal"></p>
+              </div>
             </section>
             <section class="profession-choice-alternative" aria-label="Otras profesiones">
               <h3>Alternativa</h3>
               <p class="original-text" data-profession-field="alternativa"></p>
             </section>
           </div>
+          <section id="profession-shared-reason" class="profession-limitation" aria-label="Comparación de profesiones" hidden></section>
           <div class="profession-limitation">
             <h3>Qué debes tener en cuenta</h3>
             <p class="original-text" data-profession-field="limitacion"></p>
@@ -385,13 +391,16 @@
 
           <details class="result-card detail-disclosure">
             <summary>Versión, documentación y fuentes</summary>
-            <h3>Advertencia editorial completa</h3>
-            <p id="talent-original-notice" class="original-text"></p>
-            <h3>Limitación original</h3>
-            <p id="talent-original-limitation" class="original-text"></p>
             <p id="talent-version" class="original-text"></p>
             <p id="talent-source-note" class="field-note"></p>
             <ul id="talent-sources" class="talent-sources"></ul>
+            <details id="talent-original-detail" class="detail-disclosure">
+              <summary>Consultar textos editoriales originales</summary>
+              <h3>Advertencia editorial de origen</h3>
+              <p id="talent-original-notice" class="original-text"></p>
+              <h3>Limitación de origen</h3>
+              <p id="talent-original-limitation" class="original-text"></p>
+            </details>
           </details>
         </section>
       </section>

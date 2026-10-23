@@ -99,6 +99,8 @@ button.addEventListener("click", async () => {
           check(visibleWarning.includes("Orientación de beta") && visibleWarning.includes("no es una build probada")
             && (visibleWarning.includes("Los talentos destacados se repiten") === repeated),
             "Aviso breve y exacto por especialización");
+          check(!doc.getElementById("talent-original-detail").open,
+            "F04: reservas históricas plegadas, sin repetirse al abrir fuentes");
           check(doc.getElementById("talent-original-notice").textContent === data.aviso,
             "Advertencia editorial original conservada");
           check(doc.getElementById("talent-original-limitation").textContent === record.limitacion,

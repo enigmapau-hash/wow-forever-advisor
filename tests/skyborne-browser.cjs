@@ -52,9 +52,21 @@ module.exports = async function testSkyborne(page, context, base) {
     "Race Explorer enlaza las seis alternativas de Druida");
   assert.match(await page.locator("#skyborne-verification").textContent(),
     data.revision.estado === "verificado" ? /Datos oficiales de beta/ : /pendientes de contraste independiente/);
+  const expectedCommon = {
+    "walk-on-air": "Planeo controlado durante 10 s. Reutilización: 90 s.",
+    "wind-blessed": "+3 % de celeridad.",
+    "elemental-insight": "+5 % de daño contra elementales.",
+  };
   for (const ability of data.comunes) {
-    assert((await page.locator("#skyborne-common").textContent()).includes(ability.descripcion));
+    assert((await page.locator("#skyborne-common").textContent()).includes(expectedCommon[ability.id]),
+      "F05: el efecto actual está visible sin fechas repetidas: " + ability.id);
   }
+  assert(!/15\/10\/2026/.test(await page.locator("#skyborne-common").textContent()),
+    "F05: la fecha no se repite por facultad");
+  assert.match(await page.locator("#skyborne-beta-note").textContent(), /15\/10\/2026/,
+    "F05: la fecha de la beta es común");
+  assert.match(await page.locator("#skyborne-wind-history").textContent(), /\+1 %/,
+    "F05: la versión anterior continúa consultable en fuentes");
   assert.deepEqual(await page.locator("#skyborne-sources a").evaluateAll((links) => links.map((link) => link.href)),
     data.fuentes.map((source) => source.url));
   for (const variant of data.variantes) {
@@ -64,7 +76,11 @@ module.exports = async function testSkyborne(page, context, base) {
     assert.equal(await faction.getAttribute("aria-pressed"), "true");
     assert.equal(await page.locator("#skyborne-faction button[aria-pressed=true]").count(), 1);
     assert.equal(await page.locator("#skyborne-classes").textContent(), variant.clases.join(" · "));
-    assert.equal(await page.locator("#skyborne-ability").textContent(), variant.habilidad.descripcion);
+    const expectedVariant = variant.faccion === "Alianza"
+      ? "+100 % de regeneración de salud y maná. Se puede lanzar en movimiento. Duración mínima: 30 s."
+      : "+10 % de velocidad de carrera. Se puede lanzar en movimiento.";
+    assert.equal(await page.locator("#skyborne-ability").textContent(), expectedVariant,
+      "F05: efecto de facción sin fechas y con cifras vigentes");
     assert.equal(await page.locator("#skyborne-ability-title").textContent(), variant.habilidad.nombre);
     if (variant.faccion === "Alianza") assert.equal(await page.locator("#skyborne-ability-title").textContent(), "Read Ley Line");
     else assert(!/montura/.test(await page.locator("#skyborne-ability").textContent()));
@@ -186,7 +202,11 @@ module.exports = async function testSkyborne(page, context, base) {
   await page.locator('#racial-race button[data-value="Cielonato"]').click();
   for (const variant of data.variantes) {
     await page.locator(`#skyborne-faction button[data-value="${variant.faccion}"]`).click();
-    assert.equal(await page.locator("#skyborne-ability").textContent(), variant.habilidad.descripcion);
+    const expectedVariant = variant.faccion === "Alianza"
+      ? "+100 % de regeneración de salud y maná. Se puede lanzar en movimiento. Duración mínima: 30 s."
+      : "+10 % de velocidad de carrera. Se puede lanzar en movimiento.";
+    assert.equal(await page.locator("#skyborne-ability").textContent(), expectedVariant,
+      "F05: la presentación concisa permanece disponible sin conexión");
   }
   await page.locator("#back-selector").click();
   await page.locator('#faction button[data-value="Alianza"]').click();
