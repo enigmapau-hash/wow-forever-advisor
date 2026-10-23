@@ -441,3 +441,31 @@ Si esa capa adicional o los datos de Cielonato fallan, se conservan las
 recomendaciones principales originales, sin crear un resultado ficticio.
 Las 3 fichas Chamán Alianza mantienen «sin segunda raza» porque Enano es la
 única opción elegible.
+
+
+## v30 · Limpieza editorial de Race Advisor y Race Explorer
+
+Conforme a la [auditoría v30](https://github.com/enigmapau-hash/wow-forever-advisor/issues/35)
+aprobada por el usuario:
+
+- **Druida:** la utilidad breve de Cielonato aparece bajo la alternativa y la comparación
+  táctica completa solo dentro de «¿Por qué estas dos razas?». Se quitan frases
+  repetidas sobre las estrellas, que siguen ocultas.
+- **Paladín Horda y Chamán Alianza:** una sola explicación contextual de por qué
+  no hay alternativa, en su campo correspondiente. Las explicaciones largas
+  complementarias de Paladín Horda conservan la utilidad de las raciales sin
+  reiterar esa indisponibilidad.
+- **Race Explorer / Cielonato:** se quita la nota de procedencia técnica de
+  iconos de la UI; se conservan los seis enlaces a Druida y las facultades.
+  Fuentes oficiales, fecha y advertencias pasan a «Fuentes y notas de beta».
+  La documentación sobre iconos y los enlaces originales siguen en datos.
+- Los cambios oficiales de beta quedan en secciones desplegables, no se
+  eliminan. Los estados de selección dejan de duplicar visualmente el resultado
+  pero siguen disponibles mediante `role="status"` para lectores de pantalla.
+
+**No se cambian** las 54 combinaciones, las 51 filas originales del Excel, sus
+criterios ni estrellas, las alternativas Druida aprobadas o los perfiles
+raciales. Los datos de las tres fichas Paladín Horda solo reciben una edición
+de redacción en la explicación extensa. Talent Advisor, Profession Advisor y
+Addon Advisor conservan advertencias importantes; su auditoría secundaria no
+se ejecuta en este alcance. La caché offline pasa a **v30**.

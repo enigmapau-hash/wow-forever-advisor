@@ -105,13 +105,14 @@ function clearResult() {
   recommendationRaceIcon.removeAttribute("src");
   for (const field of result.querySelectorAll("[data-field]")) field.textContent = "";
   document.getElementById("result-combination").textContent = "";
-  document.getElementById("no-alternative").hidden = true;
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
-  document.getElementById("race-addition-note").hidden = true;
-  document.getElementById("race-druid-note").hidden = true;
+  document.getElementById("race-druid-details").hidden = true;
+  document.getElementById("race-druid-details").open = false;
   document.getElementById("race-druid-note").textContent = "";
   document.getElementById("race-beta-updates").hidden = true;
+  document.getElementById("race-beta-updates").open = false;
+  status.classList.remove("visually-hidden");
   document.getElementById("race-beta-alternative").hidden = true;
 }
 
@@ -338,10 +339,9 @@ function fillSkyborneAbilities(id, abilities) {
 function prepareSkyborneExplorer() {
   setOptions(skyborneFaction, skyborneData.variantes.map((row) => row.faccion), "Elige una variante");
   document.getElementById("skyborne-verification").textContent = skyborneVerification();
-  document.getElementById("skyborne-icon-note").textContent = skyborneData.icono.nota;
   fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
-  document.getElementById("skyborne-criterion").textContent = "La raza se evalúa por combinación: Cielonato es alternativa de Druida en ambas facciones, no recomendación general de todas las clases.";
-  document.getElementById("skyborne-limitation").textContent = "Clasificación editorial provisional basada en PvP masivo; faltan pruebas comparativas al nivel 60 y verificaciones específicas de regeneración y velocidad en formas druídicas.";
+  document.getElementById("skyborne-criterion").textContent = "Cielonato se ha evaluado como alternativa de Druida; no hay clasificación aprobada para otras clases.";
+  document.getElementById("skyborne-limitation").textContent = "Pendiente de comprobar su rendimiento al nivel 60, la regeneración durante lanzamientos y la velocidad en formas druídicas.";
   document.getElementById("skyborne-sources").replaceChildren(...skyborneData.fuentes.map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
@@ -360,9 +360,11 @@ skyborneFaction.addEventListener("change", () => {
   for (const id of ["skyborne-variant-title", "skyborne-classes", "skyborne-ability-title", "skyborne-ability"]) {
     document.getElementById(id).textContent = "";
   }
-  document.getElementById("skyborne-status").textContent = variant
-    ? `Variante: ${variant.faccion} · ${variant.nombre}.`
+  const variantStatus = document.getElementById("skyborne-status");
+  variantStatus.textContent = variant
+    ? `Variante seleccionada: ${variant.faccion} · ${variant.nombre}.`
     : "Elige Alianza o Horda para consultar sus diferencias.";
+  variantStatus.classList.toggle("visually-hidden", Boolean(variant));
   if (!variant) return;
   document.getElementById("skyborne-variant-title").textContent = `${variant.faccion} · ${variant.nombre}`;
   document.getElementById("skyborne-classes").textContent = variant.clases.join(" · ");
@@ -463,28 +465,16 @@ specialization.addEventListener("change", () => {
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
     field.textContent = key === "alternativa" && record.alternativa === "-"
-      ? ((record.faccion === "Alianza" && record.clase === "Chamán")
-          || (record.faccion === "Horda" && record.clase === "Paladín")
-        ? "Sin alternativa: única raza disponible"
-        : "Alternativa pendiente de evaluación")
+      ? record.faccion === "Alianza" && record.clase === "Chamán"
+        ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
+        : record.faccion === "Horda" && record.clase === "Paladín"
+          ? "Sin alternativa: No-muerto es la única raza de Paladín de Horda."
+          : "Alternativa pendiente de evaluación."
       : (Object.hasOwn(record, key) ? record[key] : profile[key]);
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
-  document.getElementById("race-addition-note").hidden = !(record.faccion === "Horda" && record.clase === "Paladín");
-  const druidNote = document.getElementById("race-druid-note");
-  druidNote.hidden = !record.motivoComparacion;
-  druidNote.textContent = record.motivoComparacion
-    ? `Criterio para esta alternativa: ${record.motivoComparacion} Evaluación editorial de beta; sin estrellas nuevas.`
-    : "";
-  const noAlternative = document.getElementById("no-alternative");
-  noAlternative.hidden = record.alternativa !== "-";
-  if (record.alternativa === "-") {
-    noAlternative.textContent = record.faccion === "Alianza" && record.clase === "Chamán"
-      ? "Enano es la única raza de Alianza que puede ser Chamán. No existe una segunda opción jugable."
-      : record.faccion === "Horda" && record.clase === "Paladín"
-        ? "No-muerto es la única raza de Horda que puede ser Paladín. No existe una segunda opción jugable."
-        : "La segunda mejor raza de esta especialización está pendiente de evaluación; no se presenta ninguna alternativa sin justificarla.";
-  }
+  document.getElementById("race-druid-details").hidden = !record.motivoComparacion;
+  document.getElementById("race-druid-note").textContent = record.motivoComparacion || "";
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     document.getElementById("alternative-use").textContent =
@@ -495,6 +485,7 @@ specialization.addEventListener("change", () => {
   result.hidden = false;
   AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
+  status.classList.add("visually-hidden");
 });
 
 function renderRacialMatches(listId, emptyId, field) {
@@ -528,6 +519,7 @@ racialSelect.addEventListener("change", () => {
   skyborneResult.hidden = true;
   racialResult.hidden = true;
   document.getElementById("racial-beta-updates").hidden = true;
+  document.getElementById("racial-beta-updates").open = false;
   document.getElementById("racial-name").textContent = "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
   renderRacialMatches("racial-recommended", "racial-no-recommended", "razaRecomendada");
@@ -535,12 +527,14 @@ racialSelect.addEventListener("change", () => {
   renderRacialMatches("skyborne-alternatives", "skyborne-no-alternatives", "alternativa");
   if (skyborneData && racialSelect.dataset.value === skyborneData.raza) {
     skyborneResult.hidden = false;
-    racialStatus.textContent = "Cielonato: consulta las facultades compartidas y elige una variante de facción.";
+    racialStatus.textContent = "Cielonato seleccionado. Consulta sus variantes de facción.";
+    racialStatus.classList.add("visually-hidden");
     return;
   }
   const profile = racialProfiles.get(racialSelect.dataset.value);
   if (!profile) {
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
+    racialStatus.classList.remove("visually-hidden");
     return;
   }
   document.getElementById("racial-name").textContent = profile.raza;
@@ -551,6 +545,7 @@ racialSelect.addEventListener("change", () => {
     !fillRacialBetaList("racial-beta-list", profile.raza);
   racialResult.hidden = false;
   racialStatus.textContent = `Perfil disponible: ${profile.raza}.`;
+  racialStatus.classList.add("visually-hidden");
 });
 
 const professionView = document.getElementById("profession-view");

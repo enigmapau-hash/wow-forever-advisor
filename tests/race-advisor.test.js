@@ -4,6 +4,13 @@ const runButton = document.getElementById("run-tests");
 const report = document.getElementById("test-report");
 const frame = document.getElementById("app-under-test");
 
+const shownAlternative = (row) => row.alternativa !== "-" ? row.alternativa
+  : row.faccion === "Alianza" && row.clase === "Chamán"
+    ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
+    : row.faccion === "Horda" && row.clase === "Paladín"
+      ? "Sin alternativa: No-muerto es la única raza de Paladín de Horda."
+      : "Alternativa pendiente de evaluación.";
+
 async function waitFor(condition) {
   const deadline = Date.now() + 6000;
   while (!condition()) {
@@ -91,23 +98,24 @@ runButton.addEventListener("click", async () => {
       const profile = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
       for (const field of result.querySelectorAll("[data-field]")) {
         const name = field.dataset.field;
-        const expected = name === "alternativa" && record.alternativa === "-"
-          ? ((record.faccion === "Alianza" && record.clase === "Chamán")
-            || (record.faccion === "Horda" && record.clase === "Paladín")
-            ? "Sin alternativa: única raza disponible"
-            : "Alternativa pendiente de evaluación")
+        const expected = name === "alternativa" ? shownAlternative(record)
           : (Object.hasOwn(record, name) ? record[name] : profile[name]);
         check(field.textContent === expected, `${key}: texto literal de ${name}`);
       }
-      check(doc.getElementById("no-alternative").hidden === (record.alternativa !== "-"), `${key}: alternativa no facilitada`);
+      check(doc.getElementById("alternative-profile").hidden === (record.alternativa === "-"),
+        `${key}: la ficha de alternativa solo se muestra cuando existe`);
+      check(doc.getElementById("no-alternative") === null
+        && doc.getElementById("race-addition-note") === null,
+        `${key}: no hay mensajes duplicados de raza única`);
       if (record.clase === "Druida") {
         check(doc.getElementById("alternative-use").textContent === record.usoAlternativa,
           `${key}: justificar Cielonato como alternativa`);
-        check(!doc.getElementById("race-druid-note").hidden
-          && doc.getElementById("race-druid-note").textContent.includes(record.motivoComparacion),
-          `${key}: conservar comparativa de Druida`);
+        check(!doc.getElementById("race-druid-details").hidden
+          && !doc.getElementById("race-druid-details").open
+          && doc.getElementById("race-druid-note").textContent === record.motivoComparacion,
+          `${key}: comparativa completa opcional, sin repetición visible`);
       } else {
-        check(doc.getElementById("race-druid-note").hidden, `${key}: limpiar comparativa de Druida`);
+        check(doc.getElementById("race-druid-details").hidden, `${key}: no mostrar comparación de Druida ajena`);
       }
       if (record.alternativa === "-") missingAlternatives += 1;
       choose(spec, "");
@@ -128,8 +136,8 @@ runButton.addEventListener("click", async () => {
       "Paladín Horda dispone de tres especializaciones");
     choose(spec, "Sagrado");
     check(!result.hidden && doc.querySelector('[data-field="razaRecomendada"]').textContent === "No-muerto"
-      && !doc.getElementById("race-addition-note").hidden
-      && doc.getElementById("no-alternative").textContent.includes("única raza"),
+      && doc.querySelector('[data-field="alternativa"]').textContent ===
+        "Sin alternativa: No-muerto es la única raza de Paladín de Horda.",
       "Paladín Horda Sagrado muestra No-muerto y ausencia de alternativa");
     choose(characterClass, "Guerrero");
     choose(spec, "Armas");
@@ -263,11 +271,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
           check([...doc.querySelectorAll("#advisor-result [data-field]")].every((element) => {
             const key = element.dataset.field;
             const racial = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
-            const expected = key === "alternativa" && record.alternativa === "-"
-              ? ((record.faccion === "Alianza" && record.clase === "Chamán")
-                  || (record.faccion === "Horda" && record.clase === "Paladín")
-                ? "Sin alternativa: única raza disponible"
-                : "Alternativa pendiente de evaluación")
+            const expected = key === "alternativa" ? shownAlternative(record)
               : (Object.hasOwn(record, key) ? record[key] : racial[key]);
             return element.textContent === expected;
           }), `${label(record)}: ficha completa correspondiente`);

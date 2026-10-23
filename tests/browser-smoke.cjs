@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v28`);
-      await cache.put("./obsolete-v28", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v29`);
+      await cache.put("./obsolete-v29", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -105,16 +105,39 @@ const server = http.createServer(async (req, res) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#character-class button[data-value="Guerrero"]').click();
     await page.locator('#specialization button[data-value="Armas"]').click();
-    assert.equal(await page.locator(".recommendation .detail-disclosure").getAttribute("open"), null,
+    assert.equal(await page.locator("#advisor-result .recommendation > .detail-disclosure").getAttribute("open"), null,
       "The long explanation starts collapsed");
-    await page.locator(".recommendation .detail-disclosure summary").click();
+    await page.locator("#advisor-result .recommendation > .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
       "The original explanation is available after expanding");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
-    await page.locator("#advisor-result > .detail-disclosure summary").click();
+    await page.locator("#advisor-result > details.detail-disclosure:not(#race-beta-updates) > summary").click();
     assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), false,
       "La utilidad general permanece en los datos, pero no se muestra como estrellas");
+    assert.equal(await page.locator("#selection-status").getAttribute("role"), "status",
+      "El estado de selección sigue anunciándose mediante ARIA");
+    assert.equal(await page.locator("#selection-status").evaluate((el) =>
+      getComputedStyle(el).clipPath), "inset(50%)",
+      "Evitar estado visual duplicado al mostrar una ficha");
+    await page.locator('#character-class button[data-value="Druida"]').click();
+    await page.locator('#specialization button[data-value="Equilibrio"]').click();
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "Cielonato");
+    assert.equal(await page.locator("#race-druid-details").isVisible(), true);
+    assert.equal(await page.locator("#race-druid-details").getAttribute("open"), null,
+      "La comparación extensa se consulta solo si el usuario quiere");
+    assert.equal(await page.locator("#alternative-use").isVisible(), true,
+      "La utilidad breve de Cielonato aparece inmediatamente");
+    await page.locator("#race-druid-details summary").click();
+    assert.equal(await page.locator("#race-druid-note").isVisible(), true,
+      "La justificación completa sigue disponible");
+    await page.locator('#faction button[data-value="Horda"]').click();
+    await page.locator('#character-class button[data-value="Paladín"]').click();
+    await page.locator('#specialization button[data-value="Sagrado"]').click();
+    assert.equal(await page.locator("#no-alternative").count(), 0);
+    assert.equal(await page.locator("#race-addition-note").count(), 0);
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(),
+      "Sin alternativa: No-muerto es la única raza de Paladín de Horda.");
     await page.goto(base + "/#raciales");
     assert(!/Excel/i.test(await page.locator("#racial-view").innerText()),
       "No internal spreadsheet references in Race Explorer");
@@ -131,7 +154,7 @@ const server = http.createServer(async (req, res) => {
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#racial-race button[data-value="Gnomo"]').click();
-    await page.locator("#racial-result .detail-disclosure summary").click();
+    await page.locator("#racial-result > details.detail-disclosure:not(#racial-beta-updates) > summary").click();
     assert.equal(await page.locator('[data-racial-field="comentarios"]').isVisible(), true,
       "The original racial comments remain accessible");
     await page.goto(base + "/#profession-advisor");
@@ -154,8 +177,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v29")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v28")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v30")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v29")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
