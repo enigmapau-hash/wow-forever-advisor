@@ -53,7 +53,10 @@ const server = http.createServer(async (req, res) => {
       "No future-module section on the home screen");
     assert.equal(await page.getByText("Build Advisor").count(), 0,
       "Build Advisor is not displayed on the home screen");
-    assert.equal(await page.locator(".available-modules h3").first().textContent(), "Race Explorer", "Home module uses approved name");
+    assert.equal(await page.locator(".available-modules h3").first().evaluate((heading) =>
+      heading.firstChild.textContent.trim()), "Race Explorer", "Home module uses approved name");
+    assert.equal(await page.locator(".available-modules h3 .card-arrow").first().textContent(), "↗",
+      "Decorative arrow is present without changing the module name");
     assert.equal(await page.locator("#racial-title").textContent(), "Race Explorer", "Explorer view uses approved name");
     assert.equal(await page.locator("#race-advisor").getAttribute("href"), "#race-advisor",
       "Hero card opens Race Advisor through a native link");
