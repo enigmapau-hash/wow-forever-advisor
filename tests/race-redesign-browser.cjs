@@ -41,21 +41,25 @@ module.exports = async function testRedesign(page, base, offline = false) {
         ensure(Boolean(main.querySelector('[data-field="explicacion"]').getClientRects().length), "Justificación visible");
         ensure(noAlternative.compareDocumentPosition(main.querySelector("#primary-reason-label")) & Node.DOCUMENT_POSITION_FOLLOWING,
           "Aviso de alternativa ausente cerca de cabecera");
-        ensure(document.getElementById("primary-profile-label").textContent === `Perfil de ${display(row.razaRecomendada)}`, "Perfil identificado por raza");
-        const profile = profiles.raciales.find((p) => p.raza === row.razaRecomendada);
-        for (const key of ["fortalezas", "debilidades", "comentarios"]) {
-          ensure(document.querySelector(`[data-field="${key}"]`).textContent === display(profile[key]), "Perfil racial intacto");
-        }
-        ensure(!document.getElementById("primary-profile").open && !document.getElementById("alternative-details").open, "Detalles restablecidos al cambiar selección");
+        ensure(document.getElementById("primary-profile-link").dataset.race === row.razaRecomendada,
+          "Perfil principal enlazado a Race Explorer");
+        ensure(document.getElementById("primary-profile-race").textContent === display(row.razaRecomendada),
+          "Nombre de perfil principal claro");
+        ensure(document.getElementById("primary-profile") === null
+          && document.getElementById("alternative-details") === null,
+          "No hay desplegables con textos raciales repetidos");
+        const sources = document.getElementById("race-beta-updates");
+        const addons = document.getElementById("race-addons");
+        ensure(Boolean(addons.compareDocumentPosition(sources) & Node.DOCUMENT_POSITION_FOLLOWING),
+          "Fuentes después de addons");
         if (alt !== "-") {
           ensure(alternative.querySelector('[data-field="alternativa"]').textContent === display(alt), "Alternativa intacta");
           ensure(document.getElementById("alternative-race-icon").getAttribute("src") === self.WOW_ICON_MAP.raza[alt], "Icono de alternativa correcto");
           ensure(document.getElementById("alternative-use").textContent.trim().length > 0, "Alternativa explicada");
           ensure(document.getElementById("alternative-scope").textContent ===
             (extra ? "En esta especialización" : "Ventaja racial general"), "Alcance de la alternativa honesto");
-          ensure(document.getElementById("alternative-detail-text").textContent === display(extra
-            ? extra.motivoComparacion : profiles.raciales.find((p) => p.raza === alt).debilidades),
-            "El detalle evita repetición o comparaciones inexistentes");
+          ensure(document.getElementById("alternative-race-link").dataset.race === alt,
+            "Perfil alternativo enlazado a Race Explorer");
           const a = main.getBoundingClientRect(), b = alternative.getBoundingClientRect();
           ensure(width < 960 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
           ensure(width < 960 || a.width > b.width, "Principal más grande en escritorio");
@@ -85,14 +89,13 @@ module.exports = async function testRedesign(page, base, offline = false) {
     const top = el.getBoundingClientRect().top;
     return top >= 0 && top < window.innerHeight;
   }), true, "El resultado es visible y recibe foco al elegir especialización en móvil");
-  for (const id of ["primary-profile", "alternative-details", "race-beta-updates"]) {
-    const summary = page.locator(`#${id} > summary`);
-    await summary.focus();
-    await page.keyboard.press("Enter");
-    assert.equal(await page.locator(`#${id}`).evaluate(el => el.open), true, id + " abre con teclado");
-    await page.keyboard.press("Enter");
-    assert.equal(await page.locator(`#${id}`).evaluate(el => el.open), false, id + " cierra con teclado");
-  }
+  const raceProfileLink = page.locator("#primary-profile-link");
+  await raceProfileLink.focus();
+  await page.keyboard.press("Enter");
+  await page.locator("#racial-result").waitFor();
+  assert.equal(await page.locator("#racial-name").textContent(), "Gnomo",
+    "Enlace accesible al perfil de la raza principal");
+  await page.goto(base + "/#race-advisor");
   // La etiqueta visible cambia; claves, selección e iconos siguen usando «Elfo».
   await page.goto(base + "/#raciales");
   const elf = page.locator('#racial-race button[data-value="Elfo"]');
