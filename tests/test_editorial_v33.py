@@ -34,7 +34,9 @@ class EditorialV33Tests(unittest.TestCase):
     def test_primary_visible_once_and_absence_near_header(self):
         html = self.html
         self.assertIn('id="primary-reason-label"', html)
-        self.assertIn('class="original-text race-explanation" data-field="explicacion"', html)
+        self.assertIn('<span data-field="explicacion" hidden></span>', html)
+        self.assertIn('id="primary-analysis"', html)
+        self.assertIn('id="race-comparison"', html)
         self.assertNotIn('class="race-reason" data-field="motivoPrincipal"', html)
         self.assertIn('<span data-field="motivoPrincipal" hidden></span>', html)
         before = html.index('id="result-race"')
