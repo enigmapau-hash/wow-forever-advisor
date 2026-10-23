@@ -69,6 +69,10 @@ h1 span { color: var(--gold); }
 
 .advisor-card {
   display: flex;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease;
   flex-direction: column-reverse;
   gap: 1.75rem;
   padding: 1.5rem;
@@ -78,7 +82,12 @@ h1 span { color: var(--gold); }
   box-shadow: 0 16px 48px #00000020;
 }
 
+.advisor-card:hover, .advisor-card:focus-visible { border-color: var(--gold); }
+.advisor-card:hover h2, .module-link:hover h3 { text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 0.2em; }
+.advisor-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.advisor-card:active { background: #2a3527; }
 .advisor-content { min-width: 0; }
+.card-arrow { color: var(--gold); font-size: 0.8em; font-weight: 400; margin-inline-start: 0.3em; }
 
 .advisor-card h2 {
   margin-block: 0.5rem 0.75rem;
@@ -151,11 +160,25 @@ button svg { width: 1.1rem; flex-shrink: 0; stroke: currentColor; stroke-width: 
 
 .module-card {
   min-width: 0;
-  padding: 1.25rem;
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   background: #18211b88;
+  transition: border-color 150ms ease, background 150ms ease;
 }
+.module-link {
+  display: block;
+  min-height: 9rem;
+  height: 100%;
+  padding: 1.25rem;
+  border-radius: 0.7rem;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.module-card:hover, .module-card:focus-within { border-color: var(--gold); background: #222d24; }
+.module-card:active { background: #2a3527; }
+.module-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.module-link h3 { display: inline-block; }
 
 .module-number { display: block; margin-bottom: 1rem; color: #b5a47e; font-size: 0.75rem; }
 .module-card h3 { font-size: 1rem; font-weight: 500; }
@@ -203,14 +226,25 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .original-text { white-space: pre-wrap; }
 .profile-grid { display: grid; gap: 0 1rem; }
 .source-note { border-left: 2px solid #796b49; padding-left: 1rem; }
+.detail-disclosure summary {
+  cursor: pointer;
+  color: var(--gold);
+  font-weight: 600;
+  min-height: 2.75rem;
+  padding-block: 0.6rem;
+}
+.detail-disclosure summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 0.25rem; }
+.detail-disclosure[open] summary { margin-bottom: 0.75rem; }
+.detail-disclosure h3:first-of-type { margin-top: 0.75rem; }
+.detail-disclosure .original-text { margin-top: 0.5rem; }
 
 @media (min-width: 48rem) {
   .page { padding-block: 3.5rem 2rem; }
   .intro { margin-bottom: 3rem; }
   .advisor-card { flex-direction: row; align-items: center; justify-content: space-between; padding: 2.5rem 3rem; }
   .crest { width: 13rem; margin-inline: 1rem; }
-  .module-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  .module-card { padding: 1.5rem; }
+  .module-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .module-link { padding: 1.5rem; }
   .future { margin-top: 3rem; }
   .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .selector-card, .result-card { padding: 2rem; }
@@ -300,12 +334,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   padding: 0.7rem 0.4rem;
 }
 #talent-title:focus { outline: none; }
-@media (min-width: 40rem) and (max-width: 63.99rem) {
-  .available-modules > .module-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
-}
-@media (min-width: 64rem) {
-  .available-modules { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
+
 
 /* Addon Advisor: conserva las tarjetas y la paleta compartidas. */
 .addon-state { color: var(--gold); margin-top: 1rem; font-weight: 600; }
