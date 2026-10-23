@@ -27,7 +27,7 @@ La nota opcional del Skyborne Heroic Pack no se incorpora: `https://worldofwarcr
 - `variantes`: High Order/Alianza (Guerrero, Cazador, Pícaro, Druida, Mago), con **Read Ley Line**; Windshaper/Horda (Guerrero, Cazador, Pícaro, Druida, Chamán), con Skysight. Se conserva el ID interno `read-leyline`. La habilidad oficial de Horda **no contiene `monturaPorcentaje`**.
 - `contrasteSecundario`: guía de Wowhead, evidencia de consulta y precisión de monturas con estado `pendiente_contraste_cliente`; no se consume como facultad confirmada en la interfaz.
 - `evaluacion`: criterio y limitación pendientes. Sin puntuaciones, estrellas ni ranking global.
-- `icono`: `url: null`, `estado: pendiente_autorizacion`, identidad contrastada y candidatos con URL real, procedencia y huellas. No se renderizan ni se añaden al mapa de imágenes.
+- `icono`: `estado: enlace_cdn` y URL del retrato masculino contrastado; el retrato está en `icons/icon-map.js` junto a las ocho razas existentes. Se enlaza desde la misma CDN de Wowhead y puede almacenarse en caché privada del navegador, sin copiar binarios al repositorio. La identidad está documentada; esto no equivale a una licencia general sobre el arte.
 
 El validador conserva las restricciones por facción, fuentes oficiales, valores de beta y rótulo de Read Ley Line; rechaza introducir la precisión secundaria de monturas en la facultad oficial. La capa original de ocho perfiles y sus actualizaciones de beta siguen independientes.
 
@@ -47,10 +47,10 @@ También se inspeccionaron los iconos referenciados por la guía para Walk on Ai
 
 La consulta directa de `https://www.wowhead.com/terms-of-service` devolvió 404, sin texto de condiciones. Las páginas consultadas no aportaron una licencia que autorice la incorporación o redistribución de estos retratos. Las imágenes de la presentación oficial remiten a `bnetcmsus-a.akamaihd.net` y no se identifican allí como un icono racial autorizado para la PWA. No se extraen ni recortan para fabricar uno.
 
-**Decisión pendiente del usuario:** aceptar de momento el botón con texto o aportar una autorización/base de uso aplicable para el retrato identificado y elegir su variante visual. No se añade ninguna imagen nueva al repositorio, al mapa ni a la caché; no se afirma que estén autorizadas por haber obtenido HTTP 200. Este punto no bloquea las correcciones funcionales.
+**Criterio de implementación aceptado por el usuario:** se usa `race_skyborne_male` como imagen representativa, exactamente igual que el resto de los retratos raciales de `icons/icon-map.js`, desde `wow.zamimg.com`. Se incorpora al conjunto de URL que el service worker puede guardar en caché privada; se elimina del DOM si falla la descarga y el texto accesible «Cielonato» se mantiene siempre. No se añade ningún binario gráfico al repositorio. Se conserva el retrato femenino como candidato documentado, no como una facción distinta: las facciones difieren en raciales y clases, no se ha demostrado que requieran un retrato diferente. Como con las demás imágenes, el uso de la CDN no acredita autorización explícita de redistribución, por lo que deben respetarse las condiciones aplicables y retirarse el enlace si el proveedor lo exige.
 
 ## Pruebas
 
 Se mantienen las pruebas de huellas, mecánicas, clases y fuentes. Se añaden aserciones sobre **Read Ley Line**, ausencia de monturas en los datos oficiales y separación del dato secundario. La prueba de navegador comprueba nueve botones, ambas variantes, 51 combinaciones, teclado, navegación, tamaños 320/390/820/1280 px y recarga offline. El fallback de JSON inválido ahora exige **8 botones, CTA de 8, cabecera de ocho y aviso de indisponibilidad**.
 
-La suite completa de Advisor Data Checks cubre también talentos, profesiones y addons. Pasar las pruebas valida el software, no demuestra balance competitivo ni autorización gráfica. No se afirma prueba en Android físico. La PR debe permanecer en borrador, sin fusionar, para la revisión visual y las decisiones pendientes.
+La suite completa de Advisor Data Checks cubre también talentos, profesiones y addons, y verifica el mapa de 45 URL gráficas (47 usos) con Cielonato. Pasar las pruebas valida el software, no demuestra balance competitivo ni autorización gráfica. No se afirma prueba en Android físico. La PR permanece sin fusionar hasta comprobar el resultado y los tests.
