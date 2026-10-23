@@ -167,9 +167,9 @@ button svg { width: 1.1rem; flex-shrink: 0; stroke: currentColor; stroke-width: 
 }
 .module-link {
   display: block;
-  min-height: 9rem;
+  min-height: 6.5rem;
   height: 100%;
-  padding: 1.25rem;
+  padding: 1rem 1.15rem;
   border-radius: 0.7rem;
   color: var(--text);
   text-decoration: none;
@@ -180,9 +180,8 @@ button svg { width: 1.1rem; flex-shrink: 0; stroke: currentColor; stroke-width: 
 .module-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .module-link h3 { display: inline-block; }
 
-.module-number { display: block; margin-bottom: 1rem; color: #b5a47e; font-size: 0.75rem; }
-.module-card h3 { font-size: 1rem; font-weight: 500; }
-.module-card p { margin-top: 0.3rem; color: var(--muted); font-size: 0.8rem; }
+.module-card h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.35; }
+.module-card p { margin-top: 0.45rem; color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
 
 footer {
   display: flex;
@@ -244,7 +243,7 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   .advisor-card { flex-direction: row; align-items: center; justify-content: space-between; padding: 2.5rem 3rem; }
   .crest { width: 13rem; margin-inline: 1rem; }
   .module-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-  .module-link { padding: 1.5rem; }
+  .module-link { padding: 1.2rem 1.35rem; }
   .future { margin-top: 3rem; }
   .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .selector-card, .result-card { padding: 2rem; }

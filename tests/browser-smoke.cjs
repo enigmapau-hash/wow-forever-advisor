@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v26`);
-      await cache.put("./obsolete-v26", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v27`);
+      await cache.put("./obsolete-v27", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -51,6 +51,8 @@ const server = http.createServer(async (req, res) => {
     await page.goto(base + "/");
     assert.equal(await page.locator(".available-modules > li").count(), 4,
       "Only the four approved modules appear on the home screen");
+    assert.equal(await page.locator(".available-modules .module-number").count(), 0,
+      "Las tarjetas de portada no deben tener números decorativos");
     assert.equal(await page.locator("#future-title").count(), 0,
       "No future-module section on the home screen");
     assert.equal(await page.getByText("Build Advisor").count(), 0,
@@ -108,15 +110,18 @@ const server = http.createServer(async (req, res) => {
     await page.locator(".recommendation .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
       "The original explanation is available after expanding");
-    assert.match(await page.locator("#advisor-result").textContent(), /Prioridad para esta combinación/,
-      "The recommendation rating is distinguished from general racial utility");
+    assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
+      "La prioridad no se presenta como una escala de estrellas");
     await page.locator("#advisor-result > .detail-disclosure summary").click();
-    assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), true,
-      "The general racial rating remains available");
+    assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), false,
+      "La utilidad general permanece en los datos, pero no se muestra como estrellas");
     await page.goto(base + "/#raciales");
     assert(!/Excel/i.test(await page.locator("#racial-view").innerText()),
       "No internal spreadsheet references in Race Explorer");
     assert.equal(await page.locator("#racial-race button").count(), 9);
+    await page.locator('#racial-race button[data-value="Gnomo"]').click();
+    assert.equal(await page.locator('[data-racial-field="escalaUtilidad"]').isVisible(), false,
+      "La puntuación general se oculta también en Race Explorer");
     for (const width of [320, 390, 820, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.equal(await page.locator("#racial-race .option-buttons").evaluate((el) =>
@@ -149,8 +154,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v27")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v26")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v28")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v27")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

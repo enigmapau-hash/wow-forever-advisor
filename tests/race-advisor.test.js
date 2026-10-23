@@ -73,7 +73,11 @@ runButton.addEventListener("click", async () => {
       const profile = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
       for (const field of result.querySelectorAll("[data-field]")) {
         const name = field.dataset.field;
-        const expected = Object.hasOwn(record, name) ? record[name] : profile[name];
+        const expected = name === "alternativa" && record.alternativa === "-"
+          ? (record.faccion === "Alianza" && record.clase === "Chamán"
+            ? "Sin alternativa: única raza disponible"
+            : "Alternativa pendiente de evaluación")
+          : (Object.hasOwn(record, name) ? record[name] : profile[name]);
         check(field.textContent === expected, `${key}: texto literal de ${name}`);
       }
       check(doc.getElementById("no-alternative").hidden === (record.alternativa !== "-"), `${key}: alternativa no facilitada`);
@@ -212,7 +216,12 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
           check([...doc.querySelectorAll("#advisor-result [data-field]")].every((element) => {
             const key = element.dataset.field;
             const racial = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
-            return element.textContent === (Object.hasOwn(record, key) ? record[key] : racial[key]);
+            const expected = key === "alternativa" && record.alternativa === "-"
+              ? (record.faccion === "Alianza" && record.clase === "Chamán"
+                ? "Sin alternativa: única raza disponible"
+                : "Alternativa pendiente de evaluación")
+              : (Object.hasOwn(record, key) ? record[key] : racial[key]);
+            return element.textContent === expected;
           }), `${label(record)}: ficha completa correspondiente`);
           doc.getElementById("explore-racials").click();
           await waitFor(() => !doc.getElementById("racial-view").hidden);

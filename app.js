@@ -379,10 +379,20 @@ specialization.addEventListener("change", () => {
   if (iconUrl) recommendationRaceIcon.src = iconUrl;
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
-    field.textContent = Object.hasOwn(record, key) ? record[key] : profile[key];
+    field.textContent = key === "alternativa" && record.alternativa === "-"
+      ? (record.faccion === "Alianza" && record.clase === "Chamán"
+        ? "Sin alternativa: única raza disponible"
+        : "Alternativa pendiente de evaluación")
+      : (Object.hasOwn(record, key) ? record[key] : profile[key]);
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
-  document.getElementById("no-alternative").hidden = record.alternativa !== "-";
+  const noAlternative = document.getElementById("no-alternative");
+  noAlternative.hidden = record.alternativa !== "-";
+  if (record.alternativa === "-") {
+    noAlternative.textContent = record.faccion === "Alianza" && record.clase === "Chamán"
+      ? "Enano es la única raza de Alianza que puede ser Chamán. No existe una segunda opción jugable."
+      : "La segunda mejor raza de esta especialización está pendiente de evaluación; no se presenta ninguna alternativa sin justificarla.";
+  }
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     document.getElementById("alternative-use").textContent = alternative.usoPrincipal;

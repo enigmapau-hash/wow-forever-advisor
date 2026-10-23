@@ -390,3 +390,24 @@ una actualización explícita y justificada.
 La navegación entre los módulos sigue disponible. Se añade regresión de navegador
 sobre las **51 recomendaciones exactas** para impedir que una raza se sugiera
 únicamente por ser compatible. Caché actualizada a **v27**.
+
+## v28 · Limpieza visual aprobada y auditoría de alternativas
+
+Las tarjetas secundarias de portada son más compactas, con títulos y
+descripciones más legibles y sin numeración decorativa. Se ocultan las estrellas
+de prioridad y utilidad racial en Race Advisor y Race Explorer: sus datos
+originales siguen conservados para trazabilidad interna. Las nueve fichas sin segunda raza aprobada ya no muestran un guion:
+Chamán Alianza indica que Enano es la única raza disponible, mientras Druida
+indica que la alternativa queda pendiente de evaluación comparativa.
+
+**Separación editorial:** el archivo original contiene 51 combinaciones y 9
+alternativas con valor `-` (6 Druida y 3 Chamán Alianza); la falta de una
+alternativa real no se resuelve inventando una raza. Los Cielonatos son
+compatibles con Druida, pero no han sido clasificados aún entre las mejores
+opciones. La investigación de Paladín No-muerto en Horda queda documentada
+fuera de esta revisión visual: es una clase confirmada en Forever, ausente
+de las 51 fichas del Excel v5, pero ya tiene contenido de clase independiente
+en Talent Advisor. Añadir tres fichas nuevas a Race Advisor requiere una
+decisión y trazabilidad editorial específica.
+
+Caché PWA v28. Ningún JSON de recomendaciones se modifica.

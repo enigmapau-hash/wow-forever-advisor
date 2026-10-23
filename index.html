@@ -51,28 +51,24 @@
         <ul class="module-list available-modules">
           <li class="module-card">
             <a id="home-explore-racials" class="module-link" href="#raciales" aria-labelledby="home-module-01">
-              <span class="module-number" aria-hidden="true">01</span>
               <h3 id="home-module-01">Race Explorer <span class="card-arrow" aria-hidden="true">↗</span></h3>
               <p>Explora las habilidades raciales de cada raza.</p>
             </a>
           </li>
           <li class="module-card">
             <a id="profession-advisor" class="module-link" href="#profession-advisor" aria-labelledby="home-module-02">
-              <span class="module-number" aria-hidden="true">02</span>
               <h3 id="home-module-02">Profession Advisor <span class="card-arrow" aria-hidden="true">↗</span></h3>
               <p>Elige profesiones para tu clase y especialización.</p>
             </a>
           </li>
           <li class="module-card">
             <a id="talent-advisor" class="module-link" href="#talent-advisor" aria-labelledby="home-module-03">
-              <span class="module-number" aria-hidden="true">03</span>
               <h3 id="home-module-03">Talent Advisor <span class="card-arrow" aria-hidden="true">↗</span></h3>
               <p>Nueve clases: talentos y Legado para subir al 60, PvP y mazmorras.</p>
             </a>
           </li>
           <li class="module-card">
             <a id="addon-advisor" class="module-link" href="#addon-advisor" aria-labelledby="home-module-04">
-              <span class="module-number" aria-hidden="true">04</span>
               <h3 id="home-module-04">Addon Advisor <span class="card-arrow" aria-hidden="true">↗</span></h3>
               <p>Pocos addons, con utilidad y fuentes claras para Forever.</p>
             </a>
@@ -122,7 +118,7 @@
         </form>
 
         <section id="advisor-result" aria-labelledby="result-race" hidden>
-          <p class="source-note">Recomendación orientativa pendiente de actualizar con el balance definitivo. La prioridad de combinación y la utilidad racial general son criterios distintos, no comparables.</p>
+          <p class="source-note">Recomendación orientativa para PvP masivo. Se muestra la raza mejor valorada y, cuando se ha evaluado una segunda opción, su alternativa.</p>
           <article class="result-card recommendation">
             <p class="eyebrow">Raza recomendada</p>
             <div class="recommendation-heading">
@@ -141,9 +137,9 @@
                   </div>
                 </dd>
               </div>
-              <div><dt>Prioridad para esta combinación</dt><dd class="rating" data-field="prioridad"></dd></div>
+              <div hidden><dt>Prioridad para esta combinación</dt><dd class="rating" data-field="prioridad"></dd></div>
             </dl>
-            <p class="field-note" id="no-alternative" hidden>No se dispone de una alternativa recomendada para esta combinación.</p>
+            <p class="field-note" id="no-alternative" hidden>La evaluación original no definió otra raza como segunda opción para esta combinación.</p>
             <h3>Motivo principal</h3>
             <p class="original-text" data-field="motivoPrincipal"></p>
             <details class="detail-disclosure">
@@ -158,8 +154,8 @@
           </div>
           <details class="result-card detail-disclosure">
             <summary>Ver perfil racial completo</summary>
-            <h3>Utilidad racial general</h3>
-            <p class="rating" data-field="escalaUtilidad"></p>
+            <h3 hidden>Utilidad racial general</h3>
+            <p class="rating" data-field="escalaUtilidad" hidden></p>
             <h3>Uso principal</h3>
             <p class="original-text" data-field="usoPrincipal"></p>
             <h3>Comentarios del perfil racial</h3>
@@ -203,8 +199,8 @@
           <p class="source-note">Valoración orientativa pendiente del balance definitivo. Los cambios oficiales de beta aparecen por separado.</p>
           <article class="result-card recommendation">
             <h2 id="racial-name"></h2>
-            <h3>Utilidad racial general</h3>
-            <p class="rating" data-racial-field="escalaUtilidad"></p>
+            <h3 hidden>Utilidad racial general</h3>
+            <p class="rating" data-racial-field="escalaUtilidad" hidden></p>
             <h3>Uso principal</h3>
             <p class="original-text" data-racial-field="usoPrincipal"></p>
           </article>

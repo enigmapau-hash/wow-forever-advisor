@@ -99,7 +99,11 @@ module.exports = async function testSkyborne(page, context, base) {
         throw new Error(`Recomendación no evaluada visible: ${row.faccion}/${row.clase}/${row.especializacion}`);
       }
       for (const key of ["razaRecomendada", "alternativa", "prioridad", "motivoPrincipal", "explicacion"]) {
-        if (document.querySelector(`[data-field="${key}"]`).textContent !== row[key]) {
+        const rendered = document.querySelector(`[data-field="${key}"]`).textContent;
+        const expected = key === "alternativa" && row.alternativa === "-" ? (row.faccion === "Alianza" && row.clase === "Chamán"
+          ? "Sin alternativa: única raza disponible"
+          : "Alternativa pendiente de evaluación") : row[key];
+        if (rendered !== expected) {
           throw new Error(`Changed original: ${key}`);
         }
       }
@@ -131,7 +135,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v27")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v28")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();
