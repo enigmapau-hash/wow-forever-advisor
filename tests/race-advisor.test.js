@@ -21,10 +21,12 @@ runButton.addEventListener("click", async () => {
     if (!condition) throw new Error(message);
   };
   try {
-    const [advisor, profiles] = await Promise.all([
+    const [advisor, profiles, additions] = await Promise.all([
       fetch("../data/race-advisor.json").then((response) => response.json()),
       fetch("../data/racials.json").then((response) => response.json()),
+      fetch("../data/race-advisor-additions.json").then((response) => response.json()),
     ]);
+    const allRows = [...advisor.fichas, ...additions.fichas];
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       frame.src = `../index.html?test=${Date.now()}`;
@@ -51,16 +53,20 @@ runButton.addEventListener("click", async () => {
     doc.getElementById("race-advisor").click();
     await waitFor(() => !faction.disabled || !doc.getElementById("data-error").hidden);
     check(doc.getElementById("data-error").hidden, "Los datos deben cargarse");
-    check(advisor.fichas.length === 51, "Se esperaban 51 fichas");
-    check(sameOptions(faction, advisor.fichas.map((row) => row.faccion)), "Facciones exactas");
+    check(advisor.fichas.length === 51, "El Excel conserva 51 fichas originales");
+    check(additions.fichas.length === 3 && allRows.length === 54,
+      "Las tres especializaciones de Paladín Horda se añaden sin alterar las 51 originales");
+    check(win.validateRaceAdditions(additions, advisor, new Map(profiles.raciales.map(r => [r.raza, r]))).length === 3,
+      "La capa adicional se valida y tiene procedencia original trazada");
+    check(sameOptions(faction, allRows.map((row) => row.faccion)), "Facciones exactas");
     check(characterClass.disabled && spec.disabled && result.hidden, "Estado inicial encadenado");
     let missingAlternatives = 0;
-    for (const record of advisor.fichas) {
+    for (const record of allRows) {
       const key = [record.faccion, record.clase, record.especializacion].join(" / ");
       choose(faction, record.faccion);
       check(characterClass.dataset.value === "" && spec.dataset.value === "" && spec.disabled && result.hidden, `${key}: limpiar al cambiar facción`);
       check([...result.querySelectorAll("[data-field]")].every((field) => field.textContent === ""), `${key}: sin texto residual`);
-      const factionRows = advisor.fichas.filter((row) => row.faccion === record.faccion);
+      const factionRows = allRows.filter((row) => row.faccion === record.faccion);
       check(sameOptions(characterClass, factionRows.map((row) => row.clase)), `${key}: clases exactas`);
       choose(characterClass, record.clase);
       check(spec.dataset.value === "" && !spec.disabled && result.hidden, `${key}: limpiar al cambiar clase`);
@@ -74,7 +80,8 @@ runButton.addEventListener("click", async () => {
       for (const field of result.querySelectorAll("[data-field]")) {
         const name = field.dataset.field;
         const expected = name === "alternativa" && record.alternativa === "-"
-          ? (record.faccion === "Alianza" && record.clase === "Chamán"
+          ? ((record.faccion === "Alianza" && record.clase === "Chamán")
+            || (record.faccion === "Horda" && record.clase === "Paladín")
             ? "Sin alternativa: única raza disponible"
             : "Alternativa pendiente de evaluación")
           : (Object.hasOwn(record, name) ? record[name] : profile[name]);
@@ -86,14 +93,23 @@ runButton.addEventListener("click", async () => {
       check(result.hidden, `${key}: selección incompleta sin resultado`);
       check(raceIcon.hidden && !raceIcon.hasAttribute("src"), `${key}: sin icono antiguo al limpiar`);
     }
-    check(missingAlternatives === 9, "Conservar las nueve alternativas no facilitadas");
+    check(missingAlternatives === 12, "9 alternativas sin evaluar del Excel + 3 Paladín con raza única");
 
     choose(faction, "Alianza");
     choose(characterClass, "Paladín");
     choose(spec, "Sagrado");
     choose(faction, "Horda");
-    check(!options(characterClass).includes("Paladín") && characterClass.dataset.value === "" && spec.disabled && result.hidden,
-      "Alianza / Paladín no debe persistir en Horda");
+    check(options(characterClass).includes("Paladín") && characterClass.dataset.value === ""
+      && spec.disabled && result.hidden,
+      "El Paladín está en ambas facciones, pero cambiar de facción limpia el estado");
+    choose(characterClass, "Paladín");
+    check(sameOptions(spec, ["Sagrado", "Protección", "Reprensión"]),
+      "Paladín Horda dispone de tres especializaciones");
+    choose(spec, "Sagrado");
+    check(!result.hidden && doc.querySelector('[data-field="razaRecomendada"]').textContent === "No-muerto"
+      && !doc.getElementById("race-addition-note").hidden
+      && doc.getElementById("no-alternative").textContent.includes("única raza"),
+      "Paladín Horda Sagrado muestra No-muerto y ausencia de alternativa");
     choose(characterClass, "Guerrero");
     choose(spec, "Armas");
     choose(characterClass, "Mago");
@@ -130,7 +146,7 @@ runButton.addEventListener("click", async () => {
     await waitFor(() => !reloaded.getElementById("faction").disabled);
     check(!reloaded.getElementById("advisor-view").hidden, "Recarga directa de #race-advisor");
     check(reloaded.getElementById("advisor-result").hidden, "Una recarga no recupera un resultado sin selección");
-    report.textContent = `OK: 51/51 combinaciones, ${assertions} comprobaciones, 9 alternativas «-». Textos literales, perfiles, cambios de selección y navegación correctos.`;
+    report.textContent = `OK: 51 fichas originales intactas + 3 Paladín Horda (54/54), ${assertions} comprobaciones, 12 sin segunda raza. Perfiles, cambios de selección y navegación correctos.`;
   } catch (error) {
     report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones completadas)`;
   } finally {
@@ -149,10 +165,12 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     if (!condition) throw new Error(message);
   };
   try {
-    const [profiles, advisor] = await Promise.all([
+    const [profiles, advisor, additions] = await Promise.all([
       fetch("../data/racials.json").then((response) => response.json()),
       fetch("../data/race-advisor.json").then((response) => response.json()),
+      fetch("../data/race-advisor-additions.json").then((response) => response.json()),
     ]);
+    const allRows = [...advisor.fichas, ...additions.fichas];
     await new Promise((resolve) => {
       frame.addEventListener("load", resolve, { once: true });
       frame.src = `../index.html?racials-test=${Date.now()}#race-advisor`;
@@ -181,7 +199,8 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     check(JSON.stringify([...select.querySelectorAll("button")].map((option) => option.dataset.value))
       === JSON.stringify([...profiles.raciales.map((profile) => profile.raza), "Cielonato"]), "Ocho perfiles originales más Cielonato");
     check(profiles.raciales.length === 8 && result.hidden, "Ocho perfiles, sin resultado inicial");
-    check(advisor.fichas.length === 51, "Cruzar las ocho razas con las 51 fichas");
+    check(advisor.fichas.length === 51 && allRows.length === 54,
+      "Cruzar los ocho perfiles con 51 fichas originales y 3 complementarias");
     let recommended = 0;
     let alternatives = 0;
     for (const profile of profiles.raciales) {
@@ -194,7 +213,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
         ["racial-recommended", "racial-no-recommended", "razaRecomendada"],
         ["racial-alternative", "racial-no-alternative", "alternativa"],
       ]) {
-        const expected = advisor.fichas.filter((row) => row[field] === profile.raza);
+        const expected = allRows.filter((row) => row[field] === profile.raza);
         const list = doc.getElementById(listId);
         const links = [...list.querySelectorAll("a")];
         const label = (row) => [row.faccion, row.clase, row.especializacion].join(" · ");
@@ -217,7 +236,8 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
             const key = element.dataset.field;
             const racial = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
             const expected = key === "alternativa" && record.alternativa === "-"
-              ? (record.faccion === "Alianza" && record.clase === "Chamán"
+              ? ((record.faccion === "Alianza" && record.clase === "Chamán")
+                  || (record.faccion === "Horda" && record.clase === "Paladín")
                 ? "Sin alternativa: única raza disponible"
                 : "Alternativa pendiente de evaluación")
               : (Object.hasOwn(record, key) ? record[key] : racial[key]);
@@ -231,7 +251,8 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
         else alternatives += links.length;
       }
     }
-    check(recommended === 51 && alternatives === 42, "51 recomendaciones y 42 alternativas, sin incluir «-»");
+    check(recommended === 54 && alternatives === 42,
+      "54 recomendaciones (51 originales + 3 Paladín Horda) y 42 alternativas originales");
     choose("faction", original.faccion);
     choose("character-class", original.clase);
     choose("specialization", original.especializacion);
@@ -253,7 +274,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     });
     await waitFor(() => !frame.contentDocument.getElementById("racial-race").disabled);
     check(!frame.contentDocument.getElementById("racial-view").hidden, "Recarga directa de #raciales");
-    report.textContent = `OK: 8/8 razas × 51 fichas, ${recommended} recomendaciones y ${alternatives} alternativas, ${assertions} comprobaciones. Perfiles, navegación a cada coincidencia y selector correctos.`;
+    report.textContent = `OK: ocho perfiles × 54 fichas (51 originales), ${recommended} recomendaciones y ${alternatives} alternativas, ${assertions} comprobaciones. Navegación y perfiles correctos.`;
   } catch (error) {
     report.textContent = `ERROR: ${error.message} (${assertions} comprobaciones completadas)`;
   } finally {
