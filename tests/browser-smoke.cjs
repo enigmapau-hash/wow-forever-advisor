@@ -105,9 +105,9 @@ const server = http.createServer(async (req, res) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#character-class button[data-value="Guerrero"]').click();
     await page.locator('#specialization button[data-value="Armas"]').click();
-    assert.equal(await page.locator(".recommendation .detail-disclosure").getAttribute("open"), null,
+    assert.equal(await page.locator("#advisor-result .recommendation > .detail-disclosure").getAttribute("open"), null,
       "The long explanation starts collapsed");
-    await page.locator(".recommendation .detail-disclosure summary").click();
+    await page.locator("#advisor-result .recommendation > .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
       "The original explanation is available after expanding");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
