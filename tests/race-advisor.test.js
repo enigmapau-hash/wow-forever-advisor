@@ -426,7 +426,7 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
     check(visible("advisor-result") && snapshot("advisor-result") === raceText, "Conservar ficha y selección de Race Advisor");
     await open("explore-racials", "racial-view");
     const label = [record.faccion, record.clase, record.especializacion].join(" · ");
-    const link = [...doc.querySelectorAll("#racial-recommended a")].find((item) => item.textContent === label);
+    const link = [...doc.querySelectorAll("#racial-recommended a")].find((item) => item.getAttribute("aria-label") === label);
     check(Boolean(link), "Enlace a ficha concreta");
     link.click();
     await waitFor(() => visible("advisor-view"));
