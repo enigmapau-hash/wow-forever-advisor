@@ -391,7 +391,7 @@ function prepareSkyborneExplorer() {
   setOptions(skyborneFaction, skyborneData.variantes.map((row) => row.faccion), "Elige una variante");
   document.getElementById("skyborne-verification").textContent = skyborneVerification();
   document.getElementById("skyborne-beta-note").textContent =
-    "Facultades según notas de beta del 15/10/2026; sujetas a cambios.";
+    "Datos de presentación y notas de beta hasta el 15/10/2026; sujetos a cambios.";
   fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
   document.getElementById("skyborne-wind-history").textContent =
     `Historial de Wind Blessed: ${skyborneData.comunes.find((ability) => ability.id === "wind-blessed").descripcion}`;
