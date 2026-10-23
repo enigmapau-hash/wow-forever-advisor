@@ -68,11 +68,24 @@ module.exports = async function testRedesign(page, base, offline = false) {
             "compare-alternative-pro", "compare-alternative-con"]) {
             ensure(document.getElementById(id).textContent.length > 0, "Argumento comparativo: " + id);
           }
+          const summary = document.getElementById("race-comparison-conclusion-text").textContent;
+          ensure(summary.length > 70 && summary.includes(display(row.razaRecomendada))
+            && summary.includes(display(alt)),
+            "Una conclusión con ambas razas para " + row.especializacion);
+          ensure(document.getElementById("race-comparison-conclusion-title").textContent
+            === "Conclusión para " + row.especializacion,
+            "Título ajustado a la especialización");
+          ensure(Boolean(document.getElementById("race-comparison").compareDocumentPosition(addons)
+            & Node.DOCUMENT_POSITION_FOLLOWING), "Comparativa antes de addons");
           const a = main.getBoundingClientRect(), b = alternative.getBoundingClientRect();
           ensure(width < 960 ? b.top >= a.bottom : b.left >= a.right, `Jerarquía responsive ${width}`);
-          ensure(width < 960 || a.width > b.width, "Principal más grande en escritorio");
+          ensure(width < 960 || (a.width >= b.width * 1.8 && a.right <= b.left + 1),
+            "Principal ocupa aproximadamente dos tercios y alternativa queda a la derecha");
         } else {
           ensure(!document.getElementById("alternative-race-icon").hasAttribute("src"), "Sin icono ficticio o residual");
+          ensure(document.getElementById("race-comparison").hidden
+            && document.getElementById("race-comparison-conclusion-text").textContent === "",
+            "Sin comparativa ni conclusión cuando no existe una alternativa");
         }
         ensure(document.documentElement.scrollWidth <= innerWidth, `Sin desbordamiento ${width}`);
         for (const label of document.querySelectorAll('#character-class .option-label, #specialization .option-label')) {
