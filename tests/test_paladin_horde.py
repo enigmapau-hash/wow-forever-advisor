@@ -66,7 +66,7 @@ class PaladinHordeTests(unittest.TestCase):
         self.assertTrue(any("us.forums.blizzard.com" in u for u in sources))
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
         self.assertIn('"./data/race-advisor-additions.json"', sw)
-        self.assertIn("${CACHE_PREFIX}v29", sw)
+        self.assertIn("${CACHE_PREFIX}v30", sw)
         assessment = (ROOT / "docs/druid-race-assessment-v29.md").read_text(encoding="utf-8")
         for spec in ("Equilibrio", "Feral", "Restauración"):
             self.assertIn(spec, assessment)
