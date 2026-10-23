@@ -34,10 +34,12 @@ class EditorialCleanupTests(unittest.TestCase):
     def test_single_alternative_message_and_optional_comparison(self):
         self.assertNotIn('id="no-alternative"', self.html)
         self.assertNotIn('id="race-addition-note"', self.html)
-        self.assertIn('id="alternative-details"', self.html)
+        self.assertNotIn('id="alternative-details"', self.html)
+        self.assertIn('id="alternative-race-link"', self.html)
         self.assertNotIn('¿Por qué estas dos razas?', self.html)
-        self.assertIn('id="alternative-detail-text"', self.html)
+        self.assertIn('id="primary-profile-link"', self.html)
         self.assertIn('record.usoAlternativa', self.app)
+        self.assertLess(self.html.index('id="race-addons"'), self.html.index('id="race-beta-updates"'))
         self.assertNotIn("sin estrellas nuevas", self.app)
         self.assertIn("Sin alternativa: No-muerto es la única raza", self.app)
         self.assertIn("Sin alternativa: Enano es la única raza", self.app)
@@ -45,7 +47,7 @@ class EditorialCleanupTests(unittest.TestCase):
     def test_technical_notices_outside_initial_explorer(self):
         self.assertNotIn('id="skyborne-icon-note"', self.html)
         self.assertNotIn('getElementById("skyborne-icon-note")', self.app)
-        self.assertIn('<summary>Fuentes y notas de beta</summary>', self.html)
+        self.assertIn('<summary>Fuentes y cambios de beta</summary>', self.html)
         self.assertIn('id="skyborne-verification"', self.html)
         self.assertIn('id="skyborne-sources"', self.html)
         self.assertIn('id="skyborne-alternatives"', self.html)
