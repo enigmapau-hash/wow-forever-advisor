@@ -197,7 +197,11 @@ function validateSkyborneData(data) {
     if (!data || data.schemaVersion !== 1 || data.raza !== "Cielonato" || data.estado !== "beta"
         || !["pendiente", "verificado"].includes(data.revision?.estado)
         || !/^\d{4}-\d{2}-\d{2}$/.test(data.revision.fecha)
-        || !text(data.icono?.nota) || data.icono.estado !== "pendiente_autorizacion" || data.icono.url !== null
+        || !text(data.icono?.nota) || data.icono.estado !== "enlace_cdn"
+        || data.icono.url !== self.WOW_ICON_MAP?.raza?.Cielonato
+        || !Array.isArray(data.icono.candidatos)
+        || !data.icono.candidatos.some((candidate) => candidate.url === data.icono.url
+          && candidate.http === 200 && /^https:\/\/wow\.zamimg\.com\/images\/wow\/icons\/large\/[a-z0-9_]+\.jpg$/.test(candidate.url))
         || data.evaluacion?.estado !== "pendiente"
         || !text(data.evaluacion.criterio) || !text(data.evaluacion.limitacion)
         || !Array.isArray(data.fuentes) || data.fuentes.length !== 3) return null;
