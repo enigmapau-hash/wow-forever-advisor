@@ -123,7 +123,7 @@
         </form>
 
         <section id="advisor-result" aria-labelledby="result-race" hidden>
-          <p class="source-note">Recomendación y estrellas del Excel original, aún sin recalcular tras la beta.</p>
+          <p class="source-note">Recomendación del Excel original, aún sin recalcular tras la beta. Las estrellas de prioridad de combinación y utilidad racial general representan criterios distintos y no son comparables.</p>
           <article class="result-card recommendation">
             <p class="eyebrow">Raza recomendada</p>
             <div class="recommendation-heading">
@@ -185,7 +185,7 @@
         <header class="selector-intro">
           <h1 id="racial-title" tabindex="-1">Race Explorer</h1>
           <p class="subtitle">Consulta el perfil original de cada raza.</p>
-          <p class="field-note">Cobertura del Excel: ocho razas originales. Cielonatos no incluidos.</p>
+          <p class="field-note">Ocho razas del Excel; «Elfo» corresponde al elfo de la noche. Cielonatos no incluidos.</p>
         </header>
         <div class="selector-card">
           <fieldset id="racial-race" class="option-group" data-value="" data-icon-kind="raza" disabled>
@@ -200,7 +200,7 @@
           </div>
         </div>
         <section id="racial-result" aria-labelledby="racial-name" hidden>
-          <p class="source-note">Perfil y estrellas del Excel original; los cambios oficiales de beta aparecen aparte.</p>
+          <p class="source-note">Perfil y estrellas del Excel original, sin recalcular. Los cambios oficiales de beta aparecen por separado.</p>
           <article class="result-card recommendation">
             <h2 id="racial-name"></h2>
             <h3>Utilidad general de la racial (Excel)</h3>
@@ -222,14 +222,14 @@
             <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente oficial: Blizzard</a>. Estos cambios no alteran automáticamente las valoraciones originales.</p>
           </article>
           <section class="result-card" aria-labelledby="racial-recommended-title">
-            <h3 id="racial-recommended-title">Raza recomendada</h3>
+            <h3 id="racial-recommended-title">Dónde se recomienda esta raza</h3>
             <ul id="racial-recommended"></ul>
-            <p id="racial-no-recommended" class="field-note" hidden>No aparece como raza recomendada.</p>
+            <p id="racial-no-recommended" class="field-note" hidden>No se recomienda esta raza en las combinaciones actuales del Excel.</p>
           </section>
           <section class="result-card" aria-labelledby="racial-alternative-title">
-            <h3 id="racial-alternative-title">Raza alternativa</h3>
+            <h3 id="racial-alternative-title">Dónde aparece como alternativa</h3>
             <ul id="racial-alternative"></ul>
-            <p id="racial-no-alternative" class="field-note" hidden>No aparece como raza alternativa.</p>
+            <p id="racial-no-alternative" class="field-note" hidden>No aparece como alternativa en las combinaciones actuales del Excel.</p>
           </section>
         </section>
       </section>
@@ -257,6 +257,7 @@
           </div>
         </div>
         <article id="profession-result" class="result-card recommendation" aria-labelledby="profession-combination" hidden>
+          <p id="profession-editorial-note" class="source-note">Orientación provisional para progresión y PvP. No distingue raza ni facción.</p>
           <h2 id="profession-combination"></h2>
           <h3>Pareja de profesiones principal</h3>
           <p class="original-text" data-profession-field="principal"></p>
@@ -344,6 +345,10 @@
 
           <details class="result-card detail-disclosure">
             <summary>Versión, documentación y fuentes</summary>
+            <h3>Advertencia editorial completa</h3>
+            <p id="talent-original-notice" class="original-text"></p>
+            <h3>Limitación original</h3>
+            <p id="talent-original-limitation" class="original-text"></p>
             <p id="talent-version" class="original-text"></p>
             <p id="talent-source-note" class="field-note"></p>
             <ul id="talent-sources" class="talent-sources"></ul>
@@ -355,12 +360,12 @@
         <a class="back-link" href="#inicio">← Volver al inicio</a>
         <header class="selector-intro">
           <h1 id="addon-title" tabindex="-1">Addon Advisor</h1>
-          <p class="subtitle">Un pequeño grupo de imprescindibles, según lo que necesites.</p>
-          <p class="field-note">WoW Forever · 1.60 beta. Empieza por una necesidad y añade solo lo que te ayude.</p>
+          <p class="subtitle">Addons útiles según tus necesidades, sin instalaciones obligatorias.</p>
+          <p class="field-note">WoW Forever · cliente 1.60 beta. Selección orientativa.</p>
         </header>
         <div id="addon-controls" class="selector-card" aria-busy="false">
-          <p>«Publicado para Forever» acredita un archivo del desarrollador. «Probado en Forever» exige evidencia de una prueba con cliente y alcance concretos. «Pendiente de verificar» no es una recomendación de instalación.</p>
-          <p class="field-note">Antes de instalar, abre la fuente y elige el archivo para Forever 1.60.x. Una descarga para Retail o Classic no acredita compatibilidad. Las fuentes y descargas necesitan conexión; el catálogo queda disponible offline tras la primera visita online.</p>
+          <p>«Publicado para Forever» no significa probado en el juego. «Pendiente de verificar» no es una recomendación de instalación.</p>
+          <p class="field-note">Comprueba en la fuente el archivo específico para Forever 1.60.x: Retail y Classic no acreditan compatibilidad. Las descargas requieren conexión; el catálogo se puede consultar offline después de una visita con conexión.</p>
           <fieldset class="option-group">
             <legend>Filtrar por utilidad</legend>
             <div id="addon-filters" class="specialization-buttons"></div>
