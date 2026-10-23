@@ -11,7 +11,8 @@ module.exports = async function testSkyborne(page, context, base) {
   assert.equal(await page.locator("#racial-race button").count(), 9);
   assert.match(await page.locator("#racial-coverage-note").textContent(), /^Nueve razas/);
   assert.equal(await page.locator("#explore-racials").textContent(), "Explorar las 9 razas →");
-  assert.match(await page.locator("#race-coverage-note").textContent(), /Cielonato por separado/);
+  assert.equal(await page.locator("#skyborne-consideration").count(), 0,
+    "No debe existir ninguna recomendación por mera compatibilidad en Race Advisor");
   assert(await page.evaluate((data) => {
     if (!validateSkyborneData(data)) return false;
     const mutations = [
@@ -78,42 +79,43 @@ module.exports = async function testSkyborne(page, context, base) {
   assert.equal(await page.locator("#racial-result").isVisible(), true);
   await page.locator("#back-selector").click();
   await page.locator("#faction button").first().waitFor();
-  const coverage = await page.evaluate(({ data, advisor }) => {
-    let eligible = 0;
+  // Race Advisor solo recomienda en función de las fichas valoradas, no por
+  // compatibilidad de clase o facción. Cielonato permanece en Race Explorer.
+  const coverage = await page.evaluate(({ advisor }) => {
     const choose = (id, value) => {
       const button = [...document.querySelectorAll(`#${id} button`)].find((b) => b.dataset.value === value);
       if (!button) throw new Error(`Missing ${id}: ${value}`);
       button.click();
     };
+    if (document.getElementById("skyborne-consideration") || document.getElementById("skyborne-explore")) {
+      throw new Error("No deben existir tarjetas de compatibilidad en Race Advisor");
+    }
     for (const row of advisor.fichas) {
       choose("faction", row.faccion);
-      if (!document.getElementById("skyborne-consideration").hidden) throw new Error("Stale faction consideration");
       choose("character-class", row.clase);
-      if (!document.getElementById("skyborne-consideration").hidden) throw new Error("Stale class consideration");
       choose("specialization", row.especializacion);
-      const allowed = data.variantes.some((v) => v.faccion === row.faccion && v.clases.includes(row.clase));
-      if (document.getElementById("skyborne-consideration").hidden === allowed) throw new Error(`Wrong eligibility: ${row.faccion}/${row.clase}`);
-      for (const key of ["razaRecomendada", "alternativa", "prioridad", "motivoPrincipal", "explicacion"]) {
-        if (document.querySelector(`[data-field="${key}"]`).textContent !== row[key]) throw new Error(`Changed original: ${key}`);
+      const result = document.getElementById("advisor-result");
+      if (result.hidden || /Cielonato/.test(result.textContent)) {
+        throw new Error(`Recomendación no evaluada visible: ${row.faccion}/${row.clase}/${row.especializacion}`);
       }
-      if (allowed) {
-        eligible++;
-        const v = data.variantes.find((v) => v.faccion === row.faccion);
-        if (!document.getElementById("skyborne-advisor-abilities").textContent.includes(v.habilidad.descripcion)) throw new Error("Wrong faction ability");
+      for (const key of ["razaRecomendada", "alternativa", "prioridad", "motivoPrincipal", "explicacion"]) {
+        if (document.querySelector(`[data-field="${key}"]`).textContent !== row[key]) {
+          throw new Error(`Changed original: ${key}`);
+        }
       }
     }
-    return { total: advisor.fichas.length, eligible };
-  }, { data, advisor });
-  assert.deepEqual(coverage, { total: 51, eligible: 30 });
-  assert.equal(await page.locator("#skyborne-consideration .rating").count(), 0);
+    return advisor.fichas.length;
+  }, { advisor });
+  assert.equal(coverage, 51, "Conservar las 51 recomendaciones sin añadir candidatos no evaluados");
   for (const variant of data.variantes) {
     const row = advisor.fichas.find((row) => row.faccion === variant.faccion && row.clase === variant.clases[0]);
     for (const [id, key] of [["faction", "faccion"], ["character-class", "clase"], ["specialization", "especializacion"]]) {
       await page.locator(`#${id} button[data-value="${row[key]}"]`).click();
     }
     const original = await page.locator("#result-combination").textContent();
-    await page.locator("#skyborne-explore").click();
-    await page.locator("#skyborne-result").waitFor();
+    await page.locator("#explore-racials").click();
+    await page.locator('#racial-race button[data-value="Cielonato"]').click();
+    await page.locator(`#skyborne-faction button[data-value="${variant.faccion}"]`).click();
     assert.equal(await page.locator("#skyborne-result").isVisible(), true);
     assert.equal(await page.locator(`#skyborne-faction button[data-value="${variant.faccion}"]`).getAttribute("aria-pressed"), "true");
     await page.locator("#back-selector").click();
@@ -129,7 +131,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v26")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v27")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();
@@ -142,10 +144,12 @@ module.exports = async function testSkyborne(page, context, base) {
   await page.locator('#faction button[data-value="Alianza"]').click();
   await page.locator('#character-class button[data-value="Mago"]').click();
   await page.locator("#specialization button").first().click();
-  assert.equal(await page.locator("#skyborne-consideration").isVisible(), true);
+  assert.equal(await page.locator("#skyborne-consideration").count(), 0,
+    "Ni siquiera una clase compatible debe crear una recomendación de Cielonato");
+  assert.equal(await page.locator("#advisor-result").isVisible(), true);
   await page.locator('#character-class button[data-value="Sacerdote"]').click();
   await page.locator("#specialization button").first().click();
-  assert.equal(await page.locator("#skyborne-consideration").isVisible(), false);
+  assert.equal(await page.locator("#skyborne-consideration").count(), 0);
   await context.setOffline(false);
   await page.goto(base + "/");
   const fallback = await context.browser().newContext({ serviceWorkers: "block" });
@@ -160,13 +164,13 @@ module.exports = async function testSkyborne(page, context, base) {
     assert.equal(await fallbackPage.locator("#racial-race button").count(), 8);
     assert.equal(await fallbackPage.locator("#explore-racials").textContent(), "Explorar las 8 razas →");
     assert.match(await fallbackPage.locator("#racial-coverage-note").textContent(), /^Ocho razas/);
-    assert.match(await fallbackPage.locator("#race-coverage-note").textContent(), /Cielonato no está disponible/);
+    assert.equal(await fallbackPage.locator("#skyborne-consideration").count(), 0);
     await fallbackPage.locator("#back-selector").click();
     await fallbackPage.locator('#faction button[data-value="Alianza"]').click();
     await fallbackPage.locator('#character-class button[data-value="Guerrero"]').click();
     await fallbackPage.locator('#specialization button[data-value="Armas"]').click();
     assert.equal(await fallbackPage.locator("#advisor-result").isVisible(), true);
-    assert.equal(await fallbackPage.locator("#skyborne-consideration").isVisible(), false);
+    assert.equal(await fallbackPage.locator("#skyborne-consideration").count(), 0);
     failSkyborne = false;
     await fallbackPage.goto(base + "/?skyborne-recovery=1#raciales");
     await fallbackPage.locator('#racial-race button[data-value="Cielonato"]').waitFor();
@@ -175,5 +179,5 @@ module.exports = async function testSkyborne(page, context, base) {
     assert.match(await fallbackPage.locator("#racial-coverage-note").textContent(), /^Nueve razas/);
     assert.equal(await fallbackPage.locator("#skyborne-data-error").isVisible(), false);
   } finally { await fallback.close(); }
-  console.log("Cielonato: 9 races, 2 variants, 30 eligible / 21 excluded combinations; original recommendations, keyboard, 4 viewport sizes, navigation and offline: OK");
+  console.log("Cielonato: 9 razas y 2 variantes solo en Race Explorer; 51 recomendaciones originales intactas, teclado, 4 tamaños, navegación y offline: OK");
 };
