@@ -51,7 +51,7 @@ class EditorialV33Tests(unittest.TestCase):
     def test_alternatives_identify_scope_and_source(self):
         self.assertIn('id="alternative-scope"', self.html)
         self.assertIn('id="alternative-race-link"', self.html)
-        self.assertIn('"Ventaja racial general"', self.app)
+        self.assertNotIn('"Ventaja racial general"', self.app)
         self.assertIn('"En esta especialización"', self.app)
         self.assertNotIn('id="alternative-details"', self.html)
         self.assertIn('id="primary-profile-link"', self.html)
