@@ -385,8 +385,8 @@ function updateRacialCoverage(available = true) {
 
 function skyborneVerification() {
   return skyborneData.revision.estado === "verificado"
-    ? `Datos oficiales de beta · revisión ${skyborneData.revision.fecha}. No equivalen a confirmación de lanzamiento.`
-    : "Datos de beta pendientes de contraste independiente con las fuentes oficiales. Facultades y compatibilidad por confirmar; valoración comparativa pendiente.";
+    ? `Fuentes oficiales consultadas el ${skyborneData.revision.fecha}; los datos pueden cambiar.`
+    : "Consulta las fuentes oficiales antes de considerar definitivas las facultades.";
 }
 
 // F05: mostrar el efecto vigente en la ficha; las notas históricas permanecen en Fuentes.
@@ -418,20 +418,21 @@ function fillSkyborneAbilities(id, abilities) {
 function prepareSkyborneExplorer() {
   setOptions(skyborneFaction, skyborneData.variantes.map((row) => row.faccion), "Elige una variante");
   document.getElementById("skyborne-verification").textContent = skyborneVerification();
-  document.getElementById("skyborne-beta-note").textContent =
-    "Datos de presentación y notas de beta hasta el 15/10/2026; sujetos a cambios.";
   fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
   document.getElementById("skyborne-wind-history").textContent =
-    `Historial de Wind Blessed: ${skyborneData.comunes.find((ability) => ability.id === "wind-blessed").descripcion}`;
+    "Wind Blessed: +3 % de celeridad; la presentación inicial indicaba +1 %.";
   document.getElementById("skyborne-skysight-source").textContent =
-    `Procedencia de Skysight: ${skyborneData.variantes.find((variant) => variant.faccion === "Horda").habilidad.descripcion}`;
-  document.getElementById("skyborne-criterion").textContent = "Cielonato se ha evaluado como alternativa de Druida; no hay clasificación aprobada para otras clases.";
-  document.getElementById("skyborne-limitation").textContent = "Pendiente de comprobar su rendimiento al nivel 60, la regeneración durante lanzamientos y la velocidad en formas druídicas.";
+    "Skysight: +10 % de velocidad de carrera, activable en movimiento.";
+  document.getElementById("skyborne-criterion").textContent =
+    "Planeo y celeridad ayudan a variar la posición; las facultades de Alianza y Horda responden a necesidades distintas. Para Druida también importa el papel que desempeña cada forma.";
+  document.getElementById("skyborne-limitation").textContent =
+    "El planeo es temporal. La celeridad y la movilidad no sustituyen el control defensivo; conviene contrastar su interacción con las formas druídicas.";
   document.getElementById("skyborne-sources").replaceChildren(...skyborneData.fuentes.map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
     link.href = source.url;
-    link.textContent = source.nombre;
+    link.textContent = source.id === "beta-15-oct"
+      ? "Blizzard · Cambios de facultades (octubre de 2026)" : source.nombre;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     item.append(link);
