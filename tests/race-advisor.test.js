@@ -74,7 +74,9 @@ runButton.addEventListener("click", async () => {
       for (const field of result.querySelectorAll("[data-field]")) {
         const name = field.dataset.field;
         const expected = name === "alternativa" && record.alternativa === "-"
-          ? "Sin segunda raza evaluada"
+          ? (record.faccion === "Alianza" && record.clase === "Chamán"
+            ? "Sin alternativa: única raza disponible"
+            : "Alternativa pendiente de evaluación")
           : (Object.hasOwn(record, name) ? record[name] : profile[name]);
         check(field.textContent === expected, `${key}: texto literal de ${name}`);
       }
@@ -215,7 +217,9 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
             const key = element.dataset.field;
             const racial = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
             const expected = key === "alternativa" && record.alternativa === "-"
-              ? "Sin segunda raza evaluada"
+              ? (record.faccion === "Alianza" && record.clase === "Chamán"
+                ? "Sin alternativa: única raza disponible"
+                : "Alternativa pendiente de evaluación")
               : (Object.hasOwn(record, key) ? record[key] : racial[key]);
             return element.textContent === expected;
           }), `${label(record)}: ficha completa correspondiente`);
