@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v30`);
-      await cache.put("./obsolete-v30", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v31`);
+      await cache.put("./obsolete-v31", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -48,6 +48,7 @@ const server = http.createServer(async (req, res) => {
       assert.match(result, /^OK:/, result);
       console.log(suite + ": " + result);
     }
+    await require("./race-redesign-browser.cjs")(page, base);
     await page.goto(base + "/");
     assert.equal(await page.locator(".available-modules > li").count(), 4,
       "Only the four approved modules appear on the home screen");
@@ -113,14 +114,11 @@ const server = http.createServer(async (req, res) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.locator('#character-class button[data-value="Guerrero"]').click();
     await page.locator('#specialization button[data-value="Armas"]').click();
-    assert.equal(await page.locator("#advisor-result .recommendation > .detail-disclosure").getAttribute("open"), null,
-      "The long explanation starts collapsed");
-    await page.locator("#advisor-result .recommendation > .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-field="explicacion"]').isVisible(), true,
-      "The original explanation is available after expanding");
+      "La explicación de la raza principal es visible sin desplegar");
     assert.equal(await page.locator('[data-field="prioridad"]').isVisible(), false,
       "La prioridad no se presenta como una escala de estrellas");
-    await page.locator("#advisor-result > details.detail-disclosure:not(#race-beta-updates) > summary").click();
+    await page.locator("#primary-profile > summary").click();
     assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), false,
       "La utilidad general permanece en los datos, pero no se muestra como estrellas");
     assert.equal(await page.locator("#selection-status").getAttribute("role"), "status",
@@ -131,13 +129,13 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#character-class button[data-value="Druida"]').click();
     await page.locator('#specialization button[data-value="Equilibrio"]').click();
     assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "Cielonato");
-    assert.equal(await page.locator("#race-druid-details").isVisible(), true);
-    assert.equal(await page.locator("#race-druid-details").getAttribute("open"), null,
+    assert.equal(await page.locator("#alternative-details").isVisible(), true);
+    assert.equal(await page.locator("#alternative-details").getAttribute("open"), null,
       "La comparación extensa se consulta solo si el usuario quiere");
     assert.equal(await page.locator("#alternative-use").isVisible(), true,
       "La utilidad breve de Cielonato aparece inmediatamente");
-    await page.locator("#race-druid-details summary").click();
-    assert.equal(await page.locator("#race-druid-note").isVisible(), true,
+    await page.locator("#alternative-details summary").click();
+    assert.equal(await page.locator("#alternative-detail-text").isVisible(), true,
       "La justificación completa sigue disponible");
     await page.locator('#faction button[data-value="Horda"]').click();
     await page.locator('#character-class button[data-value="Paladín"]').click();
@@ -188,11 +186,13 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v31")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v30")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v32")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v31")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
+    await require("./race-redesign-browser.cjs")(page, base, true);
+    await page.goto(base + "/");
     await page.locator("#talent-advisor").click();
     await page.locator("#talent-class button").first().waitFor();
     assert.deepEqual(await page.locator("#talent-class button").evaluateAll(

@@ -1,5 +1,40 @@
 # wow-forever-advisor
 
+## Versión actual · v32
+
+Race Advisor presenta **54 fichas**: 51 recomendaciones originales y tres
+adiciones de Paladín Horda. Las seis alternativas de Druida siguen siendo
+Cielonato. Se conserva el Excel maestro, sus identificadores y todos los JSON.
+
+La raza principal reúne icono, nombre, motivo y explicación visible. La
+alternativa tiene su propio bloque subordinado e icono; en móvil aparece debajo.
+Las seis combinaciones sin alternativa muestran el motivo dentro de la ficha
+principal. El perfil general identifica la raza y se consulta por separado.
+«Elfo de la noche» es una etiqueta de interfaz; la clave interna sigue siendo
+`Elfo`. Las fuentes oficiales y las limitaciones de beta permanecen accesibles.
+
+`version.js` es la fuente única de versión para el pie y la caché del service
+worker. Al preparar una actualización, modificar ese archivo y comprobar la
+transición offline. La primera visita con conexión sigue siendo necesaria; los
+iconos externos dependen de la CDN hasta quedar almacenados en el navegador.
+
+Comprobaciones actuales:
+
+```sh
+python -m unittest discover -s tests -p 'test_*.py'
+node tests/icon-map.test.js
+node tests/addon-advisor.test.js
+node tests/browser-smoke.cjs
+```
+
+El runner requiere Playwright y Chromium (instalación descrita más abajo).
+Recorre las 54 fichas raciales, 81 de talentos y 27 de profesiones, también
+offline. Comprueba la jerarquía en 320, 390, 820 y 1280 px. Las decisiones y la
+inspección visual de v32 se documentan en [la revisión](docs/v32-race-redesign.md).
+La validación técnica no implica aprobación visual del usuario.
+
+## Historial y referencias de versiones anteriores
+
 Pantalla inicial de WoW Forever Advisor, con HTML, CSS y JavaScript nativo.
 
 - Publicar los archivos en la raíz del sitio de GitHub Pages. Las rutas relativas

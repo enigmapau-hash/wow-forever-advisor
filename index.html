@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="./icons/icon-map.js" defer></script>
     <script src="./addon-advisor.js" defer></script>
+    <script src="./version.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -118,54 +119,52 @@
         </form>
 
         <section id="advisor-result" aria-labelledby="result-race" hidden>
-          <p class="source-note">Orientación de beta para PvP masivo.</p>
-          <article class="result-card recommendation">
-            <p class="eyebrow">Raza recomendada</p>
+          <header class="race-result-intro">
+            <p class="result-combination" id="result-combination"></p>
+            <p class="field-note">Orientación de beta para PvP masivo; sujeta a cambios.</p>
+          </header>
+          <div class="race-choices">
+          <article id="primary-choice" class="result-card recommendation">
+            <p class="eyebrow">Raza principal</p>
             <div class="recommendation-heading">
-              <img id="result-race-icon" alt="" width="44" height="44" hidden>
+              <img id="result-race-icon" alt="" width="64" height="64" hidden>
               <h2 id="result-race" data-field="razaRecomendada"></h2>
             </div>
-            <p class="result-combination" id="result-combination"></p>
-
-            <dl class="result-summary">
-              <div>
-                <dt>Alternativa</dt>
-                <dd>
-                  <span data-field="alternativa"></span>
-                  <div id="alternative-profile" hidden>
-                    <p id="alternative-use" class="original-text"></p>
-                    <details id="race-druid-details" class="detail-disclosure" hidden>
-                      <summary>¿Por qué estas dos razas?</summary>
-                      <p id="race-druid-note" class="original-text"></p>
-                    </details>
-                  </div>
-                </dd>
-              </div>
-              <div hidden><dt>Prioridad para esta combinación</dt><dd class="rating" data-field="prioridad"></dd></div>
-            </dl>
-            <h3>Motivo principal</h3>
-            <p class="original-text" data-field="motivoPrincipal"></p>
-            <details class="detail-disclosure">
-              <summary>Ver explicación completa</summary>
-              <h3>Explicación detallada</h3>
-              <p class="original-text" data-field="explicacion"></p>
-            </details>
+            <h3 id="primary-reason-label">Por qué elegir esta raza</h3>
+            <p class="race-reason" data-field="motivoPrincipal"></p>
+            <p class="original-text race-explanation" data-field="explicacion"></p>
+            <p id="alternative-empty" class="field-note" hidden></p>
+            <span data-field="prioridad" hidden></span>
           </article>
-          <div class="profile-grid">
-            <article class="result-card"><h3>Fortalezas</h3><p class="original-text" data-field="fortalezas"></p></article>
-            <article class="result-card"><h3>Debilidades</h3><p class="original-text" data-field="debilidades"></p></article>
+          <aside id="alternative-profile" class="result-card alternative-choice" aria-labelledby="alternative-name" hidden>
+            <p class="eyebrow">Alternativa</p>
+            <div class="recommendation-heading">
+              <img id="alternative-race-icon" alt="" width="40" height="40" hidden>
+              <h3 id="alternative-name" data-field="alternativa"></h3>
+            </div>
+            <p id="alternative-use" class="original-text"></p>
+            <details id="alternative-details" class="detail-disclosure">
+              <summary>Detalles de esta alternativa</summary>
+              <p id="alternative-detail-text" class="original-text"></p>
+            </details>
+          </aside>
           </div>
-          <details class="result-card detail-disclosure">
-            <summary>Ver perfil racial completo</summary>
-            <h3 hidden>Utilidad racial general</h3>
+          <details id="primary-profile" class="race-support detail-disclosure">
+            <summary id="primary-profile-label">Perfil de la raza principal</summary>
+            <p class="field-note">Perfil general de la raza; la recomendación para tu especialización aparece arriba.</p>
+            <div class="profile-grid">
+              <section><h3>Fortalezas</h3><p class="original-text" data-field="fortalezas"></p></section>
+              <section><h3>Limitaciones</h3><p class="original-text" data-field="debilidades"></p></section>
+            </div>
             <p class="rating" data-field="escalaUtilidad" hidden></p>
             <h3>Uso principal</h3>
             <p class="original-text" data-field="usoPrincipal"></p>
-            <h3>Comentarios del perfil racial</h3>
+            <h3>Comentarios sobre esta raza</h3>
             <p class="original-text" data-field="comentarios"></p>
           </details>
-          <details id="race-beta-updates" class="result-card detail-disclosure" hidden>
-            <summary>Cambios oficiales de la beta · 15/10/2026</summary>
+          <details id="race-beta-updates" class="race-support detail-disclosure" hidden>
+            <summary>Fuentes y cambios de beta</summary>
+            <p class="field-note">Notas oficiales del 15/10/2026. No sustituyen una comparación de razas al nivel 60.</p>
             <h3 id="race-beta-recommended-label">Raza recomendada</h3>
             <ul id="race-beta-recommended-list"></ul>
             <div id="race-beta-alternative" hidden>
@@ -173,6 +172,7 @@
               <ul id="race-beta-alternative-list"></ul>
             </div>
             <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente: notas de Blizzard</a></p>
+            <ul id="race-extra-sources" class="talent-sources"></ul>
           </details>
           <aside id="race-addons" class="result-card addon-context" hidden></aside>
         </section>
@@ -183,7 +183,7 @@
         <header class="selector-intro">
           <h1 id="racial-title" tabindex="-1">Race Explorer</h1>
           <p class="subtitle">Consulta los perfiles raciales y las variantes de Cielonato.</p>
-          <p id="racial-coverage-note" class="field-note">Cargando perfiles raciales. «Elfo» corresponde al elfo de la noche.</p>
+          <p id="racial-coverage-note" class="field-note">Cargando perfiles raciales…</p>
         </header>
         <div class="selector-card">
           <fieldset id="racial-race" class="option-group" data-value="" data-icon-kind="raza" disabled>
@@ -416,6 +416,7 @@
         <div>
           <p>WoW Forever Advisor</p>
           <p class="attribution">World of Warcraft® y sus iconos pertenecen a Blizzard Entertainment. Proyecto independiente, no afiliado ni respaldado por Blizzard.</p>
+          <p id="pwa-version" class="attribution" aria-label="Versión de la PWA"></p>
         </div>
       </footer>
     </main>

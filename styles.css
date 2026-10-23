@@ -228,9 +228,6 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .recommendation-heading img { width: 2.75rem; height: 2.75rem; flex: none; object-fit: cover; border: 1px solid #a78e5c; border-radius: 0.35rem; }
 .recommendation-heading img[hidden] { display: none; }
 .result-combination { color: var(--muted); }
-.result-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-block: 1.5rem; }
-.result-summary dt { color: var(--muted); font-size: 0.85rem; }
-.result-summary dd { margin: 0.25rem 0 0; font-size: 1.1rem; }
 .rating { color: var(--gold); letter-spacing: 0.04em; }
 .result-card h3 { margin-block: 1.5rem 0.6rem; font-size: 1.05rem; font-weight: 600; }
 .result-card > h3:first-child { margin-top: 0; }
@@ -270,9 +267,6 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 
 #alternative-profile .field-note { margin-top: 0.5rem; }
 #alternative-use { font-size: 1rem; }
-@media (max-width: 32rem) {
-  .result-summary { grid-template-columns: 1fr; }
-}
 
 .option-group { min-width: 0; margin: 0; padding: 0; border: 0; }
 .option-group legend { margin-bottom: 0.5rem; font-weight: 600; }
@@ -392,3 +386,55 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 /* Mantiene los nombres alineados aunque Cielonato aún no tenga icono verificado. */
 #racial-race .option-label { margin-top: auto; }
 #skyborne-faction { margin-top: 1.5rem; }
+
+/* v32: la recomendación especializada domina; el perfil general es secundario. */
+.race-result-intro { margin-block: 1.75rem 1rem; }
+.race-result-intro .result-combination { color: var(--text); font-weight: 600; }
+.race-result-intro .field-note { margin-top: 0.25rem; }
+.race-choices { display: grid; gap: 1rem; align-items: start; }
+.race-choices > .result-card { margin: 0; min-width: 0; padding: 1.35rem; }
+#primary-choice { background: linear-gradient(135deg, #25352b, #19271f); border-color: #9c8657; }
+#primary-choice .recommendation-heading { margin-block: 0.9rem 1.4rem; }
+#primary-choice .recommendation-heading img { width: 4rem; height: 4rem; }
+#primary-choice h2 { font-size: clamp(1.75rem, 3.5vw, 2.3rem); margin: 0; }
+#primary-choice h3 { color: #cbd5cb; font-size: 0.95rem; margin: 0 0 0.5rem; }
+.race-reason { font-size: 1.15rem; font-weight: 600; line-height: 1.5; }
+.race-explanation { margin-top: 0.9rem; color: #d1d9d1; line-height: 1.75; }
+.race-explanation { max-width: 72ch; }
+.alternative-choice { background: #17231e; border-color: #526255; }
+.alternative-choice .eyebrow { color: #b9c7bc; }
+.alternative-choice .recommendation-heading { margin-block: 0.85rem; }
+.alternative-choice .recommendation-heading img { width: 2.5rem; height: 2.5rem; }
+.alternative-choice h3 { margin: 0; font-size: 1.3rem; line-height: 1.3; }
+.alternative-choice .detail-disclosure { margin-top: 0.85rem; border-top: 1px solid #405446; }
+.race-support { padding-block: 0.6rem; margin-top: 0.9rem; border-bottom: 1px solid #526255; }
+.race-support h3 { font-size: 1rem; margin-block: 1.25rem 0.5rem; }
+.race-support .profile-grid { gap: 1rem 2rem; }
+.race-support .field-note { margin-block: 0.5rem 1rem; }
+#advisor-result .detail-disclosure > summary { color: #c6d1c7; }
+#alternative-empty { border-top: 1px solid #526255; padding-top: 1rem; color: #d1d9d1; }
+.eyebrow { font-size: 0.78rem; }
+.attribution { font-size: 0.8rem; }
+#pwa-version { margin-top: 0.45rem; }
+#race-addons { background: none; border: 0; border-top: 1px solid #526255; border-radius: 0; padding: 1.25rem 0 0; }
+#race-addons h3 { font-size: 0.95rem; color: #c6d1c7; }
+@media (min-width: 48rem) {
+  .race-choices:has(> .alternative-choice:not([hidden])) {
+    grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+  }
+  .race-choices > .result-card { padding: 1.75rem; }
+}
+@media (max-width: 40rem) {
+  .option-buttons .option-label { font-size: 0.9rem; }
+  #advisor-result .recommendation-heading { flex-wrap: wrap; }
+}
+@media (max-width: 22.5rem) {
+  #advisor-form { padding: 1rem; }
+  #character-class button { padding-inline: 0.2rem; }
+  #character-class .option-label { font-size: 0.875rem; }
+}
+@media (max-width: 30rem) {
+  #specialization .option-buttons { grid-template-columns: 1fr; }
+  #specialization button { flex-direction: row; justify-content: flex-start; gap: 0.75rem; min-height: 3.5rem; padding: 0.5rem 0.75rem; }
+  #specialization .option-icon { width: 2rem; height: 2rem; }
+}

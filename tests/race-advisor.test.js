@@ -1,5 +1,7 @@
 "use strict";
 
+const display = (text) => text.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche");
+
 const runButton = document.getElementById("run-tests");
 const report = document.getElementById("test-report");
 const frame = document.getElementById("app-under-test");
@@ -108,7 +110,7 @@ runButton.addEventListener("click", async () => {
         const name = field.dataset.field;
         const expected = name === "alternativa" ? shownAlternative(record)
           : (Object.hasOwn(record, name) ? record[name] : profile[name]);
-        check(field.textContent === expected, `${key}: texto literal de ${name}`);
+        check(field.textContent === display(expected), `${key}: texto literal de ${name}`);
       }
       check(doc.getElementById("alternative-profile").hidden === (record.alternativa === "-"),
         `${key}: la ficha de alternativa solo se muestra cuando existe`);
@@ -116,14 +118,14 @@ runButton.addEventListener("click", async () => {
         && doc.getElementById("race-addition-note") === null,
         `${key}: no hay mensajes duplicados de raza única`);
       if (record.clase === "Druida") {
-        check(doc.getElementById("alternative-use").textContent === record.usoAlternativa,
+        check(doc.getElementById("alternative-use").textContent === display(record.usoAlternativa),
           `${key}: justificar Cielonato como alternativa`);
-        check(!doc.getElementById("race-druid-details").hidden
-          && !doc.getElementById("race-druid-details").open
-          && doc.getElementById("race-druid-note").textContent === record.motivoComparacion,
+        check(!doc.getElementById("alternative-details").hidden
+          && !doc.getElementById("alternative-details").open
+          && doc.getElementById("alternative-detail-text").textContent === display(record.motivoComparacion),
           `${key}: comparativa completa opcional, sin repetición visible`);
       } else {
-        check(doc.getElementById("race-druid-details").hidden, `${key}: no mostrar comparación de Druida ajena`);
+        check(!doc.getElementById("alternative-detail-text").textContent.includes("Wind Blessed"), `${key}: sin comparación de Druida ajena`);
       }
       if (record.alternativa === "-") missingAlternatives += 1;
       choose(spec, "");
@@ -234,7 +236,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     choose("faction", original.faccion);
     choose("character-class", original.clase);
     choose("specialization", original.especializacion);
-    check(doc.querySelector('[data-field="razaRecomendada"]').textContent === original.razaRecomendada,
+    check(doc.querySelector('[data-field="razaRecomendada"]').textContent === display(original.razaRecomendada),
       "El Race Advisor original sigue operativo");
     doc.getElementById("explore-racials").click();
     await waitFor(() => !doc.getElementById("racial-view").hidden);
@@ -249,9 +251,9 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     let alternatives = 0;
     for (const profile of profiles.raciales) {
       choose("racial-race", profile.raza);
-      check(!result.hidden && doc.getElementById("racial-name").textContent === profile.raza, `Raza: ${profile.raza}`);
+      check(!result.hidden && doc.getElementById("racial-name").textContent === display(profile.raza), `Raza: ${profile.raza}`);
       for (const field of result.querySelectorAll("[data-racial-field]")) {
-        check(field.textContent === profile[field.dataset.racialField], `${profile.raza}: ${field.dataset.racialField} literal`);
+        check(field.textContent === display(profile[field.dataset.racialField]), `${profile.raza}: ${field.dataset.racialField} literal con etiqueta visible`);
       }
       for (const [listId, emptyId, field] of [
         ["racial-recommended", "racial-no-recommended", "razaRecomendada"],
@@ -281,7 +283,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
             const racial = profiles.raciales.find((row) => row.raza === record.razaRecomendada);
             const expected = key === "alternativa" ? shownAlternative(record)
               : (Object.hasOwn(record, key) ? record[key] : racial[key]);
-            return element.textContent === expected;
+            return element.textContent === display(expected);
           }), `${label(record)}: ficha completa correspondiente`);
           doc.getElementById("explore-racials").click();
           await waitFor(() => !doc.getElementById("racial-view").hidden);
@@ -316,7 +318,7 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     doc.getElementById("back-selector").click();
     await waitFor(() => !doc.getElementById("advisor-view").hidden);
     check(doc.getElementById("specialization").dataset.value === original.especializacion
-      && doc.querySelector('[data-field="razaRecomendada"]').textContent === original.razaRecomendada,
+      && doc.querySelector('[data-field="razaRecomendada"]').textContent === display(original.razaRecomendada),
       "Volver al selector conserva la selección original");
     win.history.back();
     await waitFor(() => !doc.getElementById("racial-view").hidden);

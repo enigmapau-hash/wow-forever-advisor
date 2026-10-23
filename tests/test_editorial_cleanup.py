@@ -34,9 +34,9 @@ class EditorialCleanupTests(unittest.TestCase):
     def test_single_alternative_message_and_optional_comparison(self):
         self.assertNotIn('id="no-alternative"', self.html)
         self.assertNotIn('id="race-addition-note"', self.html)
-        self.assertIn('id="race-druid-details"', self.html)
-        self.assertIn('summary>¿Por qué estas dos razas?</summary>', self.html)
-        self.assertIn('id="race-druid-note"', self.html)
+        self.assertIn('id="alternative-details"', self.html)
+        self.assertNotIn('¿Por qué estas dos razas?', self.html)
+        self.assertIn('id="alternative-detail-text"', self.html)
         self.assertIn('record.usoAlternativa', self.app)
         self.assertNotIn("sin estrellas nuevas", self.app)
         self.assertIn("Sin alternativa: No-muerto es la única raza", self.app)
@@ -61,7 +61,7 @@ class EditorialCleanupTests(unittest.TestCase):
         self.assertIn('classList.add("visually-hidden")', self.app)
         self.assertIn('classList.remove("visually-hidden")', self.app)
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
-        self.assertIn("${CACHE_PREFIX}v31", sw)
+        self.assertIn("${CACHE_PREFIX}${self.WOW_PWA_VERSION}", sw)
         self.assertIn('"./data/race-advisor-druid-alternatives.json"', sw)
         self.assertIn('"./data/race-advisor-additions.json"', sw)
 

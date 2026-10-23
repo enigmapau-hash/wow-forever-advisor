@@ -1,5 +1,12 @@
 "use strict";
 
+document.getElementById("pwa-version").textContent = `PWA ${self.WOW_PWA_VERSION}`;
+
+// Etiquetas de presentación: las claves, los enlaces y los JSON siguen intactos.
+function raceLabel(text) {
+  return text.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche");
+}
+
 if ("serviceWorker" in navigator && window.isSecureContext) {
   const cacheIcons = () => {
     if (!navigator.onLine) return;
@@ -29,6 +36,9 @@ const result = document.getElementById("advisor-result");
 const recommendationRaceIcon = document.getElementById("result-race-icon");
 recommendationRaceIcon.addEventListener("load", () => { recommendationRaceIcon.hidden = false; });
 recommendationRaceIcon.addEventListener("error", () => { recommendationRaceIcon.hidden = true; });
+const alternativeRaceIcon = document.getElementById("alternative-race-icon");
+alternativeRaceIcon.addEventListener("load", () => { alternativeRaceIcon.hidden = false; });
+alternativeRaceIcon.addEventListener("error", () => { alternativeRaceIcon.hidden = true; });
 const status = document.getElementById("selection-status");
 const dataError = document.getElementById("data-error");
 const retryButton = document.getElementById("retry-data");
@@ -40,6 +50,7 @@ const racialError = document.getElementById("racial-error");
 let records = [];
 let racialProfiles = new Map();
 let racialBetaUpdates = new Map();
+let raceAdditionSources = [];
 let skyborneData = null;
 const skyborneResult = document.getElementById("skyborne-result");
 const skyborneFaction = document.getElementById("skyborne-faction");
@@ -73,7 +84,7 @@ function optionButton(value, kind, className = "") {
   }
   const label = document.createElement("span");
   label.className = "option-label";
-  label.textContent = value;
+  label.textContent = kind === "raza" ? raceLabel(value) : value;
   button.append(label);
   return button;
 }
@@ -103,13 +114,18 @@ function clearResult() {
   result.hidden = true;
   recommendationRaceIcon.hidden = true;
   recommendationRaceIcon.removeAttribute("src");
+  alternativeRaceIcon.hidden = true;
+  alternativeRaceIcon.removeAttribute("src");
   for (const field of result.querySelectorAll("[data-field]")) field.textContent = "";
   document.getElementById("result-combination").textContent = "";
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
-  document.getElementById("race-druid-details").hidden = true;
-  document.getElementById("race-druid-details").open = false;
-  document.getElementById("race-druid-note").textContent = "";
+  document.getElementById("alternative-details").open = false;
+  document.getElementById("alternative-detail-text").textContent = "";
+  document.getElementById("alternative-empty").hidden = true;
+  document.getElementById("alternative-empty").textContent = "";
+  document.getElementById("primary-profile").open = false;
+  document.getElementById("race-extra-sources").replaceChildren();
   document.getElementById("race-beta-updates").hidden = true;
   document.getElementById("race-beta-updates").open = false;
   status.classList.remove("visually-hidden");
@@ -249,14 +265,14 @@ function fillRacialBetaList(id, race) {
 function renderRaceBetaUpdates(record) {
   const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
   document.getElementById("race-beta-recommended-label").textContent =
-    "Raza recomendada · " + record.razaRecomendada;
+    "Raza principal · " + raceLabel(record.razaRecomendada);
   const alternative = record.alternativa !== "-"
     && fillRacialBetaList("race-beta-alternative-list", record.alternativa);
   const alternativeView = document.getElementById("race-beta-alternative");
   alternativeView.hidden = !alternative;
   if (alternative) {
     document.getElementById("race-beta-alternative-label").textContent =
-      "Alternativa · " + record.alternativa;
+      "Alternativa · " + raceLabel(record.alternativa);
   } else {
     document.getElementById("race-beta-alternative-list").replaceChildren();
   }
@@ -321,8 +337,8 @@ function updateRacialCoverage(available = true) {
     ? `Explorar las ${count} razas →` : "Abrir Race Explorer →";
   document.getElementById("racial-coverage-note").textContent = available
     ? (skyborneData
-      ? "Nueve razas: ocho perfiles originales y Cielonato, con variantes de Alianza y Horda. «Elfo» corresponde al elfo de la noche."
-      : "Ocho razas: perfiles originales disponibles. Cielonato no está disponible. «Elfo» corresponde al elfo de la noche.")
+      ? "Nueve razas, incluido Cielonato con variantes de Alianza y Horda."
+      : "Ocho razas disponibles. Cielonato no está disponible.")
     : "Perfiles raciales no disponibles.";
 }
 
@@ -411,6 +427,7 @@ async function loadData() {
       return extra ? { ...row, alternativa: extra.alternativa,
         usoAlternativa: extra.usoAlternativa, motivoComparacion: extra.motivoComparacion } : row;
     }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
+    raceAdditionSources = additions.fuentes;
     if (skyborneData && druidAlternatives.length !== 6) {
       document.getElementById("skyborne-criterion").textContent =
         "Las alternativas de Druida aún no están disponibles. Se conservan las recomendaciones aprobadas del asesor.";
@@ -470,24 +487,46 @@ specialization.addEventListener("change", () => {
   if (iconUrl) recommendationRaceIcon.src = iconUrl;
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
-    field.textContent = key === "alternativa" && record.alternativa === "-"
+    field.textContent = raceLabel(key === "alternativa" && record.alternativa === "-"
       ? record.faccion === "Alianza" && record.clase === "Chamán"
         ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
         : record.faccion === "Horda" && record.clase === "Paladín"
           ? "Sin alternativa: No-muerto es la única raza de Paladín de Horda."
           : "Alternativa pendiente de evaluación."
-      : (Object.hasOwn(record, key) ? record[key] : profile[key]);
+      : (Object.hasOwn(record, key) ? record[key] : profile[key]));
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
-  document.getElementById("race-druid-details").hidden = !record.motivoComparacion;
-  document.getElementById("race-druid-note").textContent = record.motivoComparacion || "";
+  document.getElementById("primary-reason-label").textContent = `Por qué elegir ${raceLabel(record.razaRecomendada)}`;
+  document.getElementById("primary-profile-label").textContent = `Perfil de ${raceLabel(record.razaRecomendada)}`;
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     document.getElementById("alternative-use").textContent =
-      record.alternativa === "Cielonato" ? record.usoAlternativa : alternative?.usoPrincipal || "";
+      raceLabel(record.alternativa === "Cielonato" ? record.usoAlternativa : alternative?.usoPrincipal || "");
+    document.getElementById("alternative-detail-text").textContent = raceLabel(record.motivoComparacion
+      || `${alternative?.comentarios || ""}\n\nLimitaciones: ${alternative?.debilidades || ""}`);
+    const alternativeIconUrl = self.WOW_ICON_MAP?.raza?.[record.alternativa];
+    if (alternativeIconUrl) alternativeRaceIcon.src = alternativeIconUrl;
     document.getElementById("alternative-profile").hidden = false;
+  } else {
+    const message = document.querySelector('[data-field="alternativa"]').textContent;
+    document.getElementById("alternative-empty").textContent = message;
+    document.getElementById("alternative-empty").hidden = false;
   }
   renderRaceBetaUpdates(record);
+  // Las adiciones editoriales conservan sus fuentes oficiales junto a las notas comunes.
+  const sources = record.alternativa === "Cielonato" ? skyborneData?.fuentes
+    : record.faccion === "Horda" && record.clase === "Paladín" ? raceAdditionSources : [];
+  document.getElementById("race-extra-sources").replaceChildren(...(sources || []).map((source) => {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.textContent = source.nombre;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    item.append(link);
+    return item;
+  }));
+  if (sources?.length) document.getElementById("race-beta-updates").hidden = false;
   result.hidden = false;
   AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
@@ -543,14 +582,14 @@ racialSelect.addEventListener("change", () => {
     racialStatus.classList.remove("visually-hidden");
     return;
   }
-  document.getElementById("racial-name").textContent = profile.raza;
+  document.getElementById("racial-name").textContent = raceLabel(profile.raza);
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
-    field.textContent = profile[field.dataset.racialField];
+    field.textContent = raceLabel(profile[field.dataset.racialField]);
   }
   document.getElementById("racial-beta-updates").hidden =
     !fillRacialBetaList("racial-beta-list", profile.raza);
   racialResult.hidden = false;
-  racialStatus.textContent = `Perfil disponible: ${profile.raza}.`;
+  racialStatus.textContent = `Perfil disponible: ${raceLabel(profile.raza)}.`;
   racialStatus.classList.add("visually-hidden");
 });
 

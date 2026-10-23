@@ -1,16 +1,18 @@
 "use strict";
 
 importScripts("./icons/icon-map.js");
+importScripts("./version.js");
 const ICON_URLS = new Set(self.WOW_ICON_URLS);
 
 // Incrementar la versión al publicar cambios en los archivos de la aplicación.
 const CACHE_PREFIX = `wow-forever-advisor:${self.registration.scope}:`;
-const CACHE_NAME = `${CACHE_PREFIX}v31`;
+const CACHE_NAME = `${CACHE_PREFIX}${self.WOW_PWA_VERSION}`;
 const APP_FILES = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
+  "./version.js",
   "./addon-advisor.js",
   "./data/addon-advisor.json",
   "./icons/icon-map.js",
