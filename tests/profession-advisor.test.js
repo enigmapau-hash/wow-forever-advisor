@@ -40,7 +40,14 @@ document.getElementById("run-tests").addEventListener("click", async (event) => 
     check(!doc.getElementById("profession-view").hidden && doc.getElementById("home-view").hidden, "Abrir desde inicio");
     const classes = [...new Set(data.fichas.map((row) => row.clase))];
     check(classes.length === 9 && data.fichas.length === 27, "Nueve clases y 27 fichas");
-    check(JSON.stringify([...select.querySelectorAll("button")].map((option) => option.dataset.value)) === JSON.stringify(classes), "Clases exactas");
+    const expectedClassOrder = [
+      "Brujo", "Cazador", "Chamán", "Druida", "Guerrero",
+      "Mago", "Paladín", "Pícaro", "Sacerdote",
+    ];
+    check(JSON.stringify([...select.querySelectorAll("button")].map((option) => option.dataset.value))
+      === JSON.stringify(expectedClassOrder), "Nueve clases exactas en orden alfabético español");
+    check(expectedClassOrder.every((name) => classes.includes(name)),
+      "La clasificación visual conserva todas las clases originales");
     check(doc.querySelectorAll("select").length === 0 && select.querySelectorAll("button").length === 9, "Nueve botones de clase y ningún desplegable");
     for (const name of classes) {
       choose(select, name);
