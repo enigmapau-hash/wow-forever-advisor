@@ -131,9 +131,10 @@ const AddonAdvisor = (() => {
         element("h2", a.nombre), element("p", "Autor: " + a.autor, "field-note"),
         element("p", a.finalidad), element("p", states[a.estado], "addon-state"));
       if (a.recomendacion === "en_observacion") card.append(element("p", a.limite, "source-note"));
-      card.append(element("p", "Revisado: " + a.fechaRevision, "field-note"), link(a.fuentes[0]));
+      card.append(link(a.fuentes[0]));
       const details = element("details", "", "addon-details");
       details.append(element("summary", "Versión, evidencia y limitaciones"),
+        element("p", "Revisado: " + a.fechaRevision, "field-note"),
         element("p", a.version ? `Archivo revisado: ${a.version} · ${a.fechaPublicacion} · Cliente ${a.versionCliente}`
           : "Archivo específico de Forever: pendiente de verificar.", "field-note"),
         element("p", a.evidencia),
@@ -149,7 +150,7 @@ const AddonAdvisor = (() => {
       card.append(details);
       return card;
     }));
-    document.getElementById("addon-status").textContent = `${matches.length} addons · ${filter}. Revisión: ${catalog.fechaRevision}.`;
+    document.getElementById("addon-status").textContent = `${matches.length} addons · ${filter}.`;
   }
 
   async function open() {

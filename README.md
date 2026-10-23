@@ -1,17 +1,26 @@
 # wow-forever-advisor
 
-## Versión actual · v32
+## Versión actual · v33
 
-Race Advisor presenta **54 fichas**: 51 recomendaciones originales y tres
-adiciones de Paladín Horda. Las seis alternativas de Druida siguen siendo
-Cielonato. Se conserva el Excel maestro, sus identificadores y todos los JSON.
+Race Advisor conserva **54 fichas**: 51 recomendaciones originales y tres
+adiciones de Paladín Horda; las seis alternativas de Druida siguen siendo
+Cielonato. Se mantienen intactos el Excel maestro, sus identificadores y todos
+los JSON de clasificación.
 
-La raza principal reúne icono, nombre, motivo y explicación visible. La
-alternativa tiene su propio bloque subordinado e icono; en móvil aparece debajo.
-Las seis combinaciones sin alternativa muestran el motivo dentro de la ficha
-principal. El perfil general identifica la raza y se consulta por separado.
-«Elfo de la noche» es una etiqueta de interfaz; la clave interna sigue siendo
-`Elfo`. Las fuentes oficiales y las limitaciones de beta permanecen accesibles.
+La principal tiene icono y explicación completa visible **sin repetir como otro
+párrafo su motivo abreviado**. La alternativa está al lado con icono y alcance
+explícito: «Ventaja racial general» en las 42 clásicas y «En esta
+especialización» para las seis comparaciones de Druida. Las seis fichas sin
+alternativa lo anuncian junto a la cabecera, no al final de la explicación.
+Los perfiles generales se consultan separadamente y Race Explorer agrupa las
+combinaciones por facción. En móvil, completar el selector lleva a la ficha y
+le asigna foco accesible.
+
+«Elfo de la noche» se usa como etiqueta de interfaz; las adaptaciones
+gramaticales del texto son puntuales y no alteran el valor interno `Elfo`.
+Profession Advisor diferencia visualmente la primera pareja de la alternativa;
+Talent y Addon Advisor reducen avisos repetidos, conservando limitaciones y
+fuentes importantes. La revisión visual del usuario sigue pendiente.
 
 `version.js` es la fuente única de versión para el pie y la caché del service
 worker. Al preparar una actualización, modificar ese archivo y comprobar la
@@ -32,6 +41,10 @@ Recorre las 54 fichas raciales, 81 de talentos y 27 de profesiones, también
 offline. Comprueba la jerarquía en 320, 390, 820 y 1280 px. Las decisiones y la
 inspección visual de v32 se documentan en [la revisión](docs/v32-race-redesign.md).
 La validación técnica no implica aprobación visual del usuario.
+Los ajustes editoriales v33 y sus criterios se documentan en
+[la revisión independiente](docs/v33-editorial-review.md); la auditoría
+[#37](https://github.com/enigmapau-hash/wow-forever-advisor/issues/37)
+permanece abierta para la revisión visual del usuario.
 
 ## Historial y referencias de versiones anteriores
 

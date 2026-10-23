@@ -128,12 +128,12 @@
             <p class="eyebrow">Raza principal</p>
             <div class="recommendation-heading">
               <img id="result-race-icon" alt="" width="64" height="64" hidden>
-              <h2 id="result-race" data-field="razaRecomendada"></h2>
+              <h2 id="result-race" data-field="razaRecomendada" tabindex="-1"></h2>
             </div>
+            <p id="alternative-empty" class="race-no-alternative" hidden></p>
             <h3 id="primary-reason-label">Por qué elegir esta raza</h3>
-            <p class="race-reason" data-field="motivoPrincipal"></p>
             <p class="original-text race-explanation" data-field="explicacion"></p>
-            <p id="alternative-empty" class="field-note" hidden></p>
+            <span data-field="motivoPrincipal" hidden></span>
             <span data-field="prioridad" hidden></span>
           </article>
           <aside id="alternative-profile" class="result-card alternative-choice" aria-labelledby="alternative-name" hidden>
@@ -142,16 +142,17 @@
               <img id="alternative-race-icon" alt="" width="40" height="40" hidden>
               <h3 id="alternative-name" data-field="alternativa"></h3>
             </div>
+            <p id="alternative-scope" class="alternative-scope"></p>
             <p id="alternative-use" class="original-text"></p>
             <details id="alternative-details" class="detail-disclosure">
-              <summary>Detalles de esta alternativa</summary>
+              <summary id="alternative-detail-label">Más información</summary>
               <p id="alternative-detail-text" class="original-text"></p>
             </details>
           </aside>
           </div>
           <details id="primary-profile" class="race-support detail-disclosure">
             <summary id="primary-profile-label">Perfil de la raza principal</summary>
-            <p class="field-note">Perfil general de la raza; la recomendación para tu especialización aparece arriba.</p>
+            <p class="field-note">Habilidades de la raza en general, separadas de la valoración anterior.</p>
             <div class="profile-grid">
               <section><h3>Fortalezas</h3><p class="original-text" data-field="fortalezas"></p></section>
               <section><h3>Limitaciones</h3><p class="original-text" data-field="debilidades"></p></section>
@@ -216,18 +217,18 @@
             <p class="original-text" data-racial-field="comentarios"></p>
           </details>
           <details id="racial-beta-updates" class="result-card detail-disclosure" hidden>
-            <summary>Cambios oficiales de la beta · 15/10/2026</summary>
+            <summary>Fuentes y cambios de beta</summary>
             <ul id="racial-beta-list"></ul>
             <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente: notas de Blizzard</a></p>
           </details>
           <section class="result-card" aria-labelledby="racial-recommended-title">
             <h3 id="racial-recommended-title">Dónde se recomienda esta raza</h3>
-            <ul id="racial-recommended"></ul>
+            <ul id="racial-recommended" class="racial-matches"></ul>
             <p id="racial-no-recommended" class="field-note" hidden>Esta raza no figura como recomendación principal en las combinaciones actuales.</p>
           </section>
           <section class="result-card" aria-labelledby="racial-alternative-title">
             <h3 id="racial-alternative-title">Dónde aparece como alternativa</h3>
-            <ul id="racial-alternative"></ul>
+            <ul id="racial-alternative" class="racial-matches"></ul>
             <p id="racial-no-alternative" class="field-note" hidden>Esta raza no figura como alternativa en las combinaciones actuales.</p>
           </section>
         </section>
@@ -252,7 +253,7 @@
             </section>
             <section aria-labelledby="skyborne-alternatives-title">
               <h3 id="skyborne-alternatives-title">Dónde se recomienda como alternativa</h3>
-              <ul id="skyborne-alternatives"></ul>
+              <ul id="skyborne-alternatives" class="racial-matches"></ul>
               <p id="skyborne-no-alternatives" class="field-note" hidden>Las alternativas de Druida están pendientes de cargarse.</p>
             </section>
             <details class="detail-disclosure">
@@ -291,14 +292,22 @@
         <article id="profession-result" class="result-card recommendation" aria-labelledby="profession-combination" hidden>
           <p id="profession-editorial-note" class="source-note">Orientación provisional para progresión y PvP. No distingue raza ni facción.</p>
           <h2 id="profession-combination"></h2>
-          <h3>Pareja de profesiones principal</h3>
-          <p class="original-text" data-profession-field="principal"></p>
-          <h3>Pareja alternativa</h3>
-          <p class="original-text" data-profession-field="alternativa"></p>
-          <h3>Motivo principal</h3>
-          <p class="original-text" data-profession-field="motivoPrincipal"></p>
-          <h3>Limitación</h3>
-          <p class="original-text" data-profession-field="limitacion"></p>
+          <div class="profession-choices">
+            <section class="profession-choice-main" aria-label="Profesiones recomendadas">
+              <h3>Primera opción</h3>
+              <p class="original-text" data-profession-field="principal"></p>
+              <h3>Por qué se recomienda</h3>
+              <p class="original-text" data-profession-field="motivoPrincipal"></p>
+            </section>
+            <section class="profession-choice-alternative" aria-label="Otras profesiones">
+              <h3>Alternativa</h3>
+              <p class="original-text" data-profession-field="alternativa"></p>
+            </section>
+          </div>
+          <div class="profession-limitation">
+            <h3>Qué debes tener en cuenta</h3>
+            <p class="original-text" data-profession-field="limitacion"></p>
+          </div>
           <aside id="profession-addons" class="addon-context" hidden></aside>
         </article>
       </section>
@@ -309,8 +318,7 @@
         <header class="selector-intro">
           <h1 id="talent-title" tabindex="-1">Talent Advisor</h1>
           <p class="subtitle">Elige tu clase, especialización y objetivo para explorar los talentos y ventajas de Legado.</p>
-          <p class="field-note">81 fichas de orientación para nueve clases y tres objetivos.</p>
-        </header>
+                  </header>
 
         <div id="talent-selector" class="selector-card" aria-busy="true">
           <div class="selector-fields">
@@ -393,11 +401,14 @@
         <header class="selector-intro">
           <h1 id="addon-title" tabindex="-1">Addon Advisor</h1>
           <p class="subtitle">Addons útiles según tus necesidades, sin instalaciones obligatorias.</p>
-          <p class="field-note">WoW Forever · cliente 1.60 beta. Selección orientativa.</p>
+          <p class="field-note">Catálogo orientativo para el cliente Forever 1.60.x.</p>
         </header>
         <div id="addon-controls" class="selector-card" aria-busy="false">
-          <p>«Publicado para Forever» no significa probado en el juego. «Pendiente de verificar» no es una recomendación de instalación.</p>
-          <p class="field-note">Comprueba en la fuente el archivo específico para Forever 1.60.x: Retail y Classic no acreditan compatibilidad. Las descargas requieren conexión; el catálogo se puede consultar offline después de una visita con conexión.</p>
+          <p>Comprueba el archivo específico para Forever 1.60.x: «publicado» no significa probado. Un addon pendiente de verificar no es una recomendación de instalación.</p>
+          <details class="detail-disclosure addon-guidance">
+            <summary>Compatibilidad y consulta sin conexión</summary>
+            <p class="field-note">Una versión para Retail o Classic no acredita compatibilidad con Forever. Las descargas requieren conexión; el catálogo funciona offline después de la primera visita con conexión.</p>
+          </details>
           <fieldset class="option-group">
             <legend>Filtrar por utilidad</legend>
             <div id="addon-filters" class="specialization-buttons"></div>
