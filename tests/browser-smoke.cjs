@@ -137,6 +137,17 @@ const server = http.createServer(async (req, res) => {
     await page.locator("#alternative-details summary").click();
     assert.equal(await page.locator("#alternative-detail-text").isVisible(), true,
       "La justificación completa sigue disponible");
+    for (const width of [320, 390, 820, 1280]) {
+      await page.setViewportSize({ width, height: 900 });
+      const columns = await page.locator(".race-choices").evaluate((el) =>
+        getComputedStyle(el).gridTemplateColumns.split(" ").length);
+      assert.equal(columns, width < 960 ? 1 : 2,
+        "F02: comparación apilada hasta 960px y de dos columnas en escritorio a " + width);
+      assert.equal(await page.locator("#alternative-detail-text").isVisible(), true,
+        "F02: detalle expandido legible después de cambiar anchura");
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        "F02: sin desbordamiento horizontal a " + width);
+    }
     await page.locator('#faction button[data-value="Horda"]').click();
     await page.locator('#character-class button[data-value="Paladín"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
@@ -176,6 +187,17 @@ const server = http.createServer(async (req, res) => {
       assert.equal(await page.locator("#profession-class .option-buttons").evaluate((el) =>
         getComputedStyle(el).gridTemplateColumns.split(" ").length), 3,
         "Profession Advisor nine classes align in 3 columns at " + width);
+    }
+    await page.locator('#profession-class button[data-value="Cazador"]').click();
+    await page.locator('#profession-buttons button[data-value="Supervivencia"]').click();
+    for (const width of [320, 390, 820, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      const padding = await page.locator("#profession-result").evaluate((el) =>
+        parseFloat(getComputedStyle(el).paddingLeft));
+      assert(width > 640 || padding <= 16,
+        "F06: margen interior del resultado reducido en móvil a " + width);
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        "F06: sin desbordamiento de profesión a " + width);
     }
     await page.goto(base + "/");
     await page.evaluate(async () => {
