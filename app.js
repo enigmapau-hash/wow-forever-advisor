@@ -108,6 +108,9 @@ function clearResult() {
   document.getElementById("no-alternative").hidden = true;
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
+  document.getElementById("race-addition-note").hidden = true;
+  document.getElementById("race-druid-note").hidden = true;
+  document.getElementById("race-druid-note").textContent = "";
   document.getElementById("race-beta-updates").hidden = true;
   document.getElementById("race-beta-alternative").hidden = true;
 }
@@ -144,6 +147,71 @@ function validateData(advisor, profiles) {
     throw new Error("La exportación contiene duplicados o referencias incompletas.");
   }
   return races;
+}
+
+// Capa complementaria independiente: el Excel maestro y sus 51 fichas siguen inmutables.
+function validateRaceAdditions(data, advisor, profiles) {
+  const expectedSpecs = ["Sagrado", "Protección", "Reprensión"];
+  const required = ["faccion", "clase", "especializacion", "razaRecomendada",
+    "alternativa", "prioridad", "motivoPrincipal", "explicacion"];
+  if (!data || data.schemaVersion !== 1 || data.tipo !== "extension_editorial_no_modifica_excel"
+      || data.base?.sha256 !== advisor.fuente?.sha256 || data.base?.fichas !== 51
+      || advisor.fichas.length !== 51 || !Array.isArray(data.fuentes) || data.fuentes.length !== 2
+      || !data.fuentes.every((source) => typeof source.nombre === "string"
+        && /^https:\/\/(news\.blizzard\.com|us\.forums\.blizzard\.com)\//.test(source.url))
+      || !Array.isArray(data.fichas) || data.fichas.length !== 3
+      || !profiles.has("No-muerto")) {
+    throw new Error("Falta una ampliación válida de Paladín de Horda.");
+  }
+  const seen = new Set(advisor.fichas.map((row) =>
+    JSON.stringify([row.faccion, row.clase, row.especializacion])));
+  const expanded = [];
+  for (const spec of expectedSpecs) {
+    const row = data.fichas.find((entry) => entry.especializacion === spec);
+    if (!row || !required.every((key) => typeof row[key] === "string" && row[key].trim())
+        || row.faccion !== "Horda" || row.clase !== "Paladín"
+        || row.razaRecomendada !== "No-muerto" || row.alternativa !== "-"
+        || /★/.test(row.prioridad)) {
+      throw new Error("Ficha Paladín Horda incompleta o con valoración inventada.");
+    }
+    const key = JSON.stringify([row.faccion, row.clase, row.especializacion]);
+    if (seen.has(key)) throw new Error("Ficha duplicada de Paladín Horda.");
+    seen.add(key);
+    expanded.push(row);
+  }
+  return expanded;
+}
+
+// Aprobación editorial limitada a Druida: sustituye SOLO la alternativa no evaluada.
+// Todas las razas principales y los campos originales del Excel permanecen intactos.
+function validateDruidAlternatives(data, advisor, skyborne) {
+  if (!skyborne || !data) return []; // Si falla una capa adicional, conservar las 51 fichas originales.
+  const specs = ["Equilibrio", "Feral", "Restauración"];
+  const original = advisor.fichas.filter((row) => row.clase === "Druida");
+  if (!data || data.schemaVersion !== 1 || data.tipo !== "evaluacion_editorial_druida"
+      || data.estado !== "aprobado_usuario" || data.base?.sha256 !== advisor.fuente?.sha256
+      || data.base?.fichas !== 51 || advisor.fichas.length !== 51
+      || !Array.isArray(data.fichas) || data.fichas.length !== 6
+      || original.length !== 6) throw new Error("Evaluación Druida incompleta.");
+  const seen = new Set();
+  for (const row of data.fichas) {
+    const expected = original.find((r) => r.faccion === row.faccion
+      && r.especializacion === row.especializacion);
+    const variant = skyborne.variantes.find((v) => v.faccion === row.faccion);
+    const key = JSON.stringify([row.faccion, row.especializacion]);
+    if (!expected || !variant?.clases.includes("Druida") || seen.has(key)
+        || !specs.includes(row.especializacion) || row.clase !== "Druida"
+        || row.razaRecomendada !== expected.razaRecomendada || expected.alternativa !== "-"
+        || (row.faccion === "Alianza" && row.razaRecomendada !== "Elfo")
+        || (row.faccion === "Horda" && row.razaRecomendada !== "Tauren")
+        || row.alternativa !== skyborne.raza
+        || typeof row.usoAlternativa !== "string" || row.usoAlternativa.trim().length < 45
+        || typeof row.motivoComparacion !== "string" || row.motivoComparacion.trim().length < 80) {
+      throw new Error("Alternativa Druida incompatible o no justificada.");
+    }
+    seen.add(key);
+  }
+  return data.fichas;
 }
 
 // La actualización oficial de beta es una capa opcional: no modifica el Excel original.
@@ -272,8 +340,8 @@ function prepareSkyborneExplorer() {
   document.getElementById("skyborne-verification").textContent = skyborneVerification();
   document.getElementById("skyborne-icon-note").textContent = skyborneData.icono.nota;
   fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
-  document.getElementById("skyborne-criterion").textContent = skyborneData.evaluacion.criterio;
-  document.getElementById("skyborne-limitation").textContent = skyborneData.evaluacion.limitacion;
+  document.getElementById("skyborne-criterion").textContent = "La raza se evalúa por combinación: Cielonato es alternativa de Druida en ambas facciones, no recomendación general de todas las clases.";
+  document.getElementById("skyborne-limitation").textContent = "Clasificación editorial provisional basada en PvP masivo; faltan pruebas comparativas al nivel 60 y verificaciones específicas de regeneración y velocidad en formas druídicas.";
   document.getElementById("skyborne-sources").replaceChildren(...skyborneData.fuentes.map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
@@ -313,11 +381,13 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates, skyborne] = await Promise.all([
+    const [advisor, profiles, updates, skyborne, additions, druidEvaluation] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
       readJson("./data/skyborne.json").catch(() => null),
+      readJson("./data/race-advisor-additions.json"),
+      readJson("./data/race-advisor-druid-alternatives.json").catch(() => null),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
@@ -325,7 +395,20 @@ async function loadData() {
     document.getElementById("skyborne-data-error").hidden = Boolean(skyborneData);
     if (skyborneData) prepareSkyborneExplorer();
     updateRacialCoverage();
-    records = advisor.fichas;
+    const druidAlternatives = validateDruidAlternatives(druidEvaluation, advisor, skyborneData);
+    const overlay = new Map(druidAlternatives.map((entry) =>
+      [JSON.stringify([entry.faccion, entry.clase, entry.especializacion]), entry]));
+    records = [...advisor.fichas.map((row) => {
+      const extra = overlay.get(JSON.stringify([row.faccion, row.clase, row.especializacion]));
+      return extra ? { ...row, alternativa: extra.alternativa,
+        usoAlternativa: extra.usoAlternativa, motivoComparacion: extra.motivoComparacion } : row;
+    }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
+    if (skyborneData && druidAlternatives.length !== 6) {
+      document.getElementById("skyborne-criterion").textContent =
+        "Las alternativas de Druida aún no están disponibles. Se conservan las recomendaciones aprobadas del asesor.";
+      document.getElementById("skyborne-limitation").textContent =
+        "No se ha cargado o validado la ampliación editorial. Cielonato sigue siendo consultable como raza en beta.";
+    }
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
     setOptions(racialSelect, [...racialProfiles.keys(), ...(skyborneData ? [skyborneData.raza] : [])], "Elige raza");
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
@@ -380,22 +463,32 @@ specialization.addEventListener("change", () => {
   for (const field of result.querySelectorAll("[data-field]")) {
     const key = field.dataset.field;
     field.textContent = key === "alternativa" && record.alternativa === "-"
-      ? (record.faccion === "Alianza" && record.clase === "Chamán"
+      ? ((record.faccion === "Alianza" && record.clase === "Chamán")
+          || (record.faccion === "Horda" && record.clase === "Paladín")
         ? "Sin alternativa: única raza disponible"
         : "Alternativa pendiente de evaluación")
       : (Object.hasOwn(record, key) ? record[key] : profile[key]);
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
+  document.getElementById("race-addition-note").hidden = !(record.faccion === "Horda" && record.clase === "Paladín");
+  const druidNote = document.getElementById("race-druid-note");
+  druidNote.hidden = !record.motivoComparacion;
+  druidNote.textContent = record.motivoComparacion
+    ? `Criterio para esta alternativa: ${record.motivoComparacion} Evaluación editorial de beta; sin estrellas nuevas.`
+    : "";
   const noAlternative = document.getElementById("no-alternative");
   noAlternative.hidden = record.alternativa !== "-";
   if (record.alternativa === "-") {
     noAlternative.textContent = record.faccion === "Alianza" && record.clase === "Chamán"
       ? "Enano es la única raza de Alianza que puede ser Chamán. No existe una segunda opción jugable."
-      : "La segunda mejor raza de esta especialización está pendiente de evaluación; no se presenta ninguna alternativa sin justificarla.";
+      : record.faccion === "Horda" && record.clase === "Paladín"
+        ? "No-muerto es la única raza de Horda que puede ser Paladín. No existe una segunda opción jugable."
+        : "La segunda mejor raza de esta especialización está pendiente de evaluación; no se presenta ninguna alternativa sin justificarla.";
   }
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
-    document.getElementById("alternative-use").textContent = alternative.usoPrincipal;
+    document.getElementById("alternative-use").textContent =
+      record.alternativa === "Cielonato" ? record.usoAlternativa : alternative?.usoPrincipal || "";
     document.getElementById("alternative-profile").hidden = false;
   }
   renderRaceBetaUpdates(record);
@@ -439,6 +532,7 @@ racialSelect.addEventListener("change", () => {
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
   renderRacialMatches("racial-recommended", "racial-no-recommended", "razaRecomendada");
   renderRacialMatches("racial-alternative", "racial-no-alternative", "alternativa");
+  renderRacialMatches("skyborne-alternatives", "skyborne-no-alternatives", "alternativa");
   if (skyborneData && racialSelect.dataset.value === skyborneData.raza) {
     skyborneResult.hidden = false;
     racialStatus.textContent = "Cielonato: consulta las facultades compartidas y elige una variante de facción.";

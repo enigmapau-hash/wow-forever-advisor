@@ -411,3 +411,33 @@ en Talent Advisor. Añadir tres fichas nuevas a Race Advisor requiere una
 decisión y trazabilidad editorial específica.
 
 Caché PWA v28. Ningún JSON de recomendaciones se modifica.
+
+
+## v29 · Paladín No-muerto de Horda y comparativa de Druida (propuesta)
+
+Race Advisor incorpora las tres especializaciones de **Paladín Horda** (Sagrado,
+Protección y Reprensión) con **No-muerto** como única raza permitida.
+La compatibilidad de raza y clase está contrastada con Blizzard; los motivos
+sobre PvP masivo son orientación táctica editorial, no una segunda raza
+comparada ni una prueba a nivel 60. La interfaz señala el origen complementario
+de las nuevas fichas y explica que no existe segunda raza jugable.
+
+La adición vive exclusivamente en `data/race-advisor-additions.json` y se
+valida al cargar Race Advisor; `data/race-advisor.json`, los **51 registros de
+`Clases WoW Forever v5.xlsx`** y los ocho perfiles raciales permanecen intactos.
+Cobertura total de Race Advisor: **54 fichas (51 originales + 3 de Paladín Horda)**.
+El archivo complementario se incluye en la caché PWA v29 para funcionar offline.
+No se generan estrellas nuevas.
+
+La [evaluación de las seis combinaciones Druida](docs/druid-race-assessment-v29.md)
+quedó **aprobada por el usuario**: Elfo de la noche en Alianza y Tauren en Horda
+se mantienen como razas principales; Cielonato es la alternativa de Equilibrio,
+Feral y Restauración en ambas facciones. Se conserva la motivación editorial
+diferenciada y las reservas de beta. Los cambios viven en
+`data/race-advisor-druid-alternatives.json` y se aplican en memoria:
+**ninguna de las 51 filas exportadas del Excel se edita**.
+Race Explorer muestra seis enlaces a las fichas donde Cielonato es alternativa.
+Si esa capa adicional o los datos de Cielonato fallan, se conservan las
+recomendaciones principales originales, sin crear un resultado ficticio.
+Las 3 fichas Chamán Alianza mantienen «sin segunda raza» porque Enano es la
+única opción elegible.

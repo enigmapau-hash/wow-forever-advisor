@@ -8,6 +8,8 @@ module.exports = async function testSkyborne(page, context, base) {
   await page.locator('#racial-race button[data-value="Cielonato"]').waitFor();
   const data = await page.evaluate(async () => (await fetch("./data/skyborne.json")).json());
   const advisor = await page.evaluate(async () => (await fetch("./data/race-advisor.json")).json());
+  const druidAlt = await page.evaluate(async () =>
+    (await fetch("./data/race-advisor-druid-alternatives.json")).json());
   assert.equal(await page.locator("#racial-race button").count(), 9);
   assert.match(await page.locator("#racial-coverage-note").textContent(), /^Nueve razas/);
   assert.equal(await page.locator("#explore-racials").textContent(), "Explorar las 9 razas →");
@@ -40,7 +42,10 @@ module.exports = async function testSkyborne(page, context, base) {
   assert.equal(await sky.getByText("Cielonato", { exact: true }).isVisible(), true,
     "El nombre permanece accesible si la red bloquea el icono");
   assert.equal(await page.locator("#skyborne-result .rating").count(), 0, "No invented stars");
-  assert.match(await page.locator("#skyborne-result").textContent(), /Valoración pendiente/);
+  assert.match(await page.locator("#skyborne-result").textContent(), /Alcance de la evaluación/);
+  assert.match(await page.locator("#skyborne-criterion").textContent(), /alternativa de Druida/);
+  assert.equal(await page.locator("#skyborne-alternatives a").count(), 6,
+    "Race Explorer enlaza las seis alternativas de Druida");
   assert.match(await page.locator("#skyborne-verification").textContent(),
     data.revision.estado === "verificado" ? /Datos oficiales de beta/ : /pendientes de contraste independiente/);
   for (const ability of data.comunes) {
@@ -81,7 +86,7 @@ module.exports = async function testSkyborne(page, context, base) {
   await page.locator("#faction button").first().waitFor();
   // Race Advisor solo recomienda en función de las fichas valoradas, no por
   // compatibilidad de clase o facción. Cielonato permanece en Race Explorer.
-  const coverage = await page.evaluate(({ advisor }) => {
+  const coverage = await page.evaluate(({ advisor, druidAlt }) => {
     const choose = (id, value) => {
       const button = [...document.querySelectorAll(`#${id} button`)].find((b) => b.dataset.value === value);
       if (!button) throw new Error(`Missing ${id}: ${value}`);
@@ -95,22 +100,49 @@ module.exports = async function testSkyborne(page, context, base) {
       choose("character-class", row.clase);
       choose("specialization", row.especializacion);
       const result = document.getElementById("advisor-result");
-      if (result.hidden || /Cielonato/.test(result.textContent)) {
-        throw new Error(`Recomendación no evaluada visible: ${row.faccion}/${row.clase}/${row.especializacion}`);
+      const druid = druidAlt.fichas.find((x) => x.faccion === row.faccion
+        && x.clase === row.clase && x.especializacion === row.especializacion);
+      const cielonatoTextVisible = /Cielonato/.test(result.textContent);
+      if (result.hidden || cielonatoTextVisible !== Boolean(druid)) {
+        throw new Error(`Cielonato solo debe aparecer como alternativa de Druida: ${row.faccion}/${row.clase}/${row.especializacion}`);
       }
       for (const key of ["razaRecomendada", "alternativa", "prioridad", "motivoPrincipal", "explicacion"]) {
         const rendered = document.querySelector(`[data-field="${key}"]`).textContent;
-        const expected = key === "alternativa" && row.alternativa === "-" ? (row.faccion === "Alianza" && row.clase === "Chamán"
-          ? "Sin alternativa: única raza disponible"
-          : "Alternativa pendiente de evaluación") : row[key];
+        const expected = key === "alternativa" && druid ? "Cielonato"
+          : key === "alternativa" && row.alternativa === "-" && row.faccion === "Alianza" && row.clase === "Chamán"
+            ? "Sin alternativa: única raza disponible"
+            : row[key];
         if (rendered !== expected) {
-          throw new Error(`Changed original: ${key}`);
+          throw new Error(`Changed original or incorrect Druid alternative: ${key}`);
+        }
+      }
+      if (druid) {
+        if (document.getElementById("alternative-use").textContent !== druid.usoAlternativa
+            || !document.getElementById("race-druid-note").textContent.includes(druid.motivoComparacion)
+            || document.getElementById("race-druid-note").hidden) {
+          throw new Error(`Missing comparative reason for ${row.faccion}/${row.especializacion}`);
         }
       }
     }
     return advisor.fichas.length;
-  }, { advisor });
-  assert.equal(coverage, 51, "Conservar las 51 recomendaciones sin añadir candidatos no evaluados");
+  }, { advisor, druidAlt });
+  assert.equal(coverage, 51, "Conservar las 51 recomendaciones principales y las seis alternativas de Druida");
+  const additions = await page.evaluate(async () => (await fetch("./data/race-advisor-additions.json")).json());
+  assert.equal(additions.fichas.length, 3, "Tres fichas adicionales de Paladín Horda");
+  await page.locator('#faction button[data-value="Horda"]').click();
+  assert.equal(await page.locator('#character-class button[data-value="Paladín"]').count(), 1,
+    "Paladín está disponible en Horda");
+  await page.locator('#character-class button[data-value="Paladín"]').click();
+  assert.equal(await page.locator("#specialization button").count(), 3);
+  for (const entry of additions.fichas) {
+    await page.locator(`#specialization button[data-value="${entry.especializacion}"]`).click();
+    assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "No-muerto");
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "Sin alternativa: única raza disponible");
+    assert.equal(await page.locator("#race-addition-note").isVisible(), true);
+    assert.match(await page.locator("#no-alternative").textContent(), /No-muerto es la única raza/);
+    assert.equal(await page.locator('[data-field="motivoPrincipal"]').textContent(), entry.motivoPrincipal);
+    assert.equal(await page.locator('[data-field="explicacion"]').textContent(), entry.explicacion);
+  }
   for (const variant of data.variantes) {
     const row = advisor.fichas.find((row) => row.faccion === variant.faccion && row.clase === variant.clases[0]);
     for (const [id, key] of [["faction", "faccion"], ["character-class", "clase"], ["specialization", "especializacion"]]) {
@@ -135,7 +167,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v28")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v29")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();
@@ -154,6 +186,12 @@ module.exports = async function testSkyborne(page, context, base) {
   await page.locator('#character-class button[data-value="Sacerdote"]').click();
   await page.locator("#specialization button").first().click();
   assert.equal(await page.locator("#skyborne-consideration").count(), 0);
+  await page.locator('#faction button[data-value="Horda"]').click();
+  await page.locator('#character-class button[data-value="Paladín"]').click();
+  await page.locator('#specialization button[data-value="Protección"]').click();
+  assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "No-muerto",
+    "Paladín Horda disponible offline con caché nueva");
+  assert.equal(await page.locator("#race-addition-note").isVisible(), true);
   await context.setOffline(false);
   await page.goto(base + "/");
   const fallback = await context.browser().newContext({ serviceWorkers: "block" });
@@ -183,5 +221,5 @@ module.exports = async function testSkyborne(page, context, base) {
     assert.match(await fallbackPage.locator("#racial-coverage-note").textContent(), /^Nueve razas/);
     assert.equal(await fallbackPage.locator("#skyborne-data-error").isVisible(), false);
   } finally { await fallback.close(); }
-  console.log("Cielonato: 9 razas y 2 variantes solo en Race Explorer; 51 recomendaciones originales intactas, teclado, 4 tamaños, navegación y offline: OK");
+  console.log("Cielonato: 9 razas, 2 variantes y 6 alternativas Druida; 51 originales + 3 Paladín Horda, teclado, navegación y offline: OK");
 };

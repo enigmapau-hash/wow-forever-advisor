@@ -5,7 +5,7 @@ const ICON_URLS = new Set(self.WOW_ICON_URLS);
 
 // Incrementar la versión al publicar cambios en los archivos de la aplicación.
 const CACHE_PREFIX = `wow-forever-advisor:${self.registration.scope}:`;
-const CACHE_NAME = `${CACHE_PREFIX}v28`;
+const CACHE_NAME = `${CACHE_PREFIX}v29`;
 const APP_FILES = [
   "./",
   "./index.html",
@@ -18,6 +18,8 @@ const APP_FILES = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./data/race-advisor.json",
+  "./data/race-advisor-additions.json",
+  "./data/race-advisor-druid-alternatives.json",
   "./data/profession-advisor.json",
   "./data/talent-advisor-warrior.json",
   "./data/talent-advisor-paladin.json",
