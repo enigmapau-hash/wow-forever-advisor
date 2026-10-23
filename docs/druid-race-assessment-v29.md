@@ -2,7 +2,7 @@
 
 ## Finalidad y límites
 
-Esta evaluación comenzó como propuesta y fue **aprobada por el usuario posteriormente**, sin modificación del Excel maestro. Se acordó valorar **Elfo de la noche frente a Cielonato (Alianza)** y **Tauren frente a Cielonato (Horda)** para las tres especializaciones de Druida. Se preservan las **51 recomendaciones** del Excel `Clases WoW Forever v5.xlsx`, las escalas originales y la elección principal hasta una decisión explícita.
+Esta evaluación comenzó como propuesta y fue **aprobada por el usuario posteriormente**, sin modificación del Excel maestro. Se acordó valorar **Elfo de la noche frente a Cielonato (Alianza)** y **Tauren frente a Cielonato (Horda)** para las tres especializaciones de Druida. Se preservan las **51 fichas originales** del Excel `Clases WoW Forever v5.xlsx` y sus escalas. La decisión explícita ya se adoptó: la raza principal continúa siendo Elfo de la noche en Alianza y Tauren en Horda, mientras Cielonato pasa a ser la alternativa evaluada.
 
 Metodología del libro, hoja `Metodología`, celdas B6:C16: **PvP masivo, presión de múltiples enemigos y apoyo al grupo; mundo abierto; recuperación frente a control de masas; movilidad hacia objetivos, salida y aliados; reposicionamiento/cobertura; sinergia con kit de especialización; nivel 60 y evolución futura sin predecir parches.** No se priorizan PvE, duelos, arenas, combate PvP pequeño, DPS puro ni rankings numéricos. **No existe una fórmula numérica original** que permita asignar estrellas nuevas automáticamente. Las conclusiones son juicio táctico revisable, no prueba de superioridad estadística.
 
