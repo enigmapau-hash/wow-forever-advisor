@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "raza": "Cielonato",
+  "nombreOriginal": "Skyborne",
+  "origen": "Zephras Isle",
+  "estado": "beta",
+  "revision": {
+    "fecha": "2026-10-23",
+    "estado": "pendiente",
+    "base": "https://github.com/enigmapau-hash/wow-forever-advisor/issues/29",
+    "nota": "Datos documentados en la tarea #29; contraste independiente con las fuentes oficiales pendiente. No equivalen a confirmación de lanzamiento."
+  },
+  "fuentes": [
+    {
+      "id": "presentacion",
+      "nombre": "Blizzard · Meet the New Skyborne",
+      "url": "https://news.blizzard.com/en-us/article/24302071/wow-forever-meet-the-new-skyborne"
+    },
+    {
+      "id": "beta-15-oct",
+      "nombre": "Blizzard · Beta Development Notes · 15/10/2026",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6"
+    },
+    {
+      "id": "clases",
+      "nombre": "Blizzard · Clases por raza y facción",
+      "url": "https://news.blizzard.com/en-us/article/24304075/create-the-hero-you-want-to-be-in-world-of-warcraft-forever"
+    }
+  ],
+  "comunes": [
+    {
+      "id": "walk-on-air",
+      "nombre": "Walk on Air",
+      "tipo": "activa",
+      "descripcion": "Planeo controlado durante 10 s. Reutilización: 90 s en la beta del 15/10/2026.",
+      "duracionSegundos": 10,
+      "reutilizacionSegundos": 90,
+      "fuentes": [
+        "presentacion",
+        "beta-15-oct"
+      ]
+    },
+    {
+      "id": "wind-blessed",
+      "nombre": "Wind Blessed",
+      "tipo": "pasiva",
+      "descripcion": "+3 % de celeridad en la beta del 15/10/2026; sustituye al +1 % de la presentación anterior.",
+      "celeridadPorcentaje": 3,
+      "fuentes": [
+        "presentacion",
+        "beta-15-oct"
+      ]
+    },
+    {
+      "id": "elemental-insight",
+      "nombre": "Elemental Insight",
+      "tipo": "pasiva",
+      "descripcion": "+5 % de daño contra elementales.",
+      "danoContraElementalesPorcentaje": 5,
+      "fuentes": [
+        "presentacion"
+      ]
+    }
+  ],
+  "variantes": [
+    {
+      "faccion": "Alianza",
+      "nombre": "High Order",
+      "clases": [
+        "Guerrero",
+        "Cazador",
+        "Pícaro",
+        "Druida",
+        "Mago"
+      ],
+      "fuentes": [
+        "presentacion",
+        "clases"
+      ],
+      "habilidad": {
+        "id": "read-leyline",
+        "nombre": "Read Leyline",
+        "tipo": "activa",
+        "descripcion": "+100 % de regeneración de salud y maná. Se puede lanzar en movimiento. Duración mínima de 30 s en la beta del 15/10/2026.",
+        "regeneracionPorcentaje": 100,
+        "duracionMinimaSegundos": 30,
+        "lanzableEnMovimiento": true,
+        "fuentes": [
+          "presentacion",
+          "beta-15-oct"
+        ]
+      }
+    },
+    {
+      "faccion": "Horda",
+      "nombre": "Windshaper",
+      "clases": [
+        "Guerrero",
+        "Cazador",
+        "Pícaro",
+        "Druida",
+        "Chamán"
+      ],
+      "fuentes": [
+        "presentacion",
+        "clases"
+      ],
+      "habilidad": {
+        "id": "skysight",
+        "nombre": "Skysight",
+        "tipo": "activa",
+        "descripcion": "+10 % de velocidad de movimiento y de montura. Se puede lanzar en movimiento según la beta del 15/10/2026.",
+        "movimientoPorcentaje": 10,
+        "monturaPorcentaje": 10,
+        "lanzableEnMovimiento": true,
+        "fuentes": [
+          "presentacion",
+          "beta-15-oct"
+        ]
+      }
+    }
+  ],
+  "evaluacion": {
+    "estado": "pendiente",
+    "criterio": "Consideración situacional por facultades y compatibilidad de facción y clase. No implica una recomendación principal ni una clasificación global para PvP o progresión.",
+    "limitacion": "Valoración comparativa pendiente de pruebas y del balance definitivo. No se asignan estrellas ni se sustituye la recomendación principal existente."
+  },
+  "icono": {
+    "estado": "pendiente_verificacion",
+    "url": null,
+    "nota": "Icono de Cielonato pendiente de verificación. Se conserva su nombre sin imagen."
+  }
+}

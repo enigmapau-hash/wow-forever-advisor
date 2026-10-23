@@ -88,7 +88,7 @@
           <h1 id="advisor-title" tabindex="-1">Race Advisor</h1>
           <p class="subtitle">Elige facción, clase y especialización para consultar tu ficha.</p>
           <p class="field-note">Se muestran las ocho razas clásicas; Cielonatos aún no incluidos.</p>
-          <a class="button-link" id="explore-racials" href="#raciales">Explorar las 8 razas →</a>
+          <a class="button-link" id="explore-racials" href="#raciales">Explorar las 9 razas →</a>
         </header>
 
         <form id="advisor-form" class="selector-card" aria-label="Selección de personaje" aria-busy="true">
@@ -153,6 +153,15 @@
               <p class="original-text" data-field="explicacion"></p>
             </details>
           </article>
+          <article id="skyborne-consideration" class="result-card" aria-labelledby="skyborne-consideration-title" hidden>
+            <h3 id="skyborne-consideration-title">Cielonato · consideración de beta</h3>
+            <p id="skyborne-advisor-variant"></p>
+            <p id="skyborne-advisor-verification" class="source-note"></p>
+            <ul id="skyborne-advisor-abilities" class="talent-list"></ul>
+            <p id="skyborne-advisor-criterion"></p>
+            <p id="skyborne-advisor-limitation" class="field-note"></p>
+            <a id="skyborne-explore" class="back-link" href="#raciales">Consultar esta variante en Race Explorer →</a>
+          </article>
           <div class="profile-grid">
             <article class="result-card"><h3>Fortalezas</h3><p class="original-text" data-field="fortalezas"></p></article>
             <article class="result-card"><h3>Debilidades</h3><p class="original-text" data-field="debilidades"></p></article>
@@ -184,8 +193,8 @@
         <a class="back-link" id="back-selector" href="#race-advisor">← Volver al selector principal</a>
         <header class="selector-intro">
           <h1 id="racial-title" tabindex="-1">Race Explorer</h1>
-          <p class="subtitle">Consulta el perfil original de cada raza.</p>
-          <p class="field-note">Ocho razas clásicas; «Elfo» corresponde al elfo de la noche. Cielonatos aún no incluidos.</p>
+          <p class="subtitle">Consulta los perfiles raciales y las variantes de Cielonato.</p>
+          <p class="field-note">Nueve razas: ocho perfiles originales y Cielonato, con variantes de Alianza y Horda. «Elfo» corresponde al elfo de la noche.</p>
         </header>
         <div class="selector-card">
           <fieldset id="racial-race" class="option-group" data-value="" data-icon-kind="raza" disabled>
@@ -194,6 +203,7 @@
                 <p class="option-prompt field-note">Elige raza</p>
               </fieldset>
           <p class="selection-status" id="racial-status" role="status">Cargando perfiles raciales…</p>
+          <p id="skyborne-data-error" class="field-note" role="status" hidden>No se ha podido cargar Cielonato. Los ocho perfiles originales siguen disponibles.</p>
           <div id="racial-error" role="alert" hidden>
             <p>No se han podido cargar los perfiles raciales. Comprueba tu conexión e inténtalo de nuevo.</p>
             <button id="retry-racials" type="button">Reintentar</button>
@@ -231,6 +241,35 @@
             <ul id="racial-alternative"></ul>
             <p id="racial-no-alternative" class="field-note" hidden>Esta raza no figura como alternativa en las combinaciones actuales.</p>
           </section>
+        </section>
+        <section id="skyborne-result" aria-labelledby="skyborne-title" hidden>
+          <article class="result-card recommendation">
+            <p class="eyebrow">Raza en beta · Skyborne</p>
+            <h2 id="skyborne-title">Cielonato</h2>
+            <p id="skyborne-verification" class="source-note"></p>
+            <p id="skyborne-icon-note" class="field-note"></p>
+            <h3>Facultades compartidas</h3>
+            <ul id="skyborne-common" class="talent-list"></ul>
+            <fieldset id="skyborne-faction" class="option-group" data-value="" data-icon-kind="faccion" disabled>
+              <legend>Variante de facción</legend>
+              <div class="option-buttons"></div>
+              <p class="option-prompt field-note">Elige una variante</p>
+            </fieldset>
+            <p id="skyborne-status" class="selection-status" role="status">Elige Alianza o Horda para consultar sus diferencias.</p>
+            <section id="skyborne-variant" aria-labelledby="skyborne-variant-title" hidden>
+              <h3 id="skyborne-variant-title"></h3>
+              <p class="field-note">Clases permitidas</p>
+              <p id="skyborne-classes"></p>
+              <h3 id="skyborne-ability-title"></h3>
+              <p id="skyborne-ability"></p>
+            </section>
+            <h3>Valoración pendiente</h3>
+            <p id="skyborne-criterion"></p>
+            <p id="skyborne-limitation" class="field-note"></p>
+            <p class="field-note">No figura como recomendación principal ni alternativa en las 51 combinaciones originales.</p>
+            <h3>Fuentes y revisión</h3>
+            <ul id="skyborne-sources" class="talent-sources"></ul>
+          </article>
         </section>
       </section>
 

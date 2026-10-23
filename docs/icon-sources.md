@@ -111,3 +111,12 @@ no afiliación aparece en el pie de la aplicación.
 *Pendiente de prueba en dispositivo tras la publicación*: comprobar cada botón
 e icono, la distribución en pantalla móvil y que las imágenes descargadas se
 muestran en modo avión. Si falla alguna ruta remota, corregir el mapa.
+
+
+## v26 · Cielonato
+
+No se añade un icono sin identificación verificable. La consulta de las fuentes y
+la búsqueda en Wowhead/CDN están pendientes del acceso de red; no se ha inventado
+un slug ni reutilizado la imagen de otra raza. La novena opción funciona con
+texto y no se presenta como portadora de un icono oficial. Véase la
+[revisión de fuentes y limitaciones de v26](skyborne-v26.md).

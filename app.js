@@ -40,6 +40,9 @@ const racialError = document.getElementById("racial-error");
 let records = [];
 let racialProfiles = new Map();
 let racialBetaUpdates = new Map();
+let skyborneData = null;
+const skyborneResult = document.getElementById("skyborne-result");
+const skyborneFaction = document.getElementById("skyborne-faction");
 let loading = false;
 let loaded = false;
 
@@ -105,6 +108,7 @@ function clearResult() {
   document.getElementById("no-alternative").hidden = true;
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
+  document.getElementById("skyborne-consideration").hidden = true;
   document.getElementById("race-beta-updates").hidden = true;
   document.getElementById("race-beta-alternative").hidden = true;
 }
@@ -185,6 +189,122 @@ function renderRaceBetaUpdates(record) {
   document.getElementById("race-beta-updates").hidden = !main && !alternative;
 }
 
+// Cielonato has its own beta schema. Keep the original eight-profile validator
+// and original beta annotations scoped to their unchanged source data.
+function validateSkyborneData(data) {
+  try {
+    const text = (value) => typeof value === "string" && value.trim().length > 0;
+    if (!data || data.schemaVersion !== 1 || data.raza !== "Cielonato" || data.estado !== "beta"
+        || !["pendiente", "verificado"].includes(data.revision?.estado)
+        || !/^\d{4}-\d{2}-\d{2}$/.test(data.revision.fecha)
+        || !text(data.icono?.nota) || data.icono.estado !== "pendiente_verificacion" || data.icono.url !== null
+        || data.evaluacion?.estado !== "pendiente"
+        || !text(data.evaluacion.criterio) || !text(data.evaluacion.limitacion)
+        || !Array.isArray(data.fuentes) || data.fuentes.length !== 3) return null;
+    const sources = new Set(data.fuentes.map((source) => source.id));
+    if (sources.size !== 3 || !data.fuentes.every((source) => {
+      const url = new URL(source.url);
+      return text(source.nombre) && url.protocol === "https:"
+        && ["news.blizzard.com", "us.forums.blizzard.com"].includes(url.hostname);
+    })) return null;
+    const references = (row) => Array.isArray(row.fuentes) && row.fuentes.length > 0
+      && row.fuentes.every((id) => sources.has(id));
+    const ability = (row) => row && text(row.id) && text(row.nombre) && text(row.descripcion)
+      && ["activa", "pasiva"].includes(row.tipo) && references(row);
+    if (!Array.isArray(data.comunes) || data.comunes.length !== 3 || !data.comunes.every(ability)) return null;
+    const common = new Map(data.comunes.map((row) => [row.id, row]));
+    if (common.size !== 3 || common.get("wind-blessed")?.celeridadPorcentaje !== 3
+        || common.get("walk-on-air")?.duracionSegundos !== 10
+        || common.get("walk-on-air")?.reutilizacionSegundos !== 90
+        || common.get("elemental-insight")?.danoContraElementalesPorcentaje !== 5) return null;
+    const allowed = {
+      Alianza: ["Guerrero", "Cazador", "Pícaro", "Druida", "Mago"],
+      Horda: ["Guerrero", "Cazador", "Pícaro", "Druida", "Chamán"],
+    };
+    if (!Array.isArray(data.variantes) || data.variantes.length !== 2
+        || new Set(data.variantes.map((row) => row.faccion)).size !== 2
+        || !data.variantes.every((row) => allowed[row.faccion] && text(row.nombre) && references(row)
+          && Array.isArray(row.clases) && row.clases.length === 5 && new Set(row.clases).size === 5
+          && row.clases.every((name) => allowed[row.faccion].includes(name)) && ability(row.habilidad)
+          && row.habilidad.lanzableEnMovimiento === true)) return null;
+    const alliance = data.variantes.find((row) => row.faccion === "Alianza");
+    const horde = data.variantes.find((row) => row.faccion === "Horda");
+    if (alliance.habilidad.id !== "read-leyline" || alliance.habilidad.regeneracionPorcentaje !== 100
+        || alliance.habilidad.duracionMinimaSegundos !== 30 || horde.habilidad.id !== "skysight"
+        || horde.habilidad.movimientoPorcentaje !== 10 || horde.habilidad.monturaPorcentaje !== 10) return null;
+    return data;
+  } catch { return null; }
+}
+
+function skyborneVerification() {
+  return skyborneData.revision.estado === "verificado"
+    ? `Datos oficiales de beta · revisión ${skyborneData.revision.fecha}. No equivalen a confirmación de lanzamiento.`
+    : "Datos de beta pendientes de contraste independiente con las fuentes oficiales. Facultades y compatibilidad por confirmar; valoración comparativa pendiente.";
+}
+
+function fillSkyborneAbilities(id, abilities) {
+  document.getElementById(id).replaceChildren(...abilities.map((ability) => {
+    const item = document.createElement("li");
+    const name = document.createElement("strong");
+    name.textContent = ability.nombre;
+    item.append(name, ` · ${ability.tipo}: ${ability.descripcion}`);
+    return item;
+  }));
+}
+
+function prepareSkyborneExplorer() {
+  setOptions(skyborneFaction, skyborneData.variantes.map((row) => row.faccion), "Elige una variante");
+  document.getElementById("skyborne-verification").textContent = skyborneVerification();
+  document.getElementById("skyborne-icon-note").textContent = skyborneData.icono.nota;
+  fillSkyborneAbilities("skyborne-common", skyborneData.comunes);
+  document.getElementById("skyborne-criterion").textContent = skyborneData.evaluacion.criterio;
+  document.getElementById("skyborne-limitation").textContent = skyborneData.evaluacion.limitacion;
+  document.getElementById("skyborne-sources").replaceChildren(...skyborneData.fuentes.map((source) => {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.textContent = source.nombre;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    item.append(link);
+    return item;
+  }));
+}
+
+skyborneFaction.addEventListener("change", () => {
+  const variant = skyborneData?.variantes.find((row) => row.faccion === skyborneFaction.dataset.value);
+  document.getElementById("skyborne-variant").hidden = !variant;
+  for (const id of ["skyborne-variant-title", "skyborne-classes", "skyborne-ability-title", "skyborne-ability"]) {
+    document.getElementById(id).textContent = "";
+  }
+  document.getElementById("skyborne-status").textContent = variant
+    ? `Variante: ${variant.faccion} · ${variant.nombre}.`
+    : "Elige Alianza o Horda para consultar sus diferencias.";
+  if (!variant) return;
+  document.getElementById("skyborne-variant-title").textContent = `${variant.faccion} · ${variant.nombre}`;
+  document.getElementById("skyborne-classes").textContent = variant.clases.join(" · ");
+  document.getElementById("skyborne-ability-title").textContent = variant.habilidad.nombre;
+  document.getElementById("skyborne-ability").textContent = variant.habilidad.descripcion;
+});
+
+function renderSkyborneConsideration(record) {
+  const variant = skyborneData?.variantes.find((row) => row.faccion === record.faccion && row.clases.includes(record.clase));
+  document.getElementById("skyborne-consideration").hidden = !variant;
+  if (!variant) return;
+  document.getElementById("skyborne-advisor-variant").textContent = `${variant.faccion} · ${variant.nombre} · ${record.clase}`;
+  document.getElementById("skyborne-advisor-verification").textContent = skyborneVerification();
+  fillSkyborneAbilities("skyborne-advisor-abilities", [...skyborneData.comunes, variant.habilidad]);
+  document.getElementById("skyborne-advisor-criterion").textContent = skyborneData.evaluacion.criterio;
+  document.getElementById("skyborne-advisor-limitation").textContent = skyborneData.evaluacion.limitacion;
+}
+
+document.getElementById("skyborne-explore").addEventListener("click", (event) => {
+  event.preventDefault();
+  selectOption(racialSelect, "Cielonato");
+  selectOption(skyborneFaction, faction.dataset.value);
+  window.location.hash = "raciales";
+});
+
 async function loadData() {
   if (loaded || loading) return;
   loading = true;
@@ -196,16 +316,20 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates] = await Promise.all([
+    const [advisor, profiles, updates, skyborne] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
+      readJson("./data/skyborne.json").catch(() => null),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
+    skyborneData = validateSkyborneData(skyborne);
+    document.getElementById("skyborne-data-error").hidden = Boolean(skyborneData);
+    if (skyborneData) prepareSkyborneExplorer();
     records = advisor.fichas;
     setOptions(faction, uniqueValues(records, "faccion"), "Elige facción");
-    setOptions(racialSelect, [...racialProfiles.keys()], "Elige raza");
+    setOptions(racialSelect, [...racialProfiles.keys(), ...(skyborneData ? [skyborneData.raza] : [])], "Elige raza");
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
     loaded = true;
     status.textContent = "Elige una facción para comenzar.";
@@ -266,6 +390,7 @@ specialization.addEventListener("change", () => {
     document.getElementById("alternative-profile").hidden = false;
   }
   renderRaceBetaUpdates(record);
+  renderSkyborneConsideration(record);
   result.hidden = false;
   AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
@@ -299,12 +424,18 @@ function renderRacialMatches(listId, emptyId, field) {
 }
 
 racialSelect.addEventListener("change", () => {
+  skyborneResult.hidden = true;
   racialResult.hidden = true;
   document.getElementById("racial-beta-updates").hidden = true;
   document.getElementById("racial-name").textContent = "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) field.textContent = "";
   renderRacialMatches("racial-recommended", "racial-no-recommended", "razaRecomendada");
   renderRacialMatches("racial-alternative", "racial-no-alternative", "alternativa");
+  if (skyborneData && racialSelect.dataset.value === skyborneData.raza) {
+    skyborneResult.hidden = false;
+    racialStatus.textContent = "Cielonato: consulta las facultades compartidas y elige una variante de facción.";
+    return;
+  }
   const profile = racialProfiles.get(racialSelect.dataset.value);
   if (!profile) {
     racialStatus.textContent = "Elige una raza para consultar su perfil.";
