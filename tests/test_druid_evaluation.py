@@ -60,7 +60,7 @@ class DruidEvaluationTests(unittest.TestCase):
     def test_cache_and_documentation(self):
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
         self.assertIn('"./data/race-advisor-druid-alternatives.json"', sw)
-        self.assertIn("${CACHE_PREFIX}v30", sw)
+        self.assertIn("${CACHE_PREFIX}v31", sw)
         app = (ROOT / "app.js").read_text(encoding="utf-8")
         self.assertIn("validateDruidAlternatives", app)
         self.assertIn("skyborne-alternatives", app)
