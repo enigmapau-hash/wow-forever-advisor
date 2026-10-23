@@ -115,6 +115,29 @@ const server = http.createServer(async (req, res) => {
     await page.locator("#advisor-result > .detail-disclosure summary").click();
     assert.equal(await page.locator('[data-field="escalaUtilidad"]').isVisible(), false,
       "La utilidad general permanece en los datos, pero no se muestra como estrellas");
+    assert.equal(await page.locator("#selection-status").getAttribute("role"), "status",
+      "El estado de selección sigue anunciándose mediante ARIA");
+    assert.equal(await page.locator("#selection-status").evaluate((el) =>
+      getComputedStyle(el).clipPath), "inset(50%)",
+      "Evitar estado visual duplicado al mostrar una ficha");
+    await page.locator('#character-class button[data-value="Druida"]').click();
+    await page.locator('#specialization button[data-value="Equilibrio"]').click();
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "Cielonato");
+    assert.equal(await page.locator("#race-druid-details").isVisible(), true);
+    assert.equal(await page.locator("#race-druid-details").getAttribute("open"), null,
+      "La comparación extensa se consulta solo si el usuario quiere");
+    assert.equal(await page.locator("#alternative-use").isVisible(), true,
+      "La utilidad breve de Cielonato aparece inmediatamente");
+    await page.locator("#race-druid-details summary").click();
+    assert.equal(await page.locator("#race-druid-note").isVisible(), true,
+      "La justificación completa sigue disponible");
+    await page.locator('#faction button[data-value="Horda"]').click();
+    await page.locator('#character-class button[data-value="Paladín"]').click();
+    await page.locator('#specialization button[data-value="Sagrado"]').click();
+    assert.equal(await page.locator("#no-alternative").count(), 0);
+    assert.equal(await page.locator("#race-addition-note").count(), 0);
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(),
+      "Sin alternativa: No-muerto es la única raza de Paladín de Horda.");
     await page.goto(base + "/#raciales");
     assert(!/Excel/i.test(await page.locator("#racial-view").innerText()),
       "No internal spreadsheet references in Race Explorer");
