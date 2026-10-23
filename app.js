@@ -120,6 +120,12 @@ function uniqueValues(rows, field) {
   return [...new Set(rows.map((row) => row[field]))];
 }
 
+// Orden alfabético español, compartido entre los tres asesores. No reordena
+// las fichas de origen, las especializaciones ni las recomendaciones.
+function alphabeticalClasses(values) {
+  return [...new Set(values)].sort((a, b) => a.localeCompare(b, "es"));
+}
+
 async function readJson(path) {
   const response = await fetch(path);
   if (!response.ok) throw new Error(`No se pudo leer ${path}: ${response.status}`);
@@ -437,7 +443,7 @@ async function loadData() {
 faction.addEventListener("change", () => {
   clearResult();
   const rows = records.filter((row) => row.faccion === faction.dataset.value);
-  setOptions(characterClass, uniqueValues(rows, "clase"), faction.dataset.value ? "Elige clase" : "Elige primero una facción");
+  setOptions(characterClass, alphabeticalClasses(rows.map((row) => row.clase)), faction.dataset.value ? "Elige clase" : "Elige primero una facción");
   setOptions(specialization, [], "Elige primero una clase");
   status.textContent = faction.dataset.value ? "Elige una clase." : "Elige una facción para comenzar.";
 });
@@ -588,7 +594,7 @@ async function loadProfessions() {
       throw new Error("Fichas de profesiones incompletas o duplicadas.");
     }
     professionRecords = rows;
-    setOptions(professionClass, uniqueValues(rows, "clase"), "Elige clase");
+    setOptions(professionClass, alphabeticalClasses(rows.map((row) => row.clase)), "Elige clase");
     professionsLoaded = true;
     professionStatus.textContent = "Elige una clase para comenzar.";
   } catch (error) {
@@ -819,7 +825,7 @@ async function loadTalents() {
     talentCatalog = nextMap;
     talentLegacy = nextLegacy;
     talentData = null;
-    setOptions(talentClass, catalog.clases.map((entry) => entry.nombre), "Elige clase");
+    setOptions(talentClass, alphabeticalClasses(catalog.clases.map((entry) => entry.nombre)), "Elige clase");
     setOptions(talentSpec, [], "Elige primero la clase");
     setOptions(talentGoal, [], "Elige primero una especialización");
     talentsLoaded = true;
