@@ -290,6 +290,9 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
       && !doc.getElementById("home-view").textContent.includes("Build Advisor"),
       "La portada no ofrece Build Advisor ni módulos futuros");
     check(doc.getElementById("home-explore-racials").getAttribute("href") === "#raciales", "Destino directo a raciales");
+    check(doc.getElementById("racial-recommended-title").textContent === "Dónde se recomienda esta raza"
+      && doc.getElementById("racial-alternative-title").textContent === "Dónde aparece como alternativa",
+      "Race Explorer deja claro que las listas son combinaciones y no nuevas recomendaciones");
     await open("home-explore-racials", "racial-view");
     await waitFor(() => doc.querySelectorAll("#racial-race button").length === 8);
     check(doc.activeElement === doc.getElementById("racial-title"), "Foco en el título de raciales");
