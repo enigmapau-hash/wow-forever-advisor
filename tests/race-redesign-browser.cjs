@@ -76,9 +76,15 @@ module.exports = async function testRedesign(page, base, offline = false) {
     }, width);
     assert.equal(count, 54);
   }
+  await page.setViewportSize({ width: 390, height: 844 });
   for (const [id, value] of [["faction", "Alianza"], ["character-class", "Guerrero"], ["specialization", "Armas"]]) {
     await page.locator(`#${id} button[data-value="${value}"]`).click();
   }
+  await page.waitForFunction(() => document.activeElement?.id === "result-race");
+  assert.equal(await page.locator("#advisor-result").evaluate(el => {
+    const top = el.getBoundingClientRect().top;
+    return top >= 0 && top < window.innerHeight;
+  }), true, "El resultado es visible y recibe foco al elegir especialización en móvil");
   for (const id of ["primary-profile", "alternative-details", "race-beta-updates"]) {
     const summary = page.locator(`#${id} > summary`);
     await summary.focus();
