@@ -287,3 +287,24 @@ contrastar su efecto en el meta y en la versión de lanzamiento. Los
 nuevos datos están disponibles offline tras actualizar la PWA: caché **v22**.
 
 Véase [revisión y fuentes de la v22](docs/racial-v22-review.md).
+
+## Navegación y claridad de contenido — v23
+
+La portada conserva el diseño oscuro y dorado: **la tarjeta principal de
+Race Advisor y los cuatro módulos son enlaces nativos que ocupan la tarjeta
+completa**, con acceso por toque, ratón, tabulador y Enter. Se suprimen los
+botones «Abrir…» redundantes y se agrupan los cuatro módulos en dos columnas
+en pantallas medianas y grandes (una columna en móvil).
+
+En Race Advisor se mantiene visible el motivo principal, las fortalezas y
+debilidades y la información oficial de beta; la explicación larga y el
+perfil racial general siguen disponibles en secciones ampliables. En Race
+Explorer se pliegan solo los comentarios extensos. En Talent Advisor
+«Otros progresos» y «Versión y fuentes» son ampliables; las advertencias de
+beta y las prioridades principales permanecen visibles. Se diferencian los
+rótulos de las estrellas por objetivo y se corrige el título de pestaña
+«Race Explorer». **No se alteran textos exportados, rankings, talentos,
+raciales, profesiones, addons ni datos del Excel**.
+
+Se conserva la navegación existente y se actualizan las pruebas automáticas
+de enlaces, teclado, tamaños de pantalla, contenidos y caché **v23**.

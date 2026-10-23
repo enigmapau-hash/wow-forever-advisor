@@ -395,9 +395,6 @@ professionClass.addEventListener("change", () => {
   }));
   professionStatus.textContent = rows.length ? "Elige una especialización." : "Elige una clase para comenzar.";
 });
-document.getElementById("profession-advisor").addEventListener("click", () => {
-  window.location.hash = "profession-advisor";
-});
 document.getElementById("retry-professions").addEventListener("click", loadProfessions);
 
 // Talent Advisor: asesor editorial por clases. No asigna puntos automáticamente
@@ -620,9 +617,6 @@ talentSpec.addEventListener("change", () => {
 });
 
 talentGoal.addEventListener("change", renderTalentResult);
-document.getElementById("talent-advisor").addEventListener("click", () => {
-  window.location.hash = "talent-advisor";
-});
 talentRetry.addEventListener("click", loadTalents);
 
 function showRoute(event) {
@@ -639,7 +633,7 @@ function showRoute(event) {
   talentView.hidden = !isTalent;
   document.title = isAddon ? "Addon Advisor | WoW Forever Advisor" : isTalent ? "Talent Advisor | WoW Forever Advisor"
     : isProfession ? "Profession Advisor | WoW Forever Advisor"
-      : isRacials ? "Raciales | WoW Forever Advisor"
+      : isRacials ? "Race Explorer | WoW Forever Advisor"
         : isAdvisor ? "Race Advisor | WoW Forever Advisor" : "WoW Forever Advisor";
   if (isAddon) {
     document.getElementById("addon-title").focus();
@@ -662,9 +656,6 @@ function showRoute(event) {
   window.scrollTo(0, 0);
 }
 
-document.getElementById("race-advisor").addEventListener("click", () => {
-  window.location.hash = "race-advisor";
-});
 form.addEventListener("submit", (event) => event.preventDefault());
 retryButton.addEventListener("click", loadData);
 document.getElementById("retry-racials").addEventListener("click", loadData);

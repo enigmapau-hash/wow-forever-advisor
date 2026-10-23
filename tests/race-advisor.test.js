@@ -45,9 +45,9 @@ runButton.addEventListener("click", async () => {
     const options = (select) => [...select.querySelectorAll("button")].map((option) => option.dataset.value).sort();
     const sameOptions = (select, values) => JSON.stringify(options(select)) === JSON.stringify([...new Set(values)].sort());
     check(doc.getElementById("advisor-view").hidden, "La aplicación debe abrir en inicio");
-    check(win.getComputedStyle(doc.getElementById("home-explore-racials")).backgroundColor
-      === win.getComputedStyle(doc.getElementById("profession-advisor")).backgroundColor,
-      "Explorar raciales y Profession Advisor comparten fondo de botón");
+    check([...doc.querySelectorAll(".available-modules .module-link")].length === 4
+      && [...doc.querySelectorAll(".available-modules .module-link")].every((link) => link.tagName === "A"),
+      "Cuatro tarjetas con enlaces nativos y sin botones duplicados");
     doc.getElementById("race-advisor").click();
     await waitFor(() => !faction.disabled || !doc.getElementById("data-error").hidden);
     check(doc.getElementById("data-error").hidden, "Los datos deben cargarse");
@@ -281,6 +281,8 @@ document.getElementById("run-navigation").addEventListener("click", async () => 
       button.click();
     };
     check(doc.querySelectorAll(".available-modules > li").length === 4, "Cuatro tarjetas disponibles");
+    check(doc.getElementById("race-advisor").tagName === "A", "La tarjeta principal es un enlace accesible");
+    check(doc.getElementById("profession-advisor").tagName === "A", "El enlace de profesión ocupa su tarjeta");
     check(doc.querySelectorAll("#profession-advisor").length === 1, "Un único acceso a profesiones");
     check(!doc.getElementById("future-title")
       && !doc.querySelector('[aria-labelledby="future-title"]')
