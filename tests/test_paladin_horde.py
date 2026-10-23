@@ -68,7 +68,7 @@ class PaladinHordeTests(unittest.TestCase):
         assessment = (ROOT / "docs/druid-race-assessment-v29.md").read_text(encoding="utf-8")
         for spec in ("Equilibrio", "Feral", "Restauración"):
             self.assertIn(spec, assessment)
-        self.assertIn("No se ha aplicado", assessment)
+        self.assertIn("Decisión aprobada", assessment)
 
 
 if __name__ == "__main__":
