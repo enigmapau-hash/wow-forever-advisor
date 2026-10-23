@@ -108,7 +108,6 @@ function clearResult() {
   document.getElementById("no-alternative").hidden = true;
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
-  document.getElementById("skyborne-consideration").hidden = true;
   document.getElementById("race-beta-updates").hidden = true;
   document.getElementById("race-beta-alternative").hidden = true;
 }
@@ -245,11 +244,6 @@ function updateRacialCoverage(available = true) {
   const count = racialProfiles.size + (skyborneData ? 1 : 0);
   document.getElementById("explore-racials").textContent = available
     ? `Explorar las ${count} razas →` : "Abrir Race Explorer →";
-  document.getElementById("race-coverage-note").textContent = available
-    ? (skyborneData
-      ? "Se conservan las recomendaciones originales de ocho razas y se contempla Cielonato por separado para las combinaciones compatibles."
-      : "Se conservan las recomendaciones originales de ocho razas. La consideración adicional de Cielonato no está disponible.")
-    : "Las recomendaciones y la consideración adicional de Cielonato no están disponibles.";
   document.getElementById("racial-coverage-note").textContent = available
     ? (skyborneData
       ? "Nueve razas: ocho perfiles originales y Cielonato, con variantes de Alianza y Horda. «Elfo» corresponde al elfo de la noche."
@@ -306,24 +300,6 @@ skyborneFaction.addEventListener("change", () => {
   document.getElementById("skyborne-classes").textContent = variant.clases.join(" · ");
   document.getElementById("skyborne-ability-title").textContent = variant.habilidad.nombre;
   document.getElementById("skyborne-ability").textContent = variant.habilidad.descripcion;
-});
-
-function renderSkyborneConsideration(record) {
-  const variant = skyborneData?.variantes.find((row) => row.faccion === record.faccion && row.clases.includes(record.clase));
-  document.getElementById("skyborne-consideration").hidden = !variant;
-  if (!variant) return;
-  document.getElementById("skyborne-advisor-variant").textContent = `${variant.faccion} · ${variant.nombre} · ${record.clase}`;
-  document.getElementById("skyborne-advisor-verification").textContent = skyborneVerification();
-  fillSkyborneAbilities("skyborne-advisor-abilities", [...skyborneData.comunes, variant.habilidad]);
-  document.getElementById("skyborne-advisor-criterion").textContent = skyborneData.evaluacion.criterio;
-  document.getElementById("skyborne-advisor-limitation").textContent = skyborneData.evaluacion.limitacion;
-}
-
-document.getElementById("skyborne-explore").addEventListener("click", (event) => {
-  event.preventDefault();
-  selectOption(racialSelect, "Cielonato");
-  selectOption(skyborneFaction, faction.dataset.value);
-  window.location.hash = "raciales";
 });
 
 async function loadData() {
@@ -413,7 +389,6 @@ specialization.addEventListener("change", () => {
     document.getElementById("alternative-profile").hidden = false;
   }
   renderRaceBetaUpdates(record);
-  renderSkyborneConsideration(record);
   result.hidden = false;
   AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;
