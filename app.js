@@ -132,15 +132,12 @@ function clearResult() {
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
   document.getElementById("alternative-scope").textContent = "";
-  document.getElementById("alternative-detail-label").textContent = "Más información";
-  document.getElementById("alternative-details").open = false;
-  document.getElementById("alternative-detail-text").textContent = "";
+  document.getElementById("alternative-race-link").dataset.race = "";
+  document.getElementById("primary-profile-link").dataset.race = "";
   document.getElementById("alternative-empty").hidden = true;
   document.getElementById("alternative-empty").textContent = "";
-  document.getElementById("primary-profile").open = false;
   document.getElementById("race-extra-sources").replaceChildren();
   document.getElementById("race-beta-updates").hidden = true;
-  document.getElementById("race-beta-updates").open = false;
   status.classList.remove("visually-hidden");
   document.getElementById("race-beta-alternative").hidden = true;
 }
@@ -424,6 +421,9 @@ skyborneFaction.addEventListener("change", () => {
   variantStatus.classList.toggle("visually-hidden", Boolean(variant));
   if (!variant) return;
   document.getElementById("skyborne-variant-title").textContent = `${variant.faccion} · ${variant.nombre}`;
+  document.getElementById("skyborne-use").textContent = variant.faccion === "Alianza"
+    ? "Movilidad breve, celeridad y regeneración activa de salud y maná."
+    : "Movilidad breve, celeridad y velocidad de carrera activable.";
   document.getElementById("skyborne-classes").textContent = variant.clases.join(" · ");
   document.getElementById("skyborne-ability-title").textContent = variant.habilidad.nombre;
   document.getElementById("skyborne-ability").textContent = skyborneAbilitySummary(variant.habilidad);
@@ -534,18 +534,20 @@ specialization.addEventListener("change", () => {
   }
   document.getElementById("result-combination").textContent = [record.faccion, record.clase, record.especializacion].join(" · ");
   document.getElementById("primary-reason-label").textContent = `Por qué elegir ${raceDisplayName(record.razaRecomendada)}`;
-  document.getElementById("primary-profile-label").textContent = `Perfil de ${raceDisplayName(record.razaRecomendada)}`;
+  document.getElementById("primary-profile-link").dataset.race = record.razaRecomendada;
+  document.getElementById("primary-profile-race").textContent = raceDisplayName(record.razaRecomendada);
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     const isSpecialized = Boolean(record.motivoComparacion);
     document.getElementById("alternative-scope").textContent = isSpecialized
       ? "En esta especialización" : "Ventaja racial general";
+    // Una sola idea por tarjeta: el análisis y las limitaciones completas
+    // de cada raza se consultan en Race Explorer, sin repetirse aquí.
     document.getElementById("alternative-use").textContent = raceProse(isSpecialized
       ? record.usoAlternativa : alternative?.usoPrincipal || "");
-    document.getElementById("alternative-detail-label").textContent = isSpecialized
-      ? "Comparación con la principal" : "Ver limitaciones raciales";
-    document.getElementById("alternative-detail-text").textContent = raceProse(isSpecialized
-      ? record.motivoComparacion : alternative?.debilidades || "");
+    const alternativeLink = document.getElementById("alternative-race-link");
+    alternativeLink.dataset.race = record.alternativa;
+    alternativeLink.textContent = `Ver perfil completo de ${raceDisplayName(record.alternativa)} →`;
     const alternativeIconUrl = self.WOW_ICON_MAP?.raza?.[record.alternativa];
     if (alternativeIconUrl) alternativeRaceIcon.src = alternativeIconUrl;
     document.getElementById("alternative-profile").hidden = false;
@@ -582,6 +584,14 @@ specialization.addEventListener("change", () => {
     });
   }
 });
+
+// Un solo perfil racial detallado en Race Explorer, también accesible desde las fichas.
+for (const id of ["primary-profile-link", "alternative-race-link"]) {
+  document.getElementById(id).addEventListener("click", (event) => {
+    const race = event.currentTarget.dataset.race;
+    if (race) selectOption(racialSelect, race);
+  });
+}
 
 function renderRacialMatches(listId, emptyId, field) {
   const list = document.getElementById(listId);
