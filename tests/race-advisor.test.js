@@ -1,6 +1,11 @@
 "use strict";
 
-const display = (text) => text.replace(/\bElfo\b(?! de la noche)/g, "Elfo de la noche");
+const display = (text) => text === "Elfo" ? "Elfo de la noche" : text
+  .replace(/, denominado Elfo en la base/g, "")
+  .replace(/\bFrente a Elfo\b/g, "Frente al elfo de la noche")
+  .replace(/\bde Elfo\b/g, "del elfo de la noche")
+  .replace(/\bElfo ofrece\b/g, "El elfo de la noche ofrece")
+  .replace(/\bElfo conserva\b/g, "El elfo de la noche conserva");
 
 const runButton = document.getElementById("run-tests");
 const report = document.getElementById("test-report");
@@ -114,6 +119,20 @@ runButton.addEventListener("click", async () => {
       }
       check(doc.getElementById("alternative-profile").hidden === (record.alternativa === "-"),
         `${key}: la ficha de alternativa solo se muestra cuando existe`);
+      check(doc.querySelector('[data-field="motivoPrincipal"]').hidden
+        && doc.querySelector('[data-field="explicacion"]').getClientRects().length > 0,
+        `${key}: el motivo original se conserva sin duplicar la explicación visible`);
+      check(doc.getElementById("alternative-empty").hidden === (record.alternativa !== "-"),
+        `${key}: la ausencia de alternativa aparece junto a la cabecera`);
+      if (record.alternativa !== "-") {
+        const contextual = record.alternativa === "Cielonato";
+        check(doc.getElementById("alternative-scope").textContent ===
+          (contextual ? "En esta especialización" : "Ventaja racial general"),
+          `${key}: alcance de alternativa identificado`);
+        check(doc.getElementById("alternative-detail-label").textContent ===
+          (contextual ? "Comparación con la principal" : "Ver limitaciones raciales"),
+          `${key}: comparación y limitaciones sin confundir categorías`);
+      }
       check(doc.getElementById("no-alternative") === null
         && doc.getElementById("race-addition-note") === null,
         `${key}: no hay mensajes duplicados de raza única`);
@@ -263,8 +282,11 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
         const list = doc.getElementById(listId);
         const links = [...list.querySelectorAll("a")];
         const label = (row) => [row.faccion, row.clase, row.especializacion].join(" · ");
-        check(JSON.stringify(links.map((link) => link.textContent)) === JSON.stringify(expected.map(label)),
-          `${profile.raza}: coincidencias exactas en ${field}`);
+        check(JSON.stringify(links.map((link) => link.getAttribute("aria-label"))) === JSON.stringify(expected.map(label)),
+          `${profile.raza}: coincidencias accesibles exactas en ${field}`);
+        check(JSON.stringify(links.map((link) => link.textContent))
+          === JSON.stringify(expected.map((row) => [row.clase, row.especializacion].join(" · "))),
+          `${profile.raza}: enlaces agrupados sin repetir facción`);
         check(list.hidden === (expected.length === 0)
           && doc.getElementById(emptyId).hidden === (expected.length > 0)
           && doc.getElementById(emptyId).textContent.trim().length > 0, `${profile.raza}: estado vacío de ${field}`);
@@ -298,9 +320,9 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     choose("racial-race", "Cielonato");
     const cieloAlternatives = [...doc.querySelectorAll("#skyborne-alternatives a")];
     check(cieloAlternatives.length === 6, "Seis alternativas Cielonato en Race Explorer");
-    check(JSON.stringify(cieloAlternatives.map(link => link.textContent)) ===
+    check(JSON.stringify(cieloAlternatives.map(link => link.getAttribute("aria-label"))) ===
       JSON.stringify(druidAlt.fichas.map(x => [x.faccion, x.clase, x.especializacion].join(" · "))),
-      "Cielonato enlaza exactamente las seis combinaciones Druida");
+      "Cielonato enlaza accesiblemente las seis combinaciones Druida");
     const skyLink = cieloAlternatives[0];
     skyLink.click();
     await waitFor(() => !doc.getElementById("advisor-view").hidden);
