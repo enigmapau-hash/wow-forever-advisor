@@ -33,7 +33,11 @@ module.exports = async function testSkyborne(page, context, base) {
   assert.equal(await sky.getAttribute("aria-pressed"), "true");
   assert.equal(await page.locator("#skyborne-result").isVisible(), true);
   assert.equal(await page.locator("#racial-result").isVisible(), false);
-  assert.equal(await sky.locator("img").count(), 0, "No invented or borrowed racial icon");
+  assert.equal(await page.evaluate(() => self.WOW_ICON_MAP?.raza?.Cielonato),
+    data.icono.url, "El retrato identificado se sirve desde el mismo mapa que las demás razas");
+  assert.equal(await sky.getAttribute("data-icon-name"), "Cielonato");
+  assert.equal(await sky.getByText("Cielonato", { exact: true }).isVisible(), true,
+    "El nombre permanece accesible si la red bloquea el icono");
   assert.equal(await page.locator("#skyborne-result .rating").count(), 0, "No invented stars");
   assert.match(await page.locator("#skyborne-result").textContent(), /Valoración pendiente/);
   assert.match(await page.locator("#skyborne-verification").textContent(),
