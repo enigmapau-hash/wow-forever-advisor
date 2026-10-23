@@ -17,7 +17,7 @@ class TalentExpansionTests(unittest.TestCase):
     def test_every_catalog_file_is_precached(self):
         catalog = json.loads((ROOT/'data/talent-advisor-catalog.json').read_text(encoding='utf-8'))
         sw = (ROOT/'sw.js').read_text(encoding='utf-8')
-        self.assertIn('${CACHE_PREFIX}v27', sw)
+        self.assertIn('${CACHE_PREFIX}v28', sw)
         for entry in catalog['clases']:
             self.assertIn('"'+entry['ruta']+'"', sw)
             data=json.loads((ROOT/entry['ruta']).read_text(encoding='utf-8'))
