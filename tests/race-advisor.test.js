@@ -136,6 +136,10 @@ runButton.addEventListener("click", async () => {
           `${key}: alcance de alternativa identificado`);
         check(doc.getElementById("alternative-race-link").dataset.race === record.alternativa,
           `${key}: alternativa enlazada a su perfil completo`);
+        check(doc.getElementById("alternative-ability-name").textContent.trim().length > 4,
+          `${key}: habilidad racial alternativa identificada`);
+        check(doc.getElementById("race-comparison-conclusion-text").querySelectorAll("p").length === 2,
+          `${key}: conclusión dividida por raza`);
       }
       check(doc.getElementById("no-alternative") === null
         && doc.getElementById("race-addition-note") === null,
