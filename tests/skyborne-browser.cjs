@@ -195,7 +195,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v33")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v34")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();
