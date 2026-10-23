@@ -145,13 +145,6 @@ function clearResult() {
   document.getElementById("race-beta-alternative").hidden = true;
 }
 
-const CLASS_ORDER = ["Brujo", "Cazador", "Chamán", "Druida", "Guerrero", "Mago", "Paladín", "Pícaro", "Sacerdote"];
-
-function orderedClasses(rows) {
-  const present = new Set(uniqueValues(rows, "clase"));
-  return CLASS_ORDER.filter((name) => present.has(name));
-}
-
 function uniqueValues(rows, field) {
   return [...new Set(rows.map((row) => row[field]))];
 }
