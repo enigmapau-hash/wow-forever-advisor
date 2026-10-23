@@ -396,8 +396,9 @@ sobre las **51 recomendaciones exactas** para impedir que una raza se sugiera
 Las tarjetas secundarias de portada son más compactas, con títulos y
 descripciones más legibles y sin numeración decorativa. Se ocultan las estrellas
 de prioridad y utilidad racial en Race Advisor y Race Explorer: sus datos
-originales siguen conservados para trazabilidad interna. Las nueve fichas
-sin segunda raza evaluada ya no muestran un guion como si fuera una opción.
+originales siguen conservados para trazabilidad interna. Las nueve fichas sin segunda raza aprobada ya no muestran un guion:
+Chamán Alianza indica que Enano es la única raza disponible, mientras Druida
+indica que la alternativa queda pendiente de evaluación comparativa.
 
 **Separación editorial:** el archivo original contiene 51 combinaciones y 9
 alternativas con valor `-` (6 Druida y 3 Chamán Alianza); la falta de una
