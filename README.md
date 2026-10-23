@@ -429,10 +429,15 @@ Cobertura total de Race Advisor: **54 fichas (51 originales + 3 de Paladín Hord
 El archivo complementario se incluye en la caché PWA v29 para funcionar offline.
 No se generan estrellas nuevas.
 
-La [comparación de las seis combinaciones Druida](docs/druid-race-assessment-v29.md)
-es **un informe para decidir**, no un cambio de ranking. Propone conservar por
-ahora Elfo de la noche (Alianza) o Tauren (Horda) como raza principal y valorar
-Cielonato como alternativa en cada especialización, con reservas explícitas
-y sin aplicar esas seis alternativas en Race Advisor todavía.
+La [evaluación de las seis combinaciones Druida](docs/druid-race-assessment-v29.md)
+quedó **aprobada por el usuario**: Elfo de la noche en Alianza y Tauren en Horda
+se mantienen como razas principales; Cielonato es la alternativa de Equilibrio,
+Feral y Restauración en ambas facciones. Se conserva la motivación editorial
+diferenciada y las reservas de beta. Los cambios viven en
+`data/race-advisor-druid-alternatives.json` y se aplican en memoria:
+**ninguna de las 51 filas exportadas del Excel se edita**.
+Race Explorer muestra seis enlaces a las fichas donde Cielonato es alternativa.
+Si esa capa adicional o los datos de Cielonato fallan, se conservan las
+recomendaciones principales originales, sin crear un resultado ficticio.
 Las 3 fichas Chamán Alianza mantienen «sin segunda raza» porque Enano es la
 única opción elegible.
