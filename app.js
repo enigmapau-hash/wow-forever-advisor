@@ -63,6 +63,7 @@ let racialProfiles = new Map();
 let racialBetaUpdates = new Map();
 let raceAdditionSources = [];
 let skyborneData = null;
+let contextualRaceComparisons = new Map();
 const skyborneResult = document.getElementById("skyborne-result");
 const skyborneFaction = document.getElementById("skyborne-faction");
 let loading = false;
@@ -405,27 +406,79 @@ function raceComparisonConclusion(record) {
   return split < 0 ? [text] : [text.slice(0, split + 1), text.slice(split + 2)];
 }
 
+// Capa de análisis contextual separada: conserva las decisiones originales.
+// Un fallo de validación impide importar datos nuevos, sin inventar resultados.
+function contextualRaceKey(record) {
+  return JSON.stringify([record.faccion, record.clase, record.especializacion]);
+}
+function isImpossiblePriestAlternative(record) {
+  return record.faccion === "Horda" && record.clase === "Sacerdote"
+    && record.especializacion === "Sagrado" && record.alternativa === "Tauren";
+}
+function validateContextualRaceComparisons(data, sourceRecords) {
+  if (!data || data.schemaVersion !== 1 || !Array.isArray(data.fichas)
+      || data.fichas.length !== 48 || sourceRecords.length !== 54) return new Map();
+  const expected = new Map(sourceRecords.filter((r) => r.alternativa !== "-")
+    .map((r) => [contextualRaceKey(r), r]));
+  if (expected.size !== 48) return new Map();
+  const overlay = new Map();
+  for (const item of data.fichas) {
+    const key = contextualRaceKey(item), source = expected.get(key);
+    if (!source || overlay.has(key)
+        || item.razaRecomendada !== source.razaRecomendada
+        || item.alternativa !== source.alternativa) return new Map();
+    if (isImpossiblePriestAlternative(source)) {
+      if (item.estado !== "bloqueado_incompatibilidad" || !item.aviso) return new Map();
+    } else {
+      if (item.estado !== "analisis_fuentes_revisado"
+          || !["principal", "alternativaAnalisis"].every((field) =>
+            item[field] && typeof item[field].aFavor === "string"
+            && item[field].aFavor.trim().length > 60
+            && typeof item[field].aTenerEnCuenta === "string"
+            && item[field].aTenerEnCuenta.trim().length > 60)
+          || !["conclusionPrincipal", "conclusionAlternativa"].every((field) =>
+            typeof item[field] === "string" && item[field].trim().length > 90)
+          || !Array.isArray(item.fuentes) || item.fuentes.length < 2
+          || !item.fuentes.every((url) => url.startsWith("https://worldofwarcraft.blizzard.com/")))
+        return new Map();
+    }
+    overlay.set(key, item);
+  }
+  return overlay.size === expected.size ? overlay : new Map();
+}
+
 function renderRaceComparison(record, mainProfile, alternativeProfile) {
   const comparison = document.getElementById("race-comparison");
   comparison.hidden = record.alternativa === "-";
   if (comparison.hidden) return;
   const skyborne = record.alternativa === "Cielonato";
+  if (isImpossiblePriestAlternative(record)) {
+    comparison.hidden = true;
+    return;
+  }
+  const contextual = contextualRaceComparisons.get(contextualRaceKey(record));
   document.getElementById("compare-primary-name").textContent = raceDisplayName(record.razaRecomendada);
   document.getElementById("compare-alternative-name").textContent = raceDisplayName(record.alternativa);
-  document.getElementById("compare-primary-pro").textContent = raceProse(firstRacialPoint(mainProfile?.fortalezas));
-  document.getElementById("compare-primary-con").textContent = raceProse(firstRacialPoint(mainProfile?.debilidades));
-  document.getElementById("compare-alternative-pro").textContent = raceProse(skyborne
-    ? druidAlternativePresentation(record)?.advantage || ""
-    : firstRacialPoint(alternativeProfile?.fortalezas));
-  document.getElementById("compare-alternative-con").textContent = raceProse(skyborne
-    ? record.faccion === "Alianza"
+  document.getElementById("compare-primary-pro").textContent = raceProse(contextual
+    ? contextual.principal.aFavor : firstRacialPoint(mainProfile?.fortalezas));
+  document.getElementById("compare-primary-con").textContent = raceProse(contextual
+    ? contextual.principal.aTenerEnCuenta : firstRacialPoint(mainProfile?.debilidades));
+  document.getElementById("compare-alternative-pro").textContent = raceProse(contextual
+    ? contextual.alternativaAnalisis.aFavor
+    : skyborne ? druidAlternativePresentation(record)?.advantage || ""
+      : firstRacialPoint(alternativeProfile?.fortalezas));
+  document.getElementById("compare-alternative-con").textContent = raceProse(contextual
+    ? contextual.alternativaAnalisis.aTenerEnCuenta
+    : skyborne ? record.faccion === "Alianza"
       ? "No sustituye la ocultación y preparación posicional del elfo de la noche."
       : "No aporta el control inmediato de War Stomp del tauren."
     : firstRacialPoint(alternativeProfile?.debilidades));
   document.getElementById("race-comparison-conclusion-title").textContent =
     "Conclusión para " + record.especializacion;
   document.getElementById("race-comparison-conclusion-text").replaceChildren(
-    ...raceComparisonConclusion(record).map((sentence) => {
+    ...(contextual
+      ? [contextual.conclusionPrincipal, contextual.conclusionAlternativa]
+      : raceComparisonConclusion(record)).map((sentence) => {
       const paragraph = document.createElement("p");
       paragraph.textContent = sentence;
       return paragraph;
@@ -601,13 +654,14 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates, skyborne, additions, druidEvaluation] = await Promise.all([
+    const [advisor, profiles, updates, skyborne, additions, druidEvaluation, contextComparisons] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
       readJson("./data/skyborne.json").catch(() => null),
       readJson("./data/race-advisor-additions.json"),
       readJson("./data/race-advisor-druid-alternatives.json").catch(() => null),
+      readJson("./data/race-contextual-comparisons-v40-draft.json").catch(() => null),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
@@ -624,6 +678,7 @@ async function loadData() {
         usoAlternativa: extra.usoAlternativa, motivoComparacion: extra.motivoComparacion } : row;
     }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
     raceAdditionSources = additions.fuentes;
+    contextualRaceComparisons = validateContextualRaceComparisons(contextComparisons, records);
     if (skyborneData && druidAlternatives.length !== 6) {
       document.getElementById("skyborne-criterion").textContent =
         "Las alternativas de Druida aún no están disponibles. Se conservan las recomendaciones aprobadas del asesor.";
@@ -638,6 +693,7 @@ async function loadData() {
   } catch (error) {
     updateRacialCoverage(false);
     racialBetaUpdates = new Map();
+    contextualRaceComparisons = new Map();
     setOptions(faction, [], "Datos no disponibles");
     setOptions(characterClass, [], "Elige primero una facción");
     setOptions(specialization, [], "Elige primero una clase");
@@ -726,6 +782,13 @@ specialization.addEventListener("change", () => {
     const alternativeIconUrl = self.WOW_ICON_MAP?.raza?.[record.alternativa];
     if (alternativeIconUrl) alternativeRaceIcon.src = alternativeIconUrl;
     document.getElementById("alternative-profile").hidden = false;
+    if (isImpossiblePriestAlternative(record)) {
+      // Tauren no es una raza de Sacerdote jugable: no exhibir una ficha ficticia.
+      document.getElementById("alternative-profile").hidden = true;
+      document.getElementById("alternative-empty").textContent =
+        "Alternativa no jugable: Tauren no puede ser Sacerdote en WoW Forever. La elección de alternativa está pendiente de revisión.";
+      document.getElementById("alternative-empty").hidden = false;
+    }
   } else {
     const message = document.querySelector('[data-field="alternativa"]').textContent;
     document.getElementById("alternative-empty").textContent = message;
@@ -734,8 +797,14 @@ specialization.addEventListener("change", () => {
   renderRaceComparison(record, profile, racialProfiles.get(record.alternativa));
   renderRaceBetaUpdates(record);
   // Las adiciones editoriales conservan sus fuentes oficiales junto a las notas comunes.
-  const sources = record.alternativa === "Cielonato" ? skyborneData?.fuentes
+  const traditionalSources = record.alternativa === "Cielonato" ? skyborneData?.fuentes
     : record.faccion === "Horda" && record.clase === "Paladín" ? raceAdditionSources : [];
+  const context = contextualRaceComparisons.get(contextualRaceKey(record));
+  const explicitSources = (context?.fuentes || []).map((url) => ({
+    url, nombre: url.includes("24304075") ? "Blizzard · Raciales y combinaciones" : "Blizzard · Cambios de clase",
+  }));
+  const sources = [...(traditionalSources || []), ...explicitSources]
+    .filter((source, index, items) => items.findIndex((item) => item.url === source.url) === index);
   document.getElementById("race-extra-sources").replaceChildren(...(sources || []).map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
