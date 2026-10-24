@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "estado": "borrador_no_publicado",
+  "fechaRevision": "2026-10-24",
+  "criterio": "Seis parejas Brujo por facción y especialización, evaluadas frente a raciales activas/pasivas completas, límites contextuales y nuevas habilidades de clase. Estos son textos propuestos, no mediciones de daño ni confirmación de beta.",
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "principal": {
+        "aFavor": "Will to Survive elimina un aturdimiento para volver a aplicar Corrupción, Terror de agonía o canalizar Arruinar. Perception puede advertir del sigilo rival antes de quedar encerrado en una pelea corta, y El espíritu humano cobra interés porque Transfusión de vida escala con espíritu en Forever.",
+        "aTenerEnCuenta": "No elimina raíces ni ralentizaciones; si el problema es ganar distancia, conservar capacidad de actuar no basta. La especialización en espadas solo aporta crítico llevando una espada y Perception depende de anticiparse al enemigo oculto."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Escape Artist libera raíces y ralentizaciones para reposicionarse mientras se mantienen los efectos periódicos y Maldición de agotamiento dificulta la persecución rival. Eureka! reduce el coste y potencia las tres próximas acciones, y Mente expansiva añade reserva de maná para el ciclo de Transfusión de vida.",
+        "aTenerEnCuenta": "Escape Artist no rompe aturdimientos. Eureka! exige emplear bien una secuencia corta y la mejora de dispositivos de ingeniería no es una defensa automática si el personaje no utiliza esos objetos."
+      },
+      "conclusionPrincipal": "En Brujo Aflicción para PvP masivo, Humano conserva la prioridad aprobada cuando el peligro principal es un aturdimiento que impide renovar daño periódico, usar Miedo o recurrir a defensas de clase. Will to Survive y Perception refuerzan esa capacidad de reaccionar; Espíritu puede apoyar la gestión de Transfusión de vida sin convertirla en una racial ofensiva directa.",
+      "conclusionAlternativa": "Gnomo puede rendir mejor si las raíces y ralentizaciones son la amenaza habitual y el brujo necesita recolocarse con frecuencia para sostener Corrupción, Terror de agonía y Arruinar. Escape Artist, Eureka! y Mente expansiva justifican ese enfoque, aunque no ofrecen la misma salida frente a aturdimientos.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "principal": {
+        "aFavor": "Will to Survive devuelve la capacidad de gestionar al demonio y lanzar defensas de clase tras un aturdimiento, una prioridad cuando el rival trata de neutralizar al invocador. Perception ayuda a advertir entradas en sigilo que amenazan el posicionamiento del demonio.",
+        "aTenerEnCuenta": "El humano no rompe raíces ni ralentizaciones, y la especialización en espadas solo suma crítico con una espada equipada. El espíritu ayuda a Transfusión de vida en Forever, pero no sustituye el escalado de mascotas ni la protección activa de Demonología."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Escape Artist permite tomar distancia y conservar margen para coordinar la mascota potenciada con Pacto demoníaco y Conocimiento demoníaco. Eureka! mejora una secuencia breve de hechizos, mientras Mente expansiva aumenta la reserva de maná que alimenta sus acciones y Transfusión de vida.",
+        "aTenerEnCuenta": "La inmunidad breve a raíces no evita aturdimientos. La utilidad de Eureka! depende del orden de lanzamiento, y la bonificación de ingeniería solo vale si realmente se utilizan dispositivos; ninguna evita por sí misma perder al demonio."
+      },
+      "conclusionPrincipal": "Para Demonología en PvP masivo, Humano mantiene la prioridad aprobada cuando es decisivo poder reactivar el control del demonio y las propias defensas después de un aturdimiento. Will to Survive y Perception abordan interrupciones que no resuelven el escalado de la mascota ni los talentos de Demonología.",
+      "conclusionAlternativa": "Gnomo tiene más valor cuando la presión enemiga consiste en fijar al invocador lejos de su mascota o de la cobertura, porque Escape Artist facilita volver a una posición desde la que explotar el demonio. Eureka! y Mente expansiva sostienen el recurso y los hechizos, pero no neutralizan un aturdimiento.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "principal": {
+        "aFavor": "Will to Survive permite retomar el lanzamiento de Incinerar o la respuesta con Conflagrar después de un aturdimiento. Perception puede revelar una aproximación sigilosa y dar margen para usar control antes de que se interrumpa la ventana de daño de Destrucción.",
+        "aTenerEnCuenta": "No resuelve inmovilizaciones y no ofrece un incremento de daño activable como Eureka! La especialización en espadas solo cuenta con esa arma y la bonificación de espíritu no asegura completar los lanzamientos bajo presión."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Eureka! amplifica los siguientes tres hechizos o facultades y reduce su coste, útil para preparar una ventana de Incinerar, Conflagrar y Quemadura de las Sombras. Escape Artist ayuda a salir de raíces y obtener distancia; Mente expansiva da más margen de maná para los lanzamientos.",
+        "aTenerEnCuenta": "Una ventana mejorada con Eureka! puede perderse si llegan aturdimientos o interrupciones; Escape Artist no elimina esos efectos. Ingeniería aporta una utilidad condicionada a disponer de dispositivos y espacio para usarlos."
+      },
+      "conclusionPrincipal": "En Destrucción la prioridad aprobada de Humano favorece asegurar la oportunidad de volver a actuar tras el aturdimiento para completar hechizos de Fuego y Sombras. El valor de Will to Survive es de continuidad bajo control, no de potencia máxima de daño.",
+      "conclusionAlternativa": "Gnomo resulta especialmente atractivo si el grupo protege la canalización y el problema mayor son raíces, coste de maná y aprovechamiento de una ventana ofensiva corta. Eureka! se sincroniza con los hechizos de Destrucción, pero no aporta la respuesta al aturdimiento del Humano.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "principal": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para reanudar Corrupción, Terror de agonía y Arruinar. Toque de la tumba puede aportar daño con drenaje y Canibalizar recupera salud y maná si existe un cadáver y tiempo para canalizar.",
+        "aTenerEnCuenta": "Will of the Forsaken no rompe aturdimientos ni raíces y ya no concede inmunidad prolongada al miedo. Canibalizar necesita un cadáver y un momento seguro, mientras Respiración subacuática apenas cambia el combate ordinario."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta pasivamente aturdimientos, dando más opciones de reanudar efectos periódicos. Furia sangrienta aumenta temporalmente el poder con hechizos, y Destrozar maldición puede defender de maldiciones y terrores rivales al reducir el daño mágico.",
+        "aTenerEnCuenta": "Hardiness no elimina todo el aturdimiento ni evita raíces; Furia sangrienta exige una ventana ofensiva. La especialización en hachas solo aporta crítico con el arma correspondiente y no puede contarse como mejora universal de hechizos."
+      },
+      "conclusionPrincipal": "Para Aflicción de Horda, No-muerto mantiene la prioridad aprobada cuando miedo, sueño o embelesamiento cortarían la continuidad de daño periódico y la defensa del brujo. Will of the Forsaken y el sustento condicional de Canibalizar aportan una respuesta distinta a la reducción pasiva de control del Orco.",
+      "conclusionAlternativa": "Orco puede ser mejor contra equipos que basan su control en aturdimientos y cuando se consigue combinar Furia sangrienta con la presión de Corrupción y Arruinar. Destrozar maldición añade una defensa específica, pero no reproduce la limpieza instantánea de miedo del No-muerto.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "principal": {
+        "aFavor": "Hardiness reduce la duración de los aturdimientos que interrumpen la coordinación del demonio. Furia sangrienta aporta poder con hechizos durante una ventana, mientras Destrozar maldición reduce daño mágico y protege frente a maldiciones y terrores cuando el brujo y su mascota están bajo foco.",
+        "aTenerEnCuenta": "Hardiness no impide por completo el control recibido. Furia sangrienta y la defensa mágica deben gestionarse en momentos distintos, y la especialización en hachas exige equipar un hacha si se quiere contar su crítico."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken libera miedo, sueño y embelesamiento para recuperar el control de la mascota y la defensa propia. Toque de la tumba suma drenaje ocasional y Canibalizar ofrece recuperación de maná y salud tras un combate si hay cadáver.",
+        "aTenerEnCuenta": "No reduce aturdimientos ni raíces, y Canibalizar suele ser difícil de emplear bajo foco. Respiración subacuática aporta utilidad ambiental, no una ventaja comparable a mantener activo un demonio mejorado."
+      },
+      "conclusionPrincipal": "En Demonología de Horda, Orco conserva la prioridad aprobada porque el control pasivo de la duración de los aturdimientos, Furia sangrienta y la defensa específica de Destrozar maldición favorecen sostener el vínculo con una mascota cuyo poder escala con las estadísticas del invocador.",
+      "conclusionAlternativa": "No-muerto puede convenir si el enemigo domina con miedo o sueño y se necesita recuperar la iniciativa para dirigir el demonio. Su drenaje y recuperación poscombate importan, pero no sustituyen la reducción pasiva de aturdimientos del Orco.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "principal": {
+        "aFavor": "Berserking aumenta la velocidad de lanzamiento para concentrar Incinerar, Conflagrar y Quemadura de las Sombras en un intervalo protegido. Regeneración rápida puede recuperar salud entre focos, y Regeneración conserva cierta recuperación durante el combate.",
+        "aTenerEnCuenta": "Berserking no quita aturdimientos ni interrupciones; si no hay posición para lanzar, se desaprovecha. Matanza de bestias no es aumento de daño contra jugadores y Regeneración rápida requiere una ventana segura."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Blood Fury aumenta temporalmente el poder con hechizos para una ráfaga de Destrucción, mientras Hardiness acorta los aturdimientos que impedirían completar lanzamientos. Shatter Curse defiende de maldiciones y terrores y reduce daño mágico en una ventana.",
+        "aTenerEnCuenta": "Blood Fury no acelera por sí misma los lanzamientos como Berserking ni elimina aturdimientos. La especialización en hachas depende de equipar ese tipo de arma, algo no siempre útil para un brujo lanzador."
+      },
+      "conclusionPrincipal": "En Destrucción para PvP masivo, Troll conserva la prioridad aprobada cuando el grupo puede abrir una ventana breve de lanzamiento: Berserking mejora la rapidez con que se ejecutan Incinerar y el daño combinado de Fuego y Sombras, mientras Regeneración rápida aporta una opción defensiva temporal.",
+      "conclusionAlternativa": "Orco puede superar esa conveniencia ante cadenas de aturdimiento o presión de maldiciones, porque Hardiness y Shatter Curse mejoran la probabilidad de sobrevivir y Furia sangrienta aporta potencia para otra ventana ofensiva. La elección depende del tipo de interrupción, no solo del daño teórico.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}
