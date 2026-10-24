@@ -413,7 +413,6 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .alternative-choice .recommendation-heading { margin-block: 0.85rem; }
 .alternative-choice .recommendation-heading img { width: 2.5rem; height: 2.5rem; }
 .alternative-choice h3 { margin: 0; font-size: clamp(1.2rem, 1.9vw, 1.45rem); line-height: 1.3; color: #e7dcc2; }
-.alternative-scope { color: #cbd6cb; font-size: 0.9rem; font-weight: 600; line-height: 1.55; margin: 0; }
 .alternative-choice #alternative-use { line-height: 1.65; }
 /* Ficha enfocada: los perfiles completos se consultan sin duplicarlos en Explorer. */
 .race-profile-navigation { margin-top: 1.1rem; }
@@ -458,8 +457,18 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 .eyebrow { font-size: 0.78rem; }
 .attribution { font-size: 0.8rem; }
 #pwa-version { margin-top: 0.45rem; }
-#race-addons { background: none; border: 0; border-radius: 0; padding: 1.25rem 0 0; }
-#race-addons h3 { font-size: 0.95rem; color: #c6d1c7; }
+#race-addons {
+  margin-top: 1.35rem;
+  padding: clamp(1.15rem, 2.5vw, 1.6rem);
+  border: 1px solid #45584a;
+  border-radius: 0.8rem;
+  background: #18251e;
+}
+#race-addons h3 { margin: 0 0 0.9rem; font-size: 1.02rem; color: #e0e7db; }
+#race-addons p { line-height: 1.7; }
+#race-addons p.field-note { margin-block: 0.6rem; font-size: 0.86rem; color: #b0c0b4; }
+#race-addons a { display: inline-block; margin-top: 0.35rem; }
+#race-addons a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 0.2rem; }
 #advisor-result { scroll-margin-top: 1.25rem; }
 /* F02: evitar una columna de comparación demasiado estrecha en tablet. */
 @media (min-width: 48rem) {
@@ -654,6 +663,43 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   line-height: 1.8;
   color: #dce5dc;
 }
-#alternative-profile .alternative-scope:not([hidden]) {
-  margin-bottom: 0.6rem;
+
+/* v41 · Jerarquía homogénea sin nuevas cajas de igual protagonismo. */
+#race-single-evaluation .race-single-grid { grid-template-columns: minmax(0, 1fr); }
+#race-single-evaluation .race-comparison-item { max-width: 82ch; }
+#race-single-evaluation .race-comparison-conclusion { margin-top: 1.3rem; }
+#race-beta-updates {
+  margin-top: 1.35rem;
+  padding: clamp(1.15rem, 2.5vw, 1.6rem);
+  border: 1px solid #45584a;
+  border-radius: 0.8rem;
+  background: #17231e;
+  color: #d1ddd2;
+}
+#race-beta-updates > h3 {
+  margin: 0 0 0.75rem;
+  color: #e2e8dd;
+  font-size: 1.05rem;
+}
+#race-beta-content .field-note { margin-top: 0.35rem; color: #b7c5b8; }
+#race-beta-content h4 { margin-top: 0.95rem; }
+#race-official-sources {
+  margin-top: 0.85rem;
+  border-top: 1px solid #3c5041;
+  padding-top: 0.8rem;
+}
+#race-official-sources > summary {
+  cursor: pointer;
+  color: #e4c987;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+#race-official-sources summary:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+#race-official-sources .talent-sources {
+  margin-top: 0.8rem;
+  line-height: 1.7;
 }
