@@ -25,8 +25,10 @@ No cuentan como ventajas universales en PvP las herramientas de exploración (Bu
 - **5 comparativas de Sacerdote** redactadas y contrastadas con el resumen oficial de clase: `data/race-priest-context-draft.json`.
 - **6 comparativas de Brujo** redactadas: Aflicción, Demonología y Destrucción en Alianza/Horda, con los cuatro rasgos raciales y las nuevas habilidades de clase en Forever (`data/race-warlock-context-draft.json`).
 - **1 inconsistencia**: Horda · Sacerdote · Sagrado → Troll principal / Tauren alternativa. La tabla oficial no permite Sacerdote Tauren. No se modifica ningún JSON ni ranking aprobado; bloquear la comparativa hasta obtener autorización para corregir la alternativa.
-- **36 comparativas restantes** pendientes de análisis individual específico: la matriz solo registra su inventario de facultades y el propósito original. No es honesto presentarlas como «revisadas» por una generación automática.
-- **Las once comparativas revisadas no se han conectado aún a la UI**: versión pública v39 intacta. Antes de publicación se completarán/validarán los 42 restantes y el conflicto de elegibilidad, se añadirá la capa opcional con fallback explícito y se comprobará offline.
+- **36 comparativas adicionales** (Druida, Guerrero, Paladín, Chamán, Cazador, Pícaro y Mago), con análisis individual de las facultades y los cambios de cada especialización. Se suman a Sacerdote y Brujo para un total de **47 enfrentamientos jugables**.
+- **Capa consolidada**: `data/race-contextual-comparisons-v40-draft.json`, con 47 comparativas y una bloqueada. Contiene las fuentes y el inventario 2+2 que sustenta cada evaluación, y mantiene separados los JSON aprobados.
+- **Interfaz de la rama de prueba**: Race Advisor utiliza la capa de datos cuando es válida, mostrando «A favor» y «A tener en cuenta» por combinación completa y dos párrafos de conclusión. Si un recurso falla, conserva el fallback anterior; el caso Sacerdote Sagrado de Horda nunca presenta Tauren como alternativa jugable.
+- **Publicación pendiente**: la rama no debe fusionarse hasta que las pruebas y la revisión editorial confirmen los 47 análisis y el usuario decida cómo corregir la alternativa incompatible. La versión pública v39 permanece intacta.
 
 ## Criterio de revisión editorial por ficha
 
