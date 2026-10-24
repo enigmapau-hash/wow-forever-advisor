@@ -881,9 +881,11 @@ specialization.addEventListener("change", () => {
       || record.usoAlternativa || alternative?.usoPrincipal || "");
     document.getElementById("alternative-ability-name").textContent =
       self.WOW_RACE_V43?.ability(record, record.alternativa) || alternativeRacialAbility(record);
-    document.getElementById("alternative-explanation").textContent =
-      raceProse(self.WOW_RACE_V43?.evidence(record, record.alternativa)?.aFavor
-        || alternativeRacialExplanation(record));
+    document.getElementById("alternative-explanation").textContent = raceProse(
+      record.alternativa === "Cielonato"
+        ? alternativeRacialExplanation(record) + " Wind Blessed añade celeridad y Walk on Air permite planear según el terreno."
+        : self.WOW_RACE_V43?.evidence(record, record.alternativa)?.aFavor
+          || alternativeRacialExplanation(record));
     const alternativeLink = document.getElementById("alternative-race-link");
     alternativeLink.dataset.race = record.alternativa;
     alternativeLink.setAttribute("aria-label",
@@ -973,6 +975,7 @@ for (const id of ["primary-profile-link", "alternative-race-link"]) {
     const race = event.currentTarget.dataset.race;
     if (race) {
       selectOption(racialSelect, race);
+      racialSelect.dispatchEvent(new Event("change"));
       if (race === "Cielonato" && skyborneData) {
         selectOption(skyborneFaction, faction.dataset.value);
         skyborneFaction.dispatchEvent(new Event("change"));
