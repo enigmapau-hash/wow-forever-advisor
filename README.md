@@ -1,13 +1,13 @@
 # wow-forever-advisor
 
-## Versión actual · v38
+## Versión actual · v39
 
 Race Advisor conserva **54 fichas**: 51 recomendaciones originales y tres
 adiciones de Paladín Horda; las seis alternativas de Druida siguen siendo
 Cielonato. Se mantienen intactos el Excel maestro, sus identificadores y todos
 los JSON de clasificación.
 
-En v38, Race Advisor mantiene la principal de mayor tamaño a la izquierda
+Race Advisor mantiene la principal de mayor tamaño a la izquierda
 y la alternativa algo más ancha a la derecha en escritorio (proporción
 1,65:1); ambas se apilan en móvil. Sus iconos y nombres enlazan con el perfil racial de Race Explorer.
 Debajo aparece un tercer cuadro independiente de ventajas, límites y
@@ -50,7 +50,16 @@ El runner requiere Playwright y Chromium (instalación descrita más abajo).
 Recorre las 54 fichas raciales, 81 de talentos y 27 de profesiones, también
 offline. Comprueba la jerarquía en 320, 390, 820 y 1280 px. Las decisiones y la
 inspección visual de v32 se documentan en [la revisión](docs/v32-race-redesign.md).
-La v38 depura ambos cuadros de Race Advisor, equilibra las anchuras y muestra la facultad racial de la principal sin añadir contenido redundante. Se conservan las mejoras anteriores de Race Explorer y Profession Advisor.
+La v39 ordena todas las tarjetas de raza alternativa como facultad racial,
+motivo resumido y explicación que empieza por el nombre de la habilidad.
+En los seis casos de Druida con Cielonato, la comparación aporta información
+independiente sin repetir la explicación de la alternativa. Se unifican la
+jerarquía tipográfica y los espaciados de ambas tarjetas, con comprobaciones
+de legibilidad en 320, 390, 820 y 1280 px y sin conexión. Se conservan los
+criterios, los rankings y los argumentos editoriales aprobados.
+La publicación usa `version.js` con `v39` para el pie y la caché offline;
+la prueba de actualización parte de una caché v38 y comprueba su eliminación.
+El alcance se detalla en [las notas de v39](docs/v39-release.md).
 Los ajustes editoriales v33 y sus criterios se documentan en
 [la revisión independiente](docs/v33-editorial-review.md); la auditoría
 [#37](https://github.com/enigmapau-hash/wow-forever-advisor/issues/37)
