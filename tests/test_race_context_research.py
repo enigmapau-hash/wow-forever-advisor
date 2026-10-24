@@ -26,6 +26,7 @@ class RaceContextAuditTests(unittest.TestCase):
         cls.priest = read("race-priest-context-draft.json")
         cls.warlock = read("race-warlock-context-draft.json")
         cls.bundle = read("race-contextual-comparisons-v40-draft.json")
+        cls.priestfix = read("race-advisor-priest-horde-alternative.json")
         cls.original = read("race-advisor.json")
         cls.additions = read("race-advisor-additions.json")
         cls.druid = read("race-advisor-druid-alternatives.json")
@@ -62,8 +63,12 @@ class RaceContextAuditTests(unittest.TestCase):
         for row in self.audit["fichas"]:
             source = originals[key(row)]
             expected = druid_overlay.get(key(row), source)
+            if key(row) == ("Horda", "Sacerdote", "Sagrado"):
+                self.assertEqual(source["alternativa"], "Tauren")
+                self.assertEqual(row["alternativa"], self.priestfix["alternativa"])
+            else:
+                self.assertEqual(row["alternativa"], expected["alternativa"])
             self.assertEqual(row["razaRecomendada"], source["razaRecomendada"])
-            self.assertEqual(row["alternativa"], expected["alternativa"])
 
     def test_six_without_alternative_are_not_forced_to_compare(self):
         blank = [r for r in self.audit["fichas"] if r["estado"] == "sin_alternativa"]
@@ -83,16 +88,23 @@ class RaceContextAuditTests(unittest.TestCase):
                 else:
                     self.assertNotIn("hechizosSacerdote", traits)
 
-    def test_sole_blocked_race_class_is_priest_tauren(self):
-        blocked = [r for r in self.audit["fichas"] if r["estado"] == "bloqueada_elegibilidad"]
-        self.assertEqual(len(blocked), 1)
-        self.assertEqual(key(blocked[0]), ("Horda", "Sacerdote", "Sagrado"))
-        self.assertEqual(blocked[0]["alternativa"], "Tauren")
+    def test_approved_horde_priest_alternative_is_eligible(self):
+        fixed = self.priestfix
+        self.assertEqual(fixed["estado"], "aprobado_usuario")
+        self.assertEqual(fixed["base"]["sha256"], self.original["fuente"]["sha256"])
+        self.assertEqual(fixed["alternativaAnterior"], "Tauren")
+        self.assertEqual(fixed["alternativa"], "No-muerto")
         self.assertNotIn("Sacerdote", self.evidence["elegibilidad"]["Horda"]["Tauren"])
+        self.assertIn("Sacerdote", self.evidence["elegibilidad"]["Horda"]["No-muerto"])
+        self.assertEqual([r for r in self.audit["fichas"]
+                          if key(r) == ("Horda", "Sacerdote", "Sagrado")][0]["alternativa"],
+                         fixed["alternativa"])
+        self.assertEqual([r for r in self.audit["fichas"]
+                          if r["estado"] == "bloqueada_elegibilidad"], [])
 
-    def test_five_priest_analyses_are_distinct_and_sourced(self):
+    def test_six_priest_analyses_are_distinct_and_sourced(self):
         drafted = [r for r in self.priest["fichas"] if r["estado"] == "analisis_fuentes_revisado"]
-        self.assertEqual(len(drafted), 5)
+        self.assertEqual(len(drafted), 6)
         self.assertEqual(len(self.priest["fichas"]), 6)
         for row in drafted:
             for side in ("principal", "alternativaAnalisis"):
@@ -118,15 +130,15 @@ class RaceContextAuditTests(unittest.TestCase):
             self.assertGreater(len(row["conclusionPrincipal"]), 170)
             self.assertGreater(len(row["conclusionAlternativa"]), 160)
 
-    def test_all_47_playable_comparisons_are_contextual_and_sourced(self):
+    def test_all_48_playable_comparisons_are_contextual_and_sourced(self):
         self.assertEqual(len(self.bundle["fichas"]), 48)
         keys = [key(row) for row in self.bundle["fichas"]]
         self.assertEqual(len(keys), len(set(keys)))
         covered = {key(row) for row in self.audit["fichas"]
-                   if row["estado"] in ("analisis_revisado", "bloqueada_elegibilidad")}
+                   if row["estado"] == "analisis_revisado"}
         self.assertEqual(set(keys), covered)
         reviewed = [r for r in self.bundle["fichas"] if r["estado"] == "analisis_fuentes_revisado"]
-        self.assertEqual(len(reviewed), 47)
+        self.assertEqual(len(reviewed), 48)
         for row in reviewed:
             with self.subTest(key=key(row)):
                 self.assertIn(row["clase"], ("Sacerdote", "Brujo", "Druida",
@@ -148,23 +160,25 @@ class RaceContextAuditTests(unittest.TestCase):
                     else:
                         self.assertNotIn("hechizosSacerdote", traits[field])
 
-    def test_blocked_comparison_does_not_fake_a_playable_priest(self):
-        blocked = [r for r in self.bundle["fichas"]
-                   if r["estado"] == "bloqueado_incompatibilidad"]
-        self.assertEqual(len(blocked), 1)
-        row = blocked[0]
-        self.assertEqual(key(row), ("Horda", "Sacerdote", "Sagrado"))
-        self.assertEqual(row["alternativa"], "Tauren")
-        self.assertNotIn("principal", row)
-        self.assertNotIn("alternativaAnalisis", row)
-        self.assertIn("Tauren", row["aviso"])
+    def test_revised_priest_holy_has_racial_spell_specifics(self):
+        matches = [r for r in self.bundle["fichas"]
+                   if key(r) == ("Horda", "Sacerdote", "Sagrado")]
+        self.assertEqual(len(matches), 1)
+        row = matches[0]
+        self.assertEqual(row["alternativa"], "No-muerto")
+        self.assertIn("Berserking", row["principal"]["aFavor"])
+        self.assertIn("Hex of Weakness", row["principal"]["aFavor"])
+        for ability in ("Will of the Forsaken", "Dark Sacrifice", "Touch of Weakness"):
+            self.assertIn(ability, row["alternativaAnalisis"]["aFavor"])
+        self.assertIn("No-muerto", row["conclusionAlternativa"])
+        self.assertEqual(len(row["racialesConsideradas"]["alternativa"]["hechizosSacerdote"]), 2)
 
     def test_research_must_not_be_marked_ready_to_publish(self):
         self.assertEqual(self.audit["estado"], "auditoria_editorial_abierta_no_publicado")
         status = self.audit["resumen"]
-        self.assertEqual(status["analisis_revisado"], 47)
+        self.assertEqual(status["analisis_revisado"], 48)
         self.assertNotIn("pendiente_analisis_especifico", status)
-        self.assertEqual(status["bloqueada_elegibilidad"], 1)
+        self.assertNotIn("bloqueada_elegibilidad", status)
         self.assertEqual(status["sin_alternativa"], 6)
 
 
