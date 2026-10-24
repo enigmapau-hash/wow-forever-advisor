@@ -1,0 +1,2199 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "borrador_para_revision",
+  "resumen": {
+    "total": 48,
+    "analisisContextuales": 47,
+    "bloqueadas": 1,
+    "sinAlternativa": 6
+  },
+  "politica": "Los campos de clasificación original son solo claves verificables. No se sobreescriben las recomendaciones aprobadas. Dos activas + dos pasivas de cada raza, y dos exclusivas para Sacerdote. Los textos de A favor destacan la habilidad más útil por especialización; la conclusión diferencia cuándo conviene la alternativa. Datos de beta sujetos a revisión.",
+  "fuentes": {
+    "razas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+    "priest": "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+    "guerrero": "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+    "druid_cazador": "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+    "rogue_warlock": "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+    "mage_shaman": "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+    "paladin": "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+    "novedades": "https://worldofwarcraft.blizzard.com/es-es/news/24303313"
+  },
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Enano",
+      "alternativa": "Gnomo",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform elimina y previene temporalmente sangrados, venenos y enfermedades y reduce el daño físico mientras mantiene disponibles Palabra de poder: escudo y Penitencia. Rezo desesperado ofrece una emergencia propia y Castigar inmoviliza humanoides para recuperar espacio.",
+        "aTenerEnCuenta": "Stoneform no detiene un aturdimiento ni sustituye el posicionamiento. Castigar está limitado por tipo de objetivo y reutilización; mazas y Caza mayor no ofrecen una ventaja universal contra jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Contingency Plan protege al aliado preparado con un escudo y una cura si baja del 35 % de salud. Su sinergia con Renovar y Palabra de poder: escudo es especialmente interesante para Disciplina; Confounding Flash abre una pausa frente a varios perseguidores.",
+        "aTenerEnCuenta": "Contingency Plan depende de haber colocado el resguardo y de un umbral de salud, y Confounding Flash se rompe al recibir daño. Escape Artist no elimina aturdimientos; Eureka! y Mente expansiva ayudan al recurso, pero no sustituyen esa defensa inmediata."
+      },
+      "conclusionPrincipal": "En Disciplina para PvP masivo, Enano conserva la prioridad cuando debe seguir protegiendo aliados bajo daño físico y perjuicios continuados: Stoneform, Rezo desesperado y Castigar refuerzan la permanencia en el combate junto a escudos y Penitencia.",
+      "conclusionAlternativa": "Gnomo es especialmente competitivo como alternativa si el problema principal son picos repentinos de daño sobre aliados y el grupo puede aprovechar Contingency Plan. La protección preventiva, el control de Confounding Flash y Eureka! justifican evaluarlo, aunque no cubren las mismas amenazas que Stoneform.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ],
+          "hechizosSacerdote": [
+            "Desperate Prayer",
+            "Chastise"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ],
+          "hechizosSacerdote": [
+            "Confounding Flash",
+            "Contingency Plan"
+          ]
+        }
+      },
+      "contextoAprobado": "Mantener la protección preventiva bajo foco físico."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform ayuda a resistir presión física y perjuicios cuando se necesita terminar una cura o preparar Rezo de alivio. Rezo desesperado ofrece recuperación de emergencia del propio sacerdote, y Castigar permite contener momentáneamente a un perseguidor humanoide.",
+        "aTenerEnCuenta": "La protección de Stoneform es temporal y no libera aturdimientos. Rezo desesperado no protege directamente a otro aliado; los bonos en maza y contra bestias son condicionados y Buscar tesoro no influye en la sanación JcJ."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Divine Grace cura instantáneamente a un aliado herido por debajo del umbral de salud y elimina Alma debilitada de ese objetivo. Encaja con el apoyo de Sagrado y sus escudos compartidos; Will to Survive permite volver a curar después de un aturdimiento.",
+        "aTenerEnCuenta": "Divine Grace no puede lanzarse sobre sí mismo y tiene una reutilización prolongada. Will to Survive no quita raíces; Perception, Espíritu humano y especialización en espadas aportan beneficios de relevancia variable según encuentro y equipo."
+      },
+      "conclusionPrincipal": "En Sagrado, Enano mantiene la prioridad editorial por su capacidad de sobrevivir al foco mientras conserva acceso a curas, Rezo de alivio y auxilio propio. Stoneform y Rezo desesperado pesan mucho cuando la primera amenaza es que caiga el sanador.",
+      "conclusionAlternativa": "Humano puede resultar mejor en grupos donde el problema decisivo sea rescatar a un compañero tras recibir un golpe fuerte o cuando un aturdimiento impide reaccionar: Divine Grace y Will to Survive ofrecen respuestas que el Enano no reproduce de la misma manera.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ],
+          "hechizosSacerdote": [
+            "Desperate Prayer",
+            "Chastise"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ],
+          "hechizosSacerdote": [
+            "Divine Grace",
+            "Feedback"
+          ]
+        }
+      },
+      "contextoAprobado": "Seguir curando cuando el foco cambia al sanador."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist permite salir de raíces y ralentizaciones para mantener distancia mientras se renuevan Peste devoradora y otros efectos de daño de Sombras. Eureka! potencia acciones posteriores, Mente expansiva amplía el maná y Confounding Flash puede abrir una salida de emergencia.",
+        "aTenerEnCuenta": "Confounding Flash se rompe con daño, algo especialmente delicado cuando hay efectos periódicos activos cerca; Contingency Plan exige preparar un aliado. Escape Artist no elimina aturdimientos y la ventaja de Ingeniería depende del equipamiento."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive elimina un aturdimiento para poder volver a aplicar presión, usar control o retirarse. Perception permite anticipar enemigos en sigilo y la especialización en espadas puede aportar crítico si se usa una espada.",
+        "aTenerEnCuenta": "Will to Survive no resuelve raíces ni ralentizaciones. Divine Grace, exclusivo del sacerdote humano, cura a un aliado, no al propio lanzador, y Sombra debe tener en cuenta sus restricciones de sanación en Forma de las Sombras; la utilidad del Espíritu es situacional."
+      },
+      "conclusionPrincipal": "Para Sombra, Gnomo conserva la prioridad cuando necesita reposicionarse repetidamente para sostener Peste devoradora, Despelleje mental y los demás efectos de Sombras. La combinación de Escape Artist, Eureka! y Mente expansiva beneficia movilidad, recurso y continuidad ofensiva.",
+      "conclusionAlternativa": "Humano gana interés ante equipos que encadenan aturdimientos y pícaros en sigilo: Will to Survive y Perception recuperan margen de respuesta. Sus hechizos exclusivos de sacerdote no ofrecen la misma movilidad, y Custodia de miedo y Peste devoradora son comunes a las dos razas.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ],
+          "hechizosSacerdote": [
+            "Confounding Flash",
+            "Contingency Plan"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ],
+          "hechizosSacerdote": [
+            "Divine Grace",
+            "Feedback"
+          ]
+        }
+      },
+      "contextoAprobado": "Reposicionarse sin abandonar la presión sostenida."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hex of Weakness reduce la eficacia de la sanación y la presión cuerpo a cuerpo del objetivo, mientras Shadowguard castiga a quienes golpean al sacerdote. Berserking abre una ventana de lanzamiento más rápido para sostener Penitencia y las protecciones de Disciplina.",
+        "aTenerEnCuenta": "Hex of Weakness debe mantenerse en el objetivo oportuno y Shadowguard depende de recibir ataques. Ni Berserking ni Regeneración rápida eliminan miedo o aturdimientos, y Matanza de bestias solo influye sobre bestias."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para recuperar capacidad de poner escudos. Touch of Weakness penaliza al atacante cuerpo a cuerpo y Dark Sacrifice permite transformar salud propia en maná si se dispone de un margen seguro.",
+        "aTenerEnCuenta": "Dark Sacrifice consume salud y resulta arriesgado durante un foco; Canibalize precisa cadáver y espacio. Will of the Forsaken no rompe aturdimientos ni raíces y Toque de la tumba no reemplaza la protección del objetivo."
+      },
+      "conclusionPrincipal": "En Disciplina de Horda, Trol conserva la prioridad para ejercer apoyo activo bajo presión y dificultar la curación rival: Hex of Weakness, Shadowguard y la ventana de Berserking se combinan con Penitencia y Palabra de poder: escudo.",
+      "conclusionAlternativa": "No-muerto es una alternativa sólida cuando miedo, sueño o embelesamiento impiden sostener el grupo. Dark Sacrifice añade una opción de maná, pero su coste de salud cambia el balance defensivo: no equivale a regeneración gratuita en combate.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ],
+          "hechizosSacerdote": [
+            "Hex of Weakness",
+            "Shadowguard"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ],
+          "hechizosSacerdote": [
+            "Touch of Weakness",
+            "Dark Sacrifice"
+          ]
+        }
+      },
+      "contextoAprobado": "Combinar protección preventiva y presión de apoyo."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hex of Weakness presiona la sanación enemiga mientras Peste devoradora y otros efectos de Sombras hacen daño periódico; Shadowguard castiga a enemigos que golpean al sacerdote. Berserking ayuda a aprovechar una ventana de lanzamiento ofensiva.",
+        "aTenerEnCuenta": "Hex of Weakness no garantiza mantener lejos a perseguidores y Shadowguard exige recibir golpes para responder. Regeneración rápida y el bonus a bestias tienen menor peso cuando la amenaza son jugadores que encadenan control."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken permite escapar de miedo, sueño o embelesamiento y volver al daño de Forma de las Sombras. Touch of Weakness castiga el contacto cercano, y Toque de la tumba puede añadir drenaje ocasional al daño.",
+        "aTenerEnCuenta": "Will of the Forsaken no resuelve aturdimientos ni raíces. Dark Sacrifice convierte salud en maná, una apuesta peligrosa bajo foco; Canibalize requiere cadáver y ventana protegida. Peste devoradora no es exclusiva del no-muerto en Forever."
+      },
+      "conclusionPrincipal": "Para Sacerdote Sombras en PvP masivo, Trol mantiene prioridad porque combina reducción de sanación, respuesta ante agresores y una ventana ofensiva con Berserking: todo ello apoya la presión de Sombras más allá de una única racial.",
+      "conclusionAlternativa": "No-muerto puede convenir si el grupo enemigo domina mediante miedo o sueño, porque Will of the Forsaken preserva ventanas de intervención. Sacrificio oscuro tiene un coste de salud y no debe presentarse como ventaja incondicional.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ],
+          "hechizosSacerdote": [
+            "Hex of Weakness",
+            "Shadowguard"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ],
+          "hechizosSacerdote": [
+            "Touch of Weakness",
+            "Dark Sacrifice"
+          ]
+        }
+      },
+      "contextoAprobado": "Aprovechar cobertura para renovar la presión sostenida."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Troll",
+      "alternativa": "Tauren",
+      "estado": "bloqueado_incompatibilidad",
+      "aviso": "Tauren no puede ser sacerdote en WoW Forever. La raza principal aprobada se conserva, pero esta alternativa requiere decisión editorial; no debe compararse como si fuera jugable.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "fuenteElegibilidad": "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "principal": {
+        "aFavor": "Will to Survive elimina un aturdimiento para volver a aplicar Corrupción, Terror de agonía o canalizar Arruinar. Perception puede advertir del sigilo rival antes de quedar encerrado en una pelea corta, y El espíritu humano cobra interés porque Transfusión de vida escala con espíritu en Forever.",
+        "aTenerEnCuenta": "No elimina raíces ni ralentizaciones; si el problema es ganar distancia, conservar capacidad de actuar no basta. La especialización en espadas solo aporta crítico llevando una espada y Perception depende de anticiparse al enemigo oculto."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Escape Artist libera raíces y ralentizaciones para reposicionarse mientras se mantienen los efectos periódicos y Maldición de agotamiento dificulta la persecución rival. Eureka! reduce el coste y potencia las tres próximas acciones, y Mente expansiva añade reserva de maná para el ciclo de Transfusión de vida.",
+        "aTenerEnCuenta": "Escape Artist no rompe aturdimientos. Eureka! exige emplear bien una secuencia corta y la mejora de dispositivos de ingeniería no es una defensa automática si el personaje no utiliza esos objetos."
+      },
+      "conclusionPrincipal": "En Brujo Aflicción para PvP masivo, Humano conserva la prioridad aprobada cuando el peligro principal es un aturdimiento que impide renovar daño periódico, usar Miedo o recurrir a defensas de clase. Will to Survive y Perception refuerzan esa capacidad de reaccionar; Espíritu puede apoyar la gestión de Transfusión de vida sin convertirla en una racial ofensiva directa.",
+      "conclusionAlternativa": "Gnomo puede rendir mejor si las raíces y ralentizaciones son la amenaza habitual y el brujo necesita recolocarse con frecuencia para sostener Corrupción, Terror de agonía y Arruinar. Escape Artist, Eureka! y Mente expansiva justifican ese enfoque, aunque no ofrecen la misma salida frente a aturdimientos.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        }
+      },
+      "contextoAprobado": "Retomar presión persistente después del aturdimiento."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "principal": {
+        "aFavor": "Will to Survive devuelve la capacidad de gestionar al demonio y lanzar defensas de clase tras un aturdimiento, una prioridad cuando el rival trata de neutralizar al invocador. Perception ayuda a advertir entradas en sigilo que amenazan el posicionamiento del demonio.",
+        "aTenerEnCuenta": "El humano no rompe raíces ni ralentizaciones, y la especialización en espadas solo suma crítico con una espada equipada. El espíritu ayuda a Transfusión de vida en Forever, pero no sustituye el escalado de mascotas ni la protección activa de Demonología."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Escape Artist permite tomar distancia y conservar margen para coordinar la mascota potenciada con Pacto demoníaco y Conocimiento demoníaco. Eureka! mejora una secuencia breve de hechizos, mientras Mente expansiva aumenta la reserva de maná que alimenta sus acciones y Transfusión de vida.",
+        "aTenerEnCuenta": "La inmunidad breve a raíces no evita aturdimientos. La utilidad de Eureka! depende del orden de lanzamiento, y la bonificación de ingeniería solo vale si realmente se utilizan dispositivos; ninguna evita por sí misma perder al demonio."
+      },
+      "conclusionPrincipal": "Para Demonología en PvP masivo, Humano mantiene la prioridad aprobada cuando es decisivo poder reactivar el control del demonio y las propias defensas después de un aturdimiento. Will to Survive y Perception abordan interrupciones que no resuelven el escalado de la mascota ni los talentos de Demonología.",
+      "conclusionAlternativa": "Gnomo tiene más valor cuando la presión enemiga consiste en fijar al invocador lejos de su mascota o de la cobertura, porque Escape Artist facilita volver a una posición desde la que explotar el demonio. Eureka! y Mente expansiva sostienen el recurso y los hechizos, pero no neutralizan un aturdimiento.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        }
+      },
+      "contextoAprobado": "Retomar la coordinación con la mascota tras un aturdimiento."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "principal": {
+        "aFavor": "Will to Survive permite retomar el lanzamiento de Incinerar o la respuesta con Conflagrar después de un aturdimiento. Perception puede revelar una aproximación sigilosa y dar margen para usar control antes de que se interrumpa la ventana de daño de Destrucción.",
+        "aTenerEnCuenta": "No resuelve inmovilizaciones y no ofrece un incremento de daño activable como Eureka! La especialización en espadas solo cuenta con esa arma y la bonificación de espíritu no asegura completar los lanzamientos bajo presión."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Eureka! amplifica los siguientes tres hechizos o facultades y reduce su coste, útil para preparar una ventana de Incinerar, Conflagrar y Quemadura de las Sombras. Escape Artist ayuda a salir de raíces y obtener distancia; Mente expansiva da más margen de maná para los lanzamientos.",
+        "aTenerEnCuenta": "Una ventana mejorada con Eureka! puede perderse si llegan aturdimientos o interrupciones; Escape Artist no elimina esos efectos. Ingeniería aporta una utilidad condicionada a disponer de dispositivos y espacio para usarlos."
+      },
+      "conclusionPrincipal": "En Destrucción la prioridad aprobada de Humano favorece asegurar la oportunidad de volver a actuar tras el aturdimiento para completar hechizos de Fuego y Sombras. El valor de Will to Survive es de continuidad bajo control, no de potencia máxima de daño.",
+      "conclusionAlternativa": "Gnomo resulta especialmente atractivo si el grupo protege la canalización y el problema mayor son raíces, coste de maná y aprovechamiento de una ventana ofensiva corta. Eureka! se sincroniza con los hechizos de Destrucción, pero no aporta la respuesta al aturdimiento del Humano.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        }
+      },
+      "contextoAprobado": "Reabrir una oportunidad de lanzamiento tras el control."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "principal": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para reanudar Corrupción, Terror de agonía y Arruinar. Toque de la tumba puede aportar daño con drenaje y Canibalizar recupera salud y maná si existe un cadáver y tiempo para canalizar.",
+        "aTenerEnCuenta": "Will of the Forsaken no rompe aturdimientos ni raíces y ya no concede inmunidad prolongada al miedo. Canibalizar necesita un cadáver y un momento seguro, mientras Respiración subacuática apenas cambia el combate ordinario."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta pasivamente aturdimientos, dando más opciones de reanudar efectos periódicos. Furia sangrienta aumenta temporalmente el poder con hechizos, y Destrozar maldición puede defender de maldiciones y terrores rivales al reducir el daño mágico.",
+        "aTenerEnCuenta": "Hardiness no elimina todo el aturdimiento ni evita raíces; Furia sangrienta exige una ventana ofensiva. La especialización en hachas solo aporta crítico con el arma correspondiente y no puede contarse como mejora universal de hechizos."
+      },
+      "conclusionPrincipal": "Para Aflicción de Horda, No-muerto mantiene la prioridad aprobada cuando miedo, sueño o embelesamiento cortarían la continuidad de daño periódico y la defensa del brujo. Will of the Forsaken y el sustento condicional de Canibalizar aportan una respuesta distinta a la reducción pasiva de control del Orco.",
+      "conclusionAlternativa": "Orco puede ser mejor contra equipos que basan su control en aturdimientos y cuando se consigue combinar Furia sangrienta con la presión de Corrupción y Arruinar. Destrozar maldición añade una defensa específica, pero no reproduce la limpieza instantánea de miedo del No-muerto.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Recuperar decisiones mientras continúa la presión persistente."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "principal": {
+        "aFavor": "Hardiness reduce la duración de los aturdimientos que interrumpen la coordinación del demonio. Furia sangrienta aporta poder con hechizos durante una ventana, mientras Destrozar maldición reduce daño mágico y protege frente a maldiciones y terrores cuando el brujo y su mascota están bajo foco.",
+        "aTenerEnCuenta": "Hardiness no impide por completo el control recibido. Furia sangrienta y la defensa mágica deben gestionarse en momentos distintos, y la especialización en hachas exige equipar un hacha si se quiere contar su crítico."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken libera miedo, sueño y embelesamiento para recuperar el control de la mascota y la defensa propia. Toque de la tumba suma drenaje ocasional y Canibalizar ofrece recuperación de maná y salud tras un combate si hay cadáver.",
+        "aTenerEnCuenta": "No reduce aturdimientos ni raíces, y Canibalizar suele ser difícil de emplear bajo foco. Respiración subacuática aporta utilidad ambiental, no una ventaja comparable a mantener activo un demonio mejorado."
+      },
+      "conclusionPrincipal": "En Demonología de Horda, Orco conserva la prioridad aprobada porque el control pasivo de la duración de los aturdimientos, Furia sangrienta y la defensa específica de Destrozar maldición favorecen sostener el vínculo con una mascota cuyo poder escala con las estadísticas del invocador.",
+      "conclusionAlternativa": "No-muerto puede convenir si el enemigo domina con miedo o sueño y se necesita recuperar la iniciativa para dirigir el demonio. Su drenaje y recuperación poscombate importan, pero no sustituyen la reducción pasiva de aturdimientos del Orco.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        }
+      },
+      "contextoAprobado": "Reducir las pausas de coordinación durante el foco."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "principal": {
+        "aFavor": "Berserking aumenta la velocidad de lanzamiento para concentrar Incinerar, Conflagrar y Quemadura de las Sombras en un intervalo protegido. Regeneración rápida puede recuperar salud entre focos, y Regeneración conserva cierta recuperación durante el combate.",
+        "aTenerEnCuenta": "Berserking no quita aturdimientos ni interrupciones; si no hay posición para lanzar, se desaprovecha. Matanza de bestias no es aumento de daño contra jugadores y Regeneración rápida requiere una ventana segura."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Blood Fury aumenta temporalmente el poder con hechizos para una ráfaga de Destrucción, mientras Hardiness acorta los aturdimientos que impedirían completar lanzamientos. Shatter Curse defiende de maldiciones y terrores y reduce daño mágico en una ventana.",
+        "aTenerEnCuenta": "Blood Fury no acelera por sí misma los lanzamientos como Berserking ni elimina aturdimientos. La especialización en hachas depende de equipar ese tipo de arma, algo no siempre útil para un brujo lanzador."
+      },
+      "conclusionPrincipal": "En Destrucción para PvP masivo, Troll conserva la prioridad aprobada cuando el grupo puede abrir una ventana breve de lanzamiento: Berserking mejora la rapidez con que se ejecutan Incinerar y el daño combinado de Fuego y Sombras, mientras Regeneración rápida aporta una opción defensiva temporal.",
+      "conclusionAlternativa": "Orco puede superar esa conveniencia ante cadenas de aturdimiento o presión de maldiciones, porque Hardiness y Shatter Curse mejoran la probabilidad de sobrevivir y Furia sangrienta aporta potencia para otra ventana ofensiva. La elección depende del tipo de interrupción, no solo del daño teórico.",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Concentrar lanzamientos antes de perder la cobertura."
+    },
+    {
+      "faccion": "Alianza",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "Elune's Light abre una ventana de crítico para los hechizos de Equilibrio; Shadowmeld permite preparar una posición oculta antes de comenzar a lanzar. Prontitud añade una pequeña ventaja de esquiva y velocidad al reposicionarse entre ventanas.",
+        "aTenerEnCuenta": "Shadowmeld requiere inmovilidad y no permite escapar mientras ya recibe un foco. El efecto de Luz de Elune es temporal y Espíritu de fuego fatuo solo sirve después de morir, sin rendimiento ofensivo mientras se lucha."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Read Ley Line mejora la regeneración de salud y maná y puede activarse en movimiento; Wind Blessed aporta celeridad pasiva que beneficia los lanzamientos de Equilibrio. Walk on Air ofrece una ruta de planeo situacional para variar la posición del druida.",
+        "aTenerEnCuenta": "No se ha confirmado cuánto mejora Read Ley Line la recuperación efectiva mientras se lanzan hechizos bajo presión. Walk on Air requiere terreno apropiado y Elemental Insight aumenta el daño solo a elementales, no a jugadores."
+      },
+      "conclusionPrincipal": "En Equilibrio de Alianza, Elfo de la noche conserva la prioridad por la posibilidad de preparar la posición con Shadowmeld y aprovechar Luz de Elune al abrir una ventana de lanzamiento. Es una ventaja táctica en los momentos en que el druida debe elegir cuándo exponerse a enemigos a distancia.",
+      "conclusionAlternativa": "Cielonato resulta atractivo si el combate consiste en sostener varias ventanas de hechizos y reposicionarse entre ellas: Read Ley Line, Wind Blessed y Walk on Air ofrecen recursos distintos. Esas utilidades no reemplazan la ocultación inicial, y su peso depende de las condiciones reales de regeneración de la beta.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Walk on Air",
+            "Read Ley Line"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        }
+      },
+      "contextoAprobado": "Preparar el ángulo antes de empezar a lanzar."
+    },
+    {
+      "faccion": "Alianza",
+      "especializacion": "Feral",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "Shadowmeld permite preparar una emboscada mientras se permanece inmóvil, coordinada con la entrada en forma felina. Prontitud aporta velocidad y esquiva; Luz de Elune puede favorecer una ventana crítica durante el intercambio cuerpo a cuerpo.",
+        "aTenerEnCuenta": "Shadowmeld no es sigilo móvil ni saca del foco ya iniciado. El efecto crítico de Luz de Elune dura una ventana limitada y Espíritu de fuego fatuo no añade supervivencia en combate vivo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Walk on Air ofrece un planeo que puede variar la ruta de entrada o retirada de Feral sin exigir abandonar la forma, de acuerdo con la actualización general de facultades raciales. Wind Blessed añade celeridad constante y Skysight no está disponible para el Cielonato de Alianza.",
+        "aTenerEnCuenta": "El planeo solo ayuda donde el terreno lo permite; Read Ley Line orienta más a la recuperación de recursos que al control inmediato en melee. Ninguna de estas herramientas reproduce Shadowmeld, y deben evitarse suposiciones sobre acumulación con formas o consumibles."
+      },
+      "conclusionPrincipal": "En Feral de Alianza, Elfo de la noche conserva la prioridad porque Shadowmeld refuerza la preparación de la entrada y Prontitud añade movilidad pasiva útil al alternar forma felina y oso. La racial es ahora utilizable en forma, pero la ocultación sigue exigiendo inmovilidad.",
+      "conclusionAlternativa": "Cielonato puede favorecer configuraciones que se desplazan mucho por cambios de altura y terreno, con Walk on Air y celeridad de Wind Blessed. Su ventaja depende de mapas y oportunidades concretas; no mejora por sí sola el control táctico de la apertura que aporta el Elfo.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Walk on Air",
+            "Read Ley Line"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        }
+      },
+      "contextoAprobado": "Elegir el momento de entrar desde ocultación."
+    },
+    {
+      "faccion": "Alianza",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "Shadowmeld permite esperar protegido en una posición inmóvil antes de entrar a curar, y Prontitud ayuda con la evasión y el pequeño aumento de velocidad durante los cambios de forma. Esta preparación favorece conservar margen para renovar curas periódicas cuando el grupo recibe presión.",
+        "aTenerEnCuenta": "Una vez detectado y bajo foco, Shadowmeld no garantiza la retirada; su ocultación se cancela al moverse. Luz de Elune ofrece una ventana de crítico, pero no debe confundirse con inmunidad ni con una cura de emergencia."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Read Ley Line aporta regeneración activable en movimiento, con interés para un sanador que vuelve a cubrir varios grupos después de gastar maná. Wind Blessed añade celeridad pasiva para lanzar hechizos, mientras Walk on Air puede servir para retirarse por terreno vertical.",
+        "aTenerEnCuenta": "La regeneración mientras se lanzan curas bajo presión aún necesita contraste específico en la beta. Walk on Air depende del terreno, Elemental Insight no ayuda contra jugadores y la celeridad no sustituye control o cobertura."
+      },
+      "conclusionPrincipal": "Para Restauración de Alianza, Elfo de la noche mantiene la prioridad si la clave es evitar exposición antes de curar y reposicionarse con formas al recibir foco. Shadowmeld y Prontitud favorecen esa preparación defensiva, mientras que el repertorio de sanación periódica sigue requiriendo anticipación.",
+      "conclusionAlternativa": "Cielonato interesa cuando el cuello de botella es la continuidad de maná entre intervenciones y puede aprovechar Read Ley Line sin quedar expuesto. Wind Blessed mejora la fluidez de lanzamiento, pero no equivale a una defensa inmediata si un enemigo alcanza al sanador.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Walk on Air",
+            "Read Ley Line"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        }
+      },
+      "contextoAprobado": "Preparar una posición de curación sin exponerse."
+    },
+    {
+      "faccion": "Horda",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "War Stomp aturde a enemigos próximos y permite intentar reconstruir distancia cuando un lanzador de Equilibrio es alcanzado. Endurance incrementa la reserva de salud y la probabilidad de golpear, y Plainsrunning acompaña los desplazamientos prolongados del grupo.",
+        "aTenerEnCuenta": "War Stomp solo actúa cerca del druida y no detiene directamente a atacantes lejanos. Cultivation no es una habilidad de JcJ; Plainsrunning necesita acumular tiempo en movimiento y no sustituye la activación inmediata de una defensa."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Skysight ofrece velocidad de carrera activable en movimiento y Wind Blessed aporta celeridad pasiva para encadenar hechizos de Equilibrio. Walk on Air permite variar una retirada desde terreno elevado y aprovechar los cambios de forma.",
+        "aTenerEnCuenta": "No debe asumirse que Skysight se acumula plenamente con la forma de viaje o felina sin pruebas específicas. Elemental Insight afecta a elementales, no a jugadores; ninguna de las herramientas sustituye el aturdimiento cercano de War Stomp."
+      },
+      "conclusionPrincipal": "En Equilibrio de Horda, Tauren conserva la prioridad por la combinación de War Stomp como salida frente a perseguidores próximos y Endurance como protección pasiva. La interacción de raciales con las formas en Forever permite valorar ese control sin tratar al druida como lanzador inmóvil.",
+      "conclusionAlternativa": "Cielonato puede ser preferible cuando prima sostener lanzamientos y desplazarse entre varios frentes con Skysight y Wind Blessed. Su valor exacto necesita confirmar las acumulaciones de velocidad por forma; en el foco cuerpo a cuerpo no reproduce la pausa defensiva del Tauren.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Walk on Air",
+            "Skysight"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        }
+      },
+      "contextoAprobado": "Frenar perseguidores antes de volver a lanzar."
+    },
+    {
+      "faccion": "Horda",
+      "especializacion": "Feral",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "War Stomp ofrece un control cercano inmediato para cortar una persecución o asegurar una transición entre felino y oso, y en Forever puede utilizarse durante el cambio de forma. Endurance aporta salud y Plainsrunning recompensa el desplazamiento continuado entre objetivos.",
+        "aTenerEnCuenta": "El control de War Stomp necesita alcance y no permite detener a un arquero lejano. Cultivation no influye en el choque y Plainsrunning necesita movimiento sostenido para acumular su bonificación."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Skysight permite activar velocidad de carrera en movimiento para perseguir o buscar cobertura y Wind Blessed mejora la rapidez de acciones. Walk on Air puede crear una ruta alternativa de aproximación desde alturas para la forma felina.",
+        "aTenerEnCuenta": "No está confirmado cómo se acumula Skysight con velocidad de las formas felina y de viaje; prometer esa ventaja sería prematuro. Walk on Air depende del terreno y Elemental Insight no aumenta el daño contra jugadores."
+      },
+      "conclusionPrincipal": "En Feral de Horda, Tauren conserva la prioridad por el control a corta distancia de War Stomp y el colchón pasivo de Endurance, útiles cuando la entrada en felino se vuelve un contraataque y hace falta cambiar a oso.",
+      "conclusionAlternativa": "Cielonato interesa si los enfrentamientos exigen perseguir y retirarse con frecuencia por mapas abiertos o con desniveles. Sus herramientas de movilidad son atractivas, pero su acumulación con formas está pendiente de confirmar y no reemplaza la interrupción cercana del Tauren.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Walk on Air",
+            "Skysight"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        }
+      },
+      "contextoAprobado": "Añadir una pausa táctica al contacto cercano."
+    },
+    {
+      "faccion": "Horda",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "War Stomp crea una pausa contra enemigos cercanos para que Restauración pueda alejarse y continuar la sanación periódica o cambiar de forma. Endurance aumenta la reserva de salud en focos cortos y Plainsrunning favorece llegar a aliados por desplazamientos continuados.",
+        "aTenerEnCuenta": "War Stomp no alcanza a quien interrumpe desde lejos, y Cultivation carece de valor defensivo durante el combate. Plainsrunning depende del movimiento previo y no actúa como un botón de salida inmediata."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Skysight ofrece un incremento de carrera activable sin detenerse, y Wind Blessed mejora la celeridad para atender a varios aliados. Walk on Air puede crear una ruta de retirada adicional en terreno vertical.",
+        "aTenerEnCuenta": "Falta comprobar la acumulación real de Skysight con las formas de druida; Elemental Insight no aporta efecto contra jugadores. No dispone de un aturdimiento de proximidad comparable a War Stomp."
+      },
+      "conclusionPrincipal": "En Restauración de Horda, Tauren conserva la prioridad cuando el sanador recibe foco cercano y necesita espacio para aplicar curas o cambiar de forma sin que caiga el grupo. War Stomp y Endurance son defensas directas, mientras la utilidad de movimiento se pondera de forma secundaria.",
+      "conclusionAlternativa": "Cielonato puede convenir cuando los encuentros se resuelven por cambios constantes de posición y ventanas de apoyo cortas; Skysight y Wind Blessed responden a ese patrón. Pero el beneficio de velocidad combinado con formas debe confirmarse y no sustituye el control cercano de War Stomp.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Walk on Air",
+            "Skysight"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        }
+      },
+      "contextoAprobado": "Separarse de perseguidores sin abandonar el apoyo."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist permite salir de raíces y ralentizaciones para volver al alcance de Golpe mortal y mantener presión de Armas. Eureka! potencia un grupo de tres facultades y Mente expansiva aumenta la reserva de ira; la fiabilidad de Ingeniería es útil solo con dispositivos equipados.",
+        "aTenerEnCuenta": "Escape Artist no elimina aturdimientos. El beneficio de Eureka! depende del orden de los golpes y no evita ser desarmado o perder la línea; Ingeniería no es una racial de supervivencia por sí sola."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe aturdimientos que bloquearían Golpe mortal y los cambios de actitud. Perception ayuda a anticipar pícaros ocultos y, llevando espada, Sword Specialization aporta crítico a las facultades.",
+        "aTenerEnCuenta": "No libera raíces ni ralentizaciones, una limitación decisiva para Armas cuando no llega al objetivo. La pasiva de Espíritu apenas sustituye movilidad ni generación de ira."
+      },
+      "conclusionPrincipal": "En Armas de Alianza, Gnomo conserva la prioridad porque la continuidad de Golpe mortal depende de poder alcanzar objetivos móviles. Escape Artist y su aumento de recursos aportan más valor en persecuciones sostenidas que un desbloqueo limitado a aturdimientos.",
+      "conclusionAlternativa": "Humano puede ser preferible cuando los aturdimientos son el control dominante y el grupo ya dispone de ayudas para mantener contacto. Will to Survive protege la ventana de Golpe mortal, pero no resuelve por sí mismo la pérdida de distancia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Mantener contacto durante el avance aliado."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist vuelve a poner al guerrero a distancia de ataque cuando raíces o ralentizaciones impiden acumular ira y aprovechar Sed de sangre. Eureka! mejora tres acciones y Mente expansiva amplía la reserva de ira que alimenta la secuencia cuerpo a cuerpo.",
+        "aTenerEnCuenta": "No limpia aturdimientos. El valor de Eureka! depende de que el guerrero consiga golpear durante la ventana; la fiabilidad mejorada de Ingeniería solo importa si se usan dispositivos."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive permite volver a actuar tras un aturdimiento y aprovechar la ventana de Sed de sangre. Perception reduce sorpresas ante objetivos ocultos, y la pasiva de espadas puede beneficiar el crítico si se equipa espada.",
+        "aTenerEnCuenta": "Una raíz sigue dejando al Humano fuera de contacto, aunque pueda actuar. La pasiva de espíritu no sustituye ira ni el acceso al enemigo y la especialización de espada depende del equipo."
+      },
+      "conclusionPrincipal": "Para Guerrero Furia, Gnomo mantiene la prioridad aprobada cuando el combate masivo obliga a cambiar de objetivo y mantener contacto para generar ira. Escape Artist, Eureka! y Mente expansiva se alinean con esa continuidad ofensiva sin garantizar daño si la ruta queda cerrada.",
+      "conclusionAlternativa": "Humano es alternativa valiosa contra control centrado en aturdimientos que impide usar Sed de sangre; Will to Survive devuelve la acción de golpeo, pero exige tener ya un objetivo al alcance.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Encadenar contacto sin quedar rezagado."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform reduce daño físico y limpia sangrados, venenos y enfermedades, lo que permite sostener la primera línea mientras Protección bloquea y protege aliados. Con maza equipada, la pasiva correspondiente añade crítico; Big Game Hunter solo ayuda frente a bestias elegibles.",
+        "aTenerEnCuenta": "Stoneform dura poco y no elimina aturdimientos. Find Treasure no protege durante el foco y la especialización en mazas no sirve si el guerrero lleva otra arma."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive sale de un aturdimiento que impediría usar escudo y recursos defensivos. Perception ayuda a identificar aproximaciones en sigilo y Sword Specialization puede aportar crítico con espada.",
+        "aTenerEnCuenta": "No reduce daño físico ni elimina sangrados como Stoneform. Su bonificación de arma depende de espada y el aumento de espíritu no ofrece una defensa inmediata para Protección."
+      },
+      "conclusionPrincipal": "En Guerrero Protección de Alianza, Enano conserva la prioridad porque Stoneform y la mitigación física encajan directamente con bloquear, aguantar focos y mantener la posición del escudo. El paquete racial defensivo tiene más peso que la capacidad de resolver solo un tipo de control.",
+      "conclusionAlternativa": "Humano puede ser preferible si el problema principal es la cadena de aturdimientos sobre el protector y el grupo dispone ya de mitigación suficiente. Will to Survive devuelve el acceso al escudo, pero no reproduce Stoneform.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Sostener posiciones frente al foco físico."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness acorta los aturdimientos para recuperar antes contacto y Golpe mortal. Blood Fury añade potencia durante la ventana de Armas y Shatter Curse puede proteger ante maldiciones o terrores al reducir daño mágico; Axe Specialization exige hacha.",
+        "aTenerEnCuenta": "No elimina por completo los aturdimientos, ni rompe raíces. Blood Fury es temporal y la pasiva de hachas no sirve con otras armas, aunque Armas pueda aprovechar varias familias."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp aturde a enemigos muy próximos y permite una ventana de Golpe mortal o cubrir la retirada. Endurance aumenta vida y precisión; Plainsrunning favorece persecuciones largas y Cultivation no influye en el choque.",
+        "aTenerEnCuenta": "War Stomp requiere rango cercano y no evita que se quede fuera de contacto por una raíz. Plainsrunning tarda en acumularse; Cultivation no aporta una defensa durante un enfrentamiento JcJ."
+      },
+      "conclusionPrincipal": "En Armas de Horda, Orco mantiene prioridad por la reducción de aturdimientos y una ventana ofensiva con Blood Fury que sostienen Golpe mortal incluso cuando varios rivales intentan detenerlo. Shatter Curse completa la defensa frente a presión mágica concreta.",
+      "conclusionAlternativa": "Tauren interesa cuando el guerrero permanece rodeado y War Stomp puede coordinar un control a corta distancia, con Endurance como apoyo. Su utilidad disminuye si el objetivo está lejos y no puede detener a quienes controlan desde distancia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        }
+      },
+      "contextoAprobado": "Acortar el control que interrumpe la presión cercana."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce interrupciones por aturdimiento durante Sed de sangre y las ráfagas de Furia. Blood Fury suma daño en una ventana corta; Shatter Curse responde a control mágico de maldiciones y terrores, mientras Axe Specialization depende del arma.",
+        "aTenerEnCuenta": "No limpia aturdimientos por completo ni compensa perder el alcance al objetivo. Blood Fury debe sincronizarse con ataques y el crítico por hacha solo cuenta si se lleva esa arma."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp crea una pausa cercana para continuar golpeando o evitar ser rodeado. Endurance amplía vida y Plainsrunning ayuda en un frente móvil que exige perseguir varios objetivos.",
+        "aTenerEnCuenta": "War Stomp requiere proximidad; no funciona como ruptura de raíces. Cultivation no influye en la secuencia de Furia y Plainsrunning no sustituye una aceleración inmediata."
+      },
+      "conclusionPrincipal": "En Furia de Horda, Orco conserva la prioridad porque Hardiness ayuda a mantener actividad cuerpo a cuerpo y Blood Fury refuerza la ventana de Sed de sangre, siempre que haya contacto. Se valoran también defensa mágica y la condición del arma equipada.",
+      "conclusionAlternativa": "Tauren puede rendir mejor en peleas compactas con enemigos muy próximos, donde War Stomp y Endurance permiten defenderse sin dejar de presionar. No ofrece la misma protección pasiva contra aturdimientos del Orco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        }
+      },
+      "contextoAprobado": "Reducir las pausas durante el avance ofensivo."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "War Stomp permite aturdir a enemigos cercanos al escudo para cubrir a los aliados o frenar una entrada. Endurance aumenta la reserva de salud y precisión; Plainsrunning ayuda a llegar al frente durante desplazamientos prolongados.",
+        "aTenerEnCuenta": "War Stomp tiene alcance cercano y no anula daño físico durante todo un foco. Cultivation no suma defensa, mientras que Plainsrunning requiere desplazamiento antes de acumular ventaja."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos que impedirían bloquear o usar una defensa. Shatter Curse reduce daño mágico y concede protección ante maldiciones o terrores; Blood Fury aumenta poder de ataque temporalmente.",
+        "aTenerEnCuenta": "Hardiness no elimina por completo el control y Blood Fury no sustituye Endurance cuando se trata de aguantar daño. La especialización en hachas depende del arma, poco concluyente si el tanque prioriza otros atributos."
+      },
+      "conclusionPrincipal": "Para Protección de Horda, Tauren conserva prioridad porque War Stomp y Endurance ofrecen control cercano y colchón de vida alrededor de quien protege la línea. Eso favorece resistir focos y coordinar bloqueos con compañeros.",
+      "conclusionAlternativa": "Orco puede convenir ante cadenas de aturdimientos y magia de maldiciones, cuando Hardiness y Shatter Curse permiten retomar recursos defensivos. Es una respuesta distinta a controlar rivales próximos; Blood Fury no debe tratarse como mitigación.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Crear espacio para sostener la primera línea."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will to Survive elimina un aturdimiento que impediría lanzar Destello de Luz o socorrer a un aliado con Choque Sagrado. Perception ayuda a detectar una apertura sigilosa; Espíritu humano puede respaldar recursos de un paladín que usa maná.",
+        "aTenerEnCuenta": "No reduce daño físico ni elimina sangrados como Stoneform. La especialización en espada exige ese tipo de arma y el Espíritu adicional no sustituye una cura o defensa instantánea."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Stoneform limpia sangrados, venenos y enfermedades y reduce daño físico en la ventana en que un sanador necesita terminar una cura. Mace Specialization aporta crítico solo con maza equipada; Big Game Hunter se limita a bestias elegibles.",
+        "aTenerEnCuenta": "Stoneform no libera aturdimientos y dura poco. Buscar tesoro no mejora la sanación JcJ, y la pasiva contra bestias no influye contra jugadores."
+      },
+      "conclusionPrincipal": "En Paladín Sagrado de Alianza, Humano conserva prioridad cuando los aturdimientos impiden que el sanador reaccione a tiempo con Destello de Luz y Choque Sagrado. Will to Survive devuelve acciones; Espíritu y detección se ponderan como ayudas secundarias.",
+      "conclusionAlternativa": "Enano puede resultar mejor ante presión física sostenida, venenos o sangrados mientras el grupo necesita que el paladín siga curando. Stoneform ofrece mitigación directa, pero no permite salir de aturdimientos como Humano.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        }
+      },
+      "contextoAprobado": "Recuperar la curación tras un aturdimiento."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform reduce daño físico y neutraliza sangrados, venenos y enfermedades en el frente, complementando los escudos y Baluarte de templario. Mace Specialization puede aportar crítico con maza y Big Game Hunter es situacional contra mascotas bestias.",
+        "aTenerEnCuenta": "No elimina aturdimientos, y la ventana de Stoneform no sustituye el resto de mitigación. Buscar tesoro carece de utilidad en combate y la bonificación de maza depende de equipo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe el aturdimiento que bloquearía Baluarte de templario, bloqueo o apoyo al grupo. Perception permite detectar amenaza oculta antes de la entrada; con espada equipada, la pasiva correspondiente suma crítico.",
+        "aTenerEnCuenta": "No protege directamente de sangrados ni reduce daño físico como Stoneform. La pasiva de espíritu no equivale a supervivencia inmediata, y la de espadas depende de una elección de arma compatible."
+      },
+      "conclusionPrincipal": "En Protección de Alianza, Enano conserva prioridad al combinar Stoneform con las ventanas defensivas y el bloqueo del paladín, una herramienta directa para aguantar el foco cerca de aliados.",
+      "conclusionAlternativa": "Humano interesa si una cadena de aturdimientos impide activar las defensas disponibles. Will to Survive resuelve ese control puntual, pero no añade la mitigación física sostenida del Enano.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Resistir mientras se protege el avance."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will to Survive permite volver a ejecutar Golpe Sagrado, sellos y Sentencias después de un aturdimiento. Perception ayuda a anticipar a pícaros en sigilo y Sword Specialization puede ofrecer crítico con una espada en el conjunto de armas.",
+        "aTenerEnCuenta": "No quita raíces ni ralentizaciones que impiden alcanzar al objetivo; la especialización en espadas es condicional, y Espíritu humano aporta un beneficio más marginal en un enfoque ofensivo cuerpo a cuerpo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Stoneform mitiga daño físico y limpia sangrados, venenos y enfermedades mientras el paladín persiste en la primera línea para combinar sellos, Golpe Sagrado y Sentencias. Mace Specialization puede favorecer el crítico si equipa maza.",
+        "aTenerEnCuenta": "Stoneform no restablece la acción ante un aturdimiento y es una defensa temporal. Buscar tesoro no ayuda a presionar jugadores, y Big Game Hunter solo influye en bestias, no en el daño general."
+      },
+      "conclusionPrincipal": "Para Reprensión de Alianza, Humano mantiene prioridad al permitir recuperar acciones después de un aturdimiento en la ventana donde debe conectar Golpe Sagrado y Sentencias. El tipo de control enemigo determina si esa recuperación se aprovecha.",
+      "conclusionAlternativa": "Enano puede ser mejor en duelos de desgaste físico en los que seguir de pie para aplicar sellos pesa más que cortar un aturdimiento. Stoneform es fiable ante perjuicios concretos pero no devuelve la acción tan directamente.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        }
+      },
+      "contextoAprobado": "Volver a presionar o auxiliar tras el control."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking acelera la ventana de lanzamiento de Ráfaga de lava y Cadena de relámpagos, especialmente cuando los tótems y aliados permiten mantener posición. Regeneración rápida aporta una recuperación activa, y la pasiva Regeneración continúa parcialmente en combate.",
+        "aTenerEnCuenta": "Ni Berserking ni Regeneración rápida rompen aturdimientos. Beast Slaying solo afecta a bestias elegibles y la aceleración se desaprovecha si el Elemental es interrumpido o forzado a moverse."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Blood Fury eleva temporalmente el poder con hechizos para una ráfaga de Elemental. Hardiness acorta aturdimientos y Shatter Curse protege de maldiciones y terrores al reducir daño mágico, apoyando la supervivencia del lanzador.",
+        "aTenerEnCuenta": "Blood Fury no acelera los lanzamientos como Berserking ni rompe raíces. El crítico de Axe Specialization requiere equipar hacha y no se debe contabilizar como bonificación automática en cualquier configuración."
+      },
+      "conclusionPrincipal": "En Elemental de Horda, Troll conserva prioridad cuando el equipo proporciona ventana de lanzamiento para Ráfaga de lava y Cadena de relámpagos. Berserking y las dos vías de regeneración mejoran rapidez y mantenimiento, sin garantizar daño ante interrupciones.",
+      "conclusionAlternativa": "Orco puede rendir mejor ante rivales que abusan de aturdimientos, maldiciones o terrores: Hardiness y Shatter Curse mejoran la continuidad y Blood Fury proporciona otra forma de potenciar la ráfaga.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Sincronizar lanzamientos con el control y apoyo aliados."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce aturdimientos que detienen el ciclo de Golpe de tormenta y la acumulación de Arma vorágine. Blood Fury potencia el cuerpo a cuerpo, Shatter Curse protege ante presión mágica y Axe Specialization suma crítico únicamente si equipa hacha.",
+        "aTenerEnCuenta": "No elimina por completo el control, ni resuelve raíces. Blood Fury necesita contacto y la especialización en hachas no beneficia si el arma equipada es una maza u otro tipo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp aturde a enemigos cercanos para abrir espacio mientras Mejora conecta Golpe de tormenta o utiliza una descarga con Vorágine. Endurance suma vida y precisión; Plainsrunning acompaña desplazamientos largos hacia nuevos objetivos.",
+        "aTenerEnCuenta": "War Stomp exige rango de proximidad y no reduce pasivamente los aturdimientos. Cultivation no afecta a la pelea y Plainsrunning no funciona como salida instantánea de control."
+      },
+      "conclusionPrincipal": "En Mejora de Horda, Orco mantiene prioridad para conservar contacto y generar cargas de Arma vorágine frente a aturdimientos, a la vez que aprovecha Furia sangrienta y la protección situacional de Shatter Curse.",
+      "conclusionAlternativa": "Tauren tiene interés cuando Mejora pelea en grupos compactos y War Stomp puede interrumpir rivales próximos, con Endurance como defensa. No reproduce la reducción pasiva de aturdimientos del Orco ni garantiza perseguir a distancia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        }
+      },
+      "contextoAprobado": "Retomar la presión cercana y el apoyo tras aturdimientos."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Troll",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "War Stomp crea una pausa de control cercana para poder lanzar curas o recolocar tótems usando Proyección totémica. Endurance eleva la reserva de salud y precisión, mientras Plainsrunning ayuda a acompañar aliados en desplazamientos continuados.",
+        "aTenerEnCuenta": "No frena al atacante lejano ni sirve si el perseguidor queda fuera de alcance. Cultivation no ofrece defensa JcJ y Plainsrunning tarda en acumular beneficio."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Berserking acelera los lanzamientos de Restauración durante una ventana de curación protegida y Rapid Regeneration puede recuperar salud tras un pico de daño. Regeneración contribuye parcialmente durante el combate.",
+        "aTenerEnCuenta": "Berserking no evita que lo interrumpan ni rompe aturdimientos; la regeneración activa no equivale a control cercano y Beast Slaying no contribuye a sanar aliados."
+      },
+      "conclusionPrincipal": "En Restauración de Horda, Tauren conserva prioridad cuando el sanador es alcanzado por enemigos cuerpo a cuerpo y necesita War Stomp para seguir curando y sostener tótems. Endurance añade un margen de vida a una clase expuesta al foco.",
+      "conclusionAlternativa": "Troll puede ser preferible si el grupo ofrece control suficiente y se valora curar más rápido en ventanas seguras. Berserking y Regeneración rápida suman utilidad, pero no sustituyen el aturdimiento defensivo del Tauren.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        }
+      },
+      "contextoAprobado": "Despejar el contacto para retomar curaciones y tótems."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Enano",
+      "alternativa": "Elfo",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform elimina sangrados, venenos y enfermedades y reduce daño físico mientras el cazador dirige a la mascota y usa trampas en combate. Big Game Hunter puede importar ante mascotas de tipo bestia, pero no aumenta por ello el daño directo a jugadores.",
+        "aTenerEnCuenta": "Stoneform no libera aturdimientos ni raíces; Mace Specialization exige maza y no mejora los disparos por sí sola. Find Treasure no refuerza el combate con la mascota."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Elune's Light abre una ventana de crítico para los disparos mientras la mascota presiona. Shadowmeld puede preparar una posición inmóvil antes de atacar y Quickness añade esquiva y velocidad al reposicionarse.",
+        "aTenerEnCuenta": "Shadowmeld no es camuflaje móvil ni saca del foco activo; Elune's Light dura una ventana limitada. Wisp Spirit solo afecta al movimiento estando muerto."
+      },
+      "conclusionPrincipal": "En Cazador Bestias de Alianza, Enano conserva prioridad cuando el enemigo intenta derribar al dueño de la mascota mediante daño físico y efectos perjudiciales: Stoneform da margen para ordenar acciones y tender trampas sin perder el control del compañero.",
+      "conclusionAlternativa": "Elfo de la noche resulta atractivo si la composición valora preparar emboscadas con Shadowmeld y explotar críticos mientras la mascota entra. Esa apertura no sustituye la protección inmediata de Stoneform durante un foco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Resistir el foco físico mientras se coordina la mascota."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform permite aguantar daño físico y limpiarse perjuicios mientras el cazador busca completar Disparo de puntería. Mace Specialization depende de portar maza y Big Game Hunter se limita a bestias elegibles, no a jugadores.",
+        "aTenerEnCuenta": "No neutraliza aturdimientos ni control a distancia. El bono de crítico por maza no debe contarse como mejora de disparo de puntería con otra arma, y Find Treasure no ofrece utilidad ofensiva."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe un aturdimiento para recuperar una ventana de Disparo de puntería o colocar una trampa en combate. Perception puede detectar a un pícaro antes de que interrumpa la posición de tiro.",
+        "aTenerEnCuenta": "No limpia sangrados ni venenos ni reduce el daño físico como Stoneform. Sword Specialization solo cuenta con espada y Espíritu humano tiene menor relevancia ofensiva para ataques a distancia."
+      },
+      "conclusionPrincipal": "En Puntería de Alianza, Enano conserva prioridad ante focos físicos y venenos que dificultan sostener una línea de tiro. Stoneform se valora junto al uso de trampas en combate y la necesidad de terminar Disparo de puntería.",
+      "conclusionAlternativa": "Humano puede ser mejor contra equipos que dependen del aturdimiento y entradas furtivas, porque Will to Survive y Perception ayudan a recuperar la iniciativa. Sin una posición segura, ninguna de las dos raciales garantiza completar el disparo.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Sostener una línea de disparo bajo presión."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform limpia sangrados, venenos y enfermedades y reduce daño físico durante el choque cercano que obliga a alternar trampas en combate y retirada. Big Game Hunter solo aporta valor frente a bestias elegibles, no contra el personaje rival.",
+        "aTenerEnCuenta": "No elimina aturdimientos ni facilita huir de raíces; Buscar tesoro no sirve bajo foco y la bonificación en mazas depende de equipar ese tipo de arma."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive permite reaccionar al salir de un aturdimiento para volver a colocar trampas o alejarse del contacto cercano. Perception puede advertir de una aproximación en sigilo y permitir preparar el espacio.",
+        "aTenerEnCuenta": "No mitiga presión física ni limpia efectos como Stoneform. La pasiva de espada y la de espíritu no sustituyen distanciamiento ni control activo de Supervivencia."
+      },
+      "conclusionPrincipal": "Para Supervivencia de Alianza, Enano conserva prioridad en PvP masivo al combinar Stoneform con trampas utilizables en combate y manejo del contacto cercano, donde sobrevivir a venenos y presión física suele determinar la siguiente acción.",
+      "conclusionAlternativa": "Humano es alternativa razonable si los aturdimientos impiden activar trampas y el rival entra repetidamente desde sigilo. Will to Survive y Perception ofrecen una solución de control, no un aumento universal de resistencia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Resistir el contacto al controlar los accesos."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Orco",
+      "alternativa": "Troll",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce los aturdimientos que impiden dirigir al compañero y cambiar el objetivo, mientras Blood Fury ofrece potencia temporal al cazador. Shatter Curse defiende ante maldiciones, terrores y daño mágico, útil si intentan aislarlo de su mascota.",
+        "aTenerEnCuenta": "Hardiness no elimina por completo el control; Blood Fury no debe contarse automáticamente como aumento directo de daño de la mascota sin confirmar escalado concreto. Axe Specialization depende de equipar hacha."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Berserking acelera los ataques del cazador durante la ventana en que presiona la mascota y Rapid Regeneration ofrece recuperación activa. Beast Slaying puede contar contra mascotas bestias, no contra sus dueños jugadores.",
+        "aTenerEnCuenta": "Ni Berserking ni Rapid Regeneration quitan aturdimientos. Beast Slaying no añade daño general en PvP y la ventaja de regeneración se limita por la posibilidad de activarla sin perder posición."
+      },
+      "conclusionPrincipal": "En Bestias de Horda, Orco mantiene prioridad cuando lo principal es conservar acciones de mando y defensas durante cadenas de aturdimiento, con Hardiness y Shatter Curse como apoyos al cazador que acompaña la mascota mejorada.",
+      "conclusionAlternativa": "Troll puede interesar cuando el equipo protege la ventana de ataque y el cazador aprovecha Berserking junto a su compañero. Su recuperación activa ayuda en pausas, pero no reproduce la reducción pasiva del aturdimiento del Orco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        }
+      },
+      "contextoAprobado": "Recuperar antes la coordinación con la mascota."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking permite disparar con más rapidez en una ventana protegida de Puntería; Rapid Regeneration ofrece una recuperación alternativa cuando termina el foco. La pasiva Regeneration continúa parcialmente en combate.",
+        "aTenerEnCuenta": "Berserking no impide que un enemigo interrumpa la línea de tiro y no rompe aturdimientos. Beast Slaying solo influye sobre bestias, incluidas mascotas elegibles, no sobre jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos para recuperar el acceso a Disparo de puntería; Blood Fury añade potencia temporal de ataque. Shatter Curse permite resistir maldiciones y terrores cuando un lanzador rival intenta desplazar al cazador.",
+        "aTenerEnCuenta": "Blood Fury no aumenta la velocidad de disparo por sí misma; Hardiness no elimina todo el control. Axe Specialization está condicionada al arma y no otorga crítico universal a tiros de arco o fusil."
+      },
+      "conclusionPrincipal": "En Puntería de Horda, Troll conserva la prioridad aprobada cuando dispone de cobertura para aprovechar Berserking y sostener ataques a distancia sin dejar de coordinar la mascota. La aceleración ofensiva pesa más en ese escenario que el anticontrol pasivo.",
+      "conclusionAlternativa": "Orco puede rendir mejor si el objetivo es terminar disparos a pesar de aturdimientos y presión mágica, porque Hardiness y Shatter Curse protegen las oportunidades de actuar. No reproduce la ventana de velocidad de Troll.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Concentrar disparos mientras existe cobertura aliada."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness acorta los aturdimientos durante el intercambio cercano mientras el cazador alterna trampas en combate, ataques y separación. Blood Fury mejora el daño en una ventana y Shatter Curse reduce presión de maldiciones y terrores.",
+        "aTenerEnCuenta": "No evita inmovilizaciones ni elimina todo el aturdimiento. Axe Specialization exige hacha, y la activación de Blood Fury no reemplaza el control de espacio con trampas."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp puede aturdir a perseguidores cercanos para abrir una trampa o permitir al cazador recuperar distancia. Endurance ofrece salud y precisión extra, mientras Plainsrunning recompensa los desplazamientos largos.",
+        "aTenerEnCuenta": "War Stomp obliga a quedarse a distancia corta, peligrosa frente a varios enemigos; no resuelve un disparador lejano. Cultivation no aporta defensa inmediata y Plainsrunning no funciona como ruptura de raíces."
+      },
+      "conclusionPrincipal": "En Supervivencia de Horda, Orco conserva prioridad cuando el principal obstáculo son aturdimientos que impiden enlazar las trampas en combate y una retirada. Hardiness y Shatter Curse apoyan seguir actuando aunque cambie el blanco.",
+      "conclusionAlternativa": "Tauren interesa si los rivales entran juntos en contacto y War Stomp permite frenar a varios antes de reposicionarse. Endurance aumenta la resistencia, pero ninguna de estas ventajas sustituye el anticontrol pasivo de Orco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        }
+      },
+      "contextoAprobado": "Retomar el control de los accesos tras aturdimientos."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist rompe raíces y ralentizaciones para volver a rango de Mutilar, venenos y remates de Asesinato. Eureka! puede reforzar tres acciones y Expansive Mind amplía la energía máxima, mientras la especialización de Ingeniería solo cuenta si se utilizan dispositivos.",
+        "aTenerEnCuenta": "Escape Artist no elimina aturdimientos y Eureka! debe aprovecharse durante una ventana real de ataque. La bonificación de ingeniería no sustituye el control y no ofrece daño sin equipamiento de ese oficio."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive sale de un aturdimiento para volver a aplicar venenos y preparar Mutilar. Perception ayuda a detectar a otro pícaro antes de su apertura, y la especialización en espadas puede aportar crítico si la configuración equipa una espada.",
+        "aTenerEnCuenta": "No quita raíces que impiden retomar contacto; las pasivas de espíritu y espada no tienen el mismo valor si usa dagas en Asesinato. Detectar sigilo requiere anticiparse."
+      },
+      "conclusionPrincipal": "En Asesinato de Alianza, Gnomo conserva prioridad porque Escape Artist mejora el regreso a rango de Mutilar y venenos cuando intentan fijarlo, con Eureka! y energía máxima como apoyos condicionados.",
+      "conclusionAlternativa": "Humano puede ser mejor en encuentros entre pícaros o ante cadenas de aturdimiento, donde Will to Survive y Perception recuperan la iniciativa. El bonus por espada depende del arma: no debe inflarse al evaluar una configuración de dagas.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Recuperar contacto para sostener presión sobre el objetivo."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist ayuda a no perder el contacto cuando raíces y frenados interrumpen golpes de arma, Eviscerar y el uso de Correr. Eureka! mejora una tanda corta de acciones y Expansive Mind amplía energía para continuar el intercambio.",
+        "aTenerEnCuenta": "No limpia aturdimientos, y Eureka! no asegura aprovechar los tres golpes si el rival obliga a retroceder. Ingeniería aporta utilidad solo con dispositivos disponibles."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive devuelve acciones después de un aturdimiento para reanudar Eviscerar o defenderse con Evasión. Sword Specialization suma crítico con espada, especialmente relevante en Combate si se elige esa arma, y Perception advierte sigilo.",
+        "aTenerEnCuenta": "Sin salida de raíces o ralentizaciones como Escape Artist, Combate puede perder contacto pese a romper un aturdimiento. El crítico depende del arma y Perception es situacional."
+      },
+      "conclusionPrincipal": "En Pícaro Combate de Alianza, Gnomo mantiene prioridad al responder de forma directa a inmovilizaciones que interrumpen el flujo de energía y ataques, y combina esa movilidad con Eureka! para ventanas cortas.",
+      "conclusionAlternativa": "Humano gana terreno si la configuración usa espadas y los aturdimientos son el control dominante: Sword Specialization, Perception y Will to Survive encajan en un combate frontal. No garantizan cerrar distancias si el rival sigue frenándolo.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Seguir al frente sin quedar inmovilizado."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Gnomo",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Shadowmeld permite preparar una posición oculta e inmóvil antes de usar Sigilo y control de Sutileza; Elune's Light proporciona un intervalo crítico y Quickness mejora la evasión y velocidad de desplazamiento.",
+        "aTenerEnCuenta": "Shadowmeld no sustituye Sigilo móvil y se cancela al desplazarse. El bonus de crítico dura poco; Wisp Spirit solo mejora el movimiento estando muerto, no la capacidad de escapar con vida."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Escape Artist libera raíces y ralentizaciones para reposicionarse tras una apertura o regresar a Sigilo cuando sea posible. Eureka! mejora tres acciones y Expansive Mind da energía extra en una secuencia de control.",
+        "aTenerEnCuenta": "Escape Artist no elimina aturdimientos y no genera ocultación por sí misma. La bonificación de Ingeniería depende del objeto; Eureka! puede desperdiciarse si la apertura se interrumpe."
+      },
+      "conclusionPrincipal": "En Sutileza de Alianza, Elfo de la noche conserva prioridad al sumar preparación inmóvil con Shadowmeld, herramientas de Sigilo y una ventana crítica de Elune's Light. Es una apuesta por elegir dónde y cuándo empezar, no por escapar de cualquier foco.",
+      "conclusionAlternativa": "Gnomo es alternativa si predominan raíces y ralentizaciones tras la entrada: Escape Artist permite recuperar movilidad y energía para otra apertura. No aporta la misma opción de espera oculta previa al enfrentamiento.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        }
+      },
+      "contextoAprobado": "Preparar la entrada antes de revelar la posición."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para no perder la ventana de Mutilar, venenos y remates. Touch of the Grave añade drenaje ocasional y Cannibalize permite recuperar salud si hay cadáver y espacio seguro.",
+        "aTenerEnCuenta": "No rompe aturdimientos ni raíces y no concede inmunidad permanente al miedo. Cannibalize no proporciona maná útil al pícaro, y Underwater Breathing aporta utilidad ambiental, no daño JcJ."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos que impedirían Mutilar y Shatter Curse protege de maldiciones y terrores mientras reduce daño mágico. Blood Fury refuerza temporalmente ataques y Axe Specialization puede añadir crítico si se utiliza un hacha de una mano, disponible para pícaros en Forever.",
+        "aTenerEnCuenta": "Hardiness no elimina el control y Blood Fury exige mantener alcance. La pasiva de hacha no ayuda a una configuración que usa otras armas y no puede atribuirse como daño universal."
+      },
+      "conclusionPrincipal": "En Asesinato de Horda, No-muerto mantiene prioridad ante miedo y sueño que impiden aplicar venenos o encadenar Mutilar, con drenaje condicional como apoyo. Esa respuesta es diferente de acortar los aturdimientos.",
+      "conclusionAlternativa": "Orco puede superar esa utilidad contra equipos centrados en aturdimiento y daño mágico, sobre todo si usa hacha compatible con Axe Specialization. Hardiness, Shatter Curse y Blood Fury elevan la resistencia y presión, pero no eliminan miedo como el No-muerto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Retomar la persecución tras miedo, sueño o encanto."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce aturdimientos que interrumpen Eviscerar y la cadena de ataques; Blood Fury aporta potencia temporal y Axe Specialization puede conceder crítico llevando hacha de una mano, ahora utilizable por pícaros en Forever. Shatter Curse cubre amenazas mágicas específicas.",
+        "aTenerEnCuenta": "No quita por completo los aturdimientos y Blood Fury no ayuda si el objetivo queda fuera de alcance. Sin hacha equipada, la pasiva de arma no tiene efecto sobre la secuencia de Combate."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken permite reanudar ataques tras miedo, sueño o embelesamiento. Touch of the Grave suma drenaje ocasional y Cannibalize puede curar fuera de un foco con cadáver disponible.",
+        "aTenerEnCuenta": "No resuelve aturdimientos ni raíces; Cannibalize necesita cadáver y no da al pícaro un recurso ofensivo de maná. Respiración subacuática apenas influye en peleas normales."
+      },
+      "conclusionPrincipal": "En Pícaro Combate de Horda, Orco conserva prioridad cuando debe mantener Eviscerar y la presión de arma bajo cadenas de aturdimiento. Hardiness, Blood Fury y la pasiva de hachas, si procede, ofrecen continuidad y oportunidad ofensiva.",
+      "conclusionAlternativa": "No-muerto puede ser mejor frente a enemigos que controlan mediante miedo o embelesamiento y permitiría regresar al golpeo con Will of the Forsaken. Carece, sin embargo, de reducción pasiva de aturdimientos.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        }
+      },
+      "contextoAprobado": "Acortar los aturdimientos durante el contacto sostenido."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will of the Forsaken rompe miedo, sueño o embelesamiento que bloquearían una retirada tras Sigilo, Zapar y la apertura de Sutileza. Touch of the Grave puede aportar drenaje durante el intercambio, y Cannibalize curar entre combates si existe cadáver.",
+        "aTenerEnCuenta": "No limpia aturdimientos ni raíces; Cannibalize necesita un cadáver y tiempo fuera del foco. Underwater Breathing no aporta a la apertura ni a la retirada habituales."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos que desbaratan la apertura; Shatter Curse protege de maldiciones y terrores, mientras Blood Fury potencia un intervalo de daño. Axe Specialization solo aporta crítico si lleva hacha de una mano y la configuración lo permite.",
+        "aTenerEnCuenta": "No elimina miedo con la inmediatez de Will of the Forsaken. Blood Fury y la bonificación de arma requieren sincronización y equipo; Hardiness no supone inmunidad ante el control."
+      },
+      "conclusionPrincipal": "En Sutileza de Horda, No-muerto conserva prioridad cuando miedo o embelesamiento interrumpen el sigilo táctico y la retirada, porque Will of the Forsaken permite retomar esas decisiones en una ventana crítica.",
+      "conclusionAlternativa": "Orco interesa más si el enemigo usa aturdimientos repetidos y maldiciones para frenar aperturas; Hardiness y Shatter Curse reducen esa presión y Blood Fury añade daño, pero no reemplazan la limpieza de miedo del No-muerto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Recuperar la iniciativa cuando el control rompe la entrada."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Eureka! reduce el coste y potencia las siguientes tres acciones, útil para preparar Explosión Arcana y Tromba de misiles. Expansive Mind amplía maná y Escape Artist libera raíces para volver a la distancia desde la que lanzar; Ingeniería aporta fiabilidad solo con dispositivos.",
+        "aTenerEnCuenta": "Eureka! necesita secuenciar bien los hechizos y Escape Artist no elimina aturdimientos. El aumento de maná no elimina el coste de mantener acumulaciones de Explosión Arcana ni sustituye Escudo de maná."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe aturdimientos que impedirían usar defensas o lanzar Tromba de misiles. Human Spirit puede mejorar la recuperación de maná y Sword Specialization añadir crítico con una espada equipada; Perception detecta entradas ocultas.",
+        "aTenerEnCuenta": "No libera raíces ni ralentizaciones para ganar distancia. Spirit y espada tienen valor variable según equipamiento y situación; Perception no sustituye el control de Polimorfia."
+      },
+      "conclusionPrincipal": "En Mago Arcano de Alianza, Gnomo mantiene prioridad por el colchón de maná de Expansive Mind y la ventana de Eureka! para Explosión Arcana, complementados por la salida de raíces de Escape Artist. La rentabilidad exige no perder los lanzamientos.",
+      "conclusionAlternativa": "Humano es alternativa ante aturdimientos que bloquean lanzamientos y defensas: Will to Survive devuelve la acción y Human Spirit puede ayudar al recurso. La elección favorece supervivencia frente a control, no mayor daño Arcano por defecto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Recuperar espacio para preparar los lanzamientos."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Eureka! mejora daño y coste de tres facultades, una ventana que Fuego puede orientar a Chamuscar, Descarga de Pirofrío o la secuencia de Calentamiento e Ignición. Escape Artist sirve para volver a distanciarse y Expansive Mind amplía el maná disponible.",
+        "aTenerEnCuenta": "Eureka! puede desperdiciarse si el enemigo interrumpe el lanzamiento; Escape Artist no limpia aturdimientos. Ingeniería no suma daño automáticamente: depende de los dispositivos y de tener una ventana segura para usarlos."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive elimina un aturdimiento para recuperar la capacidad de colocar control y lanzar Piroexplosión o Descarga de Pirofrío. Perception puede avisar de un pícaro antes de la apertura; Sword Specialization añade crítico solo si usa espada.",
+        "aTenerEnCuenta": "No evita raíces ni presión continua y la pasiva de espíritu no reemplaza una ventana de daño de Fuego. El crítico de espada no se debe atribuir a configuraciones que equipan otra arma."
+      },
+      "conclusionPrincipal": "En Fuego de Alianza, Gnomo conserva prioridad cuando el grupo puede preparar una secuencia corta de daño crítico: Eureka!, Expansive Mind y Escape Artist apoyan tanto la ráfaga como la distancia necesaria para lanzar.",
+      "conclusionAlternativa": "Humano puede rendir mejor si el rival impide completar hechizos por aturdimientos. Will to Survive recupera acción y Perception añade anticipación, pero no proporciona el mismo refuerzo temporal de hechizos de Eureka!.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Recolocarse para sostener presión sobre el frente."
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist permite salir de raíces y ralentizaciones para restablecer distancia después de Nova de Escarcha y volver a lanzar Lanza de hielo. Eureka! refuerza tres acciones y Expansive Mind sostiene maná para controlar con Dedos de Escarcha.",
+        "aTenerEnCuenta": "Escape Artist no quita aturdimientos y Eureka! es limitada a tres acciones; Ingeniería solo ayuda si el mago dispone de dispositivos y tiempo para emplearlos."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe un aturdimiento que impediría reaccionar con Nova de Escarcha o Bloque de hielo. Perception puede detectar una apertura en sigilo y la pasiva de espada añadir crítico si la configuración la equipa.",
+        "aTenerEnCuenta": "No deshace raíces propias ni del enemigo sobre el mago; Espirítu humano y especialización en espada dependen de recurso y arma. Perception no garantiza conservar distancia tras detectar al enemigo."
+      },
+      "conclusionPrincipal": "En Escarcha de Alianza, Gnomo mantiene prioridad porque Escape Artist complementa directamente Nova de Escarcha, Lanza de hielo y los recursos de control, recuperando movimiento cuando el adversario responde con inmovilizaciones.",
+      "conclusionAlternativa": "Humano interesa cuando los aturdimientos imposibilitan desplegar el control, gracias a Will to Survive. Es una respuesta defensiva útil, pero no reproduce la inmunidad breve a raíces necesaria para seguir kiteando con Escarcha.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        }
+      },
+      "contextoAprobado": "Recuperar distancia para aprovechar el control propio."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking acelera los lanzamientos durante una ventana de Explosión Arcana y Tromba de misiles, mientras Rapid Regeneration ayuda a recuperar salud en pausas. Regeneration aporta recuperación parcial durante el combate.",
+        "aTenerEnCuenta": "Berserking no rompe aturdimientos ni evita interrupciones; la recuperación activa necesita espacio seguro y Beast Slaying solo afecta a bestias, no a jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para volver a lanzar o usar Polimorfia. Cannibalize puede recuperar salud y maná en presencia de un cadáver, mientras Touch of the Grave aporta drenaje ocasional al daño.",
+        "aTenerEnCuenta": "Canibalize requiere cadáver y tiempo de canalización; Voluntad de los Renegados no elimina raíces ni aturdimientos. Underwater Breathing es una ventaja ambiental, no apoyo al maná en un combate ordinario."
+      },
+      "conclusionPrincipal": "En Mago Arcano de Horda, Troll mantiene prioridad si el equipo puede proteger una ventana de lanzamiento: Berserking permite explotar el daño de Explosión Arcana y Tromba de misiles con más rapidez mientras conserva opciones de recuperación.",
+      "conclusionAlternativa": "No-muerto resulta preferible ante miedo o sueño que impiden intervenir, pues Will of the Forsaken recupera la acción y Canibalize ayuda entre enfrentamientos cuando es viable. No acelera la rotación como Berserking.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        }
+      },
+      "contextoAprobado": "Concentrar lanzamientos durante una oportunidad protegida."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking aumenta la rapidez de lanzamiento durante la secuencia de Ignición, Calentamiento y Piroexplosión. Rapid Regeneration ofrece una recuperación temporal para un lanzador frágil y la pasiva Regeneration conserva una pequeña parte de esa recuperación en combate.",
+        "aTenerEnCuenta": "Berserking no evita interrupciones, miedo o aturdimientos y las ventanas pueden perderse bajo foco. Beast Slaying no aumenta daño a jugadores; la recuperación no reemplaza Bloque de hielo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Blood Fury suma poder con hechizos durante una ráfaga de Fuego y Shatter Curse reduce daño mágico y protege frente a maldiciones y terrores. Hardiness acorta los aturdimientos que impedirían lanzar.",
+        "aTenerEnCuenta": "Blood Fury no acelera el lanzamiento como Berserking y Hardiness no elimina aturdimientos. Axe Specialization solo cuenta con un arma equipable compatible, algo que no debe presuponerse para un mago orco."
+      },
+      "conclusionPrincipal": "En Mago Fuego de Horda, Troll conserva prioridad cuando el equipo protege un intervalo ofensivo para completar hechizos y aprovechar críticos de Ignición. Berserking y recuperación activa responden a esa situación sin garantizar daño si se pierde la línea.",
+      "conclusionAlternativa": "Orco puede rendir mejor ante aturdimientos y agresión mágica, porque Hardiness y Shatter Curse le ayudan a sobrevivir mientras Blood Fury suma potencia. Su racial ofensiva no mejora por sí sola la velocidad de lanzamiento.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        }
+      },
+      "contextoAprobado": "Coordinar la presión con el avance del grupo."
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will of the Forsaken rompe miedo, sueño y embelesamiento para recuperar posición y desplegar Nova de Escarcha, Lanza de hielo y Dedos de Escarcha. Touch of the Grave añade drenaje ocasional y Cannibalize recupera salud y maná si hay cadáver tras la retirada.",
+        "aTenerEnCuenta": "No elimina raíces ni aturdimientos, y Canibalize no es una recuperación disponible en mitad del foco. Underwater Breathing ofrece utilidad ambiental poco frecuente, no control directo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Berserking agiliza lanzamientos de Escarcha durante una ventana protegida y Rapid Regeneration aporta recuperación. Regeneration beneficia parcialmente el combate y Beast Slaying solo importa frente a bestias elegibles.",
+        "aTenerEnCuenta": "Ni Berserking ni Regeneración rápida eliminan miedo o aturdimientos; la aceleración no garantiza controlar al objetivo si el mago está sin posición. No deben confundirse bonuses contra bestias con daño a jugadores."
+      },
+      "conclusionPrincipal": "En Escarcha de Horda, No-muerto conserva prioridad ante equipos con miedo y sueño que interrumpen el control de Nova de Escarcha y Dedos de Escarcha. Will of the Forsaken añade una salida de esos efectos para no perder toda la secuencia defensiva.",
+      "conclusionAlternativa": "Troll puede interesar para Escarcha ofensiva con lanzamientos rápidos y recuperación entre choques, pero Berserking requiere protección previa; frente a miedo o sueño no reemplaza la limpieza activa del No-muerto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ],
+      "racialesConsideradas": {
+        "principal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "alternativa": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        }
+      },
+      "contextoAprobado": "Reconstruir distancia después de perder el control propio."
+    }
+  ]
+}
