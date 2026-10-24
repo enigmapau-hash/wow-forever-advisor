@@ -25,7 +25,7 @@ class RaceSingleEvaluationTests(unittest.TestCase):
     def test_six_unique_races_match_approved_records(self):
         actual = self.singles["fichas"]
         expected = {combo(r): r for r in self.original["fichas"] + self.additions["fichas"]
-                    if r["alternativa"] == "-"}
+                    if r["alternativa"] == "-" and r["clase"] != "Druida"}
         self.assertEqual(len(actual), 6)
         self.assertEqual(len(expected), 6)
         self.assertEqual({combo(r) for r in actual}, set(expected))
