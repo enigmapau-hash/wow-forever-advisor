@@ -55,7 +55,9 @@ class EditorialV33Tests(unittest.TestCase):
         self.assertIn('"En esta especialización"', self.app)
         self.assertNotIn('id="alternative-details"', self.html)
         self.assertIn('id="primary-profile-link"', self.html)
-        self.assertIn('record.usoAlternativa : alternative?.usoPrincipal', self.app)
+        self.assertIn('druidAlternativePresentation(record)?.use', self.app)
+        self.assertIn('alternative?.usoPrincipal || ""', self.app)
+        self.assertIn('alternativeRacialExplanation(record)', self.app)
         self.assertNotIn('alternative?.comentarios || ""', self.app)
 
     def test_label_prose_separate_and_racial_links_accessible(self):
