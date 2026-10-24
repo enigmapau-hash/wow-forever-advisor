@@ -113,6 +113,35 @@
     Troll: "Hex of Weakness y Shadowguard: la reducción adicional de sanación no se acredita como garantizada si la banda ya aplica otra; sin cobertura aliada Hex gana valor.",
     "No-muerto": "Touch of Weakness y Dark Sacrifice: transforma salud en maná con un coste real, junto a la respuesta de Will of the Forsaken."
   });
+  const featuredUse = Object.freeze({
+    Gnomo: "Escape Artist permite recuperar movilidad; su utilidad marginal disminuye si otra liberación de clase está disponible.",
+    Humano: "Will to Survive libera un aturdimiento para volver a actuar; no elimina las demás formas de control.",
+    Enano: "Stoneform refuerza la defensa física durante una ventana limitada, sin resolver miedo ni desplazamientos.",
+    Elfo: "Elune’s Light facilita una ventana ofensiva de críticos; Shadowmeld prepara una posición inmóvil.",
+    Orco: "Hardiness acorta los aturdimientos y Blood Fury ofrece una ventana ofensiva sin garantizar daño efectivo.",
+    Tauren: "War Stomp interrumpe a enemigos próximos; Plainsrunning depende de carrera sostenida o reentrada montada.",
+    Troll: "Berserking acelera la actuación durante una ventana ofensiva o de curación, siempre que no se interrumpa.",
+    "No-muerto": "Will of the Forsaken devuelve capacidad de acción ante miedo, sueño o encanto, no ante aturdimientos.",
+    Cielonato: "Walk on Air permite cambiar de trayectoria con un planeo breve si el terreno lo permite."
+  });
+  function abilityDescription(record,race){
+    if (race === "Cielonato") {
+      if(record.especializacion === "Feral")
+        return "Walk on Air habilita rutas de entrada o repliegue aprovechando desniveles; no da ventaja automática en terreno llano.";
+      return record.faccion === "Alianza"
+        ? "Read Ley Line ayuda a recuperar salud y maná durante sus condiciones de uso; su rendimiento bajo presión no está garantizado."
+        : "Skysight aporta una ventana de velocidad de carrera para reposicionarse; su ventaja es situacional.";
+    }
+    if (record.clase === "Sacerdote" && race === "Troll")
+      return "Hex of Weakness aporta reducción de sanación y poder de ataque, pero su beneficio adicional depende de los efectos aliados ya presentes.";
+    if(record.clase === "Mago" && race === "Gnomo")
+      return "Escape Artist aún sirve ante ralentizaciones y como recurso de reserva; se solapa parcialmente con Traslación mientras está disponible.";
+    if(record.clase === "Pícaro" && race === "Gnomo")
+      return "Escape Artist conserva valor cuando conviene reservar Esfumarse para reiniciar el sigilo; Combate dispone además de Carrera mejorada.";
+    if(record.clase === "Sacerdote" && record.especializacion === "Sombras" && race === "Enano")
+      return "Desperate Prayer exige abandonar Shadowform para curarse; Stoneform sigue ofreciendo protección física.";
+    return featuredUse[race] || "";
+  }
   function ability(record, race) {
     if (race === "Cielonato") {
       if (record.especializacion === "Feral") return "Walk on Air";
@@ -146,11 +175,12 @@
     const caution = record.faccion === "Horda" && record.clase === "Sacerdote"
       ? " La recomendación presupone cobertura aliada de reducción de sanación durante frente y objetivos, sin afirmar una regla de acumulación."
       : "";
-    const close = record.razaRecomendada === "Troll" && record.clase === "Sacerdote" && record.especializacion === "Sagrado"
-      ? " El orden es prácticamente un empate técnico editorial."
-      : (record.faccion === "Alianza" && record.clase === "Pícaro" && record.especializacion === "Sutileza")
-        ? " La disponibilidad de Esfumarse y Preparación puede alterar esa prioridad."
-        : "";
+    const close = record.empateTecnicoEditorial
+      ? " La distancia con la segunda opción es estrecha: se trata de una orientación, no de una ventaja demostrada."
+      : "";
+    const third = record.segundaTerceraMuyProximas
+      ? " La tercera raza también queda próxima a la alternativa y puede ser adecuada con otras condiciones."
+      : "";
     return {
       principal: main,
       alternativaAnalisis: alt,
@@ -161,7 +191,7 @@
       conclusionAlternativa: alt
         ? raceLabel(record.alternativa) + " es la segunda opción en el escenario base y puede resultar preferible "
           + kits[record.alternativa].condition + ". La comparación depende de las condiciones del encuentro, "
-          + "la composición del grupo y las mecánicas aún no verificadas del cliente de lanzamiento."
+          + "la composición del grupo y las mecánicas aún no verificadas del cliente de lanzamiento." + third
         : "",
       fuentes: ["https://worldofwarcraft.blizzard.com/es-es/news/24304075",
         record.clase === "Sacerdote" || record.clase === "Guerrero"
@@ -213,6 +243,13 @@
       if (!original || rank.has(key) || !Array.isArray(item.fullOrder) || item.fullOrder.length === 0
           || new Set(item.fullOrder).size !== item.fullOrder.length || item.fullOrder[0] !== item.razaRecomendada
           || (item.fullOrder[1] || "-") !== item.alternativa
+          || !item.puntuacionesEditoriales || Object.keys(item.puntuacionesEditoriales).length !== item.fullOrder.length
+          || !item.fullOrder.every((race, i) => Number.isFinite(item.puntuacionesEditoriales[race])
+            && (i === 0 || item.puntuacionesEditoriales[item.fullOrder[i-1]] >= item.puntuacionesEditoriales[race]))
+          || item.empateTecnicoEditorial !== (item.fullOrder.length > 1
+            && item.puntuacionesEditoriales[item.fullOrder[0]] - item.puntuacionesEditoriales[item.fullOrder[1]] < 2)
+          || item.segundaTerceraMuyProximas !== (item.fullOrder.length > 2
+            && item.puntuacionesEditoriales[item.fullOrder[1]] - item.puntuacionesEditoriales[item.fullOrder[2]] < 2)
           || !allowed[item.faccion]?.[item.clase]
           || item.fullOrder.length !== allowed[item.faccion][item.clase].length
           || !item.fullOrder.every(race => allowed[item.faccion][item.clase].includes(race)))
@@ -233,6 +270,8 @@
     return records.map(row => {
       const r=rank.get(JSON.stringify([row.faccion,row.clase,row.especializacion]));
       const updated={...row,razaRecomendada:r.razaRecomendada,alternativa:r.alternativa,
+        empateTecnicoEditorial:r.empateTecnicoEditorial,
+        segundaTerceraMuyProximas:r.segundaTerceraMuyProximas,
         prioridad:"Orientativa · beta",rankingCompleto:r.fullOrder};
       const main=kits[r.razaRecomendada],secondary=kits[r.alternativa];
       updated.motivoPrincipal="En PvP masivo, "+raceLabel(r.razaRecomendada)+" destaca para "+role[updated.clase+"|"+updated.especializacion]+".";
@@ -242,5 +281,5 @@
       return updated;
     });
   }
-  self.WOW_RACE_V43=Object.freeze({kits,role,apply,context,ability,evidence,raceLabel});
+  self.WOW_RACE_V43=Object.freeze({kits,role,apply,context,ability,abilityDescription,evidence,raceLabel});
 })();
