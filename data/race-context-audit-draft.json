@@ -11,8 +11,7 @@
     "No modificar la clasificación aprobada sin decisión expresa del usuario."
   ],
   "resumen": {
-    "pendiente_analisis_especifico": 30,
-    "analisis_revisado": 17,
+    "analisis_revisado": 47,
     "sin_alternativa": 6,
     "bloqueada_elegibilidad": 1
   },
@@ -23,7 +22,7 @@
       "especializacion": "Armas",
       "razaRecomendada": "Gnomo",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Mantener contacto durante el avance aliado.",
@@ -58,7 +57,7 @@
       "especializacion": "Furia",
       "razaRecomendada": "Gnomo",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Encadenar contacto sin quedar rezagado.",
@@ -93,7 +92,7 @@
       "especializacion": "Protección",
       "razaRecomendada": "Enano",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Sostener posiciones frente al foco físico.",
@@ -128,7 +127,7 @@
       "especializacion": "Sagrado",
       "razaRecomendada": "Humano",
       "alternativa": "Enano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recuperar la curación tras un aturdimiento.",
@@ -163,7 +162,7 @@
       "especializacion": "Protección",
       "razaRecomendada": "Enano",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Resistir mientras se protege el avance.",
@@ -198,7 +197,7 @@
       "especializacion": "Reprensión",
       "razaRecomendada": "Humano",
       "alternativa": "Enano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Volver a presionar o auxiliar tras el control.",
@@ -233,7 +232,7 @@
       "especializacion": "Bestias",
       "razaRecomendada": "Enano",
       "alternativa": "Elfo",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Resistir el foco físico mientras se coordina la mascota.",
@@ -268,7 +267,7 @@
       "especializacion": "Puntería",
       "razaRecomendada": "Enano",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Sostener una línea de disparo bajo presión.",
@@ -303,7 +302,7 @@
       "especializacion": "Supervivencia",
       "razaRecomendada": "Enano",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Resistir el contacto al controlar los accesos.",
@@ -338,7 +337,7 @@
       "especializacion": "Asesinato",
       "razaRecomendada": "Gnomo",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recuperar contacto para sostener presión sobre el objetivo.",
@@ -373,7 +372,7 @@
       "especializacion": "Combate",
       "razaRecomendada": "Gnomo",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Seguir al frente sin quedar inmovilizado.",
@@ -408,7 +407,7 @@
       "especializacion": "Sutileza",
       "razaRecomendada": "Elfo",
       "alternativa": "Gnomo",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Preparar la entrada antes de revelar la posición.",
@@ -572,7 +571,7 @@
       "especializacion": "Arcano",
       "razaRecomendada": "Gnomo",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recuperar espacio para preparar los lanzamientos.",
@@ -607,7 +606,7 @@
       "especializacion": "Fuego",
       "razaRecomendada": "Gnomo",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recolocarse para sostener presión sobre el frente.",
@@ -642,7 +641,7 @@
       "especializacion": "Escarcha",
       "razaRecomendada": "Gnomo",
       "alternativa": "Humano",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recuperar distancia para aprovechar el control propio.",
@@ -914,7 +913,7 @@
       "especializacion": "Armas",
       "razaRecomendada": "Orco",
       "alternativa": "Tauren",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Acortar el control que interrumpe la presión cercana.",
@@ -949,7 +948,7 @@
       "especializacion": "Furia",
       "razaRecomendada": "Orco",
       "alternativa": "Tauren",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Reducir las pausas durante el avance ofensivo.",
@@ -984,7 +983,7 @@
       "especializacion": "Protección",
       "razaRecomendada": "Tauren",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Crear espacio para sostener la primera línea.",
@@ -1019,7 +1018,7 @@
       "especializacion": "Bestias",
       "razaRecomendada": "Orco",
       "alternativa": "Troll",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recuperar antes la coordinación con la mascota.",
@@ -1054,7 +1053,7 @@
       "especializacion": "Puntería",
       "razaRecomendada": "Troll",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Concentrar disparos mientras existe cobertura aliada.",
@@ -1089,7 +1088,7 @@
       "especializacion": "Supervivencia",
       "razaRecomendada": "Orco",
       "alternativa": "Tauren",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Retomar el control de los accesos tras aturdimientos.",
@@ -1124,7 +1123,7 @@
       "especializacion": "Asesinato",
       "razaRecomendada": "No-muerto",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Retomar la persecución tras miedo, sueño o encanto.",
@@ -1159,7 +1158,7 @@
       "especializacion": "Combate",
       "razaRecomendada": "Orco",
       "alternativa": "No-muerto",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Acortar los aturdimientos durante el contacto sostenido.",
@@ -1194,7 +1193,7 @@
       "especializacion": "Sutileza",
       "razaRecomendada": "No-muerto",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recuperar la iniciativa cuando el control rompe la entrada.",
@@ -1355,7 +1354,7 @@
       "especializacion": "Arcano",
       "razaRecomendada": "Troll",
       "alternativa": "No-muerto",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Concentrar lanzamientos durante una oportunidad protegida.",
@@ -1390,7 +1389,7 @@
       "especializacion": "Fuego",
       "razaRecomendada": "Troll",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Coordinar la presión con el avance del grupo.",
@@ -1425,7 +1424,7 @@
       "especializacion": "Escarcha",
       "razaRecomendada": "No-muerto",
       "alternativa": "Troll",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Reconstruir distancia después de perder el control propio.",
@@ -1565,7 +1564,7 @@
       "especializacion": "Elemental",
       "razaRecomendada": "Troll",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Sincronizar lanzamientos con el control y apoyo aliados.",
@@ -1600,7 +1599,7 @@
       "especializacion": "Mejora",
       "razaRecomendada": "Orco",
       "alternativa": "Tauren",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Retomar la presión cercana y el apoyo tras aturdimientos.",
@@ -1635,7 +1634,7 @@
       "especializacion": "Restauración",
       "razaRecomendada": "Tauren",
       "alternativa": "Troll",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Despejar el contacto para retomar curaciones y tótems.",
