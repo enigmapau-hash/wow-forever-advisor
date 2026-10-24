@@ -22,13 +22,13 @@ No cuentan como ventajas universales en PvP las herramientas de exploración (Bu
 
 - **54 fichas** protegidas en `data/race-context-audit-draft.json`.
 - **6 sin alternativa** (Chamán Alianza y Paladín Horda): no inventar enfrentamientos.
-- **5 comparativas de Sacerdote** redactadas y contrastadas con el resumen oficial de clase: `data/race-priest-context-draft.json`.
+- **6 comparativas de Sacerdote** redactadas y contrastadas con el resumen oficial de clase: `data/race-priest-context-draft.json`. Incluyen las dos habilidades exclusivas de cada raza.
 - **6 comparativas de Brujo** redactadas: Aflicción, Demonología y Destrucción en Alianza/Horda, con los cuatro rasgos raciales y las nuevas habilidades de clase en Forever (`data/race-warlock-context-draft.json`).
-- **1 inconsistencia**: Horda · Sacerdote · Sagrado → Troll principal / Tauren alternativa. La tabla oficial no permite Sacerdote Tauren. No se modifica ningún JSON ni ranking aprobado; bloquear la comparativa hasta obtener autorización para corregir la alternativa.
-- **36 comparativas adicionales** (Druida, Guerrero, Paladín, Chamán, Cazador, Pícaro y Mago), con análisis individual de las facultades y los cambios de cada especialización. Se suman a Sacerdote y Brujo para un total de **47 enfrentamientos jugables**.
-- **Capa consolidada**: `data/race-contextual-comparisons-v40-draft.json`, con 47 comparativas y una bloqueada. Contiene las fuentes y el inventario 2+2 que sustenta cada evaluación, y mantiene separados los JSON aprobados.
-- **Interfaz de la rama de prueba**: Race Advisor utiliza la capa de datos cuando es válida, mostrando «A favor» y «A tener en cuenta» por combinación completa y dos párrafos de conclusión. Si un recurso falla, conserva el fallback anterior; el caso Sacerdote Sagrado de Horda nunca presenta Tauren como alternativa jugable.
-- **Publicación pendiente**: la rama no debe fusionarse hasta que las pruebas y la revisión editorial confirmen los 47 análisis y el usuario decida cómo corregir la alternativa incompatible. La versión pública v39 permanece intacta.
+- **1 corrección expresamente aprobada**: Horda · Sacerdote · Sagrado → Troll principal / **No-muerto alternativa**. El archivo original mantiene Tauren para trazabilidad histórica; `data/race-advisor-priest-horde-alternative.json` aplica la alternativa jugable y actualiza su explicación visible. La tabla oficial no permite Sacerdote Tauren.
+- **36 comparativas adicionales** (Druida, Guerrero, Paladín, Chamán, Cazador, Pícaro y Mago), con análisis individual de las facultades y los cambios de cada especialización. Se suman a Sacerdote y Brujo para un total de **48 enfrentamientos jugables**.
+- **Capa consolidada**: `data/race-contextual-comparisons-v40-draft.json`, con las 48 comparativas válidas. Contiene las fuentes y el inventario 2+2 que sustenta cada evaluación, y mantiene separados los JSON aprobados.
+- **Interfaz de la rama de prueba**: Race Advisor utiliza la capa de datos cuando es válida, mostrando «A favor» y «A tener en cuenta» por combinación completa y dos párrafos de conclusión. Si falla una fuente adicional, conserva un fallback conservador: nunca presenta Tauren Sacerdote como alternativa jugable; con la corrección aprobada muestra No-muerto.
+- **Publicación pendiente**: la rama no debe fusionarse hasta que las pruebas y la revisión editorial confirmen los 48 análisis y se autorice expresamente la publicación. La versión pública v39 permanece intacta.
 
 ## Criterio de revisión editorial por ficha
 
