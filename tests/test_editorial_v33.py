@@ -49,10 +49,10 @@ class EditorialV33Tests(unittest.TestCase):
         self.assertIn('document.getElementById("result-race").focus({ preventScroll: true })', self.app)
 
     def test_alternatives_identify_scope_and_source(self):
-        self.assertIn('id="alternative-scope"', self.html)
+        self.assertNotIn('id="alternative-scope"', self.html)
         self.assertIn('id="alternative-race-link"', self.html)
         self.assertNotIn('"Ventaja racial general"', self.app)
-        self.assertIn('"En esta especialización"', self.app)
+        self.assertNotIn('"En esta especialización"', self.app)
         self.assertNotIn('id="alternative-details"', self.html)
         self.assertIn('id="primary-profile-link"', self.html)
         self.assertIn('druidAlternativePresentation(record)?.use', self.app)
@@ -80,7 +80,7 @@ class EditorialV33Tests(unittest.TestCase):
         addons = (ROOT / "addon-advisor.js").read_text(encoding="utf-8")
         self.assertIn('element("p", "Revisado: " + a.fechaRevision, "field-note")', addons)
         version = (ROOT / "version.js").read_text(encoding="utf-8")
-        self.assertIn('self.WOW_PWA_VERSION = "v40"', version)
+        self.assertIn('self.WOW_PWA_VERSION = "v41"', version)
         sw = (ROOT / "sw.js").read_text(encoding="utf-8")
         self.assertIn('importScripts("./version.js")', sw)
         self.assertIn('${CACHE_PREFIX}${self.WOW_PWA_VERSION}', sw)

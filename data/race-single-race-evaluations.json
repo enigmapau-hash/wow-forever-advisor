@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "estado": "aprobado_alcance_usuario",
+  "fechaRevision": "2026-10-24",
+  "tipo": "evaluacion_individual_raza_clase_especializacion",
+  "criterio": "6 combinaciones de raza única, con A favor, A tener en cuenta y una conclusión contextual; ponderar cuatro raciales y habilidades de especialización; sin fingir una alternativa o superioridad comparativa.",
+  "fuentes": {
+    "Chamán": [
+      "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+      "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+    ],
+    "Paladín": [
+      "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+      "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+    ]
+  },
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "razaRecomendada": "Enano",
+      "aFavor": "Stoneform elimina sangrados, venenos y enfermedades y reduce el daño físico durante una ventana de presión, ayudando a completar Ráfaga de lava o Cadena de relámpagos sin ceder tan pronto la posición. Conservar tótems de apoyo y margen para lanzar pesa más que las pasivas de arma; Caza mayor solo resulta útil contra bestias, incluidas algunas mascotas.",
+      "aTenerEnCuenta": "Stoneform no elimina aturdimientos, silencios ni raíces, y su mitigación temporal no asegura completar hechizos interrumpidos. La especialización en mazas depende del arma equipada; Buscar tesoros no proporciona ventaja de combate.",
+      "conclusion": "Para Chamán Elemental de Alianza, Enano es la única raza disponible. Su ventaja real no es superar a una segunda raza, sino aportar con Stoneform una respuesta defensiva concreta cuando el lanzador recibe presión física o perjuicios, mientras usa los tótems y reserva una ventana para sus hechizos elementales. La disponibilidad de otras herramientas del chamán, el tipo de control rival y los tiempos de reutilización siguen determinando el rendimiento.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "razaRecomendada": "Enano",
+      "aFavor": "Stoneform permite limpiarse sangrados, venenos y enfermedades y soportar mejor daño físico al entrar en cuerpo a cuerpo para conectar Golpe de tormenta y acumular Arma vorágine. Si lleva maza, Mace Specialization puede aportar crítico; Big Game Hunter solo afecta a bestias elegibles y no es una mejora general contra jugadores.",
+      "aTenerEnCuenta": "Stoneform no suprime aturdimientos ni inmovilizaciones que impiden alcanzar al objetivo. El beneficio de maza depende del equipo y la ventana defensiva debe coordinarse con tótems, Lobo fantasmal y los recursos de Mejora; Buscar tesoros no ayuda a la presión JcJ.",
+      "conclusion": "En Chamán Mejora de Alianza, Enano es la única opción jugable. Stoneform aporta resistencia útil en los intercambios cercanos donde Mejora debe mantener Golpe de tormenta y cargas de Arma vorágine; no se debe interpretar como una herramienta de movilidad o inmunidad al control. La aportación de las pasivas varía con el arma y el tipo de enemigo, por lo que la continuidad depende también de los tótems y del desplazamiento.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Enano",
+      "aFavor": "Stoneform reduce daño físico y elimina determinados perjuicios cuando los enemigos centran al sanador, creando margen para lanzar curas y recolocar tótems con Proyección totémica. Ese alivio directo al foco beneficia a Restauración más que los bonificadores de maza o de daño a bestias, que no aumentan las curaciones al grupo.",
+      "aTenerEnCuenta": "Stoneform no rompe aturdimientos ni silencios y no reemplaza una interrupción o cobertura defensiva bien coordinada. Mace Specialization solo se activa con maza, Caza mayor solo afecta a bestias y Buscar tesoros no mejora ni la sanación ni el maná.",
+      "conclusion": "Para Chamán Restauración de Alianza, Enano es la raza disponible y Stoneform ayuda a seguir con vida durante el foco para sostener curas y tótems. Es una ventaja de supervivencia puntual, no un aumento pasivo de sanación ni una salida de todos los controles. La continuidad del apoyo depende de posicionarse, gestionar maná y utilizar bien las herramientas propias de Restauración.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "No-muerto",
+      "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para volver a utilizar Destello de Luz y otras curas cuando la presión enemiga impide atender al grupo. Cannibalize permite recuperar salud y maná después del choque, si existe un cadáver utilizable y un intervalo seguro; Touch of the Grave aporta drenaje ocasional, no una cura fiable para un aliado.",
+      "aTenerEnCuenta": "Will of the Forsaken no elimina aturdimientos, raíces ni silencios. Cannibalize no sustituye una cura en mitad del foco, exige cadáver y canalización; Underwater Breathing es utilidad ambiental, no sanación. Los tiempos de lanzamiento y las herramientas defensivas de Paladín siguen siendo decisivos.",
+      "conclusion": "Para Paladín Sagrado de Horda, No-muerto es la única raza posible. La ventaja de Will of the Forsaken consiste en recuperar acciones de curación tras miedo, sueño o embelesamiento; el resto de sus raciales aporta recuperación condicionada y utilidad secundaria. No debe confundirse con inmunidad al control ni con una superioridad sanadora frente a razas que no pueden jugar esta combinación.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "razaRecomendada": "No-muerto",
+      "aFavor": "Will of the Forsaken rompe miedo, sueño y embelesamiento para regresar al frente, activar herramientas defensivas de Paladín y mantener el apoyo a aliados. Touch of the Grave añade un drenaje ocasional y Cannibalize puede ayudar a recuperar salud y maná entre enfrentamientos cuando el personaje dispone de un cadáver y una pausa segura.",
+      "aTenerEnCuenta": "No rompe aturdimientos ni protege automáticamente del daño físico que sufre Protección al aguantar un foco. Cannibalize requiere canalizar y no sirve como defensa inmediata; Underwater Breathing no ayuda a bloquear. La supervivencia depende ante todo del equipo, el escudo, las defensas y el posicionamiento.",
+      "conclusion": "En Paladín Protección de Horda, No-muerto es la raza disponible y Will of the Forsaken ofrece una respuesta concreta frente al miedo y efectos afines que desplazan al protector de su papel. Esta capacidad complementa el bloqueo y las defensas de clase, pero no sustituye mitigación física ni resuelve aturdimientos o interrupciones del frente.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "razaRecomendada": "No-muerto",
+      "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para retomar contacto y utilizar sellos, Sentencias y Golpe Sagrado durante una ventana de presión. Touch of the Grave puede complementar el daño con drenaje ocasional; Cannibalize facilita recuperarse entre choques si hay cadáver y no existe un foco inmediato.",
+      "aTenerEnCuenta": "Will of the Forsaken no quita raíces ni aturdimientos que impiden alcanzar al enemigo o rematar una entrada. Touch of the Grave no garantiza una ráfaga y Cannibalize no funciona como un botón de combate cuerpo a cuerpo; Underwater Breathing no modifica la presión ordinaria en PvP.",
+      "conclusion": "En Paladín Reprensión de Horda, No-muerto es la única raza disponible. Su racial destacada permite recuperar iniciativa frente a miedo, sueño o embelesamiento mientras combina ataques, sellos y Sentencias, pero no elimina la necesidad de alcanzar al enemigo o gestionar otros controles. El drenaje ocasional y la recuperación poscombate son complementos, no el motivo principal para valorar esta especialización.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}

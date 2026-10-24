@@ -64,6 +64,7 @@ let racialBetaUpdates = new Map();
 let raceAdditionSources = [];
 let skyborneData = null;
 let contextualRaceComparisons = new Map();
+let singleRaceEvaluations = new Map();
 const skyborneResult = document.getElementById("skyborne-result");
 const skyborneFaction = document.getElementById("skyborne-faction");
 let loading = false;
@@ -133,15 +134,21 @@ function clearResult() {
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
   document.getElementById("alternative-explanation").textContent = "";
-  document.getElementById("alternative-scope").textContent = "";
   document.getElementById("alternative-ability-name").textContent = "";
   document.getElementById("alternative-race-link").dataset.race = "";
   document.getElementById("primary-profile-link").dataset.race = "";
   document.getElementById("primary-ability-name").textContent = "";
-  document.getElementById("alternative-scope").hidden = true;
   document.getElementById("primary-key-reason").textContent = "";
   document.getElementById("primary-analysis").textContent = "";
   document.getElementById("race-comparison").hidden = true;
+  document.getElementById("race-single-evaluation").hidden = true;
+  for (const id of ["race-single-name", "race-single-pro", "race-single-con",
+    "race-single-conclusion", "race-single-conclusion-title"]) {
+    document.getElementById(id).textContent = "";
+  }
+  document.getElementById("race-official-sources").open = false;
+  document.getElementById("race-official-sources").hidden = true;
+  document.getElementById("race-beta-content").hidden = true;
   document.getElementById("race-comparison-conclusion-text").textContent = "";
   document.getElementById("race-comparison-conclusion-title").textContent =
     "Conclusión para esta especialización";
@@ -470,6 +477,49 @@ function validateContextualRaceComparisons(data, sourceRecords) {
   return overlay.size === expected.size ? overlay : new Map();
 }
 
+// Las seis combinaciones de raza única reciben evaluación de clase y especialización,
+ // no una comparativa inventada con una alternativa inexistente.
+function validateSingleRaceEvaluations(data, sourceRecords) {
+  if (!data || data.schemaVersion !== 1 || data.tipo !== "evaluacion_individual_raza_clase_especializacion"
+      || !Array.isArray(data.fichas) || data.fichas.length !== 6
+      || sourceRecords.length !== 54) throw new Error("Evaluaciones individuales incompletas.");
+  // Si falla la capa opcional de Cielonato, sus seis Druidas vuelven
+  // provisionalmente a «sin alternativa»; no son seis razas únicas reales.
+  const expected = new Map(sourceRecords.filter((row) => row.alternativa === "-"
+    && ((row.faccion === "Alianza" && row.clase === "Chamán" && row.razaRecomendada === "Enano")
+      || (row.faccion === "Horda" && row.clase === "Paladín" && row.razaRecomendada === "No-muerto")))
+    .map((row) => [contextualRaceKey(row), row]));
+  if (expected.size !== 6) throw new Error("Número de razas únicas incorrecto.");
+  const result = new Map();
+  for (const row of data.fichas) {
+    const key = contextualRaceKey(row), source = expected.get(key);
+    if (!source || result.has(key) || row.razaRecomendada !== source.razaRecomendada
+        || !["aFavor", "aTenerEnCuenta", "conclusion"].every((field) =>
+          typeof row[field] === "string" && row[field].trim().length > 140)
+        || !Array.isArray(row.fuentes) || row.fuentes.length < 2
+        || !row.fuentes.every((url) => url.startsWith("https://worldofwarcraft.blizzard.com/"))) {
+      throw new Error("Evaluación de raza única incompleta o no acreditada.");
+    }
+    result.set(key, row);
+  }
+  if (result.size !== expected.size) throw new Error("Faltan evaluaciones individuales.");
+  return result;
+}
+function renderSingleRaceEvaluation(record) {
+  const block = document.getElementById("race-single-evaluation");
+  const single = record.alternativa === "-" && singleRaceEvaluations.get(contextualRaceKey(record));
+  block.hidden = !single;
+  if (!single) return;
+  document.getElementById("race-single-title").textContent =
+    "Evaluación de " + record.clase + " · " + record.especializacion;
+  document.getElementById("race-single-name").textContent = raceDisplayName(record.razaRecomendada);
+  document.getElementById("race-single-pro").textContent = raceProse(single.aFavor);
+  document.getElementById("race-single-con").textContent = raceProse(single.aTenerEnCuenta);
+  document.getElementById("race-single-conclusion-title").textContent =
+    "Conclusión para " + record.especializacion;
+  document.getElementById("race-single-conclusion").textContent = raceProse(single.conclusion);
+}
+
 function renderRaceComparison(record, mainProfile, alternativeProfile) {
   const comparison = document.getElementById("race-comparison");
   comparison.hidden = record.alternativa === "-";
@@ -527,6 +577,7 @@ function renderRaceBetaUpdates(record) {
   } else {
     document.getElementById("race-beta-alternative-list").replaceChildren();
   }
+  document.getElementById("race-beta-content").hidden = !main && !alternative;
   document.getElementById("race-beta-updates").hidden = !main && !alternative;
 }
 
@@ -682,7 +733,7 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates, skyborne, additions, druidEvaluation, contextComparisons, priestCorrection] = await Promise.all([
+    const [advisor, profiles, updates, skyborne, additions, druidEvaluation, contextComparisons, priestCorrection, singles] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
@@ -691,6 +742,7 @@ async function loadData() {
       readJson("./data/race-advisor-druid-alternatives.json").catch(() => null),
       readJson("./data/race-contextual-comparisons-v40-draft.json").catch(() => null),
       readJson("./data/race-advisor-priest-horde-alternative.json").catch(() => null),
+      readJson("./data/race-single-race-evaluations.json"),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
@@ -714,6 +766,7 @@ async function loadData() {
     }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
     raceAdditionSources = additions.fuentes;
     contextualRaceComparisons = validateContextualRaceComparisons(contextComparisons, records);
+    singleRaceEvaluations = validateSingleRaceEvaluations(singles, records);
     if (skyborneData && druidAlternatives.length !== 6) {
       document.getElementById("skyborne-criterion").textContent =
         "Las alternativas de Druida aún no están disponibles. Se conservan las recomendaciones aprobadas del asesor.";
@@ -729,6 +782,7 @@ async function loadData() {
     updateRacialCoverage(false);
     racialBetaUpdates = new Map();
     contextualRaceComparisons = new Map();
+    singleRaceEvaluations = new Map();
     setOptions(faction, [], "Datos no disponibles");
     setOptions(characterClass, [], "Elige primero una facción");
     setOptions(specialization, [], "Elige primero una clase");
@@ -796,11 +850,6 @@ specialization.addEventListener("change", () => {
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
     const isSpecialized = Boolean(record.motivoComparacion);
-    // Cielonato cuenta con una evaluación específica para Druida.
-    // Las otras alternativas no necesitan un rótulo de alcance general.
-    const scope = document.getElementById("alternative-scope");
-    scope.textContent = isSpecialized ? "En esta especialización" : "";
-    scope.hidden = !isSpecialized;
     // Resumen breve de uso, seguido de una frase que comienza por la facultad.
     // El razonamiento comparativo se conserva en el cuadro independiente.
     document.getElementById("alternative-use").textContent = raceProse(isSpecialized
@@ -835,27 +884,46 @@ specialization.addEventListener("change", () => {
     document.getElementById("alternative-empty").hidden = false;
   }
   renderRaceComparison(record, profile, racialProfiles.get(record.alternativa));
+  renderSingleRaceEvaluation(record);
   renderRaceBetaUpdates(record);
   // Las adiciones editoriales conservan sus fuentes oficiales junto a las notas comunes.
   const traditionalSources = record.alternativa === "Cielonato" ? skyborneData?.fuentes
     : record.faccion === "Horda" && record.clase === "Paladín" ? raceAdditionSources : [];
   const context = contextualRaceComparisons.get(contextualRaceKey(record));
-  const explicitSources = (context?.fuentes || []).map((url) => ({
-    url, nombre: url.includes("24304075") ? "Blizzard · Raciales y combinaciones" : "Blizzard · Cambios de clase",
+  const single = singleRaceEvaluations.get(contextualRaceKey(record));
+  const sourceTitles = {
+    "24304075": "Blizzard · Raciales y combinaciones",
+    "24301514": "Blizzard · Sacerdote y Guerrero",
+    "24301515": "Blizzard · Druida y Cazador",
+    "24310968": "Blizzard · Pícaro y Brujo",
+    "24302097": "Blizzard · Mago y Chamán",
+    "24302099": "Blizzard · Paladín",
+    "24303313": "Blizzard · Diseño de las raciales",
+  };
+  const explicitSources = (context?.fuentes || single?.fuentes || []).map((url) => ({
+    url, nombre: Object.entries(sourceTitles).find(([id]) => url.includes(id))?.[1]
+      || "Blizzard · Información de clase",
   }));
-  const sources = [...(traditionalSources || []), ...explicitSources]
-    .filter((source, index, items) => items.findIndex((item) => item.url === source.url) === index);
-  document.getElementById("race-extra-sources").replaceChildren(...(sources || []).map((source) => {
+  const betaSource = "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6";
+  const includeBeta = !document.getElementById("race-beta-content").hidden;
+  const sources = [
+    ...(traditionalSources || []), ...explicitSources,
+    ...(includeBeta ? [{url: betaSource, nombre: "Blizzard · Notas de beta (15/10/2026)"}] : []),
+  ].filter((source, index, items) => items.findIndex((item) => item.url === source.url) === index);
+  document.getElementById("race-extra-sources").replaceChildren(...sources.map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
     link.href = source.url;
-    link.textContent = source.nombre;
+    link.textContent = Object.entries(sourceTitles).find(([id]) => source.url.includes(id))?.[1]
+      || source.nombre;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     item.append(link);
     return item;
   }));
-  if (sources?.length) document.getElementById("race-beta-updates").hidden = false;
+  const official = document.getElementById("race-official-sources");
+  official.hidden = sources.length === 0;
+  document.getElementById("race-beta-updates").hidden = !includeBeta && !sources.length;
   result.hidden = false;
   AddonAdvisor.context("race-addons", { modulo: "race", clase: record.clase });
   status.textContent = `Ficha disponible: ${record.faccion}, ${record.clase}, ${record.especializacion}.`;

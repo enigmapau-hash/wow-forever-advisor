@@ -153,7 +153,6 @@
               </div>
             </a>
             <div class="alternative-racial-summary">
-              <p id="alternative-scope" class="alternative-scope"></p>
               <p class="race-card-ability"><span>Habilidad racial</span><strong id="alternative-ability-name"></strong></p>
               <p id="alternative-use" class="race-alternative-summary"></p>
               <p id="alternative-explanation" class="race-alternative-explanation"></p>
@@ -182,18 +181,39 @@
               <div id="race-comparison-conclusion-text" class="race-conclusion-paragraphs"></div>
             </div>
           </section>
-          <aside id="race-addons" class="result-card addon-context" hidden></aside>
-          <section id="race-beta-updates" class="race-sources" aria-labelledby="race-sources-title" hidden>
-            <h3 id="race-sources-title">Fuentes y cambios de beta</h3>
-            <p class="field-note">Notas oficiales del 15/10/2026. No sustituyen una comparación de razas al nivel 60.</p>
-            <h4 id="race-beta-recommended-label">Raza recomendada</h4>
-            <ul id="race-beta-recommended-list"></ul>
-            <div id="race-beta-alternative" hidden>
-              <h4 id="race-beta-alternative-label">Alternativa</h4>
-              <ul id="race-beta-alternative-list"></ul>
+          <section id="race-single-evaluation" class="race-comparison" aria-labelledby="race-single-title" hidden>
+            <header class="race-comparison-header">
+              <h3 id="race-single-title">Evaluación de raza única</h3>
+              <p>Esta combinación no tiene otra raza jugable en su facción.</p>
+            </header>
+            <div class="race-comparison-grid race-single-grid">
+              <article class="race-comparison-item">
+                <h4 id="race-single-name"></h4>
+                <p class="race-compare-label">A favor</p><p id="race-single-pro"></p>
+                <p class="race-compare-label">A tener en cuenta</p><p id="race-single-con"></p>
+              </article>
             </div>
-            <p class="field-note"><a href="https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6" target="_blank" rel="noopener noreferrer">Fuente: notas de Blizzard</a></p>
-            <ul id="race-extra-sources" class="talent-sources"></ul>
+            <div class="race-comparison-conclusion">
+              <h4 id="race-single-conclusion-title">Conclusión</h4>
+              <p id="race-single-conclusion"></p>
+            </div>
+          </section>
+          <aside id="race-addons" class="result-card addon-context" hidden></aside>
+          <section id="race-beta-updates" class="race-sources result-card" aria-labelledby="race-sources-title" hidden>
+            <h3 id="race-sources-title">Fuentes y cambios de beta</h3>
+            <div id="race-beta-content" hidden>
+              <p class="field-note">Cambios oficiales de beta (15/10/2026), sujetos a revisión.</p>
+              <h4 id="race-beta-recommended-label">Raza recomendada</h4>
+              <ul id="race-beta-recommended-list"></ul>
+              <div id="race-beta-alternative" hidden>
+                <h4 id="race-beta-alternative-label">Alternativa</h4>
+                <ul id="race-beta-alternative-list"></ul>
+              </div>
+            </div>
+            <details id="race-official-sources" class="detail-disclosure" hidden>
+              <summary>Ver fuentes oficiales</summary>
+              <ul id="race-extra-sources" class="talent-sources"></ul>
+            </details>
           </section>
         </section>
       </section>
