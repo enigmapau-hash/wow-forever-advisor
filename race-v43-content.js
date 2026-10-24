@@ -125,8 +125,11 @@
     const kit = kits[race];
     if (!kit) return null;
     const add = record.clase === "Sacerdote" ? " " + priest[race] : "";
+    const primary = record.clase === "Sacerdote" && race === "Troll"
+      ? "Hex of Weakness aporta reducción condicionada del daño y la sanación enemigos; Shadowguard complementa la respuesta. " + kit.pro
+      : kit.pro;
     return {
-      aFavor: kit.pro + " En " + record.clase + " " + record.especializacion + ", el análisis se centra en " + role[record.clase + "|" + record.especializacion] + "." + add,
+      aFavor: primary + " En " + record.clase + " " + record.especializacion + ", el análisis se centra en " + role[record.clase + "|" + record.especializacion] + "." + add,
       aTenerEnCuenta: kit.caveat + (race === "Tauren"
         ? " El modelo base no supone acumulación de Plainsrunning durante el combate frontal."
         : race === "Cielonato"
@@ -178,6 +181,30 @@
         || data.resumen?.candidaturas !== 168 || !Array.isArray(data.fichas) || data.fichas.length !== 54)
       throw Error("La clasificación racial v2 está ausente o incompleta.");
     const old = new Map(records.map(row => [JSON.stringify([row.faccion,row.clase,row.especializacion]),row]));
+    // Tabla independiente de elegibilidad: ninguna raza puede entrar ni omitirse al calcular top 2.
+    const allowed = {
+      Alianza: {
+        Brujo: ["Gnomo","Humano"],
+        Cazador: ["Humano","Enano","Elfo","Cielonato"],
+        "Chamán": ["Enano"], Druida: ["Elfo","Cielonato"],
+        Guerrero: ["Gnomo","Humano","Enano","Elfo","Cielonato"],
+        Mago: ["Gnomo","Humano","Cielonato"],
+        "Paladín": ["Humano","Enano"],
+        "Pícaro": ["Gnomo","Humano","Enano","Elfo","Cielonato"],
+        Sacerdote: ["Gnomo","Humano","Enano","Elfo"]
+      },
+      Horda: {
+        Brujo: ["Orco","No-muerto","Troll"],
+        Cazador: ["Orco","Tauren","Troll","Cielonato"],
+        "Chamán": ["Orco","Tauren","Troll","Cielonato"],
+        Druida: ["Tauren","Cielonato"],
+        Guerrero: ["Orco","Tauren","Troll","No-muerto","Cielonato"],
+        Mago: ["Orco","Troll","No-muerto"],
+        "Paladín": ["No-muerto"],
+        "Pícaro": ["Orco","Troll","No-muerto","Cielonato"],
+        Sacerdote: ["Troll","No-muerto"]
+      }
+    };
     const rank = new Map();
     let count=0,sky=0,unique=0;
     for(const item of data.fichas) {
@@ -185,8 +212,11 @@
       const original = old.get(key);
       if (!original || rank.has(key) || !Array.isArray(item.fullOrder) || item.fullOrder.length === 0
           || new Set(item.fullOrder).size !== item.fullOrder.length || item.fullOrder[0] !== item.razaRecomendada
-          || (item.fullOrder[1] || "-") !== item.alternativa)
-        throw Error("Orden de razas incoherente para " + key);
+          || (item.fullOrder[1] || "-") !== item.alternativa
+          || !allowed[item.faccion]?.[item.clase]
+          || item.fullOrder.length !== allowed[item.faccion][item.clase].length
+          || !item.fullOrder.every(race => allowed[item.faccion][item.clase].includes(race)))
+        throw Error("Orden de razas o elegibilidad incoherente para " + key);
       for(const race of item.fullOrder) {
         if (race === "Cielonato") {
           if (!skyborne?.variantes?.find(v=>v.faccion === item.faccion && v.clases.includes(item.clase)))
