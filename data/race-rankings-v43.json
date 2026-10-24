@@ -1,0 +1,673 @@
+{
+  "schemaVersion": 2,
+  "estado": "propuesta_editorial_beta_v2_pendiente_revision_PR",
+  "fechaRevision": "2026-10-24",
+  "fuente": "Documento de investigación rankings-v2.json aportado en ZIP por el usuario; los puntos editoriales no se presentan como rendimiento",
+  "escenarios": {
+    "frente": 50,
+    "objetivos": 30,
+    "repliegue": 20
+  },
+  "resumen": {
+    "fichas": 54,
+    "candidaturas": 168,
+    "cielonato": 30,
+    "razasUnicas": 6
+  },
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "fullOrder": [
+        "Gnomo",
+        "Humano"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "fullOrder": [
+        "Gnomo",
+        "Humano"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "fullOrder": [
+        "Gnomo",
+        "Humano"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "fullOrder": [
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "fullOrder": [
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "fullOrder": [
+        "Enano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "-"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "fullOrder": [
+        "Enano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "-"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Enano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "-"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "fullOrder": [
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "fullOrder": [
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Gnomo",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "fullOrder": [
+        "Humano",
+        "Gnomo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "Enano",
+        "Humano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "fullOrder": [
+        "Humano",
+        "Enano"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "Enano",
+        "Humano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Elfo",
+        "Enano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Gnomo",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Elfo",
+        "Enano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "fullOrder": [
+        "Gnomo",
+        "Enano",
+        "Humano",
+        "Elfo"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Enano"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "Enano",
+        "Gnomo",
+        "Humano",
+        "Elfo"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Gnomo"
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Gnomo",
+        "Elfo"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "Troll",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "fullOrder": [
+        "Tauren",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "fullOrder": [
+        "Tauren",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Tauren",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "No-muerto",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "No-muerto"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "fullOrder": [
+        "No-muerto"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "No-muerto"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "fullOrder": [
+        "Orco",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "fullOrder": [
+        "Orco",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Cielonato"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "fullOrder": [
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "Troll",
+        "No-muerto"
+      ],
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto"
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "fullOrder": [
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll"
+    }
+  ]
+}
