@@ -8,9 +8,10 @@ module.exports = async function testRedesign(page, base, offline = false) {
     await page.setViewportSize({ width, height: 1000 });
     const count = await page.evaluate(async (width) => {
       const read = async (name) => (await fetch(`./data/${name}.json`)).json();
-      const [source, additions, druid, profiles] = await Promise.all([
+      const [source, additions, druid, profiles, priestCorrection] = await Promise.all([
         read("race-advisor"), read("race-advisor-additions"),
         read("race-advisor-druid-alternatives"), read("racials"),
+        read("race-advisor-priest-horde-alternative"),
       ]);
       const display = (text) => text === "Elfo" ? "Elfo de la noche" : text
         .replace(/, denominado Elfo en la base/g, "")
@@ -29,9 +30,11 @@ module.exports = async function testRedesign(page, base, offline = false) {
       for (const row of [...source.fichas, ...additions.fichas]) {
         const extra = druid.fichas.find((r) => r.faccion === row.faccion && r.clase === row.clase
           && r.especializacion === row.especializacion);
-        const alt = extra?.alternativa || row.alternativa;
-        const incompatible = row.faccion === "Horda" && row.clase === "Sacerdote"
-          && row.especializacion === "Sagrado";
+        const approvedPriest = row.faccion === priestCorrection.faccion
+          && row.clase === priestCorrection.clase
+          && row.especializacion === priestCorrection.especializacion;
+        const alt = extra?.alternativa || (approvedPriest ? priestCorrection.alternativa : row.alternativa);
+        const incompatible = approvedPriest && alt === "Tauren";
         choose("faction", row.faccion);
         choose("character-class", row.clase);
         choose("specialization", row.especializacion);
@@ -40,11 +43,20 @@ module.exports = async function testRedesign(page, base, offline = false) {
         ensure(main.querySelector('[data-field="razaRecomendada"]').textContent === display(row.razaRecomendada), "Raza principal intacta");
         ensure(main.querySelector('[data-field="motivoPrincipal"]').textContent === display(row.motivoPrincipal), "Motivo asociado a principal");
         const explanation = main.querySelector('[data-field="explicacion"]');
-        ensure(explanation.textContent === display(row.explicacion) && explanation.hidden, "Explicación original conservada");
+        ensure(explanation.textContent === display(approvedPriest ? priestCorrection.explicacion : row.explicacion)
+          && explanation.hidden, "Texto visible procedente de fuente o corrección aprobada");
         ensure(document.getElementById("primary-analysis").getClientRects().length > 0
           && document.getElementById("primary-key-reason").textContent === display(row.motivoPrincipal),
           "Análisis y decisión visibles en secciones distintas");
         ensure(alternative.hidden === (alt === "-" || incompatible), "Sin tarjeta vacía ni raza no jugable");
+        if (approvedPriest) {
+          ensure(alt === "No-muerto" && row.alternativa === "Tauren",
+            "Solo se sustituye la alternativa de Sacerdote Sagrado con autorización");
+          ensure(document.querySelector('[data-field="alternativa"]').textContent === "No-muerto",
+            "Se muestra la alternativa No-muerto en su tarjeta");
+          ensure(document.getElementById("compare-alternative-pro").textContent.includes("Dark Sacrifice"),
+            "La comparativa de Sacerdote incluye una habilidad exclusiva No-muerto");
+        }
         const noAlternative = document.getElementById("alternative-empty");
         ensure(noAlternative.hidden === (alt !== "-" && !incompatible), "Nota de alternativa ausente o incompatible");
         ensure(Boolean(main.querySelector('[data-field="motivoPrincipal"]').hidden), "Motivo fuente conservado sin duplicarse visualmente");
