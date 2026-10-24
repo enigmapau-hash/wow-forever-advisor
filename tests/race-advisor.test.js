@@ -117,21 +117,23 @@ runButton.addEventListener("click", async () => {
           : (Object.hasOwn(record, name) ? record[name] : profile[name]);
         check(field.textContent === display(expected), `${key}: texto literal de ${name}`);
       }
-      check(doc.getElementById("alternative-profile").hidden === (record.alternativa === "-"),
+      const incompatible = record.faccion === "Horda" && record.clase === "Sacerdote"
+        && record.especializacion === "Sagrado";
+      check(doc.getElementById("alternative-profile").hidden === (record.alternativa === "-" || incompatible),
         `${key}: la ficha de alternativa solo se muestra cuando existe`);
       check(doc.querySelector('[data-field="motivoPrincipal"]').hidden
         && doc.getElementById("primary-analysis").getClientRects().length > 0
         && !doc.getElementById("primary-key-reason").hidden,
         `${key}: el motivo original se conserva sin duplicar la explicación visible`);
-      check(doc.getElementById("alternative-empty").hidden === (record.alternativa !== "-"),
+      check(doc.getElementById("alternative-empty").hidden === (record.alternativa !== "-" && !incompatible),
         `${key}: la ausencia de alternativa aparece junto a la cabecera`);
-      check(doc.getElementById("race-comparison").hidden === (record.alternativa === "-"),
+      check(doc.getElementById("race-comparison").hidden === (record.alternativa === "-" || incompatible),
         `${key}: comparar solo cuando hay dos razas`);
       check(doc.getElementById("primary-profile-link").dataset.race === record.razaRecomendada,
         `${key}: el perfil general se consulta en Race Explorer`);
       check(doc.getElementById("primary-ability-name").textContent.trim().length > 4,
         `${key}: se identifica la facultad racial principal`);
-      if (record.alternativa !== "-") {
+      if (record.alternativa !== "-" && !incompatible) {
         const contextual = record.alternativa === "Cielonato";
         check(doc.getElementById("alternative-scope").textContent ===
           (contextual ? "En esta especialización" : "")
@@ -152,6 +154,10 @@ runButton.addEventListener("click", async () => {
           `${key}: orden visible habilidad, resumen y explicación`);
         check(doc.getElementById("race-comparison-conclusion-text").querySelectorAll("p").length === 2,
           `${key}: conclusión dividida por raza`);
+      }
+      if (incompatible) {
+        check(doc.getElementById("alternative-empty").textContent.includes("Tauren no puede ser Sacerdote"),
+          `${key}: no presentar una raza no elegible como alternativa jugable`);
       }
       check(doc.getElementById("no-alternative") === null
         && doc.getElementById("race-addition-note") === null,
