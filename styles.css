@@ -703,3 +703,47 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
   margin-top: 0.8rem;
   line-height: 1.7;
 }
+
+/* v42 · Talent Advisor: evidencia visible, fuentes plegables y Legado transversal. */
+#talent-result .talent-priorities-note {
+  margin-top: 0.5rem;
+  max-width: 80ch;
+  color: #bfcec2;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+#talent-result #talent-priorities { margin-top: 0.8rem; line-height: 1.75; }
+#talent-result .talent-legacy-note {
+  margin-block: 0 1rem;
+  max-width: 75ch;
+  line-height: 1.65;
+}
+#talent-result #talent-addons { border-color: #45584a; background: #18251e; }
+#talent-result .talent-evidence-card {
+  border-color: #45584a;
+  background: #17231e;
+}
+#talent-result .talent-evidence-card > h3 {
+  margin: 0 0 0.8rem;
+  color: #e2e8dd;
+}
+#talent-result .talent-evidence-card > .field-note {
+  margin: 0 0 0.9rem;
+  color: #b7c5b8;
+  line-height: 1.7;
+}
+#talent-result .talent-evidence-card > details {
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #3c5041;
+}
+#talent-result .talent-evidence-card h4 {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+#talent-result .talent-evidence-card summary { color: #e4c987; }
+#talent-result .talent-evidence-card summary:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}

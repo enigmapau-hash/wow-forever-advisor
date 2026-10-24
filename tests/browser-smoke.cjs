@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v40`);
-      await cache.put("./obsolete-v40", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v41`);
+      await cache.put("./obsolete-v41", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -302,8 +302,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v41")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v40")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v42")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v41")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
@@ -317,7 +317,25 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#talent-class button[data-value="Cazador"]').click();
     await page.locator('#talent-spec button[data-value="Bestias"]').click();
     await page.locator('#talent-goal button[data-value="Subir al 60"]').click();
-    assert.match(await page.locator("#talent-advice-warning").textContent(), /Los talentos destacados se repiten para los tres objetivos/, "Cazador shows evidence limit even offline");
+    assert.match(await page.locator("#talent-priorities-note").textContent(), /La selección de talentos es la misma para subir al 60, PvP y mazmorras/, "Cazador shows evidence limit even offline");
+    for (const width of [320, 390, 820, 1280]) {
+      await page.setViewportSize({ width, height: 900 });
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+        "Talent Advisor: sin desbordamiento a " + width);
+      assert.equal(await page.locator("#talent-evidence-card").isVisible(), true,
+        "Tarjeta de fuentes visible a " + width);
+      assert.equal(await page.locator("#talent-source-panel").evaluate((element) => element.open), false,
+        "Fuentes plegadas inicialmente");
+    }
+    await page.locator("#talent-source-panel summary").focus();
+    await page.keyboard.press("Enter");
+    assert.equal(await page.locator("#talent-source-panel").evaluate((element) => element.open), true,
+      "Fuentes se despliegan con teclado también sin conexión");
+    assert.match(await page.locator("#talent-sources").textContent(),
+      /Cierre de beta y fecha de lanzamiento/, "Enlace oficial actualizado visible al desplegar");
+    await page.locator('#talent-goal button[data-value="PvP"]').click();
+    assert.equal(await page.locator("#talent-source-panel").evaluate((element) => element.open), false,
+      "Cambiar objetivo pliega fuentes para evitar estado residual");
     let offline = 0;
     for (const entry of catalog.clases) {
       await page.locator(`#talent-class button[data-value="${entry.nombre}"]`).click();

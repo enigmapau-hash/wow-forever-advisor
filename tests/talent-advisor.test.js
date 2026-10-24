@@ -96,17 +96,34 @@ button.addEventListener("click", async () => {
           const specRows = data.fichas.filter((ficha) => ficha.especializacion === name);
           const repeated = specRows.every((ficha) =>
             JSON.stringify(ficha.talentos) === JSON.stringify(record.talentos));
-          check(visibleWarning.includes("Orientación de beta") && visibleWarning.includes("no es una build probada")
-            && (visibleWarning.includes("Los talentos destacados se repiten") === repeated),
-            "Aviso breve y exacto por especialización");
-          check(!doc.getElementById("talent-original-detail").open,
-            "F04: reservas históricas plegadas, sin repetirse al abrir fuentes");
+          const note = doc.getElementById("talent-priorities-note").textContent;
+          check(visibleWarning.includes("beta, cerrada el 23/10/2026")
+            && visibleWarning.includes("No son builds")
+            && !visibleWarning.includes("repetidos"),
+            "Aviso único de beta cerrada, sin duplicar advertencias por objetivo");
+          check(note.includes(repeated ? "la misma para subir al 60, PvP y mazmorras"
+            : "Selección orientativa para " + objective.toLowerCase()),
+            "La selección distingue correctamente listas repetidas o adaptadas al objetivo");
+          check(doc.getElementById("talent-legacy-heading").textContent === "Legado · " + objective
+            && doc.querySelector(".talent-legacy-note").textContent.includes("común a las nueve clases"),
+            "Legado común identificado sin atribuirlo a una clase");
+          check(!doc.getElementById("talent-original-detail").open
+            && !doc.getElementById("talent-source-panel").open,
+            "Fuentes y textos históricos se presentan plegados por defecto");
+          check(doc.getElementById("talent-source-panel").closest("#talent-evidence-card") !== null,
+            "Enlaces dentro de una tarjeta informativa");
+          const links = [...doc.querySelectorAll("#talent-sources a")];
+          check(links.some(link => link.href.includes("thank-you-for-testing-the-wow-forever-beta"))
+            && new Set(links.map(link => link.href)).size === links.length,
+            "Fuentes de cierre de beta enlazadas una sola vez");
           check(doc.getElementById("talent-original-notice").textContent === data.aviso,
             "Advertencia editorial original conservada");
           check(doc.getElementById("talent-original-limitation").textContent === record.limitacion,
             "Limitación original completa conservada");
-          check(doc.getElementById("talent-version").textContent.includes(data.versionCliente),
-            "Versión de beta visible");
+          check(doc.getElementById("talent-version").textContent.includes(data.versionCliente)
+            && doc.getElementById("talent-version").textContent.includes("04/11/2026")
+            && doc.getElementById("talent-version").textContent.includes("Pendiente de comprobar"),
+            "Compilación de beta y revisión posterior al cierre identificadas");
           check(doc.getElementById("talent-spec-icon").getAttribute("src")
             === win.WOW_ICON_MAP.especializacion[data.clase][record.especializacion],
             "Icono exacto de la clase y especialización");
