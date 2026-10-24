@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "estado": "borrador_no_publicado",
+  "fechaRevision": "2026-10-24",
+  "criterio": "Cazador Bestias, Puntería y Supervivencia en ambas facciones, mascotas mejoradas, trampas en combate y cuatro raciales por raza; no asumir que Blood Fury del cazador mejora automáticamente a la mascota.",
+  "fuentes": [
+    "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+    "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+  ],
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Enano",
+      "alternativa": "Elfo",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform elimina sangrados, venenos y enfermedades y reduce daño físico mientras el cazador dirige a la mascota y usa trampas en combate. Big Game Hunter puede importar ante mascotas de tipo bestia, pero no aumenta por ello el daño directo a jugadores.",
+        "aTenerEnCuenta": "Stoneform no libera aturdimientos ni raíces; Mace Specialization exige maza y no mejora los disparos por sí sola. Find Treasure no refuerza el combate con la mascota."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Elune's Light abre una ventana de crítico para los disparos mientras la mascota presiona. Shadowmeld puede preparar una posición inmóvil antes de atacar y Quickness añade esquiva y velocidad al reposicionarse.",
+        "aTenerEnCuenta": "Shadowmeld no es camuflaje móvil ni saca del foco activo; Elune's Light dura una ventana limitada. Wisp Spirit solo afecta al movimiento estando muerto."
+      },
+      "conclusionPrincipal": "En Cazador Bestias de Alianza, Enano conserva prioridad cuando el enemigo intenta derribar al dueño de la mascota mediante daño físico y efectos perjudiciales: Stoneform da margen para ordenar acciones y tender trampas sin perder el control del compañero.",
+      "conclusionAlternativa": "Elfo de la noche resulta atractivo si la composición valora preparar emboscadas con Shadowmeld y explotar críticos mientras la mascota entra. Esa apertura no sustituye la protección inmediata de Stoneform durante un foco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform permite aguantar daño físico y limpiarse perjuicios mientras el cazador busca completar Disparo de puntería. Mace Specialization depende de portar maza y Big Game Hunter se limita a bestias elegibles, no a jugadores.",
+        "aTenerEnCuenta": "No neutraliza aturdimientos ni control a distancia. El bono de crítico por maza no debe contarse como mejora de disparo de puntería con otra arma, y Find Treasure no ofrece utilidad ofensiva."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe un aturdimiento para recuperar una ventana de Disparo de puntería o colocar una trampa en combate. Perception puede detectar a un pícaro antes de que interrumpa la posición de tiro.",
+        "aTenerEnCuenta": "No limpia sangrados ni venenos ni reduce el daño físico como Stoneform. Sword Specialization solo cuenta con espada y Espíritu humano tiene menor relevancia ofensiva para ataques a distancia."
+      },
+      "conclusionPrincipal": "En Puntería de Alianza, Enano conserva prioridad ante focos físicos y venenos que dificultan sostener una línea de tiro. Stoneform se valora junto al uso de trampas en combate y la necesidad de terminar Disparo de puntería.",
+      "conclusionAlternativa": "Humano puede ser mejor contra equipos que dependen del aturdimiento y entradas furtivas, porque Will to Survive y Perception ayudan a recuperar la iniciativa. Sin una posición segura, ninguna de las dos raciales garantiza completar el disparo.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform limpia sangrados, venenos y enfermedades y reduce daño físico durante el choque cercano que obliga a alternar trampas en combate y retirada. Big Game Hunter solo aporta valor frente a bestias elegibles, no contra el personaje rival.",
+        "aTenerEnCuenta": "No elimina aturdimientos ni facilita huir de raíces; Buscar tesoro no sirve bajo foco y la bonificación en mazas depende de equipar ese tipo de arma."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive permite reaccionar al salir de un aturdimiento para volver a colocar trampas o alejarse del contacto cercano. Perception puede advertir de una aproximación en sigilo y permitir preparar el espacio.",
+        "aTenerEnCuenta": "No mitiga presión física ni limpia efectos como Stoneform. La pasiva de espada y la de espíritu no sustituyen distanciamiento ni control activo de Supervivencia."
+      },
+      "conclusionPrincipal": "Para Supervivencia de Alianza, Enano conserva prioridad en PvP masivo al combinar Stoneform con trampas utilizables en combate y manejo del contacto cercano, donde sobrevivir a venenos y presión física suele determinar la siguiente acción.",
+      "conclusionAlternativa": "Humano es alternativa razonable si los aturdimientos impiden activar trampas y el rival entra repetidamente desde sigilo. Will to Survive y Perception ofrecen una solución de control, no un aumento universal de resistencia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Orco",
+      "alternativa": "Troll",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce los aturdimientos que impiden dirigir al compañero y cambiar el objetivo, mientras Blood Fury ofrece potencia temporal al cazador. Shatter Curse defiende ante maldiciones, terrores y daño mágico, útil si intentan aislarlo de su mascota.",
+        "aTenerEnCuenta": "Hardiness no elimina por completo el control; Blood Fury no debe contarse automáticamente como aumento directo de daño de la mascota sin confirmar escalado concreto. Axe Specialization depende de equipar hacha."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Berserking acelera los ataques del cazador durante la ventana en que presiona la mascota y Rapid Regeneration ofrece recuperación activa. Beast Slaying puede contar contra mascotas bestias, no contra sus dueños jugadores.",
+        "aTenerEnCuenta": "Ni Berserking ni Rapid Regeneration quitan aturdimientos. Beast Slaying no añade daño general en PvP y la ventaja de regeneración se limita por la posibilidad de activarla sin perder posición."
+      },
+      "conclusionPrincipal": "En Bestias de Horda, Orco mantiene prioridad cuando lo principal es conservar acciones de mando y defensas durante cadenas de aturdimiento, con Hardiness y Shatter Curse como apoyos al cazador que acompaña la mascota mejorada.",
+      "conclusionAlternativa": "Troll puede interesar cuando el equipo protege la ventana de ataque y el cazador aprovecha Berserking junto a su compañero. Su recuperación activa ayuda en pausas, pero no reproduce la reducción pasiva del aturdimiento del Orco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking permite disparar con más rapidez en una ventana protegida de Puntería; Rapid Regeneration ofrece una recuperación alternativa cuando termina el foco. La pasiva Regeneration continúa parcialmente en combate.",
+        "aTenerEnCuenta": "Berserking no impide que un enemigo interrumpa la línea de tiro y no rompe aturdimientos. Beast Slaying solo influye sobre bestias, incluidas mascotas elegibles, no sobre jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos para recuperar el acceso a Disparo de puntería; Blood Fury añade potencia temporal de ataque. Shatter Curse permite resistir maldiciones y terrores cuando un lanzador rival intenta desplazar al cazador.",
+        "aTenerEnCuenta": "Blood Fury no aumenta la velocidad de disparo por sí misma; Hardiness no elimina todo el control. Axe Specialization está condicionada al arma y no otorga crítico universal a tiros de arco o fusil."
+      },
+      "conclusionPrincipal": "En Puntería de Horda, Troll conserva la prioridad aprobada cuando dispone de cobertura para aprovechar Berserking y sostener ataques a distancia sin dejar de coordinar la mascota. La aceleración ofensiva pesa más en ese escenario que el anticontrol pasivo.",
+      "conclusionAlternativa": "Orco puede rendir mejor si el objetivo es terminar disparos a pesar de aturdimientos y presión mágica, porque Hardiness y Shatter Curse protegen las oportunidades de actuar. No reproduce la ventana de velocidad de Troll.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness acorta los aturdimientos durante el intercambio cercano mientras el cazador alterna trampas en combate, ataques y separación. Blood Fury mejora el daño en una ventana y Shatter Curse reduce presión de maldiciones y terrores.",
+        "aTenerEnCuenta": "No evita inmovilizaciones ni elimina todo el aturdimiento. Axe Specialization exige hacha, y la activación de Blood Fury no reemplaza el control de espacio con trampas."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp puede aturdir a perseguidores cercanos para abrir una trampa o permitir al cazador recuperar distancia. Endurance ofrece salud y precisión extra, mientras Plainsrunning recompensa los desplazamientos largos.",
+        "aTenerEnCuenta": "War Stomp obliga a quedarse a distancia corta, peligrosa frente a varios enemigos; no resuelve un disparador lejano. Cultivation no aporta defensa inmediata y Plainsrunning no funciona como ruptura de raíces."
+      },
+      "conclusionPrincipal": "En Supervivencia de Horda, Orco conserva prioridad cuando el principal obstáculo son aturdimientos que impiden enlazar las trampas en combate y una retirada. Hardiness y Shatter Curse apoyan seguir actuando aunque cambie el blanco.",
+      "conclusionAlternativa": "Tauren interesa si los rivales entran juntos en contacto y War Stomp permite frenar a varios antes de reposicionarse. Endurance aumenta la resistencia, pero ninguna de estas ventajas sustituye el anticontrol pasivo de Orco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}
