@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "tipo": "correccion_alternativa_sacerdote_horda",
+  "estado": "aprobado_usuario",
+  "fechaAprobacion": "2026-10-24",
+  "base": {
+    "sha256": "ffb510a623c83fa440eb9612cc9b8ab7a02d67a036bbeab14c858e811ffab2ec",
+    "fichas": 51
+  },
+  "faccion": "Horda",
+  "clase": "Sacerdote",
+  "especializacion": "Sagrado",
+  "razaRecomendada": "Troll",
+  "alternativaAnterior": "Tauren",
+  "alternativa": "No-muerto",
+  "explicacion": "Sagrado debe curar a los aliados tras cada foco sin perder capacidad de intervención en la siguiente oleada. Troll combina Berserking para acelerar una ventana de curación, Hex of Weakness para reducir la eficacia de sanación rival y Shadowguard para castigar el contacto enemigo. Frente a No-muerto, se prioriza esa oportunidad activa de apoyo; Will of the Forsaken permite salir del miedo, y Dark Sacrifice puede recuperar maná a costa de salud propia. La aceleración de Troll no impide las interrupciones.",
+  "motivo": "Tauren no puede ser Sacerdote en WoW Forever; No-muerto sí es elegible y aporta herramientas raciales defensivas y específicas de Sacerdote. Se conserva Troll como principal.",
+  "fuentes": [
+    "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+    "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+  ]
+}
