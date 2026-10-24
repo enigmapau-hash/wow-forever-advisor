@@ -11,8 +11,8 @@
     "No modificar la clasificación aprobada sin decisión expresa del usuario."
   ],
   "resumen": {
-    "pendiente_analisis_especifico": 36,
-    "analisis_revisado": 11,
+    "pendiente_analisis_especifico": 30,
+    "analisis_revisado": 17,
     "sin_alternativa": 6,
     "bloqueada_elegibilidad": 1
   },
@@ -782,7 +782,7 @@
       "especializacion": "Equilibrio",
       "razaRecomendada": "Elfo",
       "alternativa": "Cielonato",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Preparar el ángulo antes de empezar a lanzar.",
@@ -817,7 +817,7 @@
       "especializacion": "Feral",
       "razaRecomendada": "Elfo",
       "alternativa": "Cielonato",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Elegir el momento de entrar desde ocultación.",
@@ -852,7 +852,7 @@
       "especializacion": "Restauración",
       "razaRecomendada": "Elfo",
       "alternativa": "Cielonato",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Preparar una posición de curación sin exponerse.",
@@ -1670,7 +1670,7 @@
       "especializacion": "Equilibrio",
       "razaRecomendada": "Tauren",
       "alternativa": "Cielonato",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Frenar perseguidores antes de volver a lanzar.",
@@ -1705,7 +1705,7 @@
       "especializacion": "Feral",
       "razaRecomendada": "Tauren",
       "alternativa": "Cielonato",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Añadir una pausa táctica al contacto cercano.",
@@ -1740,7 +1740,7 @@
       "especializacion": "Restauración",
       "razaRecomendada": "Tauren",
       "alternativa": "Cielonato",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Separarse de perseguidores sin abandonar el apoyo.",
