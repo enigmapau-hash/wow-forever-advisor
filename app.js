@@ -483,7 +483,11 @@ function validateSingleRaceEvaluations(data, sourceRecords) {
   if (!data || data.schemaVersion !== 1 || data.tipo !== "evaluacion_individual_raza_clase_especializacion"
       || !Array.isArray(data.fichas) || data.fichas.length !== 6
       || sourceRecords.length !== 54) throw new Error("Evaluaciones individuales incompletas.");
-  const expected = new Map(sourceRecords.filter((row) => row.alternativa === "-")
+  // Si falla la capa opcional de Cielonato, sus seis Druidas vuelven
+  // provisionalmente a «sin alternativa»; no son seis razas únicas reales.
+  const expected = new Map(sourceRecords.filter((row) => row.alternativa === "-"
+    && ((row.faccion === "Alianza" && row.clase === "Chamán" && row.razaRecomendada === "Enano")
+      || (row.faccion === "Horda" && row.clase === "Paladín" && row.razaRecomendada === "No-muerto")))
     .map((row) => [contextualRaceKey(row), row]));
   if (expected.size !== 6) throw new Error("Número de razas únicas incorrecto.");
   const result = new Map();
