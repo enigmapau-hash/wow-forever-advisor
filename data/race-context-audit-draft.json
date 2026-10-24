@@ -11,9 +11,8 @@
     "No modificar la clasificación aprobada sin decisión expresa del usuario."
   ],
   "resumen": {
-    "analisis_revisado": 47,
-    "sin_alternativa": 6,
-    "bloqueada_elegibilidad": 1
+    "analisis_revisado": 48,
+    "sin_alternativa": 6
   },
   "fichas": [
     {
@@ -1270,9 +1269,9 @@
       "clase": "Sacerdote",
       "especializacion": "Sagrado",
       "razaRecomendada": "Troll",
-      "alternativa": "Tauren",
-      "estado": "bloqueada_elegibilidad",
-      "comparacion": false,
+      "alternativa": "No-muerto",
+      "estado": "analisis_revisado",
+      "comparacion": true,
       "evaluacion": {
         "contexto_original": "Acelerar la recuperación del grupo y apoyar su presión.",
         "racialesPrincipal": {
@@ -1291,14 +1290,17 @@
         },
         "racialesAlternativa": {
           "activas": [
-            "War Stomp",
-            "Cultivation"
+            "Will of the Forsaken",
+            "Cannibalize"
           ],
           "pasivas": [
-            "Plainsrunning",
-            "Endurance"
+            "Underwater Breathing",
+            "Touch of the Grave"
           ],
-          "hechizosSacerdote": null
+          "hechizosSacerdote": [
+            "Touch of Weakness",
+            "Dark Sacrifice"
+          ]
         },
         "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
         "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
