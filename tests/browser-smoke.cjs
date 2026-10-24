@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v40`);
-      await cache.put("./obsolete-v40", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v41`);
+      await cache.put("./obsolete-v41", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -302,8 +302,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v41")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v40")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v42")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v41")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
@@ -317,7 +317,7 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#talent-class button[data-value="Cazador"]').click();
     await page.locator('#talent-spec button[data-value="Bestias"]').click();
     await page.locator('#talent-goal button[data-value="Subir al 60"]').click();
-    assert.match(await page.locator("#talent-advice-warning").textContent(), /Los talentos destacados se repiten para los tres objetivos/, "Cazador shows evidence limit even offline");
+    assert.match(await page.locator("#talent-priorities-note").textContent(), /La selección de talentos es la misma para subir al 60, PvP y mazmorras/, "Cazador shows evidence limit even offline");
     let offline = 0;
     for (const entry of catalog.clases) {
       await page.locator(`#talent-class button[data-value="${entry.nombre}"]`).click();
