@@ -30,6 +30,8 @@ module.exports = async function testRedesign(page, base, offline = false) {
         const extra = druid.fichas.find((r) => r.faccion === row.faccion && r.clase === row.clase
           && r.especializacion === row.especializacion);
         const alt = extra?.alternativa || row.alternativa;
+        const incompatible = row.faccion === "Horda" && row.clase === "Sacerdote"
+          && row.especializacion === "Sagrado";
         choose("faction", row.faccion);
         choose("character-class", row.clase);
         choose("specialization", row.especializacion);
@@ -42,9 +44,9 @@ module.exports = async function testRedesign(page, base, offline = false) {
         ensure(document.getElementById("primary-analysis").getClientRects().length > 0
           && document.getElementById("primary-key-reason").textContent === display(row.motivoPrincipal),
           "Análisis y decisión visibles en secciones distintas");
-        ensure(alternative.hidden === (alt === "-"), "Sin tarjeta vacía");
+        ensure(alternative.hidden === (alt === "-" || incompatible), "Sin tarjeta vacía ni raza no jugable");
         const noAlternative = document.getElementById("alternative-empty");
-        ensure(noAlternative.hidden === (alt !== "-"), "Motivo de alternativa ausente");
+        ensure(noAlternative.hidden === (alt !== "-" && !incompatible), "Nota de alternativa ausente o incompatible");
         ensure(Boolean(main.querySelector('[data-field="motivoPrincipal"]').hidden), "Motivo fuente conservado sin duplicarse visualmente");
         ensure(Boolean(document.getElementById("primary-analysis").getClientRects().length), "Justificación visible");
         ensure(noAlternative.compareDocumentPosition(main.querySelector("#primary-reason-label")) & Node.DOCUMENT_POSITION_FOLLOWING,
@@ -64,7 +66,7 @@ module.exports = async function testRedesign(page, base, offline = false) {
         const addons = document.getElementById("race-addons");
         ensure(Boolean(addons.compareDocumentPosition(sources) & Node.DOCUMENT_POSITION_FOLLOWING),
           "Fuentes después de addons");
-        if (alt !== "-") {
+        if (alt !== "-" && !incompatible) {
           ensure(alternative.querySelector('[data-field="alternativa"]').textContent === display(alt), "Alternativa intacta");
           ensure(document.getElementById("alternative-race-icon").getAttribute("src") === self.WOW_ICON_MAP.raza[alt], "Icono de alternativa correcto");
           ensure(alternative.querySelector(".eyebrow").textContent.trim() === "Raza alternativa",
@@ -126,6 +128,10 @@ module.exports = async function testRedesign(page, base, offline = false) {
           ensure(width < 960 || Math.abs(a.height - b.height) <= 1,
             "Ambas tarjetas tienen la misma altura en escritorio a " + width);
         } else {
+          if (incompatible) {
+            ensure(noAlternative.textContent.includes("Tauren no puede ser Sacerdote"),
+              "Se avisa de la alternativa incompatible sin cambiar el registro original");
+          }
           ensure(!document.getElementById("alternative-race-icon").hasAttribute("src"), "Sin icono ficticio o residual");
           ensure(document.getElementById("race-comparison").hidden
             && document.querySelectorAll("#race-comparison-conclusion-text > p").length === 0
