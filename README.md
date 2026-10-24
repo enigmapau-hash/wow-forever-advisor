@@ -1,23 +1,32 @@
 # wow-forever-advisor
 
-## Versión actual · v41
+## Versión actual · v42
 
-Race Advisor mantiene las **54 fichas**, con **48 comparativas completas** de
-raza + clase + especialización (sin cambiar ninguna recomendación aprobada) y
-**seis evaluaciones individuales** nuevas de combinaciones con una única raza:
-Chamán Enano (Alianza) y Paladín No-muerto (Horda), cada uno con sus tres
-especializaciones. Se ponderan todas las raciales y habilidades de clase.
+**Talent Advisor: primera auditoría editorial y de legibilidad.** Conserva las
+**81 fichas**, nueve clases y las mismas listas de talentos; se presenta como
+guía provisional, no como reparto probado al nivel 60.
 
-Se elimina el rótulo redundante «En esta especialización» en las seis tarjetas
-alternativas de Druida con Cielonato. Addons relacionados y fuentes oficiales
-se presentan ahora en tarjetas secundarias, con las notas relevantes visibles,
-enlaces oficiales desplegables y nombres específicos sin duplicar URLs.
-Se conservan intactos los datos maestros, el Excel, las 48 comparativas de v40,
-Talent Advisor y Profession Advisor.
+Se distinguen las **18 especializaciones que repiten talentos** entre los tres
+objetivos de las **9 especializaciones cuyos candidatos sí varían**. El contenido
+orientado a cada objetivo sigue siendo visible. **Legado es común a todas las
+clases**, con ventajas por objetivo y obtención de puntos específica de clase.
 
-`version.js`, pie y caché usan **v41**. La regresión cubre 54 fichas,
-las seis evaluaciones, 48 comparativas, 320/390/820/1280 px,
-teclado y modo sin conexión. Ver [notas de v41](docs/v41-release.md).
+Tras el [anuncio oficial del cierre de beta del 23/10/2026](https://us.forums.blizzard.com/en/wow/t/thank-you-for-testing-the-wow-forever-beta/2390465),
+se muestra la previsión de lanzamiento del 4/11/2026 y que el cliente
+de lanzamiento sigue pendiente de validar. Fuentes en un desplegable accesible,
+textos originales históricos en otro y advertencias sin duplicaciones.
+
+**No se cambian** recomendaciones, JSON de talentos, los 54 resultados
+de Race Advisor ni Profession Advisor. `version.js`, pie y caché usan **v42**.
+Pruebas de 81 fichas, 320/390/820/1280 px, navegación y modo offline.
+Véase [la auditoría de Talent Advisor v42](docs/talent-advisor-v42-audit.md).
+Las builds definitivas se comprobarán tras el lanzamiento.
+
+### Anterior · Race Advisor v41
+
+Race Advisor conserva 54 fichas, 48 comparativas y seis evaluaciones individuales
+de combinaciones con una única raza, manteniendo intactas las clasificaciones.
+[Notas de v41](docs/v41-release.md).
 
 ### Diseño y antecedentes hasta v39
 
