@@ -1233,6 +1233,7 @@ function replaceTalentList(id, entries) {
 function clearTalentResult() {
   AddonAdvisor.clear("talent-addons");
   document.getElementById("talent-original-detail").open = false;
+  document.getElementById("talent-source-panel").open = false;
   talentResult.hidden = true;
   talentSpecIcon.hidden = true;
   talentSpecIcon.removeAttribute("src");
@@ -1240,6 +1241,7 @@ function clearTalentResult() {
     "talent-reason", "talent-limitation", "talent-legacy-intro",
     "talent-legacy-warning", "talent-legacy-tip", "talent-extra",
     "talent-version", "talent-source-note", "talent-advice-warning",
+    "talent-priorities-note", "talent-legacy-heading",
     "talent-original-notice", "talent-original-limitation"]) {
     document.getElementById(id).textContent = "";
   }
@@ -1268,6 +1270,8 @@ function renderTalentResult() {
   document.getElementById("talent-limitation").textContent =
     record.limitacion.replace(/\s*Prioridades editoriales de beta, pendientes de validar al 60\.$/, "");
   document.getElementById("talent-original-limitation").textContent = record.limitacion;
+  document.getElementById("talent-legacy-heading").textContent =
+    "Legado · " + goal;
   document.getElementById("talent-legacy-intro").textContent = legacy.descripcion;
   replaceTalentList("talent-legacy-perks", legacy.ventajas);
   document.getElementById("talent-legacy-warning").textContent = legacy.advertencia;
@@ -1278,15 +1282,28 @@ function renderTalentResult() {
     .filter((item) => item.especializacion === spec)
     .every((item) => JSON.stringify(item.talentos) === JSON.stringify(record.talentos));
   document.getElementById("talent-advice-warning").textContent =
-    "Orientación de beta: no es una build probada al nivel 60 ni reparte 51 puntos."
-    + (sameTalentsForAllGoals
-      ? " Los talentos destacados se repiten para los tres objetivos; no son listas diferenciadas."
-      : "");
+    "Orientación elaborada durante la beta, cerrada el 23/10/2026. No son builds"
+    + " de 51 puntos ni configuraciones probadas al nivel 60.";
+  document.getElementById("talent-priorities-note").textContent =
+    sameTalentsForAllGoals
+      ? "La selección de talentos es la misma para subir al 60, PvP y mazmorras."
+        + " Lo que cambia aquí es cómo utilizarlos para el objetivo elegido;"
+        + " no hay tres builds diferenciadas."
+      : "Selección orientativa para " + goal.toLowerCase()
+        + ", sin orden de compra, puntos asignados ni prerrequisitos verificados.";
   document.getElementById("talent-original-notice").textContent = talentData.aviso;
   document.getElementById("talent-version").textContent =
-    `Compilación beta ${talentData.versionCliente} · Revisión ${talentData.fechaRevision}.`;
+    `Referencia beta ${talentData.versionCliente} · Ficha revisada ${talentData.fechaRevision}.`
+    + " Beta cerrada el 23/10; lanzamiento previsto para el 04/11/2026."
+    + " Pendiente de comprobar los talentos del cliente de lanzamiento.";
   document.getElementById("talent-source-note").textContent = talentData.notaFuentes;
-  const sources = talentData.fuentes.map((source) => {
+  const betaEnd = {
+    nombre: "Blizzard · Cierre de beta y fecha de lanzamiento (23/10/2026)",
+    url: "https://us.forums.blizzard.com/en/wow/t/thank-you-for-testing-the-wow-forever-beta/2390465",
+  };
+  const sourceList = [...talentData.fuentes, betaEnd];
+  const sources = sourceList.filter((source, index, entries) =>
+    entries.findIndex((entry) => entry.url === source.url) === index).map((source) => {
     const li = document.createElement("li");
     const link = document.createElement("a");
     link.href = source.url;
@@ -1301,7 +1318,7 @@ function renderTalentResult() {
   if (icon) talentSpecIcon.src = icon;
   talentResult.hidden = false;
   AddonAdvisor.context("talent-addons", { modulo: "talent", clase: talentData.clase, especializacion: spec, objetivo: goal });
-  talentStatus.textContent = `Ficha disponible: ${talentData.clase}, ${spec}, ${goal} (beta; pendiente de validar).`;
+  talentStatus.textContent = `Ficha orientativa disponible: ${talentData.clase}, ${spec}, ${goal}.`;
 }
 
 async function loadTalents() {
