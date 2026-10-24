@@ -27,11 +27,12 @@ async function withApp() {
 }
 function run(name,callback) {
   document.getElementById(name).addEventListener("click",async event=>{
-    event.currentTarget.disabled=true;
+    const button = event.currentTarget;
+    button.disabled=true;
     report.textContent="Ejecutando…";
     try {report.textContent="OK: "+await callback();}
     catch(e){report.textContent="ERROR: "+e.message;console.error(e);}
-    finally{event.currentTarget.disabled=false;}
+    finally{button.disabled=false;}
   });
 }
 run("run-tests",async()=>{
