@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "borrador_no_publicado",
+  "criterio": "Seis comparativas específicas Druida; cuatro rasgos raciales, formas y hechizos por especialización. Datos cambiantes de beta nunca se convierten en bonus no confirmados.",
+  "fuentes": [
+    "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+    "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+    "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+  ],
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "Elune's Light abre una ventana de crítico para los hechizos de Equilibrio; Shadowmeld permite preparar una posición oculta antes de comenzar a lanzar. Prontitud añade una pequeña ventaja de esquiva y velocidad al reposicionarse entre ventanas.",
+        "aTenerEnCuenta": "Shadowmeld requiere inmovilidad y no permite escapar mientras ya recibe un foco. El efecto de Luz de Elune es temporal y Espíritu de fuego fatuo solo sirve después de morir, sin rendimiento ofensivo mientras se lucha."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Read Ley Line mejora la regeneración de salud y maná y puede activarse en movimiento; Wind Blessed aporta celeridad pasiva que beneficia los lanzamientos de Equilibrio. Walk on Air ofrece una ruta de planeo situacional para variar la posición del druida.",
+        "aTenerEnCuenta": "No se ha confirmado cuánto mejora Read Ley Line la recuperación efectiva mientras se lanzan hechizos bajo presión. Walk on Air requiere terreno apropiado y Elemental Insight aumenta el daño solo a elementales, no a jugadores."
+      },
+      "conclusionPrincipal": "En Equilibrio de Alianza, Elfo de la noche conserva la prioridad por la posibilidad de preparar la posición con Shadowmeld y aprovechar Luz de Elune al abrir una ventana de lanzamiento. Es una ventaja táctica en los momentos en que el druida debe elegir cuándo exponerse a enemigos a distancia.",
+      "conclusionAlternativa": "Cielonato resulta atractivo si el combate consiste en sostener varias ventanas de hechizos y reposicionarse entre ellas: Read Ley Line, Wind Blessed y Walk on Air ofrecen recursos distintos. Esas utilidades no reemplazan la ocultación inicial, y su peso depende de las condiciones reales de regeneración de la beta.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "especializacion": "Feral",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "Shadowmeld permite preparar una emboscada mientras se permanece inmóvil, coordinada con la entrada en forma felina. Prontitud aporta velocidad y esquiva; Luz de Elune puede favorecer una ventana crítica durante el intercambio cuerpo a cuerpo.",
+        "aTenerEnCuenta": "Shadowmeld no es sigilo móvil ni saca del foco ya iniciado. El efecto crítico de Luz de Elune dura una ventana limitada y Espíritu de fuego fatuo no añade supervivencia en combate vivo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Walk on Air ofrece un planeo que puede variar la ruta de entrada o retirada de Feral sin exigir abandonar la forma, de acuerdo con la actualización general de facultades raciales. Wind Blessed añade celeridad constante y Skysight no está disponible para el Cielonato de Alianza.",
+        "aTenerEnCuenta": "El planeo solo ayuda donde el terreno lo permite; Read Ley Line orienta más a la recuperación de recursos que al control inmediato en melee. Ninguna de estas herramientas reproduce Shadowmeld, y deben evitarse suposiciones sobre acumulación con formas o consumibles."
+      },
+      "conclusionPrincipal": "En Feral de Alianza, Elfo de la noche conserva la prioridad porque Shadowmeld refuerza la preparación de la entrada y Prontitud añade movilidad pasiva útil al alternar forma felina y oso. La racial es ahora utilizable en forma, pero la ocultación sigue exigiendo inmovilidad.",
+      "conclusionAlternativa": "Cielonato puede favorecer configuraciones que se desplazan mucho por cambios de altura y terreno, con Walk on Air y celeridad de Wind Blessed. Su ventaja depende de mapas y oportunidades concretas; no mejora por sí sola el control táctico de la apertura que aporta el Elfo.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "Shadowmeld permite esperar protegido en una posición inmóvil antes de entrar a curar, y Prontitud ayuda con la evasión y el pequeño aumento de velocidad durante los cambios de forma. Esta preparación favorece conservar margen para renovar curas periódicas cuando el grupo recibe presión.",
+        "aTenerEnCuenta": "Una vez detectado y bajo foco, Shadowmeld no garantiza la retirada; su ocultación se cancela al moverse. Luz de Elune ofrece una ventana de crítico, pero no debe confundirse con inmunidad ni con una cura de emergencia."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Read Ley Line aporta regeneración activable en movimiento, con interés para un sanador que vuelve a cubrir varios grupos después de gastar maná. Wind Blessed añade celeridad pasiva para lanzar hechizos, mientras Walk on Air puede servir para retirarse por terreno vertical.",
+        "aTenerEnCuenta": "La regeneración mientras se lanzan curas bajo presión aún necesita contraste específico en la beta. Walk on Air depende del terreno, Elemental Insight no ayuda contra jugadores y la celeridad no sustituye control o cobertura."
+      },
+      "conclusionPrincipal": "Para Restauración de Alianza, Elfo de la noche mantiene la prioridad si la clave es evitar exposición antes de curar y reposicionarse con formas al recibir foco. Shadowmeld y Prontitud favorecen esa preparación defensiva, mientras que el repertorio de sanación periódica sigue requiriendo anticipación.",
+      "conclusionAlternativa": "Cielonato interesa cuando el cuello de botella es la continuidad de maná entre intervenciones y puede aprovechar Read Ley Line sin quedar expuesto. Wind Blessed mejora la fluidez de lanzamiento, pero no equivale a una defensa inmediata si un enemigo alcanza al sanador.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "War Stomp aturde a enemigos próximos y permite intentar reconstruir distancia cuando un lanzador de Equilibrio es alcanzado. Endurance incrementa la reserva de salud y la probabilidad de golpear, y Plainsrunning acompaña los desplazamientos prolongados del grupo.",
+        "aTenerEnCuenta": "War Stomp solo actúa cerca del druida y no detiene directamente a atacantes lejanos. Cultivation no es una habilidad de JcJ; Plainsrunning necesita acumular tiempo en movimiento y no sustituye la activación inmediata de una defensa."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Skysight ofrece velocidad de carrera activable en movimiento y Wind Blessed aporta celeridad pasiva para encadenar hechizos de Equilibrio. Walk on Air permite variar una retirada desde terreno elevado y aprovechar los cambios de forma.",
+        "aTenerEnCuenta": "No debe asumirse que Skysight se acumula plenamente con la forma de viaje o felina sin pruebas específicas. Elemental Insight afecta a elementales, no a jugadores; ninguna de las herramientas sustituye el aturdimiento cercano de War Stomp."
+      },
+      "conclusionPrincipal": "En Equilibrio de Horda, Tauren conserva la prioridad por la combinación de War Stomp como salida frente a perseguidores próximos y Endurance como protección pasiva. La interacción de raciales con las formas en Forever permite valorar ese control sin tratar al druida como lanzador inmóvil.",
+      "conclusionAlternativa": "Cielonato puede ser preferible cuando prima sostener lanzamientos y desplazarse entre varios frentes con Skysight y Wind Blessed. Su valor exacto necesita confirmar las acumulaciones de velocidad por forma; en el foco cuerpo a cuerpo no reproduce la pausa defensiva del Tauren.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "especializacion": "Feral",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "War Stomp ofrece un control cercano inmediato para cortar una persecución o asegurar una transición entre felino y oso, y en Forever puede utilizarse durante el cambio de forma. Endurance aporta salud y Plainsrunning recompensa el desplazamiento continuado entre objetivos.",
+        "aTenerEnCuenta": "El control de War Stomp necesita alcance y no permite detener a un arquero lejano. Cultivation no influye en el choque y Plainsrunning necesita movimiento sostenido para acumular su bonificación."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Skysight permite activar velocidad de carrera en movimiento para perseguir o buscar cobertura y Wind Blessed mejora la rapidez de acciones. Walk on Air puede crear una ruta alternativa de aproximación desde alturas para la forma felina.",
+        "aTenerEnCuenta": "No está confirmado cómo se acumula Skysight con velocidad de las formas felina y de viaje; prometer esa ventaja sería prematuro. Walk on Air depende del terreno y Elemental Insight no aumenta el daño contra jugadores."
+      },
+      "conclusionPrincipal": "En Feral de Horda, Tauren conserva la prioridad por el control a corta distancia de War Stomp y el colchón pasivo de Endurance, útiles cuando la entrada en felino se vuelve un contraataque y hace falta cambiar a oso.",
+      "conclusionAlternativa": "Cielonato interesa si los enfrentamientos exigen perseguir y retirarse con frecuencia por mapas abiertos o con desniveles. Sus herramientas de movilidad son atractivas, pero su acumulación con formas está pendiente de confirmar y no reemplaza la interrupción cercana del Tauren.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "principal": {
+        "aFavor": "War Stomp crea una pausa contra enemigos cercanos para que Restauración pueda alejarse y continuar la sanación periódica o cambiar de forma. Endurance aumenta la reserva de salud en focos cortos y Plainsrunning favorece llegar a aliados por desplazamientos continuados.",
+        "aTenerEnCuenta": "War Stomp no alcanza a quien interrumpe desde lejos, y Cultivation carece de valor defensivo durante el combate. Plainsrunning depende del movimiento previo y no actúa como un botón de salida inmediata."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Skysight ofrece un incremento de carrera activable sin detenerse, y Wind Blessed mejora la celeridad para atender a varios aliados. Walk on Air puede crear una ruta de retirada adicional en terreno vertical.",
+        "aTenerEnCuenta": "Falta comprobar la acumulación real de Skysight con las formas de druida; Elemental Insight no aporta efecto contra jugadores. No dispone de un aturdimiento de proximidad comparable a War Stomp."
+      },
+      "conclusionPrincipal": "En Restauración de Horda, Tauren conserva la prioridad cuando el sanador recibe foco cercano y necesita espacio para aplicar curas o cambiar de forma sin que caiga el grupo. War Stomp y Endurance son defensas directas, mientras la utilidad de movimiento se pondera de forma secundaria.",
+      "conclusionAlternativa": "Cielonato puede convenir cuando los encuentros se resuelven por cambios constantes de posición y ventanas de apoyo cortas; Skysight y Wind Blessed responden a ese patrón. Pero el beneficio de velocidad combinado con formas debe confirmarse y no sustituye el control cercano de War Stomp.",
+      "clase": "Druida",
+      "estado": "analisis_fuentes_revisado",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302071"
+      ]
+    }
+  ]
+}
