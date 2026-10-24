@@ -11,8 +11,8 @@
     "No modificar la clasificación aprobada sin decisión expresa del usuario."
   ],
   "resumen": {
-    "pendiente_analisis_especifico": 42,
-    "analisis_revisado": 5,
+    "pendiente_analisis_especifico": 36,
+    "analisis_revisado": 11,
     "sin_alternativa": 6,
     "bloqueada_elegibilidad": 1
   },
@@ -677,7 +677,7 @@
       "especializacion": "Aflicción",
       "razaRecomendada": "Humano",
       "alternativa": "Gnomo",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Retomar presión persistente después del aturdimiento.",
@@ -712,7 +712,7 @@
       "especializacion": "Demonología",
       "razaRecomendada": "Humano",
       "alternativa": "Gnomo",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Retomar la coordinación con la mascota tras un aturdimiento.",
@@ -747,7 +747,7 @@
       "especializacion": "Destrucción",
       "razaRecomendada": "Humano",
       "alternativa": "Gnomo",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Reabrir una oportunidad de lanzamiento tras el control.",
@@ -1460,7 +1460,7 @@
       "especializacion": "Aflicción",
       "razaRecomendada": "No-muerto",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Recuperar decisiones mientras continúa la presión persistente.",
@@ -1495,7 +1495,7 @@
       "especializacion": "Demonología",
       "razaRecomendada": "Orco",
       "alternativa": "No-muerto",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Reducir las pausas de coordinación durante el foco.",
@@ -1530,7 +1530,7 @@
       "especializacion": "Destrucción",
       "razaRecomendada": "Troll",
       "alternativa": "Orco",
-      "estado": "pendiente_analisis_especifico",
+      "estado": "analisis_revisado",
       "comparacion": true,
       "evaluacion": {
         "contexto_original": "Concentrar lanzamientos antes de perder la cobertura.",
