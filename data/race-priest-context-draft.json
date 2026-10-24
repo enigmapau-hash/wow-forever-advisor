@@ -127,9 +127,18 @@
       "clase": "Sacerdote",
       "especializacion": "Sagrado",
       "razaRecomendada": "Troll",
-      "alternativa": "Tauren",
-      "estado": "bloqueado_incompatibilidad",
-      "aviso": "Tauren no puede ser sacerdote en WoW Forever. La raza principal aprobada se conserva, pero esta alternativa requiere decisión editorial; no debe compararse como si fuera jugable.",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking aumenta temporalmente la velocidad de lanzamiento, permitiendo responder antes con Renovar, Sanación conjunta o Rezo de alivio en una ventana crítica de Sagrado. Hex of Weakness debilita la eficacia de la sanación del enemigo y Shadowguard castiga al agresor que alcanza al sacerdote; Regeneration y Rapid Regeneration también cuentan para sobrevivir al desgaste.",
+        "aTenerEnCuenta": "Berserking no elimina aturdimientos, miedo ni interrupciones, y su ventaja depende de poder completar las curaciones. Rapid Regeneration es temporal; Shadowguard solo responde a ataques recibidos. Beast Slaying beneficia contra bestias, no aumenta la curación a aliados ni el daño contra jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para volver a curar con Renovar, Rezo de alivio o Sanación conjunta cuando el rival trata de neutralizar al sanador. Dark Sacrifice, exclusivo del sacerdote no-muerto, convierte parte de la salud propia en maná con el tiempo; Touch of Weakness dificulta el ataque cuerpo a cuerpo rival y Cannibalize permite recuperar salud y maná si hay cadáver y ocasión segura.",
+        "aTenerEnCuenta": "Will of the Forsaken no rompe aturdimientos ni raíces y ya no concede inmunidad posterior al miedo. Dark Sacrifice consume salud, una limitación especialmente arriesgada si Sagrado está bajo foco; Cannibalize requiere cadáver y tiempo para canalizar. Touch of the Grave es un drenaje ocasional, no una garantía defensiva, y Underwater Breathing aporta poca utilidad en el PvP ordinario."
+      },
+      "conclusionPrincipal": "Para Sacerdote Sagrado de Horda en PvP masivo, Troll conserva la prioridad aprobada cuando el grupo necesita curas rápidas y apoyo a la presión aliada: Berserking acorta la ventana de lanzamiento, mientras Hex of Weakness, Shadowguard y sus herramientas de regeneración complementan la supervivencia del sanador. La ventaja exige mantener margen para lanzar pese al control enemigo.",
+      "conclusionAlternativa": "No-muerto es una alternativa jugable y especialmente valiosa frente a composiciones que encadenan miedo, sueño o embelesamiento. Will of the Forsaken permite recuperar acciones de sanación, y Dark Sacrifice puede aportar maná si el sacerdote dispone de suficiente salud y seguridad para utilizarlo; no sustituye la aceleración de Berserking ni evita los aturdimientos.",
       "fuentes": [
         "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
         "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
