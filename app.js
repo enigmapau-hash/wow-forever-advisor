@@ -454,6 +454,11 @@ function renderRaceComparison(record, mainProfile, alternativeProfile) {
   const skyborne = record.alternativa === "Cielonato";
   if (isImpossiblePriestAlternative(record)) {
     comparison.hidden = true;
+    document.getElementById("race-comparison-conclusion-text").replaceChildren();
+    for (const id of ["compare-primary-pro", "compare-primary-con",
+      "compare-alternative-pro", "compare-alternative-con"]) {
+      document.getElementById(id).textContent = "";
+    }
     return;
   }
   const contextual = contextualRaceComparisons.get(contextualRaceKey(record));
@@ -489,7 +494,7 @@ function renderRaceBetaUpdates(record) {
   const main = fillRacialBetaList("race-beta-recommended-list", record.razaRecomendada);
   document.getElementById("race-beta-recommended-label").textContent =
     "Raza principal · " + raceDisplayName(record.razaRecomendada);
-  const alternative = record.alternativa !== "-"
+  const alternative = record.alternativa !== "-" && !isImpossiblePriestAlternative(record)
     && fillRacialBetaList("race-beta-alternative-list", record.alternativa);
   const alternativeView = document.getElementById("race-beta-alternative");
   alternativeView.hidden = !alternative;
