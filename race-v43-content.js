@@ -175,9 +175,6 @@
     const caution = record.faccion === "Horda" && record.clase === "Sacerdote"
       ? " La recomendación presupone cobertura aliada de reducción de sanación durante frente y objetivos, sin afirmar una regla de acumulación."
       : "";
-    const close = record.empateTecnicoEditorial
-      ? " La distancia con la segunda opción es estrecha: se trata de una orientación, no de una ventaja demostrada."
-      : "";
     const third = record.segundaTerceraMuyProximas
       ? " La tercera raza también queda próxima a la alternativa y puede ser adecuada con otras condiciones."
       : "";
@@ -187,7 +184,9 @@
       conclusionPrincipal: "Para " + record.clase + " " + record.especializacion
         + " en " + record.faccion + ", " + raceLabel(record.razaRecomendada)
         + " encabeza el escenario editorial de PvP masivo porque aporta herramientas especialmente útiles para "
-        + subject + ". No es una superioridad medida en el juego." + caution + close,
+        + subject + "." + (record.empateTecnicoEditorial
+          ? " Es una elección muy ajustada respecto a la alternativa y el orden puede variar con el combate."
+          : " Es una recomendación editorial, no una ventaja medida.") + caution,
       conclusionAlternativa: alt
         ? raceLabel(record.alternativa) + " es la segunda opción en el escenario base y puede resultar preferible "
           + kits[record.alternativa].condition + ". La comparación depende de las condiciones del encuentro, "
