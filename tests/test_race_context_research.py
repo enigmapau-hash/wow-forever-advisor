@@ -25,6 +25,7 @@ class RaceContextAuditTests(unittest.TestCase):
         cls.audit = read("race-context-audit-draft.json")
         cls.priest = read("race-priest-context-draft.json")
         cls.warlock = read("race-warlock-context-draft.json")
+        cls.bundle = read("race-contextual-comparisons-v40-draft.json")
         cls.original = read("race-advisor.json")
         cls.additions = read("race-advisor-additions.json")
         cls.druid = read("race-advisor-druid-alternatives.json")
@@ -117,11 +118,52 @@ class RaceContextAuditTests(unittest.TestCase):
             self.assertGreater(len(row["conclusionPrincipal"]), 170)
             self.assertGreater(len(row["conclusionAlternativa"]), 160)
 
+    def test_all_47_playable_comparisons_are_contextual_and_sourced(self):
+        self.assertEqual(len(self.bundle["fichas"]), 48)
+        keys = [key(row) for row in self.bundle["fichas"]]
+        self.assertEqual(len(keys), len(set(keys)))
+        covered = {key(row) for row in self.audit["fichas"]
+                   if row["estado"] in ("analisis_revisado", "bloqueada_elegibilidad")}
+        self.assertEqual(set(keys), covered)
+        reviewed = [r for r in self.bundle["fichas"] if r["estado"] == "analisis_fuentes_revisado"]
+        self.assertEqual(len(reviewed), 47)
+        for row in reviewed:
+            with self.subTest(key=key(row)):
+                self.assertIn(row["clase"], ("Sacerdote", "Brujo", "Druida",
+                    "Guerrero", "Paladín", "Chamán", "Cazador", "Pícaro", "Mago"))
+                for side in ("principal", "alternativaAnalisis"):
+                    self.assertGreater(len(row[side]["aFavor"]), 120)
+                    self.assertGreater(len(row[side]["aTenerEnCuenta"]), 105)
+                self.assertGreater(len(row["conclusionPrincipal"]), 145)
+                self.assertGreater(len(row["conclusionAlternativa"]), 140)
+                self.assertNotEqual(row["principal"]["aFavor"], row["alternativaAnalisis"]["aFavor"])
+                self.assertTrue(all(src.startswith("https://worldofwarcraft.blizzard.com/")
+                                    for src in row["fuentes"]))
+                traits = row["racialesConsideradas"]
+                for field in ("principal", "alternativa"):
+                    self.assertEqual(len(traits[field]["activas"]), 2)
+                    self.assertEqual(len(traits[field]["pasivas"]), 2)
+                    if row["clase"] == "Sacerdote":
+                        self.assertEqual(len(traits[field]["hechizosSacerdote"]), 2)
+                    else:
+                        self.assertNotIn("hechizosSacerdote", traits[field])
+
+    def test_blocked_comparison_does_not_fake_a_playable_priest(self):
+        blocked = [r for r in self.bundle["fichas"]
+                   if r["estado"] == "bloqueado_incompatibilidad"]
+        self.assertEqual(len(blocked), 1)
+        row = blocked[0]
+        self.assertEqual(key(row), ("Horda", "Sacerdote", "Sagrado"))
+        self.assertEqual(row["alternativa"], "Tauren")
+        self.assertNotIn("principal", row)
+        self.assertNotIn("alternativaAnalisis", row)
+        self.assertIn("Tauren", row["aviso"])
+
     def test_research_must_not_be_marked_ready_to_publish(self):
         self.assertEqual(self.audit["estado"], "auditoria_editorial_abierta_no_publicado")
         status = self.audit["resumen"]
-        self.assertEqual(status["analisis_revisado"], 11)
-        self.assertEqual(status["pendiente_analisis_especifico"], 36)
+        self.assertEqual(status["analisis_revisado"], 47)
+        self.assertNotIn("pendiente_analisis_especifico", status)
         self.assertEqual(status["bloqueada_elegibilidad"], 1)
         self.assertEqual(status["sin_alternativa"], 6)
 
