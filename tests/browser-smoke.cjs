@@ -185,11 +185,34 @@ const server = http.createServer(async (req, res) => {
       "Brujo Aflicción presenta la facultad de Gnomo");
     assert.match(await page.locator("#alternative-explanation").textContent(),
       /^Escape Artist libera /, "La explicación de Escape Artist sigue al resumen");
+    assert.match(await page.locator("#compare-primary-pro").textContent(),
+      /Will to Survive.*Corrupción.*Terror de agonía/,
+      "A favor contextual de Humano Brujo Aflicción");
+    assert.match(await page.locator("#compare-alternative-pro").textContent(),
+      /Escape Artist.*Eureka!/,
+      "A favor de Gnomo integra la segunda racial activa");
+    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
+      /Brujo Aflicción.*Humano.*Gnomo/,
+      "Conclusión pondera ambas combinaciones en la especialización");
     assert(await page.locator("#alternative-use").evaluate((summary) =>
       summary.getBoundingClientRect().bottom <
       document.getElementById("alternative-explanation").getBoundingClientRect().top),
       "La descripción queda debajo de la frase de utilidad");
+    await page.locator('#character-class button[data-value="Sacerdote"]').click();
+    await page.locator('#specialization button[data-value="Disciplina"]').click();
+    assert.match(await page.locator("#compare-primary-pro").textContent(), /Stoneform.*Penitencia|Stoneform.*escudo.*Penitencia/,
+      "Sacedote Disciplina considera herramientas y raciales de Enano");
+    assert.match(await page.locator("#compare-alternative-pro").textContent(), /Contingency Plan.*Confounding Flash/,
+      "Sacerdote gnomo valora sus dos hechizos exclusivos");
     await page.locator('#faction button[data-value="Horda"]').click();
+    await page.locator('#character-class button[data-value="Sacerdote"]').click();
+    await page.locator('#specialization button[data-value="Sagrado"]').click();
+    assert.equal(await page.locator("#alternative-profile").isVisible(), false,
+      "Sacerdote Tauren incompatible no muestra una alternativa ficticia");
+    assert.equal(await page.locator("#race-comparison").isVisible(), false,
+      "No hay comparativa de una combinación imposible");
+    assert.match(await page.locator("#alternative-empty").textContent(), /Tauren no puede ser Sacerdote/,
+      "Aviso concreto de elegibilidad oficial");
     await page.locator('#character-class button[data-value="Paladín"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
     assert.equal(await page.locator("#no-alternative").count(), 0);
