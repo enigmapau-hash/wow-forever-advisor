@@ -35,17 +35,24 @@ runButton.addEventListener("click", async () => {
     if (!condition) throw new Error(message);
   };
   try {
-    const [advisor, profiles, additions, druidAlt] = await Promise.all([
+    const [advisor, profiles, additions, druidAlt, priestCorrection] = await Promise.all([
       fetch("../data/race-advisor.json").then((response) => response.json()),
       fetch("../data/racials.json").then((response) => response.json()),
       fetch("../data/race-advisor-additions.json").then((response) => response.json()),
       fetch("../data/race-advisor-druid-alternatives.json").then((response) => response.json()),
+      fetch("../data/race-advisor-priest-horde-alternative.json").then((response) => response.json()),
     ]);
     const updatedRows = advisor.fichas.map((row) => {
       const alt = druidAlt.fichas.find((x) => x.faccion === row.faccion
         && x.clase === row.clase && x.especializacion === row.especializacion);
-      return alt ? { ...row, alternativa: "Cielonato",
-        usoAlternativa: alt.usoAlternativa, motivoComparacion: alt.motivoComparacion } : row;
+      if (alt) return { ...row, alternativa: "Cielonato",
+        usoAlternativa: alt.usoAlternativa, motivoComparacion: alt.motivoComparacion };
+      if (row.faccion === priestCorrection.faccion && row.clase === priestCorrection.clase
+          && row.especializacion === priestCorrection.especializacion) {
+        return { ...row, alternativa: priestCorrection.alternativa,
+          explicacion: priestCorrection.explicacion };
+      }
+      return row;
     });
     const allRows = [...updatedRows, ...additions.fichas];
     await new Promise((resolve) => {
@@ -84,6 +91,9 @@ runButton.addEventListener("click", async () => {
       "Las seis alternativas de Druida cumplen los criterios editoriales aprobados");
     check(advisor.fichas.filter((row) => row.clase === "Druida").every((row) => row.alternativa === "-"),
       "El Excel conserva las seis alternativas originales sin modificar");
+    check(win.validatePriestHordeAlternative(priestCorrection, advisor,
+      new Map(profiles.raciales.map(r => [r.raza, r])))?.alternativa === "No-muerto",
+      "Única corrección aprobada de Sacerdote Sagrado validada con el archivo original");
     check(sameOptions(faction, allRows.map((row) => row.faccion)), "Facciones exactas");
     check(characterClass.disabled && spec.disabled && result.hidden, "Estado inicial encadenado");
     const expectedClasses = ["Brujo", "Cazador", "Chamán", "Druida", "Guerrero",
@@ -117,8 +127,9 @@ runButton.addEventListener("click", async () => {
           : (Object.hasOwn(record, name) ? record[name] : profile[name]);
         check(field.textContent === display(expected), `${key}: texto literal de ${name}`);
       }
-      const incompatible = record.faccion === "Horda" && record.clase === "Sacerdote"
+      const priestHoly = record.faccion === "Horda" && record.clase === "Sacerdote"
         && record.especializacion === "Sagrado";
+      const incompatible = priestHoly && record.alternativa === "Tauren";
       check(doc.getElementById("alternative-profile").hidden === (record.alternativa === "-" || incompatible),
         `${key}: la ficha de alternativa solo se muestra cuando existe`);
       check(doc.querySelector('[data-field="motivoPrincipal"]').hidden
@@ -155,9 +166,13 @@ runButton.addEventListener("click", async () => {
         check(doc.getElementById("race-comparison-conclusion-text").querySelectorAll("p").length === 2,
           `${key}: conclusión dividida por raza`);
       }
-      if (incompatible) {
-        check(doc.getElementById("alternative-empty").textContent.includes("Tauren no puede ser Sacerdote"),
-          `${key}: no presentar una raza no elegible como alternativa jugable`);
+      if (priestHoly) {
+        check(!incompatible && record.alternativa === "No-muerto",
+          `${key}: la alternativa aprobada es No-muerto`);
+        check(doc.getElementById("compare-alternative-pro").textContent.includes("Dark Sacrifice"),
+          `${key}: se consideran facultades exclusivas de Sacerdote no-muerto`);
+        check(!doc.getElementById("primary-analysis").textContent.includes("Frente a Tauren"),
+          `${key}: explicación ajustada sin modificar el Excel`);
       }
       check(doc.getElementById("no-alternative") === null
         && doc.getElementById("race-addition-note") === null,
@@ -257,17 +272,24 @@ document.getElementById("run-racials").addEventListener("click", async (event) =
     if (!condition) throw new Error(message);
   };
   try {
-    const [profiles, advisor, additions, druidAlt] = await Promise.all([
+    const [profiles, advisor, additions, druidAlt, priestCorrection] = await Promise.all([
       fetch("../data/racials.json").then((response) => response.json()),
       fetch("../data/race-advisor.json").then((response) => response.json()),
       fetch("../data/race-advisor-additions.json").then((response) => response.json()),
       fetch("../data/race-advisor-druid-alternatives.json").then((response) => response.json()),
+      fetch("../data/race-advisor-priest-horde-alternative.json").then((response) => response.json()),
     ]);
     const updatedRows = advisor.fichas.map((row) => {
       const alt = druidAlt.fichas.find((x) => x.faccion === row.faccion
         && x.clase === row.clase && x.especializacion === row.especializacion);
-      return alt ? { ...row, alternativa: "Cielonato",
-        usoAlternativa: alt.usoAlternativa, motivoComparacion: alt.motivoComparacion } : row;
+      if (alt) return { ...row, alternativa: "Cielonato",
+        usoAlternativa: alt.usoAlternativa, motivoComparacion: alt.motivoComparacion };
+      if (row.faccion === priestCorrection.faccion && row.clase === priestCorrection.clase
+          && row.especializacion === priestCorrection.especializacion) {
+        return { ...row, alternativa: priestCorrection.alternativa,
+          explicacion: priestCorrection.explicacion };
+      }
+      return row;
     });
     const allRows = [...updatedRows, ...additions.fichas];
     await new Promise((resolve) => {
