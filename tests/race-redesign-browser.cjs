@@ -8,11 +8,11 @@ module.exports = async function testRedesign(page, base, offline = false) {
     await page.setViewportSize({ width, height: 1000 });
     const count = await page.evaluate(async (width) => {
       const read = async (name) => (await fetch(`./data/${name}.json`)).json();
-      const [source, additions, druid, profiles, priestCorrection, comparisons] = await Promise.all([
+      const [source, additions, druid, profiles, priestCorrection, comparisons, singles] = await Promise.all([
         read("race-advisor"), read("race-advisor-additions"),
         read("race-advisor-druid-alternatives"), read("racials"),
         read("race-advisor-priest-horde-alternative"),
-        read("race-contextual-comparisons-v40-draft"),
+        read("race-contextual-comparisons-v40-draft"), read("race-single-race-evaluations"),
       ]);
       const display = (text) => text === "Elfo" ? "Elfo de la noche" : text
         .replace(/, denominado Elfo en la base/g, "")
@@ -126,10 +126,9 @@ module.exports = async function testRedesign(page, base, offline = false) {
               && !pro.includes(display(extra.usoAlternativa)),
               "Druida no repite su explicación en el bloque A favor");
           }
-          const scope = document.getElementById("alternative-scope");
-          ensure(scope.hidden === !extra && scope.textContent ===
-            (extra ? "En esta especialización" : ""),
-            "Solo se identifica el alcance especializado de Cielonato");
+          ensure(document.getElementById("alternative-scope") === null
+            && !alternative.textContent.includes("En esta especialización"),
+            "La alternativa no repite la especialización ni reserva espacio vacío");
           ensure(document.getElementById("alternative-race-link").dataset.race === alt
             && alternative.querySelector("#alternative-name").closest("a")?.id === "alternative-race-link",
             "Imagen y nombre de alternativa enlazados");
@@ -163,9 +162,32 @@ module.exports = async function testRedesign(page, base, offline = false) {
           ensure(document.getElementById("race-comparison").hidden
             && document.querySelectorAll("#race-comparison-conclusion-text > p").length === 0
             && document.getElementById("alternative-ability-name").textContent === ""
-            && document.getElementById("alternative-explanation").textContent === ""
-            && document.getElementById("alternative-scope").hidden,
+            && document.getElementById("alternative-explanation").textContent === "",
             "Sin comparativa ni contenido residual cuando no existe alternativa");
+        }
+        const single = document.getElementById("race-single-evaluation");
+        ensure(single.hidden === (alt !== "-"), "Evaluación única exclusiva de los seis registros sin alternativa");
+        if (alt === "-") {
+          const report = singles.fichas.find((entry) => entry.faccion === row.faccion
+            && entry.clase === row.clase && entry.especializacion === row.especializacion);
+          ensure(Boolean(report) && report.razaRecomendada === row.razaRecomendada,
+            "Contenido individual corresponde exactamente a la combinación");
+          ensure(document.getElementById("race-single-pro").textContent === display(report.aFavor)
+            && document.getElementById("race-single-con").textContent === display(report.aTenerEnCuenta)
+            && document.getElementById("race-single-conclusion").textContent === display(report.conclusion),
+            "Puntos y conclusión específicos por especialización");
+          ensure(document.getElementById("race-single-name").textContent === display(row.razaRecomendada),
+            "El bloque individual identifica únicamente la raza disponible");
+        }
+        const sourceCard = document.getElementById("race-beta-updates");
+        const official = document.getElementById("race-official-sources");
+        ensure(sourceCard.classList.contains("result-card")
+          && (!sourceCard.hidden ? (!official.hidden && !official.open) : true),
+          "Fuentes en tarjeta con enlaces plegados inicialmente");
+        if (!sourceCard.hidden) {
+          const urls = [...official.querySelectorAll("a")].map(a => a.href);
+          ensure(urls.length > 0 && new Set(urls).size === urls.length,
+            "Fuentes oficiales únicas por URL y accesibles");
         }
         ensure(document.documentElement.scrollWidth <= innerWidth, `Sin desbordamiento ${width}`);
         for (const label of document.querySelectorAll('#character-class .option-label, #specialization .option-label')) {
