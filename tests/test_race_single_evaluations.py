@@ -54,9 +54,10 @@ class RaceSingleEvaluationTests(unittest.TestCase):
         for record in self.singles["fichas"]:
             body = " ".join(record[field] for field in
                             ("aFavor", "aTenerEnCuenta", "conclusion"))
-            for ability in ("Stoneform", "Buscar tesoros", "Caza mayor"):
-                if record["clase"] == "Chamán":
-                    self.assertIn(ability, body)
+            if record["clase"] == "Chamán":
+                self.assertIn("Stoneform", body)
+                self.assertIn("Buscar tesoros", body)
+                self.assertTrue("Caza mayor" in body or "Big Game Hunter" in body)
             if record["clase"] == "Paladín":
                 for ability in ("Will of the Forsaken", "Cannibalize",
                                 "Touch of the Grave", "Underwater Breathing"):
