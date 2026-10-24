@@ -129,7 +129,7 @@
       if(record.especializacion === "Feral")
         return "Walk on Air habilita rutas de entrada o repliegue aprovechando desniveles; no da ventaja automática en terreno llano.";
       return record.faccion === "Alianza"
-        ? "Read Ley Line ayuda a recuperar salud y maná durante sus condiciones de uso; su rendimiento bajo presión no está garantizado."
+        ? "Read Ley Line aumenta la regeneración de salud y maná durante su ventana activa; su rendimiento bajo presión no está garantizado."
         : "Skysight aporta una ventana de velocidad de carrera para reposicionarse; su ventaja es situacional.";
     }
     if (record.clase === "Sacerdote" && race === "Troll")
