@@ -232,6 +232,29 @@ function validateRaceAdditions(data, advisor, profiles) {
 
 // Aprobación editorial limitada a Druida: sustituye SOLO la alternativa no evaluada.
 // Todas las razas principales y los campos originales del Excel permanecen intactos.
+// Corrección puntual aprobada: preservar la fuente Excel y corregir únicamente
+// Sacerdote Sagrado Horda para que la alternativa sea una clase/raza jugable.
+function validatePriestHordeAlternative(data, advisor, profiles) {
+  const original = advisor.fichas.find((row) => row.faccion === "Horda"
+    && row.clase === "Sacerdote" && row.especializacion === "Sagrado");
+  if (!data || data.schemaVersion !== 1
+      || data.tipo !== "correccion_alternativa_sacerdote_horda"
+      || data.estado !== "aprobado_usuario"
+      || data.base?.sha256 !== advisor.fuente?.sha256
+      || data.base?.fichas !== 51 || advisor.fichas.length !== 51
+      || !original || original.razaRecomendada !== "Troll"
+      || original.alternativa !== "Tauren" || data.alternativaAnterior !== "Tauren"
+      || data.faccion !== original.faccion || data.clase !== original.clase
+      || data.especializacion !== original.especializacion
+      || data.razaRecomendada !== original.razaRecomendada
+      || data.alternativa !== "No-muerto" || !profiles.has("No-muerto")
+      || typeof data.explicacion !== "string" || data.explicacion.trim().length < 180
+      || !Array.isArray(data.fuentes) || data.fuentes.length < 2
+      || !data.fuentes.every((url) => url.startsWith("https://worldofwarcraft.blizzard.com/")))
+    return null;
+  return data;
+}
+
 function validateDruidAlternatives(data, advisor, skyborne) {
   if (!skyborne || !data) return []; // Si falla una capa adicional, conservar las 51 fichas originales.
   const specs = ["Equilibrio", "Feral", "Restauración"];
@@ -659,7 +682,7 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates, skyborne, additions, druidEvaluation, contextComparisons] = await Promise.all([
+    const [advisor, profiles, updates, skyborne, additions, druidEvaluation, contextComparisons, priestCorrection] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
@@ -667,6 +690,7 @@ async function loadData() {
       readJson("./data/race-advisor-additions.json"),
       readJson("./data/race-advisor-druid-alternatives.json").catch(() => null),
       readJson("./data/race-contextual-comparisons-v40-draft.json").catch(() => null),
+      readJson("./data/race-advisor-priest-horde-alternative.json").catch(() => null),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
@@ -675,12 +699,18 @@ async function loadData() {
     if (skyborneData) prepareSkyborneExplorer();
     updateRacialCoverage();
     const druidAlternatives = validateDruidAlternatives(druidEvaluation, advisor, skyborneData);
+    const approvedPriestCorrection = validatePriestHordeAlternative(priestCorrection, advisor, racialProfiles);
     const overlay = new Map(druidAlternatives.map((entry) =>
       [JSON.stringify([entry.faccion, entry.clase, entry.especializacion]), entry]));
     records = [...advisor.fichas.map((row) => {
       const extra = overlay.get(JSON.stringify([row.faccion, row.clase, row.especializacion]));
-      return extra ? { ...row, alternativa: extra.alternativa,
+      const druidRow = extra ? { ...row, alternativa: extra.alternativa,
         usoAlternativa: extra.usoAlternativa, motivoComparacion: extra.motivoComparacion } : row;
+      return approvedPriestCorrection
+        && row.faccion === "Horda" && row.clase === "Sacerdote" && row.especializacion === "Sagrado"
+        ? { ...druidRow, alternativa: approvedPriestCorrection.alternativa,
+          explicacion: approvedPriestCorrection.explicacion }
+        : druidRow;
     }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
     raceAdditionSources = additions.fuentes;
     contextualRaceComparisons = validateContextualRaceComparisons(contextComparisons, records);
