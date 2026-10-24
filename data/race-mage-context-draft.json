@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "borrador_no_publicado",
+  "fuentes": [
+    "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+    "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+  ],
+  "criterio": "Seis Mago Arcano/Fuego/Escarcha en ambas facciones, con Eureka!, Explosión Arcana, Descarga de Pirofrío, Dedos de Escarcha, racialidades 2+2 y restricciones de arma.",
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Eureka! reduce el coste y potencia las siguientes tres acciones, útil para preparar Explosión Arcana y Tromba de misiles. Expansive Mind amplía maná y Escape Artist libera raíces para volver a la distancia desde la que lanzar; Ingeniería aporta fiabilidad solo con dispositivos.",
+        "aTenerEnCuenta": "Eureka! necesita secuenciar bien los hechizos y Escape Artist no elimina aturdimientos. El aumento de maná no elimina el coste de mantener acumulaciones de Explosión Arcana ni sustituye Escudo de maná."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe aturdimientos que impedirían usar defensas o lanzar Tromba de misiles. Human Spirit puede mejorar la recuperación de maná y Sword Specialization añadir crítico con una espada equipada; Perception detecta entradas ocultas.",
+        "aTenerEnCuenta": "No libera raíces ni ralentizaciones para ganar distancia. Spirit y espada tienen valor variable según equipamiento y situación; Perception no sustituye el control de Polimorfia."
+      },
+      "conclusionPrincipal": "En Mago Arcano de Alianza, Gnomo mantiene prioridad por el colchón de maná de Expansive Mind y la ventana de Eureka! para Explosión Arcana, complementados por la salida de raíces de Escape Artist. La rentabilidad exige no perder los lanzamientos.",
+      "conclusionAlternativa": "Humano es alternativa ante aturdimientos que bloquean lanzamientos y defensas: Will to Survive devuelve la acción y Human Spirit puede ayudar al recurso. La elección favorece supervivencia frente a control, no mayor daño Arcano por defecto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Eureka! mejora daño y coste de tres facultades, una ventana que Fuego puede orientar a Chamuscar, Descarga de Pirofrío o la secuencia de Calentamiento e Ignición. Escape Artist sirve para volver a distanciarse y Expansive Mind amplía el maná disponible.",
+        "aTenerEnCuenta": "Eureka! puede desperdiciarse si el enemigo interrumpe el lanzamiento; Escape Artist no limpia aturdimientos. Ingeniería no suma daño automáticamente: depende de los dispositivos y de tener una ventana segura para usarlos."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive elimina un aturdimiento para recuperar la capacidad de colocar control y lanzar Piroexplosión o Descarga de Pirofrío. Perception puede avisar de un pícaro antes de la apertura; Sword Specialization añade crítico solo si usa espada.",
+        "aTenerEnCuenta": "No evita raíces ni presión continua y la pasiva de espíritu no reemplaza una ventana de daño de Fuego. El crítico de espada no se debe atribuir a configuraciones que equipan otra arma."
+      },
+      "conclusionPrincipal": "En Fuego de Alianza, Gnomo conserva prioridad cuando el grupo puede preparar una secuencia corta de daño crítico: Eureka!, Expansive Mind y Escape Artist apoyan tanto la ráfaga como la distancia necesaria para lanzar.",
+      "conclusionAlternativa": "Humano puede rendir mejor si el rival impide completar hechizos por aturdimientos. Will to Survive recupera acción y Perception añade anticipación, pero no proporciona el mismo refuerzo temporal de hechizos de Eureka!.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist permite salir de raíces y ralentizaciones para restablecer distancia después de Nova de Escarcha y volver a lanzar Lanza de hielo. Eureka! refuerza tres acciones y Expansive Mind sostiene maná para controlar con Dedos de Escarcha.",
+        "aTenerEnCuenta": "Escape Artist no quita aturdimientos y Eureka! es limitada a tres acciones; Ingeniería solo ayuda si el mago dispone de dispositivos y tiempo para emplearlos."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe un aturdimiento que impediría reaccionar con Nova de Escarcha o Bloque de hielo. Perception puede detectar una apertura en sigilo y la pasiva de espada añadir crítico si la configuración la equipa.",
+        "aTenerEnCuenta": "No deshace raíces propias ni del enemigo sobre el mago; Espirítu humano y especialización en espada dependen de recurso y arma. Perception no garantiza conservar distancia tras detectar al enemigo."
+      },
+      "conclusionPrincipal": "En Escarcha de Alianza, Gnomo mantiene prioridad porque Escape Artist complementa directamente Nova de Escarcha, Lanza de hielo y los recursos de control, recuperando movimiento cuando el adversario responde con inmovilizaciones.",
+      "conclusionAlternativa": "Humano interesa cuando los aturdimientos imposibilitan desplegar el control, gracias a Will to Survive. Es una respuesta defensiva útil, pero no reproduce la inmunidad breve a raíces necesaria para seguir kiteando con Escarcha.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking acelera los lanzamientos durante una ventana de Explosión Arcana y Tromba de misiles, mientras Rapid Regeneration ayuda a recuperar salud en pausas. Regeneration aporta recuperación parcial durante el combate.",
+        "aTenerEnCuenta": "Berserking no rompe aturdimientos ni evita interrupciones; la recuperación activa necesita espacio seguro y Beast Slaying solo afecta a bestias, no a jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para volver a lanzar o usar Polimorfia. Cannibalize puede recuperar salud y maná en presencia de un cadáver, mientras Touch of the Grave aporta drenaje ocasional al daño.",
+        "aTenerEnCuenta": "Canibalize requiere cadáver y tiempo de canalización; Voluntad de los Renegados no elimina raíces ni aturdimientos. Underwater Breathing es una ventaja ambiental, no apoyo al maná en un combate ordinario."
+      },
+      "conclusionPrincipal": "En Mago Arcano de Horda, Troll mantiene prioridad si el equipo puede proteger una ventana de lanzamiento: Berserking permite explotar el daño de Explosión Arcana y Tromba de misiles con más rapidez mientras conserva opciones de recuperación.",
+      "conclusionAlternativa": "No-muerto resulta preferible ante miedo o sueño que impiden intervenir, pues Will of the Forsaken recupera la acción y Canibalize ayuda entre enfrentamientos cuando es viable. No acelera la rotación como Berserking.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking aumenta la rapidez de lanzamiento durante la secuencia de Ignición, Calentamiento y Piroexplosión. Rapid Regeneration ofrece una recuperación temporal para un lanzador frágil y la pasiva Regeneration conserva una pequeña parte de esa recuperación en combate.",
+        "aTenerEnCuenta": "Berserking no evita interrupciones, miedo o aturdimientos y las ventanas pueden perderse bajo foco. Beast Slaying no aumenta daño a jugadores; la recuperación no reemplaza Bloque de hielo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Blood Fury suma poder con hechizos durante una ráfaga de Fuego y Shatter Curse reduce daño mágico y protege frente a maldiciones y terrores. Hardiness acorta los aturdimientos que impedirían lanzar.",
+        "aTenerEnCuenta": "Blood Fury no acelera el lanzamiento como Berserking y Hardiness no elimina aturdimientos. Axe Specialization solo cuenta con un arma equipable compatible, algo que no debe presuponerse para un mago orco."
+      },
+      "conclusionPrincipal": "En Mago Fuego de Horda, Troll conserva prioridad cuando el equipo protege un intervalo ofensivo para completar hechizos y aprovechar críticos de Ignición. Berserking y recuperación activa responden a esa situación sin garantizar daño si se pierde la línea.",
+      "conclusionAlternativa": "Orco puede rendir mejor ante aturdimientos y agresión mágica, porque Hardiness y Shatter Curse le ayudan a sobrevivir mientras Blood Fury suma potencia. Su racial ofensiva no mejora por sí sola la velocidad de lanzamiento.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will of the Forsaken rompe miedo, sueño y embelesamiento para recuperar posición y desplegar Nova de Escarcha, Lanza de hielo y Dedos de Escarcha. Touch of the Grave añade drenaje ocasional y Cannibalize recupera salud y maná si hay cadáver tras la retirada.",
+        "aTenerEnCuenta": "No elimina raíces ni aturdimientos, y Canibalize no es una recuperación disponible en mitad del foco. Underwater Breathing ofrece utilidad ambiental poco frecuente, no control directo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Berserking agiliza lanzamientos de Escarcha durante una ventana protegida y Rapid Regeneration aporta recuperación. Regeneration beneficia parcialmente el combate y Beast Slaying solo importa frente a bestias elegibles.",
+        "aTenerEnCuenta": "Ni Berserking ni Regeneración rápida eliminan miedo o aturdimientos; la aceleración no garantiza controlar al objetivo si el mago está sin posición. No deben confundirse bonuses contra bestias con daño a jugadores."
+      },
+      "conclusionPrincipal": "En Escarcha de Horda, No-muerto conserva prioridad ante equipos con miedo y sueño que interrumpen el control de Nova de Escarcha y Dedos de Escarcha. Will of the Forsaken añade una salida de esos efectos para no perder toda la secuencia defensiva.",
+      "conclusionAlternativa": "Troll puede interesar para Escarcha ofensiva con lanzamientos rápidos y recuperación entre choques, pero Berserking requiere protección previa; frente a miedo o sueño no reemplaza la limpieza activa del No-muerto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}
