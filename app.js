@@ -785,6 +785,11 @@ specialization.addEventListener("change", () => {
     if (isImpossiblePriestAlternative(record)) {
       // Tauren no es una raza de Sacerdote jugable: no exhibir una ficha ficticia.
       document.getElementById("alternative-profile").hidden = true;
+      alternativeRaceIcon.removeAttribute("src");
+      alternativeLink.dataset.race = "";
+      for (const id of ["alternative-use", "alternative-explanation", "alternative-ability-name"]) {
+        document.getElementById(id).textContent = "";
+      }
       document.getElementById("alternative-empty").textContent =
         "Alternativa no jugable: Tauren no puede ser Sacerdote en WoW Forever. La elección de alternativa está pendiente de revisión.";
       document.getElementById("alternative-empty").hidden = false;
