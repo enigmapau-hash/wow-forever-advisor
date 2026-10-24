@@ -23,9 +23,10 @@ No cuentan como ventajas universales en PvP las herramientas de exploración (Bu
 - **54 fichas** protegidas en `data/race-context-audit-draft.json`.
 - **6 sin alternativa** (Chamán Alianza y Paladín Horda): no inventar enfrentamientos.
 - **5 comparativas de Sacerdote** redactadas y contrastadas con el resumen oficial de clase: `data/race-priest-context-draft.json`.
+- **6 comparativas de Brujo** redactadas: Aflicción, Demonología y Destrucción en Alianza/Horda, con los cuatro rasgos raciales y las nuevas habilidades de clase en Forever (`data/race-warlock-context-draft.json`).
 - **1 inconsistencia**: Horda · Sacerdote · Sagrado → Troll principal / Tauren alternativa. La tabla oficial no permite Sacerdote Tauren. No se modifica ningún JSON ni ranking aprobado; bloquear la comparativa hasta obtener autorización para corregir la alternativa.
-- **42 comparativas restantes** pendientes de análisis individual específico: la matriz solo registra su inventario de facultades y el propósito original. No es honesto presentarlas como «revisadas» por una generación automática.
-- **Los cinco casos de Sacerdote no se han conectado aún a la UI**: versión pública v39 intacta. Antes de publicación se completarán/validarán los 42 restantes y el conflicto de elegibilidad, se añadirá la capa opcional con fallback explícito y se comprobará offline.
+- **36 comparativas restantes** pendientes de análisis individual específico: la matriz solo registra su inventario de facultades y el propósito original. No es honesto presentarlas como «revisadas» por una generación automática.
+- **Las once comparativas revisadas no se han conectado aún a la UI**: versión pública v39 intacta. Antes de publicación se completarán/validarán los 42 restantes y el conflicto de elegibilidad, se añadirá la capa opcional con fallback explícito y se comprobará offline.
 
 ## Criterio de revisión editorial por ficha
 
