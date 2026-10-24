@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "borrador_no_publicado",
+  "fuentes": [
+    "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+    "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+  ],
+  "criterio": "Seis Guerrero Armas/Furia/Protección en Alianza/Horda: raza 2+2, Golpe mortal, Sed de sangre y bloqueos, con valor condicionado a equipos y control rival.",
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist permite salir de raíces y ralentizaciones para volver al alcance de Golpe mortal y mantener presión de Armas. Eureka! potencia un grupo de tres facultades y Mente expansiva aumenta la reserva de ira; la fiabilidad de Ingeniería es útil solo con dispositivos equipados.",
+        "aTenerEnCuenta": "Escape Artist no elimina aturdimientos. El beneficio de Eureka! depende del orden de los golpes y no evita ser desarmado o perder la línea; Ingeniería no es una racial de supervivencia por sí sola."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe aturdimientos que bloquearían Golpe mortal y los cambios de actitud. Perception ayuda a anticipar pícaros ocultos y, llevando espada, Sword Specialization aporta crítico a las facultades.",
+        "aTenerEnCuenta": "No libera raíces ni ralentizaciones, una limitación decisiva para Armas cuando no llega al objetivo. La pasiva de Espíritu apenas sustituye movilidad ni generación de ira."
+      },
+      "conclusionPrincipal": "En Armas de Alianza, Gnomo conserva la prioridad porque la continuidad de Golpe mortal depende de poder alcanzar objetivos móviles. Escape Artist y su aumento de recursos aportan más valor en persecuciones sostenidas que un desbloqueo limitado a aturdimientos.",
+      "conclusionAlternativa": "Humano puede ser preferible cuando los aturdimientos son el control dominante y el grupo ya dispone de ayudas para mantener contacto. Will to Survive protege la ventana de Golpe mortal, pero no resuelve por sí mismo la pérdida de distancia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist vuelve a poner al guerrero a distancia de ataque cuando raíces o ralentizaciones impiden acumular ira y aprovechar Sed de sangre. Eureka! mejora tres acciones y Mente expansiva amplía la reserva de ira que alimenta la secuencia cuerpo a cuerpo.",
+        "aTenerEnCuenta": "No limpia aturdimientos. El valor de Eureka! depende de que el guerrero consiga golpear durante la ventana; la fiabilidad mejorada de Ingeniería solo importa si se usan dispositivos."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive permite volver a actuar tras un aturdimiento y aprovechar la ventana de Sed de sangre. Perception reduce sorpresas ante objetivos ocultos, y la pasiva de espadas puede beneficiar el crítico si se equipa espada.",
+        "aTenerEnCuenta": "Una raíz sigue dejando al Humano fuera de contacto, aunque pueda actuar. La pasiva de espíritu no sustituye ira ni el acceso al enemigo y la especialización de espada depende del equipo."
+      },
+      "conclusionPrincipal": "Para Guerrero Furia, Gnomo mantiene la prioridad aprobada cuando el combate masivo obliga a cambiar de objetivo y mantener contacto para generar ira. Escape Artist, Eureka! y Mente expansiva se alinean con esa continuidad ofensiva sin garantizar daño si la ruta queda cerrada.",
+      "conclusionAlternativa": "Humano es alternativa valiosa contra control centrado en aturdimientos que impide usar Sed de sangre; Will to Survive devuelve la acción de golpeo, pero exige tener ya un objetivo al alcance.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform reduce daño físico y limpia sangrados, venenos y enfermedades, lo que permite sostener la primera línea mientras Protección bloquea y protege aliados. Con maza equipada, la pasiva correspondiente añade crítico; Big Game Hunter solo ayuda frente a bestias elegibles.",
+        "aTenerEnCuenta": "Stoneform dura poco y no elimina aturdimientos. Find Treasure no protege durante el foco y la especialización en mazas no sirve si el guerrero lleva otra arma."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive sale de un aturdimiento que impediría usar escudo y recursos defensivos. Perception ayuda a identificar aproximaciones en sigilo y Sword Specialization puede aportar crítico con espada.",
+        "aTenerEnCuenta": "No reduce daño físico ni elimina sangrados como Stoneform. Su bonificación de arma depende de espada y el aumento de espíritu no ofrece una defensa inmediata para Protección."
+      },
+      "conclusionPrincipal": "En Guerrero Protección de Alianza, Enano conserva la prioridad porque Stoneform y la mitigación física encajan directamente con bloquear, aguantar focos y mantener la posición del escudo. El paquete racial defensivo tiene más peso que la capacidad de resolver solo un tipo de control.",
+      "conclusionAlternativa": "Humano puede ser preferible si el problema principal es la cadena de aturdimientos sobre el protector y el grupo dispone ya de mitigación suficiente. Will to Survive devuelve el acceso al escudo, pero no reproduce Stoneform.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness acorta los aturdimientos para recuperar antes contacto y Golpe mortal. Blood Fury añade potencia durante la ventana de Armas y Shatter Curse puede proteger ante maldiciones o terrores al reducir daño mágico; Axe Specialization exige hacha.",
+        "aTenerEnCuenta": "No elimina por completo los aturdimientos, ni rompe raíces. Blood Fury es temporal y la pasiva de hachas no sirve con otras armas, aunque Armas pueda aprovechar varias familias."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp aturde a enemigos muy próximos y permite una ventana de Golpe mortal o cubrir la retirada. Endurance aumenta vida y precisión; Plainsrunning favorece persecuciones largas y Cultivation no influye en el choque.",
+        "aTenerEnCuenta": "War Stomp requiere rango cercano y no evita que se quede fuera de contacto por una raíz. Plainsrunning tarda en acumularse; Cultivation no aporta una defensa durante un enfrentamiento JcJ."
+      },
+      "conclusionPrincipal": "En Armas de Horda, Orco mantiene prioridad por la reducción de aturdimientos y una ventana ofensiva con Blood Fury que sostienen Golpe mortal incluso cuando varios rivales intentan detenerlo. Shatter Curse completa la defensa frente a presión mágica concreta.",
+      "conclusionAlternativa": "Tauren interesa cuando el guerrero permanece rodeado y War Stomp puede coordinar un control a corta distancia, con Endurance como apoyo. Su utilidad disminuye si el objetivo está lejos y no puede detener a quienes controlan desde distancia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce interrupciones por aturdimiento durante Sed de sangre y las ráfagas de Furia. Blood Fury suma daño en una ventana corta; Shatter Curse responde a control mágico de maldiciones y terrores, mientras Axe Specialization depende del arma.",
+        "aTenerEnCuenta": "No limpia aturdimientos por completo ni compensa perder el alcance al objetivo. Blood Fury debe sincronizarse con ataques y el crítico por hacha solo cuenta si se lleva esa arma."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp crea una pausa cercana para continuar golpeando o evitar ser rodeado. Endurance amplía vida y Plainsrunning ayuda en un frente móvil que exige perseguir varios objetivos.",
+        "aTenerEnCuenta": "War Stomp requiere proximidad; no funciona como ruptura de raíces. Cultivation no influye en la secuencia de Furia y Plainsrunning no sustituye una aceleración inmediata."
+      },
+      "conclusionPrincipal": "En Furia de Horda, Orco conserva la prioridad porque Hardiness ayuda a mantener actividad cuerpo a cuerpo y Blood Fury refuerza la ventana de Sed de sangre, siempre que haya contacto. Se valoran también defensa mágica y la condición del arma equipada.",
+      "conclusionAlternativa": "Tauren puede rendir mejor en peleas compactas con enemigos muy próximos, donde War Stomp y Endurance permiten defenderse sin dejar de presionar. No ofrece la misma protección pasiva contra aturdimientos del Orco.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "War Stomp permite aturdir a enemigos cercanos al escudo para cubrir a los aliados o frenar una entrada. Endurance aumenta la reserva de salud y precisión; Plainsrunning ayuda a llegar al frente durante desplazamientos prolongados.",
+        "aTenerEnCuenta": "War Stomp tiene alcance cercano y no anula daño físico durante todo un foco. Cultivation no suma defensa, mientras que Plainsrunning requiere desplazamiento antes de acumular ventaja."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos que impedirían bloquear o usar una defensa. Shatter Curse reduce daño mágico y concede protección ante maldiciones o terrores; Blood Fury aumenta poder de ataque temporalmente.",
+        "aTenerEnCuenta": "Hardiness no elimina por completo el control y Blood Fury no sustituye Endurance cuando se trata de aguantar daño. La especialización en hachas depende del arma, poco concluyente si el tanque prioriza otros atributos."
+      },
+      "conclusionPrincipal": "Para Protección de Horda, Tauren conserva prioridad porque War Stomp y Endurance ofrecen control cercano y colchón de vida alrededor de quien protege la línea. Eso favorece resistir focos y coordinar bloqueos con compañeros.",
+      "conclusionAlternativa": "Orco puede convenir ante cadenas de aturdimientos y magia de maldiciones, cuando Hardiness y Shatter Curse permiten retomar recursos defensivos. Es una respuesta distinta a controlar rivales próximos; Blood Fury no debe tratarse como mitigación.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}
