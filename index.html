@@ -380,7 +380,7 @@
         <a class="back-link" id="talent-back-home" href="#inicio">← Volver al inicio</a>
         <header class="selector-intro">
           <h1 id="talent-title" tabindex="-1">Talent Advisor</h1>
-          <p class="subtitle">Elige tu clase, especialización y objetivo para explorar los talentos y ventajas de Legado.</p>
+          <p class="subtitle">Explora talentos a estudiar y ventajas de Legado según clase, especialización y objetivo. No son builds probadas al nivel 60.</p>
                   </header>
 
         <div id="talent-selector" class="selector-card" aria-busy="true">
@@ -411,7 +411,7 @@
         <section id="talent-result" aria-labelledby="talent-result-title" hidden>
           <p id="talent-advice-warning" class="source-note"></p>
           <article class="result-card recommendation">
-            <p class="eyebrow">Asesor de talentos · Beta</p>
+            <p class="eyebrow">Talent Advisor · Orientación provisional</p>
             <div class="recommendation-heading">
               <img id="talent-spec-icon" alt="" width="44" height="44" hidden>
               <h2 id="talent-result-title"></h2>
@@ -419,7 +419,7 @@
             <p id="talent-build-info" class="result-combination"></p>
             <p id="talent-overview" class="talent-overview"></p>
             <h3>Talentos de clase a estudiar</h3>
-            <p class="field-note">Sin orden de compra ni puntos asignados.</p>
+            <p id="talent-priorities-note" class="field-note talent-priorities-note"></p>
             <ul id="talent-priorities" class="talent-list"></ul>
             <h3>Por qué considerar estos talentos</h3>
             <p id="talent-reason" class="original-text"></p>
@@ -428,7 +428,8 @@
           </article>
 
           <article class="result-card">
-            <h3>Legado para este objetivo</h3>
+            <h3 id="talent-legacy-heading">Legado para este objetivo</h3>
+            <p class="field-note talent-legacy-note">Legado es común a las nueve clases; sus ventajas cambian con el objetivo seleccionado.</p>
             <p id="talent-legacy-intro"></p>
             <ul id="talent-legacy-perks" class="talent-list"></ul>
             <h3>Requisitos y advertencias</h3>
@@ -446,19 +447,23 @@
 
           <aside id="talent-addons" class="result-card addon-context" hidden></aside>
 
-          <details class="result-card detail-disclosure">
-            <summary>Versión, documentación y fuentes</summary>
-            <p id="talent-version" class="original-text"></p>
-            <p id="talent-source-note" class="field-note"></p>
-            <ul id="talent-sources" class="talent-sources"></ul>
+          <section id="talent-evidence-card" class="result-card talent-evidence-card" aria-labelledby="talent-evidence-title">
+            <h3 id="talent-evidence-title">Fuentes y vigencia</h3>
+            <p id="talent-version" class="field-note"></p>
+            <details id="talent-source-panel" class="detail-disclosure">
+              <summary>Ver fuentes y referencias</summary>
+              <p id="talent-source-note" class="field-note"></p>
+              <ul id="talent-sources" class="talent-sources"></ul>
+            </details>
             <details id="talent-original-detail" class="detail-disclosure">
-              <summary>Consultar textos editoriales originales</summary>
-              <h3>Advertencia editorial de origen</h3>
+              <summary>Consultar textos originales de la beta</summary>
+              <p class="field-note">Archivos editoriales históricos del 22/10/2026; sus previsiones no sustituyen los anuncios posteriores.</p>
+              <h4>Advertencia editorial de origen</h4>
               <p id="talent-original-notice" class="original-text"></p>
-              <h3>Limitación de origen</h3>
+              <h4>Limitación de origen</h4>
               <p id="talent-original-limitation" class="original-text"></p>
             </details>
-          </details>
+          </section>
         </section>
       </section>
 
