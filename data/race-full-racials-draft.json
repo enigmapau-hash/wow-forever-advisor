@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "estado": "borrador_editorial_no_publicado",
+  "fechaRevision": "2026-10-24",
+  "politica": "Dos activas y dos pasivas comunes por raza y dos hechizos raciales de sacerdote adicionales. La importancia JcJ se juzga por especialización; no todo rasgo otorga ventaja directa. Las mecánicas de beta requieren contraste antes de publicación.",
+  "fuentes": {
+    "razas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+    "priest": "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+    "guerrero": "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+    "druid_cazador": "https://worldofwarcraft.blizzard.com/es-es/news/24301515",
+    "rogue_warlock": "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+    "mage_shaman": "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+    "paladin": "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+    "novedades": "https://worldofwarcraft.blizzard.com/es-es/news/24303313"
+  },
+  "sacerdoteBase": [
+    "Fear Ward",
+    "Devouring Plague",
+    "Divine Spirit",
+    "Shadow Word: Death"
+  ],
+  "sacerdoteBaseNota": "Fear Ward y Devouring Plague son comunes a todos los sacerdotes, NO exclusivas de Enano ni No-muerto.",
+  "razas": {
+    "Gnomo": {
+      "activas": [
+        "Escape Artist",
+        "Eureka!"
+      ],
+      "pasivas": [
+        "Expansive Mind",
+        "Engineering Specialization"
+      ],
+      "hechizosSacerdote": [
+        "Confounding Flash",
+        "Contingency Plan"
+      ],
+      "criterio": "Eureka! potencia un grupo limitado de acciones; la fiabilidad de Ingeniería depende de poseer y utilizar dispositivos."
+    },
+    "Humano": {
+      "activas": [
+        "Will to Survive",
+        "Perception"
+      ],
+      "pasivas": [
+        "Sword Specialization",
+        "The Human Spirit"
+      ],
+      "hechizosSacerdote": [
+        "Divine Grace",
+        "Feedback"
+      ],
+      "criterio": "La especialización en espadas solo cuenta si se equipa ese tipo de arma; Perception es situacional contra enemigos ocultos."
+    },
+    "Enano": {
+      "activas": [
+        "Stoneform",
+        "Find Treasure"
+      ],
+      "pasivas": [
+        "Mace Specialization",
+        "Big Game Hunter"
+      ],
+      "hechizosSacerdote": [
+        "Desperate Prayer",
+        "Chastise"
+      ],
+      "criterio": "Find Treasure no es un beneficio de combate; Mace Specialization depende del arma y Big Game Hunter solo beneficia contra bestias, incluidas mascotas elegibles."
+    },
+    "Elfo": {
+      "activas": [
+        "Elune's Light",
+        "Shadowmeld"
+      ],
+      "pasivas": [
+        "Quickness",
+        "Wisp Spirit"
+      ],
+      "hechizosSacerdote": [
+        "Starshards",
+        "Elune's Grace"
+      ],
+      "criterio": "Wisp Spirit se aplica durante la muerte, no al combatir; Shadowmeld exige permanecer inmóvil."
+    },
+    "Orco": {
+      "activas": [
+        "Blood Fury",
+        "Shatter Curse"
+      ],
+      "pasivas": [
+        "Axe Specialization",
+        "Hardiness"
+      ],
+      "hechizosSacerdote": null,
+      "criterio": "Axe Specialization depende del arma; Hardiness reduce la duración del aturdimiento, no lo elimina; Blood Fury implica una ventana temporal."
+    },
+    "Tauren": {
+      "activas": [
+        "War Stomp",
+        "Cultivation"
+      ],
+      "pasivas": [
+        "Plainsrunning",
+        "Endurance"
+      ],
+      "hechizosSacerdote": null,
+      "criterio": "Cultivation no ofrece ventaja directa de combate; Plainsrunning depende de desplazarse y War Stomp exige proximidad."
+    },
+    "Troll": {
+      "activas": [
+        "Berserking",
+        "Rapid Regeneration"
+      ],
+      "pasivas": [
+        "Beast Slaying",
+        "Regeneration"
+      ],
+      "hechizosSacerdote": [
+        "Hex of Weakness",
+        "Shadowguard"
+      ],
+      "criterio": "Beast Slaying no mejora el daño contra jugadores; Berserking y Rapid Regeneration son ventanas temporales."
+    },
+    "No-muerto": {
+      "activas": [
+        "Will of the Forsaken",
+        "Cannibalize"
+      ],
+      "pasivas": [
+        "Underwater Breathing",
+        "Touch of the Grave"
+      ],
+      "hechizosSacerdote": [
+        "Touch of Weakness",
+        "Dark Sacrifice"
+      ],
+      "criterio": "Underwater Breathing apenas pesa en PvP ordinario; Cannibalize requiere cadáver y posibilidad de canalizar; Will of the Forsaken no elimina aturdimientos."
+    },
+    "Cielonato Alianza": {
+      "activas": [
+        "Walk on Air",
+        "Read Ley Line"
+      ],
+      "pasivas": [
+        "Wind Blessed",
+        "Elemental Insight"
+      ],
+      "hechizosSacerdote": null,
+      "criterio": "Elemental Insight no mejora el daño contra jugadores; en beta Wind Blessed figura con 3 % frente al anuncio inicial de 1 %, según los datos verificados previamente por el proyecto."
+    },
+    "Cielonato Horda": {
+      "activas": [
+        "Walk on Air",
+        "Skysight"
+      ],
+      "pasivas": [
+        "Wind Blessed",
+        "Elemental Insight"
+      ],
+      "hechizosSacerdote": null,
+      "criterio": "Elemental Insight no mejora el daño contra jugadores; los efectos de Skysight y la acumulación con movilidad de formas druídicas deben contrastarse en beta."
+    }
+  },
+  "elegibilidad": {
+    "Alianza": {
+      "Gnomo": [
+        "Guerrero",
+        "Pícaro",
+        "Sacerdote",
+        "Mago",
+        "Brujo"
+      ],
+      "Humano": [
+        "Guerrero",
+        "Paladín",
+        "Cazador",
+        "Pícaro",
+        "Sacerdote",
+        "Mago",
+        "Brujo"
+      ],
+      "Enano": [
+        "Guerrero",
+        "Paladín",
+        "Cazador",
+        "Pícaro",
+        "Sacerdote",
+        "Chamán"
+      ],
+      "Elfo": [
+        "Guerrero",
+        "Cazador",
+        "Pícaro",
+        "Sacerdote",
+        "Druida"
+      ],
+      "Cielonato": [
+        "Guerrero",
+        "Cazador",
+        "Pícaro",
+        "Druida",
+        "Mago"
+      ]
+    },
+    "Horda": {
+      "Orco": [
+        "Guerrero",
+        "Cazador",
+        "Pícaro",
+        "Mago",
+        "Brujo",
+        "Chamán"
+      ],
+      "Tauren": [
+        "Guerrero",
+        "Cazador",
+        "Chamán",
+        "Druida"
+      ],
+      "Troll": [
+        "Guerrero",
+        "Cazador",
+        "Pícaro",
+        "Sacerdote",
+        "Mago",
+        "Brujo",
+        "Chamán"
+      ],
+      "No-muerto": [
+        "Guerrero",
+        "Pícaro",
+        "Sacerdote",
+        "Mago",
+        "Brujo",
+        "Paladín"
+      ],
+      "Cielonato": [
+        "Guerrero",
+        "Cazador",
+        "Pícaro",
+        "Chamán",
+        "Druida"
+      ]
+    }
+  }
+}
