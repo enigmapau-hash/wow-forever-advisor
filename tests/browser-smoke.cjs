@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v39`);
-      await cache.put("./obsolete-v39", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v40`);
+      await cache.put("./obsolete-v40", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -149,8 +149,8 @@ const server = http.createServer(async (req, res) => {
     assert.notEqual(await page.locator("#alternative-use").textContent(),
       await page.locator("#compare-alternative-pro").textContent(),
       "El motivo de Druida no se repite como ventaja comparativa");
-    assert.equal(await page.locator("#alternative-scope").textContent(), "En esta especialización",
-      "Druida conserva su distinción de análisis específico");
+    assert.equal(await page.locator("#alternative-scope").count(), 0,
+      "Druida no duplica el contexto de especialización");
     assert.equal(await page.locator("#race-comparison-conclusion-text > p").count(), 2,
       "La conclusión queda dividida en dos párrafos");
     assert.equal(await page.locator("#alternative-race-link").getAttribute("href"), "#raciales",
@@ -302,8 +302,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v40")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v39")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v41")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v40")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
