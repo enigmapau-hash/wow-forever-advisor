@@ -181,29 +181,21 @@ const server = http.createServer(async (req, res) => {
     }
     await page.locator('#character-class button[data-value="Brujo"]').click();
     await page.locator('#specialization button[data-value="Aflicción"]').click();
-    assert.equal(await page.locator("#alternative-ability-name").textContent(), "Escape Artist",
-      "Brujo Aflicción presenta la facultad de Gnomo");
-    assert.match(await page.locator("#alternative-explanation").textContent(),
-      /^Escape Artist libera /, "La explicación de Escape Artist sigue al resumen");
-    assert.match(await page.locator("#compare-primary-pro").textContent(),
-      /Will to Survive.*Corrupción.*Terror de agonía/,
-      "A favor contextual de Humano Brujo Aflicción");
-    assert.match(await page.locator("#compare-alternative-pro").textContent(),
-      /Escape Artist.*Eureka!/,
-      "A favor de Gnomo integra la segunda racial activa");
-    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
-      /Brujo Aflicción.*Humano.*Gnomo/,
-      "Conclusión pondera ambas combinaciones en la especialización");
+    assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "Gnomo");
+    assert.equal(await page.locator("#alternative-ability-name").textContent(), "Will to Survive");
+    assert.match(await page.locator("#alternative-explanation").textContent(), /^Will to Survive /);
+    assert.match(await page.locator("#compare-primary-pro").textContent(), /Escape Artist.*Eureka!/);
+    assert.match(await page.locator("#compare-alternative-pro").textContent(), /Will to Survive.*Ruthless/);
+    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(), /Brujo Aflicción.*Gnomo.*Humano/);
     assert(await page.locator("#alternative-use").evaluate((summary) =>
       summary.getBoundingClientRect().bottom <
       document.getElementById("alternative-explanation").getBoundingClientRect().top),
       "La descripción queda debajo de la frase de utilidad");
     await page.locator('#character-class button[data-value="Sacerdote"]').click();
     await page.locator('#specialization button[data-value="Disciplina"]').click();
-    assert.match(await page.locator("#compare-primary-pro").textContent(), /Stoneform.*Penitencia|Stoneform.*escudo.*Penitencia/,
-      "Sacedote Disciplina considera herramientas y raciales de Enano");
-    assert.match(await page.locator("#compare-alternative-pro").textContent(), /Contingency Plan.*Confounding Flash/,
-      "Sacerdote gnomo valora sus dos hechizos exclusivos");
+    assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "Gnomo");
+    assert.match(await page.locator("#compare-primary-pro").textContent(), /Escape Artist.*Confounding Flash.*Contingency Plan/);
+    assert.match(await page.locator("#compare-alternative-pro").textContent(), /Stoneform.*Desperate Prayer.*Chastise/);
     await page.locator('#faction button[data-value="Horda"]').click();
     await page.locator('#character-class button[data-value="Sacerdote"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
@@ -216,7 +208,7 @@ const server = http.createServer(async (req, res) => {
     assert.equal(await page.locator("#race-comparison").isVisible(), true,
       "Comparativa específica entre Troll y No-muerto visible");
     assert.match(await page.locator("#compare-alternative-pro").textContent(),
-      /Will of the Forsaken.*Dark Sacrifice.*Touch of Weakness/,
+      /Will of the Forsaken.*Touch of Weakness.*Dark Sacrifice/,
       "El sacerdote no-muerto utiliza facultades raciales y exclusivas de clase");
     assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
       /Troll.*No-muerto/, "Conclusión contextual sin Tauren no elegible");
@@ -302,8 +294,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v42")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v41")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v43")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v42")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();
@@ -364,17 +356,17 @@ const server = http.createServer(async (req, res) => {
         assert(text.includes(change), `Official racial update matches source data for ${entry.raza}`);
       }
     }
-    const raceData = await page.evaluate(async () => (await fetch("./data/race-advisor.json")).json());
+    const raceData = await page.evaluate(async () => (await fetch("./data/race-rankings-v43.json")).json());
     const orc = raceData.fichas.find((row) => row.razaRecomendada === "Orco");
-    assert(orc, "Orc remains present as a recommended race in the original Excel");
+    assert(orc, "Orc is recommended by v2 evaluation");
     await page.goto(base + "/#race-advisor");
     await page.locator(`#faction button[data-value="${orc.faccion}"]`).click();
     await page.locator(`#character-class button[data-value="${orc.clase}"]`).click();
     await page.locator(`#specialization button[data-value="${orc.especializacion}"]`).click();
     assert.match(await page.locator("#race-beta-recommended-list").textContent(), /Savage/,
-      "Race Advisor shows official Orc change without recalculating original recommendation");
+      "Race Advisor includes official Savage change with the v2 recommendation");
     assert.equal(await page.locator('[data-field="razaRecomendada"]').textContent(), "Orco");
-    console.log("Racials: 8/8 official updates available offline; Race Advisor context preserved");
+    console.log("Racials: 8/8 official updates available offline; Race Advisor v43 context visible");
     await require("./addon-browser.cjs")(page, context, base, browser);
     await page.goto(base + "/#talent-advisor");
     await page.locator("#talent-class button").first().waitFor();

@@ -1,0 +1,1065 @@
+{
+  "schemaVersion": 2,
+  "estado": "propuesta_editorial_beta_v2_pendiente_revision_PR",
+  "fechaRevision": "2026-10-24",
+  "fuente": "Documento de investigación rankings-v2.json aportado en ZIP por el usuario; los puntos editoriales no se presentan como rendimiento",
+  "escenarios": {
+    "frente": 50,
+    "objetivos": 30,
+    "repliegue": 20
+  },
+  "resumen": {
+    "fichas": 54,
+    "candidaturas": 168,
+    "cielonato": 30,
+    "razasUnicas": 6,
+    "empatesTecnicosEditoriales": 20,
+    "cortesEstrechosSegundaTercera": 10
+  },
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "fullOrder": [
+        "Gnomo",
+        "Humano"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 18.3625,
+        "Humano": 18.025
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "fullOrder": [
+        "Gnomo",
+        "Humano"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 19.4875,
+        "Humano": 18.1625
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "fullOrder": [
+        "Gnomo",
+        "Humano"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 21.1375,
+        "Humano": 17.9125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Enano": 15.2,
+        "Humano": 14.84375,
+        "Elfo": 11.1625,
+        "Cielonato": 4.603125
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "fullOrder": [
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "puntuacionesEditoriales": {
+        "Humano": 15.59375,
+        "Enano": 13.90625,
+        "Elfo": 11.6875,
+        "Cielonato": 6.28125
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "fullOrder": [
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "puntuacionesEditoriales": {
+        "Humano": 17.25,
+        "Enano": 13.59375,
+        "Elfo": 11.6875,
+        "Cielonato": 5
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "fullOrder": [
+        "Enano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "puntuacionesEditoriales": {
+        "Enano": 13.90625
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "fullOrder": [
+        "Enano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "puntuacionesEditoriales": {
+        "Enano": 15.2
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Enano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "puntuacionesEditoriales": {
+        "Enano": 16.925
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "fullOrder": [
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Elfo": 13.1125,
+        "Cielonato": 6.28125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "fullOrder": [
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Elfo": 11.3625,
+        "Cielonato": 5.3625
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Elfo": 11.9875,
+        "Cielonato": 5.475
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 22.525,
+        "Humano": 16.625,
+        "Enano": 13.46875,
+        "Elfo": 11.2125,
+        "Cielonato": 4.3375
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Enano",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 15.9,
+        "Humano": 14.84375,
+        "Enano": 13.78125,
+        "Elfo": 11.8375,
+        "Cielonato": 5.36875
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Gnomo",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Enano": 17.59375,
+        "Humano": 16.40625,
+        "Gnomo": 12.5,
+        "Elfo": 8.0625,
+        "Cielonato": 1.90625
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 15.15,
+        "Humano": 13.15,
+        "Cielonato": 6.38125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "fullOrder": [
+        "Humano",
+        "Gnomo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "puntuacionesEditoriales": {
+        "Humano": 14.125,
+        "Gnomo": 13.875,
+        "Cielonato": 5.86875
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 14.8125,
+        "Humano": 12.725,
+        "Cielonato": 6.13125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "Enano",
+        "Humano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Enano": 17.59375,
+        "Humano": 16.65625
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "fullOrder": [
+        "Humano",
+        "Enano"
+      ],
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "puntuacionesEditoriales": {
+        "Humano": 16.125,
+        "Enano": 13.28125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "Enano",
+        "Humano"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Enano": 16.0625,
+        "Humano": 14.46875
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Elfo",
+        "Enano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 20.6875,
+        "Humano": 17.125,
+        "Elfo": 13.9375,
+        "Enano": 13.59375,
+        "Cielonato": 3.71875
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Gnomo",
+        "Elfo",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Enano": 15.2,
+        "Humano": 14.59375,
+        "Gnomo": 14.4125,
+        "Elfo": 13.475,
+        "Cielonato": 5.2375
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "fullOrder": [
+        "Gnomo",
+        "Humano",
+        "Elfo",
+        "Enano",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 19.1875,
+        "Humano": 18.90625,
+        "Elfo": 15.4375,
+        "Enano": 13.28125,
+        "Cielonato": 3.71875
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "fullOrder": [
+        "Gnomo",
+        "Enano",
+        "Humano",
+        "Elfo"
+      ],
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Enano",
+      "puntuacionesEditoriales": {
+        "Gnomo": 26.09375,
+        "Enano": 25.34375,
+        "Humano": 19.65625,
+        "Elfo": 16
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "Enano",
+        "Gnomo",
+        "Humano",
+        "Elfo"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Gnomo",
+      "puntuacionesEditoriales": {
+        "Enano": 25.875,
+        "Gnomo": 23.975,
+        "Humano": 17.975,
+        "Elfo": 16.175
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "fullOrder": [
+        "Enano",
+        "Humano",
+        "Gnomo",
+        "Elfo"
+      ],
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "puntuacionesEditoriales": {
+        "Enano": 21.6875,
+        "Humano": 20.7125,
+        "Gnomo": 20.5375,
+        "Elfo": 18.525
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Orco": 19.025,
+        "No-muerto": 13.58125,
+        "Troll": 8.5875
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Orco": 20.8375,
+        "No-muerto": 13.05625,
+        "Troll": 10.25
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Orco": 20.125,
+        "No-muerto": 12.75625,
+        "Troll": 9.725
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "puntuacionesEditoriales": {
+        "Orco": 18.3125,
+        "Tauren": 15.5953125,
+        "Cielonato": 11.778125,
+        "Troll": 7.94375
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "puntuacionesEditoriales": {
+        "Orco": 18.875,
+        "Tauren": 14.9765625,
+        "Cielonato": 13.53125,
+        "Troll": 9.53125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "puntuacionesEditoriales": {
+        "Tauren": 19.34375,
+        "Orco": 18.875,
+        "Cielonato": 14.59375,
+        "Troll": 8.34375
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "puntuacionesEditoriales": {
+        "Orco": 18.875,
+        "Tauren": 14.9765625,
+        "Cielonato": 13.53125,
+        "Troll": 9.53125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "puntuacionesEditoriales": {
+        "Orco": 18.3125,
+        "Tauren": 17.74375,
+        "Cielonato": 9.771875,
+        "Troll": 9.25
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "Troll",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "puntuacionesEditoriales": {
+        "Tauren": 18.21875,
+        "Orco": 13.2875,
+        "Troll": 8.875,
+        "Cielonato": 7.48125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "fullOrder": [
+        "Tauren",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Tauren": 15.965625,
+        "Cielonato": 8.715625
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "fullOrder": [
+        "Tauren",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Tauren": 20.025,
+        "Cielonato": 8.725
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "fullOrder": [
+        "Tauren",
+        "Cielonato"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Tauren": 19.175,
+        "Cielonato": 7.265625
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "puntuacionesEditoriales": {
+        "Tauren": 19.21875,
+        "Orco": 18.15,
+        "Cielonato": 14.18125,
+        "No-muerto": 12.59375,
+        "Troll": 7.86875
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "fullOrder": [
+        "Orco",
+        "Tauren",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "puntuacionesEditoriales": {
+        "Orco": 18.15,
+        "Tauren": 17,
+        "Cielonato": 15.2125,
+        "No-muerto": 10.78125,
+        "Troll": 9.05625
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "Tauren",
+        "Orco",
+        "No-muerto",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "puntuacionesEditoriales": {
+        "Tauren": 23.125,
+        "Orco": 17,
+        "No-muerto": 15.09375,
+        "Cielonato": 7.3125,
+        "Troll": 6.21875
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Orco": 18.875,
+        "No-muerto": 11.58125,
+        "Troll": 9.53125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Orco": 19.9625,
+        "No-muerto": 13.46875,
+        "Troll": 9.05625
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Orco": 19.9625,
+        "No-muerto": 12.575,
+        "Troll": 9.53125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "fullOrder": [
+        "No-muerto"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-",
+      "puntuacionesEditoriales": {
+        "No-muerto": 15.65625
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "fullOrder": [
+        "No-muerto"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-",
+      "puntuacionesEditoriales": {
+        "No-muerto": 12.96875
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "No-muerto"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-",
+      "puntuacionesEditoriales": {
+        "No-muerto": 10.78125
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "fullOrder": [
+        "Orco",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Orco": 18.875,
+        "Cielonato": 13.5625,
+        "No-muerto": 12.71875,
+        "Troll": 8.34375
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "fullOrder": [
+        "Orco",
+        "Cielonato",
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "Cielonato",
+      "puntuacionesEditoriales": {
+        "Orco": 18.3125,
+        "Cielonato": 15.00625,
+        "No-muerto": 11.075,
+        "Troll": 9.25
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "fullOrder": [
+        "Orco",
+        "No-muerto",
+        "Cielonato",
+        "Troll"
+      ],
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Orco": 18.875,
+        "No-muerto": 14.53125,
+        "Cielonato": 13.5625,
+        "Troll": 7.15625
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": true
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "fullOrder": [
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll",
+      "puntuacionesEditoriales": {
+        "No-muerto": 14.8125,
+        "Troll": 14.0625
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "fullOrder": [
+        "Troll",
+        "No-muerto"
+      ],
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "puntuacionesEditoriales": {
+        "Troll": 14.125,
+        "No-muerto": 14.1
+      },
+      "empateTecnicoEditorial": true,
+      "segundaTerceraMuyProximas": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "fullOrder": [
+        "No-muerto",
+        "Troll"
+      ],
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll",
+      "puntuacionesEditoriales": {
+        "No-muerto": 18.075,
+        "Troll": 12.675
+      },
+      "empateTecnicoEditorial": false,
+      "segundaTerceraMuyProximas": false
+    }
+  ],
+  "fuenteOriginal": {
+    "rutaZip": "race-reliability/rankings-v2.json",
+    "sha256": "410fb6580b3a3c6eaecc041c1b662a4ec7a038b344ff10baa683b55d24b34e04",
+    "archivoZip": "race-reliability.zip",
+    "zipSha256": "ef5443c0594f6596f2f81ff90e7be8475efbeda13a2bfcdd1eeab99e3e19ce29"
+  }
+}
