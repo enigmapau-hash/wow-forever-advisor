@@ -8,10 +8,11 @@ module.exports = async function testRedesign(page, base, offline = false) {
     await page.setViewportSize({ width, height: 1000 });
     const count = await page.evaluate(async (width) => {
       const read = async (name) => (await fetch(`./data/${name}.json`)).json();
-      const [source, additions, druid, profiles, priestCorrection] = await Promise.all([
+      const [source, additions, druid, profiles, priestCorrection, comparisons] = await Promise.all([
         read("race-advisor"), read("race-advisor-additions"),
         read("race-advisor-druid-alternatives"), read("racials"),
         read("race-advisor-priest-horde-alternative"),
+        read("race-contextual-comparisons-v40-draft"),
       ]);
       const display = (text) => text === "Elfo" ? "Elfo de la noche" : text
         .replace(/, denominado Elfo en la base/g, "")
@@ -79,6 +80,20 @@ module.exports = async function testRedesign(page, base, offline = false) {
         ensure(Boolean(addons.compareDocumentPosition(sources) & Node.DOCUMENT_POSITION_FOLLOWING),
           "Fuentes después de addons");
         if (alt !== "-" && !incompatible) {
+          const contextual = comparisons.fichas.find((r) => r.faccion === row.faccion
+            && r.clase === row.clase && r.especializacion === row.especializacion);
+          ensure(Boolean(contextual), "Comparativa contextual presente para cada pareja");
+          for (const [id, expected] of [
+            ["compare-primary-pro", contextual.principal.aFavor],
+            ["compare-primary-con", contextual.principal.aTenerEnCuenta],
+            ["compare-alternative-pro", contextual.alternativaAnalisis.aFavor],
+            ["compare-alternative-con", contextual.alternativaAnalisis.aTenerEnCuenta],
+          ]) ensure(document.getElementById(id).textContent === display(expected),
+            "Análisis contextual exacto: " + id);
+          ensure(JSON.stringify([...document.querySelectorAll("#race-comparison-conclusion-text > p")]
+            .map((p) => p.textContent)) === JSON.stringify([
+              contextual.conclusionPrincipal, contextual.conclusionAlternativa]),
+            "Dos conclusiones contextuales exactas por especialización");
           ensure(alternative.querySelector('[data-field="alternativa"]').textContent === display(alt), "Alternativa intacta");
           ensure(document.getElementById("alternative-race-icon").getAttribute("src") === self.WOW_ICON_MAP.raza[alt], "Icono de alternativa correcto");
           ensure(alternative.querySelector(".eyebrow").textContent.trim() === "Raza alternativa",
@@ -209,5 +224,5 @@ module.exports = async function testRedesign(page, base, offline = false) {
     return data.fichas.length;
   });
   assert.equal(professions, 27);
-  console.log(`v39 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
+  console.log(`v40 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, 48 comparativas contextuales, jerarquía, alternativas, iconos y 27 profesiones: OK`);
 };

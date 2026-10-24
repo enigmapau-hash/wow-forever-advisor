@@ -1,7 +1,7 @@
 """Auditoría de evidencia de WoW Forever: cuatro raciales y sacerdote exclusivo.
 
 No es un test de rankings: protege la separación entre evaluaciones aprobadas
-y la investigación nueva todavía no publicable.
+y la capa contextual cuya publicación v40 ha aprobado el usuario.
 """
 import json
 import unittest
@@ -173,8 +173,9 @@ class RaceContextAuditTests(unittest.TestCase):
         self.assertIn("No-muerto", row["conclusionAlternativa"])
         self.assertEqual(len(row["racialesConsideradas"]["alternativa"]["hechizosSacerdote"]), 2)
 
-    def test_research_must_not_be_marked_ready_to_publish(self):
-        self.assertEqual(self.audit["estado"], "auditoria_editorial_abierta_no_publicado")
+    def test_approved_release_has_no_pending_or_ineligible_comparisons(self):
+        self.assertEqual(self.audit["estado"], "publicacion_v40_aprobada_usuario")
+        self.assertEqual(self.bundle["estado"], "publicacion_v40_aprobada_usuario")
         status = self.audit["resumen"]
         self.assertEqual(status["analisis_revisado"], 48)
         self.assertNotIn("pendiente_analisis_especifico", status)

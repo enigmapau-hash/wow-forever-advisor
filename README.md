@@ -1,6 +1,22 @@
 # wow-forever-advisor
 
-## Versión actual · v39
+## Versión actual · v40
+
+Race Advisor ofrece **48 comparativas por raza + clase + especialización**,
+con cuatro raciales generales y, para Sacerdote, dos hechizos propios por raza.
+«A favor», «A tener en cuenta» y dos párrafos de conclusión distinguen las
+ventajas y los límites de cada combinación. Las seis fichas sin alternativa
+mantienen su tratamiento específico. En Horda · Sacerdote · Sagrado, Troll
+sigue como principal y **No-muerto es la alternativa aprobada**, mediante una
+capa separada que conserva el registro original. El resto de clasificaciones,
+las alternativas Druida y el Excel permanecen intactos.
+
+`version.js`, pie y caché usan **v40**. La regresión verifica la eliminación
+de la caché v39 y las 48 comparativas exactas en las 54 fichas a
+320/390/820/1280 px y offline. Detalles en las [notas de v40](docs/v40-release.md)
+y la [investigación contextual](docs/v40-contextual-race-research.md).
+
+### Diseño y antecedentes hasta v39
 
 Race Advisor conserva **54 fichas**: 51 recomendaciones originales y tres
 adiciones de Paladín Horda; las seis alternativas de Druida siguen siendo

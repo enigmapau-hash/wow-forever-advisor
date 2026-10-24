@@ -1,6 +1,6 @@
-# Investigación v40 · Race Advisor contextual (NO PUBLICADA)
+# v40 · Race Advisor contextual
 
-Estado: **borrador editorial**, no apto para fusionar como actualización de comparativas.
+Estado: **publicación aprobada por el usuario el 24 de octubre de 2026**, condicionada a superar las validaciones. Véanse las [notas de publicación](v40-release.md).
 
 ## Objetivo
 
@@ -27,8 +27,8 @@ No cuentan como ventajas universales en PvP las herramientas de exploración (Bu
 - **1 corrección expresamente aprobada**: Horda · Sacerdote · Sagrado → Troll principal / **No-muerto alternativa**. El archivo original mantiene Tauren para trazabilidad histórica; `data/race-advisor-priest-horde-alternative.json` aplica la alternativa jugable y actualiza su explicación visible. La tabla oficial no permite Sacerdote Tauren.
 - **36 comparativas adicionales** (Druida, Guerrero, Paladín, Chamán, Cazador, Pícaro y Mago), con análisis individual de las facultades y los cambios de cada especialización. Se suman a Sacerdote y Brujo para un total de **48 enfrentamientos jugables**.
 - **Capa consolidada**: `data/race-contextual-comparisons-v40-draft.json`, con las 48 comparativas válidas. Contiene las fuentes y el inventario 2+2 que sustenta cada evaluación, y mantiene separados los JSON aprobados.
-- **Interfaz de la rama de prueba**: Race Advisor utiliza la capa de datos cuando es válida, mostrando «A favor» y «A tener en cuenta» por combinación completa y dos párrafos de conclusión. Si falla una fuente adicional, conserva un fallback conservador: nunca presenta Tauren Sacerdote como alternativa jugable; con la corrección aprobada muestra No-muerto.
-- **Publicación pendiente**: la rama no debe fusionarse hasta que las pruebas y la revisión editorial confirmen los 48 análisis y se autorice expresamente la publicación. La versión pública v39 permanece intacta.
+- **Interfaz v40**: Race Advisor utiliza la capa de datos cuando es válida, mostrando «A favor» y «A tener en cuenta» por combinación completa y dos párrafos de conclusión. Si falla una fuente adicional, conserva un fallback conservador: nunca presenta Tauren Sacerdote como alternativa jugable; con la corrección aprobada muestra No-muerto.
+- **Publicación autorizada**: las 48 comparativas y las 6 fichas sin alternativa quedan cubiertas por la regresión. `version.js` y la caché pasan a v40. Los nombres de los archivos de investigación conservan el sufijo `-draft` por trazabilidad; el estado de la capa consolidada y de su auditoría registra la autorización de publicación.
 
 ## Criterio de revisión editorial por ficha
 
