@@ -1,20 +1,23 @@
 # wow-forever-advisor
 
-## Versión actual · v40
+## Versión actual · v41
 
-Race Advisor ofrece **48 comparativas por raza + clase + especialización**,
-con cuatro raciales generales y, para Sacerdote, dos hechizos propios por raza.
-«A favor», «A tener en cuenta» y dos párrafos de conclusión distinguen las
-ventajas y los límites de cada combinación. Las seis fichas sin alternativa
-mantienen su tratamiento específico. En Horda · Sacerdote · Sagrado, Troll
-sigue como principal y **No-muerto es la alternativa aprobada**, mediante una
-capa separada que conserva el registro original. El resto de clasificaciones,
-las alternativas Druida y el Excel permanecen intactos.
+Race Advisor mantiene las **54 fichas**, con **48 comparativas completas** de
+raza + clase + especialización (sin cambiar ninguna recomendación aprobada) y
+**seis evaluaciones individuales** nuevas de combinaciones con una única raza:
+Chamán Enano (Alianza) y Paladín No-muerto (Horda), cada uno con sus tres
+especializaciones. Se ponderan todas las raciales y habilidades de clase.
 
-`version.js`, pie y caché usan **v40**. La regresión verifica la eliminación
-de la caché v39 y las 48 comparativas exactas en las 54 fichas a
-320/390/820/1280 px y offline. Detalles en las [notas de v40](docs/v40-release.md)
-y la [investigación contextual](docs/v40-contextual-race-research.md).
+Se elimina el rótulo redundante «En esta especialización» en las seis tarjetas
+alternativas de Druida con Cielonato. Addons relacionados y fuentes oficiales
+se presentan ahora en tarjetas secundarias, con las notas relevantes visibles,
+enlaces oficiales desplegables y nombres específicos sin duplicar URLs.
+Se conservan intactos los datos maestros, el Excel, las 48 comparativas de v40,
+Talent Advisor y Profession Advisor.
+
+`version.js`, pie y caché usan **v41**. La regresión cubre 54 fichas,
+las seis evaluaciones, 48 comparativas, 320/390/820/1280 px,
+teclado y modo sin conexión. Ver [notas de v41](docs/v41-release.md).
 
 ### Diseño y antecedentes hasta v39
 
