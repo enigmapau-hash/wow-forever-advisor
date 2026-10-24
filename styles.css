@@ -631,3 +631,29 @@ label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
 @media (max-width: 59.999rem) {
   .race-choices > .result-card { height: auto; }
 }
+
+/* Consistencia de las tarjetas: facultad → motivo → explicación. */
+#alternative-profile .alternative-racial-summary {
+  gap: 0;
+}
+#alternative-profile .race-card-ability {
+  margin: 0 0 1.2rem;
+}
+#alternative-profile #alternative-use {
+  margin: 0;
+  font-size: 1.06rem;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #f4eedb;
+}
+#alternative-profile .race-alternative-explanation {
+  margin-top: 0.9rem;
+  max-width: 55ch;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #dce5dc;
+}
+#alternative-profile .alternative-scope:not([hidden]) {
+  margin-bottom: 0.6rem;
+}

@@ -139,8 +139,17 @@ runButton.addEventListener("click", async () => {
           `${key}: solo se muestra alcance cuando la evaluación es especializada`);
         check(doc.getElementById("alternative-race-link").dataset.race === record.alternativa,
           `${key}: alternativa enlazada a su perfil completo`);
-        check(doc.getElementById("alternative-ability-name").textContent.trim().length > 4,
+        const abilityName = doc.getElementById("alternative-ability-name").textContent;
+        const explanation = doc.getElementById("alternative-explanation").textContent;
+        check(abilityName.trim().length > 4,
           `${key}: habilidad racial alternativa identificada`);
+        check(explanation.startsWith(abilityName + " ") && explanation.endsWith("."),
+          `${key}: la explicación comienza por la habilidad racial exacta`);
+        check(doc.getElementById("alternative-use").textContent.trim().length > 20,
+          `${key}: resumen de utilidad visible antes de la explicación`);
+        check(doc.getElementById("alternative-use").compareDocumentPosition(
+          doc.getElementById("alternative-explanation")) & Node.DOCUMENT_POSITION_FOLLOWING,
+          `${key}: orden visible habilidad, resumen y explicación`);
         check(doc.getElementById("race-comparison-conclusion-text").querySelectorAll("p").length === 2,
           `${key}: conclusión dividida por raza`);
       }
@@ -148,8 +157,16 @@ runButton.addEventListener("click", async () => {
         && doc.getElementById("race-addition-note") === null,
         `${key}: no hay mensajes duplicados de raza única`);
       if (record.clase === "Druida") {
-        check(doc.getElementById("alternative-use").textContent === display(record.usoAlternativa),
-          `${key}: justificar Cielonato como alternativa`);
+        const comparisonPro = doc.getElementById("compare-alternative-pro").textContent;
+        const summary = doc.getElementById("alternative-use").textContent;
+        const explanation = doc.getElementById("alternative-explanation").textContent;
+        check(comparisonPro !== summary && comparisonPro !== explanation
+          && !comparisonPro.includes("sin reemplazar")
+          && !comparisonPro.includes("pendiente de verificar"),
+          `${key}: los seis Druidas evitan duplicar el argumento en la comparativa`);
+        check(doc.getElementById("alternative-ability-name").textContent ===
+          (record.faccion === "Alianza" ? "Read Ley Line" : "Skysight"),
+          `${key}: Cielonato usa la habilidad exacta de su facción`);
         check(doc.getElementById("alternative-details") === null,
           `${key}: sin segundo párrafo repetido ni comparativa desplegable`);
       } else {
@@ -159,6 +176,8 @@ runButton.addEventListener("click", async () => {
       choose(spec, "");
       check(result.hidden, `${key}: selección incompleta sin resultado`);
       check(raceIcon.hidden && !raceIcon.hasAttribute("src"), `${key}: sin icono antiguo al limpiar`);
+      check(doc.getElementById("alternative-explanation").textContent === "",
+        `${key}: sin explicación residual de la alternativa anterior`);
     }
     check(missingAlternatives === 6, "3 Chamán Alianza + 3 Paladín Horda sin segunda raza jugable");
 

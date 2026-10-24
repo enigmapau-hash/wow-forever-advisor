@@ -74,8 +74,29 @@ module.exports = async function testRedesign(page, base, offline = false) {
             : abilities[alt];
           ensure(document.getElementById("alternative-ability-name").textContent === abilityName,
             "Habilidad racial de la alternativa coherente con su facción: " + alt);
-          ensure(document.getElementById("alternative-use").textContent.trim().length > 0,
-            "Alternativa explicada");
+          const useText = document.getElementById("alternative-use");
+          const explainText = document.getElementById("alternative-explanation");
+          ensure(useText.textContent.trim().length > 15,
+            "La alternativa presenta un resumen breve");
+          ensure(explainText.textContent.startsWith(abilityName + " ")
+            && explainText.textContent.endsWith("."),
+            "La explicación comienza por la habilidad racial exacta");
+          const ability = alternative.querySelector(".race-card-ability");
+          ensure(ability.getBoundingClientRect().top < useText.getBoundingClientRect().top
+            && useText.getBoundingClientRect().bottom < explainText.getBoundingClientRect().top,
+            "Orden vertical: habilidad, utilidad y explicación");
+          const summaryStyle = getComputedStyle(useText);
+          const explanationStyle = getComputedStyle(explainText);
+          ensure(parseFloat(summaryStyle.fontSize) >= 16
+            && parseFloat(explanationStyle.fontSize) >= 16
+            && parseFloat(explanationStyle.lineHeight) >= parseFloat(explanationStyle.fontSize) * 1.65,
+            "Tipografía y espaciado legibles también en móvil");
+          if (extra) {
+            const pro = document.getElementById("compare-alternative-pro").textContent;
+            ensure(pro !== useText.textContent && pro !== explainText.textContent
+              && !pro.includes(display(extra.usoAlternativa)),
+              "Druida no repite su explicación en el bloque A favor");
+          }
           const scope = document.getElementById("alternative-scope");
           ensure(scope.hidden === !extra && scope.textContent ===
             (extra ? "En esta especialización" : ""),
@@ -109,6 +130,7 @@ module.exports = async function testRedesign(page, base, offline = false) {
           ensure(document.getElementById("race-comparison").hidden
             && document.querySelectorAll("#race-comparison-conclusion-text > p").length === 0
             && document.getElementById("alternative-ability-name").textContent === ""
+            && document.getElementById("alternative-explanation").textContent === ""
             && document.getElementById("alternative-scope").hidden,
             "Sin comparativa ni contenido residual cuando no existe alternativa");
         }
@@ -169,5 +191,5 @@ module.exports = async function testRedesign(page, base, offline = false) {
     return data.fichas.length;
   });
   assert.equal(professions, 27);
-  console.log(`v38 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
+  console.log(`v39 ${offline ? "offline" : "320/390/820/1280px"}: 54 fichas, jerarquía, alternativas, iconos y 27 profesiones: OK`);
 };

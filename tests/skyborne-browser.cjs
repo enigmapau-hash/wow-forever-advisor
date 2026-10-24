@@ -152,10 +152,16 @@ module.exports = async function testSkyborne(page, context, base) {
         }
       }
       if (druid) {
-        if (document.getElementById("alternative-use").textContent !== display(druid.usoAlternativa)
+        const activeAbility = row.faccion === "Alianza" ? "Read Ley Line" : "Skysight";
+        const summary = document.getElementById("alternative-use").textContent;
+        const explanation = document.getElementById("alternative-explanation").textContent;
+        const comparativePro = document.getElementById("compare-alternative-pro").textContent;
+        if (!summary || !explanation.startsWith(activeAbility + " ")
+            || !comparativePro || comparativePro === summary || comparativePro === explanation
+            || comparativePro.includes(display(druid.usoAlternativa))
             || document.getElementById("alternative-details") !== null
             || document.getElementById("alternative-race-link").dataset.race !== "Cielonato") {
-          throw new Error(`Missing comparative reason for ${row.faccion}/${row.especializacion}`);
+          throw new Error(`Missing or duplicated racial reasoning for ${row.faccion}/${row.especializacion}`);
         }
       }
     }
@@ -203,7 +209,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v38")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v39")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();

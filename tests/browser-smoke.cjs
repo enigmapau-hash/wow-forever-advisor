@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v37`);
-      await cache.put("./obsolete-v37", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v38`);
+      await cache.put("./obsolete-v38", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -144,6 +144,11 @@ const server = http.createServer(async (req, res) => {
       "Nombre completo de la tarjeta secundaria");
     assert.equal(await page.locator("#alternative-ability-name").textContent(), "Read Ley Line",
       "La variante de Alianza identifica su habilidad específica");
+    assert.match(await page.locator("#alternative-explanation").textContent(),
+      /^Read Ley Line aumenta /, "La explicación comienza por la facultad");
+    assert.notEqual(await page.locator("#alternative-use").textContent(),
+      await page.locator("#compare-alternative-pro").textContent(),
+      "El motivo de Druida no se repite como ventaja comparativa");
     assert.equal(await page.locator("#alternative-scope").textContent(), "En esta especialización",
       "Druida conserva su distinción de análisis específico");
     assert.equal(await page.locator("#race-comparison-conclusion-text > p").count(), 2,
@@ -174,6 +179,16 @@ const server = http.createServer(async (req, res) => {
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         "F02: sin desbordamiento horizontal a " + width);
     }
+    await page.locator('#character-class button[data-value="Brujo"]').click();
+    await page.locator('#specialization button[data-value="Aflicción"]').click();
+    assert.equal(await page.locator("#alternative-ability-name").textContent(), "Escape Artist",
+      "Brujo Aflicción presenta la facultad de Gnomo");
+    assert.match(await page.locator("#alternative-explanation").textContent(),
+      /^Escape Artist libera /, "La explicación de Escape Artist sigue al resumen");
+    assert(await page.locator("#alternative-use").evaluate((summary) =>
+      summary.getBoundingClientRect().bottom <
+      document.getElementById("alternative-explanation").getBoundingClientRect().top),
+      "La descripción queda debajo de la frase de utilidad");
     await page.locator('#faction button[data-value="Horda"]').click();
     await page.locator('#character-class button[data-value="Paladín"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
@@ -255,8 +270,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v38")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v37")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v39")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v38")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

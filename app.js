@@ -131,6 +131,7 @@ function clearResult() {
   document.getElementById("result-combination").textContent = "";
   document.getElementById("alternative-profile").hidden = true;
   document.getElementById("alternative-use").textContent = "";
+  document.getElementById("alternative-explanation").textContent = "";
   document.getElementById("alternative-scope").textContent = "";
   document.getElementById("alternative-ability-name").textContent = "";
   document.getElementById("alternative-race-link").dataset.race = "";
@@ -307,6 +308,63 @@ function alternativeRacialAbility(record) {
   return raceAbilityNames[record.alternativa] || "";
 }
 
+// Las tarjetas indican para qué sirve la racial y, después, qué hace.
+// Estas frases se derivan de los comentarios originales de los ocho perfiles.
+const alternativeRaceAbilityDescriptions = Object.freeze({
+  Gnomo: "Escape Artist libera de raíces y ralentizaciones para recuperar movimiento.",
+  Humano: "Will to Survive elimina un aturdimiento para volver a actuar.",
+  Enano: "Stoneform reduce la presión física y protege frente a sangrados, venenos y enfermedades.",
+  Elfo: "Shadowmeld permite permanecer oculto e inmóvil para preparar la intervención.",
+  Orco: "Hardiness reduce de forma pasiva la duración de los aturdimientos.",
+  Tauren: "War Stomp aturde a enemigos cercanos para crear espacio defensivo.",
+  Troll: "Berserking acelera ataques y lanzamientos durante una ventana de intervención.",
+  "No-muerto": "Will of the Forsaken permite salir de miedo, sueño o encanto.",
+});
+
+// La alternativa de Druida distingue el uso puntual, la facultad activa y
+// la ventaja comparativa. No reutilizar la misma frase en dos recuadros.
+const druidCielonatoPresentation = Object.freeze({
+  "Alianza|Equilibrio": {
+    use: "Contar con una opción de recuperación entre ventanas de combate.",
+    advantage: "Wind Blessed añade un 3 % de celeridad para sostener ventanas de lanzamiento.",
+  },
+  "Alianza|Feral": {
+    use: "Disponer de recursos situacionales para cambiar la ruta de entrada.",
+    advantage: "Walk on Air permite planear para buscar otra ruta de entrada o retirada.",
+  },
+  "Alianza|Restauración": {
+    use: "Añadir un recurso de recuperación entre ventanas de curación.",
+    advantage: "Wind Blessed aporta un 3 % de celeridad pasiva a las acciones de apoyo.",
+  },
+  "Horda|Equilibrio": {
+    use: "Cambiar de posición antes de una nueva ventana de lanzamiento.",
+    advantage: "Wind Blessed aporta un 3 % de celeridad durante las oportunidades ofensivas.",
+  },
+  "Horda|Feral": {
+    use: "Conservar opciones de persecución y retirada.",
+    advantage: "Walk on Air permite planear para variar la ruta de aproximación.",
+  },
+  "Horda|Restauración": {
+    use: "Facilitar el desplazamiento hacia cobertura y aliados.",
+    advantage: "Wind Blessed complementa las ventanas de lanzamiento de apoyo con un 3 % de celeridad.",
+  },
+});
+
+function druidAlternativePresentation(record) {
+  return druidCielonatoPresentation[record.faccion + "|" + record.especializacion] || null;
+}
+
+function alternativeRacialExplanation(record) {
+  if (record.alternativa !== "Cielonato") {
+    return alternativeRaceAbilityDescriptions[record.alternativa] || "";
+  }
+  const variant = skyborneData?.variantes.find((item) => item.faccion === record.faccion);
+  if (!variant) return "";
+  return record.faccion === "Alianza"
+    ? `Read Ley Line aumenta un ${variant.habilidad.regeneracionPorcentaje} % la regeneración de salud y maná y puede activarse en movimiento.`
+    : `Skysight aumenta un ${variant.habilidad.movimientoPorcentaje} % la velocidad de carrera y puede activarse en movimiento.`;
+}
+
 function focusedRaceExplanation(explanation) {
   const sentences = String(explanation).split(/(?<=\.)\s+(?=[A-ZÁÉÍÓÚÑ])/u);
   // En las 54 fichas, la segunda oración expone la facultad concreta.
@@ -357,7 +415,8 @@ function renderRaceComparison(record, mainProfile, alternativeProfile) {
   document.getElementById("compare-primary-pro").textContent = raceProse(firstRacialPoint(mainProfile?.fortalezas));
   document.getElementById("compare-primary-con").textContent = raceProse(firstRacialPoint(mainProfile?.debilidades));
   document.getElementById("compare-alternative-pro").textContent = raceProse(skyborne
-    ? record.usoAlternativa : firstRacialPoint(alternativeProfile?.fortalezas));
+    ? druidAlternativePresentation(record)?.advantage || ""
+    : firstRacialPoint(alternativeProfile?.fortalezas));
   document.getElementById("compare-alternative-con").textContent = raceProse(skyborne
     ? record.faccion === "Alianza"
       ? "No sustituye la ocultación y preparación posicional del elfo de la noche."
@@ -651,12 +710,15 @@ specialization.addEventListener("change", () => {
     const scope = document.getElementById("alternative-scope");
     scope.textContent = isSpecialized ? "En esta especialización" : "";
     scope.hidden = !isSpecialized;
-    // Una sola idea por tarjeta: el análisis y las limitaciones completas
-    // de cada raza se consultan en Race Explorer, sin repetirse aquí.
+    // Resumen breve de uso, seguido de una frase que comienza por la facultad.
+    // El razonamiento comparativo se conserva en el cuadro independiente.
     document.getElementById("alternative-use").textContent = raceProse(isSpecialized
-      ? record.usoAlternativa : alternative?.usoPrincipal || "");
+      ? druidAlternativePresentation(record)?.use || ""
+      : alternative?.usoPrincipal || "");
     document.getElementById("alternative-ability-name").textContent =
       alternativeRacialAbility(record);
+    document.getElementById("alternative-explanation").textContent =
+      raceProse(alternativeRacialExplanation(record));
     const alternativeLink = document.getElementById("alternative-race-link");
     alternativeLink.dataset.race = record.alternativa;
     alternativeLink.setAttribute("aria-label",
