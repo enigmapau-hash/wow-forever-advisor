@@ -22,6 +22,7 @@ const APP_FILES = [
   "./data/race-advisor.json",
   "./data/race-advisor-additions.json",
   "./data/race-advisor-druid-alternatives.json",
+  "./data/race-advisor-priest-horde-alternative.json",
   "./data/race-contextual-comparisons-v40-draft.json",
   "./data/profession-advisor.json",
   "./data/talent-advisor-warrior.json",
