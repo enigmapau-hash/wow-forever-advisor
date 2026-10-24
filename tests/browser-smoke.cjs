@@ -207,12 +207,21 @@ const server = http.createServer(async (req, res) => {
     await page.locator('#faction button[data-value="Horda"]').click();
     await page.locator('#character-class button[data-value="Sacerdote"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
-    assert.equal(await page.locator("#alternative-profile").isVisible(), false,
-      "Sacerdote Tauren incompatible no muestra una alternativa ficticia");
-    assert.equal(await page.locator("#race-comparison").isVisible(), false,
-      "No hay comparativa de una combinación imposible");
-    assert.match(await page.locator("#alternative-empty").textContent(), /Tauren no puede ser Sacerdote/,
-      "Aviso concreto de elegibilidad oficial");
+    assert.equal(await page.locator("#alternative-profile").isVisible(), true,
+      "Sacerdote Sagrado muestra una alternativa jugable");
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "No-muerto",
+      "Alternativa aprobada No-muerto");
+    assert.equal(await page.locator("#alternative-ability-name").textContent(), "Will of the Forsaken",
+      "La tarjeta secundaria identifica la racial no-muerta");
+    assert.equal(await page.locator("#race-comparison").isVisible(), true,
+      "Comparativa específica entre Troll y No-muerto visible");
+    assert.match(await page.locator("#compare-alternative-pro").textContent(),
+      /Will of the Forsaken.*Dark Sacrifice.*Touch of Weakness/,
+      "El sacerdote no-muerto utiliza facultades raciales y exclusivas de clase");
+    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
+      /Troll.*No-muerto/, "Conclusión contextual sin Tauren no elegible");
+    assert.doesNotMatch(await page.locator("#primary-analysis").textContent(), /Frente a Tauren/,
+      "Explicación principal actualizada respecto a la nueva alternativa");
     await page.locator('#character-class button[data-value="Paladín"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
     assert.equal(await page.locator("#no-alternative").count(), 0);
