@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "borrador_no_publicado",
+  "fuentes": [
+    "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+    "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+  ],
+  "criterio": "Seis Pícaro Asesinato/Combate/Sutileza: Sigilo, Mutilar, venenos, Eviscerar, cambios de armas de Forever, cuatro raciales y restricciones de equipo.",
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist rompe raíces y ralentizaciones para volver a rango de Mutilar, venenos y remates de Asesinato. Eureka! puede reforzar tres acciones y Expansive Mind amplía la energía máxima, mientras la especialización de Ingeniería solo cuenta si se utilizan dispositivos.",
+        "aTenerEnCuenta": "Escape Artist no elimina aturdimientos y Eureka! debe aprovecharse durante una ventana real de ataque. La bonificación de ingeniería no sustituye el control y no ofrece daño sin equipamiento de ese oficio."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive sale de un aturdimiento para volver a aplicar venenos y preparar Mutilar. Perception ayuda a detectar a otro pícaro antes de su apertura, y la especialización en espadas puede aportar crítico si la configuración equipa una espada.",
+        "aTenerEnCuenta": "No quita raíces que impiden retomar contacto; las pasivas de espíritu y espada no tienen el mismo valor si usa dagas en Asesinato. Detectar sigilo requiere anticiparse."
+      },
+      "conclusionPrincipal": "En Asesinato de Alianza, Gnomo conserva prioridad porque Escape Artist mejora el regreso a rango de Mutilar y venenos cuando intentan fijarlo, con Eureka! y energía máxima como apoyos condicionados.",
+      "conclusionAlternativa": "Humano puede ser mejor en encuentros entre pícaros o ante cadenas de aturdimiento, donde Will to Survive y Perception recuperan la iniciativa. El bonus por espada depende del arma: no debe inflarse al evaluar una configuración de dagas.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist ayuda a no perder el contacto cuando raíces y frenados interrumpen golpes de arma, Eviscerar y el uso de Correr. Eureka! mejora una tanda corta de acciones y Expansive Mind amplía energía para continuar el intercambio.",
+        "aTenerEnCuenta": "No limpia aturdimientos, y Eureka! no asegura aprovechar los tres golpes si el rival obliga a retroceder. Ingeniería aporta utilidad solo con dispositivos disponibles."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive devuelve acciones después de un aturdimiento para reanudar Eviscerar o defenderse con Evasión. Sword Specialization suma crítico con espada, especialmente relevante en Combate si se elige esa arma, y Perception advierte sigilo.",
+        "aTenerEnCuenta": "Sin salida de raíces o ralentizaciones como Escape Artist, Combate puede perder contacto pese a romper un aturdimiento. El crítico depende del arma y Perception es situacional."
+      },
+      "conclusionPrincipal": "En Pícaro Combate de Alianza, Gnomo mantiene prioridad al responder de forma directa a inmovilizaciones que interrumpen el flujo de energía y ataques, y combina esa movilidad con Eureka! para ventanas cortas.",
+      "conclusionAlternativa": "Humano gana terreno si la configuración usa espadas y los aturdimientos son el control dominante: Sword Specialization, Perception y Will to Survive encajan en un combate frontal. No garantizan cerrar distancias si el rival sigue frenándolo.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Gnomo",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Shadowmeld permite preparar una posición oculta e inmóvil antes de usar Sigilo y control de Sutileza; Elune's Light proporciona un intervalo crítico y Quickness mejora la evasión y velocidad de desplazamiento.",
+        "aTenerEnCuenta": "Shadowmeld no sustituye Sigilo móvil y se cancela al desplazarse. El bonus de crítico dura poco; Wisp Spirit solo mejora el movimiento estando muerto, no la capacidad de escapar con vida."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Escape Artist libera raíces y ralentizaciones para reposicionarse tras una apertura o regresar a Sigilo cuando sea posible. Eureka! mejora tres acciones y Expansive Mind da energía extra en una secuencia de control.",
+        "aTenerEnCuenta": "Escape Artist no elimina aturdimientos y no genera ocultación por sí misma. La bonificación de Ingeniería depende del objeto; Eureka! puede desperdiciarse si la apertura se interrumpe."
+      },
+      "conclusionPrincipal": "En Sutileza de Alianza, Elfo de la noche conserva prioridad al sumar preparación inmóvil con Shadowmeld, herramientas de Sigilo y una ventana crítica de Elune's Light. Es una apuesta por elegir dónde y cuándo empezar, no por escapar de cualquier foco.",
+      "conclusionAlternativa": "Gnomo es alternativa si predominan raíces y ralentizaciones tras la entrada: Escape Artist permite recuperar movilidad y energía para otra apertura. No aporta la misma opción de espera oculta previa al enfrentamiento.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para no perder la ventana de Mutilar, venenos y remates. Touch of the Grave añade drenaje ocasional y Cannibalize permite recuperar salud si hay cadáver y espacio seguro.",
+        "aTenerEnCuenta": "No rompe aturdimientos ni raíces y no concede inmunidad permanente al miedo. Cannibalize no proporciona maná útil al pícaro, y Underwater Breathing aporta utilidad ambiental, no daño JcJ."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos que impedirían Mutilar y Shatter Curse protege de maldiciones y terrores mientras reduce daño mágico. Blood Fury refuerza temporalmente ataques y Axe Specialization puede añadir crítico si se utiliza un hacha de una mano, disponible para pícaros en Forever.",
+        "aTenerEnCuenta": "Hardiness no elimina el control y Blood Fury exige mantener alcance. La pasiva de hacha no ayuda a una configuración que usa otras armas y no puede atribuirse como daño universal."
+      },
+      "conclusionPrincipal": "En Asesinato de Horda, No-muerto mantiene prioridad ante miedo y sueño que impiden aplicar venenos o encadenar Mutilar, con drenaje condicional como apoyo. Esa respuesta es diferente de acortar los aturdimientos.",
+      "conclusionAlternativa": "Orco puede superar esa utilidad contra equipos centrados en aturdimiento y daño mágico, sobre todo si usa hacha compatible con Axe Specialization. Hardiness, Shatter Curse y Blood Fury elevan la resistencia y presión, pero no eliminan miedo como el No-muerto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce aturdimientos que interrumpen Eviscerar y la cadena de ataques; Blood Fury aporta potencia temporal y Axe Specialization puede conceder crítico llevando hacha de una mano, ahora utilizable por pícaros en Forever. Shatter Curse cubre amenazas mágicas específicas.",
+        "aTenerEnCuenta": "No quita por completo los aturdimientos y Blood Fury no ayuda si el objetivo queda fuera de alcance. Sin hacha equipada, la pasiva de arma no tiene efecto sobre la secuencia de Combate."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken permite reanudar ataques tras miedo, sueño o embelesamiento. Touch of the Grave suma drenaje ocasional y Cannibalize puede curar fuera de un foco con cadáver disponible.",
+        "aTenerEnCuenta": "No resuelve aturdimientos ni raíces; Cannibalize necesita cadáver y no da al pícaro un recurso ofensivo de maná. Respiración subacuática apenas influye en peleas normales."
+      },
+      "conclusionPrincipal": "En Pícaro Combate de Horda, Orco conserva prioridad cuando debe mantener Eviscerar y la presión de arma bajo cadenas de aturdimiento. Hardiness, Blood Fury y la pasiva de hachas, si procede, ofrecen continuidad y oportunidad ofensiva.",
+      "conclusionAlternativa": "No-muerto puede ser mejor frente a enemigos que controlan mediante miedo o embelesamiento y permitiría regresar al golpeo con Will of the Forsaken. Carece, sin embargo, de reducción pasiva de aturdimientos.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will of the Forsaken rompe miedo, sueño o embelesamiento que bloquearían una retirada tras Sigilo, Zapar y la apertura de Sutileza. Touch of the Grave puede aportar drenaje durante el intercambio, y Cannibalize curar entre combates si existe cadáver.",
+        "aTenerEnCuenta": "No limpia aturdimientos ni raíces; Cannibalize necesita un cadáver y tiempo fuera del foco. Underwater Breathing no aporta a la apertura ni a la retirada habituales."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Hardiness acorta aturdimientos que desbaratan la apertura; Shatter Curse protege de maldiciones y terrores, mientras Blood Fury potencia un intervalo de daño. Axe Specialization solo aporta crítico si lleva hacha de una mano y la configuración lo permite.",
+        "aTenerEnCuenta": "No elimina miedo con la inmediatez de Will of the Forsaken. Blood Fury y la bonificación de arma requieren sincronización y equipo; Hardiness no supone inmunidad ante el control."
+      },
+      "conclusionPrincipal": "En Sutileza de Horda, No-muerto conserva prioridad cuando miedo o embelesamiento interrumpen el sigilo táctico y la retirada, porque Will of the Forsaken permite retomar esas decisiones en una ventana crítica.",
+      "conclusionAlternativa": "Orco interesa más si el enemigo usa aturdimientos repetidos y maldiciones para frenar aperturas; Hardiness y Shatter Curse reducen esa presión y Blood Fury añade daño, pero no reemplazan la limpieza de miedo del No-muerto.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24310968",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}

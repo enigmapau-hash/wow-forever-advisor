@@ -1,0 +1,1801 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "publicacion_v40_aprobada_usuario",
+  "reglas": [
+    "No inventar sinergias entre habilidades.",
+    "No atribuir Fear Ward ni Devouring Plague a una raza concreta.",
+    "Evaluar todas las raciales 2+2 y los dos hechizos exclusivos por sacerdote.",
+    "Comparar clase y especialización a nivel de hechos comprobables y utilidad PvP masivo.",
+    "No publicar mientras existan fichas pendientes de análisis o razas no elegibles.",
+    "No modificar la clasificación aprobada sin decisión expresa del usuario."
+  ],
+  "resumen": {
+    "analisis_revisado": 48,
+    "sin_alternativa": 6
+  },
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Mantener contacto durante el avance aliado.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Encadenar contacto sin quedar rezagado.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Sostener posiciones frente al foco físico.",
+        "racialesPrincipal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recuperar la curación tras un aturdimiento.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302099"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Resistir mientras se protege el avance.",
+        "racialesPrincipal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302099"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Volver a presionar o auxiliar tras el control.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302099"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Enano",
+      "alternativa": "Elfo",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Resistir el foco físico mientras se coordina la mascota.",
+        "racialesPrincipal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Sostener una línea de disparo bajo presión.",
+        "racialesPrincipal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Resistir el contacto al controlar los accesos.",
+        "racialesPrincipal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recuperar contacto para sostener presión sobre el objetivo.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Seguir al frente sin quedar inmovilizado.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Gnomo",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Preparar la entrada antes de revelar la posición.",
+        "racialesPrincipal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Enano",
+      "alternativa": "Gnomo",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Mantener la protección preventiva bajo foco físico.",
+        "racialesPrincipal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ],
+          "hechizosSacerdote": [
+            "Desperate Prayer",
+            "Chastise"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ],
+          "hechizosSacerdote": [
+            "Confounding Flash",
+            "Contingency Plan"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Seguir curando cuando el foco cambia al sanador.",
+        "racialesPrincipal": {
+          "activas": [
+            "Stoneform",
+            "Find Treasure"
+          ],
+          "pasivas": [
+            "Mace Specialization",
+            "Big Game Hunter"
+          ],
+          "hechizosSacerdote": [
+            "Desperate Prayer",
+            "Chastise"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ],
+          "hechizosSacerdote": [
+            "Divine Grace",
+            "Feedback"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Reposicionarse sin abandonar la presión sostenida.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ],
+          "hechizosSacerdote": [
+            "Confounding Flash",
+            "Contingency Plan"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ],
+          "hechizosSacerdote": [
+            "Divine Grace",
+            "Feedback"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recuperar espacio para preparar los lanzamientos.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recolocarse para sostener presión sobre el frente.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recuperar distancia para aprovechar el control propio.",
+        "racialesPrincipal": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Retomar presión persistente después del aturdimiento.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Retomar la coordinación con la mascota tras un aturdimiento.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Humano",
+      "alternativa": "Gnomo",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Reabrir una oportunidad de lanzamiento tras el control.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will to Survive",
+            "Perception"
+          ],
+          "pasivas": [
+            "Sword Specialization",
+            "The Human Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Escape Artist",
+            "Eureka!"
+          ],
+          "pasivas": [
+            "Expansive Mind",
+            "Engineering Specialization"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Preparar el ángulo antes de empezar a lanzar.",
+        "racialesPrincipal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Walk on Air",
+            "Read Ley Line"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Elegir el momento de entrar desde ocultación.",
+        "racialesPrincipal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Walk on Air",
+            "Read Ley Line"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Elfo",
+      "alternativa": "Cielonato",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Preparar una posición de curación sin exponerse.",
+        "racialesPrincipal": {
+          "activas": [
+            "Elune's Light",
+            "Shadowmeld"
+          ],
+          "pasivas": [
+            "Quickness",
+            "Wisp Spirit"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Walk on Air",
+            "Read Ley Line"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "estado": "sin_alternativa",
+      "comparacion": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "estado": "sin_alternativa",
+      "comparacion": false
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Enano",
+      "alternativa": "-",
+      "estado": "sin_alternativa",
+      "comparacion": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Armas",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Acortar el control que interrumpe la presión cercana.",
+        "racialesPrincipal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Furia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Reducir las pausas durante el avance ofensivo.",
+        "racialesPrincipal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Guerrero",
+      "especializacion": "Protección",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Crear espacio para sostener la primera línea.",
+        "racialesPrincipal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Bestias",
+      "razaRecomendada": "Orco",
+      "alternativa": "Troll",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recuperar antes la coordinación con la mascota.",
+        "racialesPrincipal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Puntería",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Concentrar disparos mientras existe cobertura aliada.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Cazador",
+      "especializacion": "Supervivencia",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Retomar el control de los accesos tras aturdimientos.",
+        "racialesPrincipal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Asesinato",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Retomar la persecución tras miedo, sueño o encanto.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Combate",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Acortar los aturdimientos durante el contacto sostenido.",
+        "racialesPrincipal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Pícaro",
+      "especializacion": "Sutileza",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recuperar la iniciativa cuando el control rompe la entrada.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Combinar protección preventiva y presión de apoyo.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ],
+          "hechizosSacerdote": [
+            "Hex of Weakness",
+            "Shadowguard"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ],
+          "hechizosSacerdote": [
+            "Touch of Weakness",
+            "Dark Sacrifice"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Acelerar la recuperación del grupo y apoyar su presión.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ],
+          "hechizosSacerdote": [
+            "Hex of Weakness",
+            "Shadowguard"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ],
+          "hechizosSacerdote": [
+            "Touch of Weakness",
+            "Dark Sacrifice"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Aprovechar cobertura para renovar la presión sostenida.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ],
+          "hechizosSacerdote": [
+            "Hex of Weakness",
+            "Shadowguard"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ],
+          "hechizosSacerdote": [
+            "Touch of Weakness",
+            "Dark Sacrifice"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301514"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Arcano",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Concentrar lanzamientos durante una oportunidad protegida.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Fuego",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Coordinar la presión con el avance del grupo.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Mago",
+      "especializacion": "Escarcha",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Troll",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Reconstruir distancia después de perder el control propio.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Aflicción",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Recuperar decisiones mientras continúa la presión persistente.",
+        "racialesPrincipal": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Demonología",
+      "razaRecomendada": "Orco",
+      "alternativa": "No-muerto",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Reducir las pausas de coordinación durante el foco.",
+        "racialesPrincipal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Will of the Forsaken",
+            "Cannibalize"
+          ],
+          "pasivas": [
+            "Underwater Breathing",
+            "Touch of the Grave"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Brujo",
+      "especializacion": "Destrucción",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Concentrar lanzamientos antes de perder la cobertura.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24310968"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Sincronizar lanzamientos con el control y apoyo aliados.",
+        "racialesPrincipal": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Retomar la presión cercana y el apoyo tras aturdimientos.",
+        "racialesPrincipal": {
+          "activas": [
+            "Blood Fury",
+            "Shatter Curse"
+          ],
+          "pasivas": [
+            "Axe Specialization",
+            "Hardiness"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Troll",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Despejar el contacto para retomar curaciones y tótems.",
+        "racialesPrincipal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Berserking",
+            "Rapid Regeneration"
+          ],
+          "pasivas": [
+            "Beast Slaying",
+            "Regeneration"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24302097"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Equilibrio",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Frenar perseguidores antes de volver a lanzar.",
+        "racialesPrincipal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Walk on Air",
+            "Skysight"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Feral",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Añadir una pausa táctica al contacto cercano.",
+        "racialesPrincipal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Walk on Air",
+            "Skysight"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Druida",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Cielonato",
+      "estado": "analisis_revisado",
+      "comparacion": true,
+      "evaluacion": {
+        "contexto_original": "Separarse de perseguidores sin abandonar el apoyo.",
+        "racialesPrincipal": {
+          "activas": [
+            "War Stomp",
+            "Cultivation"
+          ],
+          "pasivas": [
+            "Plainsrunning",
+            "Endurance"
+          ]
+        },
+        "racialesAlternativa": {
+          "activas": [
+            "Walk on Air",
+            "Skysight"
+          ],
+          "pasivas": [
+            "Wind Blessed",
+            "Elemental Insight"
+          ]
+        },
+        "criterio": "Valorar control, daño, supervivencia, recursos, movilidad, apoyo, facultades de clase y especialización; considerar los 4 rasgos raciales más exclusivos Sacerdote.",
+        "fuenteRazas": "https://worldofwarcraft.blizzard.com/es-es/news/24304075",
+        "fuenteClase": "https://worldofwarcraft.blizzard.com/es-es/news/24301515"
+      }
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-",
+      "estado": "sin_alternativa",
+      "comparacion": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-",
+      "estado": "sin_alternativa",
+      "comparacion": false
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "razaRecomendada": "No-muerto",
+      "alternativa": "-",
+      "estado": "sin_alternativa",
+      "comparacion": false
+    }
+  ]
+}

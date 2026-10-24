@@ -29,8 +29,8 @@ const server = http.createServer(async (req, res) => {
     // Seed the previous app cache before any document registers the new worker.
     await page.goto(base + "/manifest.webmanifest");
     await page.evaluate(async () => {
-      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v38`);
-      await cache.put("./obsolete-v38", new Response("old"));
+      const cache = await caches.open(`wow-forever-advisor:${location.origin}/:v39`);
+      await cache.put("./obsolete-v39", new Response("old"));
     });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
@@ -185,11 +185,43 @@ const server = http.createServer(async (req, res) => {
       "Brujo Aflicción presenta la facultad de Gnomo");
     assert.match(await page.locator("#alternative-explanation").textContent(),
       /^Escape Artist libera /, "La explicación de Escape Artist sigue al resumen");
+    assert.match(await page.locator("#compare-primary-pro").textContent(),
+      /Will to Survive.*Corrupción.*Terror de agonía/,
+      "A favor contextual de Humano Brujo Aflicción");
+    assert.match(await page.locator("#compare-alternative-pro").textContent(),
+      /Escape Artist.*Eureka!/,
+      "A favor de Gnomo integra la segunda racial activa");
+    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
+      /Brujo Aflicción.*Humano.*Gnomo/,
+      "Conclusión pondera ambas combinaciones en la especialización");
     assert(await page.locator("#alternative-use").evaluate((summary) =>
       summary.getBoundingClientRect().bottom <
       document.getElementById("alternative-explanation").getBoundingClientRect().top),
       "La descripción queda debajo de la frase de utilidad");
+    await page.locator('#character-class button[data-value="Sacerdote"]').click();
+    await page.locator('#specialization button[data-value="Disciplina"]').click();
+    assert.match(await page.locator("#compare-primary-pro").textContent(), /Stoneform.*Penitencia|Stoneform.*escudo.*Penitencia/,
+      "Sacedote Disciplina considera herramientas y raciales de Enano");
+    assert.match(await page.locator("#compare-alternative-pro").textContent(), /Contingency Plan.*Confounding Flash/,
+      "Sacerdote gnomo valora sus dos hechizos exclusivos");
     await page.locator('#faction button[data-value="Horda"]').click();
+    await page.locator('#character-class button[data-value="Sacerdote"]').click();
+    await page.locator('#specialization button[data-value="Sagrado"]').click();
+    assert.equal(await page.locator("#alternative-profile").isVisible(), true,
+      "Sacerdote Sagrado muestra una alternativa jugable");
+    assert.equal(await page.locator('[data-field="alternativa"]').textContent(), "No-muerto",
+      "Alternativa aprobada No-muerto");
+    assert.equal(await page.locator("#alternative-ability-name").textContent(), "Will of the Forsaken",
+      "La tarjeta secundaria identifica la racial no-muerta");
+    assert.equal(await page.locator("#race-comparison").isVisible(), true,
+      "Comparativa específica entre Troll y No-muerto visible");
+    assert.match(await page.locator("#compare-alternative-pro").textContent(),
+      /Will of the Forsaken.*Dark Sacrifice.*Touch of Weakness/,
+      "El sacerdote no-muerto utiliza facultades raciales y exclusivas de clase");
+    assert.match(await page.locator("#race-comparison-conclusion-text").textContent(),
+      /Troll.*No-muerto/, "Conclusión contextual sin Tauren no elegible");
+    assert.doesNotMatch(await page.locator("#primary-analysis").textContent(), /Frente a Tauren/,
+      "Explicación principal actualizada respecto a la nueva alternativa");
     await page.locator('#character-class button[data-value="Paladín"]').click();
     await page.locator('#specialization button[data-value="Sagrado"]').click();
     assert.equal(await page.locator("#no-alternative").count(), 0);
@@ -270,8 +302,8 @@ const server = http.createServer(async (req, res) => {
     });
     const catalog = await page.evaluate(async () => (await fetch("./data/talent-advisor-catalog.json")).json());
     const cacheNames = await page.evaluate(() => caches.keys());
-    assert(cacheNames.some((name) => name.endsWith(":v39")), "Current version cache installed");
-    assert(!cacheNames.some((name) => name.endsWith(":v38")), "Previous app cache removed after activation");
+    assert(cacheNames.some((name) => name.endsWith(":v40")), "Current version cache installed");
+    assert(!cacheNames.some((name) => name.endsWith(":v39")), "Previous app cache removed after activation");
     await require("./skyborne-browser.cjs")(page, context, base);
     await context.setOffline(true);
     await page.reload();

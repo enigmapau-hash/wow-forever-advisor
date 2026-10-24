@@ -10,6 +10,8 @@ module.exports = async function testSkyborne(page, context, base) {
   const advisor = await page.evaluate(async () => (await fetch("./data/race-advisor.json")).json());
   const druidAlt = await page.evaluate(async () =>
     (await fetch("./data/race-advisor-druid-alternatives.json")).json());
+  const priestCorrection = await page.evaluate(async () =>
+    (await fetch("./data/race-advisor-priest-horde-alternative.json")).json());
   assert.equal(await page.locator("#racial-race button").count(), 9);
   assert.match(await page.locator("#racial-coverage-note").textContent(), /^Nueve razas/);
   assert.equal(await page.locator("#explore-racials").textContent(), "Explorar las 9 razas →");
@@ -115,7 +117,7 @@ module.exports = async function testSkyborne(page, context, base) {
   await page.locator("#faction button").first().waitFor();
   // Race Advisor solo recomienda en función de las fichas valoradas, no por
   // compatibilidad de clase o facción. Cielonato permanece en Race Explorer.
-  const coverage = await page.evaluate(({ advisor, druidAlt }) => {
+  const coverage = await page.evaluate(({ advisor, druidAlt, priestCorrection }) => {
     const display = (text) => text === "Elfo" ? "Elfo de la noche" : text
       .replace(/, denominado Elfo en la base/g, "")
       .replace(/\bFrente a Elfo\b/g, "Frente al elfo de la noche")
@@ -143,7 +145,12 @@ module.exports = async function testSkyborne(page, context, base) {
       }
       for (const key of ["razaRecomendada", "alternativa", "prioridad", "motivoPrincipal", "explicacion"]) {
         const rendered = document.querySelector(`[data-field="${key}"]`).textContent;
+        const approvedPriest = row.faccion === priestCorrection.faccion
+          && row.clase === priestCorrection.clase
+          && row.especializacion === priestCorrection.especializacion;
         const expected = key === "alternativa" && druid ? "Cielonato"
+          : key === "alternativa" && approvedPriest ? priestCorrection.alternativa
+          : key === "explicacion" && approvedPriest ? priestCorrection.explicacion
           : key === "alternativa" && row.alternativa === "-" && row.faccion === "Alianza" && row.clase === "Chamán"
             ? "Sin alternativa: Enano es la única raza de Chamán de Alianza."
             : row[key];
@@ -166,7 +173,7 @@ module.exports = async function testSkyborne(page, context, base) {
       }
     }
     return advisor.fichas.length;
-  }, { advisor, druidAlt });
+  }, { advisor, druidAlt, priestCorrection });
   assert.equal(coverage, 51, "Conservar las 51 recomendaciones principales y las seis alternativas de Druida");
   const additions = await page.evaluate(async () => (await fetch("./data/race-advisor-additions.json")).json());
   assert.equal(additions.fichas.length, 3, "Tres fichas adicionales de Paladín Horda");
@@ -209,7 +216,7 @@ module.exports = async function testSkyborne(page, context, base) {
     if (!navigator.serviceWorker.controller) await new Promise((resolve) =>
       navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
   });
-  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v39")));
+  assert((await page.evaluate(() => caches.keys())).some((name) => name.endsWith(":v40")));
   await context.setOffline(true);
   await page.reload();
   await page.locator("#home-explore-racials").click();

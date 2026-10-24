@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "borrador_no_publicado",
+  "alcance": "Seis fichas de Sacerdote: cinco análisis contextuales y un bloqueo por elegibilidad. Mantiene originales y rankings existentes.",
+  "criterio": "Se contemplan las cuatro raciales generales de cada raza más los dos hechizos exclusivos de Sacerdote; la habilidad de mayor incidencia se expone en A favor, y la conclusión pondera las demás con las herramientas de la especialización.",
+  "facultadesComunes": [
+    "Fear Ward",
+    "Devouring Plague",
+    "Divine Spirit",
+    "Shadow Word: Death"
+  ],
+  "nota": "Fear Ward y Devouring Plague no cuentan como ventaja exclusiva; los análisis son tácticos y provisionales hasta contraste de beta.",
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Enano",
+      "alternativa": "Gnomo",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform elimina y previene temporalmente sangrados, venenos y enfermedades y reduce el daño físico mientras mantiene disponibles Palabra de poder: escudo y Penitencia. Rezo desesperado ofrece una emergencia propia y Castigar inmoviliza humanoides para recuperar espacio.",
+        "aTenerEnCuenta": "Stoneform no detiene un aturdimiento ni sustituye el posicionamiento. Castigar está limitado por tipo de objetivo y reutilización; mazas y Caza mayor no ofrecen una ventaja universal contra jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Contingency Plan protege al aliado preparado con un escudo y una cura si baja del 35 % de salud. Su sinergia con Renovar y Palabra de poder: escudo es especialmente interesante para Disciplina; Confounding Flash abre una pausa frente a varios perseguidores.",
+        "aTenerEnCuenta": "Contingency Plan depende de haber colocado el resguardo y de un umbral de salud, y Confounding Flash se rompe al recibir daño. Escape Artist no elimina aturdimientos; Eureka! y Mente expansiva ayudan al recurso, pero no sustituyen esa defensa inmediata."
+      },
+      "conclusionPrincipal": "En Disciplina para PvP masivo, Enano conserva la prioridad cuando debe seguir protegiendo aliados bajo daño físico y perjuicios continuados: Stoneform, Rezo desesperado y Castigar refuerzan la permanencia en el combate junto a escudos y Penitencia.",
+      "conclusionAlternativa": "Gnomo es especialmente competitivo como alternativa si el problema principal son picos repentinos de daño sobre aliados y el grupo puede aprovechar Contingency Plan. La protección preventiva, el control de Confounding Flash y Eureka! justifican evaluarlo, aunque no cubren las mismas amenazas que Stoneform.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform ayuda a resistir presión física y perjuicios cuando se necesita terminar una cura o preparar Rezo de alivio. Rezo desesperado ofrece recuperación de emergencia del propio sacerdote, y Castigar permite contener momentáneamente a un perseguidor humanoide.",
+        "aTenerEnCuenta": "La protección de Stoneform es temporal y no libera aturdimientos. Rezo desesperado no protege directamente a otro aliado; los bonos en maza y contra bestias son condicionados y Buscar tesoro no influye en la sanación JcJ."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Divine Grace cura instantáneamente a un aliado herido por debajo del umbral de salud y elimina Alma debilitada de ese objetivo. Encaja con el apoyo de Sagrado y sus escudos compartidos; Will to Survive permite volver a curar después de un aturdimiento.",
+        "aTenerEnCuenta": "Divine Grace no puede lanzarse sobre sí mismo y tiene una reutilización prolongada. Will to Survive no quita raíces; Perception, Espíritu humano y especialización en espadas aportan beneficios de relevancia variable según encuentro y equipo."
+      },
+      "conclusionPrincipal": "En Sagrado, Enano mantiene la prioridad editorial por su capacidad de sobrevivir al foco mientras conserva acceso a curas, Rezo de alivio y auxilio propio. Stoneform y Rezo desesperado pesan mucho cuando la primera amenaza es que caiga el sanador.",
+      "conclusionAlternativa": "Humano puede resultar mejor en grupos donde el problema decisivo sea rescatar a un compañero tras recibir un golpe fuerte o cuando un aturdimiento impide reaccionar: Divine Grace y Will to Survive ofrecen respuestas que el Enano no reproduce de la misma manera.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Gnomo",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Escape Artist permite salir de raíces y ralentizaciones para mantener distancia mientras se renuevan Peste devoradora y otros efectos de daño de Sombras. Eureka! potencia acciones posteriores, Mente expansiva amplía el maná y Confounding Flash puede abrir una salida de emergencia.",
+        "aTenerEnCuenta": "Confounding Flash se rompe con daño, algo especialmente delicado cuando hay efectos periódicos activos cerca; Contingency Plan exige preparar un aliado. Escape Artist no elimina aturdimientos y la ventaja de Ingeniería depende del equipamiento."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive elimina un aturdimiento para poder volver a aplicar presión, usar control o retirarse. Perception permite anticipar enemigos en sigilo y la especialización en espadas puede aportar crítico si se usa una espada.",
+        "aTenerEnCuenta": "Will to Survive no resuelve raíces ni ralentizaciones. Divine Grace, exclusivo del sacerdote humano, cura a un aliado, no al propio lanzador, y Sombra debe tener en cuenta sus restricciones de sanación en Forma de las Sombras; la utilidad del Espíritu es situacional."
+      },
+      "conclusionPrincipal": "Para Sombra, Gnomo conserva la prioridad cuando necesita reposicionarse repetidamente para sostener Peste devoradora, Despelleje mental y los demás efectos de Sombras. La combinación de Escape Artist, Eureka! y Mente expansiva beneficia movilidad, recurso y continuidad ofensiva.",
+      "conclusionAlternativa": "Humano gana interés ante equipos que encadenan aturdimientos y pícaros en sigilo: Will to Survive y Perception recuperan margen de respuesta. Sus hechizos exclusivos de sacerdote no ofrecen la misma movilidad, y Custodia de miedo y Peste devoradora son comunes a las dos razas.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Disciplina",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hex of Weakness reduce la eficacia de la sanación y la presión cuerpo a cuerpo del objetivo, mientras Shadowguard castiga a quienes golpean al sacerdote. Berserking abre una ventana de lanzamiento más rápido para sostener Penitencia y las protecciones de Disciplina.",
+        "aTenerEnCuenta": "Hex of Weakness debe mantenerse en el objetivo oportuno y Shadowguard depende de recibir ataques. Ni Berserking ni Regeneración rápida eliminan miedo o aturdimientos, y Matanza de bestias solo influye sobre bestias."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para recuperar capacidad de poner escudos. Touch of Weakness penaliza al atacante cuerpo a cuerpo y Dark Sacrifice permite transformar salud propia en maná si se dispone de un margen seguro.",
+        "aTenerEnCuenta": "Dark Sacrifice consume salud y resulta arriesgado durante un foco; Canibalize precisa cadáver y espacio. Will of the Forsaken no rompe aturdimientos ni raíces y Toque de la tumba no reemplaza la protección del objetivo."
+      },
+      "conclusionPrincipal": "En Disciplina de Horda, Troll conserva la prioridad para ejercer apoyo activo bajo presión y dificultar la curación rival: Hex of Weakness, Shadowguard y la ventana de Berserking se combinan con Penitencia y Palabra de poder: escudo.",
+      "conclusionAlternativa": "No-muerto es una alternativa sólida cuando miedo, sueño o embelesamiento impiden sostener el grupo. Dark Sacrifice añade una opción de maná, pero su coste de salud cambia el balance defensivo: no equivale a regeneración gratuita en combate.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sombras",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hex of Weakness presiona la sanación enemiga mientras Peste devoradora y otros efectos de Sombras hacen daño periódico; Shadowguard castiga a enemigos que golpean al sacerdote. Berserking ayuda a aprovechar una ventana de lanzamiento ofensiva.",
+        "aTenerEnCuenta": "Hex of Weakness no garantiza mantener lejos a perseguidores y Shadowguard exige recibir golpes para responder. Regeneración rápida y el bonus a bestias tienen menor peso cuando la amenaza son jugadores que encadenan control."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken permite escapar de miedo, sueño o embelesamiento y volver al daño de Forma de las Sombras. Touch of Weakness castiga el contacto cercano, y Toque de la tumba puede añadir drenaje ocasional al daño.",
+        "aTenerEnCuenta": "Will of the Forsaken no resuelve aturdimientos ni raíces. Dark Sacrifice convierte salud en maná, una apuesta peligrosa bajo foco; Canibalize requiere cadáver y ventana protegida. Peste devoradora no es exclusiva del no-muerto en Forever."
+      },
+      "conclusionPrincipal": "Para Sacerdote Sombras en PvP masivo, Troll mantiene prioridad porque combina reducción de sanación, respuesta ante agresores y una ventana ofensiva con Berserking: todo ello apoya la presión de Sombras más allá de una única racial.",
+      "conclusionAlternativa": "No-muerto puede convenir si el grupo enemigo domina mediante miedo o sueño, porque Will of the Forsaken preserva ventanas de intervención. Sacrificio oscuro tiene un coste de salud y no debe presentarse como ventaja incondicional.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Sacerdote",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Troll",
+      "alternativa": "No-muerto",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking aumenta temporalmente la velocidad de lanzamiento, permitiendo responder antes con Renovar, Sanación conjunta o Rezo de alivio en una ventana crítica de Sagrado. Hex of Weakness debilita la eficacia de la sanación del enemigo y Shadowguard castiga al agresor que alcanza al sacerdote; Regeneration y Rapid Regeneration también cuentan para sobrevivir al desgaste.",
+        "aTenerEnCuenta": "Berserking no elimina aturdimientos, miedo ni interrupciones, y su ventaja depende de poder completar las curaciones. Rapid Regeneration es temporal; Shadowguard solo responde a ataques recibidos. Beast Slaying beneficia contra bestias, no aumenta la curación a aliados ni el daño contra jugadores."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will of the Forsaken elimina miedo, sueño y embelesamiento para volver a curar con Renovar, Rezo de alivio o Sanación conjunta cuando el rival trata de neutralizar al sanador. Dark Sacrifice, exclusivo del sacerdote no-muerto, convierte parte de la salud propia en maná con el tiempo; Touch of Weakness dificulta el ataque cuerpo a cuerpo rival y Cannibalize permite recuperar salud y maná si hay cadáver y ocasión segura.",
+        "aTenerEnCuenta": "Will of the Forsaken no rompe aturdimientos ni raíces y ya no concede inmunidad posterior al miedo. Dark Sacrifice consume salud, una limitación especialmente arriesgada si Sagrado está bajo foco; Cannibalize requiere cadáver y tiempo para canalizar. Touch of the Grave es un drenaje ocasional, no una garantía defensiva, y Underwater Breathing aporta poca utilidad en el PvP ordinario."
+      },
+      "conclusionPrincipal": "Para Sacerdote Sagrado de Horda en PvP masivo, Troll conserva la prioridad aprobada cuando el grupo necesita curas rápidas y apoyo a la presión aliada: Berserking acorta la ventana de lanzamiento, mientras Hex of Weakness, Shadowguard y sus herramientas de regeneración complementan la supervivencia del sanador. La ventaja exige mantener margen para lanzar pese al control enemigo.",
+      "conclusionAlternativa": "No-muerto es una alternativa jugable y especialmente valiosa frente a composiciones que encadenan miedo, sueño o embelesamiento. Will of the Forsaken permite recuperar acciones de sanación, y Dark Sacrifice puede aportar maná si el sacerdote dispone de suficiente salud y seguridad para utilizarlo; no sustituye la aceleración de Berserking ni evita los aturdimientos.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24301514",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}
