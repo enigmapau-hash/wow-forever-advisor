@@ -35,12 +35,13 @@ runButton.addEventListener("click", async () => {
     if (!condition) throw new Error(message);
   };
   try {
-    const [advisor, profiles, additions, druidAlt, priestCorrection] = await Promise.all([
+    const [advisor, profiles, additions, druidAlt, priestCorrection, singles] = await Promise.all([
       fetch("../data/race-advisor.json").then((response) => response.json()),
       fetch("../data/racials.json").then((response) => response.json()),
       fetch("../data/race-advisor-additions.json").then((response) => response.json()),
       fetch("../data/race-advisor-druid-alternatives.json").then((response) => response.json()),
       fetch("../data/race-advisor-priest-horde-alternative.json").then((response) => response.json()),
+      fetch("../data/race-single-race-evaluations.json").then((response) => response.json()),
     ]);
     const updatedRows = advisor.fichas.map((row) => {
       const alt = druidAlt.fichas.find((x) => x.faccion === row.faccion
@@ -145,11 +146,9 @@ runButton.addEventListener("click", async () => {
       check(doc.getElementById("primary-ability-name").textContent.trim().length > 4,
         `${key}: se identifica la facultad racial principal`);
       if (record.alternativa !== "-" && !incompatible) {
-        const contextual = record.alternativa === "Cielonato";
-        check(doc.getElementById("alternative-scope").textContent ===
-          (contextual ? "En esta especialización" : "")
-          && doc.getElementById("alternative-scope").hidden === !contextual,
-          `${key}: solo se muestra alcance cuando la evaluación es especializada`);
+        check(doc.getElementById("alternative-scope") === null
+          && !doc.getElementById("alternative-profile").textContent.includes("En esta especialización"),
+          `${key}: tarjeta alternativa sin rótulo redundante`);
         check(doc.getElementById("alternative-race-link").dataset.race === record.alternativa,
           `${key}: alternativa enlazada a su perfil completo`);
         const abilityName = doc.getElementById("alternative-ability-name").textContent;
@@ -193,7 +192,21 @@ runButton.addEventListener("click", async () => {
       } else {
         check(!doc.getElementById("alternative-use").textContent.includes("Wind Blessed"), `${key}: sin comparación de Druida ajena`);
       }
-      if (record.alternativa === "-") missingAlternatives += 1;
+      if (record.alternativa === "-") {
+        missingAlternatives += 1;
+        const single = singles.fichas.find((x) => x.faccion === record.faccion
+          && x.clase === record.clase && x.especializacion === record.especializacion);
+        check(Boolean(single) && !doc.getElementById("race-single-evaluation").hidden,
+          `${key}: evaluación individual visible para la raza única`);
+        for (const [id, field] of [["race-single-pro", "aFavor"],
+          ["race-single-con", "aTenerEnCuenta"], ["race-single-conclusion", "conclusion"]]) {
+          check(doc.getElementById(id).textContent === single[field],
+            `${key}: texto individual correcto para ${field}`);
+        }
+      } else {
+        check(doc.getElementById("race-single-evaluation").hidden,
+          `${key}: no duplicar la comparativa`);
+      }
       choose(spec, "");
       check(result.hidden, `${key}: selección incompleta sin resultado`);
       check(raceIcon.hidden && !raceIcon.hasAttribute("src"), `${key}: sin icono antiguo al limpiar`);
