@@ -42,6 +42,10 @@ jobs:
       - name: Comprobar sintaxis de JavaScript
         run: |
           node --check app.js
+          node --check race-v43-content.js
+          node --check tests/race-advisor.test.js
+          node --check tests/race-redesign-browser.cjs
+          node --check tests/skyborne-browser.cjs
           node --check addon-advisor.js
           node tests/addon-advisor.test.js
           node --check icons/icon-map.js
