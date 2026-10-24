@@ -334,7 +334,7 @@ const raceAbilityNames = Object.freeze({
 
 function alternativeRacialAbility(record) {
   if (record.alternativa === "Cielonato") {
-    return record.faccion === "Alianza" ? "Read Ley Line" : "Skysight";
+    return self.WOW_RACE_V43?.ability(record, "Cielonato") || (record.faccion === "Alianza" ? "Read Ley Line" : "Skysight");
   }
   return raceAbilityNames[record.alternativa] || "";
 }
@@ -391,9 +391,10 @@ function alternativeRacialExplanation(record) {
   }
   const variant = skyborneData?.variantes.find((item) => item.faccion === record.faccion);
   if (!variant) return "";
+  if (record.especializacion === "Feral") return "Walk on Air permite planear durante un intervalo breve, siempre que el terreno lo haga útil; no sustituye el control defensivo.";
   return record.faccion === "Alianza"
-    ? `Read Ley Line aumenta un ${variant.habilidad.regeneracionPorcentaje} % la regeneración de salud y maná y puede activarse en movimiento.`
-    : `Skysight aumenta un ${variant.habilidad.movimientoPorcentaje} % la velocidad de carrera y puede activarse en movimiento.`;
+    ? `Read Ley Line aumenta un ${variant.habilidad.regeneracionPorcentaje} % la regeneración de salud y maná; su aprovechamiento efectivo depende del combate.`
+    : `Skysight aumenta un ${variant.habilidad.movimientoPorcentaje} % la velocidad de carrera durante su ventana activa.`;
 }
 
 function focusedRaceExplanation(explanation) {
@@ -535,6 +536,14 @@ function renderRaceComparison(record, mainProfile, alternativeProfile) {
     return;
   }
   const contextual = contextualRaceComparisons.get(contextualRaceKey(record));
+  if (!contextual) {
+    document.getElementById("compare-primary-pro").textContent = "Análisis específico temporalmente no disponible: consulta las fuentes antes de decidir.";
+    document.getElementById("compare-primary-con").textContent = "";
+    document.getElementById("compare-alternative-pro").textContent = "";
+    document.getElementById("compare-alternative-con").textContent = "";
+    document.getElementById("race-comparison-conclusion-text").replaceChildren();
+    return;
+  }
   document.getElementById("compare-primary-name").textContent = raceDisplayName(record.razaRecomendada);
   document.getElementById("compare-alternative-name").textContent = raceDisplayName(record.alternativa);
   document.getElementById("compare-primary-pro").textContent = raceProse(contextual
@@ -733,7 +742,7 @@ async function loadData() {
   racialStatus.textContent = "Cargando perfiles raciales…";
   clearResult();
   try {
-    const [advisor, profiles, updates, skyborne, additions, druidEvaluation, contextComparisons, priestCorrection, singles] = await Promise.all([
+    const [advisor, profiles, updates, skyborne, additions, druidEvaluation, contextComparisons, priestCorrection, singles, researchV43] = await Promise.all([
       readJson("./data/race-advisor.json"),
       readJson("./data/racials.json"),
       readJson("./data/racial-beta-updates.json").catch(() => null),
@@ -743,6 +752,7 @@ async function loadData() {
       readJson("./data/race-contextual-comparisons-v40-draft.json").catch(() => null),
       readJson("./data/race-advisor-priest-horde-alternative.json").catch(() => null),
       readJson("./data/race-single-race-evaluations.json"),
+      readJson("./data/race-rankings-v43.json"),
     ]);
     racialProfiles = validateData(advisor, profiles);
     racialBetaUpdates = validateRacialBetaUpdates(updates, racialProfiles);
@@ -765,8 +775,22 @@ async function loadData() {
         : druidRow;
     }), ...validateRaceAdditions(additions, advisor, racialProfiles)];
     raceAdditionSources = additions.fuentes;
-    contextualRaceComparisons = validateContextualRaceComparisons(contextComparisons, records);
-    singleRaceEvaluations = validateSingleRaceEvaluations(singles, records);
+    // Verificar el legado por separado, antes de reemplazarlo por el ranking v2.
+    validateContextualRaceComparisons(contextComparisons, records);
+    validateSingleRaceEvaluations(singles, records);
+    if (!self.WOW_RACE_V43) throw new Error("Falta el modelo editorial v43.");
+    records = self.WOW_RACE_V43.apply(researchV43, records, racialProfiles, skyborneData);
+    contextualRaceComparisons = new Map(records.filter(row => row.alternativa !== "-")
+      .map(row => [contextualRaceKey(row), self.WOW_RACE_V43.context(row)]));
+    singleRaceEvaluations = new Map(records.filter(row => row.alternativa === "-").map(row => {
+      const context = self.WOW_RACE_V43.context(row);
+      return [contextualRaceKey(row), {
+        aFavor: context.principal.aFavor,
+        aTenerEnCuenta: context.principal.aTenerEnCuenta,
+        conclusion: context.conclusionPrincipal,
+        fuentes: context.fuentes
+      }];
+    }));
     if (skyborneData && druidAlternatives.length !== 6) {
       document.getElementById("skyborne-criterion").textContent =
         "Las alternativas de Druida aún no están disponibles. Se conservan las recomendaciones aprobadas del asesor.";
@@ -844,21 +868,22 @@ specialization.addEventListener("change", () => {
   document.getElementById("primary-profile-link").setAttribute("aria-label",
     "Ver perfil de " + raceDisplayName(record.razaRecomendada) + " en Race Explorer");
   document.getElementById("primary-ability-name").textContent =
-    raceAbilityNames[record.razaRecomendada] || "";
+    self.WOW_RACE_V43?.ability(record, record.razaRecomendada)
+      || raceAbilityNames[record.razaRecomendada] || "";
   document.getElementById("primary-key-reason").textContent = raceProse(record.motivoPrincipal);
   document.getElementById("primary-analysis").textContent = raceProse(focusedRaceExplanation(record.explicacion));
   if (record.alternativa !== "-") {
     const alternative = racialProfiles.get(record.alternativa);
-    const isSpecialized = Boolean(record.motivoComparacion);
-    // Resumen breve de uso, seguido de una frase que comienza por la facultad.
-    // El razonamiento comparativo se conserva en el cuadro independiente.
-    document.getElementById("alternative-use").textContent = raceProse(isSpecialized
-      ? druidAlternativePresentation(record)?.use || ""
-      : alternative?.usoPrincipal || "");
+    // Resumen específico de la variante, no el antiguo texto genérico del Excel.
+    document.getElementById("alternative-use").textContent = raceProse(
+      (record.clase === "Druida" && record.alternativa === "Cielonato"
+        ? druidAlternativePresentation(record)?.use : "")
+      || record.usoAlternativa || alternative?.usoPrincipal || "");
     document.getElementById("alternative-ability-name").textContent =
-      alternativeRacialAbility(record);
+      self.WOW_RACE_V43?.ability(record, record.alternativa) || alternativeRacialAbility(record);
     document.getElementById("alternative-explanation").textContent =
-      raceProse(alternativeRacialExplanation(record));
+      raceProse(self.WOW_RACE_V43?.evidence(record, record.alternativa)?.aFavor
+        || alternativeRacialExplanation(record));
     const alternativeLink = document.getElementById("alternative-race-link");
     alternativeLink.dataset.race = record.alternativa;
     alternativeLink.setAttribute("aria-label",
@@ -902,14 +927,18 @@ specialization.addEventListener("change", () => {
   };
   const explicitSources = (context?.fuentes || single?.fuentes || []).map((url) => ({
     url, nombre: Object.entries(sourceTitles).find(([id]) => url.includes(id))?.[1]
-      || "Blizzard · Información de clase",
+      || "Blizzard · Referencia oficial",
   }));
   const betaSource = "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6";
   const includeBeta = !document.getElementById("race-beta-content").hidden;
   const sources = [
     ...(traditionalSources || []), ...explicitSources,
     ...(includeBeta ? [{url: betaSource, nombre: "Blizzard · Notas de beta (15/10/2026)"}] : []),
-  ].filter((source, index, items) => items.findIndex((item) => item.url === source.url) === index);
+  ].filter((source, index, items) => {
+    const identity = (url) => url.match(/(?:news|article)\/(\d{8})/)?.[1]
+      || url.match(/\/t\/[^/]+\/(\d+)\/(\d+)/)?.slice(1).join("/") || url;
+    return items.findIndex((item) => identity(item.url) === identity(source.url)) === index;
+  });
   document.getElementById("race-extra-sources").replaceChildren(...sources.map((source) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
@@ -942,7 +971,13 @@ specialization.addEventListener("change", () => {
 for (const id of ["primary-profile-link", "alternative-race-link"]) {
   document.getElementById(id).addEventListener("click", (event) => {
     const race = event.currentTarget.dataset.race;
-    if (race) selectOption(racialSelect, race);
+    if (race) {
+      selectOption(racialSelect, race);
+      if (race === "Cielonato" && skyborneData) {
+        selectOption(skyborneFaction, faction.dataset.value);
+        skyborneFaction.dispatchEvent(new Event("change"));
+      }
+    }
   });
 }
 
@@ -1012,12 +1047,24 @@ racialSelect.addEventListener("change", () => {
     return;
   }
   document.getElementById("racial-name").textContent = raceDisplayName(profile.raza);
-  document.getElementById("racial-ability-name").textContent = raceAbilityNames[profile.raza] || "";
+  document.getElementById("racial-ability-name").textContent =
+    self.WOW_RACE_V43?.kits[profile.raza]?.featured || raceAbilityNames[profile.raza] || "";
   for (const field of racialResult.querySelectorAll("[data-racial-field]")) {
     field.textContent = raceProse(profile[field.dataset.racialField]);
   }
   document.getElementById("racial-beta-updates").hidden =
     !fillRacialBetaList("racial-beta-list", profile.raza);
+  // Inventario racial vigente: las cuatro facultades, no solo la habilidad destacada.
+  let kitInfo = document.getElementById("racial-v43-kit");
+  if (!kitInfo) {
+    kitInfo = document.createElement("p");
+    kitInfo.id = "racial-v43-kit";
+    racialResult.append(kitInfo);
+  }
+  const kit = self.WOW_RACE_V43?.kits[profile.raza];
+  kitInfo.textContent = kit
+    ? `Actualización de raciales · Activas: ${kit.active.join(", ")}. Pasivas: ${kit.passive.join(", ")}. ${kit.caveat}`
+    : "";
   racialResult.hidden = false;
   racialStatus.textContent = `Perfil disponible: ${raceDisplayName(profile.raza)}.`;
   racialStatus.classList.add("visually-hidden");
