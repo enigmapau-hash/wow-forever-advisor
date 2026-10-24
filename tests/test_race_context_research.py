@@ -24,6 +24,7 @@ class RaceContextAuditTests(unittest.TestCase):
         cls.evidence = read("race-full-racials-draft.json")
         cls.audit = read("race-context-audit-draft.json")
         cls.priest = read("race-priest-context-draft.json")
+        cls.warlock = read("race-warlock-context-draft.json")
         cls.original = read("race-advisor.json")
         cls.additions = read("race-advisor-additions.json")
         cls.druid = read("race-advisor-druid-alternatives.json")
@@ -101,11 +102,26 @@ class RaceContextAuditTests(unittest.TestCase):
             self.assertGreater(len(row["conclusionAlternativa"]), 155)
             self.assertNotEqual(row["principal"]["aFavor"], row["alternativaAnalisis"]["aFavor"])
 
+    def test_six_warlock_analyses_use_spec_specific_abilities(self):
+        self.assertEqual(len(self.warlock["fichas"]), 6)
+        self.assertEqual({r["especializacion"] for r in self.warlock["fichas"]},
+                         {"Aflicción", "Demonología", "Destrucción"})
+        self.assertEqual({r["faccion"] for r in self.warlock["fichas"]}, {"Alianza", "Horda"})
+        for row in self.warlock["fichas"]:
+            self.assertEqual(row["clase"], "Brujo")
+            self.assertEqual(row["estado"], "analisis_fuentes_revisado")
+            for side in ("principal", "alternativaAnalisis"):
+                self.assertGreater(len(row[side]["aFavor"]), 170)
+                self.assertGreater(len(row[side]["aTenerEnCuenta"]), 120)
+            self.assertIn(row["especializacion"], ("Aflicción", "Demonología", "Destrucción"))
+            self.assertGreater(len(row["conclusionPrincipal"]), 170)
+            self.assertGreater(len(row["conclusionAlternativa"]), 160)
+
     def test_research_must_not_be_marked_ready_to_publish(self):
         self.assertEqual(self.audit["estado"], "auditoria_editorial_abierta_no_publicado")
         status = self.audit["resumen"]
-        self.assertEqual(status["analisis_revisado"], 5)
-        self.assertEqual(status["pendiente_analisis_especifico"], 42)
+        self.assertEqual(status["analisis_revisado"], 11)
+        self.assertEqual(status["pendiente_analisis_especifico"], 36)
         self.assertEqual(status["bloqueada_elegibilidad"], 1)
         self.assertEqual(status["sin_alternativa"], 6)
 
