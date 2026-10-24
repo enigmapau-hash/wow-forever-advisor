@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "fechaRevision": "2026-10-24",
+  "estado": "borrador_no_publicado",
+  "criterio": "Seis combates contextuales: Paladín Sagrado, Protección y Reprensión de Alianza; Chamán Elemental, Mejora y Restauración de Horda; sin inventar alternativas a las clases de raza única.",
+  "fichas": [
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Sagrado",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will to Survive elimina un aturdimiento que impediría lanzar Destello de Luz o socorrer a un aliado con Choque Sagrado. Perception ayuda a detectar una apertura sigilosa; Espíritu humano puede respaldar recursos de un paladín que usa maná.",
+        "aTenerEnCuenta": "No reduce daño físico ni elimina sangrados como Stoneform. La especialización en espada exige ese tipo de arma y el Espíritu adicional no sustituye una cura o defensa instantánea."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Stoneform limpia sangrados, venenos y enfermedades y reduce daño físico en la ventana en que un sanador necesita terminar una cura. Mace Specialization aporta crítico solo con maza equipada; Big Game Hunter se limita a bestias elegibles.",
+        "aTenerEnCuenta": "Stoneform no libera aturdimientos y dura poco. Buscar tesoro no mejora la sanación JcJ, y la pasiva contra bestias no influye contra jugadores."
+      },
+      "conclusionPrincipal": "En Paladín Sagrado de Alianza, Humano conserva prioridad cuando los aturdimientos impiden que el sanador reaccione a tiempo con Destello de Luz y Choque Sagrado. Will to Survive devuelve acciones; Espíritu y detección se ponderan como ayudas secundarias.",
+      "conclusionAlternativa": "Enano puede resultar mejor ante presión física sostenida, venenos o sangrados mientras el grupo necesita que el paladín siga curando. Stoneform ofrece mitigación directa, pero no permite salir de aturdimientos como Humano.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Protección",
+      "razaRecomendada": "Enano",
+      "alternativa": "Humano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Stoneform reduce daño físico y neutraliza sangrados, venenos y enfermedades en el frente, complementando los escudos y Baluarte de templario. Mace Specialization puede aportar crítico con maza y Big Game Hunter es situacional contra mascotas bestias.",
+        "aTenerEnCuenta": "No elimina aturdimientos, y la ventana de Stoneform no sustituye el resto de mitigación. Buscar tesoro carece de utilidad en combate y la bonificación de maza depende de equipo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Will to Survive rompe el aturdimiento que bloquearía Baluarte de templario, bloqueo o apoyo al grupo. Perception permite detectar amenaza oculta antes de la entrada; con espada equipada, la pasiva correspondiente suma crítico.",
+        "aTenerEnCuenta": "No protege directamente de sangrados ni reduce daño físico como Stoneform. La pasiva de espíritu no equivale a supervivencia inmediata, y la de espadas depende de una elección de arma compatible."
+      },
+      "conclusionPrincipal": "En Protección de Alianza, Enano conserva prioridad al combinar Stoneform con las ventanas defensivas y el bloqueo del paladín, una herramienta directa para aguantar el foco cerca de aliados.",
+      "conclusionAlternativa": "Humano interesa si una cadena de aturdimientos impide activar las defensas disponibles. Will to Survive resuelve ese control puntual, pero no añade la mitigación física sostenida del Enano.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Alianza",
+      "clase": "Paladín",
+      "especializacion": "Reprensión",
+      "razaRecomendada": "Humano",
+      "alternativa": "Enano",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Will to Survive permite volver a ejecutar Golpe Sagrado, sellos y Sentencias después de un aturdimiento. Perception ayuda a anticipar a pícaros en sigilo y Sword Specialization puede ofrecer crítico con una espada en el conjunto de armas.",
+        "aTenerEnCuenta": "No quita raíces ni ralentizaciones que impiden alcanzar al objetivo; la especialización en espadas es condicional, y Espíritu humano aporta un beneficio más marginal en un enfoque ofensivo cuerpo a cuerpo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Stoneform mitiga daño físico y limpia sangrados, venenos y enfermedades mientras el paladín persiste en la primera línea para combinar sellos, Golpe Sagrado y Sentencias. Mace Specialization puede favorecer el crítico si equipa maza.",
+        "aTenerEnCuenta": "Stoneform no restablece la acción ante un aturdimiento y es una defensa temporal. Buscar tesoro no ayuda a presionar jugadores, y Big Game Hunter solo influye en bestias, no en el daño general."
+      },
+      "conclusionPrincipal": "Para Reprensión de Alianza, Humano mantiene prioridad al permitir recuperar acciones después de un aturdimiento en la ventana donde debe conectar Golpe Sagrado y Sentencias. El tipo de control enemigo determina si esa recuperación se aprovecha.",
+      "conclusionAlternativa": "Enano puede ser mejor en duelos de desgaste físico en los que seguir de pie para aplicar sellos pesa más que cortar un aturdimiento. Stoneform es fiable ante perjuicios concretos pero no devuelve la acción tan directamente.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302099",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Elemental",
+      "razaRecomendada": "Troll",
+      "alternativa": "Orco",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Berserking acelera la ventana de lanzamiento de Ráfaga de lava y Cadena de relámpagos, especialmente cuando los tótems y aliados permiten mantener posición. Regeneración rápida aporta una recuperación activa, y la pasiva Regeneración continúa parcialmente en combate.",
+        "aTenerEnCuenta": "Ni Berserking ni Regeneración rápida rompen aturdimientos. Beast Slaying solo afecta a bestias elegibles y la aceleración se desaprovecha si el Elemental es interrumpido o forzado a moverse."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Blood Fury eleva temporalmente el poder con hechizos para una ráfaga de Elemental. Hardiness acorta aturdimientos y Shatter Curse protege de maldiciones y terrores al reducir daño mágico, apoyando la supervivencia del lanzador.",
+        "aTenerEnCuenta": "Blood Fury no acelera los lanzamientos como Berserking ni rompe raíces. El crítico de Axe Specialization requiere equipar hacha y no se debe contabilizar como bonificación automática en cualquier configuración."
+      },
+      "conclusionPrincipal": "En Elemental de Horda, Troll conserva prioridad cuando el equipo proporciona ventana de lanzamiento para Ráfaga de lava y Cadena de relámpagos. Berserking y las dos vías de regeneración mejoran rapidez y mantenimiento, sin garantizar daño ante interrupciones.",
+      "conclusionAlternativa": "Orco puede rendir mejor ante rivales que abusan de aturdimientos, maldiciones o terrores: Hardiness y Shatter Curse mejoran la continuidad y Blood Fury proporciona otra forma de potenciar la ráfaga.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Mejora",
+      "razaRecomendada": "Orco",
+      "alternativa": "Tauren",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "Hardiness reduce aturdimientos que detienen el ciclo de Golpe de tormenta y la acumulación de Arma vorágine. Blood Fury potencia el cuerpo a cuerpo, Shatter Curse protege ante presión mágica y Axe Specialization suma crítico únicamente si equipa hacha.",
+        "aTenerEnCuenta": "No elimina por completo el control, ni resuelve raíces. Blood Fury necesita contacto y la especialización en hachas no beneficia si el arma equipada es una maza u otro tipo."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "War Stomp aturde a enemigos cercanos para abrir espacio mientras Mejora conecta Golpe de tormenta o utiliza una descarga con Vorágine. Endurance suma vida y precisión; Plainsrunning acompaña desplazamientos largos hacia nuevos objetivos.",
+        "aTenerEnCuenta": "War Stomp exige rango de proximidad y no reduce pasivamente los aturdimientos. Cultivation no afecta a la pelea y Plainsrunning no funciona como salida instantánea de control."
+      },
+      "conclusionPrincipal": "En Mejora de Horda, Orco mantiene prioridad para conservar contacto y generar cargas de Arma vorágine frente a aturdimientos, a la vez que aprovecha Furia sangrienta y la protección situacional de Shatter Curse.",
+      "conclusionAlternativa": "Tauren tiene interés cuando Mejora pelea en grupos compactos y War Stomp puede interrumpir rivales próximos, con Endurance como defensa. No reproduce la reducción pasiva de aturdimientos del Orco ni garantiza perseguir a distancia.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    },
+    {
+      "faccion": "Horda",
+      "clase": "Chamán",
+      "especializacion": "Restauración",
+      "razaRecomendada": "Tauren",
+      "alternativa": "Troll",
+      "estado": "analisis_fuentes_revisado",
+      "principal": {
+        "aFavor": "War Stomp crea una pausa de control cercana para poder lanzar curas o recolocar tótems usando Proyección totémica. Endurance eleva la reserva de salud y precisión, mientras Plainsrunning ayuda a acompañar aliados en desplazamientos continuados.",
+        "aTenerEnCuenta": "No frena al atacante lejano ni sirve si el perseguidor queda fuera de alcance. Cultivation no ofrece defensa JcJ y Plainsrunning tarda en acumular beneficio."
+      },
+      "alternativaAnalisis": {
+        "aFavor": "Berserking acelera los lanzamientos de Restauración durante una ventana de curación protegida y Rapid Regeneration puede recuperar salud tras un pico de daño. Regeneración contribuye parcialmente durante el combate.",
+        "aTenerEnCuenta": "Berserking no evita que lo interrumpan ni rompe aturdimientos; la regeneración activa no equivale a control cercano y Beast Slaying no contribuye a sanar aliados."
+      },
+      "conclusionPrincipal": "En Restauración de Horda, Tauren conserva prioridad cuando el sanador es alcanzado por enemigos cuerpo a cuerpo y necesita War Stomp para seguir curando y sostener tótems. Endurance añade un margen de vida a una clase expuesta al foco.",
+      "conclusionAlternativa": "Troll puede ser preferible si el grupo ofrece control suficiente y se valora curar más rápido en ventanas seguras. Berserking y Regeneración rápida suman utilidad, pero no sustituyen el aturdimiento defensivo del Tauren.",
+      "fuentes": [
+        "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+        "https://worldofwarcraft.blizzard.com/es-es/news/24304075"
+      ]
+    }
+  ]
+}
